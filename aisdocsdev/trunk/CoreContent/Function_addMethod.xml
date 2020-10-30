@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>addMethod</Title>
+		<FunctionName>addMethod</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>String Text Dictionary Symbol Structure Dictionary Number Function CpxVector
+                       Directory Vector Brick Matrix Pair Void Boolean Character Date ObjectRepository
+                        FltVector IntVector NumVector ObjVector PcodeVector BitVector ByteVector</ArgumentTypes>
+	        <DataType>String Symbol Structure Dictionary Directory Vector Function  List Brick Matrix Pair  Void Boolean Character Number Date  NumMatrix 
+CpxVector FltVector IntVector NumVector ObjVector PcodeVector BitVector ShortVector ObjectRepository</DataType>
+	<RelatedFunctions>defmethod send methodsOf</RelatedFunctions>
+        <RelatedVMInstructions> vmsetdickey vmrefdicvalue  </RelatedVMInstructions>
+		<HumanKeywords>method message type methodName</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[ 
+             <p> The <b>addMethod</b> function binds a method name to the 
+                 methods Dictionary associated with the specified type.
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>addMethod</b> function associates a method <b>{proc}</b> to the specified type <b>{type}</b>
+           that responds to a nessage <b>{msgName}</b>. 
+           This function is instrumental in providing Analytic Information Server with support for 
+           standard Object Oriented Programming features. After the <b>addMethod</b> associates 
+           a method <b>{methodName}</b> with  the specified type <b>{type}</b>, the <b>{methodName}</b>
+           can be used as if it was a native Analytic Information Server function for a that type. </p>
+        <p>The Analytic Information Server Lisp compiler constructs  a method  binding from the 
+           <b>{methodName}</b>  argument  and the  Lambda object defined in the argument <b>{proc}</b>.  
+           The new method binding is installed  in the methods Dictionary associated with the 
+           specified type <b>{type}</b>.  In summary, the <b>defmethod</b> creates a new method 
+           binding for a type (can be any Analytic Information Server type or user defined type) . 
+           The <b>addmethod</b> function returns the Methods Dictionary object. </p>   
+           <H2 align="center"> Methods Dictionary </H2>
+           <table align="center" border=4 cellspacing=5 cellpadding=5>
+               <tr><td>MsgName1</td><td>LambdaName1</td></tr>
+               <tr><td>MsgName2</td><td>LambdaName2</td></tr>
+               <tr><td>MsgName3</td><td>LambdaName3</td></tr>
+           </table>                  
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>Use the <b>addMethod</b> function to define a method (Lambda) that operates differently on 
+           Strings than it does on other types. This allows the standard type polymorphism of standard 
+           Object Oriented Programming (OOP). Analytic Information Server supports both standard OOP type 
+           polymorphism and Lambda polymorphism.
+		</p>
+        ]]></Usage>
+    </Brief>
+	<Syntax-String>
+	    <Expression><![CDATA[<p>(addMethod  String:  methodName proc)</p>
+                    <p>(addMethod  Text:  methodName proc)</p>]]></Expression>
+		<Argument> 
+		  <Name>proc</Name>
+		  <Note><![CDATA[
+		  <p>The proc to be installed</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>     
+		<Return><![CDATA[ 
+	    <p>The Methods Dictionary for String:</p>
+	    ]]></Return>   
+	</Syntax-String>
+	<Syntax-Symbol>
+	    <Expression><![CDATA[<p>   (addMethod  Symbol:  msgName proc)</p> ]]></Expression>
+		<Argument> 
+		  <Name>proc</Name>
+		  <Note><![CDATA[
+		  <p>The proc to be installed</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>     
+		<Return><![CDATA[ 
+	    <p>The Methods Dictionary for Symbol:</p>
+	    ]]></Return>   
+	</Syntax-Symbol>
+	<Syntax-Structure>
+	    <Expression><![CDATA[<p>   (addMethod  Structure: msgName proc)</p> ]]></Expression>
+		<Argument> 
+		  <Name>msgName</Name>
+		  <Note><![CDATA[
+		  <p> A symbolic name of the message </p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The Methods Dictionary for {typeName}</p>
+	    ]]></Return>   
+	</Syntax-Structure>
+	<Syntax-Dictionary>
+	    <Expression><![CDATA[<p>   (addMethod  Dictionary: msgName proc)</p> ]]></Expression>                    
+		<Argument> 
+		  <Name>Dictionary:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory keyword for specifying the Dictionary methods table </p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>msgName</Name>
+		  <Note><![CDATA[
+		  <p> A symbolic name of the message </p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>proc</Name>
+		  <Note><![CDATA[
+		  <p>The proc to be installed</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>     
+		<Return><![CDATA[ 
+	    <p>The Methods Dictionary for {typeName}</p>
+	    ]]></Return>   
+	</Syntax-Dictionary>
+	<Syntax-Directory>
+	    <Expression><![CDATA[<p>   (addMethod  Directory: msgName proc)</p> ]]></Expression>                    
+		<Argument> 
+		  <Name>Directory:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory keyword for specifying the Directory methods table </p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>msgName</Name>
+		  <Note><![CDATA[
+		  <p> A symbolic name of the message </p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>proc</Name>
+		  <Note><![CDATA[
+		  <p>The proc to be installed</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>     
+		<Return><![CDATA[ 
+	    <p>The Methods Dictionary for {typeName}</p>
+	    ]]></Return>   
+	</Syntax-Directory>
+	<Syntax>
+	    <Expression><![CDATA[<p>   (addMethod  VectorType: msgName proc)</p> ]]></Expression>                    
+		<Argument> 
+		  <Name>VectorType:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory keyword for specifying the Vector methods table. It may be a
+              Vector or any of its subtypes (e.g. Vector:, NumVector:, IntVector:, ...) </p>
+          ]]></Note>
+		  <AISTypes>CpxVector FltVector IntVector NumVector ObjVector PcodeVector BitVector ShortVector</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>msgName</Name>
+		  <Note><![CDATA[
+		  <p> A symbolic name of the message </p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>proc</Name>
+		  <Note><![CDATA[
+		  <p>The proc to be installed</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>     
+		<Return><![CDATA[ 
+	    <p>The Methods Dictionary for {typeName}</p>
+	    ]]></Return>   
+	</Syntax>
+  <Syntax-Brick>
+    <Expression><![CDATA[<p>   (addMethod  Brick: msgName proc)</p> ]]></Expression>
+    <Argument>
+      <Name>Brick:</Name>
+      <Note>
+        <![CDATA[
+		  <p> Mandatory keyword for specifying the Brick methods table </p>
+          ]]>
+      </Note>
+      <AISTypes>---</AISTypes>
+    </Argument>
+    <Argument>
+      <Name>msgName</Name>
+      <Note>
+        <![CDATA[
+		  <p> A symbolic name of the message </p>
+          ]]>
+      </Note>
+      <AISTypes>Symbol</AISTypes>
+    </Argument>
+    <Argument>
+      <Name>proc</Name>
+      <Note>
+        <![CDATA[
+		  <p>The proc to be installed</p>
+          ]]>
+      </Note>
+      <AISTypes>---</AISTypes>
+    </Argument>
+    <Return>
+      <![CDATA[ 
+	    <p>The Methods Dictionary for {typeName}</p>
+	    ]]>
+    </Return>
+  </Syntax-Brick>
+  <Syntax-Matrix>
+	    <Expression><![CDATA[<p>   (addMethod  Matrix: msgName proc)</p> ]]></Expression>                    
+		<Argument> 
+		  <Name>Matrix:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory keyword for specifying the Matrix methods table </p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>msgName</Name>
+		  <Note><![CDATA[
+		  <p> A symbolic name of the message </p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>proc</Name>
+		  <Note><![CDATA[
+		  <p>The proc to be installed</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>     
+		<Return><![CDATA[ 
+	    <p>The Methods Dictionary for {typeName}</p>
+	    ]]></Return>   
+	</Syntax-Matrix>
+	<Syntax-NumMatrix>
+	    <Expression><![CDATA[<p>   (addMethod  NumMatrix: msgName proc)</p> ]]></Expression>                    
+		<Argument> 
+		  <Name>NumMatrix:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory keyword for specifying the Matrix methods table </p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>msgName</Name>
+		  <Note><![CDATA[
+		  <p> A symbolic name of the message </p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>proc</Name>
+		  <Note><![CDATA[
+		  <p>The proc to be installed</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>     
+		<Return><![CDATA[ 
+	    <p>The Methods Dictionary for {typeName}</p>
+	    ]]></Return>   
+	</Syntax-NumMatrix>
+	<Syntax-Pair>
+	    <Expression><![CDATA[<p>   (addMethod  Pair: msgName proc)</p> ]]></Expression>                    
+		<Argument> 
+		  <Name>Pair:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory keyword for specifying the Pair methods table </p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>msgName</Name>
+		  <Note><![CDATA[
+		  <p> A symbolic name of the message </p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>proc</Name>
+		  <Note><![CDATA[
+		  <p>The proc to be installed</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>     
+		<Return><![CDATA[ 
+	    <p>The Methods Dictionary for {typeName}</p>
+	    ]]></Return>   
+	</Syntax-Pair>
+	<Syntax-List>
+	    <Expression><![CDATA[<p>   (addMethod  List: msgName proc)</p> ]]></Expression>                    
+		<Argument> 
+		  <Name>Pair:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory keyword for specifying the List methods table </p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>msgName</Name>
+		  <Note><![CDATA[
+		  <p> A symbolic name of the message </p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>proc</Name>
+		  <Note><![CDATA[
+		  <p>The proc to be installed</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>     
+		<Return><![CDATA[ 
+	    <p>The Methods Dictionary for {typeName}</p>
+	    ]]></Return>   
+	</Syntax-List>
+	<Syntax-Void>
+	    <Expression><![CDATA[<p>   (addMethod  Void: msgName proc)</p> ]]></Expression>                    
+		<Argument> 
+		  <Name>Void:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory keyword for specifying the Void methods table </p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>msgName</Name>
+		  <Note><![CDATA[
+		  <p> A symbolic name of the message </p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>proc</Name>
+		  <Note><![CDATA[
+		  <p>The proc to be installed</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>     
+		<Return><![CDATA[ 
+	    <p>The Methods Dictionary for {typeName}</p>
+	    ]]></Return>   
+	</Syntax-Void>
+	<Syntax-Boolean>
+	    <Expression><![CDATA[<p>   (addMethod  Boolean: msgName proc)</p> ]]></Expression>                    
+		<Argument> 
+		  <Name>Boolean:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory keyword for specifying the Boolean methods table </p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>msgName</Name>
+		  <Note><![CDATA[
+		  <p> A symbolic name of the message </p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>proc</Name>
+		  <Note><![CDATA[
+		  <p>The proc to be installed</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>     
+		<Return><![CDATA[ 
+	    <p>The Methods Dictionary for {typeName}</p>
+	    ]]></Return>   
+	</Syntax-Boolean>
+	<Syntax-Character>
+	    <Expression><![CDATA[<p>   (addMethod  Character: msgName proc)</p> ]]></Expression>                    
+		<Argument> 
+		  <Name>Character:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory keyword for specifying the Character methods table </p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>msgName</Name>
+		  <Note><![CDATA[
+		  <p> A symbolic name of the message </p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>proc</Name>
+		  <Note><![CDATA[
+		  <p>The proc to be installed</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>     
+		<Return><![CDATA[ 
+	    <p>The Methods Dictionary for {typeName}</p>
+	    ]]></Return>   
+	</Syntax-Character>
+	<Syntax-Number>
+	    <Expression><![CDATA[<p>   (addMethod  Number: msgName proc)</p> ]]></Expression>                    
+		<Argument> 
+		  <Name>Number:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory keyword for specifying the Number methods table </p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>msgName</Name>
+		  <Note><![CDATA[
+		  <p> A symbolic name of the message </p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>proc</Name>
+		  <Note><![CDATA[
+		  <p>The proc to be installed</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>     
+		<Return><![CDATA[ 
+	    <p>The Methods Dictionary for {typeName}</p>
+	    ]]></Return>   
+	</Syntax-Number>
+	<Syntax-Date>
+	    <Expression><![CDATA[<p>   (addMethod  Date: msgName proc)</p> ]]></Expression>                    
+		<Argument> 
+		  <Name>Date:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory keyword for specifying the Date methods table </p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>msgName</Name>
+		  <Note><![CDATA[
+		  <p> A symbolic name of the message </p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>proc</Name>
+		  <Note><![CDATA[
+		  <p>The proc to be installed</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>     
+		<Return><![CDATA[ 
+	    <p>The Methods Dictionary for {typeName}</p>
+	    ]]></Return>   
+	</Syntax-Date>
+	<Syntax-Function>
+	    <Expression><![CDATA[<p>   (addMethod  Function: msgName proc)</p> ]]></Expression>                    
+		<Argument> 
+		  <Name>Function:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory keyword for specifying the Function methods table </p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>msgName</Name>
+		  <Note><![CDATA[
+		  <p> A symbolic name of the message </p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>proc</Name>
+		  <Note><![CDATA[
+		  <p>The proc to be installed</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>     
+		<Return><![CDATA[ 
+	    <p>The Methods Dictionary for {typeName}</p>
+	    ]]></Return>   
+	</Syntax-Function>
+	<Syntax-ObjectRepository>
+	    <Expression><![CDATA[<p>   (addMethod  ObjectRepository: msgName proc)</p> ]]></Expression>                    
+		<Argument> 
+		  <Name>ObjectRepository:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory keyword for specifying the ObjectRepository methods table </p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>msgName</Name>
+		  <Note><![CDATA[
+		  <p> A symbolic name of the message that the Object Repository will respond. </p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>proc</Name>
+		  <Note><![CDATA[
+		  <p>The proc to be installed</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>     
+		<Return><![CDATA[ 
+	    <p>The Methods Dictionary for {typeName}</p>
+	    ]]></Return>   
+	</Syntax-ObjectRepository>
+</Function>

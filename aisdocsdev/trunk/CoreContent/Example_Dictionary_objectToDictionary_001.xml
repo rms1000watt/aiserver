@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Dictionary objectToDictionary 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>objectToDictionary  </FunctionKeywords>
+		<TypeKeywords>Dictionary Vector Object ObjVector</TypeKeywords>
+		<RelatedFunctions>new copy </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>vector separates token key substrings</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows how the <b>objectToDictionary</b> transforms the  
+
+                  <b>{source}</b> Vector  into
+
+                  a Dictionary object.
+
+                 
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define aVector #(Name: "Bill"  SSN: "616 55 1209" Age: 45) )                      </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60Vector 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Dict  (objectToDictionary aVector)  )   </sc>]]></Expression>
+        <Note><![CDATA[Transforms the source Vector argument into a Dictionary. ]]></Note>
+        <Returns><![CDATA[#&#60Dictionary 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc> (type Dict)        </sc>]]></Expression>
+        <Note><![CDATA[Checks the type of the transformed Vector.]]></Note>
+        <Returns><![CDATA[Dictionary]]></Returns>
+        <Expression><![CDATA[ <sc>(display Dict)         </sc>]]></Expression>
+        <Note><![CDATA[Displayed the contents of the Dictionary object.]]></Note>
+        <Returns><![CDATA[ #{dic|| Age 45 Name "Bill" SSN "616 55 1209"}true ]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmnop</Title>
+		<InstructionName>vmnop</InstructionName>
+		<InstructionType>Generic</InstructionType>
+		<ArgumentTypes> none</ArgumentTypes>
+		<RelatedVMInstructions> </RelatedVMInstructions>
+		<HumanKeywords> no command operation nil compiler </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[
+		<p>When evaluated, this vm instruction causes the AIS Lisp compiler to
+           generate no code whatsoever. Issuing a (vmnop) instruction causes the AIS Lisp 
+           compiler to issue no Assembler instructions. Issuing a <b>vmnop</b> instruction 
+           acts a a no operation command to the compiler. The <b>vmnop</b> instruction is a 
+           compiler directive only and is never generated in the Lambda pcode vector.
+        </p>
+    ]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ (vmnop) ]]></Expression>
+		<Argument>
+		  <Name>none</Name>
+		  <Format>none</Format>
+		  <AISTypes>none</AISTypes>
+		</Argument>
+	</Syntax>
+</VMInstruction>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example NumVector map 007</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>map</FunctionKeywords>
+		<TypeKeywords>NumVector  </TypeKeywords>
+		<RelatedFunctions>mapc new</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>map mapc copy process</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines a NumVector and applies the <b>add1</b>
+                 function to each element of the Vector using the  <b>map</b> function.   
+
+
+
+
+                
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define Scores  #(num| 89.21 90.89 91 ) ) </sc>]]></Expression>
+        <Note><![CDATA[A Number Vector is defined. ]]></Note>
+        <Returns><![CDATA[#&#60NumVector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq  NewScores  (map  add1  Scores))      </sc>]]></Expression>
+        <Note><![CDATA[Increments the values by  one.]]></Note>
+        <Returns><![CDATA[#&#60NumVector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>  NewScores[0]  </sc>]]></Expression>
+        <Note><![CDATA[Displays the resulting Vector.]]></Note>
+        <Returns><![CDATA[90.21]]></Returns>
+        <Expression><![CDATA[ <sc>  NewScores[1]  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[91.89]]></Returns>
+        <Expression><![CDATA[ <sc>  NewScores[2]  </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[92.0]]></Returns>
+        <Hints><![CDATA[none
+       ]]></Hints>
+   </Syntax>
+</Example>

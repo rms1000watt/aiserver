@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+ <VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmdebugger</Title>
+		<InstructionName>vmdebugger</InstructionName>
+		<InstructionType>Generic</InstructionType>
+		<ArgumentTypes> Integer </ArgumentTypes>
+		<RelatedVMInstructions> vmonerror  </RelatedVMInstructions>
+		<HumanKeywords> debug emulation oneerror</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[                                                  
+		<p> When evaluated, this vm instruction causes an unconditional 
+		call to the DRM virtual machine debugger passing the <b>immediate</b> 
+		integer value as an argument. The immediate argument must be of 
+		Integer type. This instruction is only valid in emulation mode. 
+		This instruction may return an Error value. After the operation, 
+		the Instruction Pointer is promoted. The operation of this vm 
+		instruction is expressed in the following C expression:
+        </p>
+        <ul><li><b> debugger((int)immediate);</b></li></ul>
+    ]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ (vmdebugger argument)]]></Expression>
+		<Argument> 
+		  <Name> argument </Name>
+		  <Format> immediate </Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>	 
+	</Syntax>
+</VMInstruction>

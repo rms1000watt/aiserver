@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example ObjectRepository delete 013</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>delete</FunctionKeywords>
+		<TypeKeywords>ObjectRepository Integer Symbol</TypeKeywords>
+		<RelatedFunctions>remove insert</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>delete remove key binding </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows how the <b>delete</b> function erases a value using the
+                  Object Repository key.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq X (new ObjectRepository: "Test")) </sc>]]></Expression>
+        <Note><![CDATA[Create a new Object Repository ]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq X a: 22)        </sc>]]></Expression>
+        <Note><![CDATA[Install a value for a given key.]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(ref X a:)        </sc>]]></Expression>  
+        <Note><![CDATA[The value in the key a:]]></Note> 
+        <Returns><![CDATA[22]]></Returns>
+        <Expression><![CDATA[ <sc>(delete X a:)</sc>]]></Expression>  
+        <Note><![CDATA[Delete a key and its value]]></Note> 
+        <Returns><![CDATA[#&#60ObjectRepository 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(ref X a:)</sc>]]></Expression>  
+        <Note><![CDATA[The value in the key a:]]></Note> 
+        <Returns><![CDATA[#void]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example String isEqual 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isEqual</FunctionKeywords>
+		<TypeKeywords>Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory
+                       Matrix NumMatrix Integer Float Number Complex</TypeKeywords>
+		<RelatedFunctions>compareEQ comparison stringCiEQ substringCiEQ  </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>Character Equal Analytic Object </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example check if the elements of the two Vectors are equal. If they are,
+                  the function returns true, otherwise, it returns false.
+ 
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq tempVector1 (stringToVector "Hello World" #\space))</sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60Vector 176942&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(setq tempVector2 (stringToVector "Hello World" #\space)) </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[  #&#60Vector 176897&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(isEqual tempVector1 tempVector2)  </sc>]]></Expression>  
+        <Note><![CDATA[The isEqual function is invoked using the Vector names. ]]></Note> 
+        <Returns><![CDATA[ true ]]></Returns>
+        <Expression><![CDATA[ <sc>(isEqual #&#60Vector 176942&#62 #&#60Vector 176897&#62)</sc>]]></Expression>  
+        <Note><![CDATA[Also, the isEqual function is invoked using the Vector representation. ]]></Note> 
+        <Returns><![CDATA[ true ]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

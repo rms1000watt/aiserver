@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example List sizeof 022</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>sizeof</FunctionKeywords>
+		<TypeKeywords>List Integer</TypeKeywords>
+		<RelatedFunctions>length new</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>sizeof closure bytes length disk memory </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[  These examples use the <b>sizeof</b> function to determine the number of
+                  bytes of the disk file closure of the defined List objects.             
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc> (sizeof  '(1  2  3  4))          </sc>]]></Expression>
+        <Note><![CDATA[ none]]></Note>
+        <Returns><![CDATA[176]]></Returns>
+  	    <Expression><![CDATA[ <sc> (sizeof  '((1  2)  3  4))            </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[216]]></Returns>
+        <Hints><![CDATA[<p>The closure size may be different values for the same object on different 
+       hardware platforms due to word alignment issues. The values returned from the <b>sizeof</b>
+       function in the examples above are the values returned on a Intel Pentium-based
+        platform. ]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmregShrImmediate</Title> 
+		<InstructionName>vmregShrImmediate    </InstructionName>
+		<InstructionType>Register</InstructionType>
+		<ArgumentTypes> Integer  </ArgumentTypes>
+		<RelatedVMInstructions>  vmregShlImmediate vmregShlInteger vmregShrInteger </RelatedVMInstructions>
+		<HumanKeywords>   shift right immediate</HumanKeywords>
+	</KnowledgeBase>                   
+	<Description><![CDATA[
+		<p>When evaluated, this vm instruction shifts right the register 
+		<b>target</b> Integer value by the number of bits indicated by the 
+		<b>count</b> Integer value. The result is saved in the <b>target</b> 
+		register. The result will be saved as a type Integer. 
+		This instruction may return an Error value. After the operation, 
+		the Instruction Pointer is promoted. The operation of this vm 
+		instruction is expressed in the following C expression:
+    	</p>      
+        <ul><li><b> (int)target = (int)target  &gt;&gt; (int)count; </b></li></ul>
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[(vmregShrImmediate count   target)]]></Expression>
+		<Argument> 
+		  <Name>count</Name>
+		  <Format>immediate </Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>			  
+		<Argument> 
+		  <Name>target</Name>
+		  <Format>register </Format>
+		  <AISTypes>integer</AISTypes>			     
+		</Argument>
+	</Syntax>
+</VMInstruction>

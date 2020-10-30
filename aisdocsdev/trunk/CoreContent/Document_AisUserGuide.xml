@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Document SYSTEM "../DTD/Document.dtd">
+<Document>
+	<KnowledgeBase>
+	    <Title>Analytic Information Server User's Guide</Title>
+		<Topic>Analytic Information Server</Topic>
+		<SubTopic>User's Guide</SubTopic>
+		<HumanKeywords>AIS</HumanKeywords>
+	</KnowledgeBase>
+	<Essay>Essay_AisUser_Intro</Essay>
+	<Essay>Essay_AisUser_Basics</Essay>
+	<Essay>Essay_AisUser_Ide</Essay> 
+	<Essay>Essay_AisUser_Monitor</Essay> 
+	<Essay>Essay_AisUser_Install</Essay>
+</Document>

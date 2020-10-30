@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>argCount</Title>
+		<FunctionName>argCount</FunctionName>
+		<FunctionType>Special Form</FunctionType>
+        <ArgumentTypes> Lambda</ArgumentTypes>
+        <DataType> Lambda</DataType>
+	    <RelatedFunctions>argFetch</RelatedFunctions>
+        <RelatedVMInstructions>vmargcount vmargfetch  </RelatedVMInstructions>
+		<HumanKeywords>Lambda arguments</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>argCount </b> special form returns the number of arguments passed to the current Lambda. </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The  <b>argCount</b> special form returns the number of arguments passed to the 
+           current Lambda.  The <b>argCount</b> special form is used to access arguments in Lambdas 
+           which have been sent an indefinite number of arguments.  The number of  arguments 
+           are only known at runtime.
+</p>
+        ]]></Overview>
+       <Usage><![CDATA[
+        <p>The <b>argCount</b> special form is the only method to return the number of arguments 
+         that was passed to the current Lambda.  The current Lambda has been defined with an indefinite 
+         number of arguments using the ellipsis syntax form.  The number of arguments is only 
+         known at runtime.
+		</p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p>      (argCount) </p>
+ ]]></Expression>              
+		<Argument>
+		  <Name>none</Name>
+		  <Note><![CDATA[
+		  <p> none</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>The number of arguments for the current Lambda.
+
+        </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

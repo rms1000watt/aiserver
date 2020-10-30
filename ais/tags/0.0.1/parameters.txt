@@ -1,0 +1,367 @@
+aisdev/parameters.txt
+
+							AIS CONFIGURATION PARAMETERS
+CHANGE HISTORY
+Version	Date		Who		Change
+2.0002	1/22/2007	tlw		GblAisDefaultContextName. Remove redundant entries.
+2.0001	1/3/2007	tlw		GblClientHelpUrl. Rename to Gbl and use !Help in value.
+1.0113	11/6/2006	tlw		Add CloseWait, httpautologon, edfont, and edfontsize.
+1.0102	8/16/2006	tlw		Add DefaultJitMode parameter
+1.0100	6/14/2006	tlw		Add optional prefix to specify the platform
+1.0061	4/27/2005	tlw		Remove unused gbllog parameters. Add edit parameters
+1.0058	3/22/2004	tlw		Add note on setting globals from context.ini & startup
+1.0052	12/1/2004	tlw		Add description of each global parameter
+
+Introduction
+ Parameters.txt describes the global and context-specific parameters for Analytic Information
+Servers (AIS).  A parameter setting consists of a parameter name followed by an equal sign
+followed by an optional value.  An optional prefix of the form Win: or Linux: can be
+prepended to specify the platform.  If the value is missing, the parameter retains its
+current default value.  All parameters have a default value that is set by AIS even if no
+initialization files are found.  The default value is overridden by the last parameter
+setting as described below.  The parameters are broken into the following categories:
+	Global Parameters
+		Global configurable parameters that frequently modified (see ais.ini)
+		Default global parameters that are rarely modified (see aisinstall.ini).
+	Context-Specific Parameters
+		Context-specific parameters that are the same for all contexts (see ais.ini)
+		Context-specific parameters that are frequently modified (see context.ini)
+		Context-specific parameters that are rarely modified (see below)
+
+Setting Parameters
+See the instructions in the aisinstall.ini notes for setting global parameters.  See the
+instructions in context.ini for setting context-specific parameters.  The description and
+sample setting may be copied from this file and pasted into the appropriate ini file.
+
+Initialization Files
+The installation files are plain text files.  Comments begin with an octothorpe (#).
+Comments and blank lines are ignored.  The files are shown in the order in which they
+are read.  In case that a parameter is encountered more than once, the last setting
+prevails. Settings are extracted from the following places in the order listed.  Note
+that both global and context-specific parameters may occur in any of the places listed
+with the following provisos:
+ 1.	Global parameters. Only the context.ini and startup script specified by an optional
+	command-line argument are checked for global parameter settings.  This feature
+	allows a convenient method for overriding global port settings when starting a
+	second service on the same machine (otherwise, the second instance will not start).
+	Global parameter settings made by other applications are ignored.  The global
+	parameters are set during the startup of an instance of AIS.  Changes made while
+	the server is running are ignored until the next time that the server is started.
+ 2.	Context-specific parameters. Server-wide settings may be made in aisinstall.ini
+	and ais.ini.  The server-wide settings are made when the server is started.
+	 Selected overrides for all the startup files in a folder can be made in
+	context.ini.  Finally, a startup script may include an override for one or more
+	settings.  The last two sources of settings are read when the context is registered
+	and again when the context is opened.
+
+Initialization
+Every parameter is set in one or more of the following ways.  The last setting in the following
+list prevails.  For example, if a parameter setting is included in a startup.sl file, it
+overrides any and all previous settings.  Global parameters are normally set in either
+AisInstall.ini or in Ais.ini but they also may be included in context.ini or in astartup.sl.
+Note that a single folder can have a context.ini file and two (or more) astartup.sl files.
+
+
+HardCoded - Every parameter listed below has a hard-coded default set by a define in
+globals.h.  These settings are fixed as of the last time the AIS executable was compiled.
+
+AisInstall.ini - This file is updated and distributed as part of the AIS install package.
+This file should not be modified.  Rather, to override a parameter setting, add
+an entry to the ais.ini file.  The aisinstall file should reside in the installation
+directory where the AIS exe file resides.  The aisinstall file contains the default
+global settings and server-wide context-specific settings.
+
+Ais.ini - This file is used to customize global and context-specific parameters for a
+particular installation of AIS.  It only includes the global parameters that need to
+be customized for each installation.  And, it only includes those server-wide
+context-specific parameters that need to be customized to a common value for
+an installation. The ais ini file should also reside in the installation directory
+where the AIS exe file resides.  It contains the overrides for global parameters
+and overrides for server-wide context-specific parameters.
+
+Context.ini - This file is used to customize context-specific parameters for each
+context.  It includes those context-specific parameters that must be modified
+for a context.  It also may contain global parameter settings which will be used only
+if the context.ini file resides in the same directory as the startup file specified on
+the command line when ais is started.  The context ini file should reside in the
+context's startup working directory where the context startup file resides.  It
+contains the overrides that are common to all the startup scripts in the same
+directory. It is included in the distribution of an update of the code for a context
+but it may be customized for a specific machine.
+
+startup.sl - The startup file may contain parmeter settings of the form:
+	;#paramName=value
+
+Parameter Descriptions
+Each global and context-specific parameter is described below.  The format for a
+description includes the parameter name, the units of measure, description, and range
+of values:
+	ParamName [units] - Description [minvalue-maxvalue]
+The description is followed by an example that shows the default value for the parameter.
+----------------------------------------------------------------------------------------
+to be determined....
+RIDE CONFIGURATION PARAMETERS
+Use Case. User may want to click on a .sl file to launch a variety of operations. Just as
+for the webide parameters, parameters can be set in the following order:
+1. Hard-coded default settings.
+2. Settings in rideinstall.ini in the installation directory.
+3. If launched from a .sl file, ride.ini settings in application working directory.
+4. If launched from a .sl file, a final set of overrides in the .sl file.
+
+RIDE OPERATIONS
+RIDE parameters should allow for the following operations:
+1. Connect to a specified local or remote server
+2. Startup a local server as an exe or as a service if not already started
+3. Connect, logon, open a context, open a session
+4. Close a session in any of the standard modes
+5. Close a context if opened in step 3 above
+6. Shutdown a server if it was started in step 2 above
+7. Disconnect from the server
+----------------------------------------------------------------------------------------
+
+GLOBAL OFTEN-MODIFIED PARAMETERS
+Default Value - Set in aisinstall.ini
+Override Value - Often set in ais.ini
+
+# GblAisContextList - Additional contexts registered with AIS. To add entries to the
+# comma-separated list, use += where <path> is path to context's startup dir. Path
+# may include startup script file name.
+# GblAisContextList+=<path>
+# GblAisContextList=test2/astartup2.sl
+GblAisContextList=
+
+# GblAisDefaultContextName - The default context's name. Set by AIS to the initial startup
+# script's context name.  It rarely needs to be set by the user.
+GblAisDefaultContextName=
+
+# GblAisMaxBufferSize[chars] - Max buffer size for holding output from disconnected sessions [>=0]
+# If zero, size is unlimited.
+GblAisMaxBufferSize=1000
+
+# GblAppPort - Server socket port number for global App Server.[0-65535]
+GblAppPort=
+
+# GblClientBrowser - Path to the client's  web browser (e.g. Internet Explorer)
+Win:GblClientBrowser=C:/PROGRA~1/INTERN~1/IEXPLORE.EXE
+Linux:GblClientBrowser=/usr/bin/firefox
+
+# GblHttpPort - Server socket port number for global Http Server.[0-65535]
+GblHttpPort=
+
+# GblXmlPort - Server socket port number for global XML Server.[0-65535]
+GblXmlPort=
+
+
+GLOBAL RARELY-MODIFIED PARAMETERS
+Most users will never concern themselves with these parameters settings.  They are only
+included here to accommodate unusual circumstances. 
+Default Value - Set in aisinstall.ini
+Override Value - Rarely set in ais.ini
+
+# GblAisDefaultStartupScript - Default file specification of the startup script
+# Path + file name of the startup script if none is specified on the command line.
+# Relative paths should be relative to the install directory.
+GblAisDefaultStartupScript=testais/astartup.sl
+
+# GblAisInstallPath - Set by AIS to the directory containing the executable file for AIS.
+# It never needs to be set in an ini file or in a startup script, ever.
+GblAisInstallPath=
+
+# GblAisHostAddress - IP address of this server
+GblAisHostAddress=127.0.0.1
+
+# GblAisMachineName - Name of this server
+GblAisMachineName=localhost
+
+# GblAisMemory Pool[MB] - Grab memory for later use by contexts [16 - 4000]
+GblAisMemoryPool=200
+
+# GblClientHelpUrl - Path to HTML help documentation on client's machine
+# !Help is interpreted as $GblAisInstallPath/docs/onlinedocs on the target server. If the
+# install path is C:/ais/, then C:/ais/docs/onlinedocs/AStartup.html is returned.
+GblClientHelpUrl=http://$GblAisMachineName$/!Help/AStartup.html
+
+# GblClientServerFormRules - List of Server Form rules
+# Format is a comma-delimited list of contextName.protocolName pairs
+# ProtocolNames: all,app,http,xml,disconnected,in-process
+GblClientServerFormRules=.in-process
+
+# GblLogAmpFileName - Name of the AMP log file
+GblLogAmpFileName=amp
+
+# GblLogAmpMinLevel - Add entry to log if level is ABOVE Log MinLevel [0-5]
+GblLogAmpMinLevel=1
+
+# GblLogFileDir - Name of directory containing all the log files
+GblLogFileDir=logs
+
+# GblLogSize[bytes] - Maximum size of log file [>= 0]
+GblLogLogSize=10000
+
+# GblLogReqHdrFileName - Name of the log file containing request headers
+GblLogReqHdrFileName=reqhdr
+
+#GblLogReqHdrMinLevel - Add entry to log if level is at or above Log MinLevel [0-5]
+GblLogReqHdrMinLevel=1
+
+# GblLogSysMsgFileName - Name of the log file containing system messages
+GblLogSysMsgFileName=sysmsg
+
+#GblLogSysMsgMinLevel - Add entry to log if level is ABOVE Log MinLevel [0-5]
+GblLogSysMsgMinLevel=1
+
+# GblUsrFileDir - Name of directory containing all user files (logon forms)
+GblUsrFileDir= usr
+
+# GblUsrLogonPage - Name of logon form used by HTTP 
+GblUsrLogonPage=logon.htm
+# GblUsrMaxLogon - Maximum number of logon tries before account is frozen [>0]
+GblUsrMaxLogon=4
+
+# GblMysqlDataDir - Location of the MySQL data files directory
+GblMySQLDataDir=data
+
+CONTEXT-SPECIFIC SERVER-WIDE PARAMETERS
+Default Value - Set in ais.ini
+Override Value - Rarely set in context.ini
+
+# AppAutoLogon - Set to 1 to automagically logon new APP users on this context [0-1]
+AppAutoLogon=0
+
+# HttpAutoLogon - Set to 1 to automagically logon new HTTP users on this context [0-1]
+HttpAutoLogon=0
+
+# MinSecurityLevel - Minimum security level to reconnect to a disconnected session [0-7]
+# One is lowest level of security and seven is the highest level.
+MinSecurityLevel=7
+
+# XmlAutoLogon - Set to 1 to automagically logon new XML users on this context [0-1]
+XmlAutoLogon=0
+
+
+CONTEXT-SPECIFIC OFTEN-MODIFIED PARAMETERS
+Default Value - Set by the server
+Override Value - Often set in context.ini
+
+# ContextName - The name of this application
+ContextName=SomeContext
+
+# ClientViewUrl - The web page fetched when the View toolbar button is selected.
+# Must come after AisMachineName and HttpPort are defined if using these parameters in value.
+GblClientViewUrl=http://$AisMachineName$/view.htm
+
+# ClientSessionFormRules - Default Session Form subscription rules
+# Format is a comma-delimited list of contextName.protocolName pairs
+# ProtocolNames: all,app,http,xml,disconnected,in-process
+ClientSessionFormRules=
+
+# memory[Mb] - Application memory size [>=16]
+# Specifies the total host memory required for this context.
+memory=20
+
+# memoryObjectHeaders[Mb] - Application memory object header heap size (< memory)
+# Specifies the subset of context memory in MB reserved for the object header heap (defaults to 20% of memory size).
+# Note: the following relationship is always true for each context, data block heap size = (memory - memoryObjectHeaders).
+# Thus context memory is always subdivided into the subset reserved for object headers and the remainder which is
+# reserved for data blocks.
+memoryObjectHeaders=4
+
+# OnDisconnect - AisLisp Lambda to be called when a connection is unexpectedly closed.
+OnDisconnect=
+
+# StartupPrefix - Lisp expression prepended to startup script.
+# In order to debug a startup file, add the following line to your startup.sl:
+#		;#StartupPrefix=(debug jitoff:)
+StartupPrefix=
+
+CONTEXT-SPECIFIC RARELY-MODIFIED PARAMETERS
+Most users will never concern themselves with these parameters settings.  They are only
+included here to accommodate unusual circumstances. 
+
+Default Value - Set by the server
+Override Value - Rarely set in context.ini
+
+# AppDefaultPage - Name of  web page served if no file name supplied in request
+AppDefaultPage=
+
+# AppDir - Topmost directory of subtree containing web accessible files
+AppDir=wwwroot
+
+# AppPort - Port number for context-specific App Server socket. [0-65535]
+# Set to zero to disable global App port for this context.
+AppPort=
+
+# AppSecureDir - Name of root directory of secure sub tree (NOT a path)
+AppSecureDir=secure
+
+# CloseMode - Default mode for closing a session when a connection is lost. [disconnect,soft,
+# argument set to default. Default close mode may be soft, firm, or hard.  Soft-suspend new requests.
+# Firm - suspend new and clear pending requests. Hard - suspend new, clear pending and stop
+# executing current request, if any.
+CloseMode=soft
+
+# CloseWait - Default wait time (in Secs) before actually closing a session.  Used when a
+# session is closed with the close mode set to default.  If CloseWait is -1, wait forever. If
+# CloseWait is -2, wait the default wait time. The wait time should be long enough to assure
+# that the user is unlikely to reconnect and initiate a request that is dependent upon the
+# current state.
+CloseWait=3600
+
+# DefaultJitMode - Normally, the jit (Just-In-Time compiler) is turned on by default.  This means that
+any lisp expression submitted to the engine is run with the jit enabled unless a prefix is prepended
+to the expression that specifically turns the jit off.  On rare occasions, such as when testing a
+new jit, the jit can be disabled by default so that all lisp expressions are run in emulation mode
+unless a prefix is prepended to the expression that explicitly turns the jit on.  If the value
+assigned to this parameter is 0 or off, by default, the jit is disabled; otherwise it is enabled.
+DefaultJitMode=on
+
+# EdFont - The default editor font family name
+EdFont="Courier New"
+
+# EdFontSize - The default editor font size in points
+EdFontSize=10
+
+#HttpAutoLogon - If true, allow autologon via the HTTP port.
+HttpAutoLogon=0
+
+# HttpDefaultPage - Name of default web page served if no file name supplied in URL
+HttpDefaultPage=index.htm
+
+# HttpDir - Topmost directory of subtree containing web accessible files
+HttpDir=wwwroot
+
+# HttpPort - Port number for context-specific Http Server. Zero to disable.
+# Set to zero to disable global Http port for this context.
+HttpPort=
+
+# HttpSecureDir - Name of root directory of secure sub tree (NOT a path)
+HttpSecureDir=secure
+
+# HttpUploadDir - Name of root directory that holds files uploaded by clients
+HttpUploadDir=upload
+
+# UsrIdleSecs - Usr logged off if no requests for UsrIdleSecs (0 for infinite)
+UsrIdleSecs=0
+
+# XmlDefaultPage - Name of default XML document served if no file name supplied
+XmlDefaultPage=index.htm
+
+# XmlDir - Topmost directory of subtree containing web accessible files
+XmlDir=wwwroot
+
+# XmlPort - Port number context-specific XML Server. Zero to disable.
+XmlPort=0
+
+# WorkDir - Context's working directory. Set automatically. It never needs to
+# be set in any file, ever.  All the context-specific directory settings are relative
+# to this path.  The WorkDir is the directory containing the startup script.
+WorkDir=
+
+# XmlSecureDir - Name of root directory of secure sub tree (NOT a path)
+XmlSecureDir=secure
+
+# end
+
+
+
+

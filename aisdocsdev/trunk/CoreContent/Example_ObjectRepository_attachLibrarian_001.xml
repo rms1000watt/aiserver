@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example ObjectRepository attachLibrarian 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>attachLibrarian</FunctionKeywords>
+		<TypeKeywords>ObjectRepository</TypeKeywords>
+		<RelatedFunctions>detachLibrarian refLibrarian new</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>abort end transaction </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[<p> Once the librarian Lambda is attached to the ObjectRepository, all <b>new</b>
+              function calls originally meant to open the ObjectRepository will return the 
+              librarian Lambda, not the ObjectRepository. When the <b>new</b> function creates the
+              ObjectRepository, the ObjectRepository itself will be stored in the Lambda's persistent 
+              variable named: <b>myOR</b>. Whenever the ObjectRepository is open, the ObjectRepository index
+             (always a Directory object) will be stored in the Lambda's persistent variable named: <b>myIndex</b>. 
+              The librarian Lambda may change the number and/or meaning of all remaining arguments. Each 
+              librarian Lambda must have the following form: </p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(defun aLibrarian(aGor) 
+<br>
+                           Pvars: (myIndex myOR myResident myParent) 
+                    </sc>]]></Expression>
+        <Note><![CDATA[The new function will call this entry point.   ]]></Note>
+        <Returns><![CDATA[ --- ]]></Returns>
+        <Expression><![CDATA[ <sc>...</sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[--- ]]></Returns>
+        <Expression><![CDATA[ <sc>...</sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[--- ]]></Returns>
+  	    <Expression><![CDATA[ <sc>(defun abortTrans() ...)</sc>]]></Expression>
+        <Note><![CDATA[Receive abortTransaction function calls here. ]]></Note>
+        <Returns><![CDATA[ --- ]]></Returns>
+  	    <Expression><![CDATA[ <sc>(defun beginTrans()...)</sc>]]></Expression>  
+        <Note><![CDATA[Receive beginTransaction function calls here. ]]></Note> 
+        <Returns><![CDATA[ --- ]]></Returns>
+  	    <Expression><![CDATA[ <sc>(defun commitTrans()...)</sc>]]></Expression>  
+        <Note><![CDATA[Receive commitTransaction function calls here. ]]></Note> 
+        <Returns><![CDATA[ --- ]]></Returns>
+  	    <Expression><![CDATA[ <sc>(defun doClear() ...)</sc>]]></Expression>  
+        <Note><![CDATA[Manage clear function calls here.]]></Note> 
+        <Returns><![CDATA[ --- ]]></Returns>
+ 	    <Expression><![CDATA[ <sc>(defun len() ...)</sc>]]></Expression>  
+        <Note><![CDATA[Receive length function calls here.]]></Note> 
+        <Returns><![CDATA[ --- ]]></Returns>
+        <Expression><![CDATA[ <sc>...</sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[--- ]]></Returns>
+        <Expression><![CDATA[ <sc>...</sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[--- ]]></Returns>
+ 	    <Expression><![CDATA[ <sc>(defun ref1(ix1) ...)</sc>]]></Expression>  
+        <Note><![CDATA[Receive ref one index function calls here.]]></Note> 
+        <Returns><![CDATA[ --- ]]></Returns>
+ 	    <Expression><![CDATA[ <sc>(defun ref2(ix1) ...)</sc>]]></Expression>  
+        <Note><![CDATA[Receive ref two index function calls here.]]></Note> 
+        <Returns><![CDATA[ --- ]]></Returns>
+ 	    <Expression><![CDATA[ <sc>(defun ref3(ix1) ...)</sc>]]></Expression>  
+        <Note><![CDATA[Receive ref three index function calls here.]]></Note> 
+        <Returns><![CDATA[ --- ]]></Returns>
+	    <Expression><![CDATA[ <sc>(defun set1(ix1) ...)</sc>]]></Expression>  
+        <Note><![CDATA[Receive set one index function calls here.]]></Note> 
+        <Returns><![CDATA[ --- ]]></Returns>
+	    <Expression><![CDATA[ <sc>(defun set2(ix1) ...)</sc>]]></Expression>  
+        <Note><![CDATA[Receive set two index function calls here.]]></Note> 
+        <Returns><![CDATA[ --- ]]></Returns>
+	    <Expression><![CDATA[ <sc>(defun set3(ix1) ...)</sc>]]></Expression>  
+        <Note><![CDATA[Receive set three index function calls here.]]></Note> 
+        <Returns><![CDATA[ --- ]]></Returns>
+        <Expression><![CDATA[ <sc>...</sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[--- ]]></Returns>
+        <Expression><![CDATA[ <sc>...</sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[--- ]]></Returns>
+	    <Expression><![CDATA[ <sc>(setq myParent (myself))</sc>]]></Expression>  
+        <Note><![CDATA[Save the Parent Lambda at new or attach time.]]></Note> 
+        <Returns><![CDATA[ --- ]]></Returns>
+	    <Expression><![CDATA[ <sc>(setq myResident false)</sc>]]></Expression>  
+        <Note><![CDATA[Set false if the Lambda is NOT to reside on disk.]]></Note> 
+        <Returns><![CDATA[ --- ]]></Returns>
+	    <Expression><![CDATA[ <sc>)</sc>]]></Expression>  
+        <Note><![CDATA[end aLibrarian]]></Note> 
+        <Returns><![CDATA[ --- ]]></Returns>
+        <Hints><![CDATA[<p>A librarian Lambda completely controls how an ObjectRepository is viewed by the other 
+           intelligent Lambdas, end users, and by Analytic Information Server. Normally an ObjectRepository 
+           has a simple associative memory database schema, but attaching a librarian Lambda can give the 
+           ObjectRepository an entirely different database schema (see the <b>detachLibrarian</b> function 
+           for removal of a librarian Lambda). </p>
+          <p>Hint: The ObjectRepository will place its Repository Index (always a Directory object) in the 
+          Lambda's persistent variable myIndex. If the ObjectRepository is not open, the Lambda's <b>myIndex</b>
+          variable will be set to #void; otherwise <b>myIndex</b> will point to the ObjectRepository 
+          Repository Index </p>]]></Hints>
+   </Syntax>
+</Example>

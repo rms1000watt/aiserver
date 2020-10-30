@@ -1,0 +1,251 @@
+<html><head>
+<link rel="stylesheet" type="text/css" href="../CoreContent/help.css">
+<title>AIS Essay Template</title></head>
+<!--Page Parameters -->
+<body bgcolor="#FFFFF0" text="#000000" LINK="#0000ff">
+<a name="topage"></a>
+<a href="top"></a>
+<p>&nbsp;</p>
+<font color="#000080"><h1>Editor Dialogs</h1></font>
+<p>&nbsp;</p>
+<ul>
+<li><a href="#S1"><FONT SIZE=2>3.1 Find Dialog</font></a></li><li><a href="#S2"><FONT SIZE=2>3.2 Function/Agent List Dialog</font></a></li><li><a href="#S3"><FONT SIZE=2>3.3 Goto Dialog</font></a></li><li><a href="#S4"><FONT SIZE=2>3.4 Replace Dialog</font></a></li><li><a href="#S5"><FONT SIZE=2>3.5 Set Tabs Dialog</font></a></li><li><a href="#S6"><FONT SIZE=2>3.6 Test Suite Dialog</font></a></li>
+</ul>
+<P><H2><A NAME="S1"></A>3.1 Find Dialog</H2></P>		
+		    <div class="h2section" id="3.1 Find Dialog">   
+		    <img src="Image_EdFindDialog.gif" width=389 height=186 alt="Find Dialog" border=0>
+			<h3>3.1.1 Overview</h3>
+			<p>
+			The Find dialog allows users to search for a pattern in the edit text.  The desired pattern is entered into the Find
+			text box or selected from the drop-down combo box at the top of the dialog.  Click on the Find button on the right
+			or press Enter to conduct the next search. Click on the Quit button to close the dialog.  See section 5 of this
+			guide for a detailed discussion of searching.</p>
+			<p>
+			Messages appear in the status bar at the bottom of the dialog that are of help in guiding the search.  Three
+			button groups allow users to select several options, a search region, and a search direction. A discussion of
+			each Group is shown next.</p>
+			<h3>3.1.2 Options</h3>
+			<p>
+			<b>Match Words</b>
+			See the discussion in section 1 on words. Match Words restricts the match to start and to end on a
+			word boundary.  Thus &quot;space&quot; will not match &quot;backspace&quot;.  The pattern does not have to
+			contain just alphanumeric characters.  Thus &quot;::back space&quot will match &quot;the ::back space&quot;
+			because the matching text starts and ends on a word boundary.</p>
+			<p>
+			<b>Match Case</b> If Match Case is checked, the search is case-sensitive.  In this <i>case</i>, &quot;BackSpace&quot;
+			does not match &quot;backspace&quot;.  If Match Case is not checked they would match.  Match Case only applies to
+			the letters from A thru Z.</p>
+			
+			<p><b>RegularExp</b> If RegularExp is checked, the pattern entered in the Find text box is treated as a
+			regular expression.  Regular expressions are discussed in section 5 below.</p>
+			
+			<h3>3.1.3 Search Direction.</h3>
+			<p>
+			Unlike the check boxes, one, and only one, radio button in this group can be selected.</p>
+			<p>
+			<b>Down</b> If Down is selected the search begins at the first row of the search region.  Each row is searched
+			for a match from left to right.  If a partial row is included in the search region, only the portion of the
+			row in the selected region is searched.</p>
+			<p>
+			<b>Up</b> If Up is selected, the search begins at the last row of the search region.  Each row is searched
+			for a match from the end to the left.  If a partial row is included in the search region, only the portion of the
+			row in the selected region is searched.  Searching up is slower than searching down.  If the direction is
+			not important to you, select Down.</p>
+			
+			<h3>3.1.4 Search Region.</h3>
+			Just as with the Direction button group, one, and only one, radio button in the group can be selected.
+			<p>
+			<b>Selection</b> If several lines are currently selected when the dialog is opened, the search region is
+			restricted to the selected text.  This search region remains in effect until the last match is made in this
+			region or until another region is selected from this group.</p>
+			<p>
+			<b>At End</b> If searching Down, the search region extends from the current cursor position to the end
+			of the text.  If searching Up, the search region extends from the current cursor position to the beginning
+			of the text.  This option is especially attractive if you want to be notified when a complete pass has been
+			made through the text.</p>
+			<p>
+			<b>All Text</b> The search extends from the current cursor position and extends to the entire text.  This
+			option is somewhat distinctive in that it is not possible to ever hit the end of the search region.  That is,
+			the next find can always be conducted even if no match was made on the last attempt.</p>
+			<p>
+			<b>More Information.</b>
+			Much more detailed information on searching is found in section 5.</p> 
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="S2"></A>3.2 Function/Agent List Dialog</H2></P>		
+		    <div class="h2section" id="3.2 Function/Agent List Dialog">  
+		    <img src="Image_EdFunctionListDialog.gif" width=266 height=443 align=right alt="Function List Dialog" border=0>
+			<h3>3.2.1 Overview</h3>
+			While editing a document, the &quot;function list&quot; or &quot;agent list&quot; dialog can be shown by depressing the
+			Ctrl key and then pressing the right button on your pointing device, typically a mouse. The dialog shows a list of the
+			functions or agents in the current document. Each entry in the list shown contains two fields.  The first one is the
+			line number and the second is the function name.  You can do any of the following:
+			<ul>
+				<li>Select.  Highlight one item in the list by clicking on it and then press the select button to move to that function in
+				the source code.</li>
+				<li>Double-click.  As an alternative, you can also double-click on an item in the list to move to that function.</li>
+				<li>Cancel.  Press cancel to dismiss the dialog and return to editing the document.</li>
+				<li>Sort.  Click in either header to re-sort the list on the column selected.  An up-arrow indicates that the list is
+				is sorted in ascending order.  A down-arrow indicates that the list is sorted in descending order on that list.
+				The column and the sort order are reset the next time that the dialog is opened.</li>
+			</ul>
+			<h3>3.2.2 Function Definitions</h3>
+			The definition of a function for each language is shown in the following table.  The meta-symbol &lt;fcnname&gt; refers to
+			an arbitrary function name that appears in the &quot;Function&quot; column of the function list. The meta-symbol
+			&lt;def...&gt; stands for any one of the following: defun, defchild, defriend, deforphan.  The meta-symbol
+			&lt;type&gt> refers to any sequence of non-space characters. The ellipsis ... stands for any sequence of characters except
+			a closing parenthesis.
+			<table  cellspacing=0 border=0 cellpadding=2>
+			<tr valign=top>
+				<th>Language</th>
+				<th>Syntax</th>
+				<th>Example</th>
+			</tr><tr valign=top>
+				<th>Lisp</th>
+				<td>(&lt;def...&gt; &lt;fcnname&gt;(...)</td>
+				<td>(defun readTestTable(aTableName)</td>
+			</tr><tr valign=top>
+				<th>C</th>
+				<td>(&lt;type&gt; &lt;fcnname&gt;(...)</td>
+				<td>TVAL FProcedure_Send(NUM argc,TVAL argv[])</td>
+			</tr><tr valign=top>
+				<th>Javascript</th>
+				<td>function &lt;fcnname&gt;(...)</td>
+				<td>function chop(iMsg, iLen)</td>
+			</tr><tr valign=top>
+				<th>Text</th>
+				<td>* &lt;fcnname&gt;.</td>
+				<td>* ItemA.</td>
+			</tr>
+			</table> 
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="S3"></A>3.3 Goto Dialog</H2></P>		
+		    <div class="h2section" id="3.3 Goto Dialog">
+			<p>The Goto dialog allows users to move to a line in the edit text.  Enter the line number in the &quot;Go To&quot;
+			edit box and then click on Go.  The cursor is moved to the designate line in the edit text.  Click on Close
+			to dismiss the dialog.  If the line number exceeds the number of lines in the text, the cursor is moved
+			to the end of the text.</p>
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="S4"></A>3.4 Replace Dialog</H2></P>		
+		    <div class="h2section" id="3.4 Replace Dialog">
+			  <h3>3.4.1 Overview</h3>
+			<img src="Image_EdReplaceDialog.gif" width=336 height=217 align=right alt="Replace Dialog" border=0>
+			<p>
+			<b>Find.</b> The Replace dialog allows users to search for a pattern in the edit text and to replace previously matched text with
+			new text.  Enter the desired search pattern into the Find text box or select an existing pattern from the drop-down
+			Find combo box shown in the diagram on the right.  Click on the Find button on the top, right side of the dialog
+			or press Enter to conduct a next search.  The Find capability is nearly identical to that of the Find dialog.  Please
+			consult section 3.1 on the Find Dialog for more details. The major difference is that the Find Dialog allows searches
+			up from the end of the search region.  Searches in the Replace Dialog are always conducted from the current top of the
+			search region towards the end of the search region.  Consult section 5 below for more details on search and
+			replace.</p>
+			
+			<p>
+			<b>Replace.</b> Enter the text to be replace the current match in the Replace text box just below the find text box
+			in the dialog shown on the right.  You may also select a previous replace string from the drop-down combo box.
+			Click on the Replace button to replace the currently matched text and then to search for the next
+			match with the current Find pattern.  The next search is conducted from the current cursor position to the end of the
+			search region.</p>
+			<p>
+			<b>Replace All.</b> Click on the Replace All button to replace all of the matches in the current search region
+			with the replace text.  If some text is selected, the selected text remains selected.  Else, the last match in
+			the search region is selected.</p>
+			<p>
+			<b>Options.</b> The options are described in section 3.1 on the the Find Dialog.</p>
+			<p>
+			<b>Search Region.</b> The search region is described in section 3.1 on the Find Dialog.</p>
+			<p>
+			<b>Messages.</b>  Messages appear in the status bar at the bottom of the dialog that are of help in guiding the search.  Three
+			button groups allow users to select several options, a search region.</p>
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="S5"></A>3.5 Set Tabs Dialog</H2></P>		
+		    <div class="h2section" id="3.5 Set Tabs Dialog">
+			 <img src="Image_EdSetTabDialog.gif" width=223 height=197 align=right alt="Tabstop Dialog" border=0>
+			<h3>3.5.1 Overview</h3>
+			<p>
+			Use this dialog to convert leading spaces to tabs or to convert leading tabs to spaces.  To convert spaces to tabs, select
+			the rows to be modified in the edit text and then press Ctrl-T to bring up the dialog shown on the right. The number of
+			spaces-per-tab may be entered into the &quot;Spaces per Tab&quot; spin box. Then click on the &quot;Tabify&quot; button to
+			convert leading spaces into tabs.  Similarly, click on the &quot;Detab&quot; button to convert leading tabs into spaces.
+			A mixture of leading spaces and tabs is handled gracefully as noted below.  Changes to the file cannot be undone using
+			undo.</p>
+			
+			<h3>3.5.2 Extra Spaces</h3>
+			<p>
+			The ExtraSpaces option only applies when the Tabify button is clicked.  After each set of spaces-per-tab leading spaces are
+			converted to tabs, zero up to one less than the tabwidth spaces might be left over.  There are three ways to deal with
+			these leftover spaces:</p>
+			<ul>
+				<li>Keep.  Tack the extra spaces onto the end of the last tab.  The first character in the row will not line up with
+				a tabstop</li>
+				<li>Tab.  Replace the extra spaces with one extra tab.  The first character in the row will line up with the next
+				tabstop.</li>
+				<li>Delete. Discard the extra spaces. The first character in the row will line up with a tabstop.</li>
+			</ul>
+			
+			<h3>3.5.3 Tabify</h3>
+			<p>
+			A selected row is only modified if it contains one or more spaces.  The steps in processing the leading spaces in one
+			row are: </p>
+			<ol>
+				<li>Count the number and the total width of the leading spaces and tabs.</li>
+				<li>Compute the number of tabs required to span the same width and compute the number of extra spaces left over.</li>
+				<li>Based upon the current ExtraSpaces option, adjust the number of leading tabs and extra spaces in the row.</li>
+			</ol>
+			
+			<h3>3.5.4 Detab</h3>
+			<p>
+			A selected row is only modified if it contains one or more tabs.  The steps in processing the leading tabs in one
+			row are: </p>
+			<ol>
+				<li>Count the number and the total width of the leading spaces and tabs.</li>
+				<li>Compute the number of spaces required to span the same width.</li>
+				<li>Replace the existing tabs with the number of spaces required to span the same width.</li>
+			</ol>
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="S6"></A>3.6 Test Suite Dialog</H2></P>		
+		    <div class="h2section" id="3.6 Test Suite Dialog">
+			 <img src="Image_EdTestSuiteDialog.gif" width=453 height=238 align=right alt="Test Suite Dialog" border=0>
+			<h3>3.6.1 Overview</h3>
+			<p>
+			This editor has a built-in test facility that uses the Applications Programming Interface (API) described in section 8
+			below.  Press Ctrl-Shift-F5 to bring up the Test Suite Dialog shown on the right.  Any edit operation that can
+			be performed from key strokes, pointing devices, or other dialogs mentioned in this section can be included
+			in the test suite.  When the edit test suite is launched, a test file is read to generate a set of edit operations.
+			These edit operations are translated into edit commands and submitted to the AisEd API.  The results of the
+			edit commands are displayed in the current edit Page.</p>
+			<p>
+			This dialog is provided for advanced users only.  Running a test suite may overwrite existing files. You were
+			warned.</p>
+			
+			<h3>3.6.2 Cmd</h3>
+			<p>
+			An edit operation may be entered into the Cmd Text Box.  The format of the edit operation is described in detail
+			in the edit test suite file.  The edit commands are described in section 8 below on the AisEd API.  After entering
+			the operation, click on the Go button to execute the edit operation.
+			When running a sequence of operations from a test file, after the next operation is executed, it is displayed in
+			this Text Box.</p>
+			
+			<h3>3.6.3 Next and Prev</h3>
+			<p>
+			Click on the Next button to execute the operation shown in the Next Text Box.  The results of the operation, if any,
+			are displayed in the editor.  After the edit operation is performed, the operation is displayed in the
+			Cmd Text Box and the next pending operation is shown in the Next Text Box.</p>
+			<p>
+			Click on the Go button to re-execute the current operation shown in the Cmd Text Box.</p>
+			<p>
+			Click on the Prev button to re-execute the previous operation (not shown).  The results of the operation, if any,
+			are displayed in the editor.  The operation in the Cmd Text Box is moved back to the Next Text Box and the previous operation
+			that was just re-executed is moved back into the Cmd Text Box.</p>
+			<h3>3.6.4 Run</h3>
+			<p>
+			Click on the Run button to continuously execute the operations in the test suite from the test shown in Next until the end
+			of the test suite or the next stop directive is reached.  If the test suite is run from the C++ debugger, a breakpoint can
+			be placed in the beep() function which is common to all the checking functions.  If any errors occur during the execution
+			of the test suite, they will very likely cause a red alert in the editor or an error message in the debugger.</p>
+			<h3>3.6.5 Restart</h3>
+			<p>
+			Click on the Restart button to re-read the test suite file and restart the tests over.  To make changes to the test suite
+			on the fly, just edit the test suite file and then press Restart.</p>
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P>
+</body></html>

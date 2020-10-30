@@ -1,0 +1,45 @@
+******************
+Repository Timings
+******************
+
+Block write as a single record.
+Note: Single block write, No buffering, and no transaction management.
+Timing test for block write as a single record = 0.11100000000000136 seconds.
+Block read as a single record.
+Note: Single block read, No buffering, and no transaction management.
+Timing test for block read as a single record = 0.10149999999999863 seconds.
+Block write as individual records.
+Note: Individual record writes, No transaction management.
+Timing test for block write as individual records = 9.9370000000000118 seconds.
+Block write as individual records.
+Note: Individual record writes, Yes transaction management.
+Timing test for block write as individual records = 2.5780000000000882 seconds.
+Block read as individual records.
+Note: Individual record reads, No transaction management.
+Timing test for block read as individual records = 4.7029999999999745 seconds.
+Block read as individual records.
+Note: Individual record reads, Yes transaction management.
+Timing test for block read as individual records = 0.4839999999999236 seconds.
+Block write as individual records to a child repository.
+Note: Individual record writes, Yes transaction management.
+Timing test for block write as individual records to a child repository = 2.6720000000000255 seconds.
+Block read as individual records from a child repository.
+Note: Individual record reads, Yes transaction management.
+Timing test for block read as individual records from a child repository = 0.26599999999996271 seconds.
+Block write as single record to a child repository.
+Note: Write block as a child repository, No transaction management.
+Timing test for block write as single record to a child repository = 2.2029999999999745 seconds.
+Block read as single record from a child repository.
+Note: Read block as a child repository, No transaction management.
+Timing test for block read as single record from a child repository = 0.48499999999989996 seconds.
+Updating a block of n records of fixed length in a child Repository.
+Note: Update child repository, No transaction management.
+Timing test for block update of a child repository = 16.578000000000088 seconds.
+Block write as individual records to a honeycomb repository.
+Note: Write each record as an object save into a fixed length honeycomb slot.
+Timing test for block write as individual records to a honeycomb repository = 1.3440000000000509 seconds.
+Block read as individual records from a honeycomb repository.
+Note: Read each record as an object load from a fixed length honeycomb slot.
+Timing test for block read as individual records from a honeycomb repository = 0.81200000000012551 seconds.
+
+

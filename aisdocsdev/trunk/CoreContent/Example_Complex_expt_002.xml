@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Complex expt 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>expt</FunctionKeywords>
+		<TypeKeywords>Number Integer</TypeKeywords>
+		<RelatedFunctions>exp</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>  radians angle  </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[<p>The value of <b>expt</b> for of a variety of complex numbers is shown. 
+             The first double shown is the real part of the result. The second number shown is 
+             the imaginary part of the result.</p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq X (new Complex: 3.0 4.0))  </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60Complex 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(expt X 2) </sc>]]></Expression>
+        <Note><![CDATA[The result of the expt function is: ]]></Note>
+        <Returns><![CDATA[#c-7.0 24.0i]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq X (new Complex: 3.0 -4.0))  </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[#&#60Complex 234567&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(expt X 0.5) </sc>]]></Expression>  
+        <Note><![CDATA[The result of the exp function is: ]]></Note> 
+        <Returns><![CDATA[#c2.0-1.0i]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq X (new Complex: -3.0 4.0))  </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[#&#60Complex 345678&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(expt X 4) </sc>]]></Expression>  
+        <Note><![CDATA[The result of the exp function is: ]]></Note> 
+        <Returns><![CDATA[#c-527.0+336.0i]]></Returns>
+        <Hints><![CDATA[<p>The expression (exp X) returns e to X power where X is the complex argument. 
+           The expression (expt base X) returns the value of base to the X power; thus, (exp X) 
+           returns approximately the same value as (expt 2.71828 X). </p>]]></Hints>
+   </Syntax>
+</Example>

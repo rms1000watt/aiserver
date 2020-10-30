@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Matrix resize 005</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>resize</FunctionKeywords>
+		<TypeKeywords>Matrix Integer</TypeKeywords>
+		<RelatedFunctions>sizeof remove insert delete</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>sizeof size   length   memory</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples modify the Matrix according to the
+
+
+
+
+                  user-specified number of values using the <b>resize</b>
+                  function.
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define Scores  #(mat| 5 8 4 9 ) )   </sc>]]></Expression>
+        <Note><![CDATA[A Matrix of 4 elements is defined. ]]></Note>
+        <Returns><![CDATA[#&#60Matrix 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(resize Scores 2 2 2)    </sc>]]></Expression>
+        <Note><![CDATA[The Matrix is resized with the specified rank and dimension.]]></Note>
+        <Returns><![CDATA[#&#60Matrix 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display Scores)    </sc>]]></Expression>  
+        <Note><![CDATA[For the numbers exceeding the number of existing values, the value #void is assigned. ]]></Note> 
+        <Returns><![CDATA[#(mat[2 2]| 5 8 4 9 )]]></Returns>
+   <Expression><![CDATA[ <sc>(resize Scores 7)    </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#&#60Matrix 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display Scores)    </sc>]]></Expression>
+        <Note><![CDATA[For the numbers exceeding the number of existing values, the value #void is assigned. ]]></Note>
+        <Returns><![CDATA[#(mat| 5 8 4 9 #void #void #void )]]></Returns>
+        <Expression><![CDATA[ <sc>(resize Scores 2 2 4)      </sc>]]></Expression>  
+        <Note><![CDATA[The #void is assigned to the exceeding values. ]]></Note> 
+        <Returns><![CDATA[#&#60Matrix 123456&#62]]></Returns>  
+        <Expression><![CDATA[ <sc>(display  Scores)   </sc>]]></Expression>  
+        <Note><![CDATA[Displays the resized Vector. ]]></Note> 
+        <Returns><![CDATA[ #(mat[2 4]| 5 8 4 9 #void #void #void #void)]]></Returns>
+        <Expression><![CDATA[ <sc>(resize Scores 3)      </sc>]]></Expression>
+        <Note><![CDATA[The specified size is lesser than the Matrix size. ]]></Note>
+        <Returns><![CDATA[#&#60Matrix 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display  Scores)   </sc>]]></Expression>
+        <Note><![CDATA[Displays the resized Vector. ]]></Note>
+        <Returns><![CDATA[#(mat| 5 8 4 )]]></Returns>
+        <Hints><![CDATA[The <b>resize</b> function is destructive: it updates the specified Matrix 
+
+
+
+
+               argument in place.
+
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

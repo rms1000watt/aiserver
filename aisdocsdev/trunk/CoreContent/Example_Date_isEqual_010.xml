@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Date isEqual 010</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isEqual</FunctionKeywords>
+		<TypeKeywords>  Date</TypeKeywords>
+		<RelatedFunctions>compareEQ isIdentical comparison   </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>  Equal Analytic Object </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples check if the value of the first Object
+is of the same data type and 
+
+
+
+
+
+
+
+
+                   is equal to the corresponding value   of the second
+
+
+
+
+
+
+
+
+
+                   Object. If they are, the function returns true, otherwise, it returns false.
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(isEqual  #Jan,1,4BC #Jan,1,4BC)            </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>(isEqual  #Jan,1,1996:08:22:00 #Jan,1,1996:08:22:00 )                </sc>]]></Expression>
+        <Note><![CDATA[The first argument is a Number data type while the second argument is Text.]]></Note>
+        <Returns><![CDATA[ true ]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number floor 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>fact</FunctionKeywords>
+		<TypeKeywords>Number Integer</TypeKeywords>
+		<RelatedFunctions>  round ceiling  </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>floor estimate round </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[  <p> The <b>floor</b> function rounds down the Number argument to
+                the nearest Integer</p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+(floor 2.3)   </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[2.0]]></Returns>
+        <Expression><![CDATA[ <sc>(floor -2.3)  </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[-3.0]]></Returns>
+        <Expression><![CDATA[ <sc>(floor 2)  </sc>   ]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[2.0]]></Returns>
+        <Hints><![CDATA[none
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

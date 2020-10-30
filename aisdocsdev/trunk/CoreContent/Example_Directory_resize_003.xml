@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Directory resize 003</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>resize</FunctionKeywords>
+		<TypeKeywords>Directory Integer</TypeKeywords>
+		<RelatedFunctions>sizeof remove insert delete</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>sizeof size   length   memory</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples modify the Directory according to the
+
+
+                  user-specified number of bindings using the <b>resize</b>
+                  function.
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(resize  #{dir| Student:  "Ann Smith" Age: 6}  3)   </sc>]]></Expression>
+        <Note><![CDATA[The specified size is greater than the Directory size.]]></Note>
+        <Returns><![CDATA[#&#60Directory 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60Directory 123456&#62)   </sc>]]></Expression>
+        <Note><![CDATA[Displays the contents of the resized Directory. For the third key-value pair, the 
+
+
+              key is an empty Symbol and the value is #void.]]></Note>
+        <Returns><![CDATA[#{dir| Student: "Ann Smith" Age: 6 |()|: #void}true ]]></Returns>
+        <Expression><![CDATA[ <sc>(resize  #{dir| Student:  "Ann Smith" Age: 6} 1)     </sc>]]></Expression>
+        <Note><![CDATA[The specified size is lesser than the Directory size. ]]></Note>
+        <Returns><![CDATA[#&#60Directory 234567&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display  #&#60Directory 234567&#62)   </sc>]]></Expression>
+        <Note><![CDATA[Displays the resized Directory. ]]></Note>
+        <Returns><![CDATA[#{dir|  Student:  "Ann Smith" }]]></Returns>
+        <Hints><![CDATA[The <b>resize</b> function is destructive: it updates the specified Directory 
+
+
+               argument in place.
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

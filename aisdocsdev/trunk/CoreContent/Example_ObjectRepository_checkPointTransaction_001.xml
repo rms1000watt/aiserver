@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example ObjectRepository checkPointTransaction 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>checkPointTransaction</FunctionKeywords>
+		<TypeKeywords>ObjectRepository</TypeKeywords>
+		<RelatedFunctions>abortTransaction commitTransaction</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>begin start transaction</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[<p> The newly set value in the Object Repository after the
+                <b>beginTransaction</b> is returned after the <b>checkPointTransaction</b> function.</p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq gor (new ObjectRepository: "myarchive.odb")) </sc>]]></Expression>
+        <Note><![CDATA[Specify name of ObjectRepository  ]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(setq gor["one"] "Hello world")</sc>]]></Expression>
+        <Note><![CDATA[Initialize ObjectRepository with a key & value pair. ]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc>gor["one"]  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[Hello World]]></Returns>
+        <Expression><![CDATA[ <sc>(beginTransaction gor)</sc>]]></Expression>
+        <Note><![CDATA[A new transaction is opened.]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq gor["one"] "Goodbye world")  </sc>]]></Expression>
+        <Note><![CDATA[The new value after the transaction was opened. ]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>gor["one"]</sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[Goodbye world]]></Returns>
+  	    <Expression><![CDATA[ <sc>(checkPointTransaction  gor)  </sc>]]></Expression>
+        <Note><![CDATA[Make all transactions starting from the beginTransaction persistent. ]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>gor["one"]</sc>]]></Expression>
+        <Note><![CDATA[The original value of the Repository before the transaction is returned. ]]></Note>
+        <Returns><![CDATA[Hello World]]></Returns>
+        <Hints><![CDATA[<p>After the <b>checkPointTransaction</b>, the set of "one" to "Goodbye world" is 
+            accepted and we no longer see the ObjectRepository as it was just prior to the
+            <b>beginTransaction</b>. </p>]]></Hints>
+   </Syntax>
+</Example>

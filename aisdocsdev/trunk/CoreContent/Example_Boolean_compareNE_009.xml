@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Boolean compareNE 009</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compareNE</FunctionKeywords>
+		<TypeKeywords> Boolean</TypeKeywords>
+		<RelatedFunctions>compare compareEQ compareGT compareGE compareLT  compareLE</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare void not equal  </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>compareNE</b> function to compare two objects and return
+
+
+
+
+
+
+
+
+
+                  the Boolean value, true or false. The  values of each objects are compared
+
+
+
+
+
+
+                  to determine whether the objects are equal or not.
+
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+        <Expression><![CDATA[ <sc>(compareNE false 0 )         </sc>]]></Expression>
+        <Note><![CDATA[The Boolean value false has a state value of 1.]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>(compareNE false (&#62 2 3))           </sc>]]></Expression>
+        <Note><![CDATA[ The result from the &#62 operation is also the value 1.]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

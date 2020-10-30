@@ -1,0 +1,117 @@
+.indexsection {POSITION: absolute; TOP: 5px; LEFT: 5px; HEIGHT: 200px; }
+.printview {POSITION: absolute; TOP: 155px; LEFT: 5px; WIDTH: 5px; HEIGHT: 5px; VISIBILITY: HIDDEN; }
+.showview {POSITION: absolute; TOP: 190px; LEFT: 5px; }
+H1, H2, H3 { COLOR: blue; }
+H3 { /* used for 
+		- when to use headers 
+		- example headers
+		- syntax headers */
+		font-style: normal;
+		font-weight:bold;
+}
+H4 { /* used for 
+		- function headers */
+	font-style : normal;
+	font-weight : bold;
+}
+P.overview {
+	COLOR: blue;
+	font-style : normal;
+	font-weight : bold;
+	font-variant : small-caps;
+	margin: 1px 1px 1px 0px;
+}
+P.type {
+	COLOR: blue; 
+	font-style : normal;
+	font-weight : bold;
+	font-variant : small-caps;
+	margin: 1px 1px 1px 0px;
+
+}
+P.syntax {
+	COLOR: blue; 
+	font-style : normal;
+	font-weight : bold;
+	font-variant : small-caps;
+	margin: 1px 1px 1px 0px;
+}
+P.arguments {
+	COLOR: blue; 
+	font-style : normal;
+	font-weight : bold;
+	font-variant : small-caps;
+	margin: 1px 1px 1px 0px;
+}
+P.whentouse {
+	COLOR: blue; 
+	font-style : normal;
+	font-weight : bold;
+	font-variant : small-caps;
+	margin: 1px 1px 1px 0px;
+}
+P.example {
+	COLOR: blue; 
+	font-style : normal;
+	font-weight : bold;
+	font-variant : small-caps;
+	margin: 1px 1px 1px 0px;
+}
+P.code {
+	COLOR: black;
+	font-family : Courier; 
+	font-style : normal;
+	margin: 1px 1px 1px 0px;
+}
+P.notes {
+	COLOR: blue; 
+	font-style : normal;
+	font-weight : bold;
+	font-variant : small-caps;
+	margin: 1px 1px 1px 0px;
+}
+P.description {
+	margin: 3px 3px 3px 0px;
+}
+TABLE {
+	background-color:#99CCCC;
+}
+TABLE.members_table {    
+    background-color:#99CCCC;
+	width : 100%;
+}
+
+BLOCKQUOTE {
+	font-family : Courier;
+	border : thin solid Gray;
+	margin:2px 4px 4px 10px;
+	padding:4px 4px 4px 4px;
+	font-weight : bold;
+}
+
+COL {
+	text-align : left;
+	vertical-align : top;
+	
+}
+COL.argument {
+	font-weight : bold;
+}
+COL.description {
+
+}
+COL.member {
+		font-weight: bold;
+		font-style:italic;
+}
+COL.type {
+	font-style : italic;
+}
+COL.italic {
+	font-style : italic;	
+}
+PRE {
+	padding:0px 0px 0px 0px;
+	margin:0px 0px 0px 0px;
+	
+}

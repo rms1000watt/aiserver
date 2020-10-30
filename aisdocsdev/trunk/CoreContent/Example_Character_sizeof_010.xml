@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Character sizeof 010</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>sizeof</FunctionKeywords>
+		<TypeKeywords>Character Integer</TypeKeywords>
+		<RelatedFunctions>new length </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>sizeof closure bytes length disk memory</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example return the closure size of the Character objects.  
+
+
+
+
+
+
+
+
+     
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+        <Expression><![CDATA[ <sc>(setq a #\c)             </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+         <Expression><![CDATA[ <sc>(sizeof  a)         </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[16]]></Returns>
+        <Hints><![CDATA[none
+
+
+
+
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

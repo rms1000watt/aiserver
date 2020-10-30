@@ -1,0 +1,7 @@
+1. Branching/merging.  Yes, you can even pick various revisions from one branch and selectively incorporate them into the trunk or other branch.  Merging facility is provided and it is smart.  If it can't do a merge it notifies the user who can proceed in a variety of ways.
+2. Automic transactions.  Check in is called commit.  Check out is called update.  Either is done at a directory level.  All the changes in a directory subtree are committed or updated as an atomic transaction.  This is different from Starteam. It is good in that no one ever sees a partially changed version of the repository.  It is bad in that selective changes to just one file the repository or the working directory is not allowed.  All of the various conflicts are noted just as in StarTeam, but the names of the conflicts are different.
+3. Labels.  Yes, but they are called tags.  A tag is related to a branch.  Basically a tag is set up in the same way that a branch is established, but the branch is never taken.  I think you may be able to go back to a tag and make it a branch.
+4. Deleting.  Unlike StarTeam, it is easy to view deletions, even the deletion of an entire branch.  All deletions can be reversed.
+5. Properties.  Subversion includes the concept of properties.  Basically you can add a lot of supplementary material to the files/directories in the repository.  For example you can check in some images and then add all sorts of attributes for the images as properties.
+
+For even more info, take a look at the manual http://svnbook.red-bean.com/en/1.4/svn-book.pdf

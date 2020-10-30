@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=AIS Editor
+Comment=AIS Text Editor
+Type=Application
+Exec=aiseditdevexe
+Icon=aiserver
+Categories=Development;IDE;Qt
+

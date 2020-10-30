@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmsend</Title>
+		<InstructionName>vmsend</InstructionName>
+		<InstructionType>Generic</InstructionType>
+		<ArgumentTypes> Integer Word Symbol</ArgumentTypes>
+		<RelatedVMInstructions>     vmcall    </RelatedVMInstructions>
+		<HumanKeywords>   send call message stack method </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[                                                  
+		<p>When evaluated, this vm instruction sends the <b>message</b> 
+		value to the first word on the stack, passing the number of 
+		arguments specified by the <b>argcount</b> argument. The message word 
+		must contain a Symbol object. There must be at least one word on the 
+		stack. The combination of the type of the first stack word, together 
+		with the message Symbol, determines a <b>method</b> function, which is 
+		evaluated. The argcount must be an immediate Integer argument. After 
+		the operation, the top <b>argcount</b> stack words are passed as arguments 
+		to the method function <b>method</b>, and the result word is placed in the 
+		<b>target</b> word.  
+		</p>
+		<p> <b>Note:</b>     If the message is a quoted symbol, the vmsend 
+		instruction will use the method defined for the type?s <b><u>Parent type</b></u>.
+        </p>
+        <p>The operation of this vm instruction is expressed in the 
+        following C expression:
+        </p>
+        <ul><li><b>   (word)target = (word)method(..top argcount stack words...);</b></li></ul>
+    ]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[  (vmsend argcount message target) ]]></Expression>
+		<Argument> 
+		  <Name>argcount</Name>
+		  <Format>immediate</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>  
+		<Argument> 
+		  <Name>message</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>(word:Symbol)</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>target</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>word</AISTypes>
+		</Argument>
+	</Syntax>
+</VMInstruction>

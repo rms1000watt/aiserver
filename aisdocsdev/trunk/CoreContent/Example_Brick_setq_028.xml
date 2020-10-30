@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Brick setq 28</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>setq</FunctionKeywords>
+		<TypeKeywords>Brick</TypeKeywords>
+		<RelatedFunctions>ref</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>set setq position</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples show the <b>setq</b> function set a
+                  value to the Brick field.  The syntax for setting is as follows: setq RecordName[ Column Repeat Row ]
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq Contestant  (new Brick:  5 Name:Object:1 Score:Number:20))</sc>]]></Expression>
+        <Note><![CDATA[Create a new Brick, named Contestant, and give it 5 Rows each containing two Columns(Name and Score). 
+               The second column(Score) repeats 20 times for each row.]]></Note>
+        <Returns><![CDATA[#&#60Record 123456&#62  ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Contestant[0 0 0] #("Anna Smith"))           </sc>]]></Expression>
+        <Note><![CDATA[Sets the value of the Name field as a Vector for the first row's first repeat.]]></Note>
+        <Returns><![CDATA[#&#60Record 123456&#62  ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Contestant[0 0 1] #("John Doe"))           </sc>]]></Expression>
+        <Note><![CDATA[Sets the value of the Name field as a Vector for the second row.]]></Note>
+        <Returns><![CDATA[#&#60Record 123456&#62  ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Contestant[Name: 0 2] #("Jane Baker"))           </sc>]]></Expression>
+        <Note><![CDATA[Sets the value of the Name field as a Vector for the third row. This example uses a symbol(Name:) instead of an integer index]]></Note>
+        <Returns><![CDATA[#&#60Record 123456&#62  ]]></Returns>
+
+        <Expression><![CDATA[ <sc>(setq Contestant[1 0 0] 100.0)           </sc>]]></Expression>
+        <Note><![CDATA[Sets the value of the Score field for the first row and first repeat as 100.0.]]></Note>
+        <Returns><![CDATA[#&#60Record 123456&#62  ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Contestant[1 1 0] 99.0)           </sc>]]></Expression>
+        <Note><![CDATA[Sets the value of the Score field for the first row and second repeat as 99.0.]]></Note>
+        <Returns><![CDATA[#&#60Record 123456&#62  ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Contestant[1 0 1] 99.0)           </sc>]]></Expression>
+        <Note><![CDATA[Sets the value of the Score field for the second row and first repeat as 99.0.]]></Note>
+        <Returns><![CDATA[#&#60Record 123456&#62  ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Contestant[1 1 1] 100.0)           </sc>]]></Expression>
+        <Note><![CDATA[Sets the value of the Score field for the second row and second repeat as 100.0.]]></Note>
+        <Returns><![CDATA[#&#60Record 123456&#62  ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Contestant[Score: 0 2] 75.0)           </sc>]]></Expression>
+        <Note><![CDATA[Sets the value of the Score field for the third row and first repeat as 75.0. This example uses a symbol(Score:) instead of an integer index.]]></Note>
+        <Returns><![CDATA[#&#60Record 123456&#62  ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Contestant[Score: 1 2] 75.0)           </sc>]]></Expression>
+        <Note><![CDATA[Sets the value of the Score field for the third row and second repeat as 75.0. This example uses a symbol(Score:) instead of an integer index.]]></Note>
+        <Returns><![CDATA[#&#60Record 123456&#62  ]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

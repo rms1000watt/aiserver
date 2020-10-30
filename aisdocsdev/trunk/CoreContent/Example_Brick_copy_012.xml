@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Brick copy 012</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>copy</FunctionKeywords>
+		<TypeKeywords>Brick</TypeKeywords>
+		<RelatedFunctions> setq </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>copy  memcopy pointer container</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>copy</b> functions to produce
+                   a copy of the Brick object in a new memory location.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define nameList  (new Brick: 2 Name:Object:3))</sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60Record 123456&#62  ]]></Returns>
+        <Expression><![CDATA[ <sc>(copy nameList)      </sc>]]></Expression>
+        <Note><![CDATA[The copied brick has a different Object ID than the original brick.]]></Note>
+        <Returns><![CDATA[#&#60Record 234567&#62 ]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

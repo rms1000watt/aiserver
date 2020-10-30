@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Date getTickCount 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>getTickCount</FunctionKeywords>
+		<TypeKeywords>Number  Date </TypeKeywords>
+		<RelatedFunctions>second minute hour time </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>seconds elapse minute baseline time  </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples return the number of seconds that have elapsed
+                  after the <b>timingTest</b> operation.
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>
+           (define (timingTest count) vars:(startTime endTime)
+           (setq startTime (getTickCount 0))
+           (setq j 0)
+           (loop for i from 0 to count do (setq j= i))      ;; loop for a while
+           (setq endTime (getTickCount startTime))
+           (writeln "Elapsed time is " endTime " Seconds" ) endTime)        
+            </sc>]]></Expression>
+        <Note><![CDATA[The timingTest operation is defined.]]></Note>
+        <Returns><![CDATA[#&#60Lambda 123456&#62]]></Returns>
+	    <Expression><![CDATA[ <sc> (timingTest 1000000)              </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[Elapsed time is 0.02000000000044 Seconds]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

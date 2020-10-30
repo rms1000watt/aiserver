@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example ShortVector binarySearch 007</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>binarySearch</FunctionKeywords>
+		<TypeKeywords>ShortVector Boolean</TypeKeywords>
+		<RelatedFunctions>insert binaryInsert sort uniqueInsert</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>binary insert search vector sort</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines a sorted  ShortVector in ascending order. Then it
+
+
+
+
+
+                  uses the <b>binarySearch</b> function to search for a value
+
+
+
+
+
+                  in the ShortVector.
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	   <Expression><![CDATA[ <sc>(setq SortedVector #(short| 1 2 3 4 5) &#60)   </sc>]]></Expression>
+        <Note><![CDATA[The binarySearch function always assumes
+
+
+              a sorted vector in ascending order.]]></Note>
+        <Returns><![CDATA[#&#60ShortVector 199917&#62]]></Returns>
+        
+        <Expression><![CDATA[ <sc>(binarySearch SortedVector 7 )             </sc>]]></Expression>
+        <Note><![CDATA[The value 2.65 is not found in the Vector]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(binarySearch SortedVector 1)             </sc>]]></Expression>
+        <Note><![CDATA[The index of the value is returned.]]></Note>
+        <Returns><![CDATA[0]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

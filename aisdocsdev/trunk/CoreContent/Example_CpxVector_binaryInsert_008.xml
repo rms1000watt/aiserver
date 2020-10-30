@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example CpxVector binaryInsert 008</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>binaryInsert</FunctionKeywords>
+		<TypeKeywords>CpxVector  Integer</TypeKeywords>
+		<RelatedFunctions>insert binarySearch uniqueInsert sort</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>binary insert vector sort</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example sets a sorted CpxVector. Then it
+
+
+                  uses the <b>binaryInsert</b> function to add a new value
+
+                  while maintaining the ascending sort order
+
+
+                  of values in the CpxVector.
+
+
+	]]></Description>
+	<Syntax>
+  	   <Expression><![CDATA[ <sc>(setq X #(cpx| 1.0 2.0 3.0 4.0))           </sc>]]></Expression>
+        <Note><![CDATA[The binaryInsert function always assumes
+              a sorted vector in ascending order. ]]></Note>
+        <Returns><![CDATA[#&#60CpxVector 199917&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60CpxVector 199917&#62 )       </sc>]]></Expression>
+        <Note><![CDATA[Displays the values of the sorted Vector]]></Note>
+        <Returns><![CDATA[#(cpx| #c1.0+2.0i #c3.0+4.0i )]]></Returns>
+        <Expression><![CDATA[ <sc> (binaryInsert X #c2.0+5.0i)          </sc>]]></Expression>
+        <Note><![CDATA[Returns the index where the value  will be inserted]]></Note>
+        <Returns><![CDATA[1 ]]></Returns>
+        <Expression><![CDATA[ <sc> (display X)       </sc>]]></Expression>
+        <Note><![CDATA[Displays the contents of the CpxVector with the added value.]]></Note>
+        <Returns><![CDATA[#(cpx| #c0.0+0.0i #c2.0+5.0i #c0.0+0.0i )]]></Returns>
+        <Hints><![CDATA[<p>Complex numbers are sorted using their real part first and then using the 
+           imaginary part to break ties. </p>  
+           <p>If the complex number vector is not sorted, the insertion may not be made 
+          in the correct position. </p>]]></Hints>
+   </Syntax>
+</Example>

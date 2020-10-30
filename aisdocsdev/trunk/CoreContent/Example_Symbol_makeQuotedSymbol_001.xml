@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Symbol makeQuotedSymbol 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>makeQuotedSymbol</FunctionKeywords>
+		<TypeKeywords>String QuotedSymbol</TypeKeywords>
+		<RelatedFunctions>new type</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>make new symbol quoted</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples show the <b>makeQuotedSymbol</b> function
+                  converting a String into a Quoted Symbol object.  
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(setq Z (makeQuotedSymbol  "My Symbol"))   </sc>]]></Expression>
+        <Note><![CDATA[The variable Z is assigned a QuotedSymbol object.]]></Note>
+        <Returns><![CDATA[ My Symbol]]></Returns>
+        <Expression><![CDATA[ <sc>(type Z)  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[ QuotedSymbol]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq X (makeQuotedSymbol (new String:  "John")))</sc>]]></Expression>
+        <Note><![CDATA[Here, a new String is created and then converted into a Quoted Symbol.]]></Note>
+        <Returns><![CDATA[John]]></Returns>
+        <Expression><![CDATA[ <sc>(type X )</sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ QuotedSymbol ]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

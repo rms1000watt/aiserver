@@ -1,0 +1,10 @@
+# usr/passwd.txt
+# WARNING - this file may be overwritten if passwd is updated from AIS!
+
+# UserId : SecLevel : BegDate : EndDate : UserName : Passwd : Comment
+# 2:7:1/21/2003:1/21/2010:guest::Alternate guest logon
+4:1:1/21/2003:1/21/2010:tmay:tim:Timothy May
+5:2:1/21/2003:1/22/2010:mkorns:mike:Michael Korns
+6:7:1/21/2003:12/21/2010:twilliams:ted:Theodore L Williams
+7:7:9/5/2004:9/5/2010:tester1:tester1:Context client tester
+

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example IntVector setCdr 007</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>setCdr</FunctionKeywords>
+		<TypeKeywords>IntVector</TypeKeywords>
+		<RelatedFunctions>ref refValues refAttributes cdr</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>tail ref index cdr setCdr</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines a Vector and sets the  value
+
+
+
+
+
+
+
+                  of the defined Vector using the <b>setCdr</b> function.  The <b>cdr</b>
+                  expression is a Text.
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq X (setCdr #(int| 11 12 )   "tail")  )    </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60IntVector 188141&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc> (display X )    </sc>]]></Expression>
+        <Note><![CDATA[Displays the contents of the Vector.]]></Note>
+        <Returns><![CDATA[#(int| 11 12  . "tail") ]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

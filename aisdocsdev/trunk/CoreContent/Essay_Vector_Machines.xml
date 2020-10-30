@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Essay SYSTEM "../DTD/Essay.dtd">
+<Essay>
+	<KnowledgeBase>
+	    <Title>Vector Machines</Title>
+		<Topic>Lisp</Topic>
+		<SubTopic>Machine Learning</SubTopic>
+		<HumanKeywords>Vector Machine Learning Programming</HumanKeywords>
+	</KnowledgeBase>
+	<Section>
+	    <Heading>Overview</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="Overview">
+		    <p>There are numerous modern machine learning algorithms and techniques which rely primarily 
+		     on number vectors. The most famous vector learning method is Gaussian least squares linear regression. 
+		     Until modern times, Gaussian linear regression was the only rigorous vector-based modeling technique. 
+		     More recently, non-linear regression techniques have surfaced based upon the Gram matrix. The most 
+		     famous of these modern techniques is Support Vector Regression.</p>
+		  </div>
+	    ]]></Description>
+	</Section>
+</Essay>

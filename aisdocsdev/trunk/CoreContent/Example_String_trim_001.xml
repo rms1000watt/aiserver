@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>  
+		<Title>Example String trim 001</Title>  
+		<Template>Example</Template> 
+		<FunctionKeywords>trim</FunctionKeywords>
+		<TypeKeywords>Text String</TypeKeywords>	
+		<RelatedFunctions> clean</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>clean trim spaces leading trailing</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example use the <b>trim</b> function to remove leading, trailing
+                  or extra spaces in the String.
+	]]></Description>
+	<Syntax> 
+  	    <Expression><![CDATA[ <sc>(trim "  this  is a     test")  </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[this is a test]]></Returns>
+        <Expression><![CDATA[ <sc>(trim "  this  is <br>
+                               a     test <br>
+                         to show  how trim   works  with  <br>
+                            #\newline   character.")  </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[this is a test to show how trim works with #\newline character]]></Returns>  
+        <Hints><![CDATA[This function only removes extra spaces and also the #\newline character.  To remove non-printable
+               characters, use the clean function]]></Hints>
+   </Syntax>
+</Example>

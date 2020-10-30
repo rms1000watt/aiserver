@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>range</Title>
+		<FunctionName>range</FunctionName>
+		<FunctionType>Builtin(Math)</FunctionType>
+		<ArgumentTypes> Number Integer</ArgumentTypes>
+		<DataType>Number  </DataType>
+		<RelatedFunctions> max median min</RelatedFunctions>
+        <RelatedVMInstructions>none</RelatedVMInstructions>
+		<HumanKeywords>range min max difference cells</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>range</b> function function computes the difference between the smallest and largest elements found in the argument list.</p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+	  <p>The <b>range</b> function computes the difference between the smallest and largest 
+       elements found in the argument list. The list can contain Numbers, Cell references, 
+        or a Range of cells.</p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>range</b> function computes the distance between the smallest and largest 
+         elements found in the argument list
+         </p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p><b> (range num1 num2 ...)</b></p>]]></Expression>
+		<Argument>
+		  <Name>num1 num2 ...</Name>
+		  <Note><![CDATA[
+		  <p>Any Number of values</p>
+          ]]></Note>
+		  <AISTypes>Number</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>Computes and returns the difference between the smallest and largest elements 
+           found in the argument list. If the range function cannot find any Analytic Information 
+           Server object that evaluates to a number, it returns 0.</p>
+	    ]]></Return>
+	</Syntax>
+</Function>

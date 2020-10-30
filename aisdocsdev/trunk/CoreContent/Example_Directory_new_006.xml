@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Directory new 006</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>new</FunctionKeywords>
+		<TypeKeywords>Symbol Integer Dictionary Directory</TypeKeywords>
+		<RelatedFunctions>string  define </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>new pointer create initialize</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples show how to create an instance of
+
+
+
+                  a Directory through the <b>new</b> function and assigning it to
+                   another variable using the <b>setq</b> function.
+
+
+
+                 The key-value bindings of the Directory are accessed using the <b>ref</b> function.  
+
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(setq B (new  Directory:#Jan,1,1996  "New Year's Day"  #Feb,14,1996  "Valentine's Day" ) )           </sc>]]></Expression>
+        <Note><![CDATA[ Create a new Directory, named B, and initialize it with three bindings.]]></Note>
+        <Returns><![CDATA[#&#60Directory 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(ref B #Jan,1,2004)    </sc>]]></Expression>
+        <Note><![CDATA[The key-value pairs are displayed through accessing its key. ]]></Note>
+        <Returns><![CDATA[ New Year's Day]]></Returns>
+        <Expression><![CDATA[ <sc>(ref B #Feb,14,2004) </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[Valentine's Day]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

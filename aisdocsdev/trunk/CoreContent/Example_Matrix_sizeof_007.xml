@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Matrix sizeof 007</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>sizeof</FunctionKeywords>
+		<TypeKeywords>Matrix Integer</TypeKeywords>
+		<RelatedFunctions>new length </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>sizeof closure bytes length disk memory</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples return the closure size of the Matrix objects.  
+
+
+
+
+
+                  The closure size would depend on the 
+
+
+
+
+
+
+                  length of the evaluated objects.
+
+
+
+
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+        <Expression><![CDATA[ <sc>(define Fruits  #(mat| "apple" "orange" "lemon"))      </sc>]]></Expression>
+        <Note><![CDATA[Defines a Matrix]]></Note>
+        <Returns><![CDATA[#&#60Matrix 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(sizeof Fruits)     </sc>]]></Expression>
+        <Note><![CDATA[Returns the closure size of the Matrix object.]]></Note>
+        <Returns><![CDATA[108]]></Returns>
+        <Hints><![CDATA[The closure size may be different values for the same object on different 
+
+
+
+
+
+
+               hardware platforms due to word alignment issues. The values returned from 
+
+
+
+
+
+
+               the <b>sizeof</b> function in the examples above are the values returned on a 
+
+
+
+
+
+
+               Intel Pentium-based platform.
+
+
+
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

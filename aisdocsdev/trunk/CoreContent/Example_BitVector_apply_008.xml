@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example BitVector apply 008</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>apply</FunctionKeywords>
+		<TypeKeywords>BitVector</TypeKeywords>
+		<RelatedFunctions>   defmethod addMethod</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>apply functions   method</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines a Vector containing Bit values.  Then it
+
+
+                  uses the <b>apply</b> function to add all the values in the Vector.
+
+	]]></Description>
+	<Syntax>
+  	  <Expression><![CDATA[ <sc>(setq X (new Vector:  bit: 3  1))   </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60BitVector 197815&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(apply  +  X)</sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[3 ]]></Returns>
+        <Hints><![CDATA[Equivalent expression not using <b>apply</b>:
+
+               <p><b>(+ (+  X[0]  X[1]) X[2] ) </b> <blockquote>Returns:3</blockquote></p>
+               <p><b>(+  X[0] X[1] X[2]  )</b> <blockquote>Returns: 3</blockquote></p>
+        ]]></Hints>
+   	</Syntax>
+</Example>

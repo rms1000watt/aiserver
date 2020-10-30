@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>  
+		<Title>Example Symbol addMethod 002</Title>  
+		<Template>Example</Template> 
+		<FunctionKeywords>addMethod</FunctionKeywords>
+		<TypeKeywords>Symbol Dictionary</TypeKeywords>	
+		<RelatedFunctions>defmethod send methodsOf</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>method message messageName</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines the <b>addThe</b> method through the <b>lambda</b> function. 
+                  and adds it in the Symbol Method Dictionary through the <b>addMethod</b> function.
+                  The <b>addThe</b> method is invoked using the <b>send</b> function or by
+                  calling the method directly with its required arguments. 
+	]]></Description>
+	<Syntax> 
+	<Expression><![CDATA[<sc>
+(addMethod  Symbol: addThe:  (lambda  (s)  (append The: s)))</sc>]]></Expression>  
+    <Note><![CDATA[ Add a method named <b>addThe</b> which will appends the Symbol the Symbol "The"
+    ]]></Note> 
+    <Returns><![CDATA[#&#60Dictionary 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(define S House: )   </sc> ]]></Expression>
+    <Note><![CDATA[ Define a  Symbol:
+ ]]></Note>
+    <Returns><![CDATA[House]]></Returns>
+    <Expression><![CDATA[<sc>(send addThe: S)    </sc> ]]></Expression>
+    <Note><![CDATA[ Invoke the method named <b>addThe</b> to add the article "The" to a Symbol
+    ]]></Note>
+    <Returns><![CDATA[TheHouse]]></Returns>
+    <Expression><![CDATA[<sc>(addThe: S)   </sc> ]]></Expression>
+    <Note><![CDATA[The method can be invoked simply by name.
+    ]]></Note>
+    <Returns><![CDATA[TheHouse]]></Returns>
+    <Hints><![CDATA[
+        <p>To view the entry in the methods Dictionary created by the addMethod function, 
+           you can use the method name to access the dictionary entry by </p>
+        <p><b> #&#60Dictionary 123456&#62[methodName:] or </b></p>
+        <p> To determine the number of assigned methods:</p>
+        <p><b>(length  (methodsOf  Symbol: ))</b></p>
+        <p>To access the nth method name:</p>
+        <p><b>(methodsOf Symbol: )[n  0]</b></p>
+    ]]></Hints>
+</Syntax>
+</Example>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example BitVector vectorFill 007</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>vectorFill</FunctionKeywords>
+		<TypeKeywords>BitVector Text Integer</TypeKeywords>
+		<RelatedFunctions> stringFill</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>delete remove fill</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ A Vector with preallocated spaces is set. The <b>vectorFill</b> function 
+
+                  then sets the all the values of the Vector with the user-specified object.  
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq Z (new Vector: bit: 3 ) )         </sc>]]></Expression>
+        <Note><![CDATA[Returns a Vector of size 3]]></Note>
+        <Returns><![CDATA[#&#60BitVector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(vectorFill Z 1)</sc>]]></Expression>
+        <Note><![CDATA[Sets the Vector value to 1.]]></Note>
+        <Returns><![CDATA[#&#60BitVector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(display Z)</sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#(bit| 1 1 1 )]]></Returns>
+       <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

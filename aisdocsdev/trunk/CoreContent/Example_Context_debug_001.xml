@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Context debug 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>debug</FunctionKeywords>
+		<TypeKeywords>Lambda Boolean Symbol Context</TypeKeywords>
+		<RelatedFunctions> disassemble debugBrowsableProcs onError</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>debug error handling</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[  This utility Lambda inputs text and returns a properly
+
+                   compiled Lambda with all necessary <b>debugger</b> info.
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[<sc>
+        (defun compile-text-in-debug-mode(theText)
+
+           vars:(proc lexresult morphresult)
+
+          (debug true)
+
+          (setq lexresult (lisp theText (setq proc (makeLambda))))
+
+          (setq morphresult (morph lexresult))
+
+          (compile morphresult proc)
+
+          (debug false)
+
+       proc)
+
+        </sc>]]></Expression>
+        <Note><![CDATA[The utility Lambda is defined.]]></Note>
+        <Returns><![CDATA[#&#60Lambda 197451&#60 ]]></Returns>
+        <Expression><![CDATA[<sc> (define theText "args:(start stop) vars:(n) (loop for n from start to stop do)") </sc>]]></Expression>
+        <Note><![CDATA[An example of using this utility is included here.]]></Note>
+        <Returns><![CDATA[args:(start stop) vars:(n) (loop for n from start to stop do) ]]></Returns>
+        <Expression><![CDATA[<sc> (define foo (compile-text-in-debug-mode  theText)) </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60Lambda 197451&#60 ]]></Returns>
+        <Hints><![CDATA[<p>The <b>debug</b> function arguments must be one of the following valid commands 
+
+              with these optional</p>
+		      <table border="0" cellspacing="0" cellpadding="0" style="border-collapse:collapse;
+
+		 mso-table-layout-alt:fixed;mso-padding-alt:0in 5.4pt 0in 5.4pt">
+		        <tr>
+		          <td width="249" valign="top" style="width:149.4pt;padding:0in 5.4pt 0in 5.4pt">
+		            <p class="TableText"><b style="mso-bidi-font-weight:normal">d<o:p></o:p></b></p>
+		          </td>
+		          <td width="549" valign="top" style="width:329.4pt;padding:0in 5.4pt 0in 5.4pt">
+		            <p class="TableText">Displays a (disassemble self) command.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td width="249" valign="top" style="width:149.4pt;padding:0in 5.4pt 0in 5.4pt">
+		            <p class="TableText"><b style="mso-bidi-font-weight:normal">g<o:p></o:p></b></p>
+		          </td>
+		          <td width="549" valign="top" style="width:329.4pt;padding:0in 5.4pt 0in 5.4pt">
+		            <p class="TableText">Turns off instruction trace and resumes
+
+		            execution.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td width="249" valign="top" style="width:149.4pt;padding:0in 5.4pt 0in 5.4pt">
+		            <p class="TableText"><b style="mso-bidi-font-weight:normal">m<o:p></o:p></b></p>
+		          </td>
+		          <td width="549" valign="top" style="width:329.4pt;padding:0in 5.4pt 0in 5.4pt">
+		            <p class="TableText">Displays a (disassemble self src:) command.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td width="249" valign="top" style="width:149.4pt;padding:0in 5.4pt 0in 5.4pt">
+		            <p class="TableText"><b style="mso-bidi-font-weight:normal">p<o:p></o:p></b></p>
+		          </td>
+		          <td width="549" valign="top" style="width:329.4pt;padding:0in 5.4pt 0in 5.4pt">
+		            <p class="TableText">Displays a list of current Analytic Information
+
+		            Server Lambdas.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td width="249" valign="top" style="width:149.4pt;padding:0in 5.4pt 0in 5.4pt">
+		            <p class="TableText"><b style="mso-bidi-font-weight:normal">s<o:p></o:p></b></p>
+		          </td>
+		          <td width="549" valign="top" style="width:329.4pt;padding:0in 5.4pt 0in 5.4pt">
+		            <p class="TableText">Displays a (disassemble self srcOnly:) command.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td width="249" valign="top" style="width:149.4pt;padding:0in 5.4pt 0in 5.4pt">
+		            <p class="TableText"><b style="mso-bidi-font-weight:normal">t<o:p></o:p></b></p>
+		          </td>
+		          <td width="549" valign="top" style="width:329.4pt;padding:0in 5.4pt 0in 5.4pt">
+		            <p class="TableText">Continues instruction trace at the very next
+
+		            instruction in any Lambdas.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td width="249" valign="top" style="width:149.4pt;padding:0in 5.4pt 0in 5.4pt">
+		            <p class="TableText"><b style="mso-bidi-font-weight:normal">t,nn<o:p></o:p></b></p>
+		          </td>
+		          <td width="549" valign="top" style="width:329.4pt;padding:0in 5.4pt 0in 5.4pt">
+		            <p class="TableText">Continues instruction trace at the specified (nn)
+
+		            instruction in the current Lambdas.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td width="249" valign="top" style="width:149.4pt;padding:0in 5.4pt 0in 5.4pt">
+		            <p class="TableText"><b style="mso-bidi-font-weight:normal">t,proc<o:p></o:p></b></p>
+		          </td>
+		          <td width="549" valign="top" style="width:329.4pt;padding:0in 5.4pt 0in 5.4pt">
+		            <p class="TableText">Continues instruction trace at any instruction
+
+		            in the specified (proc) Lambda.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td width="249" valign="top" style="width:149.4pt;padding:0in 5.4pt 0in 5.4pt">
+		            <p class="TableText"><b style="mso-bidi-font-weight:normal">t,proc,nn<o:p></o:p></b></p>
+		          </td>
+		          <td width="549" valign="top" style="width:329.4pt;padding:0in 5.4pt 0in 5.4pt">
+		            <p class="TableText">Continues instruction trace at the specified (nn)
+
+		            instruction in the specified (proc) Lambda.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td width="249" valign="top" style="width:149.4pt;padding:0in 5.4pt 0in 5.4pt">
+		            <p class="TableText"><b style="mso-bidi-font-weight:normal">t,proc,nn,cc<o:p></o:p></b></p>
+		          </td>
+		          <td width="549" valign="top" style="width:329.4pt;padding:0in 5.4pt 0in 5.4pt">
+		            <p class="TableText">Continues instruction trace at the specified (nn)
+
+		            instruction in the specified (proc) Lambda, after the specified count
+
+		            (cc).</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td width="249" valign="top" style="width:149.4pt;padding:0in 5.4pt 0in 5.4pt">
+		            <p class="TableText"><b style="mso-bidi-font-weight:normal">t=exp<o:p></o:p></b></p>
+		          </td>
+		          <td width="549" valign="top" style="width:329.4pt;padding:0in 5.4pt 0in 5.4pt">
+		            <p class="TableText">Continues instruction trace when the specifed
+
+		            expression is true.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td width="249" valign="top" style="width:149.4pt;padding:0in 5.4pt 0in 5.4pt">
+		            <p class="TableText"><b style="mso-bidi-font-weight:normal">v<o:p></o:p></b></p>
+		          </td>
+		          <td width="549" valign="top" style="width:329.4pt;padding:0in 5.4pt 0in 5.4pt">
+		            <p class="TableText">Displays the current<span style="mso-spacerun: yes">&nbsp;
+
+		            </span>proc's, faces, args, vars, cvars, and pvars.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td width="249" valign="top" style="width:149.4pt;padding:0in 5.4pt 0in 5.4pt">
+		            <p class="TableText"><b style="mso-bidi-font-weight:normal">x<o:p></o:p></b></p>
+		          </td>
+		          <td width="549" valign="top" style="width:329.4pt;padding:0in 5.4pt 0in 5.4pt">
+		            <p class="TableText">Continues instruction trace at the very next
+
+		            instruction in the current Lambda.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td width="249" valign="top" style="width:149.4pt;padding:0in 5.4pt 0in 5.4pt">
+		            <p class="TableText"><b style="mso-bidi-font-weight:normal">=source<o:p></o:p></b></p>
+		          </td>
+		          <td width="549" valign="top" style="width:329.4pt;padding:0in 5.4pt 0in 5.4pt">
+		            <p class="TableText">Evals the source following the equal symbol,
+
+		            and displays and results in the browser.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td width="249" valign="top" style="width:149.4pt;padding:0in 5.4pt 0in 5.4pt">
+		            <p class="TableText"><b style="mso-bidi-font-weight:normal">?<o:p></o:p></b></p>
+		          </td>
+		          <td width="549" valign="top" style="width:329.4pt;padding:0in 5.4pt 0in 5.4pt">
+		            <p class="TableText">Displays the above command list in the browser</p>
+		          </td>
+		        </tr>
+		      </table>
+		  <p>When a break or trace break occurs, Analytic Information Server saves the Lambda's 
+
+              current structure in the following property names:</p>
+          <p class="MsoBodyText" style="line-height:117%;page-break-after:avoid"><b style="mso-bidi-font-weight:normal"><span style="color:black">Av</span></b><span style="color:black"><span style="mso-tab-count:2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+		      </span><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+		      </span>The current argument variable structure.<o:p></o:p></span></p>
+		      <p class="MsoBodyText" style="line-height:117%;page-break-after:avoid"><b style="mso-bidi-font-weight:normal"><span style="color:black">Tv</span></b><span style="color:black"><span style="mso-tab-count:3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+		      </span>The current temporary variable structure.<o:p></o:p></span></p>
+		      <p class="MsoBodyText" style="line-height:117%;page-break-after:avoid"><b style="mso-bidi-font-weight:normal"><span style="color:black">Pv</span></b><span style="color:black"><span style="mso-tab-count:3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+		      </span>The current persistent variable structure.</span><b style="mso-bidi-font-weight:
+
+		normal"><span style="color:blue"><o:p></o:p></span></b></p>
+		      <p class="MsoBodyText" style="line-height:117%;page-break-after:avoid"><b style="mso-bidi-font-weight:normal"><span style="color:black">Cv</span></b><span style="color:black"><span style="mso-tab-count:3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+		      </span>The current persistent class variable structure.</span><b style="mso-bidi-font-weight:
+
+		normal"><span style="color:blue"><o:p></o:p></span></b></p>
+		      <p class="MsoBodyText" style="line-height:117%;page-break-after:avoid"><b style="mso-bidi-font-weight:normal"><span style="color:black">In</span></b><span style="color:black"><span style="mso-tab-count:3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+		      </span>The current interface structure.<o:p></o:p></span></p>
+		      <p class="MsoBodyText" style="line-height:117%;page-break-after:avoid"><b style="mso-bidi-font-weight:normal"><span style="color:black">Vm</span></b><span style="color:black"><span style="mso-tab-count:3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+		      </span>The current virtual machine used by this Lambda.<o:p></o:p></span></p>
+        ]]></Hints>
+   </Syntax>
+</Example>

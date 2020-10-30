@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Character methodsOf 013</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>methodsOf</FunctionKeywords>
+		<TypeKeywords>   Symbol Dictionary </TypeKeywords>
+		<RelatedFunctions>addMethod send methodsOf</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>method message messageName</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[<p> This example defines a method named <b>Vowel</b> that is invoked when 
+                 the Character type receives an <b>isVowel</b> message.  The <b>Vowel</b> method
+                 method converts the Character Value, to the English word "Yes" or to the 
+                 English word "No" depending upon whether or not the character is a vowel.</p>
+	]]></Description>
+	<Syntax> 
+	<Expression><![CDATA[<sc>(defmethod Character: Vowel(c) (if (isMember c #(#\a #\e #\i #\o #\u #\A #\E #\I #\O #\U)) then "Yes" else "No") )     </sc>]]></Expression>  
+    <Note><![CDATA[ First Define the Vowel method:]]></Note> 
+    <Returns><![CDATA[ #&#60Dictionary 123456&#62]]></Returns> 
+    <Expression><![CDATA[<sc>(send isVowel: #\c)       </sc> ]]></Expression>
+    <Note><![CDATA[To invoke the Lambda that responds to the isVowel message, issue the following statement:]]></Note>
+    <Returns><![CDATA[No]]></Returns>
+    <Expression><![CDATA[<sc>(isVowel: #\c)   </sc> ]]></Expression>
+    <Note><![CDATA[Alternatively, the Lambda may be invoked using the following syntax:]]></Note>
+    <Returns><![CDATA[No]]></Returns>
+   <Expression><![CDATA[ <sc> (length (methodsOf  Character: ))           </sc> 
+   ]]></Expression>  
+   <Note><![CDATA[ Query the methods Dictionary for the Character Data Type:]]></Note> 
+   <Returns><![CDATA[ 1 ]]></Returns>
+   <Expression><![CDATA[<sc>(ref (methodsOf Character:)[0 0])   </sc> 
+   ]]></Expression>
+   <Note><![CDATA[Get the names of  the methods  in the methods Dictionary for the 
+         Character Data Type:
+   ]]></Note>
+   <Returns><![CDATA[isVowel]]></Returns>
+   <Expression><![CDATA[<sc>(ref (methodsOf Character:)[0 1])   </sc> 
+   ]]></Expression>
+   <Note><![CDATA[none]]></Note>
+   <Returns><![CDATA[#&#60Lambda 123456&#62]]></Returns>
+   <Expression><![CDATA[<sc>(isMember (methodsOf  Character: ) isVowel  )   </sc> 
+   ]]></Expression>
+   <Note><![CDATA[none]]></Note>
+   <Returns><![CDATA[true]]></Returns>
+    <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

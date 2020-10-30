@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Vector binaryInsert 003</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>binaryInsert</FunctionKeywords>
+		<TypeKeywords>Vector  Integer</TypeKeywords>
+		<RelatedFunctions>insert binarySearch uniqueInsert sort</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>binary insert vector sort</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows how the <b>binaryInsert</b> function adds a new value
+                  when the Vector is sorted in <b>descending</b> and not in the
+                  assumed <b>ascending</b> order.
+
+	]]></Description>
+	<Syntax>
+  	   <Expression><![CDATA[ <sc>(setq SortedVector (sort #( 5 4 3 7) &#62))           </sc>]]></Expression>
+        <Note><![CDATA[The Vector is sorted in descending order. ]]></Note>
+        <Returns><![CDATA[#&#60Vector 199917&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60Vector 199917&#62 )       </sc>]]></Expression>
+        <Note><![CDATA[Displays the values of the sorted Vector]]></Note>
+        <Returns><![CDATA[#(7 5 4 3 )]]></Returns>
+        <Expression><![CDATA[ <sc> (binaryInsert SortedVector 5 )          </sc>]]></Expression>
+        <Note><![CDATA[Since the value 5 already exists in the Vector, the index where the value 5 
+              is currently located is returned.]]></Note>
+        <Returns><![CDATA[1 ]]></Returns>
+        <Expression><![CDATA[ <sc> (binaryInsert SortedVector 2 )       </sc>]]></Expression>  
+        <Note><![CDATA[The added value 2 is less than any of the values in the Vector, it is placed
+              before any of the values to preserve the ascending order.]]></Note> 
+        <Returns><![CDATA[0]]></Returns>
+        <Expression><![CDATA[ <sc> (binaryInsert SortedVector 6 )       </sc>]]></Expression>
+        <Note><![CDATA[If the values are not in ascending order, the added value is appended at the end.]]></Note>
+        <Returns><![CDATA[4]]></Returns>
+        <Expression><![CDATA[ <sc> (display SortedVector)       </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#(2 7 5 4 3 6 )]]></Returns>
+        <Hints><![CDATA[The <b>binaryInsert</b> function preserves sort order.  
+
+               Normally a vector does not maintain sort order by default but can 
+
+               be explicitly sorted by the <b>sort</b> function.  ]]></Hints>
+   </Syntax>
+</Example>

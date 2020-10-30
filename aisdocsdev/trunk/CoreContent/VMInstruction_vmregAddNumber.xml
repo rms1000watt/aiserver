@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmregAddNumber </Title> 
+		<InstructionName>vmregAddNumber </InstructionName>
+		<InstructionType>Register</InstructionType>
+		<ArgumentTypes>  Number Double</ArgumentTypes>
+		<RelatedVMInstructions>vmregSubNumber  vmregMulNumber vmregDivNumber vmregDivrNumber </RelatedVMInstructions>
+		<HumanKeywords>addition subtraction multiplication division register number</HumanKeywords>
+	</KnowledgeBase>                   
+	<Description><![CDATA[
+		<p>When evaluated, this vm instruction adds the register <b>source</b> number 
+		value to the register <b>target</b> number value and places the result in the 
+		<b>target</b> register. Both arguments must be of number type. The result 
+		will be returned as a type Number. This instruction may return an Error value. 
+		After the operation, the Instruction Pointer is promoted. The operation of this 
+		vm instruction is expressed in the following C expression:
+    	</p>      
+        <ul><li><b>    (double)target += (double)source;</b></li></ul>
+    ]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[(vmregAddNumber source target)]]></Expression>
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>register</Format>
+		  <AISTypes>number</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>target</Name>
+		  <Format>register</Format>
+		  <AISTypes>number</AISTypes>
+		</Argument>
+	</Syntax>
+</VMInstruction>

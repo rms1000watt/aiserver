@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example ByteVector compress 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compress</FunctionKeywords>
+		<TypeKeywords>ByteVector</TypeKeywords>
+		<RelatedFunctions>  </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords> LZRW1 compression</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[  <p> The <b>compress</b> function converts a String to a much smaller ByteVector. </p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+(setq input "Shall we make this string smaller ?")   </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[Shall we make this string smaller ?]]></Returns>
+        <Expression><![CDATA[ <sc>(setq smaller (compress input))   </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#]]></Returns>
+        <Expression><![CDATA[ <sc>(setq output (uncompress smaller))   </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[Shall we make this string smaller ?]]></Returns>
+        <Hints><![CDATA[none
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

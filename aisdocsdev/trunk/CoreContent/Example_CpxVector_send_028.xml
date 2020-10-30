@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example CpxVector send 028</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>send</FunctionKeywords>
+		<TypeKeywords> CpxVector Symbol Dictionary </TypeKeywords>
+		<RelatedFunctions>defmethod addMethod methodsOf</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>method message messageName</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example uses the added method <b>Conjugate</b> to the Complex Vector
+           type. This new method simply conjugates each complex number in the vector by negating
+          the imaginary part of each number. The method is invoked by the <b>send</b> command
+          from the CpxVector Methods Dictionary.
+
+	]]></Description>
+	<Syntax>
+	<Expression><![CDATA[<sc>(addMethod  Vector: IncAll:  (lambda  (s)  (map add1  s)))     </sc>]]></Expression>
+    <Note><![CDATA[ Define a method Conjugate which  negates the imaginary part of the number.
+    ]]></Note>
+    <Returns><![CDATA[ #&#60Dictionary 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(setq X (new Vector: complex: 2 1.0 2.0 2.5 1.5))    <sc> ]]></Expression>
+    <Note><![CDATA[Define a CpxVector that contains some complex numbers. ]]></Note>
+    <Returns><![CDATA[#&#60CpxVector 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(setq Y (send Conjugate:  X))       <sc> ]]></Expression>
+    <Note><![CDATA[Send the message  Conjugate  to all the values in the CpxVector. ]]></Note>
+    <Returns><![CDATA[#&#60CpxVector 234567&#62]]></Returns>
+    <Expression><![CDATA[<sc>(display #&#60CpxVector 234567&#62)   <sc> ]]></Expression>
+    <Note><![CDATA[Displays the new CpxVector with the conjugated values.]]></Note>
+    <Returns><![CDATA[#(cpx| #c1.0-2.0i #c2.5-1.5i )]]></Returns>
+    <Expression><![CDATA[<sc>(setq Y (IncAll:  V))          <sc> ]]></Expression>
+     <Note><![CDATA[To be determined.]]></Note>
+    <Returns><![CDATA[To be determined.]]></Returns>
+    <Hints><![CDATA[
+        <p>To view the entry in the methods Dictionary created by the addMethod function, 
+           you can use the method name to access the directory entry by </p>
+        <p><b> #&#60Dictionary 123456&#62[methodName:] or </b></p>
+        <p> To determine the number of assigned methods:</p>
+        <p><b>(length  (methodsOf CpxVector: ))</b></p>
+        <p>To access the nth method name:</p>
+        <p><b>(methodsOf CpxVector: )[n  0]</b></p>
+]]></Hints>
+</Syntax>
+</Example>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Document SYSTEM "../DTD/Document.dtd">
+<Document>
+	<KnowledgeBase>
+	    <Title>Programmer's Style Guide</Title>
+		<Topic>Programmer's Style Guides</Topic>
+		<SubTopic>C++ HTML Javascript Lisp XML</SubTopic>
+		<HumanKeywords>C++ HTML Javascript Lisp XML Style Documentation Code</HumanKeywords>
+	</KnowledgeBase>
+	<Essay>Essay_Program_Html</Essay>
+	<Essay>Essay_Program_Xml</Essay>
+ </Document>

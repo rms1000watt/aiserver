@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Brick compareLE 019</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compareLE</FunctionKeywords>
+		<TypeKeywords>Brick</TypeKeywords>
+		<RelatedFunctions>  compare compareEQ compareNE compareGT compareGE  compareLT </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare lesser boolean equal</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>compareLE</b> functions to do a 
+                  case-sensitive comparison of two objects of the same type.  A Boolean value is returned.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define nameList  (new Brick: 2 Name:Object:3))</b>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60Brick 123456&#62  ]]></Returns>
+        <Expression><![CDATA[ <sc>(define customerList  (new Brick: 2 Name:Object:1))      </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60Brick 234567&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(compareLE nameList customerList)   </sc>]]></Expression>  
+        <Note><![CDATA[The first Brick has greater value than the second Brick.]]></Note> 
+        <Returns><![CDATA[false]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

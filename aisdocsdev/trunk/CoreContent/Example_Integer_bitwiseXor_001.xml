@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Integer bitwiseXor 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>bitwiseXor</FunctionKeywords>
+		<TypeKeywords>Number</TypeKeywords>
+		<RelatedFunctions>bitwiseAnd bitwiseOr bitwiseXor </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>numerical xor exclusive negative bitwise</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[  <p> This example shows how the <b>bitwiseXor</b> function performs a numerical 
+
+
+
+               bitwise <b>xor</b> on each expression in the argument list from left to right. </p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+(bitwiseXor 0 0)   </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[0]]></Returns>
+  	    <Expression><![CDATA[ <sc>(bitwiseXor 0 1)   </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[1]]></Returns>
+  	    <Expression><![CDATA[ <sc>(bitwiseXor 1 0)   </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[1]]></Returns>
+  	    <Expression><![CDATA[ <sc>(bitwiseXor 1 1)   </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[0]]></Returns>
+        <Hints><![CDATA[none
+
+
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

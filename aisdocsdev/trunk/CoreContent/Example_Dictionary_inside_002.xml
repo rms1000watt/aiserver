@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Dictionary inside 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>inside</FunctionKeywords>
+		<TypeKeywords>Dictionary Symbol</TypeKeywords>
+		<RelatedFunctions>member isMember member isInside isIdentical</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>inside key value index</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples searches the Dictionary for the specified key.               
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(inside SSN:  #{dic|Name: "John Doe" SSN: "555 12 1324"}) </sc>]]></Expression>
+        <Note><![CDATA[The key SSN: is searched  in the Dictionary. ]]></Note>
+        <Returns><![CDATA[1]]></Returns>
+        <Expression><![CDATA[ <sc> (inside Address:  #{dic|Name: "John Doe" SSN "555 12 1324"})      </sc>]]></Expression>
+        <Note><![CDATA[The key Address: is searched  in the Dictionary. ]]></Note>
+        <Returns><![CDATA[false  ]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

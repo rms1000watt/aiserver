@@ -1,0 +1,22 @@
+/* XPM */
+const static char *foldertop[]={
+"16 16 3 1",
+"# c #000000",
+". c #d4d0c8",
+"a c #ffff99",
+"................",
+"...#####........",
+"..#aaaaa#.......",
+".###############",
+".#aaaaaaaaaaaaa#",
+".#aaaaaaaaa#aaa#",
+".#aaaaaaaa#aaaa#",
+".#aaaaaaa#aaaaa#",
+".#aaaaaa#aaaaaa#",
+".#aaaaa#aaaaaaa#",
+".#aaaa#aaaaaaaa#",
+".#aaa#aaaaaaaaa#",
+".#aaaaaaaaaaaaa#",
+".###############",
+"................",
+"................"};

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example IntVector append 007</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>append</FunctionKeywords>
+		<TypeKeywords>IntVector</TypeKeywords>
+		<RelatedFunctions>new replace rept</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>append concatenate vector </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[  This example takes 2 existing Integer Vectors and appends 
+                  the values of each Integer Vector.  The result is placed in a new Integer Vector.
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq X (new Vector:  integer:  2 9 2))         </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60IntVector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Y (new Vector:  integer:  4 4 3 1 5))          </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60IntVector 234567&#62   ]]></Returns>
+        <Expression><![CDATA[ <sc> (append X Y )    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60IntVector 456789&#62   ]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60IntVector 456789&#62 )       </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#(int| 9 2 4 3 1 5 )]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number stdevp 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>stdev</FunctionKeywords>
+		<TypeKeywords>  Number Integer   </TypeKeywords>
+		<RelatedFunctions>range kurtosis skew stdev var </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>standard deviation distribution curve  displacement mean </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[   <p> This example defines the values of an entire population in the argument list. The
+                  <b>stdevp</b> function computes the standard deviation of the population values. </p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(stdevp 10 20 40 45) </sc>   ]]></Expression>
+        <Note><![CDATA[Returns the standard deviation of the 4  population values.]]></Note>
+        <Returns><![CDATA[14.30690392782]]></Returns>
+ 	    <Expression><![CDATA[ <sc>(stdevp 20 50 55 60)</sc>   ]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[15.56237449749]]></Returns>
+        <Hints><![CDATA[none
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>makeStructure</Title>
+		<FunctionName>makeStructure</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>Structure</ArgumentTypes>
+		<DataType>Structure </DataType>
+		<RelatedFunctions>defstruct defineStructure defclass objectToStructure fieldsOf</RelatedFunctions>
+        <RelatedVMInstructions>vmregObjPointer none  </RelatedVMInstructions>
+		<HumanKeywords>define make set make object structure inherit 
+
+                       parent object-oriented classes</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>makeStructure</b> function returns a new structure object, which is formed 
+                 with the specified bindings and with the optional <b>cdr</b> value.  </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>makeStructure</b> function returns a new structure object, which is formed 
+           with the specified bindings and with the optional <b>cdr</b> value. Each binding 
+          <b>{symbol: value}</b> is a quoted symbol followed by a value. There may be zero or 
+           more bindings specified. The optional <b>cdr</b> value is preceded by the period 
+           special character '.</p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>makeStructure</b> function is used whenever it is necessary to coerce a 
+             symbol-value pair into a structure binding.</p>
+        ]]></Usage>
+    </Brief>
+	<Syntax-Structure>
+	    <Expression><![CDATA[<p> (makeStructure  symbol  value ...)<br>
+                        (makeStructure  symbol  value ...  .  cdrvalue)</p>]]></Expression>
+		<Argument>
+		  <Name>symbol</Name>
+		  <Note><![CDATA[
+		  <p>A symbol (This will be used as the key part of a structure binding)</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+     	<Argument>
+		  <Name>value</Name>
+		  <Note><![CDATA[
+		  <p>A value (This will be used as the value part of a structure binding).
+             There may be  more than one symbol-value pairs.</p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory
+                       Matrix NumMatrix Integer Float Number Complex </AISTypes>
+		</Argument>
+    	<Argument>
+		  <Name>.</Name>
+		  <Note><![CDATA[
+		  <p>A period.  An optional parameter, if present, must be followed by a value which 
+             will be assigned as the cdr of the structure</p>
+          ]]></Note>
+		  <AISTypes> </AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>A Structure object.
+
+        </p>
+	    ]]></Return>
+	</Syntax-Structure>
+</Function>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>loadRepository</Title>
+		<FunctionName>loadRepository</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+        <ArgumentTypes>ObjectRepository Directory</ArgumentTypes>        
+        <DataType> ObjectRepository</DataType>
+	    <RelatedFunctions>saveRepository</RelatedFunctions>
+        <RelatedVMInstructions> none </RelatedVMInstructions>
+		<HumanKeywords>load retrieve key block read RAM</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[ 
+             <p> The <b>loadRepository</b> function loads every object in the specified ObjectRepository. </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>loadRepository </b> function loads every object in the specified ObjectRepository. The repository is 
+		returned as a Directory with each loaded object associated with its retrieval key. The <b>loadRepository</b>
+	    function allows an entire ObjectRepository to be read into memory at once. Think of the loadRepository function 
+	    as a block read of all repository objects at once. </p> 
+       ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>loadRepository</b> function allows the entire repository contents to be loaded into memory as a 
+        Directory with all retrieval keys bound to loaded objects. 
+		</p>
+        ]]></Usage>
+    </Brief>
+    <Syntax>
+	    <Expression><![CDATA[<p>(loadRepository aGor) </p>]]></Expression>
+		<Argument> 
+		  <Name>aGor</Name>
+		  <Note><![CDATA[
+		  <p>The ObjectRepository which is to be loaded into RAM memory.</p>
+          ]]></Note>
+		  <AISTypes>ObjectRepository</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>This function returns a Directory with each loaded object associated with its retrieval key.
+        </p>
+	    ]]></Return>   
+	</Syntax>
+</Function>

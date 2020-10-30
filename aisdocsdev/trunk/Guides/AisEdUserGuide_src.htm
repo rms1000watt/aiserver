@@ -1,0 +1,2088 @@
+<html>
+<head>
+<title>AIS Editor Users Guide - 1.006</title>
+</head>
+<body>
+
+<h1>1 AIS Editor Users Guide</h1>
+<h2>1.1 Concepts</h2>
+<h3>Overview</h3>
+The Analytic Information Server (AIS) Editor, AisEd, is a fast, flexible screen editor with the following features:
+<ul>
+	<li>Edits large files gracefully.</li>
+	<li>Commands to insert, move, delete, undo, redo</li>
+	<li>AisC, AisLisp, AisJavaScript syntax highlighting</li>
+	<li>Matches parens, braces, brackets</li>
+ 	<li>Supports word wrap, tabs, row attributes (e.g. line numbers)</li>
+ 	<li>Toolbars, menus, customization (tab width, font size)</li>
+ 	<li>Context menus including function/Lambda list by line number</li>
+ 	<li>Find/replace dialog</li>
+ 	<li>Fixed-width fonts only. No font styles within a row (bold, underline...)</li>
+	<li>Configuration file to set font size, tab width, word wrap, window position, size, line attributes(pending)</li>
+</ul>
+<p>
+AisEd uses a very small character representation. Each newline terminated row is stored in a dynamic array
+of 16-bit unsigned integers (ushort), one per character.  Each ushort holds a character
+code + color attributes.  The array is always terminated by a newline.  In the display, a row may
+wrap (if wrap enabled) so that it is displayed on one or more lines in the edit window.</p>
+<p>
+The AisEd Users Guide describes the Editor's User Interface.  After a preliminary discussion of several important
+concepts in the next section, the third section lists the edit commands.</p>
+
+<h2>1.0 Screen Editor Concepts</h2>
+Several important concepts are described here.  These concepts are used throughout the rest of the document.
+<h3>1.0.0 Cursor</h3>
+<p><b></b>
+A &quot;cursor&quot; appears as a movable arrow or vertical line (an I-beam cursor) in the display window.
+It changes from an arrow to an I-beam cursor when the cursor is in the AisEd edit window.  It may be moved
+using a pointing device as described in the next section.</p>  
+<p><b>Edit Cursor.</b>
+Besides the I-beam cursor, a thicker blinking cursor may be set just in front of a character within the edit
+window as described in the next section.  The following points regarding the &quot;edit cursor&quot; should be
+kept in mind: </p>
+<ul>
+	<li>The edit cursor always appears in front of a character, never at the end of a line.</li>
+	<li>When typing in characters, they are inserted just in front of the current edit cursor position and then the
+	edit cursor is moved forward to the next character.</li>
+	<li>Pressing the enter key or return key causes the edit cursor to move to the next line of text.</li>
+	<li>The edit cursor cannot be moved past the end of a line of text or past the last line of text.</li>
+</ul>
+<h3>1.0.1 Pointing Device</h3>
+<p><b>Mouse</b>
+A pointing device, such as a mouse or track-ball, is used to move the cursor around in a text document.  The following
+documentation replaces the somewhat unwieldy term, pointing device, with the more common term, &quot;mouse&quot;. The mouse,
+or other pointing device, allows the user to control the position of a &quot;cursor&quot; on the display.  The following
+discussion assumes that your pointing device has at least two buttons.</p>
+<p><b>Mouse Buttons.</b>
+One of these buttons is referred to in the documentation below as the &quot;left&quot; button and one is referred to
+as the &quot;right&quot; button (for left-handed users, the so-called &quot;left&quot; button might actually be on the
+right side of the pointing device and vice versa).  Regardless of their physical position, the standard button used
+in selecting a position in the text will be referred to as the left button and the alternate button will be referred to as
+the right button.</p>
+<p><b>Click.</b>
+Click refers to positioning the I-beam cursor over a character in the text, and
+quickly pressing and then releasing the left button without moving the cursor.  This operation repositions the
+blinking edit cursor in front of a nearby character.
+</p>
+<p><b>RtClick.</b>
+RtClick refers to performing a Click using the right or alternate button.  In the editor, a RtClick opens a
+&quot;context menu&quot; which is a pop-up menu that is specific to the editor.</p>
+
+<p><b>DblClick.</b>
+A &quot;DblClick&quot; refers to performing a standard Click two times in rapid succession without
+moving the cursor.  In the editor, DblClick selects the current word as described below.</p>
+
+<p><b>Drag</b>
+&quot;Drag&quot; refers to holding down the left (i.e., standard) button while moving the cursor to a new location
+in the text.  In the editor, dragging the mouse selects a section of text.</p>
+
+<h3>1.0.2 Selected Text.</h3>
+<p>
+A portion of text can be selected as follows (1) click at the beginning of the text area, (2) move the I-beam cursor
+the end of the text area, depress the shift button, and Click.  Alternatively, you may drag the cursor across the
+area to be selected.  The cursor may be moved up or down thru the text.  Text may also be selected by depressing
+the shift button while pressing any of the keys that move the cursor.  For example, hold down the shift key while
+pressing the PageDown key to select the next page of text.</p>
+<p>
+The selected text is shown with white characters on a dark blue background.  Selected text does not
+refer to any other type of highlighting.  Other types of highlighting, such as blocks of text between brackets,
+are denoted by a gray background.   These other blocks of text should not be confused with selected text.</p>
+
+<p><b>Select.</b>
+Sometimes the word Select is used in place of Click when referring to
+pressing the left button.  We avoid this use of the word Select (although we may slip up at times).</p>
+
+<h3>1.0.3 Keyboard Focus</h3>
+<p>
+A &quot;desktop&quot; (i.e., a display) may contain several text windows that can process a key press. Most notably,
+all text input windows can accept a key press. But only one of all the windows will process a given key press
+(There are a few exceptions, but it is close enough for this discussion). The text window that has
+&quot;keyboard focus&quot; is the one that receives the key press. Typically, a visible edit cursor (a blinking
+vertical bar) indicates that the edit window has the keyboard focus.</p>
+<p>
+The keyboard focus is moved to the edit window by Clicking (see Click above) anywhere inside the text edit
+area.</p>
+<p>
+<em>Some mouse operations and some keyboard presses will not work until the editor gets
+keyboard focus.</em>  Specifically, a context menu or dialog depends upon which, if any, box has
+focus. If a menu or dialog does not work, make sure that the text window has focus.</p>
+
+<h3>1.0.4 Viewports and Scrolling</h3>
+<p><b>Viewport.</b>
+Think of the display region as a huge rectangular canvas that stretches from the top line of text
+(X = Y = 0) to the end of the last line of text (X = max line width, Y = last line of text).
+For more than a small amount of text, the entire canvas cannot be viewed at once.  Rather, a small
+window, called the viewport, can be moved around on the canvas using the scroll bars on the right
+and on the bottom of the viewport.  The viewport can be moved over the top of the underlying
+canvas by moving the cursor past one edge of the viewport or by using the mouse to scroll up
+or down.  The size of the viewport can be changed by dragging one edge of the viewport to a
+new position.</p>
+<p>
+<b>Scrollbars.</b>
+If the viewport is not as tall as the underlying canvas, a scroll bar appears on the right.  The
+viewport vertical position is noted by a dark square in the scroll bar.  If the dark square is
+at the top of the scroll bar, the top lines of text appear in the scroll bar.  Similarly, if the
+viewport is not as wide as the underlying canvas, a scroll bar appears at the bottom.  The viewport
+horizontal position within the canvas is noted by a dark square in the scroll bar.
+Scrolling can be done incrementally or by page where a page is the number of lines or characters
+displayed in the viewport.  To move the viewport incrementally, position the arrow cursor over the
+dark square in the scroll bar and drag the square to a new position in the scrollbar.  To move the
+viewport by a page, click on the scroll bar on one side or the other of the dark square in the
+scrollbar.</p>
+
+<h3>1.0.5 Title and StatusBar</h3>
+<p>
+The StatusBar at the bottom of the window displays temporary messages on the left and warning
+messages (in red) in the middle  The current text cursor position is shown on the right.</p>
+
+<h3>1.0.6 Pages</h3>
+The editor allows several documents to be edited at the same time.  Each document has a &quot;tab&quot;
+at the top. A tabbed document is referred to as a &quot;Page&quot;.   If several documents have been opened,
+several Pages will appear.  If no document is opened, a Page named &quot;Untitled&quot; will appear.
+A hidden Page may be brought to the front by clicking on its tab at the top or by pressing Ctrl-Tab.
+A Page refers to a tabbed document but page (lower-case p) refers to the number of visible lines currently
+shown in a document as noted below.
+
+<h3>1.0.7 Dialogs</h3>
+A pop-up dialog is a separate window that pops up to provide a warning or to gather information required
+to carry out an operation.  Dialogs can be either modal or non-modal.  A modal dialog disables
+all other windows.  The user must respond to the dialog and then close it prior to interacting
+with any other window.  A non-modal dialog does not disable the other windows.  As an example,
+the Replace dialog is modal.  One may find and/or replace one or more instances of a phrase in
+a text window, but the text cannot otherwise be modified until the replace dialog is closed.
+The editor dialogs are all modal.
+
+<h3>1.0.8 Context Menu</h3>
+The text window includes a hidden menu, called a context menu, that is made visible by a RtClick anywhere
+on a Page.  These context menus provide an alternate way to launch operations rather than using
+just the menu or the toolbar at the top.
+
+<h3>1.0.9 Menus</h3>
+The items in a menu are revealed by Clicking on the menu.  Some menu items have a small right
+arrow on the right.  By Clicking on this arrow, yet another submenu appears.  Specific menus
+are described in the sections below.
+
+<p><b>Disabled items.</b>
+At times a menu item or a toolbar button is disabled.  When a menu item is disabled, it appears as
+a gray version of its normal appearance.  The circumstances under which a menu item is disabled is
+defined in the description of the menus below.</p>
+
+<h3>1.0.10 Toolbar</h3>
+<p>
+A &quot;toolbar&quot; is a set of little pictures, referred to as &quot;icons&quot; just below the menus
+at the top of the editor window.  It is possible to position the mouse over the top of an icon and then
+activate its corresponding edit operation it by  pressing the left mouse button.  For example, clicking on
+the X icon closes the document in the current Page.</p>
+
+<h3>1.0.11 Fly-over help</h3> 
+<p>
+Standard icons that are familiar to most Windows users are employed whenever possible.  Nevertheless,
+the function associated with some icons may not be obvious to the user.  If the cursor is
+held over a toolbar button for a second or more, a short description explaining the button's function
+appears until the cursor is moved away from the icon.  The short description also appears in the status bar
+at the bottom of the edit window.</p>
+
+<h3>1.0.12 Clipboard</h3>
+<p>
+Most modern operating systems, including Microsoft Windows, Linux, and Unix, provide a &quot;Clipboard&quot;.
+The clipboard may be used to save a hunk of text for later use.  By selecting some text and then pressing Ctrl-C
+(copy) or Ctrl-X (cut), the selected text is saved in the clipboard.  Any existing text in the clipboard
+is lost. By pressing Shift-Ctrl-C (append) or Shift-Ctrl-X (move) the selected text is appended to the contents
+of the clipboard.  By convention, lines in the clipboard are terminated by a CR-LF.</p>
+
+<h3>1.0.13 Formatting Characters</h3>
+<p>
+The editor utilizes four formatting characters, tab, carriage return, newline, null.  These characters are
+not normally visible in the text.  They appear as one or more spaces in the display.</p>
+<p>
+<b>Tabs.</b> A tab character
+can appear anywhere in a line.  It is displayed as a set of space characters that extend to the next tab stop.  For
+example, if the tab stop width is four, a tab starting in the first, second, or third column extends to the end of the
+fourth column.  The first tab stop is always at the first column.  The distance between tab stops is adjustable as noted
+in the edit operation section below.</p>
+<p>
+<b>Newlines and Carriage Returns</b> A newline marks the end of a row.  A row can be displayed on one or more lines
+of the display.  The last character of every row is a newline except the last row which is terminated by a null.
+An optional Carriage Return can precede the newline, but it is neither necessary nor desirable.</p>
+<p>
+<b>Null Character.</b>
+A null marks the end of the last row of text.  The last row never contains a newline and a null character cannot appear
+in any other position in the text.  An empty document consists of a single row containing a single null character.
+</p>
+<h3>1.0.14 Words</h3>
+<p>
+A word is a sequence of one or more alphanumeric characters.  Alphanumeric characters consist of alphabetic characters
+of either case, the digits from 0 to 9 and the underscore.  The beginning of a word is at the first character on
+a line or the first alphanumeric character past any non-alphanumeric character.  The end of a word is the first
+non-alphanumeric character past the end of a word.  The newline on the end of a line and the null at the end of
+the text count as non-alphanumeric characters.</p>
+  <!-- 1.1 Concepts -->
+
+
+<h1>2 Edit Operations</h1>
+<h2>2.0 Edit Operation Overview</h2>
+Edit operations are roughly divided into four categories:
+<ul>
+	<li><b>Insert.</b> Insert operations, such as paste, indent, comment, etc. insert text into the edit buffer.
+	Insert and delete operations change the state of the editor so that some previous state may no longer be
+	valid.	Saved cursor positions and redo operations may no longer be valid after an insert or delete.
+	Insert operations, including paste, also delete any currently selected text.</li>
+	<li><b>Delete.</b> Delete operations, such as cut, unindent, Delete, BackSpace, etc. remove text from
+	the edit buffer.  Like insert, delete operations can affect the current state.  Both insert and delete
+	operations are distinguished from other operations in that they are saved on an undo stack so that they
+	may be reversed as described below.  Insert operations may include a change in the cursor position.
+	For example, the cursor is moved forward by one character when inserting a character.</li>
+	<li><b>Move.</b> Move operations move the blinking cursor to a new position in the text.  Subsequent
+	operations, such as delete, select, or insert use the current cursor position as a reference.  By
+	depressing the shift key, most move operations select text as well as move the cursor.  If the shift
+	key is not pressed, any selected text is deselected.  Move operations are distinguished in that they
+	do not modify the text so cursor move operations do not have a corresponding undo operation.  However,
+	&quot;large&quot; moves (more than a few lines) are saved in a cursor stack.  The user may move back
+	to the vicinity of the last cursor position after moving more than a few lines.  Similarly, after
+	moving to a previous position, the user may also move back to the vicinity of the original position.
+	Currently, saved positions do not take into account large deletes or inserts made in the interim.</li>
+	<li><b>Selected Text.</b> Move operations may select text as noted above.  In addition, several edit
+	commands operate on selected text, including SelectAll, Copy, Append, Paste, and SelectBetweenMatchingParens.</li>
+	<li><b>Dialogs</b> Several edit operations may open a dialog to allow you to enter more information.
+	Each dialog is discussed in more detail below.  Some dialogs, such as Replace Dialog, may lead to an
+	insert or delete or both.</li>
+	<li><b>Undo.</b> Undo reverses the last insert or delete operation. If the cursor has been moved since
+	the last insert or delete, the cursor is moved back to is position as of the last insert or delete.
+	After an insert operation, Undo deletes the inserted text.  After a delete operation, Undo inserts the
+	deleted text. If no intervening insert or delete operations have been performed since the last undo,
+	redo will repeat the original insert or delete operation.</li>
+	<li><b>Format and SwitchPanes</b> Several additional operations are available to format the text.
+	These include insert operations that insert text such as comment and indent, delete operations such as
+	unindent and uncomment that delete text.  It also includes operations that change the appearance of
+	the displayed text.</li>
+</ul>
+<p>
+<b>Alerts.</b> If an operation cannot be performed, a warning message appears in red in the status bar at the
+bottom of the edit window and a warning sound is generated.  For example, any attempt to move the cursor up
+when the cursor is already at the top of the edit text will generate an alert.  Most systems allow the
+audible alert to be turned down or turned off if you do not wish to have an audible alert.</p>
+Most common edit operations can be initiated in several different ways:
+<ul>
+	<li><b>Menu.</b> The &quot;file&quot; and the &quot;edit&quot; menus at the top of the edit window
+	contain edit operations.  Click on the menu and then click on an edit operation in the drop-down menu.</li>
+	<li><b>Context Menu.</b> Right-click in an edit Page to bring up the context menu.</li>
+	<li><b>Toolbar.</b> The toolbar is just below the edit menu in the edit window.  Move the mouse over
+	any toolbar icon to view its function.</li>
+	<li><b>Mouse.</b> The mouse (any pointing device) can move the cursor, scroll the viewport, select text,
+	or show the context menu.</li>
+	<li><b>Keyboard.</b> Edit operations may be initiated by pressing a cursor key, a function key, or
+	by holding down the Ctrl key while pressing down any other key.  Not all combinations of Ctrl, Shift, and
+	a key press are used.  A complete list is provided below.</li>
+</ul>
+
+<h2>2.1 Menu Operations</h2>
+Many edit operations can be performed from the menus at the top of the edit pane.  They are listed here
+and described in more detail in the operation summary below.
+<h3>2.1.0 File</h3>
+The following edit operations are found in the File drop-down menu:
+<ul>
+	<li><b>New.</b> Open a new, empty document in an new edit Page with the title &quot;Untitled&quot;.  If
+	a document named &quot;Untitled&quot; is already open, focus is moved to the Untitled Page.</li>
+	<li><b>Open.</b> A file selection dialog appears.  You may browse files stored in the file system and
+	select a file. The files may be filtered to just show text files or source-code files by selecting a
+	filter from the &quot;Files of Type:&quot; drop-down combo box at the bottom of the file selection dialog.</li>
+	<li><b>Save.</b> While editing a file, the changes are made to an image of file saved a portion of the
+	computer's memory allocated to hold this image.  All changes to this image if the program is unexpectedly halted
+	or if power to the computer is lost.  The memory image may be saved on disk by clicking on Save.  The
+	text saved in a file on the disk will persist even if the program is shut down or if power to the computer
+	is turned off. Save often!</li>
+	<li><b>SaveAs.</b> A file selection dialog appears.  You may navigate to a new directory, enter a file
+	name in the &quot;File Name&quot; text-input bar, and then select save to file on disk.</li>
+	<li><b>Print.</b> Print prints the text on a local printer if one is available.  The text is printed
+	in black on white.  The pages are numbered at the bottom.</li>
+	<li><b>Close.</b> Close removes the currently selected edit Page from the editor.  If any changes have
+	been made to the text, a dialog is shown to see if you would like to make the changes to the file on
+	disk.</li>
+	<li><b>Exit.</b>  The editor is shut down. If changes to any Page have been made since the last Save,
+	a dialog is shown for each modified edit Page to see if you would like to save the changes that have been made.</li>
+</ul>
+<h3>2.1.1 Edit Menu</h3>
+The following edit operations are found in the Edit drop-down menu:
+<ul>
+	<li><b>Undo.</b> A previous insert or delete operation can be reversed by clicking on Undo.  An set
+	of insert or delete operations are combined into a single undo operation to make it easier to quickly undo
+	a set of related operations.  The number of previous edit operations that can be undone is a configurable
+	parameter.  Note that memory is consumed by each saved operation in the undo stack, so the number of saved
+	operations in the undo stack should be limited.</li>
+	<li><b>Redo.</b> After an undo, but before any subsequent insert or delete operations, redo repeats the
+	original insert or delete.  A set of related undo operations can also be reversed by a block redo operation.</li>
+	<li><b>Copy.</b> Selected text, if any, is copied into a &quot;clipboard&quot;.  The current text in the
+	clipboard is lost.  If you wish to append text to the clipboard, use Ctrl-Shift-C.  An alert is generated if
+	no text is currently selected.</li>
+	<li><b>Cut.</b> Selected text, if any, is moved from the text buffer to the &quot;clipboard&quot;.  The current
+	text in the clipboard is lost.  If you wish to append the selected text to the contents of the clipboard, use
+	Ctrl-Shift-X.  An alert is generated if	no text is currently selected.</li>
+	<li><b>Paste.</b> Paste inserts the text saved in the clipboard into the edit text at the current cursor
+	position.  Note that carriage returns in the contents of the clipboard are stripped.</li>
+	<li><b>Indent.</b> Indent inserts a tab into the front of every selected line.  The selected text remains
+	selected by this operation. An alert is generated if no text is currently selected.</li>
+	<li><b>Unindent.</b> Unindent removes the leading tab, if any, from the front of every selected line.
+	The selected text remains selected by this operation. An alert is generated if no text is selected.</li>
+	<li><b>Comment.</b> Comment inserts a comment delimiter into the front of every selected line.  The delimiter
+	is dependent upon the language of the source code.  For example, the AISLisp comment delimiter is a
+	semicolon.  The selected text remains selected by this operation. An alert is generated if no text is currently
+	selected.</li>
+	<li><b>Uncomment.</b> Uncomment removes the leading comment delimiter, if any, from the front of every selected
+	line. The selected text remains selected by this operation. An alert is generated if no text is selected.</li>
+</ul>
+
+<h2>2.2 ToolBar</h2>
+<p>
+The edit toolbar includes icons for the same operations as listed above for the Edit Menu.  The toolbar
+allows the user quick access to these operations without opening a menu.  By clicking on a toolbar icon
+the corresponding edit operation is launched.  The toolbar contains icons for the New, Open, Save, Print, Close,
+Undo, Redo, Copy, Cut, Paste, Indent, Unindent, Comment, Uncomment operations as described above.</p>
+
+<h2>2.3 Mouse</h2>
+<p>
+Most pointing devices, such as a mouse, have a Click, Drag, Double-click, Shift-Click, and Right-Click function as described
+in the Contents section above.  These functions may be initiated while the Ctrl key and/or the Shift key is
+depressed. Mouse operations provide a convenient mechanism for moving the cursor, selecting text, and opening
+the context menu.</p>
+<ul>
+	<li><b>Click.</b> The mouse controls the position of an I-beam cursor that appears in the edit page.  By
+	moving the I-Beam cursor to a new position and then momentarily pressing the &quot;left&quot; mouse button
+	(see Mouse Concepts	above), the blinking text cursor is moved to the location of the I-beam cursor.  If vertical
+	scroll bars appear on the right, the viewport can be slowly scrolled up by moving the I-beam cursor to the top of
+	the page and vice versa.  Often it is quicker to just use the mouse to scroll the text up or down rather than holding the
+	I-beam cursor at the top or bottom of the Page.  If the click occurs past the end of a line, the cursor is
+	moved to the front of the last character on the line.  If the click occurs past the end off the text, the
+	cursor is moved just past the last character in the text.</li>
+	<li><b>Drag</b> Drag refers to holding down the &quot;left&quot; mouse button and then moving the cursor.
+	Text can be dynamically selected starting at the position where the left button was pressed and ending
+	at the point where the left button is released.  See the note on shift-click for a faster way to select
+	a large section of text.</li>
+	<li><b>Double-Click.</b> Double-Click refers to momentarily pressing the &quot;left&quot; button twice in
+	quick succession.  This operation selects a nearby word if any.  An alert occurs if no word can be located.</li>
+	<li><b>Shift-Click</b> Shift-Click refers to a Click while depressing the Shift key.  The text from the
+	current blinking cursor to the current I-Beam cursor is selected.  It is possible to scroll the text
+	up or down and the using the Shift-Click operation to select a large section of text.</li>
+	<li><b>Right-Click.</b> By momentarily pressing the &quot;right&quot; mouse button, the context menu dialog
+	appears.  Move the arrow cursor to the desired operation and the Click on the item in the menu. Ctrl-Right-Click
+	launches the Function-List Dialog described below.</li>
+</ul>
+
+<h2>2.4 Keyboard Commands</h2>
+<p>
+The keys on the keyboard are divided into three categories, Function keys, Cursor keys, and Normal keys.  Each
+category plays a role in edit performing edit operations as follows:</p>
+<ul>
+	<li><b>Function Keys.</b> Only a few function keys are used.  They are F1, F3 and F5 as noted in the summary
+	in the next section.  The Ctrl Key and/or the Shift Key can be depressed while pressing an function key.  Each
+	combination may be used to initiate a distinct command.</li>
+	<li><b>Cursor Keys.</b> The cursor keys include Tab, BackSpace, Insert, Delete, Home, End, PageUp, PageDown,
+	arrow keys. Shift-Tab is referred to as a BackTab.  The Tab/BackTab key is used to indent/unindent if text is selected.
+	The Tab/BackTab is used to insert a tab or move to previous tab stop.  The Enter or Return key inserts a newline
+	into the text at the current cursor position and then moves the cursor to the beginning of the next line.  
+	BackSpace and Delete are used to delete one or more characters from the text.  The other cursor keys are used to move
+	the dark blinking cursor to a new location.  When the Shift key is depressed at the same time, the intervening
+	text is selected.</li>
+	<li><b>Normal Keys.</b> All the other keys are referred to as &quot;Normal&quot; keys.  Normal keys, when used by
+	themselves or with the Shift key depressed, insert a visible character into the text and move the cursor forward to
+	the end of the inserted character.  A variety of edit operations are initiated by pressing a Normal key with the
+	Ctrl key depressed.  For example Ctrl-A (A pressed while the Ctrl key is depressed) selects all of the current text
+	and moves the cursor to the end of the text.  All of the combinations are listed in the Summary below.</li>
+</ul>
+<p>
+<b>Keyboard Philosophy.</b>  Some users are touch typists who are slowed down when they have to move either hand
+off their &quot;home&quot; position to hunt for a cursor key.  Others prefer to use the cursor keys which are
+easier to remember.  This editor caters to both by providing a Ctrl-Key combination for every cursor key.  Take
+your pick.</p>
+  <!-- 2.0 Overview -->
+<h2>2.5 Edit Summary</h2>
+<p>
+The edit commands are shown by category in the following table of commands. Each entry shows the key or mouse
+button to be pressed, the control and/or shift keys
+to be pressed, and whether any text is currently selected (shown with dark blue background). Ctrl-A refers to
+holding down the Ctrl key while pressing the A key.  CtrlShift-A refers to holding down both the Ctrl key and the
+Shift key while pressing the A key.  Right, left, up, down refer to the right, left, up, down arrow keys.
+AnyMove refers to any key that just moves the cursor.  AnyDel refers to any key that deletes text.</p>
+<p>
+Cursor keys refers to those keys that are not associated with a printable character.  They include BackSpace, Del,
+Tab, Insert, Home, End, PageUp, PageDown, and the arrow keys found on most keyboards.</p>
+<p>
+AnyMove is a metasymbol that refers to any key or combination of keys that initiates a move operation.
+Similarly, AnyDel refers to any key or combination of keys that initiates a delete operation and AnyIns refers
+to any keys that initiate an insert operation.</p>
+<p>
+Note that the cursor is always placed just in front of a character. Newlines at the end of a row and the
+null at the end of the text normally appear as spaces in the display.  Even though they are not visible, they count as
+characters in the text.</p> 
+
+<table  cellspacing=0 border=0 cellpadding=2>
+<tr valign=top>
+	<th>Key</th>
+	<th>Description</th>
+</tr><tr valign=top>
+	<th></th>
+	<th><em>Move Commands</em></th>
+</tr><tr valign=top>
+	<th>AnyMove</th>
+	<td>If the Shift Key is not pressed, the cursor is moved to new position. If text is selected, the selected text is
+	deselected.</td>
+</tr><tr valign=top>
+	<th>Shift-AnyMove</th>
+	<td>If no text is currently selected, an anchor is set at the current cursor position and text is selected from the anchor
+	to the new cursor position. Else, the selected text is extended from the current anchor to the new cursor position.
+		In addition, Shift-Click will select text from the old cursor position to the new cursor position.</td>		
+</tr><tr valign=top>
+	<th>Left, Ctrl-H</th>
+	<td>Move to previous char.  If the cursor is at the beginning of a line (but not the top line), the cursor is moved to
+	just in front of the last character on the previous row.</td>
+</tr><tr valign=top>
+	<th>Right, Ctrl-L</th>
+	<td>Move to next char. If the cursor is at the last character of a row (but not the last row), the cursor is moved
+	to the beginning of the next row.</td>
+</tr><tr valign=top>
+	<th>Ctrl-Left, Ctrl-O</th>
+	<td>Move to beginning of previous word.  A word boundary is defined in the first section on Concepts above.</td>
+</tr><tr valign=top>
+	<th>Ctrl-Right, Ctrl-P</th>
+	<td>Move to beginning of next word.  A word boundary is defined in the first section on Concepts above.</td>
+</tr><tr valign=top>
+	<th>Shift-Tab</th>
+	<td>Move to previous tab stop.  Tab stops are defined in the first section on Tabs above.</td>
+</tr><tr valign=top>
+	<th>Home, Ctrl-B</th>
+	<td>Move to beginning of the line.  If the cursor is already at the bol, the cursor is not moved.</td>
+</tr><tr valign=top>
+	<th>End, Ctrl-E</th>
+	<td>Move to end of the line. If the cursor is already at the eol, the cursor is not move.</td>
+</tr><tr valign=top>
+	<th>Up, Ctrl-K</th>
+	<td>Move up one line.  If the cursor is past the eol of the line above, the cursor is moved to the end of the line.
+	But, on the next move up or down to a longer line, the cursor is moved back to the original column.  If moving
+	into the middle of a tab, the cursor is moved to the beginning of the tab.</td>
+</tr><tr valign=top>
+	<th>Down, Ctrl-J</th>
+	<td>Move down one line.  The same comments about moving up also apply to moving down.</td>
+</tr><tr valign=top>
+	<th>Ctrl-Up</th>
+	<td>Move up half-page.  A page is the number of lines in the viewport (see Concepts in section 1 above).  The
+	comments about moving up a line also apply here.</td>
+</tr><tr valign=top>
+	<th>Ctrl-Down</th>
+	<td>Move Down half-page.  A page is the number of lines in the viewport (see Concepts in section 1 above).  The
+	comments about moving down a line also apply here.</td>
+</tr><tr valign=top>
+	<th>PageUp, Ctrl-M</th>
+	<td>Move up one page.  The comments about moving up a half-page also apply here.</td>
+</tr><tr valign=top>
+	<th>PageDown, Ctrl-N</th>
+	<td>Move down one page.  The comments about moving up a page also apply here.</td>
+</tr><tr valign=top>
+	<th>Ctrl-PageUp</th>
+	<td>Move to previous cursor.  Move to the previous cursor position that is more than a few lines away.
+	Whenever a move is made that spans more than a few lines, the old position is saved.  Ctrl-PageUp moves
+	the cursor either up or down to the previously saved position.   The number of saved positions is about 16.
+	The move is not exact.  Intervening insert or delete operations may move the text underneath the saved
+	position.</td>
+</tr><tr valign=top>
+	<th>Ctrl-PageDown</th>
+	<td>Move to next cursor.  If Ctrl-PageUp was used to move to a previous position, Ctrl-PageDown returns the
+	cursor back to the vicinity of the original cursor position.  The comments about Ctrl-PageUp also apply here.
+	</td>
+</tr><tr valign=top>
+	<th>Ctrl-Home</th>
+	<td>Move to beginning of the text.  If the cursor is not already at bot, the cursor is moved just in front of the
+	first character in the text.</td>
+</tr><tr valign=top>
+	<th>Ctrl-End</th>
+	<td>Move to the end of the text. If the cursor is not already at eot, the cursor is moved to just in front of the
+	null on the end of the last row of text.</td>
+</tr><tr valign=top>
+	<th>Ctrl-^</th>
+	<td>Move the current anchor to the cursor and the cursor to the anchor. If selected text, matched parens, or if
+	text just inserted, the cursor is at one end and the anchor is at the other end.  To switch to the other end
+	of one of these sections of text, press Ctrl-Hat where Hat is just above the 6 on most keyboards.</td>
+</tr><tr valign=top>
+	<th>Click</th>
+	<td>Move cursor to current I-beam position. See discussion in above section on Edit Cursor.</td>
+</tr><tr valign=top>
+	<th></th>
+	<th><em>Delete Commands</em></th>
+</tr><tr valign=top>
+	<th>AnyDelete</th>
+	<td>If text is selected, it is also deleted.</td>
+</tr><tr valign=top>
+	<th>BackSpace</th>
+	<td>Delete previous char.  If text is currently selected, it is deleted but the previous character is not.</td>
+</tr><tr valign=top>
+	<th>Delete, Ctrl-D</th>
+	<td>Delete next char. If text is currently selected, it is deleted but the previous character is not.</td>
+</tr><tr valign=top>
+	<th>Ctrl-Delete</th>
+	<td>Delete to beginning of previous word.  See discussion in section 1 on Words for more detail.</td>
+</tr><tr valign=top>
+	<th>Ctrl-BackSpace</th>
+	<td>Delete to beginning of next word. See discussion in section 1 on Words for more detail.</td>
+</tr><tr valign=top>
+	<th>Ctrl-U</th>
+	<td>Delete to beginning of line. If the cursor is already at the bol, nothing is deleted.</td>
+</tr><tr valign=top>
+	<th>Ctrl-.</th>
+	<td>Delete to end of line. If the cursor is already at the eol, nothing is deleted.</td>
+</tr><tr valign=top>
+	<th>Cut, Ctrl-X</th>
+	<td>Cut selected text.  The selected text is moved from the edit text to the clipboard.  Lines are terminated by
+	a CR-LF.  See the section above on Mouse operations for more detail.</td>
+</tr><tr valign=top>
+	<th>CtrlShift-X</th>
+	<td>Cut selected text.  The selected text is moved from the edit text and appended to the current text in the clipboard.
+	Lines are terminated by	a CR-LF.  See the section above on Mouse operations for more detail.</td>
+</tr><tr valign=top>
+	<th></th>
+	<th><em>Insert Commands</em></th>
+</tr><tr valign=top>
+	<th>AnyInsert</th>
+	<td>Delete selected text, if any.</td>
+</tr><tr valign=top>
+	<th>Tab, Ctrl-I</th>
+	<td>Insert tab at cursor.  But, if text is currently selected, Tab indents.</td>		
+</tr><tr valign=top>
+	<th>Enter, Return</th>
+	<td>Insert newline at cursor.  The current row is split at the current cursor position into two rows.</td>		
+</tr><tr valign=top>
+	<th>Paste, Ctrl-V</th>
+	<td>Paste clipboard into text at cursor.  The text in the clipboard is inserted into the edit text at the
+	current cursor position.  CR-LFs are converted into newlines.</td>
+</tr><tr valign=top>
+	<th></th>
+	<th><em>Select-Text Commands</em></th>
+</tr><tr valign=top>
+	<th>AnyKey</th>
+	<td>Except for copy, indent, unindent, comment, uncomment, replace-all,  currently selected text
+	is unselected unless move with shift key pressed.</td>
+</tr><tr valign=top>
+	<th>AnyShiftMoveKey</th>
+	<td>A move operation with the shift key pressed extends the currently selected text.</td>
+</tr><tr valign=top>
+	<th>AnyDeleteKey</th>
+	<td>Delete operations also delete the currently selected text</td>
+</tr><tr valign=top>
+	<th>AnyInsertKey</th>
+	<td>Insert operations replace the currently selected text with the inserted characters.</td>
+</tr><tr valign=top>
+	<th>Ctrl-A</th>
+	<td>Select entire text.  Move cursor to end-of-text.</td>
+</tr><tr valign=top>
+	<th>Copy, Ctrl-C</th>
+	<td>Copy selected text into clipboard. Currently selected text remains selected.</td>
+</tr><tr valign=top>
+	<th>CtrlShift-C</th>
+	<td>Append selected text to existing clipboard text. Currently selected text remains selected.</td>
+</tr><tr valign=top>
+	<th>Ctrl-S</th>
+	<td>SelectTextBetweenMatchingParens.  When the cursor is setting just in front of an opening bracket
+	({[&lt; or just after a closing bracket &gt;]}) with a matching bracket at the other end, the region
+	is highlighted with a light gray background.  By pressing ctrl-S this same region is converted into selected text.
+	If no brackets are currently matched, or if paren matching is turned off, Ctrl-S generates an alert.</td>
+</tr><tr valign=top>
+	<th>Shift-Click</th>
+	<td>If the shift key is pressed when pressing the left mouse button, the selected text is extended from the
+	current cursor position to the newly selected position. See also the discussion above on Mouse operations.</td>
+</tr><tr valign=top>
+	<th>Drag</th>
+	<td>Move cursor and then select text while left button is pressed.  See discussion above on Mouse operations.</td>
+</tr><tr valign=top>
+	<th>Double-Click</th>
+	<td>Select text between parens or select nearby word.  Clicking twice in quick succession in front of an opening
+	bracket or just past a closing bracket, selects the text between the matching brackets; else, selects a nearby word
+	 and moves the cursor to the end-of-word.  See discussion in section 1 on Words.</td>
+</tr><tr valign=top>
+	<th></th>
+	<th><em>Dialog and Special Commands</em></th>
+</tr><tr valign=top>
+	<th>Ctrl-F</th>
+	<td>Launch find dialog.  Searches a region of the edit text for a match with a pattern.  The
+	pattern may be a regular expression.  A pattern cannot match multiple rows.  The search
+	can be limited to words, case sensitive search or plain text. Searches can proceed in either direction from
+	the cursor.</td>
+</tr><tr valign=top>
+	<th>Ctrl-G</th>
+	<td>Launch go-to-line dialog. Moves the cursor to the line specified in the dialog.</td>
+</tr><tr valign=top>
+	<th>Ctrl-R</th>
+	<td>Launch find/replace dialog.  Allows last matched text to be replaced with the replace text.  If the replace
+	text box is empty, the matched text is deleted.  Then, a search for the next match in the search region is
+	launched.  All matches in the specified region may be replaced by clicking on Replace All.</td>
+</tr><tr valign=top>
+	<th>Ctrl-T</th>
+	<td>Launch the set tab stop dialog. Converts leading spaces in each row of the currently selected text into
+	tabs or vice versa. Set desired SpacesPerTab value.  Set the ExtraSpaces option.  Keep keeps leftover spaces
+	after the leading spaces are converted to tabs.   The Tab option converts the leftover spaces into an additional
+	tab character.  The Delete option discards the extra spaces.  Click on Tabify to convert leading spaces to tabs.
+	Click on Detab to convert leading tabs to spaces.</td>
+</tr><tr valign=top>
+	<th>F1</th>
+	<td>Launch help dialog.  Shows a summary of this help.</td>
+</tr><tr valign=top>
+	<th>Ctrl-Y</th>
+	<td>Redo last set of undo operations.  Reapply the last set of undo operations.  Any other insert or delete operation
+	cancels all of the previous undo operations.</td>
+</tr><tr valign=top>
+	<th>CtrlShift-Y</th>
+	<td>Redo last undo.  Reapply last undo operation.  Any other insert or delete operation cancels all the previous undo
+	operations.</td>
+</tr><tr valign=top>
+	<th>Ctrl-Z</th>
+	<td>Undo last set of related commands.  Reverse the last set of related insert/delete commands.</td>
+</tr><tr valign=top>
+	<th>CtrlShift-Z</th>
+	<td>Undo last insert or delete command.  Reverse the last edit command.</td>
+</tr><tr valign=top>
+	<th>Ctrl-(, Ctrl-)</th>
+	<td>Toggle ParenMatching on/off.  Either Ctrl-( or Ctrl-) turn Paren Matching on if it is currently off and
+	vice versa.  Paren matching requires a scan of the text every time that the cursor is moved, so it
+	should be turned off if you are not using it.</td>
+</tr><tr valign=top>
+	<th>Ctrl-Tab</th>
+	<td>Switch to next tabbed document if more than one document is open.</td>
+</tr><tr valign=top>
+	<th>Ctrl-BackTab</th>
+	<td>Switch to previous tabbed document if more than one document open.</td>
+</tr><tr valign=top>
+	<th>Ctrl-semicolon</th>
+	<td>Insert an initial comment delimiter at beginning of each selected line. Select every row of currently
+	selected text.</td>
+</tr><tr valign=top>
+	<th>CtrlShift-semicolon</th>
+	<td>Uncomment. Delete initial comment delimiter from every selected line.</td>
+</tr><tr valign=top>
+	<th>Tab</th>
+	<td>Indent. If text selected, indent each selected row; else, insert a tab character at the current cursor position.</td>
+</tr><tr valign=top>
+	<th>BackTab</th>
+	<td>Unindent. If text selected, unindent each selected row; else, move back to the previous tab stop.</td>
+</tr><tr valign=top>
+	<th>F3</th>
+	<td>Repeat last find searching forwards.  F3 searches forward in the search region starting from the last match.
+	An alert occurs if no match can be found.  F3 uses the current options and the current search region.  See the
+	discussion on Search below for more details.</td>
+</tr><tr valign=top>
+	<th>Shift-F3</th>
+	<td>Repeat last find searching backwards. Shift-F3 searches backward from the previous match in the current search
+	region.  The comments for F3 apply here as well.</td>
+</tr><tr valign=top>
+	<th>Ctrl-F3</th>
+	<td>Repeat last find.  Performs the same operation as F3 except that the search region is expanded to the entire
+	text. See the comments for F3.</td>
+</tr><tr valign=top>
+	<th>Right-Click</th>
+	<td>Launch context menu.  The context menu contains many of the same edit operations as shown on the toolbar.  See
+	the comments on using the context menu above.</td>
+</tr>
+</table>
+ <!-- 2.5 EditSummary -->		
+  <!-- 2 EditOperations -->
+
+<h1>3 Dialogs</h1>
+<h2>3.1 Find Dialog</h2>
+<img src="EdFindDialog.gif" width="389" height="186" align="right" alt="Find Dialog" border="0">
+<h3>3.1.1 Overview</h3>
+<p>
+The Find dialog allows users to search for a pattern in the edit text.  The desired pattern is entered into the Find
+text box or selected from the drop-down combo box at the top of the dialog.  Click on the Find button on the right
+or press Enter to conduct the next search. Click on the Quit button to close the dialog.  See section 5 of this
+guide for a detailed discussion of searching.</p>
+<p>
+Messages appear in the status bar at the bottom of the dialog that are of help in guiding the search.  Three
+button groups allow users to select several options, a search region, and a search direction. A discussion of
+each Group is shown next.</p>
+<h3>3.1.2 Options</h3>
+<p>
+<b>Match Words</b>
+See the discussion in section 1 on words. Match Words restricts the match to start and to end on a
+word boundary.  Thus &quot;space&quot; will not match &quot;backspace&quot;.  The pattern does not have to
+contain just alphanumeric characters.  Thus &quot;::back space&quot will match &quot;the ::back space&quot;
+because the matching text starts and ends on a word boundary.</p>
+<p>
+<b>Match Case</b> If Match Case is checked, the search is case-sensitive.  In this <i>case</i>, &quot;BackSpace&quot;
+does not match &quot;backspace&quot;.  If Match Case is not checked they would match.  Match Case only applies to
+the letters from A thru Z.</p>
+
+<p><b>RegularExp</b> If RegularExp is checked, the pattern entered in the Find text box is treated as a
+regular expression.  Regular expressions are discussed in section 5 below.</p>
+
+<h3>3.1.3 Search Direction.</h3>
+<p>
+Unlike the check boxes, one, and only one, radio button in this group can be selected.</p>
+<p>
+<b>Down</b> If Down is selected the search begins at the first row of the search region.  Each row is searched
+for a match from left to right.  If a partial row is included in the search region, only the portion of the
+row in the selected region is searched.</p>
+<p>
+<b>Up</b> If Up is selected, the search begins at the last row of the search region.  Each row is searched
+for a match from the end to the left.  If a partial row is included in the search region, only the portion of the
+row in the selected region is searched.  Searching up is slower than searching down.  If the direction is
+not important to you, select Down.</p>
+
+<h3>3.1.4 Search Region.</h3>
+Just as with the Direction button group, one, and only one, radio button in the group can be selected.
+<p>
+<b>Selection</b> If several lines are currently selected when the dialog is opened, the search region is
+restricted to the selected text.  This search region remains in effect until the last match is made in this
+region or until another region is selected from this group.</p>
+<p>
+<b>At End</b> If searching Down, the search region extends from the current cursor position to the end
+of the text.  If searching Up, the search region extends from the current cursor position to the beginning
+of the text.  This option is especially attractive if you want to be notified when a complete pass has been
+made through the text.</p>
+<p>
+<b>All Text</b> The search extends from the current cursor position and extends to the entire text.  This
+option is somewhat distinctive in that it is not possible to ever hit the end of the search region.  That is,
+the next find can always be conducted even if no match was made on the last attempt.</p>
+<p>
+<b>More Information.</b>
+Much more detailed information on searching is found in section 5.</p>
+ <!-- 3.1 FindDialog -->
+
+<h2>3.2 Function/Lambda List Dialog</h2>
+<img src="EdFunctionListDialog.gif" width="266" height="443" align="right" alt="Function List Dialog" border="0">
+<h3>3.2.1 Overview</h3>
+While editing a document, the &quot;function list&quot; or &quot;Lambda list&quot; dialog can be shown by depressing the
+Ctrl key and then pressing the right button on your pointing device, typically a mouse. The dialog shows a list of the
+functions or Lambdas in the current document. Each entry in the list shown contains two fields.  The first one is the
+line number and the second is the function name.  You can do any of the following:
+<ul>
+	<li>Select.  Highlight one item in the list by clicking on it and then press the select button to move to that function in
+	the source code.</li>
+	<li>Double-click.  As an alternative, you can also double-click on an item in the list to move to that function.</li>
+	<li>Cancel.  Press cancel to dismiss the dialog and return to editing the document.</li>
+	<li>Sort.  Click in either header to re-sort the list on the column selected.  An up-arrow indicates that the list is
+	is sorted in ascending order.  A down-arrow indicates that the list is sorted in descending order on that list.
+	The column and the sort order are reset the next time that the dialog is opened.</li>
+</ul>
+<h3>3.2.2 Function Definitions</h3>
+The definition of a function for each language is shown in the following table.  The meta-symbol &lt;fcnname&gt; refers to
+an arbitrary function name that appears in the &quot;Function&quot; column of the function list. The meta-symbol
+&lt;def...&gt; stands for any one of the following: defun, defchild, defriend, deforphan.  The meta-symbol
+&lt;type&gt> refers to any sequence of non-space characters. The ellipsis ... stands for any sequence of characters except
+a closing parenthesis.
+<table  cellspacing=0 border=0 cellpadding=2>
+<tr valign=top>
+	<th>Language</th>
+	<th>Syntax</th>
+	<th>Example</th>
+</tr><tr valign=top>
+	<th>Lisp</th>
+	<td>(&lt;def...&gt; &lt;fcnname&gt;(...)</td>
+	<td>(defun readTestTable(aTableName)</td>
+</tr><tr valign=top>
+	<th>C</th>
+	<td>(&lt;type&gt; &lt;fcnname&gt;(...)</td>
+	<td>TVAL FProcedure_Send(NUM argc,TVAL argv[])</td>
+</tr><tr valign=top>
+	<th>Javascript</th>
+	<td>function &lt;fcnname&gt;(...)</td>
+	<td>function chop(iMsg, iLen)</td>
+</tr><tr valign=top>
+	<th>Text</th>
+	<td>* &lt;fcnname&gt;.</td>
+	<td>* ItemA.</td>
+</tr>
+</table>
+ <!-- 3.2 FunctionDialog -->
+
+<h2>3.3 Goto Dialog</h2>
+<img src="EdGotoDialog.gif" width="241" height="120" align="right" alt="Goto Dialog" border="0">
+<p>
+The Goto dialog allows users to move to a line in the edit text.  Enter the line number in the &quot;Go To&quot;
+edit box and then click on Go.  The cursor is moved to the designate line in the edit text.  Click on Close
+to dismiss the dialog.  If the line number exceeds the number of lines in the text, the cursor is moved
+to the end of the text.</p>
+ <!-- 3.3 GotoDialog -->
+
+<h2>3.4 Replace Dialog</h2>
+
+<h3>3.4.1 Overview</h3>
+<img src="EdReplaceDialog.gif" width="336" height="217" align="right" alt="Replace Dialog" border="0">
+<p>
+<b>Find.</b> The Replace dialog allows users to search for a pattern in the edit text and to replace previously matched text with
+new text.  Enter the desired search pattern into the Find text box or select an existing pattern from the drop-down
+Find combo box shown in the diagram on the right.  Click on the Find button on the top, right side of the dialog
+or press Enter to conduct a next search.  The Find capability is nearly identical to that of the Find dialog.  Please
+consult section 3.1 on the Find Dialog for more details. The major difference is that the Find Dialog allows searches
+up from the end of the search region.  Searches in the Replace Dialog are always conducted from the current top of the
+search region towards the end of the search region.  Consult section 5 below for more details on search and
+replace.</p>
+
+<p>
+<b>Replace.</b> Enter the text to be replace the current match in the Replace text box just below the find text box
+in the dialog shown on the right.  You may also select a previous replace string from the drop-down combo box.
+Click on the Replace button to replace the currently matched text and then to search for the next
+match with the current Find pattern.  The next search is conducted from the current cursor position to the end of the
+search region.</p>
+<p>
+<b>Replace All.</b> Click on the Replace All button to replace all of the matches in the current search region
+with the replace text.  If some text is selected, the selected text remains selected.  Else, the last match in
+the search region is selected.</p>
+<p>
+<b>Options.</b> The options are described in section 3.1 on the the Find Dialog.</p>
+<p>
+<b>Search Region.</b> The search region is described in section 3.1 on the Find Dialog.</p>
+<p>
+<b>Messages.</b>  Messages appear in the status bar at the bottom of the dialog that are of help in guiding the search.  Three
+button groups allow users to select several options, a search region.</p>
+ <!-- 3.4 ReplaceDialog -->
+
+<h2>3.5 Set Tabs Dialog</h2>
+<img src="EdSetTabDialog.gif" width="223" height="197" align="right" alt="Tabstop Dialog" border="0">
+<h3>3.5.1 Overview</h3>
+<p>
+Use this dialog to convert leading spaces to tabs or to convert leading tabs to spaces.  To convert spaces to tabs, select
+the rows to be modified in the edit text and then press Ctrl-T to bring up the dialog shown on the right. The number of
+spaces-per-tab may be entered into the &quot;Spaces per Tab&quot; spin box. Then click on the &quot;Tabify&quot; button to
+convert leading spaces into tabs.  Similarly, click on the &quot;Detab&quot; button to convert leading tabs into spaces.
+A mixture of leading spaces and tabs is handled gracefully as noted below.  Changes to the file cannot be undone using
+undo.</p>
+
+<h3>3.5.2 Extra Spaces</h3>
+<p>
+The ExtraSpaces option only applies when the Tabify button is clicked.  After each set of spaces-per-tab leading spaces are
+converted to tabs, zero up to one less than the tabwidth spaces might be left over.  There are three ways to deal with
+these leftover spaces:</p>
+<ul>
+	<li>Keep.  Tack the extra spaces onto the end of the last tab.  The first character in the row will not line up with
+	a tabstop</li>
+	<li>Tab.  Replace the extra spaces with one extra tab.  The first character in the row will line up with the next
+	tabstop.</li>
+	<li>Delete. Discard the extra spaces. The first character in the row will line up with a tabstop.</li>
+</ul>
+
+<h3>3.5.3 Tabify</h3>
+<p>
+A selected row is only modified if it contains one or more spaces.  The steps in processing the leading spaces in one
+row are: </p>
+<ol>
+	<li>Count the number and the total width of the leading spaces and tabs.</li>
+	<li>Compute the number of tabs required to span the same width and compute the number of extra spaces left over.</li>
+	<li>Based upon the current ExtraSpaces option, adjust the number of leading tabs and extra spaces in the row.</li>
+</ol>
+
+<h3>3.5.4 Detab</h3>
+<p>
+A selected row is only modified if it contains one or more tabs.  The steps in processing the leading tabs in one
+row are: </p>
+<ol>
+	<li>Count the number and the total width of the leading spaces and tabs.</li>
+	<li>Compute the number of spaces required to span the same width.</li>
+	<li>Replace the existing tabs with the number of spaces required to span the same width.</li>
+</ol>
+ <!-- 3.5 SetTabDialog -->
+
+<h2>3.6 Test Suite Dialog</h2>
+<img src="EdTestSuiteDialog.gif" width="453" height="238" align="right" alt="Test Suite Dialog" border="0">
+<h3>3.6.1 Overview</h3>
+<p>
+This editor has a built-in test facility that uses the Applications Programming Interface (API) described in section 8
+below.  Press Ctrl-Shift-F5 to bring up the Test Suite Dialog shown on the right.  Any edit operation that can
+be performed from key strokes, pointing devices, or other dialogs mentioned in this section can be included
+in the test suite.  When the edit test suite is launched, a test file is read to generate a set of edit operations.
+These edit operations are translated into edit commands and submitted to the AisEd API.  The results of the
+edit commands are displayed in the current edit Page.</p>
+<p>
+This dialog is provided for advanced users only.  Running a test suite may overwrite existing files. You were
+warned.</p>
+
+<h3>3.6.2 Cmd</h3>
+<p>
+An edit operation may be entered into the Cmd Text Box.  The format of the edit operation is described in detail
+in the edit test suite file.  The edit commands are described in section 8 below on the AisEd API.  After entering
+the operation, click on the Go button to execute the edit operation.
+When running a sequence of operations from a test file, after the next operation is executed, it is displayed in
+this Text Box.</p>
+
+<h3>3.6.3 Next and Prev</h3>
+<p>
+Click on the Next button to execute the operation shown in the Next Text Box.  The results of the operation, if any,
+are displayed in the editor.  After the edit operation is performed, the operation is displayed in the
+Cmd Text Box and the next pending operation is shown in the Next Text Box.</p>
+<p>
+Click on the Go button to re-execute the current operation shown in the Cmd Text Box.</p>
+<p>
+Click on the Prev button to re-execute the previous operation (not shown).  The results of the operation, if any,
+are displayed in the editor.  The operation in the Cmd Text Box is moved back to the Next Text Box and the previous operation
+that was just re-executed is moved back into the Cmd Text Box.</p>
+
+<h3>3.6.4 Run</h3>
+<p>
+Click on the Run button to continuously execute the operations in the test suite from the test shown in Next until the end
+of the test suite or the next stop directive is reached.  If the test suite is run from the C++ debugger, a breakpoint can
+be placed in the beep() function which is common to all the checking functions.  If any errors occur during the execution
+of the test suite, they will very likely cause a red alert in the editor or an error message in the debugger.</p>
+
+<h3>3.6.5 Restart</h3>
+<p>
+Click on the Restart button to re-read the test suite file and restart the tests over.  To make changes to the test suite
+on the fly, just edit the test suite file and then press Restart.</p>
+ <!-- 3.6 TestSuiteDialog -->
+  <!-- 3 Dialogs -->
+
+<h1>4 Selected Text</h1>
+<h2>4.1 Selecting Text</h2>
+<p>
+Anchor. Note that when text is first selected, an anchor is set at the current cursor position and then the cursor
+is moved to the new position.  The selected text from the anchor to the new cursor position is displayed with
+a dark blue background.  When extending a selected region, the cursor is moved to a new position. The selected text
+extends from the current anchor to the new cursor position.  The cursor may be in front of or after the anchor.</p>
+<p>
+Move. Text can be selected by clicking the mouse with the Shift key pressed or by dragging the cursor across a
+section of text.  Text can also be selected by almost any keyboard move operation by depressing the Shift key
+while carrying out a move operation.   The selected text can also be extended by repeating a move operation
+with the shift key depressed.  If text is currently selected, it is deselected by moving the cursor.</p>
+<p>
+Matching Parentheses.  If any pair of brackets are matched, the intervening text can be selected using
+Ctrl-S (for Select), including the brackets at both ends.  Paren matching must be enabled to use this mode
+of selection</p>
+
+  <!-- 4.1 Selecting -->
+<h2>4.2 Operations on Selected Text</h2>
+<p>
+View edit operations involving selected text as a single operation that is carried out in two steps.  First
+some text is selected and then an operation is performed on the selected text.</p>
+<p>
+Insert. If text is currently selected, an insert operation will replace the selected text with the inserted
+characters.</p>
+<p>
+Delete. If text is currently selected, a delete operation will delete the selected text.  In the special case
+of Delete-Prev-Char and Delete-Next-Char, the selected text is deleted but no other characters are deleted.</p>
+<p>
+Clipboard. Selected text can be copied to the clipboard, appended to the clipboard, or moved to the clipboard.
+See the command summary in section 2.5 for more details.</p>
+<p>
+Indent and Comment.  Indent, unindent, comment and uncomment operations all require one or more rows of text
+to be selected.</p>
+<p>
+Dialogs.  The Find Dialog, Replace Dialog, and Set Tab Dialog utilize selected text to set the region to be
+operated on.  In addition, the Find Dialog and the Replace Dialog use selected text to mark the last text that
+has been matched or replaced.</p>
+  <!-- 4.2 Operations -->
+
+<h2>4.3 Preserving Selected Text</h2>
+<p>
+Several edit operation preserve selected text.  They are Copy, Comment, Uncomment, Indent, Unindent, Tabify in
+the Tab Set Dialog,and Replace All in the Replace Dialog.  Except for the Copy operation, all of these
+operations modify the selected text.  So, the amount of selected text is always adjusted to extend from
+the beginning of the first row to the end of the last row after the modification to the text has been made.</p>
+  <!-- 4.3 Preserving -->
+  <!-- 4 SelectedText -->
+
+<h1>5 Search</h1>
+<h2>5.1 SearchRegion</h2>
+<h3>Overview </h3>
+<p>
+Searching is done row by row.  A row is tested for a match with the pattern.  If a match is found, the search
+stops on the first match in the row.  If not, the next row is searched and so on until the end of the search
+region is reached.  The search can be conducted from the beginning of the search region to the end or from the
+end of the search region backwards.  If the search region includes only a partial row, only the portion of the
+row included in the search region is tested for a match.</p>
+<p>
+You can simply enter a pattern in the Find combo box and then press Return to search for the next match starting
+from the beginning of the specified search region.
+Press return a second time to dismiss the dialog and then press F3 (search down) or Shift-F3 (search up)
+to find the next match.   Check the &quot;Match Words&quot; check box to search for patterns that start and end
+on a word boundary.  Check the &quot;Match Case&quot; check box if you wish to make the search case
+sensitive.  If the &quot;Regular Exp&quot; box is checked, the pattern in the Find combo box is treated as
+a regular expression.  Select the Up radio button in to search from the end of the search region upward.</p>
+<p>
+<b>Repeat Search.</b> Each time that a match is found the cursor moves down, (or up if Up selected) in the region
+to the next match and the matched text is selected.  Each subsequent search starts its search from the last match.
+In the case of searching backwards, the search starts from one character to the left of the last match in order to
+avoid rematching the same text.  The search terminates when the search reaches the end of the search region.</p>
+<p>
+If the search fails, you can modify the pattern, the search options, the search region, and the search direction and
+continue the search.  Note that messages appear at the bottom of the find dialog box and also on the status bar to
+guide your search.  If the search fails and the Find Dialog has been dismissed, you can press Ctrl-F3 to extend the
+search region to the entire text.</p>
+
+<h3>5.1.1 Search Region</h3>
+<p>
+The search region may be set to one of three options shown in the Region button group in the Find dialog.</p>
+<p>
+<b>Selection</b>
+
+Suppose that you want to restrict your search to just one module of the source code.
+First, select a text region of two or more rows that includes the module to be searched.  Then open the Find Dialog
+and choose the Selection option in the search Region option group.  The search region extends from the beginning of
+the selected text to the end of the selected text.  If a match is found, the matched text is selected and the cursor
+is moved to the end of the matched text.  Even though the original text region is no longer selected, the
+search region is still in effect until the Region option is not modified.  Subsequent searches will start from the
+current cursor position to the end (or beginning if searching backwards) of the originally selected text.
+The selected region is in effect until the Region option in the Find Dialog is changed or until no more matches
+are found.</p>
+<p>
+<b>To End</b> The To-End option restricts the search region from the current cursor to the end-of-text if
+searching forward (Down Option is selected) or to the beginning-of-text if searching backwards.  A second
+search continues the search from the end of the last match if moving forwards.  The search continues from
+the next to last matched character if searching backwards.</p>
+<p>
+<b>All Text</b>the All-Text option searches from the cursor forward or from the cursor backward.   If the end-of-text
+is reached searching forward, the search continues from the beginning-of-text until the cursor is again reached.
+If the beginning-of-text is reached scanning backwards, the search continues backward in the last row of the text.
+If a match is found, the next search starts from the end of the last match.  If no match is found, the cursor is
+not moved and an alert is emitted.</p>
+  <!-- 5.1 Search Region -->
+
+<h2>5.2 Regular Expressions</h2>
+In the find or replace dialogs, a &quot;regular expression&quot; can be entered into the text
+box named Find:.  This regular expression is often referred to as a &quot;pattern&quot;.  Find searches
+each row of text in the document to see if any portion of the row matches the pattern in the text box.
+Although you can turn off regular expression processing by unchecking the &quot;Use Regular Exp.&quot; check box,
+you will learn new ways to employ regular expressions if you use them on a regular basis.
+<p>
+ After introducing a few essential definitions, regular expressions are defined in the table below.</p>
+
+<h3>5.2.1 Definitions</h3>
+Some of the special lingo used below is defined here.
+<ul>
+	<li>ASCII Code.  The numerical code used to represent a letter.  The value is expressed in hexadecimal.  For example,
+	the ASCII code for a space character is 0x20.</li>
+	<li>Digit.  Any one digit from 0 through 9 inclusive.</li>
+	<li>Range. A range of characters, such as [0-9] that represents any one digit.</li>
+	<li>Whitespace.  A space (0x20), tab (0x09), or newline (0x0a)</li>
+	<li>Word Character.  A letter, digit, or underscore.</li>
+	<li>Word. A sequence of word characters.</li>
+</ul>
+
+<h3>5.2.2 Matching Words</h3>
+By selecting the match words check box, the search is restricted to text that not only matches the pattern,
+but also, begins and ends on a word boundary.  The pattern itself can contain word boundaries. Some examples:
+<table  cellspacing=0 border=0 cellpadding=2>
+<tr valign=top>
+	<th>Pattern</th>
+	<th>Text</th>
+	<th>Comments</th>
+</tr><tr valign=top>
+	<td>abc def</td>
+	<td>abc def.uvw</td>
+	<td>Pattern does match the text because no word character precedes the initial a and a period separates
+	def from uvw.</td>
+</tr><tr valign=top>
+	<td>def</td>
+	<td>def_uvw</td>
+	<td>Pattern does not match the text because a word character (underscore) follows def.</td>
+</tr><tr valign=top>
+	<td>:abc</td>
+	<td>x:abc</td>
+	<td>Pattern does match the text because the initial colon serves as a word boundary.</td>
+</tr>
+</table>
+<h3>5.2.3 Elements</h3>
+ In a regular expression, most characters match themselves.  Some special characters with their
+meaning are noted in the following table.  These elements are the basic building block of regular expressions.
+In the examples, => should be read as &quot;matches&quot;.
+<table  cellspacing=0 border=0 cellpadding=2>
+<tr valign=top>
+	<th>Element</th>
+	<th>Example</th>
+	<th>Meaning</th>
+</tr><tr valign=top>
+	<th>c</th>
+	<td>abc => abc in abcd</td>
+	<td>Any character except the special characters below match themselves.</td>
+</tr><tr valign=top>
+	<th>c</th>
+	<td>abc => abc in abcd</td>
+	<td>Any character except the special characters below match themselves.</td>
+	
+</tr><tr valign=top>
+	<th>.</th>
+	<td>. => 7 in 7.89</td>
+	<td>Dot (.) matches any one character.</td>
+</tr><tr valign=top>
+	<th>\x</th>
+	<td>\. => . in 7.89</td>
+	<td>When x is a &quot;special&quot; character, use \x to match x where x is one of
+	 \, ., ?, *, +, |, ^, $, [, ], (, ), {, }. </td>
+</tr><tr valign=top>
+	<th>\a</th>
+	<td>\a => \07 in abc\07 </td>
+	<td>Matches the bell character, 0x7.</td>
+</tr><tr valign=top>
+	<th>\f</th>
+	<td>\f => \014 in abc\014</td>
+	<td>Matches the form feed character 0x0c.</td>
+</tr><tr valign=top>
+	<th>\n</th>
+	<td>\n => \n in abc\n</td>
+	<td>Matches the line feed character, 0x0a.</td>
+</tr><tr valign=top>
+	<th>\r</th>
+	<td>\r => \r in abc\r\n</td>
+	<td>Matches the carriage return character, 0x0d.</td>
+</tr><tr valign=top>
+	<th>\t</th>
+	<td>\t => \t in abc\t</td>
+	<td>Matches the tab character, 0x09.</td>
+</tr><tr valign=top>
+	<th>\v</th>
+	<td>\v => \013 in abc\013d</td>
+	<td>Matches the vertical tab character, 0x0b.</td>
+</tr><tr valign=top>
+	<th>\d</th>
+	<td>\d => 3 in a34c</td>
+	<td>Matches one digit.</td>
+</tr><tr valign=top>
+	<th>\D</th>
+	<td>\D => a in 123a</td>
+	<td>Matches one non-digit character.</td>
+</tr><tr valign=top>
+	<th>\0nnn</th>
+	<td>\041 => ! in abc!</td>
+	<td>Matches the character with a code in octal is nnn where nnn is 0-3 octal digits.</td>
+</tr><tr valign=top>
+	<th>\s</th>
+	<td>\s => \t in abc\t</td>
+	<td>Matches one whitespace character.</td>
+</tr><tr valign=top>
+	<th>\S</th>
+	<td>\S => a in abc\n</td>
+	<td>Matches one non-whitespace character, 0x0a.</td>
+</tr><tr valign=top>
+	<th>\w</th>
+	<td>\w => a in abc\n</td>
+	<td>Matches one word character (alphanumeric character).</td>
+</tr><tr valign=top>
+	<th>\W</th>
+	<td>\W => \n in abc\n</td>
+	<td>Matches a non-word character.</td>
+</tr><tr valign=top>
+	<th>[ABC],[A-C]</th>
+	<td>[A-C] => B in XBC</td>
+	<td>Matches one char from the specified range. [ABC] or [A-C] matches A or B or C.</td>
+</tr><tr valign=top>
+	<th>[^ABC]</th>
+	<td>[^ABC] => X in XBC</td>
+	<td>Matches any character <i>not</i> in the specified range.  [^ABC] matches any character except A or B or C.</td>
+</tr>
+</table>
+<p>
+Note that, when specifying a range, a leading caret (^) represents the negation of a class.  An intervening dash
+represents a range.  In the classes of four characters [ABC^] or [-ABC] the tilde and the dash just represent
+themselves.</p>
+
+<h3>5.2.4 Examples</h3>
+The above elements provide a way to represent a single character.  An element may be either represent a specific
+character such as A, B, or C or it may represent one character that belongs to a class of characters such as \d, \w, \s,
+or [A-Z].  As noted below, parentheses may be used to encapsulate a sequence of elements within an expression.
+For  example, in (abc)+ the plus operator applies to &quot;abc&quot; whereas in abc+ the plus just applies to the
+&quot;c&quot;.  Regular expressions combine elements to allow searches for more complex patterns.  When entering
+a pattern in the Find Combo Box, the special characters noted below are shown in dark red.  In the table below,
+E represents a regular expression such as (abc).
+<table  cellspacing=0 border=0 cellpadding=2>
+<tr valign=top>
+	<th>Expression</th>
+	<th>Example</th>
+	<th>Description</th>
+</tr><tr valign=top>
+	<th>E?</th>
+	<td>a\d? => a9 in a999</td>
+	<td>E? matches zero or one occurrence of E.</td>
+</tr><tr valign=top>
+	<th>E+</th>
+	<td>\d+ => 789 in 789</td>
+	<td>E+ matches one or more occurences of E.</td>
+</tr><tr valign=top>
+	<th>E*</th>
+	<td>7\d* => 789 in 789</td>
+	<td>E* matches zero or more occurences of E. Some expression must precede the asterisk.</td>
+</tr><tr valign=top>
+	<th>E{n}</th>
+	<td>\d{2} => 78 in 789</td>
+	<td>E{n} matches exactly n occurences of E.</td>
+</tr><tr valign=top>
+	<th>E{n,}</th>
+	<td>\d{2,} => 789 in 789</td>
+	<td>E{n,} matches n or more occurences of E.</td>
+</tr><tr valign=top>
+	<th>E{,m}</th>
+	<td>\d{,2} => 78 in 789</td>
+	<td>E{,m} matches zero to m occurences of E.</td>
+</tr><tr valign=top>
+	<th>E{n,m}</th>
+	<td>\d{1,3} => 789 in 789</td>
+	<td>E{n,m} matches from n up to m occurences of E.</td>
+</tr><tr valign=top>
+	<th>E|E</th>
+	<td>\d|[abc] => b in b789</td>
+	<td>E|E matches either the first E or the second E.</td>
+</tr><tr valign=top>
+	<th>^E</th>
+	<td>^X => X in XYZ, but not X in WXYZ</td>
+	<td>^E matches E only at the beginning of a row of text.</td>
+</tr><tr valign=top>
+	<th>E(?=E)</th>
+	<td>\d(?=\w+) => 9 in 9ab, but not 9 in 9.ab</td>
+	<td>Positive lookahead. E(?=E) matches the first E iff it is followed by the second E.</td>
+</tr><tr valign=top>
+	<th>E(?!E)</th>
+	<td>\d(?!\w+) => 7 in 7 ab but not 7 in 78ab</td>
+	<td>Negative lookahead. E(?!E) matches the first E iff it is not followed by the second E.</td>
+</tr>
+</table>
+<p>
+Some important precautions:</p>
+<ol>
+	<li>The largest expression is always matched.  For example \d{2,3} will match three digits rather than just two
+		if three digits are	available. .* will match everything up to and including the trailing newline in a row.</li>
+	<li>Zero-length patterns match nothing. The pattern \d* by itself matches <i>Zero</i> digits. So, for example,
+	it matches abc or &amp;%# or whatever.  Every pattern should have at least one element that is not zero length.</li>
+	<li>Escape special characters. Put a backslash (\) in front of the characters \, ., ?, *, +, |, ^, $, [, ], (, ), {, } 
+	to match the character itself.</li>
+	<li>Match words.  If the &quot;Match words&quot; check box is selected, the pattern must begin and end on
+	a word boundary.   &quot;b cd&quot; matches &quot;b cd e&quot; but not &quot;ab cd&quot; or &quot;b cde&quot;</li>
+	<li>Match case.  If the &quot;Match case&quot; check box is selected, upper case letters in the pattern only
+	match upper case letters in the text and vice versa.  Match case only applies to the letters [A-Z] and [a-z].</li>
+</ol>
+
+<h3>5.2.5 More Examples.</h3>
+Here are a few examples of regular expressions used in the editor.
+
+<table  cellspacing=0 border=0 cellpadding=2>
+<tr valign=top>
+	<th>Expression</th>
+	<th>Matches</th>
+	<th>Description</th>
+</tr><tr valign=top>
+	<th>\w+\s*=\w+\n</th>
+	<td>name =value</td>
+	<td>Matches a word, optional whitespace, equal sign, a word, newline.</td>
+</tr><tr valign=top>
+	<th>^\s*(#|\n)</th>
+	<td># comment</td>
+	<td>Matches row starting with optional spaces followed by # or a newline.</td>
+</tr><tr valign=top>
+	<th>\$\(\s*\w*\s*\)</th>
+	<td>$( NAME )</td>
+	<td>Matches $( followed by optional spaces, word, optional spaces, closing paren.</td>
+</tr><tr valign=top>
+	<th>[/\\]</th>
+	<td>foo/bar</td>
+	<td>Matches either a slash or a backslash.</td>
+</tr><tr valign=top>
+	<th>[{&lt;([\])}&gt;}]</th>
+	<td>(paren)</td>
+	<td>Matches an opening or closing bracket. Note that ] must be escaped with a backslash.</td>
+</tr><tr valign=top>
+	<th>\s*\(def\w{2,6}\s+</th>
+	<td>defriend</td>
+	<td>Matches (defun, (defchild, (defriend, (deforphan, etc.</td>
+</tr>
+</table>
+ <!-- 5.2 RegularExpressions -->
+  <!-- 5 SearchReplace -->
+
+<h1>6 Undo/Redo</h1>
+<h2>6.1 Undo</h2>
+<h3>6.1.1 Overview</h3>
+All edit operations can be divided into three categories, move, insert, or delete.  Of these, insert
+and delete operations are saved in an ordered undo stack.  The last insert or delete operation can be undone by pressing
+Ctrl-Z even if the cursor has been moved around after the last insert or delete.  The next-to-last insert or
+delete operation can also be undone by pressing Ctrl-Z again and so on up to a limit
+of the maximum number of undo operations. This limit is a configurable parameter. For example:
+<ol>
+	<li>InsertA.  Insert a sequence of chars.</li>
+	<li>DeleteB.  Delete a char.</li>
+	<li>Undo.  Undo DeleteB by inserting the deleted char back into the text.</li>
+	<li>InsertC.  Insert a second sequence of chars.</li>
+	<li>Undo.  Undo InsertC by deleting the second sequence of chars.</li>
+	<li>Undo.  Undo InsertA by deleting the first sequence of chars.</li>
+</ol>
+
+<h3>6.1.2 Exceptions</h3>
+A few operations that cannot be be undone are not kept on the list. Operations that are not supported by undo are
+indent, unindent, comment, uncomment, tabify, and detab.
+ <!-- 6.1 Undo -->
+
+<h2>6.2 Redo</h2>
+A Ctrl-Y launches a &quot;redo&quot; operation which reverses the previous undo operation.  So, if undo deletes
+inserted text, redo re-inserts the text back into the text.  Similarly, if an undo inserts previously deleted text,
+the corresponding redo deletes the inserted text a second time.
+Note that only the last consecutive undo operations can be redone.  That is, the list of redo operations is reset
+if a new insert or delete operation is performed. So, in a sequence of operations such as undo, insert, undo, you
+can only redo the last undo.
+ <!-- 6.2 Redo -->
+  <!-- 6 UndoRedo -->
+
+<h1>7 Configuration</h1>
+<h2>7.1 Initialization Files</h2>
+<p>
+<b>Overview.</b> The editor has two sets of parameters.  The non-configurable parameters are set by
+defined constants in the source code.  These parameters may be modified in the source.  Configuration
+parameters may be set by making changes to the source code or by editing the editor's initialization file.</p>
+<p>
+<b>Initialization Files.</b> One or two initialization files may be placed in the same folder as the
+folder containing the executable file, aised.exe.  The initialization files are named aisedver.ini and
+aised.ini.  The first is a release version distributed with each release of the editor and should not be modified.  The
+second initialization file is an optional user file that contains all the local overrides to the default settings
+provided in aisedver.ini.
+Put any changes to the settings in the release version that you wish to make.  Keep a change history noting
+the version number of the release and the date when each set of changes were made to this file (last change at
+the top of the history).</p>
+<p>
+<b>Updating the User Initialization File.</b>  The aised.ini file may be updated by noting the changes in
+the change history contained in the last release of the aisedver.ini file since the last release version shown
+in the change history of the aised.ini file:</p>
+<ul>
+	<li>New Parameters.  If you wish to modify the setting for a new parameter, add a new entry with the
+	modified value in the aised.ini file.</li>
+	<li>New value.  If an existing parameter has a new default value, you may want to modify or remove an
+	existing override in the aised.ini file.</li>
+	<li>Deleted Parameter.  If a parameter is removed from the latest aisedver.ini file, remove any overrides
+	in the aised.ini file.</li>
+</ul>
+<p>
+Update the latest version number in the change history of the aised.ini file and note the changes made.</p>
+<p>
+<b>Setting Parameters.</b>  When the editor starts execution, each parameter is set three times.   The
+parameters are set to the default values hard-coded into the executable.  If an aisedver.ini file can be
+located in the install directory, the default settings are overwritten by the settings in aisedver.ini.
+If an ais.ini file can be located in the install directory, the parameter settings are overwritten a second
+time with the values provided in the ais.ini file.</p>
+ <!-- 7.1 Initialization -->
+
+<h2>7.2 Initialization File Format</h2>
+<p>
+<b>Comments.</b>
+An initialization file may contain zero or more lines consisting of comments, blank lines, and parameter settings.
+Comment lines begin with an octothorpe (#).  Comments are used for notes, a change history, and a description of
+each parameter.  The format of the description is:<br>
+ParameterName [Units]Default (Lower,Upper). Purpose<br>
+where: </p>
+<ul>
+	<li>Units. Units stands for a unit of measure such as pixels or inches.  # is used to denote a count or a size.
+	</li>
+	<li>Default. Default stands for a default or nominal value.</li>
+	<li>Lower,Upper. Lower,Upper stands for the range of acceptable values for this parameter.</li>
+	<li>Purpose.  Purpose stands for a brief description of the role played by the parameter.</li>
+</ul>
+<p>
+<b>Parameter Name-Value Pairs</b>  A setting consists of a ParameterName, zero or more spaces, an
+equal sign, zero or more spaces, and a numeric value.  The parameter names in the ais.ini file should be
+the same as the names in the aisedver.ini file.  The values can be any value in the range specified.
+Only the name-value pairs that you wish to modify need to be added to the ais.ini file.</p>
+
+<p>
+<b>Configuration Parameters</b>  The current set of configurable parameters along with a description
+of each parameter may be found in the aisedver.ini file distributed with the executable file.</p>
+ <!-- 7.2 Format -->
+ <!-- 7 Configuration -->
+
+<h1>8 Application Program Interface (API)</h1>
+<h2>8.1 Edit Options</h2>
+<p>
+<b>Overview.</b> The editor's application programming interface (API) allows programmatic access to the edit operations that
+are normally invoked by key presses and mouse events.  The editor uses the same functions as exposed here to
+carry out all of the interainternallyated edit operations.  In fact, a study of this API reveals the inner
+operations of the editor.  The dozens of edit operations all end up calling these twenty plus functions described
+here.</p>
+<p>
+<b>Arguments.</b>  The function arguments fall into just four data types:</p>
+<ul>
+	<li>String.  A string containing file names, configurable parameters, search patterns, text.</li>
+	<li>MoveTo.  A set of move operations such as nextchar, prevline, etc. MoveTo is an enum that represents
+	an integer value where each integer is assigned a name such as nextchar as enumerated below.</li>
+	<li>Integers. Numerical values such as tabwidths, string lengths, etc.</li>
+	<li>Booleans. Flags that turn on or off options such as matching words, display results, etc.</li>
+</ul>
+<p>
+<b>Argument Prefix.</b> The formal parameter name, representing an argument is prefixed by one or more lower case
+letterlettersly, i, o, and r.  The prefix is used to indicate the following:</p>
+<ul>
+	<li>References are prefixed by an r.  A reference is associated with a variable in the calling function.
+	Modifying a reference modifies the variable that it references. </li>
+	<li>Input arguments are prefixed by an i.  The argument value is not changed by the function.</li>
+	<li>Output arguments are prefixed by an o.  The initial value of the variable is ignored but it may be
+	modified by the called function.  Only references can return values.</li>
+	</ul>
+<p>
+<b>Returned Values.</b>  The API functions either return nothing or a boolean value that is true if, and only if,
+the operation succeeds.</p>
+ <!-- 8.1 Options -->
+
+<h2>8.3 MoveTo Values</h2>
+Moves are always relative to the current blinking cursor position. All the supported moves are represented by the
+following MoveTo values:
+<ol>
+	<li>eBol. Move to beginning of the line</li>
+	<li>eBot. Move to beginning of the text</li>
+	<li>eEol. Move to end of the line</li>
+	<li>eEot. Move to end of the text</li>
+	<li>eNextBow. Move to the beginning of the next word</li>
+	<li>eNextChar. Move to the next character in the text</li>
+	<li>eNextCur. Move to the next saved cursor</li>
+	<li>eNextEow. Move to the end of the next word</li>
+	<li>eNextHalf. Move down in the text one-half of a page</li>
+	<li>eNextLine. Move down one line</li>
+	<li>eNextPage. Move down one page</li>
+	<li>ePrevBow. Move to the beginning of previous word</li>
+	<li>ePrevChar. Move back to the previous character in the text</li>
+	<li>ePrevCur. Move to the previously saved cursor position</li>
+	<li>ePrevHalf. Move up in the text one-half of a page</li>
+	<li>ePrevLine. Move up to the previous line</li>
+	<li>ePrevPage. Move up in the text one page</li>
+	<li>ePrevTab. Move back to the previous tab stop</li>
+	<li>eSame. Don't move</li>
+	<li>eWord. Select a nearby word</li>
+</ol>
+ <!-- 8.2 MoveTo -->
+
+<h2>8.3 Functions</h2>
+
+<h3>editAppend</h3>
+<pre>
+Syntax: bool editAppend(const QString&amp; irText)
+Description:
+Append irText to the end of the current text
+Args:
+irText - Input, reference, string(). References the text to be appended.
+SideEffects:
+Undo, no selected text, paren matching.
+Example:
+editAppend(&quot;Add this line to the end of the file\n&quot;);
+</pre>
+
+<h3>editAppendFile</h3>
+<pre>
+Syntax: bool editAppendFile(const QString&amp; irFileName)
+Description:
+Appends the contents of the named file to the end of the current text.  The file name
+may contain a relative path (relative to the directory of the file being edited).
+Args:
+  irFileName - Input, reference, string(). References the name of the file.
+SideEffects:
+  Undo, selected text, paren matching.
+Example:
+  editAppendFile(&quot;TestSuite1.log&quot;);
+</pre>
+
+<h3>editClear</h3>
+<pre>
+Syntax: void editClear()
+Description:
+Clears the text.  The text buffer is reduced to one row containing a single null
+character.
+SideEffects:
+  No undo, no selected text, no paren matching.
+Example:
+  editClear();
+</pre>
+
+<h3>editComment</h3>
+<pre>
+Syntax: bool editComment(bool iInsert)
+Description:
+Indents or unindents the currently selected rows by one tab.  If unindenting, a
+selected row with no leading tab is not modified. Selected text remains selected.
+Args:
+  iInsert - Input, boolean(true). Insert leading tab if true, remove leading tab if false.
+SideEffects:
+  No undo, selected text, no paren matching.
+Example:
+  editComment(false);
+</pre>
+
+<h3>editCopy</h3>
+<pre>
+Syntax: void editCopy(bool iAppend)
+Description:
+The currently selected text is copied to the clipboard.  If iAppend is true, the
+selected text is appended to the clipboard, else, the contents of the clipboard is
+overwritten.  The selected text remains selected.
+Args:
+  iAppend - Input boolean(false). Append text if, and only if, iAppend is true.
+SideEffects:
+  Undo, selected text, no paren matching.
+Example:
+  editCopy();
+</pre>
+
+<h3>editCut</h3>
+<pre>
+Syntax: void editCut(bool iAppend)
+Description:
+Remove the currently selected text from the edit text.  If iAppend is true,
+append the text to the contents of the clipboard, else, overwrite the contents
+of the clipboard.
+Args:
+  iAppend - Input boolean(false). Append text if, and only if, iAppend is true.
+SideEffects:
+  Undo, no selected text, no paren matching.
+Example:
+  editCut(true);
+</pre>
+
+<h3>editDelete</h3>
+<pre>
+Syntax: bool editDelete(AMoveTo iMove)
+Description:
+Delete the character in the edit text between the current cursor position and
+the cursor position specified by iMove. Also remove currently selected text,
+if any.
+Args:
+  iMove - Input enum(0). Specifies the amount to move relative to the current
+  cursor.
+SideEffects:
+  Undo, no selected text, paren matching.
+Example:
+  editDelete(eEol);
+</pre>
+
+<h3>editFind</h3>
+<pre>
+Syntax: bool editFind(QString&amp; irFind, bool iDown, bool iMatchCase, bool iMatchWord,
+	bool iRegExp, bool iSel, bool iWrap)
+Description:
+Find the next match to irFind in the text starting from the current cursor position.
+See section 3.1 on the Find Dialog for more details.
+Args:
+  irFind - Input, reference, string(). The pattern to be matched.
+  iDown - Input, boolean(). If true, search downward cursor, else search upward.
+  iMatchCase - Input, boolean(). If true, the search is case sensitive.
+  iMachWord - Input, boolean(). If true, matched text starts and ends on a word boundary.
+  iRegExp - Input, boolean(). If true, irFind represents a regular expression.
+  iSel - Input, boolean(). If true, the search region is the selected text.
+  iWrap - Input, boolean(). If true, search continues from end of text up to the cursor.
+SideEffects:
+  No undo, selected text, no paren matching.
+Example:
+  editFind(&quot;\tindented&quot;, true, true, false, false, false, true);
+</pre>
+
+<h3>editIndent</h3>
+<pre>
+Syntax: bool editIndent(bool iInsert = true)
+Description:
+If iInsert is true, insert a leading tab in front of every selected row.  If iInsert
+is false, delete the leading tab, if any, from every selected row.
+Args:
+  iInsert - Input, boolean(). If true, indent, else, unindent.
+SideEffects:
+  No undo, selected text, no paren matching.
+Example:
+  editIndent(true);
+</pre>
+
+<h3>editInsert</h3>
+<pre>
+Syntax: void editInsert(const QString&amp; irText, bool iForward)
+Description:
+Insert the text referenced by irText into the edit text beginning at the current
+cursor position.  If any text is currently selected, it is deleted.
+Args:
+  irText - Input reference(). Contains text to be inserted.
+  iForward - Input, boolean(). If true, move the cursor to the end of the inserted
+  text.
+SideEffects:
+  Undo, no selected text, paren matching.
+Example:
+  editInsert(&quot;Insert a new line\n&quot;, false);
+</pre>
+
+<h3>editMove</h3>
+<pre>
+Syntax: bool editMove(ATextEdit::AMoveTo iMove, bool iSelect)
+Description:
+Move the cursor to a position relative to the current cursor specified by iMove.
+If iSelect is false, the currently selected text is deselected, else the region
+of selected text is extended from the current anchor to the new cursor position.
+If iSelect is true and if no text is currently selected, the text between the
+current cursor position and the new cursor position is selected.
+Args:
+  iMove - Input enum(0). Specifies the amount to move.
+  iSelect - Input, boolean(). If true, select text, else deselect text.
+SideEffects:
+  Undo, selected text, paren matching.
+Example:
+  editMove(eNextChar, true);
+</pre>
+
+<h3>editNew</h3>
+<pre>
+Syntax: bool editNew(const QString&amp; irFileName, const QString&amp; irText);
+Description:
+Remove the existing text from the text buffer.  Set the language specified by the extension
+on the file name referenced by irFileName.  Append the text referenced by irText to the
+edit buffer.
+Args:
+  irFileName - Input, reference, string(). References the file extension to set language.
+  irText - Input, reference, string(). References the initial text.
+SideEffects:
+  No undo, no selected text, paren matching.
+Example:
+  editNew(&quot;.sl&quot;, &quot;Initial text&quot;);
+</pre>
+
+<h3>editPaste</h3>
+<pre>
+Syntax: void editPaste()
+Description:
+Insert the the text in the clipboard into the edit text starting at the current cursor
+position.
+SideEffects:
+  Undo, no selected text, paren matching.
+Example:
+  editPaste()
+</pre>
+
+<h3>editPrint</h3>
+<pre>
+Syntax: void editPrint()
+Description:
+Print the current edit text on the default printer, if one is available.  Add page numbers
+to the bottom of each page.
+SideEffects:
+  No undo, no selected text, no paren matching.
+Example:
+  editPrint();
+</pre>
+
+<h3>editRead</h3>
+<pre>
+Syntax: bool editRead(const QString&amp; irFileName)
+Description:
+Clear the current contents of the edit text. Initialize the edit text with the
+file referenced by irFileName.
+Args:
+  irFileName - Input, reference, string(). Name of the file to be read.
+SideEffects:
+  No undo, no selected text, paren matching.
+Example:
+  editRead(&quot;startup.sl&quot;);
+</pre>
+
+<h3>editReplace</h3>
+<pre>
+Syntax: bool editReplace(QString&amp; irFind,const QString&amp; irReplace, bool
+  iAll,  bool iMatchCase, bool iMatchWord, bool iRegExp, bool iSel, bool iWrap)
+Description:
+Replace the previous match with the text referenced by irReplace.  Find the next
+match to irFind in the edit text starting from the current cursor position.  See
+section 3.4 on the Replace Dialog for more details.  If iAll is true, the
+currently selected text remains selected.  Else, the last replace or match is
+selected.
+Args:
+  irFind - Input, reference, string(). The pattern to be matched.
+    irFind - Input, reference, string(). The text to replace the matched string.
+  iAll - Input, boolean(). If true, replace all matches in the search region.
+  iMatchCase - Input, boolean(). If true, the search is case sensitive.
+  iMachWord - Input, boolean(). If true, matched text starts and ends on a word boundary.
+  iRegExp - Input, boolean(). If true, irFind represents a regular expression.
+  iSel - Input, boolean(). If true, the search region is the selected text.
+  iWrap - Input, boolean(). If true, search continues from end of text up to the cursor.
+SideEffects:
+  Undo, selected text, no paren matching.
+Example:
+  editReplace(&quot;\tbegblock&quot;, &quot;begblock&quot; true, true, false, false, false, true);
+</pre>
+
+<h3>editRedo</h3>
+<pre>
+Syntax: void editRedo()
+Description:
+Reverse the last undo operation by re-doing the initial insert or delete.
+SideEffects:
+  Undo, no selected text, paren matching.
+Example:
+  editRedo();
+</pre>
+
+<h3>editSetParameter</h3>
+<pre>
+Syntax: bool editSetParameter(const QString&amp; irParam, int iValue)
+Description:
+Modify the value of the configurable parameter named by irParam.  Set the the new
+value to iValue.
+Args:
+  irParam - Input, reference, string(). References the name of the parameter.
+SideEffects:
+  No undo, no selected text, paren matching.
+Example:
+  editSetParameter(&quot;MaxUndoDepth&quot;, 16);
+</pre>
+
+<h3>editSwitch</h3>
+<pre>
+Syntax: bool editSwitch()
+Description:
+Interchange the current anchor and cursor.  If a pair of brackets are
+currently matched, the cursor moves to the other end of the matched
+region.  If text is selected, the cursor moves to the other end of the
+selected text.  If a hunk of text has been inserted, the cursor is moved to
+the other end of the inserted text.  No change if cursor and anchor are the
+same.
+SideEffects:
+  No change to current settings.
+Example:
+  editSwitch();
+</pre>
+
+<h3>editTabify</h3>
+<pre>
+Syntax: bool editTabify(int iExtraSpaces, int iTabWidth, bool iToTabs)
+Description:
+Convert leading spaces in the currently selected text to tabs or vice versa.
+The currently selected text remains selected.
+Args:
+  iExtraSpaces - Input, integer(). If less than zero, delete extra spaces.
+  	If positive, replace extra spaces with a tab, else keep spaces.
+SideEffects:
+  No undo, selected text, no paren matching.
+Example:
+  editTabify(-1, 3, true);
+</pre>
+
+<h3>editText</h3>
+<pre>
+Syntax: bool editText(QCString&amp; orText, int iLength, bool iSave)
+Description:
+Copy the edit text to orText up to iLength characters. If iSave is true, mark the
+edit text as not modified.
+Args:
+  orText - Output, reference, string(). References the string buffer to hold text.
+  iLength - Input, integer(). Length of the buffer referenced by orText.
+  iSave - Input, boolean(true). If true, the edit text is marked as not modified.
+SideEffects:
+  Undo, selected text, paren matching.
+Example:
+  QCString aText(2048);
+  editText(aText, 2048, true);
+</pre>
+
+<h3>editUndo</h3>
+<pre>
+Syntax: void editUndo()
+Description:
+Undo the last insert or delete operation.
+SideEffects:
+  Redo, no selected text, paren matching.
+Example:
+  editUndo();
+</pre>
+
+<h3>editWrite</h3>
+<pre>
+Syntax: bool editWrite(const QString&amp; irFileName)
+Description:
+Overwrite the contents of the file referenced by irFileName with the contents
+of the edit text.
+Args:
+  irFilename - Input, reference, string(). References the file to be modified.
+SideEffects:
+  No changes.
+Example:
+  editWrite(&quot;Results.txt&quot;);
+</pre>
+ <!-- 8.3 Functions -->
+ <!-- 8 API -->
+
+<h1>9 Frequently Asked Questions</h1>
+<h2>9.1 Configuration</h2>
+<h3>9.1.1 How do I change the configuration of the editor?</h3>
+Add or copy an aised.ini file, as described above, to the same directory as the one containing the aised.exe file.
+Or, add an environment variable, AISDIR, whose value is the path to a folder containing aised.ini.
+If no aised.ini file is in either directory, the default values for the configurable parameters are used.
+
+<h3>9.1.2 Where can I put the aised.ini file?</h3>
+You can put an aised.ini file in the install directory where the aised.exe file resides.  You can also create
+and AISDIR environment variable with a path such as, C:/ais or user/bin/ais.  If aised cannot find an aised.ini
+file in the install directory, it will look in the folder specified by the value of AISDIR for a copy of aised.ini.
+
+<h3>9.1.3 How do I make AisEd my default text editor?</h3>
+In Windows, the application associated with a file extension can be adjusted using the &quot;Folders Option&quot;
+in the Control Panel.  Select the &quot;File Types&quot; tab and then change the file associated with the
+&quot;Open&quot; command to aised.exe for those extensions associated with text files, e.g., .txt and .ini.
+
+<h3>9.1.4 How do I modify the key used for a command?</h3>
+Currently, the only way to change the command-key bindings is to modify the source code and recompile.  Be
+warned that such changes will invalidate the current editor help and documentation.
+
+<h3>9.1.5 How do I modify the print margins or the page numbering?</h3>
+Currently, the only way to change these printing parameters is to modify the defined constants in the
+AisEd header file and recompile.
+
+<h3>9.1.6 How do I modify the syntax coloring?</h3>
+Currently, the only way to change the colors or parsing of the text is to modify the source code and
+recompile.
+
+<h3>9.1.7 How can I view HTML text?</h3>
+This editor displays HTML tags as plain text.  Modifications could be made to the display portion of the source code
+to render HTML text, but images and hypertext links are not recognized.
+
+<h3>9.1.8 How can the editor operation be verified if a problem is encountered?</h3>
+The editor has a built-in test facility that can run a test suite of your own choosing.  See section 3.6 on the
+test suite dialog for more information.  The challenge is to implement a sequence of tests that explore all the
+nooks and crannies of the code.   The existing test suite starts with a set of edit files and a file containing
+edit operations for each API command.  Each operation file is run against a variety of the edit files.  That way
+every edit operation is tested in several environments to obtain wide coverage.<br>
+For developers, the built-in instrumentation can be turned on by defining ATED_DEBUG to catch any errors generated
+by the test suite.  Finally, BoundsChecker or other C++ checking facility is currently used to catch pointer errors
+or memory leaks not detected by the built-in checks.
+ <!-- 9.1 ConfigurationFAQs -->
+
+<h2>9.2 Edit Operations</h2>
+<h3>9.2.1 How do I undo a massive number of changes that I did not mean to make?</h3>
+The number of undo operations are limited because they consume significant space.  Here are some possible
+ways to undo a large number of insert and/or delete operations:
+<ul>
+	<li><b>Undo.</b> If the number of changes is less than the maximum number of saved undo operations, just
+	use Ctrl-Z to undo the changes.</li>
+	<li><b>Replace.</b> If a distinct sequence of characters are left at each change, the replace dialog will
+	allow you to replace this distinct sequence with the original contents.</li>
+	<li><b>Exit.</b> If the text has been saved recently, just exit and do not save the recent changes.  Then
+	open the document again and you will be back to the last save.</li>
+	<li><b>Backup.</b> Restore an earlier version of the document from backup or from the change management
+	system, if one is available.  Be careful to not write over an earlier version of the document before
+	you have had a chance to retrieve it.</li>
+</ul>
+<h3>9.2.2 How do I move back to the previous tab stop?</h3>
+Use the back tab (Shift-Tab) to move back to the previous tab stop.  Make sure that no text is currently
+selected.  Currently, there is no mechanism to move forward to the next tab stop.
+
+<h3>9.2.3 Why does the cursor move left/right when moving the cursor up/down?</h3>
+There are two reasons.  First, the cursor is moved to the beginning column of a tab.  Second,
+the cursor is moved to the end of a short line.  The editor remembers the original column position and
+moves back to the original column position when moving from a short line to a long line.
+
+<h3>9.2.4 How can I move past the end of a line or past the end of the text?</h3>
+The cursor is restricted to move no further than just in front of the last character in a line.  To extend a
+line to the right, just move to the end of the line and then press the space
+bar or the tab key to extend the line to the right.
+<p>
+To extend the text past the last line, move to the end of the text (Ctrl-End) and then press the Enter (or Return)
+key to create a new last line.</p>
+
+<h3>9.2.5 What are some helpful strategies for touch typists?</h3>
+Most touch typists are slowed down when they have to move their hands from their &quot;home&quot; position to
+reach for cursor keys.  Almost every cursor operation has an equivalent Ctrl-Key option.  Memorize these
+alternatives to make editing faster with less strain.  Press F1 to see all the cursor key alternatives.
+
+<h3>9.2.6 How much is a page?</h3>
+A page is just short of the number of lines of the current window (viewport).  Moving up/down by page shows new text
+without skipping any lines.  To increase/decrease the page size, adjust the height of the viewport.  Use Ctrl-UpArrow
+and Ctrl-DownArrow to move a half a page at a time.
+
+<h3>9.2.7 Some edits on a very large file are slow. How to make the edits faster?</h3>
+The following modifications will improve performance:
+<ol>
+	<li>Restart. Close the file and reopen it to minimize fragmentation.</li>
+	<li>No Language. Change the extension on the file to an extension that is not associated with any language,
+	such as txt.  Syntax highlighting requires extra computation.</li>
+	<li>No word wrap. Turn off word wrap.  Word wrapping imposes a significant computational overhead.</li>
+	<li>No paren matching.  Turn off paren matching.  It requires a scan through the text every time that
+	the cursor is moved before an opening bracket or after a closing bracket.</li>
+	<li>Reduce undo stack. Reduce the maximum number of saved undo operations to conserve memory.</li>
+	<li>No cut or paste.  Cut, copy, and paste are slow on large quantities of text.</li>
+	<li>Split the File. If possible, divide the file into several smaller files.</li>
+</ol>
+
+<h3>9.2.8 What is the rationale for using control H, J, K and L as substitutes for the arrow keys?
+Why use control I for a tab?</h3>
+Long ago and far away, keyboards had arrows marked on these keys.  Many users still use these keys for moving
+the cursor.  The ASCII code for a tab is Ctrl-I, so this choice matches reality.
+
+<h3>9.2.9 What are some of the ways to move around to various sections in a large file?</h3>
+Several nifty ways to get around:
+<ul>
+	<li>Function List Dialog.  Ctrl-RightClick brings up a list of the functions.  Double click on any one
+	to go to that function.</li>
+	<li>Move to previous cursor. Ctrl-PageUp moves the cursor back to the previous section of code that
+	you visited.  After a Ctrl-PageUp,  Ctrl-PageDown moves you back to where you came from.</li>
+	<li>Move to other end.  Ctrl-^ moves the cursor to the other end of a hunk of selected text or to the
+	other end of matching brackets.  By selecting or matching an entire function, it is possible to move
+	to the other end of the function.</li>
+	<li>Move to end. Ctrl-Home moves to beginning-of-text and Ctrl-End moves to the end-of-text.</li>
+	<li>Find Dialog.  Ctrl-F brings up the find dialog.  Enter or recall a pattern and then click on Find to
+	 move back to the section of code with that pattern.</li>
+	 <li>Repeat Search.  Plant a distinctive pattern in the vicinity of those regions you wish to visit.
+	 Press F3 or Shift-F3 to repeat the search for the pattern until you arrive at the desired section of code.</li>
+	<li>Goto Dialog. Press Ctrl-G and then enter the approximate line number for the section of code you
+	wish to visit.</li>
+</ul>
+
+<h3>9.2.10 When is it possible to undo a redo operation? Is it possible to redo an undo operation?</h3>
+First, a couple of points. You can only perform an undo operation after an insert or delete operation has been
+performed and you can only perform a redo operation after an undo has been performed Only the last N insert or
+delete operations can be undone, where N is set by the MaximumUndoDepth parameter. Operations must be undone in
+reverse order.
+After an undo operation is performed, it becomes a pending redo operation and after a redo operation the operation
+becomes a pending undo.  Finally, all pending redo operations are discarded after an insert or delete operation.<br>
+So, after a redo operation has been performed, it is possible to undo it for as long as it remains on the undo
+stack.<br>
+And, after an undo operation has been performed, it is possible to redo it as long as long as no intervening insert or
+delete operations are performed.
+ <!-- 9.2 EditFAQs -->
+
+<h2>9.3 Selected Text</h2>
+<h3>9.3.1 How should I view selected text?</h3>
+View the process of selecting text and then performing an operation on that text as a single operation that
+requires an intermediate step.  After selecting text you can delete the selected text, copy it to the clip
+board, or do both (cut).  You can also indent, unindent, comment, or uncomment selected text.
+
+<h3>9.3.2 How can I select an entire Lambda with a single keystroke?</h3>
+If paren matching is enabled, and if a pair of brackets are matched, Ctrl-S will select the text between the
+brackets, or just use the mouse to move to the I-beam cursor to the opening (or closing) bracket and then rapidly
+press the left button twice to select the entire Lambda.
+
+<h3>9.3.3  Are there any operations that don't either delete or deselect the currently selected text?</h3>
+Yes, there are a few operations that do not deselect the currently selected text: copy, indent/unindent,
+comment/uncomment, set tabs and replace-all in a selection.
+
+<h3>9.3.4 How do I replace selected text with a tab character?</h3>
+Use Ctrl-I.  The tab key is usurped for indenting.
+
+<h3>9.3.5 What is the best way to select a large amount of text?</h3>
+Use Click to set the cursor at one end of the block of text to be selected  Then, move up or
+down to the end of the block of text to be selected.  Depress the shift key and then
+press the left mouse button to extend the selected text to the new position.
+
+<h3>9.3.6 How do I deselect currently selected text?</h3>
+Just move the cursor to a new position.  Do not hold down the shift key while moving the cursor.
+
+<h3>9.3.7 How do I extend the currently selected text?</h3>
+When first selecting text, an anchor is set at the starting position of the selected area.  If selecting text
+backwards, the anchor is at the end of the selected area; else, the anchor is at the front of the selected area.
+To extend the selected text past the anchor, use any of the move commands, including the mouse, while holding
+down the shift key.
+
+<h3>9.3.8 How can I fix the indenting of a chunk of source code copied from elsewhere?</h3>
+Sometimes imported source code does not conform to standard format.  Statement blocks may be indented
+using a mixture of spaces and tabs based upon a non-standard tab width.  Select a section of the text to be
+repaired and then press Ctrl-T to bring up the Set Tab Dialog.  You can use Detab to replace leading tabs in
+the selected rows with the equivalent number of spaces.  The tab width to be used while replacing the tabs
+may be set using the SpacesPerTab spin box.  A mixture of spaces and tabs can be replaced with just leading spaces.
+Also, you can use Tabify to replace leading spaces with the equivalent number of tabs.  The number in the
+SpacesPerTab box is used to determine the tabwidth of the inserted tabs.  The option selected in the ExtraSpaces
+group determines what to do with the left over spaces.  See section 3.5 on the TabSet Dialog for more details.
+ <!-- 9.3 SelectedTextFAQs -->
+
+<h2>9.4 Formatting</h2>
+<h3>9.4.1 When I move the cursor next to an opening bracket (,{,[,&lt; or next to a closing bracket &gt;,],},),
+The region between the brackets is not highlighted?</h3>
+There are several reasons for this.  Check the following items:
+<ol>
+	<li>Paren matching disabled. Press Ctrl-( (Ctrl-9) or Ctrl-) (Ctrl-0) to enable paren matching.</li>
+	<li>No matching bracket.  The number of opening brackets must match the number of closing brackets.  Thus,
+	the first bracket will not be matched in &quot;X[ Y[ Z ]&quot; if the cursor is in front of the first brace.</li>
+	<li>Cursor position.  The cursor position must be moved to the front of an opening bracket or just past
+	a closing bracket to trigger the highlighting.</li>
+	<li>Cursor not moved.  Highlighting may not be triggered by some insert or delete operations.  Move the cursor
+	a short distance and then move it back.</li>
+</ol>
+<h3>9.4.2 How can I represent underline, bold, or italicized characters?</h3>
+Currently, the only mechanism to highlight characters is to select a different text color or background color.
+The source code would have to be modified to represent tagged text with a different color.
+
+<h3>9.4.3 How do I center or right-justify a block of text?</h3>
+Currently, AisEd does not support center or right-justify.  You can approximate these effects using
+the indent/unindent commands. 
+
+<h3>9.4.4 How do I change the size of the font?</h3>
+The font size can be modified by changing the FontSize parameter in the configuration file. The font size
+is in units of &quot;points&quot; where 72 points is one inch.  Recommended point sizes
+are 8, 9, 10, 11, 12, 14, 16, 18, 20.
+
+<h3>9.4.5 How can I do double-sided printing?</h3>
+Currently, the text editor does not support double-sided unless the printer itself is capable of double-sided
+printing.
+
+<h3>9.4.6 How can I distinguish between tabs, spaces, and newlines?</h3>
+Tabs, spaces, and newlines are not normally visible.  Tabs and newlines can be made visible by setting
+ShowNewlines and ShowTabs to one in the configuration file or by pressing Ctrl-Insert.
+
+<h3>9.4.7 How can I check for extra tabs, spaces past the last visible character in a row?</h3>
+There are two ways to do this.  One way is to make tabs and newlines visible as noted in the above FAQ.
+Extra tabs and spaces can be identified as blank space between the last visible character and the newline character.
+A second way is to select a block of text.  Lines where the highlighting extends more than one character position past
+the last visible character have extra spaces or tabs on the end of the line.
+
+<h3>9.4.8 In the SetTab Dialog, how can I undo a conversion?</h3>
+If converting spaces to tabs using Tabify, be sure to select the Keep option.  To undo a conversion just select
+Detab with the same SpacesPerTab as used to Tabify.  If the Tab or Delete options are selected, the extra spaces
+cannot be restored.<br>
+If converting tabs to spaces using Detab, undo the conversion by clicking on Tabify with the same number of SpacesPerTab.
+ <!-- 9.4 FormattingFAQs -->
+
+<h2>9.5 Searching</h2>
+<h3>9.5.1 How can I search just the current module?</h3>
+Double-click on the beginning paren or curly brace of a module to select the module.  Choose to search this
+selected region using the Select option in the Region button group.
+
+<h3>9.5.2 How can I repeat the last search from the top?</h3>
+F3 continues the search forward from the current cursor position.  To repeat a search from the top, press
+Ctrl-Home to move the cursor to the top of the text and then press F3.  Likewise, to search backwards from
+the bottom of the text, press Ctrl-End to move the cursor to the bottom of the text and then press Shift-F3.
+To search the entire text from the current cursor position, use Ctrl-F3.
+
+<h3>9.5.3 How can I reverse the direction of my last search?</h3>
+While using the Find or Replace dialog, select the Down option to search forward from the cursor.  Select Up
+to search backwards from the cursor.  While repeating the search, use F3 to search forward and use Shift-F3 to
+search backwards.  Unlike some other editors, F3 always searches forward and Shift-F3 always searches backward.
+
+<h3>9.5.4 How can I modify the pattern or check-box options while repeating the last search?</h3>
+Use Ctrl-F to bring up the search dialog.  Modify the settings and then press Return to perform at least one
+search. Select Close and continue searching using F3 or Shift-F3.
+
+<h3>9.5.5 How can I delete all occurences of a word?</h3>
+Use Ctrl-R to bring up the replace dialog.  Enter the word or phrase to be deleted in the Find text box.
+Leave the Replace text box empty and then select Replace All.
+
+<h3>9.5.6 How can I check the current search settings while repeating a search?</h3>
+Use Ctrl-F to bring up the Find dialog in order to view the current settings.  Press Close to dismiss the
+dialog.
+
+<h3>9.5.7 How can I search for words that may contain a period?</h3>
+Use [\w\.] to match a word character or a period.  Thus [\w\.]+  will match &quot;foo.txt&quot;.
+
+<h3>9.5.8 How can I match any character except a letter?</h3>
+Use [^A-Za-z] to match any character except a letter.  Thus [^A-Za-z]+ will match &quot;123= 120 + 3&quot;.
+
+<h3>9.5.9 How can I find a pattern with just a trailing word boundary? I want to match any word ending in xyz.</h3>
+Press Ctrl-F to bring up the Find dialog.  Don't check either the match-word check box.  Enter the pattern xyz\b and then
+press Return.  The pattern will match &quot;UVxyz=W&quot; but not &quot;UVxyzW&quot;.  Note that \b does not
+match a character; it matches a boundary.  For example, the pattern \bxyz matches &quot;xyz&quot;.  Since
+nothing precedes xyz in the text, xyz starts on a word boundary.  
+
+<h3>9.5.10 Why does the pattern $ move the cursor to the end of the line?</h3>
+The element $ matches the end-of-line boundary (it does not match any character). Either use \$ to match the
+dollar-sign or uncheck the RegularExp check box.
+
+<h3>9.5.11 How do I search for a pattern that spans more than one row?</h3>
+The pattern is applied to each row in turn.  If it fails, the next row is searched for a match.  To find a
+pattern that spans more than one row, devise a pattern that spans just one row at a time and then check the
+matches manually.
+
+<h3>9.5.12 How do I search for line that just contains the pattern P and nothing else?</h3>
+Use ^P$ where P is the pattern you wish to match.  For example, ^\d+$ will match the row 123 but not X123.
+
+<h3>9.5.13 Why doesn't the pattern X^Y match the text X^Y?</h3>
+The tilde is a special character (even in the middle of a pattern). Compose the pattern with a backslash in front
+of the tilde, X\^Y.
+
+<h3>9.5.14 Why doesn't the pattern X$Y match the text X$Y?</h3>
+The dollar-sign is a special character (even in the middle of a pattern).  Compose the pattern with a backslash
+in front of the dollar-sign, X\$Y.
+
+<h3>9.5.15 How can I replace four spaces with a tab?</h3>
+The replace text box interprets the escaped characters \a, \f, \n, \r, \t, \v, \0nnn as described in Section 3.1.4
+Elements above.  Press Ctrl-R to bring up the Replace dialog.  Enter four spaces in the Find
+text box, and enter \t in the replace box.  Every row must have a single newline on the end, so don't add or
+remove newlines from a row.  To replace leading spaces with a tab, see section 3.5 on the SetTab Dialog.
+
+<h3>9.5.16 What does turning off regular expressions buy me?</h3>
+Not much and the loss of pattern matching is significant.  If you uncheck the regular expression checkbox, the fourteen
+special characters described above are no longer special. That is, they just match themselves.  You can accomplish the
+same thing by prepending a backslash in front of a special character in a regular expression.  Thus, the regular
+expression &quot;foo\.txt&quot; is the same as &quot;foo.txt&quot; with regular expressions turned off.  The added
+power of regular expressions is well worth the small cost of inserting an occasional backslash.
+ <!-- 9.5 SearchingFAQs -->
+  <!-- 9 FAQS -->
+	<!-- printview -->
+</body>
+</html>

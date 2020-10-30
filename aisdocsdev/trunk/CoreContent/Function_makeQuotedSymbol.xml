@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>makeQuotedSymbol</Title>
+		<FunctionName>makeQuotedSymbol</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>Symbol Text String QuotedSymbol</ArgumentTypes>
+		<DataType>Symbol  </DataType>
+		<RelatedFunctions>  new type isSymbol</RelatedFunctions>
+        <RelatedVMInstructions> vmregObjPointer </RelatedVMInstructions>
+		<HumanKeywords>make new symbol quoted</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>makeQuotedSymbol</b> function converts a String into a new quoted Symbol object. </p>
+          ]]></Description>
+	<Brief>
+	   <Overview-Symbol><![CDATA[
+		<p> The <b>makeQuotedSymbol</b> function converts the specified source value <b>{string}</b> 
+             and returns a new quoted symbol object.</p>
+        ]]></Overview-Symbol>
+        <Usage-Symbol><![CDATA[
+        <p>Normally the <b>makeQuotedSymbol</b> function is used to create a quoted symbol from a 
+          source String, since Symbols can be easily used as identifiers and Strings are not easily 
+          used as identifiers. </p>
+        ]]></Usage-Symbol>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p><b>(makeQuotedSymbol string)</b></p>]]></Expression>
+		<Argument>
+		  <Name>string</Name>
+		  <Note><![CDATA[
+		  <p> The String that will be converted into a Quoted Symbol</p>
+          ]]></Note>
+		  <AISTypes>String</AISTypes>
+		</Argument>  
+		<Return><![CDATA[
+	    <p>QuotedSymbol </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

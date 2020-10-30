@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Directory insert 003</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>insert</FunctionKeywords>
+		<TypeKeywords>Directory Integer Symbol</TypeKeywords>
+		<RelatedFunctions>uniqueInsert</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>insert key value index</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples inserts a new key-value binding to the specified Directory.
+
+
+                  The new value for a specified key may be any AIS Object Type.
+
+
+                  
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(insert  #{dir||a:  4 c:  5}  1  b:  6) </sc>]]></Expression>
+        <Note><![CDATA[The key b: with the integer value 6 is inserted in the Directory. ]]></Note>
+        <Returns><![CDATA[#&#60Directory 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60Directory 123456&#62)  </sc>]]></Expression>
+        <Note><![CDATA[The contents of the modified Directory is displayed.]]></Note>
+        <Returns><![CDATA[#{dir|a: 4 b: 6 c: 5}true]]></Returns>
+        <Expression><![CDATA[ <sc>(insert  #{dir||a:  4 b: 6 c:  5}  1  b:  7) </sc>]]></Expression>  
+        <Note><![CDATA[The key b: with the integer value 7 is inserted in the Directory. ]]></Note> 
+        <Returns><![CDATA[#&#60Directory 345678&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60Directory 345678&#62)  </sc>]]></Expression>  
+        <Note><![CDATA[The contents of the modified Directory is displayed.]]></Note> 
+        <Returns><![CDATA[#{dir|a: 4 b: 7 b: 6 c: 5}true]]></Returns>
+        <Expression><![CDATA[ <sc> (insert  #{dir||a:  4 c:  5}  1  b:  #{dir||c: 2 f:4})    </sc>]]></Expression>
+        <Note><![CDATA[The key b: with another Directory as its value is inserted. ]]></Note>
+        <Returns><![CDATA[#&#60Directory 234567&#62  ]]></Returns>
+        <Expression><![CDATA[ <sc> (display #&#60Directory 234567&#62 )    </sc>]]></Expression>
+        <Note><![CDATA[The contents of the modified Directory is displayed.]]></Note>
+        <Returns><![CDATA[(insert  #{dir||a:  4 c:  5}  1  b:  #{dir||c: 2 f:4}) ]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

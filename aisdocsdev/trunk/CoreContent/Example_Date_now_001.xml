@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Date now 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>now</FunctionKeywords>
+		<TypeKeywords>Date Number</TypeKeywords>
+		<RelatedFunctions> date time today</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>computer time clock</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ The <b>now</b> function returns the current system time as a Julian Date value.
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc> 
+(now)               </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[732386.4029398]]></Returns>
+	    <Expression><![CDATA[ <sc> (date 732386.4029398)                  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#Mar,17,2005:09:40:13]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

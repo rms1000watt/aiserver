@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Essay SYSTEM "../DTD/Essay.dtd">
+<Essay>
+	<KnowledgeBase>
+	    <Title>FileIO Functions</Title>
+		<Topic>Function Libraries</Topic>
+		<SubTopic>Overview</SubTopic>
+		<HumanKeywords>File Input Output Functions Computations Programming</HumanKeywords>
+	</KnowledgeBase>
+	<Section>
+	    <Heading>Overview</Heading>
+		<Description><![CDATA[
+		    <div class="h2section" id="Overview">
+			<P>The Analytic Information Server engine supports a number of data file and console
+            i/o functions. Data files are managed similarly across all host operating systems, 
+            so Lambdas need not concern themselves with differences in local operating systems.</P>
+            <P>Data files are viewed as named, byte address spaces up to 2 gigabytes per file.
+            Each individual byte in a data file is addressable, and may be read or written. 
+            Writing to a data file automatically increases its size. Analytic Information Server
+            supports the storage and retrieval of object closures, within data files, at any byte 
+            location. Managing the structure within a data file is entirely the responsibility of 
+            the assigned Lambda.	 
+		    </P>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>Object Closure</Heading>
+		<Description><![CDATA[
+		    <div class="h2section" id="Object Closure">
+		    <P> Analytic Information Server supports the storage and retrieval of <b>object closures</b>, 
+            within data files, at any byte location. An <b>object closure</b> record contains the 
+            original object saved, together with all the objects it reaches. (See Object Closure 
+            record for Smith below). Before an object is saved to a data file, it is transformed 
+            into an object closure byte stream.</P>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>FileIO Variables</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="FileIO Variables">
+		    <P> The sections which follow, describe all of the global variables which 
+          operate upon or are specifically related to the data file and console i/o. </P> 
+           </div>
+         ]]></Description>
+    </Section> 
+	<Section>
+	    <Heading>_path</Heading>
+		<Description><![CDATA[
+            <div class="h2section" id="_path">
+		    <p>The global variable, <b>_path</b>, is reserved by the system to hold the
+		    directory and path name of the current working directory. The <b>_path</b>
+		    variable is set to the empty string &quot;&quot; at system startup. It is
+		    the programmers responsibility to initialize the <b>_path</b> variable. When
+		    the <b>_path</b> variable is referenced, the text contents of the <b>_path</b>
+		    variable are automatically attached to the beginning of database archive
+		    file named in the <b>new</b> function. The contents of the<b> _path</b>
+		    variable are also automatically prepended to the file names in both the <b>new
+		    ObjectRepository:</b> function and the <b>fileOpen</b> function.</p>
+		    <h3>Type: Variable</h3>
+		    <h3>When To Use</h3>
+		    <p>The <b>_path</b> is a global variable used to hold a path name string
+		    assigned by the programmer. If the <b>_path</b> variable is something other
+		    than a null string, the <b>_path</b> variable string will be prepended to
+		    the filename specified in the <b>new</b> function.</p>
+		    <h3>&nbsp;</h3>
+		    <h3>Example1</h3>
+		    <pre>(setq _path "C:\\Abase\\";)
+		(display _path) ; Returns "C:\\Abase\\"
+		(new ObjectRepository:"myarchive.odb"))
+		The database archive file name is now "C:\Abase\myarchive.odb"</pre>
+		    <h3>Example2</h3>
+		    <pre>(setq _path "d:\\test\\")
+		(new ObjectRepository: "myarchive.odb"))
+		The database archive file name is now
+		"d:\test\myarchive.odb"</pre>
+          </div>
+		 ]]></Description>
+     </Section>
+	<Section>
+	    <Heading>_saveTypes</Heading>
+		<Description><![CDATA[
+            <div class="h2section" id="_saveTypes">		 		    
+		    <p>The _<b>saveTypes</b> is a global variable that contains a Boolean value.
+		    The contents of the _<b>saveTypes</b> variable determines the calculation of
+		    the object closure when objects are saved to an Object Repository, a file,
+		    or a vector. At system startup, the _<b>saveTypes</b> variable is
+		    initialized to <b>False</b>. If the _<b>saveTypes</b> variable is later set
+		    to <b>True</b>, global value and type information are to be saved along with
+		    symbol objects.</p>
+		    <h3>Type: Variable</h3>
+		    <h3>When To Use</h3>
+		    <p>Analytic Information Server Symbols have the two properties associated with
+		    them: the type property and global value property. Typically, the
+		    preservation of type and global value information is needed when a Symbol is
+		    being used as a container. However, Symbols, are themselves data and may not
+		    be associated with a type or value. In the latter case, the type and global
+		    value properties are not important. The <b>_saveTypes</b> variable allows
+		    the programmer to control whether type and global information should be
+		    saved along with a Symbol object when the object is saved in an Object
+		    Repository, or file or vector.</p>
+		    <h3>Example1</h3>
+		    <pre>(defineStructure x: Old1:) ;; Global type info linked to x
+		(1 2 3)) ;; Global value stored in x
+		(setq y x:) ;; y contains the Symbol x:
+		(new ObjectRepository: &quot;test.db&quot;))
+		(setq _saveTypes false) ;; Do NOT save Symbol global and type info
+		(setq db[0] y) ;; Save record data only
+		(setq x #void) ;; Destroy global value in x
+		(defineStructure x: New1: ) ;; Destroy global type info in x
+		(setq y db[0]) ;; Read previously saved record into y&lt;
+		(writeln "y=" y ", x=" x ", fieldsof
+		(x)=" (fieldsOf x: ) )
+		The result output from the writeln statement is:
+		(x)=#{New1: #void}
+		Note that the contents of the Symbol x: is #void.
+		Note that the type information of the Symbol x: is different from the
+		original defineStructure statement.</pre>
+		    <h3>Example2</h3>
+		    <pre>(defineStructure x: Old1:) ;; Global type info linked to x
+		(1 2 3)) ;; Global value stored in x
+		(setq y x:) ;; y contains the Symbol x:
+		(new ObjectRepository: &quot;test.db&quot;))
+		(setq _saveTypes true) ;; DO save Symbol global and type info
+		(setq db[0] y) ;; Save Symbol global and type info
+		(setq x #void) ;; Destroy global value in x
+		(defineStructure x: New1: ) ;; Destroy global type info in x
+		(setq y db[0]) ;; Read previously saved record into y
+		(writeln "y=" y ", x=" x ", fieldsOf
+		(x)=" (fieldsOf x: ) )
+		The result output from the writeln statement is:
+		(x)=#{Old1: #void}
+		Note that the contents of the Symbol x: is the Vector #(1 2
+		3)
+		Note that the type information of the Symbol x: is the same as the
+		original defineStructure statement.</pre>      
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>nil</Heading>
+		<Description><![CDATA[
+		 <div class="h2section" id="nil">		 
+		    <p>The <b>nil</b> variable returns the value <b>#void</b>.<br>
+		    Type: Variable</p>
+		    <h3>When To Use</h3>
+		    <p>The <b>nil</b> variable can be used whenever it is necessary to clear a
+		    variable.</p>
+		    <h3>Example1</h3>
+		    <pre>(setq x 45) 
+		(display x) ; Returns 45 
+		(setq x nil) 
+		(display x) ; Returns #void</pre>
+          </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>FileIO Functions</Heading>
+		<Description><![CDATA[
+        <div class="h2section" id="FileIO Functions">
+	    <P> Here is a list of the links to the AIS built-in Math Functions with their
+           corresponding examples.</P>
+            <P>
+			<!--docscript>(aisRefGuide.fileLinkTable)</docscript-->
+			</P>  
+        </div>
+	    ]]></Description>
+	</Section>
+</Essay>

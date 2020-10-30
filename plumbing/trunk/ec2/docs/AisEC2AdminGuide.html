@@ -1,0 +1,1399 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<base target="_top">
+<style type="text/css">
+/* default css */
+table {
+  font-size: 1em;
+  line-height: inherit;
+  border-collapse: collapse;
+}
+tr {
+  text-align: left;
+}
+div, address, ol, ul, li, option, select {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+p {
+  margin: 0px;
+}
+pre {
+  font-family: Courier New;
+  white-space: pre-wrap;
+  margin:0;
+}
+body {
+  margin: 6px;
+  padding: 0px;
+  font-family: Verdana, sans-serif;
+  font-size: 10pt;
+  background-color: #ffffff;
+}
+img {
+  -moz-force-broken-image-icon: 1;
+}
+@media screen {
+  html.pageview {
+    background-color: #f3f3f3 !important;
+  }
+  body {
+    min-height: 1100px;
+    counter-reset: __goog_page__;
+  }
+  * html body {
+    height: 1100px;
+  }
+  .pageview body {
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-right: 2px solid #bbb;
+    border-bottom: 2px solid #bbb;
+    width: 648px !important;
+    margin: 15px auto 25px;
+    padding: 40px 50px;
+  }
+  /* IE6 */
+  * html {
+    overflow-y: scroll;
+  }
+  * html.pageview body {
+    overflow-x: auto;
+  }
+  /* Prevent repaint errors when scrolling in Safari. This "Star-7" css hack
+     targets Safari 3.1, but not WebKit nightlies and presumably Safari 4.
+     That's OK because this bug is fixed in WebKit nightlies/Safari 4 :-). */
+  html*#wys_frame::before {
+    content: '\A0';
+    position: fixed;
+    overflow: hidden;
+    width: 0;
+    height: 0;
+    top: 0;
+    left: 0;
+  }
+    .writely-callout-data {
+      display: none;
+      *display: inline-block;
+      *width: 0;
+      *height: 0;
+      *overflow: hidden;
+    }
+    .writely-footnote-marker {
+      background-image: url('MISSING');
+      background-color: transparent;
+      background-repeat: no-repeat;
+      width: 7px;
+      overflow: hidden;
+      height: 16px;
+      vertical-align: top;
+      -moz-user-select: none;
+    }
+    .editor .writely-footnote-marker {
+      cursor: move;
+    }
+    .writely-footnote-marker-highlight {
+      background-position: -15px 0;
+      -moz-user-select: text;
+    }
+    .writely-footnote-hide-selection ::-moz-selection, .writely-footnote-hide-selection::-moz-selection {
+      background: transparent;
+    }
+    .writely-footnote-hide-selection ::selection, .writely-footnote-hide-selection::selection {
+      background: transparent;
+    }
+    .writely-footnote-hide-selection {
+      cursor: move;
+    }
+    .editor .writely-comment-yellow {
+      background-color: #FF9;
+      background-position: -240px 0;
+    }
+    .editor .writely-comment-yellow-hover {
+      background-color: #FF0;
+      background-position: -224px 0;
+    }
+    .editor .writely-comment-blue {
+      background-color: #C0D3FF;
+      background-position: -16px 0;
+    }
+    .editor .writely-comment-blue-hover {
+      background-color: #6292FE;
+      background-position: 0 0;
+    }
+    .editor .writely-comment-orange {
+      background-color: #FFDEAD;
+      background-position: -80px 0;
+    }
+    .editor .writely-comment-orange-hover {
+      background-color: #F90;
+      background-position: -64px 0;
+    }
+    .editor .writely-comment-green {
+      background-color: #99FBB3;
+      background-position: -48px 0;
+    }
+    .editor .writely-comment-green-hover {
+      background-color: #00F442;
+      background-position: -32px 0;
+    }
+    .editor .writely-comment-cyan {
+      background-color: #CFF;
+      background-position: -208px 0;
+    }
+    .editor .writely-comment-cyan-hover {
+      background-color: #0FF;
+      background-position: -192px 0;
+    }
+    .editor .writely-comment-purple {
+      background-color: #EBCCFF;
+      background-position: -144px 0;
+    }
+    .editor .writely-comment-purple-hover {
+      background-color: #90F;
+      background-position: -128px 0;
+    }
+    .editor .writely-comment-magenta {
+      background-color: #FCF;
+      background-position: -112px 0;
+    }
+    .editor .writely-comment-magenta-hover {
+      background-color: #F0F;
+      background-position: -96px 0;
+    }
+    .editor .writely-comment-red {
+      background-color: #FFCACA;
+      background-position: -176px 0;
+    }
+    .editor .writely-comment-red-hover {
+      background-color: #FF7A7A;
+      background-position: -160px 0;
+    }
+    .editor .writely-comment-marker {
+      background-image: url('MISSING');
+      background-color: transparent;
+      padding-right: 11px;
+      background-repeat: no-repeat;
+      width: 16px;
+      height: 16px;
+      -moz-user-select: none;
+    }
+    .editor .writely-comment-hidden {
+      padding: 0;
+      background: none;
+    }
+    .editor .writely-comment-marker-hidden {
+      background: none;
+      padding: 0;
+      width: 0;
+    }
+    .editor .writely-comment-none {
+      opacity: .2;
+      filter:progid:DXImageTransform.Microsoft.Alpha(opacity=20);
+      -moz-opacity: .2;
+    }
+    .editor .writely-comment-none-hover {
+      opacity: .2;
+      filter:progid:DXImageTransform.Microsoft.Alpha(opacity=20);
+      -moz-opacity: .2;
+    }
+  .br_fix br:not(:-moz-last-node):not(:-moz-first-node) {
+    position:relative;
+    left: -1ex
+  }
+  .br_fix br+br {
+    position: static !important
+  }
+  #cb-p-tgt {
+    font-size: 8pt;
+    padding: .4em;
+    font-style: oblique;
+    background-color: #FFF1A8;
+    border: 1px solid #000;
+  }
+}
+h6 { font-size: 8pt }
+h5 { font-size: 8pt }
+h4 { font-size: 10pt }
+h3 { font-size: 12pt }
+h2 { font-size: 14pt }
+h1 { font-size: 18pt }
+blockquote {padding: 10px; border: 1px #DDD dashed }
+.webkit-indent-blockquote { border: none; }
+a img {border: 0}
+.pb {
+  border-width: 0;
+  page-break-after: always;
+  /* We don't want this to be resizeable, so enforce a width and height
+     using !important */
+  height: 1px !important;
+  width: 100% !important;
+}
+.editor .pb {
+  border-top: 1px dashed #C0C0C0;
+  border-bottom: 1px dashed #C0C0C0;
+}
+div.google_header, div.google_footer {
+  position: relative;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+/* Table of contents */
+.editor div.writely-toc {
+  background-color: #f3f3f3;
+  border: 1px solid #ccc;
+}
+.writely-toc > ol {
+  padding-left: 3em;
+  font-weight: bold;
+}
+ol.writely-toc-subheading {
+  padding-left: 1em;
+  font-weight: normal;
+}
+/* IE6 only */
+* html writely-toc ol {
+  list-style-position: inside;
+}
+.writely-toc-none {
+  list-style-type: none;
+}
+.writely-toc-decimal {
+  list-style-type: decimal;
+}
+.writely-toc-upper-alpha {
+  list-style-type: upper-alpha;
+}
+.writely-toc-lower-alpha {
+  list-style-type: lower-alpha;
+}
+.writely-toc-upper-roman {
+  list-style-type: upper-roman;
+}
+.writely-toc-lower-roman {
+  list-style-type: lower-roman;
+}
+.writely-toc-disc {
+  list-style-type: disc;
+}
+
+/* Ordered lists converted to numbered lists can preserve ordered types, and
+   vice versa. This is confusing, so disallow it */
+ul[type="i"], ul[type="I"], ul[type="1"], ul[type="a"], ul[type="A"] {
+  list-style-type: disc;
+}
+
+ol[type="disc"], ol[type="circle"], ol[type="square"] {
+  list-style-type: decimal;
+}
+
+/* end default css */
+
+
+  /* default print css */
+  
+  @media print {
+    body {
+      padding: 0;
+      margin: 0;
+    }
+
+    div.google_header, div.google_footer {
+      display: block;
+      min-height: 0;
+      border: none;
+    }
+
+    div.google_header {
+      flow: static(header);
+    }
+
+    /* used to insert page numbers */
+    div.google_header::before, div.google_footer::before {
+      position: absolute;
+      top: 0;
+    }
+
+    div.google_footer {
+      flow: static(footer);
+    }
+
+    /* always consider this element at the start of the doc */
+    div#google_footer {
+      flow: static(footer, start);
+    }
+
+    span.google_pagenumber {
+      content: counter(page);
+    }
+
+    span.google_pagecount {
+      content: counter(pages);
+    }
+
+
+    callout.google_footnote {
+      
+      display: prince-footnote;
+      footnote-style-position: inside;
+      /* These styles keep the footnote from taking on the style of the text
+         surrounding the footnote marker. They can be overridden in the
+         document CSS. */
+      color: #000;
+      font-family: Times New Roman;
+      font-size: 12.0pt;
+      font-weight: normal;
+    }
+
+    /* Table of contents */
+    #WritelyTableOfContents a::after {
+      content: leader('.') target-counter(attr(href), page);
+    }
+
+    #WritelyTableOfContents a {
+      text-decoration: none;
+      color: black;
+    }
+  }
+
+  @page {
+    @top {
+      content: flow(header);
+    }
+    @bottom {
+      content: flow(footer);
+    }
+    @footnotes {
+      border-top: solid black thin;
+      padding-top: 8pt;
+    }
+  }
+  /* end default print css */
+
+
+/* custom css */
+
+
+/* end custom css */
+
+/* ui edited css */
+
+body {
+  font-family: Times New Roman;
+  
+  font-size: 12.0pt;
+  line-height: normal;
+  background-color: #ffffff;
+}
+/* end ui edited css */
+
+
+/* editor CSS */
+.editor a:visited {color: #551A8B}
+.editor table.zeroBorder {border: 1px dotted gray}
+.editor table.zeroBorder td {border: 1px dotted gray}
+.editor table.zeroBorder th {border: 1px dotted gray}
+
+
+.editor div.google_header, .editor div.google_footer {
+  border: 2px #DDDDDD dashed;
+  position: static;
+  width: 100%;
+  min-height: 2em;
+}
+
+.editor .misspell {background-color: yellow}
+
+.editor .writely-comment {
+  font-size: 9pt;
+  line-height: 1.4;
+  padding: 1px;
+  border: 1px dashed #C0C0C0
+}
+
+
+/* end editor CSS */
+
+</style>
+
+  
+  <title>AisEC2AdminGuide</title>
+
+</head>
+
+<body 
+    
+    >
+    
+    
+    
+<div class=Section1>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#17365d; FONT-FAMILY:'Times New Roman'"><font size=6>EC2 Administrator’s Gui</font></span><span style="COLOR:#17365d; FONT-FAMILY:'Times New Roman'"><font size=6>d</font></span><span style="COLOR:#17365d; FONT-FAMILY:'Times New Roman'"><font size=6>e</font></span>
+  </p>
+  <h1 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#365f91; FONT-FAMILY:'Times New Roman'"><b><font size=5>Infrastructure</font></b></span><span style="COLOR:#365f91; FONT-FAMILY:'Times New Roman'"><b><font size=5> Services</font></b></span>
+  </h1>
+  <h2 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#943634; FONT-FAMILY:'Times New Roman'"><b><font size=4>Elastic Compute Cloud</font></b></span><span style="COLOR:#943634; FONT-FAMILY:'Times New Roman'"><b><font size=4> (EC2)</font></b></span>
+  </h2>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>It is easy to get started with the Elastic </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>Compute </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>Cloud (EC2).&nbsp; Go to aws.amazon.com/ec2/ and select “Sign Up for Amazon EC2” button to </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>create an account.</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; This same web page also describes EC2 and EC2 pricing in some detail.</font></span>
+  </p>
+  <h2 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#943634; FONT-FAMILY:'Times New Roman'"><b><font size=4>Simple DB</font></b></span>
+  </h2>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>An alternative to a complex and expensive relational database, Simple DB is a simple interface to create and store, and index multiple tables to provide a way to query these tables.&nbsp; You can select, sort, query in real-time.&nbsp; Currently the limit is 100 tables (&lt;</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>10 GB each) with up to 256 columns.&nbsp; You can request larger limits.</font></span>
+  </p>
+  <h2 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#943634; FONT-FAMILY:'Times New Roman'"><b><font size=4>Simple Storage Service (S3)</font></b></span>
+  </h2>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>The Simple Storage Service is a backing store for your cloud data.&nbsp; You can save execution images</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> called Amazon Machine Image</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>s (AMI) in S3.&nbsp; You can also store snapshots of an AMI, databases, documentation, etc.&nbsp; Transfer rates between S3 and an AMI is fast (~10 MB/sec).&nbsp; Transfer rates between a local computer and an</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> EC2 instance</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> is limited to the maximum upload/download speeds of your Internet Service Provider (ISP) (~1 MB/sec).</font></span>
+  </p>
+  <h2 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#943634; FONT-FAMILY:'Times New Roman'"><b><font size=4>Simple Queue Service (SQS)</font></b></span>
+  </h2>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>SQS is a store and forward mechanism for the transfer of messages between computers on the internet, even if they are temporarily off-line.&nbsp; Any computer on the internet can add or read messages.&nbsp; A message can contain up to 8 KB of text in any format.&nbsp; A message can linger in the queue for up to 4 days.&nbsp; SQS messages typically conform to a SOAP interface standard.</font></span>
+  </p>
+  <h2 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#943634; FONT-FAMILY:'Times New Roman'"><b><font size=4>CloudFront</font></b></span>
+  </h2>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>CloudFront is a web interface for </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>delivering files</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> stored in S3</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> to web users</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>.&nbsp; It allows </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>public</font></span> <span style="FONT-FAMILY:'Times New Roman'"><font size=3>access</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> to</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> files stored in S3 via a web browser.</font></span>
+  </p>
+  <h1 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#365f91; FONT-FAMILY:'Times New Roman'"><b><font size=5>Developer Resources</font></b></span>
+  </h1>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Use your web browser to navigate to aws.amazon.com/ec2/ and scroll down to Developer Resources </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>to </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>several links.</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; The subsections</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> below</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> are a synopsis of selected links</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> in this section</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>.&nbsp; The AWS Management Console is described in the next section.</font></span>
+  </p>
+  <h2 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#943634; FONT-FAMILY:'Times New Roman'"><b><font size=4>Documentation</font></b></span>
+  </h2>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Select the link to</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> the latest technical documentation se</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>t at the top of the list of links</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>. It includes a Getting Started Guide, Developer Guide, and a Quick Reference Card.&nbsp; These guides are essential reading.</font></span>
+  </p>
+  <h2 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#943634; FONT-FAMILY:'Times New Roman'"><b><font size=4>Sample Code</font></b></span>
+  </h2>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Th</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>is section </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>under Developer Resources contains links to</font></span> <span style="FONT-FAMILY:'Times New Roman'"><font size=3>applications </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>written in ColdFusion, VB, C#, Perl, Ruby, Java and others.&nbsp; Of particular importance is Scalr, which is a redundant, self-curing, self-scaling EC2 hosting environment.&nbsp; Each subsection has a download button in the upper right corner to fetch the code.</font></span>
+  </p>
+  <h2 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#943634; FONT-FAMILY:'Times New Roman'"><b><font size=4>Developer Tools</font></b></span>
+  </h2>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Developer Tools is found in the Developer Resources section of the aws.amazon.com/ec2/ page.&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>A smaller set of code samples that is similar to the previous section.&nbsp; The Javascript Scratchpad may be of some interest.&nbsp; It is an </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>alternative to the AWS Management Console that shows the properties of the instances of your AMIs running on the cloud.&nbsp; As with the above section, click on the download button in the upper right corner of the page to fetch the code described in each subsection.</font></span>
+  </p>
+  <h2 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#943634; FONT-FAMILY:'Times New Roman'"><b><font size=4>Articles</font></b></span>
+  </h2>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>The Articles link is also found in the Developer Resources section of the aws.amazon.com/ec2/ page.&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>This section includes a set of “how-to” articles aimed at specific circumstances such as running Microsoft’s SQL Server on the cloud using EBS (Elastic Block Store).</font></span>
+  </p>
+  <h2 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#943634; FONT-FAMILY:'Times New Roman'"><b><font size=4>Amazon Machine Images</font></b></span>
+  </h2>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>The Amazon Machine Images link is found in the Developer Resources section of the aws.amazon.com/ec2/ page.&nbsp; Amazon Machine Images (AMIs) can be made public for others to use.&nbsp; Many publically available AMIs for a variety of applications can be found here.&nbsp;&nbsp; For basic machine images provided by Amazon for building an infrastructure to run a new application, see the Getting Started Guide.</font></span>
+  </p>
+  <h1 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#365f91; FONT-FAMILY:'Times New Roman'"><b><font size=5>Getting Started</font></b></span>
+  </h1>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Use your web browser to navigate to aws.amazon.com/ec2/ and scroll way down to Developer Resources and select Documentation.&nbsp; Click on</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> the first link to</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> the latest release of Amazon EC2 and then</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> click on</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> View the Getting Started Guide in HTML.&nbsp; Follow the directions in this section to set up an account and to configure an AMI.&nbsp; A brief overview of the sections is included here.</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; The comments below apply to installing the AM</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>I tools on a Windows client and then setting up</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> Fedora Core 8 Linux EC2 server instances on the cloud.</font></span>
+  </p>
+  <h2 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#943634; FONT-FAMILY:'Times New Roman'"><b><font size=4>Prerequisites</font></b></span>
+  </h2>
+  <h3 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#31849b; FONT-FAMILY:'Times New Roman'"><b><font size=3>AWS Account</font></b></span>
+  </h3>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>An AWS account must be established before using the Amazon Elastic Compute Cloud (EC2).&nbsp; At the time that an account is set up, you can also select an account </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>ID</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>,</font></span> <span style="FONT-FAMILY:'Times New Roman'"><font size=3>access key ID, secret key, and X.509 certificate.&nbsp; Be sure to save your certificate file and your private key file in C:\ec2.&nbsp; You will need these when you set the environment variables below.&nbsp; You can recover your X.509 certificate, but it is not possible to recover your private key file.&nbsp; You will have to generate a new private key if you lose the pk-*.pem file.</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; For FIMCO, the User Id and password, keys, and certificate are found in S:\IT\cloud\Acc</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>o</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>untId.txt.</font></span>
+  </p>
+  <h3 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#31849b; FONT-FAMILY:'Times New Roman'"><b><font size=3>Java Runtime Environment (JRE)</font></b></span>
+  </h3>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>The Java Runtime Environment must be installed on the Windows client.&nbsp; The environment variable, JAVA_HOME must be set to the path to the JRE executable as noted below.</font></span>
+  </p>
+  <h3 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#31849b; FONT-FAMILY:'Times New Roman'"><b><font size=3>Environment Variables</font></b></span>
+  </h3>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Assuming that the account files are at C:\ec2 and that the JRE is installed as described the Getting Started Guide, a sample of the requisite environment variables are as follows:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Arial'"><font size=2>EC2_CERT=C:\ec2\</font></span><span style="FONT-FAMILY:'Arial'"><font size=2>cert-73CSPXWZ3Y4G2Y7QBAQSNPW2LJFVTOGY.pem</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Arial'"><font size=2>EC2_HOME=C:\</font></span><span style="FONT-FAMILY:'Arial'"><font size=2>ec</font></span><span style="FONT-FAMILY:'Arial'"><font size=2>2\ec2-api-tools</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Arial'"><font size=2>EC2_PRIVATE_KEY=C:\ec2\</font></span><span style="FONT-FAMILY:'Arial'"><font size=2>pk-73CSPXWZ3Y4G2Y7QBAQSNPW2LJFVTOGY.pem</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Arial'"><font size=2>JAVA_HOME=C:\Program Files\Java\jre1.5.0_17</font></span>
+  </p>
+  <h2 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#943634; FONT-FAMILY:'Times New Roman'"><b><font size=4>Setting up the Tools</font></b></span>
+  </h2>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>After downloading the command-line tools as noted in the guide, set the EC2_HOME environment variable to point to the </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>folder containing the tools and add the path to the %EC2_HOME%\bin folder to the PATH environm</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>ent variable.&nbsp; Do not set the EC2_URL environment variable as described.&nbsp;&nbsp; The URLs shown are no longer valid. </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> If you have everything setup properly, you can open a command-line (DOS) window and execute any of the ec2 commands </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>provided.&nbsp; As an alternative, you can also perform some basic tasks using the AWS Management Console as described below.</font></span>
+  </p>
+  <h2 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#943634; FONT-FAMILY:'Times New Roman'"><b><font size=4>Running a Linux Instance</font></b></span>
+  </h2>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Select </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>“Running an I</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>nstance</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>”</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> in the Getting Started Guide -&gt; Running an Instance -&gt; Linux and </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>UNIX</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>.</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; Verify that all of the above prerequisites are installed on your Windows client.&nbsp; Open a command-line window and enter the</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> following</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> command</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> to see a few simple public images</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>ec2-describe-images –o amazon</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>or enter the following command to see any private images that are owned by your current account:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>ec2dim –o self</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>The list of </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>Amazon </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>images includes the following entry where the AMI ID is ami-</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>2547a34c</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>IMAGE ami-2547a34c </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>ec2-public-images/fedora-8-x86_6</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>4-base-v1.08.manifest.xml amazon&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>x86_64 …</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>A gsg-keypair has already been created.&nbsp; It </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>is at C:\ec2\id_rsa-gsg-keypair as noted below.</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>A set of Ubuntu images can are also available at alestic.com.&nbsp; There is a selection of images that include a desktop and a skinnier set of “server” images that are smaller and faster to start up.</font></span>
+  </p>
+  <h3 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#31849b; FONT-FAMILY:'Times New Roman'"><b><font size=3>Key Pair</font></b></span>
+  </h3>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3> An SSH Key Pair may be generated from a local console window by entering the command:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>ec2-add-keypair gsg-keypair</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Create a file named id_rsa-gsg-keypair in C:\ec2 and then paste the entire RSA Private Key into this text file.&nbsp; Include the header and the footer in </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>the file.&nbsp; On a Windows client,</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> convert this private key to PuTTY’s format.&nbsp; See the Appendix: PuTTY in the EC2 Getting Started Guide for details.</font></span>
+  </p>
+  <h3 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#31849b; FONT-FAMILY:'Times New Roman'"><b><font size=3>&nbsp;</font></b></span>
+  </h3>
+  <h3 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#31849b; FONT-FAMILY:'Times New Roman'"><b><font size=3>Instance Types</font></b></span>
+  </h3>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>A complete list of instance types is found in the Developers Guide -&gt; Using Amazon EC2 -&gt; Launching and Using Instances -&gt; Instance Types.&nbsp;&nbsp; Use only </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>m1.large, m1.xlarge,</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> or c1.xlarge with a 64-bit AMI and use only m1.small and c1.medium with 32-bit AMI.</font></span>
+  </p>
+  <table cellpadding=0 cellspacing=0 class=zeroBorder style=" MARGIN-LEFT:0pt">
+    <tr>
+      <td style=" VERTICAL-ALIGN:top" width=91>
+        <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+          <span style="COLOR:#5f497a; FONT-FAMILY:'Times New Roman'"><b><font size=3>Name</font></b></span>
+        </p>
+      </td>
+      <td style=" VERTICAL-ALIGN:top" width=150>
+        <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+          <span style="COLOR:#5f497a; FONT-FAMILY:'Times New Roman'"><b><font size=3>CPU</font></b></span>
+        </p>
+      </td>
+      <td style=" VERTICAL-ALIGN:top" width=72>
+        <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+          <span style="COLOR:#5f497a; FONT-FAMILY:'Times New Roman'"><b><font size=3>Memory</font></b></span>
+        </p>
+      </td>
+      <td style=" VERTICAL-ALIGN:top" width=84>
+        <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+          <span style="COLOR:#5f497a; FONT-FAMILY:'Times New Roman'"><b><font size=3>Storage</font></b></span>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style=" VERTICAL-ALIGN:top" width=91>
+        <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+          <span style="FONT-FAMILY:'Times New Roman'"><font size=3>m1.large</font></span>
+        </p>
+      </td>
+      <td style=" VERTICAL-ALIGN:top" width=150>
+        <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+          <span style="FONT-FAMILY:'Times New Roman'"><font size=3>2 cores (2 EC2 each)</font></span>
+        </p>
+      </td>
+      <td style=" VERTICAL-ALIGN:top" width=72>
+        <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+          <span style="FONT-FAMILY:'Times New Roman'"><font size=3>7.5 GB</font></span>
+        </p>
+      </td>
+      <td style=" VERTICAL-ALIGN:top" width=84>
+        <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+          <span style="FONT-FAMILY:'Times New Roman'"><font size=3>2 x 420 GB</font></span>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style=" VERTICAL-ALIGN:top" width=91>
+        <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+          <span style="FONT-FAMILY:'Times New Roman'"><font size=3>m1.xlarge</font></span>
+        </p>
+      </td>
+      <td style=" VERTICAL-ALIGN:top" width=150>
+        <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+          <span style="FONT-FAMILY:'Times New Roman'"><font size=3>4 cores (2 EC2 each)</font></span>
+        </p>
+      </td>
+      <td style=" VERTICAL-ALIGN:top" width=72>
+        <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+          <span style="FONT-FAMILY:'Times New Roman'"><font size=3>15 GB</font></span>
+        </p>
+      </td>
+      <td style=" VERTICAL-ALIGN:top" width=84>
+        <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+          <span style="FONT-FAMILY:'Times New Roman'"><font size=3>4 x 420 GB</font></span>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style=" VERTICAL-ALIGN:top" width=91>
+        <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+          <span style="FONT-FAMILY:'Times New Roman'"><font size=3>c1.xlarge</font></span>
+        </p>
+      </td>
+      <td style=" VERTICAL-ALIGN:top" width=150>
+        <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+          <span style="FONT-FAMILY:'Times New Roman'"><font size=3>8 cores (2.5 EC2 each)</font></span>
+        </p>
+      </td>
+      <td style=" VERTICAL-ALIGN:top" width=72>
+        <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+          <span style="FONT-FAMILY:'Times New Roman'"><font size=3>7 GB</font></span>
+        </p>
+      </td>
+      <td style=" VERTICAL-ALIGN:top" width=84>
+        <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+          <span style="FONT-FAMILY:'Times New Roman'"><font size=3>4 x 420 GB</font></span>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style=" VERTICAL-ALIGN:top" width=91>
+        <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+          <span style="FONT-FAMILY:'Times New Roman'"><font size=3>m1.small</font></span>
+        </p>
+      </td>
+      <td style=" VERTICAL-ALIGN:top" width=150>
+        <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+          <span style="FONT-FAMILY:'Times New Roman'"><font size=3>1 core (1 EC2)</font></span>
+        </p>
+      </td>
+      <td style=" VERTICAL-ALIGN:top" width=72>
+        <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+          <span style="FONT-FAMILY:'Times New Roman'"><font size=3>1.7 GB</font></span>
+        </p>
+      </td>
+      <td style=" VERTICAL-ALIGN:top" width=84>
+        <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+          <span style="FONT-FAMILY:'Times New Roman'"><font size=3>1 x 160 GB</font></span>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style=" VERTICAL-ALIGN:top" width=91>
+        <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+          <span style="FONT-FAMILY:'Times New Roman'"><font size=3>c1.medium</font></span>
+        </p>
+      </td>
+      <td style=" VERTICAL-ALIGN:top" width=150>
+        <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+          <span style="FONT-FAMILY:'Times New Roman'"><font size=3>2 core (2.5 EC2 each)</font></span>
+        </p>
+      </td>
+      <td style=" VERTICAL-ALIGN:top" width=72>
+        <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+          <span style="FONT-FAMILY:'Times New Roman'"><font size=3>1.7 GB</font></span>
+        </p>
+      </td>
+      <td style=" VERTICAL-ALIGN:top" width=84>
+        <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+          <span style="FONT-FAMILY:'Times New Roman'"><font size=3>1 x 350 GB</font></span>
+        </p>
+      </td>
+    </tr>
+  </table>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;</font></span>
+  </p>
+  <h3 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#31849b; FONT-FAMILY:'Times New Roman'"><b><font size=3>Launch Instance</font></b></span>
+  </h3>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Launch an instance of this public AMI using</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> where the instance type is one of the above names</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>ec2-run-instances ami-2547a34c –k gsg-keypair –t </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>m1.large</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Note the instance id</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> (e.g. </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> i-1303977a</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>)</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> which will be used to identify this instance.&nbsp;&nbsp; Be sure to t</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>erminate the instance when it is no longer being used to avoid incurring unnecessary charges!</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Port 22 (SSH) and port 80 (HTTP) should already be authorized.&nbsp; If not, authorize port 22 (SSH) and port 80 (HTTP) access to this instance using:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>ec2-authorize default –p 22</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>ec2-authorize default –p 80</font></span>
+  </p>
+  <h3 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#31849b; FONT-FAMILY:'Times New Roman'"><b><font size=3>Installing a Windows SSH Client</font></b></span>
+  </h3>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>In order to establish a secure remote connection to this instance of the AMI, an SSH client must be installed on your copy of Windows.&nbsp; Follow the directions provided to install PuTTY in the Getting Started Guide -&gt; Prerequisites -&gt; Accessing Windows Instances through SSH clients.</font></span> <span style="FONT-FAMILY:'Times New Roman'"><font size=3> Navigate to </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>http://www.chiark.greenend.org.uk/~</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>7</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>tatham/putty/</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> in your web browser and then click on Download link. </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> You will need to copy </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>putty.exe, </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>puttygen.exe</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>, and pscp.exe</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> for Windows</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> into %EC2_HOME%\bin</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>.</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; Follow the direction</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>s</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> in the Getting Started Guide -&gt; Appendix: PuTTY to convert the id_rsa-gsg-keypair into PuTTY format.&nbsp; If id_rsa-gsg-keypair was generated on a Linux machine, first convert the line terminations in this file to CRLF.&nbsp; You can edit the file with aised.exe to convert the line terminations.</font></span>
+  </p>
+  <h3 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#31849b; FONT-FAMILY:'Times New Roman'"><b><font size=3>Access</font></b></span><span style="COLOR:#31849b; FONT-FAMILY:'Times New Roman'"><b><font size=3> an</font></b></span><span style="COLOR:#31849b; FONT-FAMILY:'Times New Roman'"><b><font size=3> Instance</font></b></span>
+  </h3>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>If the image includes a web server, you may view the web pages being served using your favorite web browser.&nbsp; The fourth column of the output from the following command shows the</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> URL assig</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>ned to this instance</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>ec2-describe-instances</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>or use the short name ec2din.&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>You can view the console output generated on startup, using:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>ec2-get-console-output i-1303977a</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Finally</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>,</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> you can use the </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>procedure described in the Getting Started Guide Appendix: PuTTY to instantiate a remote </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>bash shell if </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>on your machine</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>.&nbsp; The ssh command that is shown in the Running an Instance will not work on a Windows client.&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>Enter the following command in a command window on your local machine:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>putty</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>In the PuTTY Configuration dialog, expand SSH -&gt; Auth and enter the path to the private key file for authentication:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>C:\ec2\id_rsa-gsg-keypair.ppk</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Highlight Session and enter the host name:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>root@ec2-xxx.compute-1.amazonaws.com</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Replace xxx with the URL shown by ec2-describe-instances for this instance.&nbsp; Click on Open to bring up a remote bash shell that is connected to your new instance.</font></span>
+  </p>
+  <h2 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#943634; FONT-FAMILY:'Times New Roman'"><b><font size=4>Bundling an AMI</font></b></span>
+  </h2>
+  <h3 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#31849b; FONT-FAMILY:'Times New Roman'"><b><font size=3>Upload Files to Instance</font></b></span>
+  </h3>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>It is possible to </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>modify a basic instance such as the one created above and then save it in S3 as a private AMI that is configured to run an application of your choosing.&nbsp; Refer to the Getting Started Guide -&gt; Running an Instance -&gt; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>Linux &amp; UNIX -&gt; Bundling an AMI for more detail.</font></span> <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; You can upload files from your Windows client to an instance on EC2 using pscp that you downloaded from the PuTTY site.&nbsp; To upload one or more files,</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> in a local command window</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> use</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>cd \ec2</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>pscp –i id_rsa-gsg-keypair.ppk&nbsp; files… root@ec2-xxx.compute-1.amazonaws.com</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>:</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>/path</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Replace xxx with the URL for your particular instance</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> and replace path with the path to the destination in the instance’s file system</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>. </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; The xxx portion of the URL is, in fact, the IP address assigned to the instance.&nbsp; </font></span> <span style="FONT-FAMILY:'Times New Roman'"><font size=3>For example, t</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>o upload the private key and X.509 certificate to this AMI instance, replace the command shown in the Getting Started Guide with the following command:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>pscp -</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>i id_rsa-gsg-keypair.ppk </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>pk-</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>*</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>.pem</font></span> <span style="FONT-FAMILY:'Times New Roman'"><font size=3>cert-</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>*</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>.pem</font></span> <span style="FONT-FAMILY:'Times New Roman'"><font size=3>root@ec2-xxx.compute-1.amazonaws.com</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>:</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>/mnt</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Replace xxx with the URL for your particular instance</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>.&nbsp; Run the command ec2din to get the current URL for your instance</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>.</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; If you are asked for a password, the key was not available or one or more minus signs were not interpreted as an ASCII minus when you pasted from the above line.&nbsp;&nbsp; Retype all the minus signs in the command in the console and re-run the command.</font></span>
+  </p>
+  <h3 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#31849b; FONT-FAMILY:'Times New Roman'"><b><font size=3>Bundling</font></b></span>
+  </h3>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Refer to the Getting Started Guide -&gt; Running an Instance -&gt; Linux and UNIX -&gt; Bundling an AMI for more detail.&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>To</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> prepare an AMI of this instance that can be saved in S3, start up a remote bash shell as described above under Access an Instance (commands to be entered in a remote bash shell are denoted by a # prefix).</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>#&nbsp; e</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>c2-bundle</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>-vol -d /mnt -</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>k /mnt/</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>pk-</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>*</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>.pem</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> -c</font></span> <span style="FONT-FAMILY:'Times New Roman'"><font size=3>/mnt/</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>cert-</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>*</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>.pem</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> -</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>u </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>853885810817</font></span> <span style="FONT-FAMILY:'Times New Roman'"><font size=3>-</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>r </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>x86_64 -</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>p</font></span> <span style="FONT-FAMILY:'Times New Roman'"><font size=3>AisDevUb8.04</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>where the –u argument is your AWS account ID</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>, the </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>–r argument is the instance type</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> and the –p argument is the name of the AMI that you are saving</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>.</font></span>
+  </p>
+  <h3 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#31849b; FONT-FAMILY:'Times New Roman'"><b><font size=3>Upload Image to S3</font></b></span>
+  </h3>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Refer to the Getting Started Guide -&gt; Running an Instance -&gt; Linux and UNIX -&gt; Bundling an AMI for more information on uploading an image to S3.&nbsp; To upload the bundled image, enter the following command in your remote bash shell:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3># e</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>c2-upload-bundle </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>-</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>b </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>AisImage</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> -</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>m /mnt/</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>AisDevUb8.04</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>.manifest.xml </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>-a</font></span> <span style="FONT-FAMILY:'Times New Roman'"><font size=3>0K41DJKQ7SB6EDHEHHG2</font></span> <span style="FONT-FAMILY:'Times New Roman'"><font size=3>-s </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>wxxX/VEhOw3K1JDmbWsS7PlPiimw2AK7mC4yErUS</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Where the </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>–b argument is the S3 bucket name, the </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>–a argument is </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>your</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> Access Key ID and the –s argument is </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>your</font></span> <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Secret Access Key</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>.</font></span>
+  </p>
+  <h3 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#31849b; FONT-FAMILY:'Times New Roman'"><b><font size=3>Register the AMI</font></b></span>
+  </h3>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Finally, </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>register this AMI to get an AMI identifier.&nbsp; From a command window on your local computer, use</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>ec2-register </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>AisImage</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>/</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>AisDevUb8.04</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>.manifest.xml</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>to get the new AMI identifier ami-</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>3c739455</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>.</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; If this AMI has already been registered, you must first deregister the existing image (see next section) and the register it again.</font></span>
+  </p>
+  <h3 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#31849b; FONT-FAMILY:'Times New Roman'"><b><font size=3>Deregister the AMI</font></b></span>
+  </h3>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Be sure to remove any AMI that is not being used to save on S3 charges.&nbsp; To remove an AMI from S3, deregister it using:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>ec2-deregister ami-</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>3c739455</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>and then use the AWS Management Console (see below) to delete the files associated with that AMI from S3.</font></span>
+  </p>
+  <h3 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#31849b; FONT-FAMILY:'Times New Roman'"><b><font size=3>Terminate the Instance</font></b></span>
+  </h3>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>From a command window on your local computer, be sure to terminate the executing instance:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>ec2-terminate-instances </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>i-1303977a</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>where the instance ID is obtained from ec2din command.</font></span>
+  </p>
+  <h1 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#365f91; FONT-FAMILY:'Times New Roman'"><b><font size=5>AWS Management Console</font></b></span>
+  </h1>
+  <h2 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#943634; FONT-FAMILY:'Times New Roman'"><b><font size=4>Overview</font></b></span>
+  </h2>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>The Amazon Web Services (AW</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>ec</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>S) Management Console provides a global view of the AMI instances currently in-execution.&nbsp; It also allows you to manage these instances as follows:</font></span>
+  </p>
+  <ul type=disc>
+    <li>
+      <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Start or stop an EC2 instance.</font></span>
+    </li>
+    <li>
+      <span style="FONT-FAMILY:'Times New Roman'"><font size=3>View, create, or delete AMIs in S3</font></span>
+    </li>
+    <li>
+      <span style="FONT-FAMILY:'Times New Roman'"><font size=3>View, create, or delete Elastic Block Store (EBS) volumes and snapshots.</font></span>
+    </li>
+    <li>
+      <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Attach or detach volumes to EC2 instances</font></span>
+    </li>
+    <li>
+      <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Configure firewall settings. Manage public and private access keys.</font></span>
+    </li>
+  </ul>
+  <h2 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#943634; FONT-FAMILY:'Times New Roman'"><b><font size=4>Future Plans</font></b></span>
+  </h2>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Several additional features are planned for the AWS Management Console:</font></span>
+  </p>
+  <ul type=disc>
+    <li>
+      <span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>Tags. </font></b></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> Label and group EC2 resources (AMI, volumes, databases) with custom metadata (tags).</font></span>
+    </li>
+    <li>
+      <span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>Load Balancing.</font></b></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> Monitor and configure EC2 instance metrics.&nbsp; Impose auto-scaling rules to balance the load.</font></span>
+    </li>
+    <li>
+      <span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>S3 Support.</font></b></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> Create or delete buckets. Upload or download files to S3.</font></span>
+    </li>
+    <li>
+      <span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>Simple DB Support.</font></b></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> Create or edit queries. View datasets.</font></span>
+    </li>
+    <li>
+      <span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>SQS Support.</font></b></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; Manage queues.&nbsp; Add or retrieve messages from existing queues.</font></span>
+    </li>
+    <li>
+      <span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>CloudFront Support.</font></b></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; Setup and test web delivery of content from S3.</font></span>
+    </li>
+  </ul>
+  <h2 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#943634; FONT-FAMILY:'Times New Roman'"><b><font size=4>Web Browsers</font></b></span>
+  </h2>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>AWS Console works with the following web browsers:</font></span>
+  </p>
+  <ul type=disc>
+    <li>
+      <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Mozilla Firefox 2.0 or greater</font></span>
+    </li>
+    <li>
+      <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Internet Explorer 7.0 or greater</font></span>
+    </li>
+    <li>
+      <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Safari 3.0 or greater</font></span>
+    </li>
+  </ul>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>If you are still using IE 6.0, you will have to upgrade.</font></span>
+  </p>
+  <h2 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#943634; FONT-FAMILY:'Times New Roman'"><b><font size=4>Management Console Tour</font></b></span>
+  </h2>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>The AWS Console has a few prerequisites.&nbsp; You must have an Amazon AWS account set up with the appropriate security codes established.&nbsp; See the Getting Started Guide described in the Documentation section above for more information on setting up an account and the appropriate security keys.</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>One way to start the AWS console is to navigate to aws.amazon.com/ec2/, scroll way down to Resources and select AWS Management Console.&nbsp; You can go to this page directly </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>by navigating to</font></span> <a href=https://console.aws.amazon.com/><span style="COLOR:#0000ff; FONT-FAMILY:'Times New Roman'"><u><font size=3>https://console.aws.amazon.com/</font></u></span></a> <span style="FONT-FAMILY:'Times New Roman'"><font size=3>.&nbsp; If you are logged in to our account, you can select the Amazon EC2 tab to launch the Amazon EC2 Console.&nbsp; The following sections note some typical operations.</font></span>
+  </p>
+  <h3 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#31849b; FONT-FAMILY:'Times New Roman'"><b><font size=3>Launch Instances</font></b></span>
+  </h3>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Select the Launch Instances button on the EC2 Console.&nbsp; Select My AMIs to view the images of interest.&nbsp; Select the Select button on the right to launch an image that is stored in S3.&nbsp; This will create an instance of that AMI running on the cloud.&nbsp; Perform the following step in the Launch Instances dialog.</font></span>
+  </p>
+  <ol type=1>
+    <li>
+      <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Number of instances: 1</font></span>
+    </li>
+    <li>
+      <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Instance type:&nbsp; m2.large</font></span>
+    </li>
+    <li>
+      <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Key Pair Name: gsg-keypair</font></span>
+    </li>
+    <li>
+      <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Security Groups: default</font></span>
+    </li>
+  </ol>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Select the Launch button at the bottom of the dialog. Select the Close button at the bottom of the dialog.&nbsp; On return to the EC2 Dashboard, select the Refresh button in the upper right corner of the dashboard.</font></span>
+  </p>
+  <h3 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#31849b; FONT-FAMILY:'Times New Roman'"><b><font size=3>View Instances</font></b></span>
+  </h3>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Select Instances</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> link</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> in the left side panel or select the Running Instance in the My Resources group.&nbsp; You can return to the Dashboard at any point by selecting the EC2 Dashboard link at the top of the left side panel.&nbsp;&nbsp; To view more detail on the running instance, check the box at the left of the running instance.&nbsp; The instance properties are shown below the list of instances.&nbsp;&nbsp; The buttons in the toolbar at the top allow you to Launch Instances, Reboot, or Terminate, or Connect to an instance.&nbsp; The Output toolbar icon shows the standard output generated by the selected instance.&nbsp; It is quite informative.</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>Terminate. </font></b></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> Be sure to terminate the instances that you launch when you are finished to avoid running up an unnecessary charges on your AWS account.</font></span>
+  </p>
+  <h3 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#31849b; FONT-FAMILY:'Times New Roman'"><b><font size=3>AMIs</font></b></span>
+  </h3>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Select the AMIs link in the left side panel of the Dashboard.&nbsp; By default All Images are selected.&nbsp; In the Viewing drop-down menu at the top of the right panel, select “Owned By Me”.&nbsp; You can select an AMI from the list and then select the Launch button in the toolbar at the top.&nbsp;&nbsp; An instance of the image is uploaded to a server on the cloud and started up.&nbsp;&nbsp; At this point you can view the output, connect to this instance or terminate this instance as noted in the previous section on View Instances.</font></span>
+  </p>
+  <h1 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#365f91; FONT-FAMILY:'Times New Roman'"><b><font size=5>AIS Images</font></b></span>
+  </h1>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>There are two basic images that are described here.&nbsp; The first is a slimmed down image that just runs AIS as a service.&nbsp;&nbsp; It contains aissvc.exe and the shared libraries that are required to run this service.</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; Users may access an instance of this AMI using RIDE.</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; Users may supplement this basic image with aisLisp code that targets their specific application.&nbsp; The second image is a complete AIS development environment.</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>AI Server </font></b></span><span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>Image.</font></b></span><span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>&nbsp;</font></b></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> This is a set of images designed for various applications.</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> It includes the libraries and executables required to run aissvc.</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; It does not include X11 or any desktop support.</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> Each image may have a collection of contexts that are tailored to a sp</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>ecific range of applications.</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> Variations of this image</font></span> <span style="FONT-FAMILY:'Times New Roman'"><font size=3>may</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> include some specialized aisLisp code that has been contributed by the open source community (especially from Universities).</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>AIS Developer Image.</font></b></span><span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>&nbsp;</font></b></span> <span style="FONT-FAMILY:'Times New Roman'"><font size=3>This image includes all the stuff that is described in Frank's document on the SourceForge wiki, AisEclipseQT for Linux.</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> This image saves developers hours of effort to setup and config</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>ure a development environment.&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>It saves us e</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>ndless questions about why a hand-crafted</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> development environme</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>nt does not work.</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> Instead, users can just install an NX client on their local laptop to access an instance of our</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> publically available AMI and do the</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>ir development on the cloud.</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> This AMI </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>includes the following:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;</font></span>
+  </p>
+  <ul type=disc>
+    <li>
+      <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Ubuntu 8.0.4 x_64 including desktop</font></span>
+    </li>
+    <li>
+      <span style="FONT-FAMILY:'Times New Roman'"><font size=3>NX Server</font></span>
+    </li>
+    <li>
+      <span style="FONT-FAMILY:'Times New Roman'"><font size=3>QT 4.3.4 for Linux</font></span>
+    </li>
+    <li>
+      <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Eclipse IDE</font></span>
+    </li>
+    <li>
+      <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Embedded MySQL 5.1.30</font></span>
+    </li>
+    <li>
+      <span style="FONT-FAMILY:'Times New Roman'"><font size=3>AisDev 4.003</font></span>
+    </li>
+    <li>
+      <span style="FONT-FAMILY:'Times New Roman'"><font size=3>VirtualBox 2.1.4</font></span>
+    </li>
+  </ul>
+  <h2 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#943634; FONT-FAMILY:'Times New Roman'"><b><font size=4>AI Server Image</font></b></span>
+  </h2>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>This section is very specialized information for constructing a</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>n AMI of this type.&nbsp;&nbsp; It is only of interest if you are involved in building this AMI.&nbsp; This section is not of interest to users.&nbsp; They should refer to the wiki for help on using this AMI.</font></span>
+  </p>
+  <h2 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#943634; FONT-FAMILY:'Times New Roman'"><b><font size=4>AIS Developer Image</font></b></span>
+  </h2>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>This section is very specialized information for constructing an AMI of this type.&nbsp;&nbsp; It is only of interest if you are involved in building this AMI.&nbsp; This section is not of interest to users.&nbsp; They should refer to the wiki for help on using this AMI.</font></span>
+  </p>
+  <h1 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#365f91; FONT-FAMILY:'Times New Roman'"><b><font size=5>NFS Setup</font></b></span>
+  </h1>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>NFS (Network File System) was created by Sun Microsystems in 1985 as a competitor to DECnet developed in the 1970s by Digital Equipment Corporation.&nbsp;&nbsp; Today, NFS is widely used by Linux-based machines to allow a NFS client to access a portion of a file system on a NFS server.&nbsp; Any one computer can be an NFS client, a NFS server, or both.&nbsp; The remote</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> NFS</font></span> <span style="FONT-FAMILY:'Times New Roman'"><font size=3>appears to the client just as though it is a</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> local file system (except that updates are slower).</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; The following provides guidance on setting up an NFS server and a NFS client on an Ubuntu-based machine.&nbsp; It is distinguished from a multitude of existing installation documentation in that it describes what to do when the instructions don’t work.</font></span>
+  </p>
+  <h2 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#943634; FONT-FAMILY:'Times New Roman'"><b><font size=4>NFS Server Setup</font></b></span>
+  </h2>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>If the NFS Server is not installed, it can be installed using the aptitude package manager.&nbsp; The appropriate packages are fetched from us.archive.ubunt</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>u.com and security.ubuntu.com</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> (see /etc/apt/sources.list for more details)</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>.&nbsp; All of the following commands are run in a remote bash shell (see Installing a Windows SSH Client above).&nbsp; Commands are prefixed with an octothorpe (#) to indicate that they are run as root from a remote bash shell.</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>NFS</font></b></span><span style="FONT-FAMILY:'Times New Roman'"><b><font size=3> Server Status</font></b></span><span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>.</font></b></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; To see</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> if the NFS server is already installed, enter the command:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3># apt-list nfs-kernel-server</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>If apt-list is not available, it may be installed using:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3># apt-get install apt-file</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Notice the absence of any dashes in front of the install option.&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>If apt-list still does not work, you may need to update, using</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>#</font></span> <span style="FONT-FAMILY:'Times New Roman'"><font size=3>apt-file update</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>NFS Server Install. </font></b></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; To install NFS Server on an Ubuntu instance, enter the command:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3># apt</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>-get install nfs-kernel-server</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Notice that no dashes are allowed in front of the install option.&nbsp; If this command fails, perform an update using:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3># apt-get update</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>NFS Server Configure.</font></b></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>One line must be added to three files in order to configure NFS.&nbsp; Each file is listed below with the line to be added.</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>/etc/default/nfs-common</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>STATDOPTS=”--port 32765 –outgoing-port 32766”</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>/etc/default/nfs-kernel-server</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>RPCMOUNTDOPTS=”-p 32767”</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>/etc/exports</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>/greenteam</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>10.0.0.0/255.0.0.0</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>(rw,async,</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>wdelay,no</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>_</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>subtree</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>_</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>check)</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>The line added to exports allows all NFS clients in EC2 to access the /</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>greenteam directory on this server.&nbsp; These NFS clients</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> have read and write access.&nbsp; Async allows a delayed write (re</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>ply before write completes).&nbsp; W</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>delay</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> causes the server to delay writes to the disk in anticipation of multiple write requests in a single operation.&nbsp; No_subtree_check skips the check to make sure that the file exists in the /mount subtree.&nbsp;&nbsp; If a file is renamed while it is opened, the subtree check would cause the operation to fail.</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; If you wish to allow the superuser on the client to be able to modify files that are owned by root in /greenteam, add the “no_root_squash” option to the above options in the exports file.</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Issue the following command to cause the exports file to be reread:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3># exportfs –r</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>After </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>configuring NFS call the init script to reexport the exported directories and restart the nfsd daemon:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3># </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>/etc/init.d/</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>nfs-kernel-server&nbsp; restart</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>NFS Server Status.</font></b></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; To check the NFS server status, use the first command to make sure that the NFS service is running:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3># /etc/init.d/nfs-kernel-server status</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>nfsd is running</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Also, check that mountd is active:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3># ps –eF | grep mountd</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>29609&nbsp;&nbsp;&nbsp; 00:00:00 rpc.mountd</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Use rpcinfo to make sure that NFS is registered with portmap:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3># rpcinfo –p localhost | grep nfs</font></span>
+  </p>
+  <h2 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#943634; FONT-FAMILY:'Times New Roman'"><b><font size=4>NFS Client Setup</font></b></span>
+  </h2>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>If the NFS Client is not installed, it can be installed using the aptitude package manager.&nbsp; The appropriate packages are fetched from us.archive.ubuntu.com and security.ubuntu.com (see /etc/apt/sources.list for more details).&nbsp; All of the following commands are run in a remote bash shell (see Installing a Windows SSH Client above).&nbsp; Commands are prefixed with an octothorpe (#) to indicate that they are run as root from a remote bash shell.</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>NFS </font></b></span><span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>Client</font></b></span><span style="FONT-FAMILY:'Times New Roman'"><b><font size=3> Status.</font></b></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; To see if the NFS </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>client</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> is already installed, enter the command:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3># apt-</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>file </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>list nfs-</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>common</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>If apt-file</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> is not available, it may be installed using:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3># apt-get install apt-file</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Notice the absence of any dashes in front of the install option.&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>If apt-file</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> still does not work, you may need to update, using:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3># apt-file update</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>NFS </font></b></span><span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>Client</font></b></span><span style="FONT-FAMILY:'Times New Roman'"><b><font size=3> Install. </font></b></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; To install NFS </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>client</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> on an Ubuntu instance, enter the command:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3># apt-get install nfs-</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>common</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Notice that no dashes are allowed in front of the install option.&nbsp; If this command fails, perform an update using:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3># apt-get update</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>NFS Client Configure.</font></b></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>The NFS Client is automatically configured when it is installed.&nbsp; To check that the necessary rpc process are running, enter the command</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> on the NFS Client console window:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3># ps –eF </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>| grep </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>rpc</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>The rpc.statd, rpc.idmapd, and rmpc.mountd processes should be running.</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>NFS Client Mount.</font></b></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; In order to access the greenteam folder on the NFS Server, use the following mount command:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3># mount ec2-XXX.compute-1.amazonaws.com:/greenteam /mynfs</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>where mynfs is </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>the mount point</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> on the NFS client and XXX is the URL of the NFS server.</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; The mount point should be a</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>n</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> empty</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>, local</font></span> <span style="FONT-FAMILY:'Times New Roman'"><font size=3>directory (any files in this folder become invisible when another file system is mounted on it).</font></span> <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; A remote file system can be automatically mounted during startup by adding an entry in </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>the /etc/fstab file.&nbsp; For example, add the following line to /etc/fstab on the client:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>ec2-XXX.compute-1.amazonaws.com:/greenteam&nbsp;&nbsp; /mynfs&nbsp; nfs&nbsp; rsize=8192,wsize=8192&nbsp;&nbsp; 0 0</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>This option is a bit of a problem in that </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>the NFS client must know the URL or the IP address of the NFS Server.&nbsp; If the server has been assigned a static IP address, then this entry can be specified across multiple instances of the server.&nbsp; Increasing the rsize and wsize options will improve performance, especially if the two machines have a high-speed connection.&nbsp; The final two zeros prevent any backup or file check by the client of the remote file system (backups and file system checks are done by the server).</font></span>
+  </p>
+  <h1 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#365f91; FONT-FAMILY:'Times New Roman'"><b><font size=5>Installing Rpm Packages</font></b></span>
+  </h1>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>An RPM (RedHat Package Manager) file is designed for Redhat-based systems such as Redhat, openSUSE, Fedora, Mandriva, etc.&nbsp; In Debian-based systems, such as Ubuntu, depend upon dpkg</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> (Debian Package)</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>.&nbsp; Several tools, such as apt </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>(advanced package tool) </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>and aptitude are</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> tools</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> built on top of dpkg</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>.</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>Alien.</font></b></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; It is not possible to use rpm directly to install an rpm package.&nbsp; However, it is possible to </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>convert an rpm file to a deb file using</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> the application named alien</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>.&nbsp; To install alien, enter the following command in the remote bash shell:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3># apt-get install alien</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>And use the following command to convert the following rpm file to a deb file:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3># alien </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>-</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>d ec2-ami-tools.noarch.rpm</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>which generates ec2-ami-tools_1.3-31781_all.deb.</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>Install.</font></b></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; To install this Debian package, use:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3># </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>dpkg -i </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>ec2-ami-tools_1.3-31781_all.deb</font></span>
+  </p>
+  <h1 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#365f91; FONT-FAMILY:'Times New Roman'"><b><font size=5>Installing EC2 API Tools</font></b></span>
+  </h1>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>All of the following commands are run on a remote bash shell that is connected to an instance running on the cloud.&nbsp; The commands are prefixed by a $ to indicate that you are running as the user named sysadmin (the password for sysadmin is sysadmin).</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; The root password is $cuban88.</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; If not, you can log in as sysadmin as follows:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3># su sysadmin</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>$ cd ~</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>$ .&nbsp; .profile</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>where </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>the dot command, ., is used to run the startup shell.</font></span>
+  </p>
+  <h2 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#943634; FONT-FAMILY:'Times New Roman'"><b><font size=4>Java Runtime Executable</font></b></span>
+  </h2>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>The API Tools require the Java Runtime from Sun Microsystems.&nbsp; Verify that the following folder exists:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span> <span style="FONT-FAMILY:'Times New Roman'"><font size=3>$ ls&nbsp; /usr/lib/jvm/java-1.5.0-sun</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>If it does not exist, you can install the jre package as follows:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>$ sudo apt-get install sun-java5-jre</font></span>
+  </p>
+  <h2 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#943634; FONT-FAMILY:'Times New Roman'"><b><font size=4>Unzip</font></b></span>
+  </h2>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>You can just enter the command “which unzip” into a remote bash shell to determine if unzip is already installed.&nbsp; If unzip is not installed,&nbsp; use the following command to install unzip:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>$ sudo apt-get install unzip</font></span>
+  </p>
+  <h2 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#943634; FONT-FAMILY:'Times New Roman'"><b><font size=4>Download EC2 API Tools</font></b></span>
+  </h2>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Be aware that the API tools are separate from the AMI tools (which are normally already installed on an AMI).&nbsp; The API tools are those that are also installed on your local computer in order to manage your EC2 environment.&nbsp; They can also be installed on an instance in order to allow an instance on the cloud to launch additional worker instances.</font></span>
+  </p>
+  <h3 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#31849b; FONT-FAMILY:'Times New Roman'"><b><font size=3>Download</font></b></span>
+  </h3>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Download the EC2 command-line tools from the Amazon Resource Center to the sysadmin home directory using:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>$ cd ~</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>$ wget </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>http://s3.amazonaws.com/ec2-downloads/ec2-api-tools-1.3-34128.zip</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>$ unzip </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>ec2-api-tools-1.3-34128.zip</font></span>
+  </p>
+  <h3 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#31849b; FONT-FAMILY:'Times New Roman'"><b><font size=3>Configuration</font></b></span>
+  </h3>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>Keys. </font></b></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>The following files should be available in /home/sysadmin/ec2/:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>AccountId.txt</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>id_rsa-gsg-keypair</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>cert-73CSPXWZ3Y4G2Y7QBAQSNPW2LJFVTOGY.pem</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>pk-73CSPXWZ3Y4G2Y7QBAQSNPW2LJFVTOGY.pem</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>If not, use pscp to copy these files from your local computer up to your instance.</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>Environment. </font></b></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>Make sure that the following environment variables are set in /home/sysadmin/.profile:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>export EC2_HOME=$HOME/ec2-api-tools-1.3-34128</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>export PATH=$PATH:$EC2_HOME/bin</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>export EC2_PRIVATE_KEY=$HOME/ec2/pk-</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>73CSPXWZ3Y4G2Y7QBAQSNPW2LJFVTOGY</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>.pem</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>export EC2_CERT=$HOME/ec2/cert-</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>73CSPXWZ3Y4G2Y7QBAQSNPW2LJFVTOGY.</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>pem</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>export </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>JAVA_HOME=/usr/lib/jvm/java-1.5.0-sun/</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>Test.</font></b></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp; In order to test the installation, launch an AMI from this instance using the following commands:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>$ ec2dim</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> –o self</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>$ ec2run ami-XXXXXXXX -k gsg-keypair -t m1.large</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>$ ec2din</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>where the first command will show you the AMI id number that is required in the second command.</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; In case these commands fail, you can get more information from help.ubuntu.com/community/EC2APITools .</font></span>
+  </p>
+  <h2 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#943634; FONT-FAMILY:'Times New Roman'"><b><font size=4>Installing MySql on Ubuntu</font></b></span>
+  </h2>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>Install.&nbsp; </font></b></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>Installing MySql</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> on an Ubuntu-based AMI</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> is simple.&nbsp; Just enter the</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> following</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> command in a remote bash shell on a development instance:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>$ </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>sudo apt-get install mysql-server</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>MySql Group.</font></b></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp; A MySql user and group are added automatically.&nbsp; Just to check and add, if necessary, enter the following commands</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> as root on a remote bash shell:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3># groupadd mysql</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3># useradd –gid mysql mysql</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>You will typically get a message that the group and user already exist.</font></span>
+  </p>
+  <h2 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#943634; FONT-FAMILY:'Times New Roman'"><b><font size=4>Configuring MySql on Ubuntu</font></b></span>
+  </h2>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Ais</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>EC2AdminGuide</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>.doc</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>May 27</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>, 2009</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>Page </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>1</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;</font></span>
+  </p>
+</div>
+<br></body>
+</html>

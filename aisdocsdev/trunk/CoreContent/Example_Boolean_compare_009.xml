@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Boolean compare 009</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compare</FunctionKeywords>
+		<TypeKeywords>Boolean Integer</TypeKeywords>
+		<RelatedFunctions>comparison compareEQ compareGT compareNE compareLT  compareLE</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare symbol equal lesser </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>compare</b> functions to do a 
+
+
+
+
+
+
+
+
+                  case-sensitive comparison of two objects of the same type.  A Boolean value is returned.
+
+
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+        <Expression><![CDATA[ <sc>(compare false  0 )           </sc>]]></Expression>
+        <Note><![CDATA[ The value of the first object is lesser than the value
+
+               of the second object.]]></Note>
+        <Returns><![CDATA[-1]]></Returns>
+        <Expression><![CDATA[ <sc>(compare false #\space )        </sc>]]></Expression>
+        <Note><![CDATA[ The value of the first object is lesser than the value
+
+
+
+
+
+               of the second object.]]></Note>
+        <Returns><![CDATA[-1]]></Returns>
+        <Expression><![CDATA[ <sc>(compare false #void )          </sc>]]></Expression>
+        <Note><![CDATA[ The value of the first object is greater than the value
+               of the second object.]]></Note>
+        <Returns><![CDATA[1]]></Returns>
+        <Expression><![CDATA[ <sc>(compare false (&#62 2 3))            </sc>]]></Expression>  
+        <Note><![CDATA[False has a state value of 1 while the result of the &#62 operation is also 1. ]]></Note> 
+        <Returns><![CDATA[0]]></Returns>
+        <Hints><![CDATA[
+           <p>If you prefer a Boolean  resulting from the comparison , use the compareEQ, compareNE, compareGT, compareLT functions.</p>
+        ]]></Hints>
+   </Syntax>
+</Example>

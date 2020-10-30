@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure methodsOf 005</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>methodsOf</FunctionKeywords>
+		<TypeKeywords>Structure Dictionary Symbol</TypeKeywords>
+		<RelatedFunctions>defmethod send addMethod</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>method message messageName</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example first defines a method in the Structure
+
+                 Dictionary using the <b> addMethod</b> function.  It then displays and references
+                 the 
+Lambda for the method defined  in
+
+the Structure Method Dictionary.  
+
+	]]></Description>
+	<Syntax>
+	<Expression><![CDATA[ <sc> (defmethod  Structure:  addValues (s)  (apply +  s))    </sc>
+    ]]></Expression>
+   <Note><![CDATA[ <p>Add a message name <b>addValues</b> which calls an Lambda to add the 
+           values of all the fields in a Structure. </p>
+   ]]></Note>
+   <Returns><![CDATA[ #&#60Dictionary 188364&#62 ]]></Returns>
+   <Expression><![CDATA[<sc>(display (methodsOf Structure:))     </sc>
+   ]]></Expression>
+   <Note><![CDATA[Check the Methods Dictionary for the Structure type.
+   ]]></Note>
+   <Returns><![CDATA[ Returns #{dic| addValues #&#60Lambda 123456&#62}]]></Returns>
+   <Expression><![CDATA[<sc>(ref (methodsOf Structure:)[0 0])   </sc>
+   ]]></Expression>
+   <Note><![CDATA[Reference the message name .
+   ]]></Note>
+   <Returns><![CDATA[<b>addValues </b>]]></Returns>
+   <Expression><![CDATA[<sc>(ref (methodsOf Structure:)[0 1])      </sc>
+   ]]></Expression>
+   <Note><![CDATA[Reference the Lambda assigned to the message named <b>addValues</b>: 
+   ]]></Note>
+   <Returns><![CDATA[ #&#60Lambda 123456&#62]]></Returns>
+   <Hints><![CDATA[none]]></Hints>
+</Syntax>
+</Example>

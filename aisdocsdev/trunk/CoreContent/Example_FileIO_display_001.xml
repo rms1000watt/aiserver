@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example FileIO display 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>display</FunctionKeywords>
+		<TypeKeywords>FileIO</TypeKeywords>
+		<RelatedFunctions>  </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>display newline console</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[  <p> The <b>display</b> function prints a String and 
+                 an Integer resulting from the <b>+</b> operation to the Console Window.</p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+(display "Hello there !")   </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[Hello there !true]]></Returns>
+        <Expression><![CDATA[ <sc>(display (+ 1 3))   </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[4true]]></Returns>
+        <Hints><![CDATA[none
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

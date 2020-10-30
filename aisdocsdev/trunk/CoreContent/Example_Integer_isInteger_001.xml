@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Integer isInteger 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isInteger</FunctionKeywords>
+		<TypeKeywords>  Number</TypeKeywords>
+		<RelatedFunctions> integer isType isObject isNumber  </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords> boolean integer object   </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples determine if the arguments(i.e. Number, Money)
+
+                    can be evaluated as Integers.
+
+
+
+
+
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(isInteger  1.23 )                </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(isInteger 8.00)                 </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ false ]]></Returns>
+        <Expression><![CDATA[ <sc>(isInteger  (+ 2 2))                 </sc>]]></Expression>
+        <Note><![CDATA[The result of the operation is a Number.]]></Note>
+        <Returns><![CDATA[ false ]]></Returns>
+        <Expression><![CDATA[ <sc>(isInteger  (addi 2 2))                     </sc>]]></Expression>  
+        <Note><![CDATA[The result of the operation is an Integer.]]></Note> 
+        <Returns><![CDATA[ true ]]></Returns>
+        <Expression><![CDATA[ <sc>(isInteger  $1.45)                        </sc>]]></Expression>  
+        <Note><![CDATA[Money data type is not evaluated as an Integer]]></Note> 
+        <Returns><![CDATA[ false ]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

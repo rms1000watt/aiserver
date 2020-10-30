@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Datatype SYSTEM "../DTD/Datatype.dtd">
+<Datatype>
+	<KnowledgeBase>
+        <Title>Dictionary</Title>
+		<Type>Heap</Type>
+		<RelatedTypes>Structure Vector Directory</RelatedTypes>
+		<HumanKeywords>Heap Key Value Element Array</HumanKeywords>
+	</KnowledgeBase>
+	<Section>
+	    <Heading>Dictionary Overview</Heading>
+		<Description><![CDATA[
+        <p> A Dictionary is an Object containing an arbitrary number of bindings.  A binding 
+            consists of a key and value pair. A Dictionary key can only be can any Object 
+            type such as Symbol (Unquoted or Quoted), List, Pair (Unquoted or Quoted), all
+             Vector types, Structure, Dictionary, Repository, or Lambda.</p>
+        <p>Analytic Information Server Structure Objects and Dictionary objects share common 
+            properties: they both contain an arbitrary number of bindings, values can be 
+            referenced by key or index, or two indices, keys can only be objects.  
+           However, Dictionary Object keys are always maintained in ascending sort order.  
+           There are no sort functions for sorting keys in a Dictionary, nor can Dictionaries 
+           be sorted by value.</p>
+        ]]></Description>
+    </Section>
+	<Section>                
+	    <Heading>Dictionary Illustration</Heading>
+		<Description><![CDATA[
+        <p> A Dictionary Object is analogous to a table containing exactly two columns and an 
+            arbitrary number of rows.  The left column contains a key (must be an Object type:
+            Symbol, List, Pair , any Vector type, Structure, Dictionary, Repository, or  Lambda ) 
+            , and the right column contains the value associated with its key. Any given row 
+            in a table is analogous to a Dictionary binding: Key/Value pair.</p>
+                 <table align="center" border=4 cellspacing=5 cellpadding=5>
+               <tr><td>Aardvark</td> <td>"Animal with long snout"</td> </tr>
+               <tr><td>Armadillo</td> <td>"Animal with a protective shell"</td>  </tr>
+               <tr><td>Baboon</td> <td>"A simian found in the jungle"</td> </tr>
+               <tr><td>Cheetah</td> <td> "A fast running animal"</td>  </tr>      
+               <tr><td>Platypus</td> <td>"A mammal with a bill"</td> </tr>              
+           </table>    
+          <p>Or delete the key, <b>Baboon:</b></p>
+           <table align="center" border=4 cellspacing=5 cellpadding=5>
+               <tr><td>Aardvark</td> <td>"Animal with long snout"</td> </tr>
+               <tr><td>Armadillo</td> <td>"Animal with a protective shell"</td>  </tr>            
+               <tr><td>Cheetah</td> <td> "A fast running animal"</td>  </tr>      
+               <tr><td>Platypus</td> <td>"A mammal with a bill"</td> </tr>              
+           </table>
+        ]]></Description>
+    </Section>
+	<Section>
+	    <Heading>When to Use</Heading>
+		<Description><![CDATA[
+          <p>Dictionaries are like Structures, in that they are convenient for storing 
+             Key/ Value pairs.  However, they have a maintenance overhead keeping the keys
+            in sorted order.  An application that requires sorted keys would best be 
+            served by using a Dictionary. </p>
+        ]]></Description>
+    </Section>
+	<Section>
+	    <Heading>Visual Basic Comparison</Heading>
+		<Description><![CDATA[
+          <p>An Analytic Information Server Dictionary is similar to the user-defined type of 
+           Visual Basic. The Visual Basic user defined type is created at compile time, 
+           whereas the Analytic Information Server structure is created, expanded, or contracted 
+           dynamically at run time. The main difference is that the Visual Basic user defined 
+           type is static and the Analytic Information Server structure is dynamic, has its object 
+           keys and values available maintained in sorted order, and the object keys offer a 
+           wider range of values.</p>
+          <p><b>Type Employee</b></p>
+          <p><b>Name  As Variant   <blockquote>' Name of the employee.  </blockquote>  </b></p>
+          <p><b> Salary As Variant    <blockquote>' Salary  of the employee.  </blockquote>  </b></p>
+           <p><b>Address   As Variant   <blockquote>' Address  of the employee.  </blockquote>  </b></p>
+           <p><b>City   As Variant   <blockquote>' City  of the employee.  </blockquote>  </b></p>
+           <p><b>State   As Variant   <blockquote>' State  of the employee.  </blockquote>  </b></p>
+         <p><b>End Type</b></p>
+        ]]></Description>
+    </Section>
+	<Section>
+	    <Heading>Constant Form</Heading>
+		<Description><![CDATA[
+          <p>The Dictionary native data type supports a constant form. The whole Dictionary 
+            constant is enclosed in braces and preceded by the sharp symbol, brace, and the 
+           dic| symbol (<b>#{dic|</b>). Some Dictionary constant examples: </p>
+          <p><b>#{dic| Name:  "John Doe"  Address: "184 Anywhere Street" City: "Los Angeles" State: "California"}</b></p>
+    <p>The constant form for dictionaries allows using the constant prefix,  <b>#{dic||</b> with two bars, to specify 
+             creating "as is" in unsorted order as follows:</p>
+          <p><b>#{dic|| Z:  5  Y:  #{Mike: "father"  Sally: "mother"}  X:  "Hello"}</b></p>
+          <p>The constant form for dictionaries allows embedded Analytic Information Server objects
+            for the values or keys as follows:</p>
+          <p><b>#{dic| X:  5  Y:  #{Mike: "father"  Sally: "mother"}  Z:  "Hello"}</b></p>
+          <p><b>#{dic| #Jan,1 ,1972   {Name: Joe Eyes: Blue}  #Sept, 3 ,1969 {Name: Jan Eyes: Brown}}</b></p>
+        ]]></Description>
+    </Section>
+	<Section>                
+	    <Heading>Object Data Types</Heading>
+		<Description><![CDATA[
+          <p>The <b>Dictionary</b> is a Heap Object or an Object Data Type. The Analytic Information Server Object Types 
+            are stored in the Heap and are managed by the Heap manager.  The Analytic Information 
+            Server Heap manager supports object resizing, garbage collection, and anti-fragmentation algorithms 
+            so that the user may concentrate on the analysis and modeling of data rather than on
+            memory management. Without exception, all of the Object types are identified by an 
+            object id.  The object id identifies a block of memory, managed by the Lambda 
+             Information Server memory manager, in which the Object's data is stored.</p>
+         <p>The Analytic Information Server Heap Object and Native Data types can be saved and loaded to and from persistent
+            (disk file) storage at any time. Containers with immediate data are saved on disk 
+            in fixed length records equal to the size of the container. Containers with Heap 
+            object references are saved in fixed length records, which are automatically expanded 
+            to include the contents of the Heap object, and any objects referenced by the Heap 
+            object, etc. This feature is called Object Closure Management and is automatic with 
+            every Analytic Information Server container database save.</p>
+         <p>Analytic Information Server containers may be loaded from any database repository record 
+            at any time. If the data in the record is immediate, the database load fills the 
+            container with the immediate data. If the data in the record is an object closure, 
+            the database load fills the container with a Heap object reference, and all of the 
+            objects in the record are loaded back into the Heap with the same referential 
+            relationships they had when they were saved in the repository.</p>    
+        ]]></Description>
+    </Section>
+</Datatype>

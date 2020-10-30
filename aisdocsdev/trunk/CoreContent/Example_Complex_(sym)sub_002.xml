@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Complex &#45; 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>&#45;</FunctionKeywords>
+		<TypeKeywords>Complex</TypeKeywords>
+		<RelatedFunctions> &#42; &#43; &#47; </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>multiplication addition subtraction division</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[  <p> The difference of a variety of data types and a complex number is 
+                 shown here. The result of the operation is shown in the comment. The first 
+                 double shown is the real part of the result. The second number shown is the 
+                 imaginary part of the result. </p>
+	]]></Description>
+	<Syntax>
+ 	    <Expression><![CDATA[ <sc>(setq X (new Complex: 1.0 2.0))   </sc>   ]]></Expression>  
+        <Note><![CDATA[The first Complex Number is defined.]]></Note> 
+        <Returns><![CDATA[#&#60Complex 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq Y (new Complex: 2.0 1.0))   </sc>   ]]></Expression>  
+        <Note><![CDATA[The second Complex Number is defined.]]></Note> 
+        <Returns><![CDATA[#&#60Complex 234567&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(&#45 X Y)   </sc>   ]]></Expression>  
+        <Note><![CDATA[The result when 2 Complex Numbers are subtracted.]]></Note> 
+        <Returns><![CDATA[#c-1.0+1.0i]]></Returns>
+        <Expression><![CDATA[ <sc>(&#45 X #void )   </sc>   ]]></Expression>  
+        <Note><![CDATA[The result when a Complex Number is subtracted with a Void data type.]]></Note> 
+        <Returns><![CDATA[#c1.0+2.0i]]></Returns>
+        <Expression><![CDATA[ <sc>(&#45 X 2 )   </sc>   ]]></Expression>  
+        <Note><![CDATA[The result when a Complex Number is subtracted with a Number data type.]]></Note> 
+        <Returns><![CDATA[#c-1.0+2.0i]]></Returns>
+        <Expression><![CDATA[ <sc>(&#45 X 2.0 )   </sc>   ]]></Expression>  
+        <Note><![CDATA[The result when a Complex Number is subtracted with a Real Number data type.]]></Note> 
+        <Returns><![CDATA[#c-1.0+2.0i]]></Returns>
+        <Expression><![CDATA[ <sc>(&#45 X #\A )   </sc>   ]]></Expression>  
+        <Note><![CDATA[The result when a Complex Number is subtracted with a Character data type.]]></Note> 
+        <Returns><![CDATA[#c-64.0+2.0i]]></Returns>
+        <Expression><![CDATA[ <sc>(&#45 X true)	   </sc>   ]]></Expression>  
+        <Note><![CDATA[The result when a Complex Number is subtracted with a Boolean data type.]]></Note> 
+        <Returns><![CDATA[#c2.0i]]></Returns>
+        <Expression><![CDATA[ <sc>(&#45 X #Jan,1,2000)	   </sc>   ]]></Expression>  
+        <Note><![CDATA[The result when a Complex Number is subtracted with a Date data type. 
+             Dates are stored as the number of days lapsed since day 0.]]></Note> 
+        <Returns><![CDATA[#c-730483.0+2.0i]]></Returns>
+        <Expression><![CDATA[ <sc>(&#45 X $-.25)	   </sc>   ]]></Expression>  
+        <Note><![CDATA[The result when a Complex Number is subtracted with a Money data type.]]></Note> 
+        <Returns><![CDATA[#c1.25+2.0i]]></Returns>
+        <Expression><![CDATA[ <sc>(&#45 X -.25)	   </sc>   ]]></Expression>  
+        <Note><![CDATA[The result when a Complex Number is subtracted with a Fraction numeric data type.]]></Note> 
+        <Returns><![CDATA[#c1.25+2.0i]]></Returns>
+        <Hints><![CDATA[<p>Immediate numeric types are converted to a pure real part with a zero 
+          imaginary part prior to forming the difference. </p>
+       ]]></Hints>
+   </Syntax>
+</Example>

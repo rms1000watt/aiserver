@@ -1,0 +1,1118 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>defmethod</Title>
+		<FunctionName>defmethod</FunctionName>
+		<FunctionType>macro</FunctionType>
+		<ArgumentTypes>Symbol Dictionary</ArgumentTypes>        
+		<DataType>String Symbol Structure Dictionary Directory Brick Matrix ObjectRepository ShortVector NumMatrix Boolean Pair List Void Character Number Date Function FltVector IntVector NumVector BitVector Vector</DataType>
+		<RelatedFunctions>addmethod send methodsOf</RelatedFunctions>
+        <RelatedVMInstructions> vmsetdickey vmrefdicvalue  </RelatedVMInstructions>
+		<HumanKeywords>method message type methodName define</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[ 
+             <p> The <b>defMethod</b> function binds a method name to the 
+                 methods Dictionary associated with the specified type. This is the macro version of the <b>addMethod</b> function.   </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>defmethod</b> macro constructs an Lambda <b>{exp}</b> with an arbitrary number 
+           of arguments <b>{args...}</b>, the Lambda's published interfaces <b>{faces:}</b>, 
+           local variables <b>{vars: }</b>,  persistent variables <b>{pvars:}</b> and persistent 
+           class variables <b>{cvars:}</b>.  The new Lambda is added to the Methods Dictionary of 
+           the specified type <b>{type}</b>.  After adding the Lambda to the Methods Dictionary of  
+           the <b>{type}</b>, the type will respond to the message named <b>{msgName}</b>. 
+           This feature is instrumental in providing Analytic Information Server with support for 
+            standard Object Oriented Programming features. </p>
+        <p>The Analytic Information Server Lisp compiler constructs  a method  binding from the 
+           <b>{msgName}</b>  argument  and the  Lambda.  
+The new method binding is installed  
+           in the methods Dictionary associated with the 
+specified type <b>{type}</b>.  
+           The <b>defmethod</b> function returns the Methods Dictionary object. </p>   
+           <H2 align="center"> Methods Dictionary </H2>
+           <table align="center" border=4 cellspacing=5 cellpadding=5>
+               <tr><td>MsgName1</td><td>LambdaName1</td></tr>
+               <tr><td>MsgName2</td><td>LambdaName2</td></tr>
+               <tr><td>MsgName3</td><td>LambdaName3</td></tr>
+           </table>                  
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>defmethod</b> macro is used to install a method in the Methods Dictionary 
+           for a type. The defmethod is a macro version of the <b>addMethod</b> function.
+		</p>
+        ]]></Usage>
+    </Brief>
+	<Syntax-String>
+	    <Expression><![CDATA[<p>  (defmethod  String:  msgName(args...)  faces: (vars...) vars:  (vars...)  
+                            <blockquote>     pvars: (vars...)  cvars: (vars...)( exp ) ) </blockquote> 
+</p>  
+                     <p> (defmethod  Text:  msgName(args... )  faces: (vars...) vars:  (vars...)  
+                           <blockquote>     pvars: (vars...)  cvars: (vars...)( exp ) ) </blockquote>  </p> 
+         ]]></Expression>
+		<Argument> 
+		  <Name>String: or Text:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory keyword. Tells defmethod to add the following Lambda to 
+              the String or Text type.</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>msgName(args...)</Name>
+		  <Note><![CDATA[
+		  <p>The name of the message to which  the String type will respond  
+           and the argument list required by the Lambda </p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>faces: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a interfaces feature list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>     
+        <Argument> 
+		  <Name>vars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a local variable list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>    
+        <Argument> 
+		  <Name>pvars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a persistent variable list</p>
+          ]]></Note>
+		  <AISTypes>none</AISTypes>   
+		</Argument> 
+        <Argument> 
+		  <Name>cvars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a persistent class variable list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument> 
+        <Argument> 
+		  <Name>exp...</Name>
+		  <Note><![CDATA[
+		  <p>The Lisp statements that form the Lambda</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The Methods Dictionary for String: or Text:</p>
+	    ]]></Return>   
+	</Syntax-String>
+	<Syntax-Symbol>
+	    <Expression><![CDATA[<p>  (defmethod  Symbol:  msgName(args...)  faces: (vars...) vars:  (vars...)  
+                            <blockquote>     pvars: (vars...)  cvars: (vars...)( exp ) ) </blockquote> 
+</p>  
+                     <p> (defmethod  Text:  msgName(args... )  faces: (vars...) vars:  (vars...)  
+                           <blockquote>     pvars: (vars...)  cvars: (vars...)( exp ) ) </blockquote>  </p> 
+         ]]></Expression>
+		<Argument> 
+		  <Name>Symbol:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory keyword. Tells defmethod to add the following Lambda to 
+              the Symbol type.</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>msgName(args...)</Name>
+		  <Note><![CDATA[
+		  <p>The name of the message to which  the Symbol type will respond  
+           and the argument list required by the Lambda </p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>faces: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a interfaces feature list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>     
+        <Argument> 
+		  <Name>vars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a local variable list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>    
+        <Argument> 
+		  <Name>pvars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a persistent variable list</p>
+          ]]></Note>
+		  <AISTypes>none</AISTypes>   
+		</Argument> 
+        <Argument> 
+		  <Name>cvars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a persistent class variable list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument> 
+        <Argument> 
+		  <Name>exp...</Name>
+		  <Note><![CDATA[
+		  <p>The Lisp statements that form the Lambda</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>          
+		<Return><![CDATA[ 
+	    <p>The Methods Dictionary for Symbol</p>
+	    ]]></Return>   
+	</Syntax-Symbol>
+	<Syntax-Structure>
+	    <Expression><![CDATA[<p>  (defmethod  Structure:  msgName(args...)  faces: (vars...) vars:  (vars...)  
+                            <blockquote>     pvars: (vars...)  cvars: (vars...)( exp ) ) </blockquote> 
+</p>
+         ]]></Expression>
+		<Argument> 
+		  <Name>Structure:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory keyword. Tells defmethod to add the following Lambda to 
+              the Structure type.</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>msgName(args...)</Name>
+		  <Note><![CDATA[
+		  <p>The name of the message to which  the Structure type will respond  
+           and the argument list required by the Lambda </p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>faces: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a interfaces feature list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>     
+        <Argument> 
+		  <Name>vars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a local variable list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>    
+        <Argument> 
+		  <Name>pvars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a persistent variable list</p>
+          ]]></Note>
+		  <AISTypes>none</AISTypes>   
+		</Argument> 
+        <Argument> 
+		  <Name>cvars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a persistent class variable list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument> 
+        <Argument> 
+		  <Name>exp...</Name>
+		  <Note><![CDATA[
+		  <p>The Lisp statements that form the Lambda</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>          
+		<Return><![CDATA[ 
+	    <p>The Methods Dictionary for the Structure Data Type.</p>
+	    ]]></Return>   
+	</Syntax-Structure>
+	<Syntax-Dictionary>
+	    <Expression><![CDATA[<p>  (defmethod  Dictionary:  msgName(args...)  faces: (vars...) vars:  (vars...)  
+                            <blockquote>     pvars: (vars...)  cvars: (vars...)( exp ) ) </blockquote> 
+</p>
+         ]]></Expression>
+		<Argument> 
+		  <Name>Dictionary:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory keyword. Tells defmethod to add the following Lambda to 
+              the Dictionary type.</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>msgName(args...)</Name>
+		  <Note><![CDATA[
+		  <p>The name of the message to which  the Dictionary type will respond  
+           and the argument list required by the Lambda </p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>faces: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a interfaces feature list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>     
+        <Argument> 
+		  <Name>vars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a local variable list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>    
+        <Argument> 
+		  <Name>pvars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a persistent variable list</p>
+          ]]></Note>
+		  <AISTypes>none</AISTypes>   
+		</Argument> 
+        <Argument> 
+		  <Name>cvars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a persistent class variable list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument> 
+        <Argument> 
+		  <Name>exp...</Name>
+		  <Note><![CDATA[
+		  <p>The Lisp statements that form the Lambda</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>          
+		<Return><![CDATA[ 
+	    <p>The Methods Dictionary for the Dictionary data type.</p>
+	    ]]></Return>   
+	</Syntax-Dictionary>
+	<Syntax-Directory>
+	    <Expression><![CDATA[<p>  (defmethod  Directory:  msgName(args...)  faces: (vars...) vars:  (vars...)  
+                            <blockquote>     pvars: (vars...)  cvars: (vars...)( exp ) ) </blockquote> 
+</p>
+         ]]></Expression>
+		<Argument> 
+		  <Name>Directory:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory keyword. Tells defmethod to add the following Lambda to 
+              the Directory type.</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>msgName(args...)</Name>
+		  <Note><![CDATA[
+		  <p>The name of the message to which  the Directory type will respond  
+           and the argument list required by the Lambda </p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>faces: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a interfaces feature list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>     
+        <Argument> 
+		  <Name>vars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a local variable list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>    
+        <Argument> 
+		  <Name>pvars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a persistent variable list</p>
+          ]]></Note>
+		  <AISTypes>none</AISTypes>   
+		</Argument> 
+        <Argument> 
+		  <Name>cvars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a persistent class variable list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument> 
+        <Argument> 
+		  <Name>exp...</Name>
+		  <Note><![CDATA[
+		  <p>The Lisp statements that form the Lambda</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>          
+		<Return><![CDATA[ 
+	    <p>The Methods Dictionary for the Directory data type.</p>
+	    ]]></Return>   
+	</Syntax-Directory>
+	<Syntax>
+	    <Expression><![CDATA[<p>  (defmethod  Vector:  msgName(args...)  faces: (vars...) vars:  (vars...)  
+                      <blockquote>     pvars: (vars...)  cvars: (vars...)( exp ) ) </blockquote> </p>                  
+         ]]></Expression>
+		<Argument> 
+		  <Name>Vector:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory keyword. Tells defmethod to add the following Lambda to 
+              the Vector type.</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>msgName(args...)</Name>
+		  <Note><![CDATA[
+		  <p>The name of the message to which  the Vector type will respond  
+           and the argument list required by the Lambda </p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>faces: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a interfaces feature list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>     
+        <Argument> 
+		  <Name>vars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a local variable list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>    
+        <Argument> 
+		  <Name>pvars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a persistent variable list</p>
+          ]]></Note>
+		  <AISTypes>none</AISTypes>   
+		</Argument> 
+        <Argument> 
+		  <Name>cvars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a persistent class variable list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument> 
+        <Argument> 
+		  <Name>exp...</Name>
+		  <Note><![CDATA[
+		  <p>The Lisp statements that form the Lambda</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>          
+		<Return><![CDATA[ 
+	    <p>The Methods Dictionary for the Vector data type.</p>
+	    ]]></Return>   
+	</Syntax>
+	<Syntax-Brick>
+	    <Expression><![CDATA[<p>  (defmethod  Brick:  msgName(args...)  faces: (vars...) vars:  (vars...)  
+                      <blockquote>     pvars: (vars...)  cvars: (vars...)( exp ) ) </blockquote> </p>                  
+         ]]></Expression>
+		<Argument> 
+		  <Name>Brick:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory keyword. Tells defmethod to add the following Lambda to 
+              the Brick type.</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>msgName(args...)</Name>
+		  <Note><![CDATA[
+		  <p>The name of the message to which  the Brick type will respond  
+           and the argument list required by the Lambda </p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>faces: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a interfaces feature list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>     
+        <Argument> 
+		  <Name>vars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a local variable list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>    
+        <Argument> 
+		  <Name>pvars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a persistent variable list</p>
+          ]]></Note>
+		  <AISTypes>none</AISTypes>   
+		</Argument> 
+        <Argument> 
+		  <Name>cvars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a persistent class variable list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument> 
+        <Argument> 
+		  <Name>exp...</Name>
+		  <Note><![CDATA[
+		  <p>The Lisp statements that form the Lambda</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>          
+		<Return><![CDATA[ 
+	    <p>The Methods Dictionary for the Brick data type.</p>
+	    ]]></Return>   
+	</Syntax-Brick>
+	<Syntax-Matrix>
+	    <Expression><![CDATA[<p>  (defmethod  Matrix:  msgName(args...)  faces: (vars...) vars:  (vars...)  
+                      <blockquote>     pvars: (vars...)  cvars: (vars...)( exp ) ) </blockquote> </p>                  
+         ]]></Expression>
+		<Argument> 
+		  <Name>Matrix:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory keyword. Tells defmethod to add the following Lambda to 
+              the Matrix type.</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>msgName(args...)</Name>
+		  <Note><![CDATA[
+		  <p>The name of the message to which  the Matrix type will respond  
+           and the argument list required by the Lambda </p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>faces: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a interfaces feature list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>     
+        <Argument> 
+		  <Name>vars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a local variable list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>    
+        <Argument> 
+		  <Name>pvars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a persistent variable list</p>
+          ]]></Note>
+		  <AISTypes>none</AISTypes>   
+		</Argument> 
+        <Argument> 
+		  <Name>cvars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a persistent class variable list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument> 
+        <Argument> 
+		  <Name>exp...</Name>
+		  <Note><![CDATA[
+		  <p>The Lisp statements that form the Lambda</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>          
+		<Return><![CDATA[ 
+	    <p>The Methods Dictionary for the Matrix data type.</p>
+	    ]]></Return>   
+	</Syntax-Matrix>
+	<Syntax-NumMatrix>
+	    <Expression><![CDATA[<p>  (defmethod  NumMatrix:  msgName(args...)  faces: (vars...) vars:  (vars...)  
+                      <blockquote>     pvars: (vars...)  cvars: (vars...)( exp ) ) </blockquote> </p>                  
+         ]]></Expression>
+		<Argument> 
+		  <Name>NumMatrix:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory keyword. Tells defmethod to add the following Lambda to 
+              the NumMatrix type.</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>msgName(args...)</Name>
+		  <Note><![CDATA[
+		  <p>The name of the message to which  the NumMatrix type will respond  
+           and the argument list required by the Lambda </p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>faces: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a interfaces feature list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>     
+        <Argument> 
+		  <Name>vars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a local variable list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>    
+        <Argument> 
+		  <Name>pvars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a persistent variable list</p>
+          ]]></Note>
+		  <AISTypes>none</AISTypes>   
+		</Argument> 
+        <Argument> 
+		  <Name>cvars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a persistent class variable list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument> 
+        <Argument> 
+		  <Name>exp...</Name>
+		  <Note><![CDATA[
+		  <p>The Lisp statements that form the Lambda</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>          
+		<Return><![CDATA[ 
+	    <p>The Methods Dictionary for the NumMatrix data type.</p>
+	    ]]></Return>   
+	</Syntax-NumMatrix>
+	<Syntax-Pair>
+	    <Expression><![CDATA[<p>  (defmethod  Pair:  msgName(args...)  faces: (vars...) vars:  (vars...)  
+                      <blockquote>     pvars: (vars...)  cvars: (vars...)( exp ) ) </blockquote> </p>                  
+         ]]></Expression>
+		<Argument> 
+		  <Name>Pair:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory keyword. Tells defmethod to add the following Lambda to 
+              the Pair type.</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>msgName(args...)</Name>
+		  <Note><![CDATA[
+		  <p>The name of the message to which  the Pair type will respond  
+           and the argument list required by the Lambda </p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>faces: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a interfaces feature list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>     
+        <Argument> 
+		  <Name>vars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a local variable list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>    
+        <Argument> 
+		  <Name>pvars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a persistent variable list</p>
+          ]]></Note>
+		  <AISTypes>none</AISTypes>   
+		</Argument> 
+        <Argument> 
+		  <Name>cvars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a persistent class variable list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument> 
+        <Argument> 
+		  <Name>exp...</Name>
+		  <Note><![CDATA[
+		  <p>The Lisp statements that form the Lambda</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>          
+		<Return><![CDATA[ 
+	    <p>The Methods Dictionary for the Pair data type.</p>
+	    ]]></Return>   
+	</Syntax-Pair>
+	<Syntax-List>
+	    <Expression><![CDATA[<p>  (defmethod  List:  msgName(args...)  faces: (vars...) vars:  (vars...)  
+                      <blockquote>     pvars: (vars...)  cvars: (vars...)( exp ) ) </blockquote> </p>                  
+         ]]></Expression>
+		<Argument> 
+		  <Name>Pair:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory keyword. Tells defmethod to add the following Lambda to 
+              the List type.</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>msgName(args...)</Name>
+		  <Note><![CDATA[
+		  <p>The name of the message to which  the Pair type will respond  
+           and the argument list required by the Lambda </p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>faces: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a interfaces feature list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>     
+        <Argument> 
+		  <Name>vars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a local variable list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>    
+        <Argument> 
+		  <Name>pvars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a persistent variable list</p>
+          ]]></Note>
+		  <AISTypes>none</AISTypes>   
+		</Argument> 
+        <Argument> 
+		  <Name>cvars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a persistent class variable list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument> 
+        <Argument> 
+		  <Name>exp...</Name>
+		  <Note><![CDATA[
+		  <p>The Lisp statements that form the Lambda</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>          
+		<Return><![CDATA[ 
+	    <p>The Methods Dictionary for the List data type.</p>
+	    ]]></Return>   
+	</Syntax-List>
+	<Syntax-Void>
+	    <Expression><![CDATA[<p>  (defmethod  Void:  msgName(args...)  faces: (vars...) vars:  (vars...)  
+                      <blockquote>     pvars: (vars...)  cvars: (vars...)( exp ) ) </blockquote> </p>                  
+         ]]></Expression>
+		<Argument> 
+		  <Name>Void:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory keyword. Tells defmethod to add the following Lambda to 
+              the Void type.</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>msgName(args...)</Name>
+		  <Note><![CDATA[
+		  <p>The name of the message to which  the Void type will respond  
+           and the argument list required by the Lambda </p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>faces: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a interfaces feature list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>     
+        <Argument> 
+		  <Name>vars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a local variable list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>    
+        <Argument> 
+		  <Name>pvars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a persistent variable list</p>
+          ]]></Note>
+		  <AISTypes>none</AISTypes>   
+		</Argument> 
+        <Argument> 
+		  <Name>cvars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a persistent class variable list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument> 
+        <Argument> 
+		  <Name>exp...</Name>
+		  <Note><![CDATA[
+		  <p>The Lisp statements that form the Lambda</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>          
+		<Return><![CDATA[ 
+	    <p>The Methods Dictionary for the Void data type.</p>
+	    ]]></Return>   
+	</Syntax-Void>
+	<Syntax-Boolean>
+	    <Expression><![CDATA[<p>  (defmethod  Boolean:  msgName(args...)  faces: (vars...) vars:  (vars...)  
+                      <blockquote>     pvars: (vars...)  cvars: (vars...)( exp ) ) </blockquote> </p>                  
+         ]]></Expression>
+		<Argument> 
+		  <Name>Boolean:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory keyword. Tells defmethod to add the following Lambda to 
+              the Boolean type.</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>msgName(args...)</Name>
+		  <Note><![CDATA[
+		  <p>The name of the message to which  the Boolean type will respond  
+           and the argument list required by the Lambda </p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>faces: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a interfaces feature list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>     
+        <Argument> 
+		  <Name>vars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a local variable list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>    
+        <Argument> 
+		  <Name>pvars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a persistent variable list</p>
+          ]]></Note>
+		  <AISTypes>none</AISTypes>   
+		</Argument> 
+        <Argument> 
+		  <Name>cvars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a persistent class variable list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument> 
+        <Argument> 
+		  <Name>exp...</Name>
+		  <Note><![CDATA[
+		  <p>The Lisp statements that form the Lambda</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>          
+		<Return><![CDATA[ 
+	    <p>The Methods Dictionary for the Boolean data type.</p>
+	    ]]></Return>   
+	</Syntax-Boolean>
+	<Syntax-Character>
+	    <Expression><![CDATA[<p>  (defmethod  Character:  msgName(args...)  faces: (vars...) vars:  (vars...)  
+                      <blockquote>     pvars: (vars...)  cvars: (vars...)( exp ) ) </blockquote> </p>                  
+         ]]></Expression>
+		<Argument> 
+		  <Name>Character:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory keyword. Tells defmethod to add the following Lambda to 
+              the Character type.</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>msgName(args...)</Name>
+		  <Note><![CDATA[
+		  <p>The name of the message to which  the Character type will respond  
+           and the argument list required by the Lambda </p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>faces: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a interfaces feature list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>     
+        <Argument> 
+		  <Name>vars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a local variable list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>    
+        <Argument> 
+		  <Name>pvars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a persistent variable list</p>
+          ]]></Note>
+		  <AISTypes>none</AISTypes>   
+		</Argument> 
+        <Argument> 
+		  <Name>cvars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a persistent class variable list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument> 
+        <Argument> 
+		  <Name>exp...</Name>
+		  <Note><![CDATA[
+		  <p>The Lisp statements that form the Lambda</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>          
+		<Return><![CDATA[ 
+	    <p>The Methods Dictionary for the Character data type.</p>
+	    ]]></Return>   
+	</Syntax-Character>
+	<Syntax-Number>
+	    <Expression><![CDATA[<p>  (defmethod  Number:  msgName(args...)  faces: (vars...) vars:  (vars...)  
+                      <blockquote>     pvars: (vars...)  cvars: (vars...)( exp ) ) </blockquote> </p>                  
+         ]]></Expression>
+		<Argument> 
+		  <Name>Number:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory keyword. Tells defmethod to add the following Lambda to 
+              the Number type.</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>msgName(args...)</Name>
+		  <Note><![CDATA[
+		  <p>The name of the message to which  the Number type will respond  
+           and the argument list required by the Lambda </p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>faces: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a interfaces feature list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>     
+        <Argument> 
+		  <Name>vars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a local variable list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>    
+        <Argument> 
+		  <Name>pvars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a persistent variable list</p>
+          ]]></Note>
+		  <AISTypes>none</AISTypes>   
+		</Argument> 
+        <Argument> 
+		  <Name>cvars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a persistent class variable list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument> 
+        <Argument> 
+		  <Name>exp...</Name>
+		  <Note><![CDATA[
+		  <p>The Lisp statements that form the Lambda</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>          
+		<Return><![CDATA[ 
+	    <p>The Methods Dictionary for the Number data type.</p>
+	    ]]></Return>   
+	</Syntax-Number>
+	<Syntax-Date>
+	    <Expression><![CDATA[<p>  (defmethod  Date:  msgName(args...)  faces: (vars...) vars:  (vars...)  
+                      <blockquote>     pvars: (vars...)  cvars: (vars...)( exp ) ) </blockquote> </p>                  
+         ]]></Expression>
+		<Argument> 
+		  <Name>Date:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory keyword. Tells defmethod to add the following Lambda to 
+              the Date type.</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>msgName(args...)</Name>
+		  <Note><![CDATA[
+		  <p>The name of the message to which  the Date type will respond  
+           and the argument list required by the Lambda </p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>faces: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a interfaces feature list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>     
+        <Argument> 
+		  <Name>vars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a local variable list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>    
+        <Argument> 
+		  <Name>pvars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a persistent variable list</p>
+          ]]></Note>
+		  <AISTypes>none</AISTypes>   
+		</Argument> 
+        <Argument> 
+		  <Name>cvars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a persistent class variable list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument> 
+        <Argument> 
+		  <Name>exp...</Name>
+		  <Note><![CDATA[
+		  <p>The Lisp statements that form the Lambda</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>          
+		<Return><![CDATA[ 
+	    <p>The Methods Dictionary for the Date data type.</p>
+	    ]]></Return>   
+	</Syntax-Date>
+	<Syntax-Function>
+	    <Expression><![CDATA[<p>  (defmethod  Function:  msgName(args...)  faces: (vars...) vars:  (vars...)  
+                      <blockquote>     pvars: (vars...)  cvars: (vars...)( exp ) ) </blockquote> </p>                  
+         ]]></Expression>
+		<Argument> 
+		  <Name>Function:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory keyword. Tells defmethod to add the following Lambda to 
+              the Date type.</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>msgName(args...)</Name>
+		  <Note><![CDATA[
+		  <p>The name of the message to which  the Function type will respond  
+           and the argument list required by the Lambda </p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>faces: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a interfaces feature list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>     
+        <Argument> 
+		  <Name>vars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a local variable list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>    
+        <Argument> 
+		  <Name>pvars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a persistent variable list</p>
+          ]]></Note>
+		  <AISTypes>none</AISTypes>   
+		</Argument> 
+        <Argument> 
+		  <Name>cvars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a persistent class variable list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument> 
+        <Argument> 
+		  <Name>exp...</Name>
+		  <Note><![CDATA[
+		  <p>The Lisp statements that form the Lambda</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>          
+		<Return><![CDATA[ 
+	    <p>The Methods Dictionary for the Function data type.</p>
+	    ]]></Return>   
+	</Syntax-Function>
+	<Syntax-ObjectRepository>
+	    <Expression><![CDATA[<p>  (defmethod  ObjectRepository:  msgName(args...)  faces: (vars...) vars:  (vars...)  
+                      <blockquote>     pvars: (vars...)  cvars: (vars...)( exp ) ) </blockquote> </p>                  
+         ]]></Expression>
+		<Argument> 
+		  <Name>ObjectRepository:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory keyword. Tells defmethod to add the following Lambda to 
+              the ObjectRepository type.</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>msgName(args...)</Name>
+		  <Note><![CDATA[
+		  <p>The name of the message to which  the Function type will respond  
+           and the argument list required by the Lambda </p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>faces: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a interfaces feature list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>     
+        <Argument> 
+		  <Name>vars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a local variable list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>    
+        <Argument> 
+		  <Name>pvars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a persistent variable list</p>
+          ]]></Note>
+		  <AISTypes>none</AISTypes>   
+		</Argument> 
+        <Argument> 
+		  <Name>cvars: (var...)</Name>
+		  <Note><![CDATA[
+		  <p>Optional Argument. If present, must be followed by a by a persistent class variable list</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument> 
+        <Argument> 
+		  <Name>exp...</Name>
+		  <Note><![CDATA[
+		  <p>The Lisp statements that form the Lambda</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>   
+		</Argument>          
+		<Return><![CDATA[ 
+	    <p>The Methods Dictionary for the ObjectRepository data type.</p>
+	    ]]></Return>   
+	</Syntax-ObjectRepository>
+</Function>

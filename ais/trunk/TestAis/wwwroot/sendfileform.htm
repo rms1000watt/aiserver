@@ -1,0 +1,18 @@
+<HTML><HEAD>
+<TITLE>Analytic Information Server Send-file Form</TITLE>
+</HEAD>
+<BODY><H2>Analytic Information Server (AIS)</H2>
+<P>
+Please enter the name of the file you wish to send to the server.
+When finished, press the Submit button.</P>
+<FORM ENCTYPE="multipart/form-data" METHOD="POST" ACTION="http://localhost/amp.dll">
+<P><B>An Optional message can go here</B></P>			   <!-- optional message -->
+<TABLE> <!-- Amp Message -->
+	<TR><TD ALIGN="right">User:</TD> <TD>Target/Act:<INPUT TYPE="text" NAME="_ais" VALUE="noop" SIZE=16 MAXLENGTH=32>
+		</TD></TR> 
+	<TR><TD ALIGN="right">File:</TD> <TD><INPUT TYPE="file" NAME="MyFilePath" VALUE="somefile.txt" SIZE=12 MAXLENGTH=32>
+		</TD></TR>
+	<TR><TD>   </TD><TD ALIGN="center"><INPUT TYPE="submit" VALUE="Submit">
+		</TD></TR>
+</TABLE>
+</FORM></BODY></HTML>

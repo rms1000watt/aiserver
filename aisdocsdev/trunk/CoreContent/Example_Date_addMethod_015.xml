@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Date addMethod 015</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>addMethod</FunctionKeywords>
+		<TypeKeywords> Date Symbol Dictionary </TypeKeywords>
+		<RelatedFunctions>defmethod send methodsOf</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>method message messageName</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[<p> This example defines a method named <b>monthName</b> that is invoked when the Number  
+
+                 type receives a <b>getMonth</b>   message.  The <b>monthName</b> method prints out 
+                 the current full month name string.  </p>
+	]]></Description>
+	<Syntax>
+	<Expression><![CDATA[<sc>
+    (defun monthName (a)  vars: (names)
+      (setq names #("January"  "February" "March" "April" "May" "June" "July" "August" "September" "October" "November" "December"))
+      (ref  names (sub1 ( month a)  ))
+    ) ;;end monthName method     </sc>]]></Expression>
+    <Note><![CDATA[ First Define the monthName method:
+
+]]></Note>
+    <Returns><![CDATA[ #&60Lambda 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(addMethod  Date: getMonth: monthName)               <sc> ]]></Expression>
+    <Note><![CDATA[Install the monthName method and the message named getMonth in the Date Methods Dictionary.]]></Note>
+    <Returns><![CDATA[#&#60Dictionary 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(send getMonth:  #Jan,1,1996 )         <sc> ]]></Expression>
+    <Note><![CDATA[To invoke the Lambda that responds to the double message, issue the following statement:]]></Note>
+    <Returns><![CDATA[January]]></Returns>
+    <Expression><![CDATA[<sc>(send getMonth:  (date 1996  1 1 ))          <sc> ]]></Expression>
+    <Note><![CDATA[none]]></Note>
+    <Returns><![CDATA[January]]></Returns>
+    <Expression><![CDATA[<sc>(getMonth:  #Jan,1,1996 )              <sc> ]]></Expression>
+    <Note><![CDATA[Alternatively, the Lambda may be invoked using the following syntax:]]></Note>
+    <Returns><![CDATA[January]]></Returns>
+    <Hints><![CDATA[none]]></Hints>
+</Syntax>
+</Example>

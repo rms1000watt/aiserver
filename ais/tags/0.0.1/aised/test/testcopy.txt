@@ -1,0 +1,43 @@
+# aised/test/testcopy.txt
+
+
+#							AISED - TEST COPY
+# Test copy operations.  
+
+# CHANGE HISTORY
+# Version	Date		Who		Change
+# 1.0039	4/20/2004	tlw		Original
+
+# SYNTAX
+# COPY - copy(Append)
+# CUT - cut()
+# PASTE - paste()
+
+# NOTES
+#	 1. When making changes to this file, be sure to note them in the change history above.
+#		Put the latest entry at the top of the history.
+#	 2. See testsuite.txt for lots of details.
+#	*************************************************************************************************
+# COPY
+clear
+insert("a")
+move(prevchar, Select)
+copy
+copy(Append)
+move(nextchar, NoSelect)
+paste
+insert("\nb")
+move(bot, Select)
+copy
+move(nextline, NoSelect)
+paste
+
+# CUT
+clear
+insert("abc")
+move(bot, Select)
+cut
+
+# PASTE
+paste
+# end

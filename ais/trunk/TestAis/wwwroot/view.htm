@@ -1,0 +1,37 @@
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<TITLE>Application Home Page</TITLE>
+</HEAD>
+<BODY><H3>InvestByLambda.com - Application View</H3>
+<P>
+This is the Application View home page.</P>
+<P>
+<B>Introduction.</B>
+This page is a place holder for the Application's HTML home page. An application, such as
+DeepGreen, can provide a set of HTML formatted reports that are available for viewing.
+When a user selects the "View" tool button on the console tab in the session window of the
+AIS GUI, a browser is launched (the browser is currently determined by the ClientBrowser
+entry in the abase.ini file). The browser opens the home page for the application as
+determined by the ClientViewUrl also specified in the abase.ini file.  In this case,
+that URL selects this page.
+<P>
+<B>Help</B>
+<UL>
+	<LI>To select another home page for your application, edit the ClientViewUrl entry
+	in the abase.ini file.  The
+	abase.ini file is either in the same directory as the executable file for AIS
+	(webide.exe), or it is in the same directory as	the startup.sl file that launched
+	this application.  If abase.ini appears in both directories, the entries
+	in the abase.ini in the startup.sl directory take precedence.
+	</LI>
+	<LI>To select another browser, edit the ClientBrowser entry in the ais.ini.  Be sure to avoid spaces
+	in the path. Use the 8 character (DOS) names in order to avoid a space in the directory name.
+	</LI>
+	<LI>To modify the path to the help pages, edit the ClientHelpUrl.  Note the above
+	caution about spaces in the file specification.</LI>
+</UL>
+</P>
+</BODY>
+</HTML>
+

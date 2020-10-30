@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>quote</Title>
+		<FunctionName>quote</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+        <ArgumentTypes>List</ArgumentTypes>
+        <DataType>   List </DataType>
+	    <RelatedFunctions> </RelatedFunctions>
+        <RelatedVMInstructions> vmregObjPointer </RelatedVMInstructions>
+		<HumanKeywords>  evaluate lexical expression</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p>The <b>quote</b>  lexical form returns  a List constructed from the specified 
+                 argument  expression .  </p>
+          ]]></Description>
+	<Brief>
+       <Overview><![CDATA[
+       	<p>The <b>quote</b> lexical form expands its arguments without evaluation of symbols, 
+            numbers, constants, or lists.  The <b>quote</b>  lexical form returns  a List 
+            constructed from the specified argument  expression <b>{expression}</b>.  
+            The newly constructed list is always returned.  The <b>quote</b> lexical form 
+            returns its argument <b>{expression}</b> unevaluated. </p>
+        ]]></Overview>
+	   <Usage><![CDATA[
+		<p>Use the form <b>(quote expression)</b> when the form is NOT to be treated as a 
+           function invocation. For instance, one would express a List constant with a quoted 
+           form. Leaving off the quote would cause the List to be treated as a function invocation.
+        </p>
+        ]]></Usage>
+    </Brief>
+  <Syntax>
+	    <Expression><![CDATA[<p><b>   (quote expression) </b></p> ]]></Expression>
+    	<Argument>
+		  <Name>expression</Name>
+		  <Note><![CDATA[
+		  <p>Any Analytic Information Server expression</p>
+          ]]></Note>
+		  <AISTypes>none </AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>A List derived from the expression (unevaluated).</p>
+	    ]]></Return>
+	</Syntax>
+</Function>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Matrix makeGramMatrix  001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>makeGramMatrix</FunctionKeywords>
+		<TypeKeywords>Matrix  Integer</TypeKeywords>
+		<RelatedFunctions> makeGaussianMatrix matrixGaussianEliminate matrixGaussianSubstitute </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>  Matrix NumMatrix Boolean Gaussian 
+                        least squares dual regression</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example converts a Number Matrix to a Gram Matrix.
+
+	]]></Description>
+	<Syntax>
+  	     <Expression><![CDATA[ <sc><pre> (define X  #(nummat[4 3]| 1 2 3 4 
+                                                         5 6 7 8 
+                                                         9 10 11 12))        </pre>  </sc>]]></Expression>
+        <Note><![CDATA[Create a number Matrix containing the original independent observations:]]></Note>
+        <Returns><![CDATA[#&#60NumMatrix 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(setq G (makeGramMatrix  X))      </sc>]]></Expression>
+        <Note><![CDATA[Convert the observation matrix to its Gaussian matrix: ]]></Note>
+        <Returns><![CDATA[ #&#60NumMatrix 234567&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60NumMatrix 234567&#62 )     </sc>]]></Expression>
+        <Note><![CDATA[The contents of the Gaussian matrix: ]]></Note>
+        <Returns><![CDATA[<pre>#(nummat[4 4]| 14 32 50 68 
+                                     32 77 122 167 
+                                     50 122 194 266 
+                                     68 167 266 365)</pre>]]></Returns>
+        <Hints><![CDATA[Note, the Gram matrix is always square, symmetric, and positive definite 
+               (has positive Eigenvalues). ]]></Hints>
+   </Syntax>
+</Example>

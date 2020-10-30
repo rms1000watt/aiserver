@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Document SYSTEM "../DTD/Document.dtd">
+<Document>
+	<KnowledgeBase>
+	    <Title>Neural Nets</Title>
+		<Topic>Lisp</Topic>
+		<SubTopic>Machine Learning</SubTopic>
+		<HumanKeywords>Lambda Neural Nets  Machine Learning Programming</HumanKeywords>
+	</KnowledgeBase>
+	<Essay>Essay_Neural_Net_Overview</Essay>
+    <Essay>Essay_Neural_Net_Functions</Essay>
+</Document>

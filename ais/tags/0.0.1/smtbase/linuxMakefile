@@ -1,0 +1,2995 @@
+#############################################################################
+# RCA - 070307
+#
+# Notes: 
+# This is a manually managed Makefile for building: libsmtbase.a
+# The Makefile was copied from the generated Makefile by
+# qmake (2.01a) (Qt 4.2.2) from smtbase.pro.
+#
+# There are 5 optimizations that can be used for the source files:
+# CFLAGS_NOOPT		- compiled file is not optimized
+# CFLAGS_OPT		- compiled file is optimized without any code motion
+#					- see OPTIMIZATION for specific flags
+# CFLAGS_O1			- compiled file is level 1 optimization
+# CFLAGS_O2			- compiled file is level 2 optimization
+# CFLAGS_O3			- compiled file is level 3 optimization
+#
+# 070307 release build:
+#
+# 	Current CFLAGS is set to CFLAGS_O3. All the source files are 
+# 	compiled using this optimization except for the following:
+#	fpred2.c		- CFLAGS_NOOPT
+#	fconio.c		- CFLAGS_OPT
+#	fsmtbase.c		- CFLAGS_OPT
+#
+#	Please see areadme.c for additional notes.
+#
+#############################################################################
+
+####### Compiler, tools and options
+
+CC            = gcc
+CXX           = g++
+LEX           = flex
+YACC          = yacc
+DEFINES       = -D_GCC -D_AMD64 -D_LINUX -D_JIT -DQT_GUI_LIB -DQT_CORE_LIB -DQT_SHARED
+#############################################################################
+# Different Optimizations that can be used
+OPTIMIZATION  = -fdefer-pop -fdelayed-branch -fguess-branch-probability -fcprop-registers -floop-optimize -fif-conversion -fif-conversion2 -ftree-ccp -ftree-dce -ftree-dominator-opts -ftree-dse -ftree-ter -ftree-lrs -ftree-sra -ftree-copyrename -ftree-fre -ftree-ch -funit-at-a-time -fmerge-constants -fthread-jumps -fcrossjumping -foptimize-sibling-calls -fcse-follow-jumps  -fcse-skip-blocks -fgcse  -fgcse-lm  -fexpensive-optimizations -fstrength-reduce -frerun-cse-after-loop -frerun-loop-opt -fcaller-saves -fpeephole2 -fsched-interblock  -fsched-spec -fregmove -fstrict-aliasing -freorder-blocks  -freorder-functions -falign-functions -falign-jumps -falign-loops  -falign-labels -ftree-vrp -ftree-pre
+CFLAGS_NOOPT  = -m64 -pipe -fPIC -Wall -D_REENTRANT  $(DEFINES)
+CFLAGS_OPT    = -m64 $(OPTIMIZATION) -pipe -fPIC -Wall -D_REENTRANT  $(DEFINES)
+CFLAGS_O1     = -m64 -O1 -pipe -fPIC -Wall -D_REENTRANT  $(DEFINES)
+CFLAGS_O2     = -m64 -O2 -pipe -fPIC -Wall -D_REENTRANT  $(DEFINES)
+CFLAGS_O3     = -m64 -O3 -pipe -fPIC -Wall -D_REENTRANT  $(DEFINES)
+# Current value of CFLAGS
+CFLAGS        = $(CFLAGS_O3)
+#############################################################################
+CXXFLAGS      = -g -m64 -pipe -fPIC -Wall -D_REENTRANT  $(DEFINES)
+LEXFLAGS      = 
+YACCFLAGS     = -d
+INCPATH       = -I/usr/local/Trolltech/Qt-4.2.2/mkspecs/linux-g++-64 -I. -I/usr/local/Trolltech/Qt-4.2.2/include/QtCore -I/usr/local/Trolltech/Qt-4.2.2/include/QtCore -I/usr/local/Trolltech/Qt-4.2.2/include/QtGui -I/usr/local/Trolltech/Qt-4.2.2/include/QtGui -I/usr/local/Trolltech/Qt-4.2.2/include -I../jit -I../include -Imoc -Iuic
+AR            = ar cqs
+RANLIB        = 
+QMAKE         = /usr/local/Trolltech/Qt-4.2.2/bin/qmake
+TAR           = tar -cf
+COMPRESS      = gzip -9f
+COPY          = cp -f
+COPY_FILE     = $(COPY)
+COPY_DIR      = $(COPY) -r
+INSTALL_FILE  = install -m 644 -p
+INSTALL_DIR   = $(COPY_DIR)
+INSTALL_PROGRAM = install -m 755 -p
+DEL_FILE      = rm -f
+SYMLINK       = ln -sf
+DEL_DIR       = rmdir
+MOVE          = mv -f
+CHK_DIR_EXISTS= test -d
+MKDIR         = mkdir -p
+
+####### Output directory
+
+OBJECTS_DIR   = obj/
+
+####### Files
+
+SOURCES       = fcompile.c \
+		foptimize.c \
+		fconio.c \
+		fcontrol.c \
+		fconvert.c \
+		fdatabas.c \
+		fdatefnc.c \
+		fdebug.c \
+		fdefine.c \
+		ffinance.c \
+		ffloat.c \
+		flisp.c \
+		flist.c \
+		fmacro.c \
+		fmake.c \
+		fmath1.c \
+		fmath2.c \
+		fmath3.c \
+		fmemory.c \
+		fobject.c \
+		fopt1.c \
+		fopt2.c \
+		fpred.c \
+		fpred2.c \
+		fproc.c \
+		fpropty.c \
+		fsforms1.c \
+		fsforms2.c \
+		fsforms3.c \
+		fsmtbase.c \
+		fstatfnc.c \
+		fstring.c \
+		ftextfnc.c \
+		futil1.c \
+		futil2.c \
+		futil3.c \
+		fvmappnd.c \
+		fvmscpt.c \
+		fvmscpt2.c \
+		fwkspace.c \
+		tLambda.c \
+		tbitvec.c \
+		tbytevec.c \
+		tcontin.c \
+		tcpx.c \
+		tcpxvec.c \
+		tdatabas.c \
+		tdiction.c \
+		tdirect.c \
+		terror.c \
+		tfltvec.c \
+		tintvec.c \
+		tmatrix.c \
+		tneural.c \
+		tnummat.c \
+		tnumvec.c \
+		tobject.c \
+		tobjvec.c \
+		tpair.c \
+		tpcodvec.c \
+		trecord.c \
+		tshortvec.c \
+		tstring.c \
+		tstruct.c \
+		tsymbol.c \
+		tvector.c \
+		twkspace.c 
+OBJECTS       = obj/fcompile.o \
+		obj/foptimize.o \
+		obj/fconio.o \
+		obj/fcontrol.o \
+		obj/fconvert.o \
+		obj/fdatabas.o \
+		obj/fdatefnc.o \
+		obj/fdebug.o \
+		obj/fdefine.o \
+		obj/ffinance.o \
+		obj/ffloat.o \
+		obj/flisp.o \
+		obj/flist.o \
+		obj/fmacro.o \
+		obj/fmake.o \
+		obj/fmath1.o \
+		obj/fmath2.o \
+		obj/fmath3.o \
+		obj/fmemory.o \
+		obj/fobject.o \
+		obj/fopt1.o \
+		obj/fopt2.o \
+		obj/fpred.o \
+		obj/fpred2.o \
+		obj/fproc.o \
+		obj/fpropty.o \
+		obj/fsforms1.o \
+		obj/fsforms2.o \
+		obj/fsforms3.o \
+		obj/fsmtbase.o \
+		obj/fstatfnc.o \
+		obj/fstring.o \
+		obj/ftextfnc.o \
+		obj/futil1.o \
+		obj/futil2.o \
+		obj/futil3.o \
+		obj/fvmappnd.o \
+		obj/fvmscpt.o \
+		obj/fvmscpt2.o \
+		obj/fwkspace.o \
+		obj/tLambda.o \
+		obj/tbitvec.o \
+		obj/tbytevec.o \
+		obj/tcontin.o \
+		obj/tcpx.o \
+		obj/tcpxvec.o \
+		obj/tdatabas.o \
+		obj/tdiction.o \
+		obj/tdirect.o \
+		obj/terror.o \
+		obj/tfltvec.o \
+		obj/tintvec.o \
+		obj/tmatrix.o \
+		obj/tneural.o \
+		obj/tnummat.o \
+		obj/tnumvec.o \
+		obj/tobject.o \
+		obj/tobjvec.o \
+		obj/tpair.o \
+		obj/tpcodvec.o \
+		obj/trecord.o \
+		obj/tshortvec.o \
+		obj/tstring.o \
+		obj/tstruct.o \
+		obj/tsymbol.o \
+		obj/tvector.o \
+		obj/twkspace.o
+DIST          = /usr/local/Trolltech/Qt-4.2.2/mkspecs/common/unix.conf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/common/g++.conf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/common/linux.conf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/qconfig.pri \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/qt_functions.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/qt_config.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/exclusive_builds.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/default_pre.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/debug.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/default_post.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/staticlib.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/static.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/warn_on.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/qt.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/unix/thread.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/moc.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/resources.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/uic.prf \
+		smtbase.pro
+QMAKE_TARGET  = smtbase
+DESTDIR       = ../lib/
+TARGET        = libsmtbase.a
+
+first: all
+####### Implicit rules
+
+.SUFFIXES: .o .c .cpp .cc .cxx .C
+
+.cpp.o:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
+
+.cc.o:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
+
+.cxx.o:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
+
+.C.o:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
+
+.c.o:
+	$(CC) -c $(CFLAGS) $(INCPATH) -o "$@" "$<"
+
+####### Build rules
+
+all: Makefile ../lib/$(TARGET) 
+
+staticlib: ../lib/$(TARGET)
+
+../lib/$(TARGET):  $(OBJECTS) $(OBJCOMP) 
+	@$(CHK_DIR_EXISTS) ../lib/ || $(MKDIR) ../lib/ 
+	-$(DEL_FILE) $(TARGET)
+	$(AR) $(TARGET) $(OBJECTS)
+	-$(DEL_FILE) ../lib/$(TARGET)
+	-$(MOVE) $(TARGET) ../lib/
+
+
+Makefile: smtbase.pro  /usr/local/Trolltech/Qt-4.2.2/mkspecs/linux-g++-64/qmake.conf /usr/local/Trolltech/Qt-4.2.2/mkspecs/common/unix.conf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/common/g++.conf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/common/linux.conf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/qconfig.pri \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/qt_functions.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/qt_config.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/exclusive_builds.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/default_pre.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/debug.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/default_post.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/staticlib.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/static.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/warn_on.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/qt.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/unix/thread.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/moc.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/resources.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/uic.prf \
+		/usr/local/Trolltech/Qt-4.2.2/lib/libQtGui.prl \
+		/usr/local/Trolltech/Qt-4.2.2/lib/libQtCore.prl
+	$(QMAKE) -unix -o Makefile smtbase.pro
+/usr/local/Trolltech/Qt-4.2.2/mkspecs/common/unix.conf:
+/usr/local/Trolltech/Qt-4.2.2/mkspecs/common/g++.conf:
+/usr/local/Trolltech/Qt-4.2.2/mkspecs/common/linux.conf:
+/usr/local/Trolltech/Qt-4.2.2/mkspecs/qconfig.pri:
+/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/qt_functions.prf:
+/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/qt_config.prf:
+/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/exclusive_builds.prf:
+/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/default_pre.prf:
+/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/debug.prf:
+/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/default_post.prf:
+/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/staticlib.prf:
+/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/static.prf:
+/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/warn_on.prf:
+/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/qt.prf:
+/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/unix/thread.prf:
+/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/moc.prf:
+/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/resources.prf:
+/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/uic.prf:
+/usr/local/Trolltech/Qt-4.2.2/lib/libQtGui.prl:
+/usr/local/Trolltech/Qt-4.2.2/lib/libQtCore.prl:
+qmake:  FORCE
+	@$(QMAKE) -unix -o Makefile smtbase.pro
+
+dist: 
+	@$(CHK_DIR_EXISTS) obj/smtbase1.0.0 || $(MKDIR) obj/smtbase1.0.0 
+	$(COPY_FILE) --parents $(SOURCES) $(DIST) obj/smtbase1.0.0/ && $(COPY_FILE) --parents fcompile.h foptimize.h fconio.h fcontrol.h fconvert.h fdatabas.h fdatefnc.h fdebug.h fdefine.h ffloat.h flisp.h flist.h fmacro.h fmake.h fmath1.h fmath2.h fmath3.h fmemory.h fobject.h fopt1.h fopt2.h fperfmon.h fpred.h fpred2.h fproc.h fpropty.h fsforms1.h fsforms2.h fsforms3.h fsim.h fstatfnc.h fstring.h ftextfnc.h futil1.h futil2.h futil3.h fvmappnd.h fvmscpt.h fvmscpt2.h fwkspace.h tlambda.h tbitvec.h tbytevec.h tcontin.h tcpx.h tcpxvec.h tdatabas.h tdiction.h tdirect.h terror.h tfltvec.h tintvec.h tmatrix.h tneural.h tnummat.h tnumvec.h tobject.h tobjvec.h tpair.h tpcodvec.h trecord.h tshortvec.h tstring.h tstruct.h tsymbol.h tvector.h twkspace.h ../include/fsmtbase.h obj/smtbase1.0.0/ && $(COPY_FILE) --parents fcompile.c foptimize.c fconio.c fcontrol.c fconvert.c fdatabas.c fdatefnc.c fdebug.c fdefine.c ffinance.c ffloat.c flisp.c flist.c fmacro.c fmake.c fmath1.c fmath2.c fmath3.c fmemory.c fobject.c fopt1.c fopt2.c fpred.c fpred2.c fproc.c fpropty.c fsforms1.c fsforms2.c fsforms3.c fsmtbase.c fstatfnc.c fstring.c ftextfnc.c futil1.c futil2.c futil3.c fvmappnd.c fvmscpt.c fvmscpt2.c fwkspace.c tLambda.c tbitvec.c tbytevec.c tcontin.c tcpx.c tcpxvec.c tdatabas.c tdiction.c tdirect.c terror.c tfltvec.c tintvec.c tmatrix.c tneural.c tnummat.c tnumvec.c tobject.c tobjvec.c tpair.c tpcodvec.c trecord.c tshortvec.c tstring.c tstruct.c tsymbol.c tvector.c twkspace.c obj/smtbase1.0.0/ && (cd `dirname obj/smtbase1.0.0` && $(TAR) smtbase1.0.0.tar smtbase1.0.0 && $(COMPRESS) smtbase1.0.0.tar) && $(MOVE) `dirname obj/smtbase1.0.0`/smtbase1.0.0.tar.gz . && $(DEL_FILE) -r obj/smtbase1.0.0
+
+
+yaccclean:
+lexclean:
+clean:compiler_clean 
+	-$(DEL_FILE) $(OBJECTS)
+	-$(DEL_FILE) *~ core *.core
+
+
+####### Sub-libraries
+
+distclean: clean
+	-$(DEL_FILE) $(TARGET) 
+	-$(DEL_FILE) Makefile
+
+
+/usr/local/Trolltech/Qt-4.2.2/bin/moc:
+	(cd $(QTDIR)/src/tools/moc && $(MAKE))
+
+mocclean: compiler_moc_header_clean compiler_moc_source_clean
+
+mocables: compiler_moc_header_make_all compiler_moc_source_make_all
+
+compiler_moc_header_make_all:
+compiler_moc_header_clean:
+compiler_rcc_make_all:
+compiler_rcc_clean:
+compiler_image_collection_make_all: qmake_image_collection.cpp
+compiler_image_collection_clean:
+	-$(DEL_FILE) qmake_image_collection.cpp
+compiler_moc_source_make_all:
+compiler_moc_source_clean:
+compiler_uic_make_all:
+compiler_uic_clean:
+compiler_clean: compiler_moc_header_clean compiler_rcc_clean compiler_image_collection_clean compiler_moc_source_clean compiler_uic_clean 
+
+####### Compile
+
+obj/fcompile.o: fcompile.c fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		tstruct.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		tpcodvec.h \
+		fpred2.h \
+		tdiction.h \
+		tdirect.h \
+		terror.h \
+		fmake.h \
+		fvmappnd.h \
+		fvmscpt2.h \
+		fdebug.h \
+		fsforms1.h \
+		fsforms2.h \
+		fsforms3.h \
+		fopt1.h \
+		fopt2.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/fcompile.o fcompile.c
+
+obj/foptimize.o: foptimize.c foptimize.h \
+		tvector.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h \
+		tdiction.h \
+		tdirect.h \
+		terror.h \
+		fmake.h \
+		fvmappnd.h \
+		fvmscpt2.h \
+		fdebug.h \
+		fsforms1.h \
+		fsforms2.h \
+		fsforms3.h \
+		fopt1.h \
+		fopt2.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/foptimize.o foptimize.c
+
+obj/fconio.o: fconio.c fconio.h \
+		tobject.h \
+		fmemory.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h \
+		fmake.h \
+		tdatabas.h \
+		terror.h \
+		tcpx.h
+	$(CC) -c $(CFLAGS_OPT) $(INCPATH) -o obj/fconio.o fconio.c
+
+obj/fcontrol.o: fcontrol.c fcontrol.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/fcontrol.o fcontrol.c
+
+obj/fconvert.o: fconvert.c fconvert.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		tnumvec.h \
+		tfltvec.h \
+		tbitvec.h \
+		tbytevec.h \
+		fpred2.h \
+		fmake.h \
+		tdiction.h \
+		tdirect.h \
+		tmatrix.h \
+		tnummat.h \
+		tcpx.h \
+		tcpxvec.h \
+		tshortvec.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/fconvert.o fconvert.c
+
+obj/fdatabas.o: fdatabas.c fdatabas.h \
+		tdatabas.h \
+		tsymbol.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		tstring.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h \
+		tdirect.h \
+		fmake.h \
+		fdatefnc.h \
+		terror.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/fdatabas.o fdatabas.c
+
+obj/fdatefnc.o: fdatefnc.c fdatefnc.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/fdatefnc.o fdatefnc.c
+
+obj/fdebug.o: fdebug.c fdebug.h \
+		tsymbol.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		tstring.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h \
+		futil3.h \
+		tdirect.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/fdebug.o fdebug.c
+
+obj/fdefine.o: fdefine.c fdefine.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h \
+		fcontrol.h \
+		tdiction.h \
+		tdirect.h \
+		futil3.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/fdefine.o fdefine.c
+
+obj/ffinance.o: ffinance.c ffinance.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h \
+		fstatfnc.h \
+		ffloat.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/ffinance.o ffinance.c
+
+obj/ffloat.o: ffloat.c ffloat.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/ffloat.o ffloat.c
+
+obj/flisp.o: flisp.c flisp.h \
+		tcontin.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tobjvec.h \
+		twkspace.h \
+		tstruct.h \
+		tintvec.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h \
+		futil3.h \
+		fmake.h \
+		fdebug.h \
+		fsforms3.h \
+		tdiction.h \
+		tdirect.h \
+		trecord.h \
+		tcpx.h \
+		terror.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/flisp.o flisp.c
+
+obj/flist.o: flist.c flist.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/flist.o flist.c
+
+obj/fmacro.o: fmacro.c fmacro.h \
+		tsymbol.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		tstring.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fpred2.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/fmacro.o fmacro.c
+
+obj/fmake.o: fmake.c fmake.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h \
+		tdiction.h \
+		tdirect.h \
+		futil3.h \
+		tmatrix.h \
+		tnummat.h \
+		tcpxvec.h \
+		tshortvec.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/fmake.o fmake.c
+
+obj/fmath1.o: fmath1.c fmath1.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h \
+		fmath3.h \
+		ffloat.h \
+		fdatefnc.h \
+		tcpx.h \
+		tnummat.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/fmath1.o fmath1.c
+
+obj/fmath2.o: fmath2.c fmath2.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h \
+		fmath3.h \
+		tdirect.h \
+		tdiction.h \
+		ffloat.h \
+		tmatrix.h \
+		tnummat.h \
+		tcpx.h \
+		tcpxvec.h \
+		tshortvec.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/fmath2.o fmath2.c
+
+obj/fmath3.o: fmath3.c fmath3.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h \
+		tnummat.h \
+		ffloat.h \
+		tcpx.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/fmath3.o fmath3.c
+
+obj/fmemory.o: fmemory.c fmemory.h \
+		fconio.h \
+		tobject.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h \
+		tdiction.h \
+		tdirect.h \
+		tdatabas.h \
+		tmatrix.h \
+		tnummat.h \
+		tcpxvec.h \
+		tshortvec.h \
+		fperfmon.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/fmemory.o fmemory.c
+
+obj/fobject.o: fobject.c fobject.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		tvector.h \
+		tobjvec.h \
+		tstring.h \
+		twkspace.h \
+		tsymbol.h \
+		fpred2.h \
+		tcontin.h \
+		fproc.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		fcompile.h \
+		foptimize.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		ffloat.h \
+		tdiction.h \
+		tdirect.h \
+		terror.h \
+		tmatrix.h \
+		tnummat.h \
+		tcpxvec.h \
+		tshortvec.h \
+		trecord.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/fobject.o fobject.c
+
+obj/fopt1.o: fopt1.c fopt1.h \
+		tsymbol.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		tstring.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h \
+		fsforms1.h \
+		fvmappnd.h \
+		fdebug.h \
+		fopt2.h \
+		fsforms3.h \
+		terror.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/fopt1.o fopt1.c
+
+obj/fopt2.o: fopt2.c fopt1.h \
+		tsymbol.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		tstring.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h \
+		fsforms1.h \
+		fvmappnd.h \
+		fdebug.h \
+		fopt2.h \
+		fsforms2.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/fopt2.o fopt2.c
+
+obj/fpred.o: fpred.c fpred.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fmacro.h \
+		fpred2.h \
+		futil3.h \
+		tdiction.h \
+		tdirect.h \
+		ffloat.h \
+		tmatrix.h \
+		tnummat.h \
+		tcpxvec.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/fpred.o fpred.c
+
+obj/fpred2.o: fpred2.c fpred2.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		futil3.h \
+		tdiction.h \
+		tdirect.h \
+		ffloat.h \
+		tdatabas.h \
+		fdebug.h \
+		tmatrix.h \
+		tnummat.h \
+		tcpx.h \
+		tcpxvec.h \
+		tshortvec.h \
+		trecord.h
+	$(CC) -c $(CFLAGS_NOOPT) $(INCPATH) -o obj/fpred2.o fpred2.c
+
+obj/fproc.o: fproc.c fproc.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		tpair.h \
+		tlambda.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmacro.h \
+		tnumvec.h \
+		tfltvec.h \
+		tbitvec.h \
+		tbytevec.h \
+		fpred2.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		fpropty.h \
+		fpred.h \
+		fmake.h \
+		futil3.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/fproc.o fproc.c
+
+obj/fpropty.o: fpropty.c fpropty.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h \
+		tdiction.h \
+		tdirect.h \
+		fmake.h \
+		terror.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/fpropty.o fpropty.c
+
+obj/fsforms1.o: fsforms1.c fsforms1.h \
+		tpair.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tvector.h \
+		tobjvec.h \
+		twkspace.h \
+		tstruct.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		fcompile.h \
+		foptimize.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h \
+		fvmappnd.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/fsforms1.o fsforms1.c
+
+obj/fsforms2.o: fsforms2.c fsforms2.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h \
+		fsforms3.h \
+		fsforms1.h \
+		fvmappnd.h \
+		fopt2.h \
+		terror.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/fsforms2.o fsforms2.c
+
+obj/fsforms3.o: fsforms3.c fsforms3.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h \
+		fopt1.h \
+		fsforms1.h \
+		fvmappnd.h \
+		fdebug.h \
+		fopt2.h \
+		terror.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/fsforms3.o fsforms3.c
+
+obj/fsmtbase.o: fsmtbase.c tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h \
+		fdefine.h \
+		fcontrol.h \
+		futil3.h \
+		fdebug.h \
+		fdatabas.h \
+		fmake.h \
+		tdiction.h \
+		fdatefnc.h \
+		tdirect.h \
+		tdatabas.h \
+		terror.h \
+		tneural.h \
+		ffinance.h \
+		fstatfnc.h \
+		ffloat.h \
+		tmatrix.h \
+		tnummat.h \
+		tcpxvec.h \
+		tshortvec.h \
+		trecord.h
+	$(CC) -c $(CFLAGS_OPT) $(INCPATH) -o obj/fsmtbase.o fsmtbase.c
+
+obj/fstatfnc.o: fstatfnc.c fstatfnc.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h \
+		ffloat.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/fstatfnc.o fstatfnc.c
+
+obj/fstring.o: fstring.c fstring.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/fstring.o fstring.c
+
+obj/ftextfnc.o: ftextfnc.c ftextfnc.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h \
+		ffloat.h \
+		fmake.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/ftextfnc.o ftextfnc.c
+
+obj/futil1.o: futil1.c futil1.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h \
+		fmake.h \
+		tdiction.h \
+		tdirect.h \
+		futil3.h \
+		tdatabas.h \
+		tmatrix.h \
+		tnummat.h \
+		tcpx.h \
+		tcpxvec.h \
+		tshortvec.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/futil1.o futil1.c
+
+obj/futil2.o: futil2.c futil2.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h \
+		futil3.h \
+		tdiction.h \
+		tdirect.h \
+		tdatabas.h \
+		terror.h \
+		tmatrix.h \
+		tnummat.h \
+		tcpx.h \
+		tcpxvec.h \
+		tshortvec.h \
+		trecord.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/futil2.o futil2.c
+
+obj/futil3.o: futil3.c futil3.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h \
+		tdatabas.h \
+		tdiction.h \
+		tdirect.h \
+		tmatrix.h \
+		tnummat.h \
+		tcpxvec.h \
+		tshortvec.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/futil3.o futil3.c
+
+obj/fvmappnd.o: fvmappnd.c fvmappnd.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/fvmappnd.o fvmappnd.c
+
+obj/fvmscpt.o: fvmscpt.c fvmscpt.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h \
+		fvmscpt2.h \
+		fdebug.h \
+		fmake.h \
+		tdiction.h \
+		tdirect.h \
+		trecord.h \
+		futil3.h \
+		terror.h \
+		tmatrix.h \
+		tnummat.h \
+		tcpx.h \
+		tcpxvec.h \
+		tshortvec.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/fvmscpt.o fvmscpt.c
+
+obj/fvmscpt2.o: fvmscpt2.c fvmscpt2.h \
+		tsymbol.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		tstring.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h \
+		fdebug.h \
+		fmake.h \
+		tdirect.h \
+		terror.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/fvmscpt2.o fvmscpt2.c
+
+obj/fwkspace.o: fwkspace.c fwkspace.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h \
+		tdatabas.h \
+		tneural.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/fwkspace.o fwkspace.c
+
+obj/tLambda.o: tLambda.c tsymbol.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		tstring.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h \
+		futil3.h \
+		terror.h \
+		fdebug.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/tLambda.o tLambda.c
+
+obj/tbitvec.o: tbitvec.c tbitvec.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/tbitvec.o tbitvec.c
+
+obj/tbytevec.o: tbytevec.c tbytevec.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/tbytevec.o tbytevec.c
+
+obj/tcontin.o: tcontin.c tcontin.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/tcontin.o tcontin.c
+
+obj/tcpx.o: tcpx.c tlambda.h \
+		tsymbol.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tcontin.h \
+		tpair.h \
+		tvector.h \
+		tobjvec.h \
+		tstring.h \
+		twkspace.h \
+		tstruct.h \
+		futil2.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		flisp.h \
+		tintvec.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fvmscpt.h \
+		fcompile.h \
+		foptimize.h \
+		tpcodvec.h \
+		fmacro.h \
+		fpred2.h \
+		tcpx.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/tcpx.o tcpx.c
+
+obj/tcpxvec.o: tcpxvec.c tlambda.h \
+		tsymbol.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tcontin.h \
+		tpair.h \
+		tvector.h \
+		tobjvec.h \
+		tstring.h \
+		twkspace.h \
+		tstruct.h \
+		futil2.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		flisp.h \
+		tintvec.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fvmscpt.h \
+		fcompile.h \
+		foptimize.h \
+		tpcodvec.h \
+		fmacro.h \
+		fpred2.h \
+		tcpx.h \
+		tcpxvec.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/tcpxvec.o tcpxvec.c
+
+obj/tdatabas.o: tdatabas.c tdatabas.h \
+		tsymbol.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		tstring.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h \
+		tdirect.h \
+		fdatabas.h \
+		futil3.h \
+		fmake.h \
+		fdatefnc.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/tdatabas.o tdatabas.c
+
+obj/tdiction.o: tdiction.c tdiction.h \
+		tsymbol.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		tstring.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h \
+		fmake.h \
+		futil3.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/tdiction.o tdiction.c
+
+obj/tdirect.o: tdirect.c tdirect.h \
+		tsymbol.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		tstring.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h \
+		fmake.h \
+		futil3.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/tdirect.o tdirect.c
+
+obj/terror.o: terror.c tstring.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h \
+		terror.h \
+		fmake.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/terror.o terror.c
+
+obj/tfltvec.o: tfltvec.c tfltvec.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/tfltvec.o tfltvec.c
+
+obj/tintvec.o: tintvec.c tintvec.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/tintvec.o tintvec.c
+
+obj/tmatrix.o: tmatrix.c tmatrix.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h \
+		tnummat.h \
+		fmake.h \
+		futil3.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/tmatrix.o tmatrix.c
+
+obj/tneural.o: tneural.c tneural.h \
+		tstruct.h \
+		tsymbol.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		tstring.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/tneural.o tneural.c
+
+obj/tnummat.o: tnummat.c tmatrix.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h \
+		tnummat.h \
+		fmake.h \
+		futil3.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/tnummat.o tnummat.c
+
+obj/tnumvec.o: tnumvec.c tnumvec.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/tnumvec.o tnumvec.c
+
+obj/tobject.o: tobject.c tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h \
+		ffloat.h \
+		futil3.h \
+		fmake.h \
+		tdatabas.h \
+		fdatefnc.h \
+		terror.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/tobject.o tobject.c
+
+obj/tobjvec.o: tobjvec.c tobjvec.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		twkspace.h \
+		fpred2.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/tobjvec.o tobjvec.c
+
+obj/tpair.o: tpair.c tpair.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tvector.h \
+		tobjvec.h \
+		twkspace.h \
+		tstruct.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		fcompile.h \
+		foptimize.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h \
+		fmake.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/tpair.o tpair.c
+
+obj/tpcodvec.o: tpcodvec.c tpcodvec.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h \
+		tdiction.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/tpcodvec.o tpcodvec.c
+
+obj/trecord.o: trecord.c tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h \
+		trecord.h \
+		tdiction.h \
+		tdirect.h \
+		tmatrix.h \
+		tnummat.h \
+		tcpx.h \
+		tcpxvec.h \
+		tshortvec.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/trecord.o trecord.c
+
+obj/tshortvec.o: tshortvec.c tshortvec.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/tshortvec.o tshortvec.c
+
+obj/tstring.o: tstring.c tstring.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h \
+		fmake.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/tstring.o tstring.c
+
+obj/tstruct.o: tstruct.c tstruct.h \
+		tsymbol.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		tstring.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h \
+		futil3.h \
+		fmake.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/tstruct.o tstruct.c
+
+obj/tsymbol.o: tsymbol.c tsymbol.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		tstring.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h \
+		tdiction.h \
+		fmake.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/tsymbol.o tsymbol.c
+
+obj/tvector.o: tvector.c tvector.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		tobjvec.h \
+		twkspace.h \
+		fcompile.h \
+		foptimize.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h \
+		fmake.h \
+		futil3.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/tvector.o tvector.c
+
+obj/twkspace.o: twkspace.c twkspace.h \
+		tobjvec.h \
+		tobject.h \
+		fmemory.h \
+		fconio.h \
+		fobject.h \
+		fproc.h \
+		tsymbol.h \
+		tstring.h \
+		tcontin.h \
+		tpair.h \
+		tlambda.h \
+		futil2.h \
+		fvmscpt.h \
+		flisp.h \
+		tintvec.h \
+		fcompile.h \
+		foptimize.h \
+		tvector.h \
+		tstruct.h \
+		tpcodvec.h \
+		fmath1.h \
+		fmath2.h \
+		futil1.h \
+		fconvert.h \
+		tbitvec.h \
+		tbytevec.h \
+		tnumvec.h \
+		tfltvec.h \
+		fpropty.h \
+		fpred.h \
+		fmacro.h \
+		fpred2.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/twkspace.o twkspace.c
+
+####### Install
+
+install:   FORCE
+
+uninstall:   FORCE
+
+FORCE:
+

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example substringNE 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>substringNE</FunctionKeywords>
+		<TypeKeywords>String Integer</TypeKeywords>
+		<RelatedFunctions>substringEQ substringGT substringLT substringGE substringLE</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare string equal boolean case-insensitive substring</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>substringNE</b> function to see if two substrings are not
+
+                  equal and return
+the Boolean value, true or false. In these examples, a case-sensitive comparison
+
+
+
+                  is done with the substrings.
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc> (define X "central park")  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[central park ]]></Returns>
+        <Expression><![CDATA[ <sc> (define Y "Jurassic Park")  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[Jurassic Park ]]></Returns>
+        <Expression><![CDATA[ <sc>(substringNE  X 8 11 Y 9 12 )   </sc>]]></Expression>
+        <Note><![CDATA[Compares "park" in X and "Park" in Y. ]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(substringNE  X 0 6 Y 0 8 )   </sc>]]></Expression>
+        <Note><![CDATA[Compares "Central" in X and "Jurrasic" in Y. ]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

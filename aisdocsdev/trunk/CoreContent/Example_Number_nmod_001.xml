@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number nmod 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>nmod</FunctionKeywords>
+		<TypeKeywords>Integer Boolean Number</TypeKeywords>
+		<RelatedFunctions>nadd nsub nmul ndiv</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>number arithmetic division remainder mod  operators</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>nmod</b> function to divide two Number objects and return
+
+
+
+
+
+
+
+
+                 the remainder of the division operation as a Number value.
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+(nmod  12.2  3  )                     </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[3.051757807758E-006]]></Returns>
+ 	    <Expression><![CDATA[ <sc>
+(nmod  12.5  5.0)          </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[2.5]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

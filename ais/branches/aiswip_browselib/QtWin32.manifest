@@ -1,0 +1,22 @@
+<assembly>
+<dependency>
+<dependentAssembly>
+<assemblyIdentity type='win32' name='QtCore4' version='4.3.2.0' processorArchitecture='x86'/>
+</dependentAssembly>
+</dependency>
+<dependency>
+<dependentAssembly>
+<assemblyIdentity type='win32' name='QtGui4' version='4.3.2.0' processorArchitecture='x86'/>
+</dependentAssembly>
+</dependency>
+<dependency>
+<dependentAssembly>
+<assemblyIdentity type='win32' name='QtNetwork4' version='4.3.2.0' processorArchitecture='x86'/>
+</dependentAssembly>
+</dependency>
+<dependency>
+<dependentAssembly>
+<assemblyIdentity type='win32' name='QtXml4' version='4.3.2.0' processorArchitecture='x86'/>
+</dependentAssembly>
+</dependency>
+</assembly>

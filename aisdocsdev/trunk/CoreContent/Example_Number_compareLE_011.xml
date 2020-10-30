@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number compareLE 011</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compareLE</FunctionKeywords>
+		<TypeKeywords> Number</TypeKeywords>
+		<RelatedFunctions>compare compareEQ compareNE compareGT compareGE  compareLT</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare void lesser equal</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>compareLE</b> function to compare two objects and return
+
+
+
+
+
+
+
+
+
+
+
+                  the Boolean value, true if the first argument is lesser than or equal to the second argument
+                   or false if otherwise.  Money and Number values are equivalent.
+	]]></Description>
+	<Syntax>
+        <Expression><![CDATA[ <sc>(compareLE  9 .9% )           </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(compareLE .9% .9 )           </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>(compareLE -1  1)             </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

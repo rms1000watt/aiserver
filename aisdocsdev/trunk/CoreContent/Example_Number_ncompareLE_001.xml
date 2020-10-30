@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number ncompareLE 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>ncompareLE</FunctionKeywords>
+		<TypeKeywords>Integer Boolean Number</TypeKeywords>
+		<RelatedFunctions> ncompareNE ncompareEQ ncompareGT ncompareGE ncompareLT</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare  lesser equal number</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>ncompareLT</b> function to compare two Number objects and return
+
+
+
+
+
+
+
+
+                  the Boolean value, true or false.  
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+(ncompareLE 2.1 2.2)          </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+ 	    <Expression><![CDATA[ <sc>
+(ncompareLE -1.5 3.4)</sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>(ncompareLE 11 10)           </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

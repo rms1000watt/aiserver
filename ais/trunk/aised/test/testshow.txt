@@ -1,0 +1,49 @@
+# aised/test/testshow.txt
+
+#							AISED - TEST SHOW
+
+# CHANGE HISTORY
+# Version	Date		Who		Change
+# 1.0109	10/7/2006	tlw		Original
+
+# SYNTAX
+# SHOW - show(Item, Row)
+# SWITCH - switch()
+
+# ITEMS
+#   cursors Show the cursors (anchor, cursor, endcur), Row ignored.
+#   row		Show row information near Row. If Row < 0, show one row.
+#   text	Show next near row specified by Row, If Row < 0, show all text.
+#   undo    Show undo operation at current position + iRow. If Row empty, show entire queue.
+
+# UNDO
+#  Row  Operation
+#  1	Next redo operation
+#  0	Current redo operation
+#  -1	Next undo operation
+# cUndoCur > 0:  cUndoCur undo operations pending
+# cUndoCur < LastItem:  LastItem - cUndoCur redo operations pending
+#	*************************************************************************************************
+# SHOW - show(Item, Row)
+clear
+insert("abc\n", Forward)
+insert("\na", Forward)
+move(prevline, Select)
+show(cursors)
+show(row, 2)
+show(row, -2)
+show(text, 2)
+show(text, -2)
+undo(One)
+show(undo, -1)
+show(undo, 0)
+show(undo)
+
+# SWITCH - switch()
+clear
+append("abc", Backward)
+move(eol, Select)
+switch
+show(cursors)
+#end
+

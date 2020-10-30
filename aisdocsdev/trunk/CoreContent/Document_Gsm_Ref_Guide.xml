@@ -1,0 +1,48 @@
+
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Document SYSTEM "../DTD/Document.dtd">
+<Document>
+	<KnowledgeBase>
+	    <Title>Grammatical Swarm Symbolic Regression Machine</Title>
+		<Topic>GSM</Topic>
+		<SubTopic>Reference Guide</SubTopic>
+		<HumanKeywords>GSM Lambdas Machine-Learning  Genetic-Programming Artificial-Intelligence</HumanKeywords>
+	</KnowledgeBase>
+	<Essay>Essay_GSM_Introduction</Essay>
+	<Essay>Essay_GSM_Design_Notes</Essay>
+	<Essay>Essay_Estimator_Statements</Essay>
+	<Essay>Essay_GSM_Performance_Tests</Essay>
+ 
+</Document>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

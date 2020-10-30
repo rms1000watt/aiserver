@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example List ref 028</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>ref</FunctionKeywords>
+		<TypeKeywords> Pair List</TypeKeywords>
+		<RelatedFunctions>setq right left mid find fieldsOf refAttributes refValues </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>ref reference set position</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example uses the <b>ref</b> function to access a List element using its index.
+
+
+	]]></Description>
+	<Syntax>
+	<Expression><![CDATA[<sc>(define Fruits  '("peach" "apple" "mango" ) )      </sc>]]></Expression>
+    <Note><![CDATA[ The List is defined.
+
+    ]]></Note>
+    <Returns><![CDATA[ #&#60Pair 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(ref Fruits 0)         </sc> ]]></Expression>
+    <Note><![CDATA[none]]></Note>
+    <Returns><![CDATA[peach]]></Returns> 
+    <Expression><![CDATA[<sc>(ref Fruits 1)      </sc> ]]></Expression>
+    <Note><![CDATA[none]]></Note>
+    <Returns><![CDATA[apple]]></Returns>
+    <Expression><![CDATA[<sc>(ref Fruits 2)      </sc> ]]></Expression>
+    <Note><![CDATA[none]]></Note>
+    <Returns><![CDATA[mango]]></Returns>
+<Expression><![CDATA[<sc>(ref #&#60Pair 123456&#62 0)   </sc> ]]></Expression>
+    <Note><![CDATA[or Alternatively]]></Note>
+    <Returns><![CDATA[peach]]></Returns> 
+    <Expression><![CDATA[<sc>(ref #&#60Pair 123456&#62 1)   </sc> ]]></Expression>
+    <Note><![CDATA[none]]></Note>
+    <Returns><![CDATA[apple]]></Returns> 
+    <Expression><![CDATA[<sc>(ref #&#60Pair 123456&#62 2)   </sc> ]]></Expression>
+    <Note><![CDATA[none]]></Note>
+    <Returns><![CDATA[mango]]></Returns>
+   <Hints><![CDATA[none]]></Hints>
+</Syntax>
+</Example>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!ELEMENT Example (KnowledgeBase, Description, Syntax)>
+	 <!ELEMENT KnowledgeBase (Title, Template, FunctionKeywords, TypeKeywords, RelatedFunctions, Language, HumanKeywords)>
+		<!ELEMENT Title (#PCDATA)>
+		<!ELEMENT Template (#PCDATA)>
+		<!ELEMENT FunctionKeywords (#PCDATA)>
+		<!ELEMENT TypeKeywords (#PCDATA)>
+		<!ELEMENT RelatedFunctions (#PCDATA)>
+		<!ELEMENT Language (#PCDATA)>
+		<!ELEMENT HumanKeywords (#PCDATA)>
+	<!ELEMENT Description ANY>   
+	<!ELEMENT Syntax ((Expression, Note, Returns)+,  Hints)>
+		<!ELEMENT Expression ANY>
+		<!ELEMENT Note ANY>
+		<!ELEMENT Returns ANY>
+		<!ELEMENT Hints ANY>
+<!-- end -->

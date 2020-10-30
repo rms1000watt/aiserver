@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>  
+		<Title>Example String find 002</Title>  
+		<Template>Example</Template> 
+		<FunctionKeywords>find</FunctionKeywords>
+		<TypeKeywords>String Vector Integer</TypeKeywords>	
+		<RelatedFunctions>member substring mid</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>find string member</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ Virtual Machine instructions may be used to implement the <b>find</b> function for better  execution speed. 
+        In the <b>findString</b> function, the input matchString and targetString may be Text, String, Symbol, or ByteVector arguments. 
+        Between the lines (vmregRunInHardware startNoLoad:) and (vmregRunInHardware stopNoSave:), the matchString and targetString are 
+       directly placed in the registers through the use of CharPointers as register variables.  Searching of matchString in the 
+       targetString is through the use of the equivalent assembler register code for each character evaluated. 
+	]]></Description>
+	<Syntax> 
+	<Expression><![CDATA[
+    <sc><pre> (defun findString(matchString targetString)  
+    regs:(m M t T n                             
+          CharPointer:mPointer CharPointer:tPointer  
+          tempTarget tempMatch)               
+    vars:((result false))                      
+     ;; Initialize the match and target pointers and lengths.   
+    ;; Note: We use the faster assembler length instructions, 
+    ;;       but we must eliminate any null characters.        
+    (vmregRunInHardware startNoLoad:)  
+    (vmregObjLength matchString M)      
+    (vmregObjLength targetString T)      
+    ;; assign the register pointers to point to the string inputs  
+    (setq mPointer matchString)   
+    (setq tPointer targetString)  
+    ;; eliminate null characters  
+    (if (= (setq tempMatch mPointer[M]) 0) (-- M)) 
+    (if (= (setq tempMatch tPointer[T]) 0) (-- T))  
+    (-= T M)     
+    ;; loop for all characters in the target String  
+    (loop for t from 0 until T do
+       (loop for m from 0 until M do   
+          ;; set the next character in the target string to be compared  
+          (setq tempTarget tPointer[(setq n (+ t m))]) 
+           ;; set the next character in the match string to be compared  
+          (setq tempMatch mPointer[m])      
+          (if (&#60&#62 tempTarget tempMatch) (goto Next:))  
+          ) ;; end of loop for matchString  
+      (setq result t)  
+      (goto Last:)    
+      Next::   
+      ) ;; end of loop for target String  
+   Last:: 
+   (vmregRunInHardware stopNoSave:)  
+   result) 
+    </pre></sc> ]]></Expression>  
+	   <Note><![CDATA[ The <b>findString</b> function is the implementation of the <b>find</b> function
+              in LISP Assembler.   Although <b>findString</b> is less flexible,
+              it runs 3-7 times faster than the <b>find</b> function.  The <b>findString</b> function uses
+              the naive string search algorithm. The outer loop iterates over the 
+              targetString.  The inner loop iterates over the matchString and compares the character
+              of the matchString with the next characters of the targetString.  The number of iterations
+              in the inner loop do not exceed the length of the matchString.  
+       ]]></Note> 
+	 <Returns><![CDATA[ false or integer value ]]></Returns>
+   <Expression><![CDATA[<sc>(findString "there" "Hello there")</sc> ]]></Expression>
+   <Note><![CDATA[ When the findString function, as implemented above is invoked, it does
+          the same thing that the find function does.  It searches the matchString
+          in the targetString and returns the integer position of the matchString
+          in the targetString.  However, the findString function executes much 
+	      faster since it runs directly in hardware. ]]></Note>
+   <Returns><![CDATA[ 6 ]]></Returns>
+    <Hints><![CDATA[none]]></Hints>
+	</Syntax>
+</Example>

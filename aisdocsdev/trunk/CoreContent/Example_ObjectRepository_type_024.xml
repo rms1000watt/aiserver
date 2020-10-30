@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example ObjectRepository type 024</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>type</FunctionKeywords>
+		<TypeKeywords>ObjectRepository</TypeKeywords>
+		<RelatedFunctions> isObject isImmediate isTransaction </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>Type Analytic Object </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows the <b>type</b> function return the Data type of the arguments.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq gor (new ObjectRepository: "myarchive.odb"))      </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 197815&#62 ]]></Returns>
+  	    <Expression><![CDATA[ <sc>(type gor)      </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[ObjectRepository]]></Returns>
+        <Hints><![CDATA[none
+        ]]></Hints>
+   </Syntax>
+</Example>

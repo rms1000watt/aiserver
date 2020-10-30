@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>date</Title>
+		<FunctionName>date</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>Date String Number</ArgumentTypes>
+		<DataType>Date</DataType>
+		<RelatedFunctions>isDate day month year string</RelatedFunctions>
+        <RelatedVMInstructions>    </RelatedVMInstructions>
+		<HumanKeywords>convert date julian object </HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>date</b> function converts a single argument to a Date. </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>date</b> function converts a single argument <b>{obj}</b>  to a Date. 
+         Alternatively, the <b>date</b> function will convert year, month, and day into an 
+         Analytic Information Server Date constant. The date must be in the range 
+         10<superscript>15</superscript>BC to 10<superscript>15</superscript>AD.
+        </p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>date</b> function is used to coerce an object to a Date object.   
+          The Date object is represented as a julian number.  To express the date as an 
+          ASCII date constant in the : #Month,Day,Year, the <b>string</b> function can be used. 
+        </p>
+         ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p><b> (date obj) </b></p>
+                    <p><b> (date year month day ) </b></p>]]></Expression>
+		<Argument>
+		  <Name>obj</Name>
+		  <Note><![CDATA[
+		  <p>An object to be coerced into a Date.</p>
+          ]]></Note>
+		  <AISTypes>String Number</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>year</Name>
+		  <Note><![CDATA[
+		  <p>A year in the range 10<superscript>15</superscript>BC to 10<superscript>15</superscript>AD. 
+             Years before Christ must be entered 
+             as negative numbers.</p>
+          ]]></Note>
+		  <AISTypes> Number</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>month</Name>
+		  <Note><![CDATA[
+		  <p>A number representing the month of the year. If the number of months is greater 
+            than 12, Analytic Information Server  advances the excess months to the following year.</p>
+          ]]></Note>
+		  <AISTypes> Number</AISTypes>
+		</Argument>
+	     <Argument> 
+		  <Name>day</Name>
+		  <Note><![CDATA[
+		  <p>A number representing the day of the month. If the day value is greater than the 
+           number of days in the month you specify, Analytic Information Server  advances the 
+           extra days to the following month.</p>
+          ]]></Note>
+		  <AISTypes> Number</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>A Date representation of the argument
+	    </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

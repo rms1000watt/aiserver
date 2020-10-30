@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmcall</Title>
+		<InstructionName>vmcall</InstructionName>
+		<InstructionType>Generic</InstructionType>
+		<ArgumentTypes>Integer Word</ArgumentTypes>
+		<RelatedVMInstructions>vmargcount vmargfetch vmapply</RelatedVMInstructions>
+		<HumanKeywords>apply argcount argfetch call stack </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[
+		<p>When evaluated, this vm instruction invokes the <b>source</b>
+	    function, passing the number of arguments specified by the <b>argcount</b>
+	    argument. The <b>source</b> word must be one of the function types 
+	    (either a built-in C function or an AIS Lambda object). The <b>argcount</b>
+	    argument must be an immediate Integer, causing the top <b>argcount</b>
+	    stack words to be passed as arguments to the function <b>source</b>. 
+	    The result word is placed at the <b>target</b> location. The operation
+	    of this vm instruction is expressed in the following C expression:
+        </p>
+        <ul><li><b>(word)target = (word)source(..top argcount stack words..);</b></li></ul>
+    ]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[(vmcall argcount source target)]]></Expression>
+		<Argument> 
+		  <Name>arcount</Name>
+		  <Format>immediate</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>word</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>target</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>word</AISTypes>
+		</Argument>
+	</Syntax>
+</VMInstruction>

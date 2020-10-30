@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Vector insert 004</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>insert</FunctionKeywords>
+		<TypeKeywords>Vector Integer Symbol</TypeKeywords>
+		<RelatedFunctions>uniqueInsert</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>insert   value index</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples inserts a new value to the specified Vector.
+
+
+
+                  The new value may be any AIS Object Type.
+
+
+
+                  
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq X #("alpha" "beta" "gamma"))   </sc>]]></Expression>
+        <Note><![CDATA[A Vector with 3 elements is defined. ]]></Note>
+        <Returns><![CDATA[#&#60Vector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(insert X 0 "alpha")  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60Vector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60Vector 123456&#62 ) </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#("alpha" "alpha" "beta" "gamma" )]]></Returns>
+        <Expression><![CDATA[ <sc>(insert X 3 "pi")  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60Vector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc> (display #&#60Vector 123456&#62 )    </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[("alpha" "alpha" "beta" "pi" "gamma" ) ]]></Returns>
+        <Expression><![CDATA[   (insert X 6 "pi")    ]]></Expression>
+        <Note><![CDATA[The insert function cannot dynamically expand a vector beyond the last object]]></Note>
+        <Returns><![CDATA[!vectorInsert: Index out of range! ]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

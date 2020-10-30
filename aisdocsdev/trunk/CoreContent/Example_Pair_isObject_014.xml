@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Pair isObject 014</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isObject</FunctionKeywords>
+		<TypeKeywords>Pair Boolean</TypeKeywords>
+		<RelatedFunctions>isPair isAtom</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>Type Analytic Object Boolean </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>isObject</b> function to do determine if the 
+                  argument is any of the AIS Data Type Objects.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc> (isObject  '(A  .  B) )      </sc>]]></Expression>
+        <Note><![CDATA[A Pair is an Object]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc> (isObject 3)        </sc>]]></Expression>
+        <Note><![CDATA[ An Integer is not an Object.]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Hints><![CDATA[none
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

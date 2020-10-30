@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example FltVector setq 019</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>setq</FunctionKeywords>
+		<TypeKeywords>FltVector   Number </TypeKeywords>
+		<RelatedFunctions>new   define   </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>set setq replace global value  </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ 
+                  This example shows the <b>setq</b> function replacing the old value in
+                  the Vector with a new value.     
+
+
+
+
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc> (define X  #(float| 5.456699848175 3.141592025757 ))     </sc>]]></Expression>
+        <Note><![CDATA[Sets the Vector. ]]></Note>
+        <Returns><![CDATA[ #&#60FltVector 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(setq X  1 2.4630293)    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[ #&#60FltVector 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc>X[0]     </sc>]]></Expression>
+        <Note><![CDATA[Displays the contents of the modified Vector. ]]></Note>
+        <Returns><![CDATA[5.456699848175]]></Returns>
+        <Expression><![CDATA[ <sc>X[1]     </sc>]]></Expression>  
+        <Note><![CDATA[The newly set value replaces the old value.]]></Note> 
+        <Returns><![CDATA[2.463029384613 ]]></Returns>
+        <Hints><![CDATA[The <b>set</b> function keyword may be used instead of <b>setq</b>.]]></Hints>
+   </Syntax>
+</Example>

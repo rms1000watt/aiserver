@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Symbol setq 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>setq</FunctionKeywords>
+		<TypeKeywords>Symbol</TypeKeywords>
+		<RelatedFunctions>append new</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>set setq replace global value </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows the <b>new</b> function initializing a
+                  Symbol data type with a value. Then it retrieves the value
+                  of the Symbol using the <b>setq</b> function.  
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(new Symbol:  "Minnie") </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ Minnie]]></Returns>
+        <Expression><![CDATA[ <sc>(ref Minnie ) </sc>]]></Expression>
+        <Note><![CDATA[Void is returned since no value is assigned to the Symbol Minnie.]]></Note>
+        <Returns><![CDATA[ #void]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq Minnie  "Mouse") </sc>]]></Expression>
+        <Note><![CDATA[Here, the Symbol Minnie is assigned the value "Mouse".]]></Note>
+        <Returns><![CDATA[Mouse]]></Returns>
+        <Expression><![CDATA[ <sc>(ref Minnie)</sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ Mouse ]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

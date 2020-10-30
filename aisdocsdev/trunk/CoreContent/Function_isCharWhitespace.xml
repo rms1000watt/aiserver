@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>isCharWhitespace</Title>
+		<FunctionName>isCharWhitespace</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>Character String Symbol Vector
+                       ByteVector Text Boolean</ArgumentTypes>
+        <DataType>String Symbol ByteVector </DataType>
+		<RelatedFunctions>isType isChar isCharAlphanumeric isCharLowercase
+                          isCharName isCharNumeric isCharUppercase isCharAlphabetic
+                          isString isText </RelatedFunctions>
+        <RelatedVMInstructions>vmregObjPointer  </RelatedVMInstructions>
+		<HumanKeywords>Character Alphabetic Object Uppercase Lowercase Name
+                       Underscore Numeric Alphanumeric Name Whitespace Boolean</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>isCharWhitespace</b> function returns true if every character in the argument is a whitespace character; otherwise false is returned. </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p><p>The <b>isCharWhitespace </b> function returns true if every character in
+           the argument <b>{obj}</b> is a white space character (ASCII codes 0 thru 32). 
+           Some examples of white space are  #\tab, #\space,  #\newline, etc.  
+           Otherwise, the <b>isCharWhitespace</b> function returns false.
+        </p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>isCharWhitespace</b> function function is used to query an object to see 
+           if it contains only whitespace characters.The whitespace characters are:
+        </p>
+           <table>
+              <tr><td>#\backspace</td><td>The ASCII backspace character</td></tr>
+              <tr><td>#\escape</td><td>The ASCII escape character</td></tr>
+              <tr><td>#\newline</td><td>The ASCII newline character</td></tr>
+              <tr><td>#\page</td><td>The ASCII form-feed character</td></tr>
+              <tr><td>#\return</td><td>The ASCII carriage-return character</td></tr>
+              <tr><td>#\backspace</td><td>The ASCII backspace character</td></tr>
+              <tr><td>#\rubout</td><td>The ASCII delete character</td></tr>
+              <tr><td>#\space</td><td>The ASCII blank character</td></tr>
+              <tr><td>#\tab</td><td>The ASCII tab character</td></tr>
+           </table>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p>  (isCharWhitespace  obj) </p>]]></Expression>
+		<Argument>
+		  <Name>obj</Name>
+		  <Note><![CDATA[
+		  <p> The object to be evaluated. </p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector
+                       ByteVector Text Boolean</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>If the object contains only whitespace characters, true is returned. Otherwise false is returned.</p>
+	    ]]></Return>
+	</Syntax>
+</Function>

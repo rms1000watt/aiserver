@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmndiv  </Title>
+		<InstructionName>vmndiv </InstructionName>
+		<InstructionType>Generic</InstructionType>
+		<ArgumentTypes>  Number Double    </ArgumentTypes>
+		<RelatedVMInstructions>  vmnadd vmnmul  vmnsub     </RelatedVMInstructions>
+		<HumanKeywords>  Number   Addition Subtraction
+		                 Multiplication Division  </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[                                                  
+		<p>When evaluated, this vm instruction divides the Number <b>argument</b> value 
+		to the Number <b>source</b> value and places the result in the Word <b>target</b> 
+		as a Number value. There are no conversions made between different types. The 
+		result will be returned as a Number data type. This instruction may return an Error 
+		value. After the operation, the Instruction Pointer is promoted. The operation 
+		of this vm instruction is expressed in the following C expression:
+        </p>	
+        <ul><li><b>       (word:double)target = ((double)source / (double)argument);   </b></li></ul>
+    ]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[  (vmndiv argument source target) ]]></Expression>
+		<Argument> 
+		  <Name> argument  </Name>
+		  <Format>regoffset  </Format>
+		  <AISTypes>number</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name> source </Name>
+		  <Format>regoffset </Format>
+		  <AISTypes>number</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>target  </Name>
+		  <Format>regoffset  </Format>
+		  <AISTypes>(word:double) </AISTypes>
+		</Argument>
+	</Syntax>
+</VMInstruction>

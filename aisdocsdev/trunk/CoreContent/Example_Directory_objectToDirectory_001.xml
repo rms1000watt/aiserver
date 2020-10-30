@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Directory objectToDirectory 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>objectToDirectory  </FunctionKeywords>
+		<TypeKeywords>Directory Vector Object ObjVector</TypeKeywords>
+		<RelatedFunctions>new copy </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>vector separates token key substrings</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows how the <b>objectToDirectory</b> transforms the  
+
+
+                  <b>{source}</b> Vector  into
+
+
+                  a Directory object.
+
+
+                 
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc$>(define aVector #(Name: "Bill"  SSN: "616 55 1209" Age: 45) )                      </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60Vector 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Dir  (objectToDirectory aVector)  )   </sc>]]></Expression>
+        <Note><![CDATA[Transforms the source Vector argument into a Directory. ]]></Note>
+        <Returns><![CDATA[#&#60Directory 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc> (type Dir)        </sc>]]></Expression>
+        <Note><![CDATA[Checks the type of the transformed Vector.]]></Note>
+        <Returns><![CDATA[Directory]]></Returns>
+        <Expression><![CDATA[ <sc>(display Dir)         </sc>]]></Expression>
+        <Note><![CDATA[Displayed the contents of the Dictionary object.]]></Note>
+        <Returns><![CDATA[ #{dir|| Age 45 Name "Bill" SSN "616 55 1209"}true ]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

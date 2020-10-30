@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example ObjVector insert 008</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>insert</FunctionKeywords>
+		<TypeKeywords>ObjVector Integer Symbol</TypeKeywords>
+		<RelatedFunctions>uniqueInsert</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>insert   value index</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples inserts a new value to the specified Vector.
+
+
+
+
+                                  
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define X #(obj| #{A: 1 B: 2} #(1 2 ) ))   </sc>]]></Expression>
+        <Note><![CDATA[A Vector with 2 elements is defined. ]]></Note>
+        <Returns><![CDATA[#&#60ObjVector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(insert X 0 #(int| 11 12) )  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60ObjVector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60ObjVector 123456&#62 ) </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#(obj| #(int| 11 12 ) #{A: 1 B: 2} #(1 2 ) )]]></Returns>
+    <Expression><![CDATA[ <sc> (insert X 1 "text")    </sc>]]></Expression>  
+        <Note><![CDATA[A non-object value will have a value of #void in the ObjVector.]]></Note>
+        <Returns><![CDATA[#&#60ObjVector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60ObjVector 123456&#62 ) </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[#(obj| #(int| 11 12 ) #void #{A: 1 B: 2} #(1 2 ) )]]></Returns>
+        <Expression><![CDATA[ <sc> (insert X 6 #(2 4))    </sc>]]></Expression>
+        <Note><![CDATA[The insert function cannot dynamically expand a vector beyond the last object]]></Note>
+        <Returns><![CDATA[!badarg!]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

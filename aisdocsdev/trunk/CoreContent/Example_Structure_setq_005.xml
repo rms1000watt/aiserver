@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure setq 005</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>setq</FunctionKeywords>
+		<TypeKeywords>Structure Symbol Integer String</TypeKeywords>
+		<RelatedFunctions>new defineStructure define makeStructure </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>set setq replace global value  </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows the <b>setq</b> function changing
+                  the  <b>key</b> of the Structure
+                  using two <b>index</b> values.
+
+This example uses the 
+                  <b>(setq  struct index1 index2 newValue)</b> function syntax.
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(setq Employee  (new Structure:  Name: "John Doe"  Title:  "Director")) </sc>]]></Expression>
+        <Note><![CDATA[Sets the key-value bindings of the Employee Structure. ]]></Note>
+        <Returns><![CDATA[ #&#60Structure 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display Employee)  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#{Name: "John Doe" Title: "Director"}]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq  Employee [1 0] "Position") </sc>]]></Expression>
+        <Note><![CDATA[Here, the second index value is 0, so the new value argument is to modify the key BUT its value
+              remains the same.]]></Note>
+        <Returns><![CDATA[ #&#60Structure 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display Employee)</sc>]]></Expression>
+        <Note><![CDATA[Displays the modified Structure. ]]></Note>
+        <Returns><![CDATA[ #{Name: "John Doe" Position: "Director"} ]]></Returns>
+        <Hints><![CDATA[The <b>set</b> function keyword may be used instead of <b>setq</b>.]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Function type 015</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>type</FunctionKeywords>
+		<TypeKeywords>Function</TypeKeywords>
+		<RelatedFunctions>isType    isIdentical
+</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>Type Analytic Object</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows how the <b>type</b> function return the
+
+
+
+
+
+
+
+
+
+
+
+                     data type  of the AIS Objects evaluated.
+ 
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc> (type add1 )           </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[Function  ]]></Returns>
+  	    <Expression><![CDATA[ <sc> (type muli )           </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[Function  ]]></Returns>
+  	    <Expression><![CDATA[ <sc> (type  (lambda (a) (+ a 1)))              </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[Lambda  ]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

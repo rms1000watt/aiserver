@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Integer imod 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>imod</FunctionKeywords>
+		<TypeKeywords>Integer   </TypeKeywords>
+		<RelatedFunctions>iadd isub imul idiv</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>integer addition subtraction division multiplication</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ <p>These examples show the <b>imod</b> function perform division on the Integer arguments
+                      and returns the remainder of the Integer division.
+
+                  The function does not operate on non-Integer arguments.</p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+ (imod 12 4)           </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[0]]></Returns>
+ 	    <Expression><![CDATA[ <sc>
+(imod 20 -3)    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[2]]></Returns>
+ 	    <Expression><![CDATA[ <sc>(imod 2.4 5.3)    </sc>]]></Expression>  
+        <Note><![CDATA[The function returns 0 if the arguments are not Integers.]]></Note> 
+        <Returns><![CDATA[0]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

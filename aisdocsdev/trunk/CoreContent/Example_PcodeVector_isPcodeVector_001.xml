@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example PcodeVector isPcodeVector 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isPcodeVector</FunctionKeywords>
+		<TypeKeywords>Vector PcodeVector Integer</TypeKeywords>
+		<RelatedFunctions>isType isIntegerVector isBitVector 
+
+
+
+                          isNumberVector isByteVector isIdentical
+
+
+
+                           isFloatVector isObjectVector isVector</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords> Vector bit byte pcodevector Boolean</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example check if the Vector evaluated is a Pcode Vector.
+
+
+
+                  If it is, the function returns true, otherwise, it returns false.
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq X (new Vector:  pcode: 0  ))       </sc>]]></Expression>
+        <Note><![CDATA[A PcodeVector with no value is defined.]]></Note>
+        <Returns><![CDATA[#&#60PcodeVector 199917&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display X)      </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[(display X)#(pcd| )]]></Returns>
+        <Expression><![CDATA[ <sc>(isPcodeVector X)      </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

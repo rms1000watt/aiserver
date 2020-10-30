@@ -1,0 +1,90 @@
+	AisEd Key Commands (Alphabetical)
+* Requires selected text
+** If text selected or parens matched
+Shft-ANYMoveKey  Selects intervening text
+*Shft-ANYMoveKey Extends selected text to cursor
+
+CONTROL KEYS
+**Ctrl-^    Switch cursor with anchor
+Ctrl-.      Delete to end-of-line
+*Ctrl-;     Comment selected text
+*CtrlShft-; Uncomment selected text
+Ctrl-(  Parenthesis matching on-off
+Ctrl-)  Parenthesis matching on-off
+Ctrl-A      Select all text
+Ctrl-B      Move to beginning-of-line
+*Ctrl-C     Copy selected text to clipboard
+*CtrlShft-C Append selected text to clipboard
+Ctrl-D      Delete next char
+Ctrl-E      Move to end-of-line
+Ctrl-F      Find dialog
+Ctrl-G      Goto-line dialog
+Ctrl-H      Move to prev char
+Ctrl-J      Move to down one line
+Ctrl-I      Insert tab
+Ctrl-K      Move to up one line
+Ctrl-L      Move to next char
+Ctrl-M      Move up one page
+Ctrl-N      Move down one page
+Ctrl-O      Move to prev beginning-of-word
+Ctrl-P      Move to next beginning-of-word
+Ctrl-R      Replace dialog
+Ctrl-S      Select text between matching parens
+Ctrl-T      Tabify dialog
+Ctrl-U      Delete to beginning-of-line
+*Ctrl-V     Paste selected text
+*Ctrl-X     Cut selected text
+*Ctrl-X     Move selected text to clipboard
+*CtrlShft-X Cut sel. text. Append to clipboard
+Ctrl-Y      Redo last undo
+Ctrl-Z      Undo last cmd
+
+CURSOR KEYS
+BackSpace   Delete prev char
+Ctrl-BS     Delete to prev bow
+BackTab     Move to prev tabstop
+Delete      Delete next char
+Ctrl-Delete Delete left word
+Down        Move to down one line
+Ctrl-Down   Move down half-page
+End         Move to end-of-line
+Ctrl-End    Move to end-of-text
+Enter       Insert newline
+Home        Move to beginning-of-line
+Ctrl-Home   Move to beginning-of-text
+Ctrl-Insert Display special chars
+Left        Move to prev char
+Ctrl-Left   Move to prev beginning-of-word
+PgDown      Move down one page
+Ctrl-PgDown Move to next saved cursor position
+Ctrl-PgUp   Move to prev saved cursor position
+PgUp        Move up one page
+Right       Move to next char
+Ctrl-Right  Move to next beginning-of-word
+Tab         Insert tab
+*Tab        Indent selected text
+*BackTab    UnIndent selected text
+Ctrl-Tab    Switch documents
+Up          Move to up one line
+Ctrl-Up     Move up half-page
+
+FUNCTION KEYS
+F1          This help dialog
+Ctrl-F1     Cmd (API) help dialog
+Shift-F1    Search help dialog
+F3          Repeat find down
+Shft-F3     Repeat find up
+Ctrl-F3     Search All Text
+
+MOUSE KEYS:
+Click       Move cursor to Ibeam cursor
+DblClick    Select nearby word
+RtClick     Context menu
+CtrlRtClick Function List dialog
+Shift-Click Select text to Ibeam cursor
+Drag        Move cursor and select intervening text
+
+	
+
+
+

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example List compile 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compile</FunctionKeywords>
+		<TypeKeywords>Pair List</TypeKeywords>
+		<RelatedFunctions>eval morph lisp</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compile evaluation morph parse Lambda</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example show how both the <b>compile</b> and the <b>makeLambda</b> functions 
+                  create an Lambda.  
+	              
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(lambda (n) #void)     </sc>]]></Expression>
+        <Note><![CDATA[An Lambda to execute the following Lisp script:]]></Note>
+        <Returns><![CDATA[#&#60Lambda 123456&#62]]></Returns>
+         
+ 	    <Expression><![CDATA[ <sc>(compile '(lambda (n) #void))     </sc>]]></Expression>  
+        <Note><![CDATA[The same result can be obtained by the following Lisp expression:]]></Note> 
+        <Returns><![CDATA[#&#60Lambda 123456&#62]]></Returns>
+        <Hints><![CDATA[<p>
+Normal Analytic Information Server strings are passed to <b>lisp</b>, 
+           whose output is passed to <b>compile</b>. This allows the use of alternate language 
+           parsers, and alternate macro preprocessors with the Analytic Information Server optimizing 
+           compiler.</p>
+        ]]></Hints>
+   </Syntax>
+</Example>

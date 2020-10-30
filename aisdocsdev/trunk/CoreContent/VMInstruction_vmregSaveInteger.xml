@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmregSaveInteger   </Title> 
+		<InstructionName> vmregSaveInteger    </InstructionName>
+		<InstructionType>Register</InstructionType>
+		<ArgumentTypes>  Integer Word  </ArgumentTypes>
+		<RelatedVMInstructions> vmregSaveNumber vmregSaveDeclType
+		                        vmregSaveDeclTypeImmediate  vmregSaveTail
+		                        vmregSaveTailImmediate</RelatedVMInstructions>
+		<HumanKeywords> Integer IntImmediate save  </HumanKeywords>
+	</KnowledgeBase>                   
+	<Description><![CDATA[
+		<p>When evaluated, this vm instruction saves the  <b>source</b> 
+		integer value into the variable. The <b>variable</b> 
+		argument must  be either an args, vars, pvars, cvars, or a global variable. 
+		This instruction may return an Error value. 
+		After the operation, the Instruction Pointer is promoted. The operation 
+		of this vm instruction is expressed in the following C expression:
+    	</p>      
+        <ul><li><b> (word:int)variable = (int)source;</b></li></ul>
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[(vmregSaveInteger source variable)]]></Expression>
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>register</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>		 
+		<Argument> 
+		  <Name>variable</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>(word:int)</AISTypes>			     
+		</Argument>
+	</Syntax>
+</VMInstruction>

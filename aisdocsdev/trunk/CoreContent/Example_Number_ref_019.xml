@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number ref 019</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>ref</FunctionKeywords>
+		<TypeKeywords>  Number  </TypeKeywords>
+		<RelatedFunctions>setq  ref fieldsOf   refValues  </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>ref reference set position</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This examples show how the Number value is returned after the 
+
+                  variable is set with different numeric values.
+Money values are treated as 
+                  Numeric values.
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(setq x 6.7)             </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[6.7]]></Returns>
+        <Expression><![CDATA[ <sc>(ref x)  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[6.7]]></Returns>
+	    <Expression><![CDATA[ <sc>(setq y $5.99)             </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[5.99]]></Returns>
+        <Expression><![CDATA[ <sc>(ref y)  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[5.99]]></Returns>
+        <Expression><![CDATA[ <sc>x  </sc>]]></Expression>
+        <Note><![CDATA[The shorthand form of getting the value of  a variable is simply the variable name itself:]]></Note>
+        <Returns><![CDATA[6.7]]></Returns>
+        <Expression><![CDATA[ <sc>y  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[5.99]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

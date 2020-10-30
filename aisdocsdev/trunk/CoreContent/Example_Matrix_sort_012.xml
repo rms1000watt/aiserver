@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Matrix sort 012</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>sort</FunctionKeywords>
+		<TypeKeywords>Matrix </TypeKeywords>
+		<RelatedFunctions>binarySearch ref setq binarySearch</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>sort arrange  ascending descending</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples show how the <b>sort</b> function sorts the 
+
+
+
+
+                  elements of the Matrix in descending and ascending order.
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq  X  #(mat| "aardvark"  "zebra" "lion" "cheetah"))     </sc>]]></Expression>
+        <Note><![CDATA[Defines a Matrix of String values..]]></Note>
+        <Returns><![CDATA[#&#60Matrix 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(sort X &#62 )    </sc>]]></Expression>
+        <Note><![CDATA[Sort a Matrix in descending order and returns a Matrix
+
+
+
+              containing the sorted values. ]]></Note>
+        <Returns><![CDATA[#&#60Matrix 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(display X )    </sc>]]></Expression>
+        <Note><![CDATA[Displays the sorted Matrix]]></Note>
+        <Returns><![CDATA[#(mat| "zebra" "lion" "cheetah" "aardvark" )]]></Returns>
+        <Expression><![CDATA[ <sc>(sort X &#60 )    </sc>]]></Expression>
+        <Note><![CDATA[Sort a Matrix in ascending order and returns a Matrix
+
+              containing the sorted values. ]]></Note>
+        <Returns><![CDATA[#&#60Matrix 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(display X )    </sc>]]></Expression>
+        <Note><![CDATA[Displays the sorted Matrix]]></Note>
+        <Returns><![CDATA[#(mat| "aardvark" "cheetah" "lion" "zebra" )]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

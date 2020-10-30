@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+ <VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmpush</Title>
+		<InstructionName>vmpush</InstructionName>
+		<InstructionType>Generic</InstructionType>
+		<ArgumentTypes>Integer Word</ArgumentTypes>
+		<RelatedVMInstructions> vmcall </RelatedVMInstructions>
+		<HumanKeywords>push stack call</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[
+		<p>When evaluated, this vm instruction pushes the  source 
+		argument values onto the Stack. The source1 argument is mandatory. 
+		The remaining two arguments, source2 and source3, are optional. 
+		After the operation, both the Stack Pointer and the Instruction 
+		Pointer are promoted. The operation of this vm instruction is 
+		expressed in the following C expression:
+		</p>      
+        <ul><li><b>(word)Stack[++Sp] = (word)source;</b></li></ul>
+    ]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[(vmpush argument source target)]]></Expression>
+		<Argument> 
+		  <Name>argument</Name>
+		  <Format>regoff</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>regoff</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>target</Name>
+		  <Format>regoff</Format>
+		  <AISTypes>(word:integer)</AISTypes>
+		</Argument>
+	</Syntax>
+</VMInstruction>

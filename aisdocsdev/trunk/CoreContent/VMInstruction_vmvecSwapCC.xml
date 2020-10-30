@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmvecSwapCC </Title>
+		<InstructionName>vmvecSwapCC </InstructionName>
+		<InstructionType>Vector</InstructionType>
+		<ArgumentTypes>Integer Number Double</ArgumentTypes>
+		<RelatedVMInstructions>vmvecPush vmvecPop vmvecLoop</RelatedVMInstructions>
+		<HumanKeywords>vector swap</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[
+		<p>When evaluated, this vm instruction compares the top two words 
+		on the internal Number Vector Processing Stack. If the <b>condition</b> is 
+		true, this instruction swaps the top two numbers on the Vector 
+		Processing Stack. There are no conversions made between different 
+		types. The initial values in the three pointer registers, the three 
+		increment registers, and the counter register are NOT altered by this 
+		instruction. This instruction may return an Error value. After the 
+		operation, the Instruction Pointer is promoted. The operation of this 
+		vm instruction is expressed in the following C expression:
+	    </p>
+        <ul><li><b> if condition(ST[top],ST[top-1]) {tmp = ST[top-1]; ST[top-1] = ST[top]; ST[top] = tmp} </b></li></ul>
+       <p>
+       The valid condition arguments are <u>any immediate integer value</u>, 
+       indicating the condition to be tested, or any one of the following 
+       symbolic operators (shown along with their operation expressed as C 
+       expressions):
+       </p>  
+       <ul><li>lt: {0}  <i> (if (ST[top] &lt;ST[top-1]) {tmp = ST[top-1]; ST[top-1] = ST[top]; ST[top] = tmp}) </i></li>  
+        <li>le: {1}  <i>(if (ST[top] &lt;= ST[top-1]) {tmp = ST[top-1]; ST[top-1] = ST[top]; ST[top] = tmp}) </i></li> 
+        <li>eq: {2}  <i> (if (ST[top] == ST[top-1]) {tmp = ST[top-1]; ST[top-1] = ST[top]; ST[top] = tmp})  </i></li>                                                  
+        <li>ne: {3}  <i> (if (ST[top] != ST[top-1]) {tmp = ST[top-1]; ST[top-1] = ST[top]; ST[top] = tmp}) </i></li>  
+        <li>ge: {4}  <i>(if (ST[top] &gt;= ST[top-1]) {tmp = ST[top-1]; ST[top-1] = ST[top]; ST[top] = tmp})  </i></li>  
+        <li>gt: {5}  <i>(if (ST[top] &gt; ST[top-1]) {tmp = ST[top-1]; ST[top-1] = ST[top]; ST[top] = tmp}) </i></li>    
+        <li>true: {6}<i>({tmp = ST[top-1]; ST[top-1] = ST[top]; ST[top] = tmp}) </i></li></ul>   
+    ]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[(vmvecSwapCC condition)]]></Expression>   
+	    <Argument> 
+		  <Name>condition</Name>
+		  <Format>immediate</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument> 
+	</Syntax>
+</VMInstruction>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example BitVector send 018</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>send</FunctionKeywords>
+		<TypeKeywords>BitVector Dictionary</TypeKeywords>
+		<RelatedFunctions>addMethod defMethod methodsOf</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>method message messageName</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example first defines the method <b>addBits</b>. It then invokes the
+
+
+
+
+
+
+                  <b>addMethod</b> function to add the method in the Methods Dictionary.  
+
+
+
+
+
+
+                   The method <b>addBits</b> will be then  invoked by  the 
+
+
+
+
+
+
+                  <b>send</b> function calling the message in the <b>Dictionary</b> Methods Dictionary.
+
+
+
+
+
+
+   	]]></Description>
+   <Syntax>
+   <Expression><![CDATA[
+<sc> (addMethod  BitVector:  addBits:  (lambda  (s)  (apply +  s)))</sc>
+]]></Expression>
+   <Note><![CDATA[ Add a method named addBits which will add the values of all the fields in a Vector.]]></Note>
+   <Returns><![CDATA[#&#60Dictionary 123456&#62 ]]></Returns>
+   <Expression><![CDATA[<sc>(define Bits #(bit| 1 1 0 0 1 1 1) )    </sc> ]]></Expression>
+   <Note><![CDATA[none]]></Note>
+   <Returns><![CDATA[#&#60BitVector 123456&#62]]></Returns>
+   <Expression><![CDATA[<sc>(send  addBits:  Bits)        </sc> ]]></Expression>
+   <Note><![CDATA[ Invoke the method named addBits to compute the number of bits in the BitVector.]]></Note>
+   <Returns><![CDATA[5]]></Returns>
+   <Expression><![CDATA[<sc>(addBits:  Bits)           </sc> ]]></Expression>
+   <Note><![CDATA[ The method can be invoked simply by name:
+
+
+
+
+   ]]></Note>
+   <Returns><![CDATA[3200]]></Returns>
+   <Hints><![CDATA[<p>Dissecting the <b>send</b> command involves understanding the methods dictionary 
+
+
+
+
+          of any Analytic Information Server type. In general the <b>send</b> command is translated 
+
+
+
+
+          as a reference into the methods dictionary:</p>
+          <p><b>((ref (methodsOf (type object)) methodName  object))</b></p>
+          <p> The statement : </p>
+          <p><b>(send addBits: Bits) </b> </p>
+          <p>is translated into </p>
+          <p><b>((ref (methodsOf (type Bits)) addBits: ) Bits) </b></p>
+          <p> Each statement segment results in: </p>
+          <table>
+             <tr><td width=60%><b> (type Bits)        </b></td>
+                  <td width=40%>Returns: <b> BitVector  </b></td></tr>
+             <tr><td width=60%><b>  (methodsOf (BitVector:))    </b></td>
+                  <td width=40%>Returns: <b> #&#60Dictionary 123456&#62  </b></td></tr>
+             <tr><td width=60%><b> (ref (#&#60Dictionary 123456&#62) addBits: )    </b></td>
+                  <td width=40%>Returns: <b> #&#60Lambda 123456&#62  </b></td></tr>
+             <tr><td width=60%><b> ( #&#60Lambda 123456&#62  Bits)       </b></td>
+                  <td width=40%>Returns: <b> 3200 </b></td></tr>
+          </table>
+ ]]></Hints>
+   </Syntax>
+</Example>

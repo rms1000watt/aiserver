@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Essay SYSTEM "../DTD/Essay.dtd">
+<Essay>
+	<KnowledgeBase>
+	    <Title>Lisp Assembler</Title>
+		<Topic>Lisp</Topic>
+		<SubTopic>Overview</SubTopic>
+		<HumanKeywords>Lisp Assembler Virtual Machine</HumanKeywords>
+	</KnowledgeBase>
+	<Section>
+	    <Heading>Introduction</Heading>
+		<Description><![CDATA[
+          <div class="h2section" id="Assembler">
+		  <p>The Lisp language is designed to be used as an assembler language for the DRM virtual machine.
+		  For each virtual machine instruction there is a Lisp builtin form. These vm forms cannot be
+		  executed directly. They can only be executed within the context of a compiled Lambda object.
+		  All Lisp assembler special forms are prefixed with the <b>vm</b> letters, and are understood only by 
+		  the Lisp compiler.</b>
+		    <p class="MsoBodyText"><span style="mso-bookmark: _Toc315604751">The Lambda
+		    Information Server<b style="mso-bidi-font-weight: normal"> </b>database
+		    engine comes with a built in virtual machine (<b style="mso-bidi-font-weight: normal">DRM</b>)
+		    for managing distributed intelligent Lambda execution. Analytic Information
+		    Server also supports multiple virtual machines (as many as one per Lambda),
+		    and execution of Lambdas on native binary machine code.</span></p>
+		    <p class="MsoBodyText"><span style="mso-bookmark: _Toc315604751">The DRM
+		    virtual machine instruction set, which is machine independent and
+		    computationally complete, is designed for fast execution. The design goal is
+		    to come as close as possible to compiled C execution speeds, while still
+		    retaining portability. The Analytic Information Server engine does not force
+		    the user to choose an Lambda source language syntax, instead compilers are
+		    supplied for Lisp, JavaScript, and even natural language.</span></p>
+		    <p class="MsoBodyText"><span style="mso-bookmark: _Toc315604751">The Lambda
+		    Information Server engine performs its own state of the art object
+		    management for all Lambda objects supervised by the database engine. Lambda
+		    Information Server manages all of its own object tables to maximize
+		    execution speed.<span style="mso-spacerun: yes">&nbsp; </span>The Lambda
+		    Information Server engine supports: fully automated mark and sweep garbage
+		    collection; a user extendible type system; dynamic object creation;
+		    optimized object messaging; both object and Lambda inheritance; mixed or
+		    interleaved execution of intelligent Lambdas and host functions, line by line
+		    source code debugging of Lambdas, and full object, Lambda, and code level
+		    browsing.</span></p>
+		    <p><font color="navy" size="4">Multiple Virtual Machines</font></p>
+		    <p>AIS Lambdas are designed to be write-once-run-anywhere executable objects.
+		    This is accomplished via the virtual machine concept of software Lambda
+		    execution. Lambda virtual machines are designed to be mapped onto the actual
+		    host microchip at the server location, providing faithful Lambda execution
+		    wherever the Lambda may travel on the Internet. There are currently several
+		    virtual machines operating within Analytic Information Server. The DRM
+		    virtual machine uses a <i>Dynamically typed Register Machine</i>
+		    model to provide portable Lambda execution from high level dynamically typed
+		    instructions all the way to super fast microchip-level register execution.
+		    The DRM virtual machine runs in emulation mode during the testing and
+		    debug phases of Lambda development, and there is an AIS Lambda debugger
+		    available for Lambdas running on this virtual machine. During the final
+		    release phases of Lambda development, DRM virtual machine Lambdas are
+		    automatically converted to the NATIVE virtual machine on the host computer,
+		    using the just-in-time compiler. The NATIVE virtual
+		    machine is a faithful machine language translation of the execution rules in
+		    the DRM virtual machine onto the actual host microchip at the server
+		    location. NATIVE virtual machine execution runs at microchip-level execution
+		    speeds.</p>
+		    <p>Analytic Information Server is <i>agnostic</i> in the choice of Lambda
+		    virtual machine. It is certainly possible, and is currently often the
+		    practice to have communities of Lambdas which are not all running on the same
+		    virtual machine. It is often the case that one virtual machine model is
+		    preferable for certain data analysis applications while yet another virtual
+		    machine model is preferable for other data analysis applications. AIS comes
+		    equipped with several Lambda virtual machines and loadable library tools for
+		    the easy creation of additional user-defined Lambda virtual machines. The
+		    only caveat is that popular virtual machines (<i>such as the Python, Java,
+		    or Smalltalk virtual machines</i>) implemented in Analytic Information Server
+		    must be tailored to execute our executable Lambda objects, and to operate
+		    within the AIS runtime environment. AIS virtual machine development tools
+		    are not designed to create virtual machines for execution outside Lambda
+		    Information Server.</p>
+		    <p><font color="navy" size="4">Microchip-level Execution Speeds</font></p>
+		    <p>Analytic Information Server is primarily concerned with software Lambdas
+		    which perform high volume data analysis. Super fast execution speed is
+		    essential in such application domains. There are several levels of general
+		    computer program execution speeds. Disk based operations, such as those
+		    performed by <i>SQL</i> and other database system languages, are among the
+		    slowest executing animals in the program zoo. The next level of faster
+		    execution speed is achieved by programs performing memory to memory
+		    operations, such as those performed by <i>COBOL</i> and many other business
+		    languages. The fastest possible level of program execution is achieved by
+		    programs performing register to register operations on the microchip, such
+		    as those performed by <i>assembler</i> language.</p>
+		    <p>The AIS DRM virtual machine provides very fast native execution of
+		    Lambdas performing disk based operations, memory to memory operations, and
+		    microchip-level register to register operations. Regardless of the data
+		    analysis domain, AIS allows the development of write-once-run-anywhere
+		    Lambdas which execute at the fastest possible speeds.</p>
+		    <p class="MsoBodyText">&nbsp;</p>
+            </div>				
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>Architecture</Heading>
+		<Description><![CDATA[
+           <div class="h2section" id="Architecture">
+			<p>The DRM virtual machine is a register machine architecture similar to most modern Von Neumann computer architectures.
+		    Because the DRM virtual machine is expected to service a database, 
+		    the virtual machine memory has been subdivided into dynamically typed words. 
+		    Hence the name, <b>D</b>ynamic typed <b>R</b>egister <b>M</b>achine.
+		    With the machine memory subdivided into dynamically typed words, data (from the database)
+		    with a wide variety of types, can be easily loaded into memory; and, 
+		    since the register machine architecture is similar to the internal
+		    architecture of most modern computing equipment, it is easy to write
+		    just-in-time compilers from DRM pcodes into native binary machine code for a
+		    wide variety of computers.</p>
+		    <p>The DRM virtual machine supports a number of registers,
+		    including an Instruction Pointer register, a Stack Register, and fifty general purpose Arithmetic Registers.
+		    Each general purpose arithmetic register can store Integer, IEEE floating point, or memory address data. 
+		    Virtual machine instructions can operate directly on the contents of registers or on memory locations pointed to by addresses in registers.
+		    Memory references can be made: (a) directly from addresses in registers; 
+		    (b) indirectly from addresses in registers indexed by integers in an index register; 
+		    or (c) indirectly from addresses in registers plus an inline integer displacement.
+		    The virtual machine instructions operate on the following data types: 
+		    </p>
+		    <ul>
+		    	<li>Character <i>(8-bit ASCII)</i></li>
+		    	<li>Boolean <i>(8-bit true or false)</i></li>
+		    	<li>Float <i>(IEEE single precision floating point)</i></li>
+		    	<li>Integer <i>(64-bit signed integer - {may be 32-bit on smaller computers})</i></li>
+		    	<li>Long <i>(32-bit signed integer)</i></li>
+		    	<li>Number <i>(IEEE double precision floating point)</i></li>
+		    	<li>Object <i>(a pointer to an AIS HEAP object {there are many different object types} such as String, Vector, Lambda, etc.)</i></li>
+		    	<li>Short <i>(16-bit signed integer)</i></li>
+		    	<li>Text <i>(up to 10 characters of null-terminated ASCII codes)</i></li>
+		    	<li>Word <i>(128-bit dynamically typed container capable of holding any of the previous data types)</i></li>
+		    </ul>
+		  <h3>Word Format</h3>
+		    <p>The AIS Word is a 128-bit dynamically typed container capable of holding any of the AIS native data types (shown above).
+		    Each Word begins with an 80-bit data area capable of holding up to ten bytes of null-terminated ASCII text,
+		    or any one of these other native AIS data types: Character, Boolean, Float, Integer, Long, Number, Object, or Short.
+		    Immediately following the Word's 80-bit data area, is the Word's tail (a 32-bit signed integer). 
+		    The tail is a general purpose data field used for linking words to other words, keeping word counts, or any other purpose.
+		    Immediately following the Word's tail, is the Word's Declared Type (an 8-bit data type  announcing the user's preferred data type for this Word).
+		    Immediately following the Word's Declared Type, is the Word's Current Type (an 8-bit data type announcing the type of data contained in the Word's 80-bit data area). 
+		    The format of each AIS Word is as follows.
+		    </p>
+		    <ul>
+		      <li><b>Vector Instructions: </b>A set of vector data array instructions which
+		        allow fast parallel processing of vectored integer and floating point data.</li>
+		      <ul>
+		        <li>Vector instructions using auxilliary signal processing and graphics chips.</li>
+		        <li>Vector instructions supporting fast in-line basic linear algebra operations.</li>
+		      </ul>
+		      <li><b>Machine Registers: </b>A set of virtual machine arithmetic registers which
+		        allow fast microchip-level execution of Lambda arithmetic operations.</li>
+		      <ul>
+		        <li>A set of fifty arithmetic registers.</li>
+		        <li>A set of virtual machine instructions (<b>pcodes</b>) which control
+		          operations in the registers.</li>
+		      </ul>
+		      <li><b>Main Memory:</b> A set of virtual machine words. Each virtual
+		        machine word begins with a type tag and ends with a data item (this is
+		        known as <b>Dynamic Typing</b>).</li>
+		      <ul>
+		        <li>A set of built-in data types (Integers, Strings, Vectors,
+		          Structures, etc.) for storing common database data types in main
+		          memory and on disk.</li>
+		        <li>A set of virtual machine instructions (<b>pcodes</b>) which control
+		          operations in the main memory.</li>
+		      </ul>
+		      <li><b>Lambdas:</b> Executable, user definable, objects known as Lambdas.
+		        Lambdas can be saved and loaded from the AIS database.</li>
+		      <ul>
+		        <li>A set of built-in Lambda properties which allow all Lambdas to work
+		          together in communities to accomplish increasingly complex tasks.</li>
+		        <li>A set of built-in virtual machine functions (<b>pcodes</b>) which
+		          extend operations in main memory and on disk.</li>
+		      </ul>
+		    </ul>
+		    <h3>Assembler</h3>
+		    <p>For each virtual machine instruction there is a Lisp special form which generates the specified vm instruction. 
+		    This allows Lisp to perform double duty as a vm assembler language.
+		    As the Analytic Information Server (AIS) virtual machine is ported from machine to machine, 
+		    AIS Lisp becomes a write-once-run-anywhere assembler language.
+		    </p>
+            </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>Virtual Machine Instructions</Heading>
+		<Description><![CDATA[
+          <div class="h2section" id="Virtual Machine Instructions">
+		  <p>AIS Lambdas are designed to be write-once-run-anywhere executable objects. 
+             This is accomplished via the virtual machine concept of software Lambda execution. 
+             Lambda virtual machines are designed to be mapped onto the actual host microchip 
+             at the server location, providing faithful Lambda execution wherever the Lambda may 
+             travel on the Internet. There are currently several virtual machines operating 
+             within Analytic Information Server. The DRM virtual machine uses a Dynamically typed Register 
+             Machine model to provide portable Lambda execution from high level dynamically typed instructions 
+             all the way to super fast microchip-level register execution. The DRM virtual machine runs in 
+             emulation mode during the testing and debug phases of Lambda development, and there is an 
+             AIS Lambda debugger available for Lambdas running on this virtual machine. During the final 
+             release phases of Lambda development, DRM virtual machine Lambdas are automatically converted 
+             to the NATIVE virtual machine on the host computer, using the just-in-time compiler. 
+             The NATIVE virtual machine is a faithful machine language translation of the execution
+             rules in the DRM virtual machine onto the actual host microchip at the server location. 
+             NATIVE virtual machine execution runs at microchip-level execution speeds. </p>
+             <P>
+             <!--docscript>(aisRefGuide.vmLinkTable)</docscript-->
+             </P>
+           </div>		
+	    ]]></Description>
+	</Section>
+</Essay>

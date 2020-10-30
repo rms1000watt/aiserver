@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>  
+		<Title>Example String fileReadRecord 001</Title>  
+		<Template>Example</Template> 
+		<FunctionKeywords>fileReadRecord</FunctionKeywords>
+		<TypeKeywords>Character String  ByteVector </TypeKeywords>	
+		<RelatedFunctions>fileRead fileClose fileOpen</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>file buffer record</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example writes a file, closes the file and opens
+				the file for reading. Then it uses the <b> fileReadRecord<b>
+				function in the <b>readTestFile</b> child Lambda to get the buffer of the
+				file.  After getting the buffer, the <b>fileReadRecord</b> then uses
+				the buffer to return the end-of-line terminated record which is returned
+				as a string String Object.
+	]]></Description>
+	<Syntax> 
+  	    <Expression><![CDATA[ <sc> (setq fileID (fileOpen "testReadRecord.txt" 1 0))</sc>]]></Expression>  
+        <Note><![CDATA[Creates a new file. ]]></Note> 
+        <Returns><![CDATA[1]]></Returns>
+        <Expression><![CDATA[ <sc>  (loop for n from 0 until 10 do
+       <br>
+                   (fileWriteln fileID n #\tab "some text" )
+       <br>
+                   )</sc>]]></Expression>  
+        <Note><![CDATA[Writes 10 end-of-line terminated records ]]></Note> 
+        <Returns><![CDATA[ 10 ]]></Returns>
+        <Expression><![CDATA[ <sc>  (fileClose fileID 1)</sc>]]></Expression>  
+        <Note><![CDATA[Closes without erasing the file.]]></Note> 
+        <Returns><![CDATA[true]]></Returns>  
+          <Expression><![CDATA[ <sc> (setq fileID (fileOpen "testReadRecord.txt" 0 0))</sc>]]></Expression>  
+        <Note><![CDATA[Opens the written file. ]]></Note> 
+        <Returns><![CDATA[ 1 ]]></Returns>   
+         <Expression><![CDATA[ <sc> (setq aBuffer (fileReadRecord fileID))</sc>]]></Expression>  
+        <Note><![CDATA[Gets the buffer of the file. ]]></Note> 
+        <Returns><![CDATA[ true ]]></Returns> 
+           <Expression><![CDATA[ <sc>   (setq aLine "") <br>
+           (while (<> aLine #void) do
+     <br>
+       (setq aLine (fileReadRecord fileID aBuffer))
+      <br>
+       (writeln aLine)
+      <br>
+       ) </sc> ]]></Expression>  
+        <Note><![CDATA[Gets every end-of-line terminated record from the file.]]></Note> 
+        <Returns><![CDATA[  0	some text   <br>
+1	some text   <br>
+2	some text   <br>
+3	some text   <br>
+4	some text   <br>
+5	some text   <br>
+6	some text   <br>
+7	some text   <br>
+8	some text   <br>
+9	some text   <br>
+#void ]]></Returns>    
+          <Expression><![CDATA[ <sc> (fileClose fileID 0)</sc>]]></Expression>  
+        <Note><![CDATA[Closes and erases the file]]></Note> 
+        <Returns><![CDATA[ true ]]></Returns> 
+        
+        
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

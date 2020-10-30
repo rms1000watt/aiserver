@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>mapc</Title>
+		<FunctionName>mapc</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+        <ArgumentTypes>Structure Dictionary Directory Vector Matrix Pair List ShortVector
+                NumMatrix FltVector IntVector NumVector</ArgumentTypes>
+        <DataType> Structure Dictionary Directory Vector NumMatrix Matrix Pair List FltVector ShortVector IntVector NumVector</DataType>
+	    <RelatedFunctions>map  </RelatedFunctions>
+        <RelatedVMInstructions> vmregObjPointer </RelatedVMInstructions>
+		<HumanKeywords>map mapc copy process</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>mapc</b> function applies the specified function  
+
+             to each value in the Structure, Dictionary, Directory, Vector, Matrix, Pair or List object.</p>
+          ]]></Description>
+	<Brief>
+	   <Overview-Structure><![CDATA[
+	         <p> The <b>mapc</b> Function applies the specified function <b>{proc}</b>
+             to each value in <b>{structure}</b>.  The <b>mapc</b> function returns the 
+             value resulting from the last mapping of the specified function.    The function 
+
+             <b>{proc}</b> must be a function that requires a single argument.</p>
+        ]]></Overview-Structure>
+       <Overview-Dictionary><![CDATA[
+	         <p> The <b>mapc</b> Function applies the specified function <b>{proc}</b> 
+             to each value in <b>{dictionary}</b>.  The <b>mapc</b> function returns the 
+             value resulting from the last mapping of the specified function.    The function 
+             <b>{proc}</b> must be a function that requires a single argument.</p>
+        ]]></Overview-Dictionary>
+       <Overview-Directory><![CDATA[
+	         <p> The <b>mapc</b> Function applies the specified function <b>{proc}</b> 
+             to each value in <b>{directory}</b>.  The <b>mapc</b> function returns the 
+             value resulting from the last mapping of the specified function.    The function 
+             <b>{proc}</b> must be a function that requires a single argument.</p>
+        ]]></Overview-Directory>
+        <Overview><![CDATA[
+	         <p> The <b>mapc</b> Function applies the specified function <b>{proc}</b> 
+             to each value in <b>{vector}</b>.  The <b>mapc</b> function returns the 
+             value resulting from the last mapping of the specified function.    The function 
+             <b>{proc}</b> must be a function that requires a single argument.</p>
+        ]]></Overview>
+      <Overview-Matrix><![CDATA[
+	         <p> The <b>mapc</b> Function applies the specified function <b>{proc}</b> 
+             to each value in <b>{matrix}</b>.  The <b>mapc</b> function returns the 
+             value resulting from the last mapping of the specified function.    The function 
+             <b>{proc}</b> must be a function that requires a single argument.</p>
+        ]]></Overview-Matrix>
+      <Overview-NumMatrix><![CDATA[
+	         <p> The <b>mapc</b> Function applies the specified function <b>{proc}</b> 
+             to each value in <b>{nummatrix}</b>.  The <b>mapc</b> function returns the 
+             value resulting from the last mapping of the specified function.    The function 
+             <b>{proc}</b> must be a function that requires a single argument.</p>
+        ]]></Overview-NumMatrix>
+      <Overview-Pair><![CDATA[
+	         <p> The <b>mapc</b> Function applies the specified function <b>{proc}</b> 
+             to each value in the<b>{pair}</b>.  The <b>mapc</b> function returns the 
+             value resulting from the last mapping of the specified function.    The function 
+             <b>{proc}</b> must be a function that requires a single argument.</p>
+        ]]></Overview-Pair>
+      <Overview-List><![CDATA[
+	         <p> The <b>mapc</b> Function applies the specified function <b>{proc}</b> 
+             to each value in the<b>{list}</b>.  The <b>mapc</b> function returns the 
+             value resulting from the last mapping of the specified function.    The function 
+             <b>{proc}</b> must be a function that requires a single argument.</p>
+        ]]></Overview-List>
+        <Usage-Structure><![CDATA[
+        <p>The <b>mapc</b> function is a non-destructive function that behaves like the <b>map</b> 
+            with the difference being the return value is the value returned by the last function 
+            whereas <b>mapc</b> returns a new copy of the Vector.  It is a simpler than coding a 
+           loop and applying a function to each Structure element. For instance, the <b>mapc</b> 
+           function, with arguments of <b>{proc}</b> and <b>{structure}</b>, is equivalent to the 
+           following generic loop code: </p>
+           <p><b>(loop for i from 0 until (length structure) do (proc structure[i])) </b> </p>
+        ]]></Usage-Structure>
+       <Usage-Dictionary><![CDATA[
+        <p>The <b>mapc</b> function is a non-destructive function that behaves like the <b>map</b> 
+            with the difference being the return value is the value returned by the last function 
+            whereas <b>mapc</b> returns a new copy of the Vector.  It is a simpler than coding a 
+           loop and applying a function to each Dictionary element. For instance, the <b>mapc</b> 
+           function, with arguments of <b>{proc}</b> and <b>{dictionary}</b>, is equivalent to the 
+           following generic loop code: </p>
+           <p><b>(loop for i from 0 until (length dictionary) do (proc dictionary[i])) </b> </p>
+        ]]></Usage-Dictionary>
+        <Usage-Directory><![CDATA[
+        <p>The <b>mapc</b> function is a non-destructive function that behaves like the <b>map</b> 
+            with the difference being the return value is the value returned by the last function 
+            whereas <b>mapc</b> returns a new copy of the Vector.  It is a simpler than coding a 
+           loop and applying a function to each Directory element. For instance, the <b>mapc</b> 
+           function, with arguments of <b>{proc}</b> and <b>{directory}</b>, is equivalent to the 
+           following generic loop code: </p>
+           <p><b>(loop for i from 0 until (length directory) do (proc directory[i])) </b> </p>
+        ]]></Usage-Directory>
+        <Usage><![CDATA[
+        <p>The <b>mapc</b> function is a non-destructive function that behaves like the <b>map</b> 
+            with the difference being the return value is the value returned by the last function 
+            whereas <b>mapc</b> returns a new copy of the Vector.  It is a simpler than coding a 
+           loop and applying a function to each Vector element. For instance, the <b>mapc</b> 
+           function, with arguments of <b>{proc}</b> and <b>{vector}</b>, is equivalent to the 
+           following generic loop code: </p>
+           <p><b>(loop for i from 0 until (length vector) do (proc vector[i])) </b> </p>
+        ]]></Usage>
+       <Usage-Matrix><![CDATA[
+        <p>The <b>mapc</b> function is a non-destructive function that behaves like the <b>map</b> 
+            with the difference being the return value is the value returned by the last function 
+            whereas <b>mapc</b> returns a new copy of the Matrix.  It is a simpler than coding a 
+           loop and applying a function to each Matrix element. For instance, the <b>mapc</b> 
+           function, with arguments of <b>{proc}</b> and <b>{matrix}</b>, is equivalent to the 
+           following generic loop code: </p>
+           <p><b>(loop for i from 0 until (length matrix) do (proc matrix[i])) </b> </p>
+        ]]></Usage-Matrix>
+       <Usage-NumMatrix><![CDATA[
+        <p>The <b>mapc</b> function is a non-destructive function that behaves like the <b>map</b> 
+            with the difference being the return value is the value returned by the last function 
+            whereas <b>mapc</b> returns a new copy of the NumMatrix.  It is a simpler than coding a 
+           loop and applying a function to each NumMatrix element. For instance, the <b>mapc</b> 
+           function, with arguments of <b>{proc}</b> and <b>{matrix}</b>, is equivalent to the 
+           following generic loop code: </p>
+           <p><b>(loop for i from 0 until (length matrix) do (proc matrix[i])) </b> </p>
+        ]]></Usage-NumMatrix>
+       <Usage-Pair><![CDATA[
+        <p>The <b>mapc</b> function is a non-destructive function that behaves like the <b>map</b> 
+            with the difference being the return value is the value returned by the last function 
+            whereas <b>mapc</b> returns a new copy of the Pair or List.  It is a simpler than coding a 
+           loop and applying a function to each Pair or List element. For instance, the <b>mapc</b> 
+           function, with arguments of <b>{proc}</b> and <b>{pair}</b>, is equivalent to the 
+           following generic loop code: </p>
+           <p><b>(loop for i from 0 until (length pair) do (proc pair[i])) </b> </p>
+        ]]></Usage-Pair>
+    </Brief>
+	<Syntax-Structure>
+	    <Expression><![CDATA[<p> (mapc proc structure)</p>]]></Expression>
+		<Argument>
+		  <Name>proc </Name>
+		  <Note><![CDATA[
+		  <p> A function requiring a single argument. </p>
+          ]]></Note>
+		  <AISTypes>Function </AISTypes>
+		</Argument>
+    	<Argument>
+		  <Name>structure </Name>
+		  <Note><![CDATA[
+		  <p> Structure containing the argument values for the function {proc} </p>
+          ]]></Note>
+		  <AISTypes>Structure </AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>The result of the last invocation of the function <b>{proc}</b>.
+        </p>
+	    ]]></Return>
+	</Syntax-Structure>
+	<Syntax-Dictionary>
+	    <Expression><![CDATA[<p> (mapc proc dictionary)</p>]]></Expression>
+		<Argument> 
+		  <Name>proc </Name>
+		  <Note><![CDATA[
+		  <p> A function requiring a single argument. </p>
+          ]]></Note>
+		  <AISTypes>Function </AISTypes>
+		</Argument>
+    	<Argument> 
+		  <Name>dictionary </Name>
+		  <Note><![CDATA[
+		  <p> Dictionary containing the argument values for the function {proc} </p>
+          ]]></Note>
+		  <AISTypes>Dictionary </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The result of the last invocation of the function <b>{proc}</b>.
+        </p>
+	    ]]></Return>   
+	</Syntax-Dictionary>
+	<Syntax-Directory>
+	    <Expression><![CDATA[<p> (mapc proc directory)</p>]]></Expression>
+		<Argument> 
+		  <Name>proc </Name>
+		  <Note><![CDATA[
+		  <p> A function requiring a single argument. </p>
+          ]]></Note>
+		  <AISTypes>Function </AISTypes>
+		</Argument>
+    	<Argument> 
+		  <Name>directory </Name>
+		  <Note><![CDATA[
+		  <p> Directory containing the argument values for the function {proc} </p>
+          ]]></Note>
+		  <AISTypes>Directory </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The result of the last invocation of the function <b>{proc}</b>.
+        </p>
+	    ]]></Return>   
+	</Syntax-Directory>
+	<Syntax>
+	    <Expression><![CDATA[<p> (mapc proc vector)</p>]]></Expression>
+		<Argument> 
+		  <Name>proc </Name>
+		  <Note><![CDATA[
+		  <p> A function requiring a single argument. </p>
+          ]]></Note>
+		  <AISTypes>Function </AISTypes>
+		</Argument>
+    	<Argument> 
+		  <Name>vector </Name>
+		  <Note><![CDATA[
+		  <p> Vector containing the argument values for the function {proc} </p>
+          ]]></Note>
+		  <AISTypes>Vector FltVector ShortVector IntVector NumVector </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The result of the last invocation of the function <b>{proc}</b>.
+        </p>
+	    ]]></Return>   
+	</Syntax>
+	<Syntax-Matrix>
+	    <Expression><![CDATA[<p> (mapc proc matrix)</p>]]></Expression>
+		<Argument> 
+		  <Name>proc </Name>
+		  <Note><![CDATA[
+		  <p> A function requiring a single argument. </p>
+          ]]></Note>
+		  <AISTypes>Function </AISTypes>
+		</Argument>
+    	<Argument> 
+		  <Name>matrix </Name>
+		  <Note><![CDATA[
+		  <p> Matrix containing the argument values for the function {proc} </p>
+          ]]></Note>
+		  <AISTypes>Matrix </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The result of the last invocation of the function <b>{proc}</b>.
+        </p>
+	    ]]></Return>   
+	</Syntax-Matrix>
+	<Syntax-NumMatrix>
+	    <Expression><![CDATA[<p> (mapc proc nummatrix)</p>]]></Expression>
+		<Argument> 
+		  <Name>proc </Name>
+		  <Note><![CDATA[
+		  <p> A function requiring a single argument. </p>
+          ]]></Note>
+		  <AISTypes>Function </AISTypes>
+		</Argument>
+    	<Argument> 
+		  <Name>nummatrix </Name>
+		  <Note><![CDATA[
+		  <p> NumMatrix containing the argument values for the function {proc} </p>
+          ]]></Note>
+		  <AISTypes>NumMatrix </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The result of the last invocation of the function <b>{proc}</b>.
+        </p>
+	    ]]></Return>   
+	</Syntax-NumMatrix>
+	<Syntax-Pair>
+	    <Expression><![CDATA[<p> (mapc proc pair)</p>]]></Expression>
+		<Argument> 
+		  <Name>proc </Name>
+		  <Note><![CDATA[
+		  <p> A function requiring a single argument. </p>
+          ]]></Note>
+		  <AISTypes>Function </AISTypes>
+		</Argument>
+    	<Argument> 
+		  <Name>pair </Name>
+		  <Note><![CDATA[
+		  <p> A Pair containing the argument values for the function {proc} </p>
+          ]]></Note>
+		  <AISTypes>Pair</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The result of the last invocation of the function <b>{proc}</b>.
+        </p>
+	    ]]></Return>   
+	</Syntax-Pair>
+	<Syntax-List>
+	    <Expression><![CDATA[ <p> (mapc proc list)</p>]]></Expression>                  
+		<Argument> 
+		  <Name>proc </Name>
+		  <Note><![CDATA[
+		  <p> A function requiring a single argument. </p>
+          ]]></Note>
+		  <AISTypes>Function </AISTypes>
+		</Argument>
+    	<Argument> 
+		  <Name> list </Name>
+		  <Note><![CDATA[
+		  <p> A  List containing the argument values for the function {proc} </p>
+          ]]></Note>
+		  <AISTypes>List </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The result of the last invocation of the function <b>{proc}</b>.
+        </p>
+	    ]]></Return>   
+	</Syntax-List>
+</Function>

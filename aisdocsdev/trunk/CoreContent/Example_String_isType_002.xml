@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example String isType 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isType</FunctionKeywords>
+		<TypeKeywords>Character String Symbol Vector BitVector ByteVector IntVector
+
+
+
+
+                       FltVector ObjVector Structure Dictionary Directory
+
+
+
+
+                       Matrix NumMatrix Integer Float Number Complex</TypeKeywords>
+		<RelatedFunctions>isText isObject isString </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>Type Analytic Object</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example checks if the defined vector object is of
+                  the same type as the user specified type in the <b>isType</b> function.
+
+
+                  If it is,  the function returns true, otherwise, it returns false.
+ 
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq tempVector1 (stringToVector "Hello World" #\space))</sc>]]></Expression>
+        <Note><![CDATA[Sets tempVector1 as a vector with the values "Hello" and "World".]]></Note>
+        <Returns><![CDATA[#&#60Vector 193897&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(isType Vector: tempVector1) </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ true ]]></Returns>
+        <Expression><![CDATA[ <sc>(isType Dictionary: tempVector1) </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ false ]]></Returns>
+        <Hints><![CDATA[<p> The syntax: <b> (isType String: obj)</b>  <br>
+            is also equivalent to: <b>(isString obj)</b> </p>]]></Hints>
+   </Syntax>
+</Example>

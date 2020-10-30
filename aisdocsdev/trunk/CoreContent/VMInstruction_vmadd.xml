@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmadd</Title>
+		<InstructionName>vmadd</InstructionName>
+		<InstructionType>Generic</InstructionType>
+		<ArgumentTypes> Complex Integer Float Number </ArgumentTypes>
+		<RelatedVMInstructions>vmsub vmmul vmdiv </RelatedVMInstructions>
+		<HumanKeywords>addition subtraction division multiplication</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[
+		<p>When evaluated, this vm instruction adds the <b>argument</b> word 
+		numeric value to the <b>source</b> word numeric value. 
+		The word numeric result is placed in the <b>target</b> word as a numeric data type. 
+		Both words must be of numeric types. 
+		Conversion between different numeric types is automatic. 
+		The result will be returned as a numeric data type. 
+		This instruction may return an Error value. 
+		After the operation, the Instruction Pointer is promoted. 
+		The operation of this vm instruction is expressed in the following C expression:
+        </p>
+        <ul><li>(word:numeric)target = (word:numeric)source + (word:numeric)argument;</li></ul>
+    ]]></Description>
+    <Example>
+        <![CDATA[ <sc><pre>     
+			(defun vmadd_test(arg1)
+    			vars: ((a 0) b)
+    			(vmadd a arg1 b)
+    			(vmreturn b)
+			)
+			(writeln(vmadd_test 100000000000000000))
+       </pre>   </sc>
+        ]]>
+    </Example>
+	<Syntax>
+	    <Expression><![CDATA[(vmadd argument source target)]]></Expression>
+		<Argument> 
+		  <Name>argument</Name>
+		  <Format>regoff</Format>
+		  <AISTypes>(word:numeric)</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>regoff</Format>
+		  <AISTypes>(word:numeric)</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>target</Name>
+		  <Format>regoff</Format>
+		  <AISTypes>(word:numeric)</AISTypes>
+		</Argument>
+	</Syntax>
+</VMInstruction>

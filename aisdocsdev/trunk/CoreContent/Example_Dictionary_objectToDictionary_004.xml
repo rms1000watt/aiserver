@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Dictionary objectToDictionary 004</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>objectToDictionary  </FunctionKeywords>
+		<TypeKeywords>Dictionary Vector Object ObjVector</TypeKeywords>
+		<RelatedFunctions>new copy </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>vector separates token key substrings</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows how the <b>objectToDictionary</b> updates the  
+
+                  values of the <b>{dictionary1}</b> object with the values of the
+                 <b>{dictionary2}</b> object only if the key matches.  If the key does not match
+                  the new key and its value are added to the {dictionary1} object.  
+                 
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq a (new Dictionary: A: 4 B: 6))      </sc>]]></Expression>
+        <Note><![CDATA[Defines the first dictionary object. ]]></Note>
+        <Returns><![CDATA[#&#60Dictionary 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(setq b (new Dictionary: B: 7 C: 8))         </sc>]]></Expression>  
+        <Note><![CDATA[Defines the second dictionary object.]]></Note> 
+        <Returns><![CDATA[#&#60Dictionary 234567&#62]]></Returns>
+        <Expression><![CDATA[ <sc> (objectToDictionary a b)    </sc>]]></Expression>
+        <Note><![CDATA[Updates the first dictionary object with the values of the second Dictionary object. ]]></Note>
+        <Returns><![CDATA[#&#60Dictionary 345678&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60Dictionary 345678&#62)  </sc>]]></Expression>
+        <Note><![CDATA[Display the contents of the updated Dictionary object.]]></Note>
+        <Returns><![CDATA[#{dic| A: 1 B: 7 C: 8}                    ]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

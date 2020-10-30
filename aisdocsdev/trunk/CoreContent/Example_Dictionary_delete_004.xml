@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Dictionary delete 004</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>delete</FunctionKeywords>
+		<TypeKeywords>Dictionary Integer Symbol</TypeKeywords>
+		<RelatedFunctions>remove insert</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>count length </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines a Dictionary and uses the <b>delete</b> function to 
+
+                  delete a key-value binding by specified the <b>key</b> of the value in the Dictionary.
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define Score  #{dic| Sam: 1  Sue: 1 Sylvia: 5})          </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60Dictionary 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(delete  Score  Sue:)        </sc>]]></Expression>
+        <Note><![CDATA[Deletes the key-value binding with the key symbol Sue:]]></Note>
+        <Returns><![CDATA[#&#60Dictionary 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc> (display Score)     </sc>]]></Expression>
+        <Note><![CDATA[Displays the modfied Dictionary]]></Note>
+        <Returns><![CDATA[#{dic| Sam: 1 Sylvia: 5} true]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

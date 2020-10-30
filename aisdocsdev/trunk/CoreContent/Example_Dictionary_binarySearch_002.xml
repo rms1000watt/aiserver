@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Dictionary binarySearch 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>binarySearch</FunctionKeywords>
+		<TypeKeywords>Dictionary Symbol</TypeKeywords>
+		<RelatedFunctions>insert binaryInsert sort uniqueInsert</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>binary insert search   sort</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ Each one of these examples defines a sorted  Dictionary. Then it
+
+
+                  uses the <b>binarySearch</b> function to search for a key
+
+
+                  in the defined Dictionary.
+
+	]]></Description>
+	<Syntax>
+  	   <Expression><![CDATA[ <sc>(binarySearch  #{dic|a:  4.2  c:  5.1}  b:)       </sc>]]></Expression>
+        <Note><![CDATA[The key b: is not contained in the Dictionary]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(binarySearch  #{dic|a:  4.2  c:  5.1}  a:)         </sc>]]></Expression>
+        <Note><![CDATA[The key a: has index value 0 in the Dictionary.]]></Note>
+        <Returns><![CDATA[0]]></Returns>
+        <Hints><![CDATA[The Dictionary must have previously been sorted for the <b>binarySearch</b>
+               function to work. ]]></Hints>
+   </Syntax>
+</Example>

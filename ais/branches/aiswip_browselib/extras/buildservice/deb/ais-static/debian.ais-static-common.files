@@ -1,0 +1,3 @@
+etc/ais/*
+usr/share/ais/*
+usr/bin/ais-config

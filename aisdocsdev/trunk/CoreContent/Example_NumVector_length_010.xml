@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example NumVector length 010</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>length</FunctionKeywords>
+		<TypeKeywords> Integer NumVector</TypeKeywords>
+		<RelatedFunctions>count </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>length equal</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows the <b>length</b> function performing a 
+
+
+
+                  shallow count on a  <b>Vector  </b> object.
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(length  #(num| 11.433 -2.6 ) )     </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[2]]></Returns>
+        <Expression><![CDATA[ <sc>(length  #(num| 11.433 -2.6 #void))  </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ 3 ]]></Returns>
+        <Hints><![CDATA[See the <b>count</b> function to illustrate <i>deep</i> counting of vector values.]]></Hints>
+   </Syntax>
+</Example>

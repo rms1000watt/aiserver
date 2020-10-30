@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Date date 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>date</FunctionKeywords>
+		<TypeKeywords>Number Integer </TypeKeywords>
+		<RelatedFunctions>isDate day month year string</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>convert number object</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples convert Number argument values into
+             the Date data type with the Date format using the <b>date</b> function.
+
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc> 
+(date  1994  2  3)        </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[ #Feb,3,1994]]></Returns>
+	    <Expression><![CDATA[ <sc> (date  -349  7  4)           </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#Jul,4,349BC]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

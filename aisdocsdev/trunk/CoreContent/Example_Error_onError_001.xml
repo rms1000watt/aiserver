@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Error onError 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>onError</FunctionKeywords>
+		<TypeKeywords>Error String </TypeKeywords>
+		<RelatedFunctions>debug disassemble debugBrowsableProcs </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>debug browse process event handler error </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ The <b>onError</b> function defines the error handler <b>errHandler</b>.
+
+
+
+
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc> 
+			(defun foo()
+			(defun errHandler(err) (writeln "Foo got the following error: " err))
+			(onError errHandler)
+			(error "badFoo"))                </sc>]]></Expression>
+        <Note><![CDATA[Define a function that contains an error handler. ]]></Note>
+        <Returns><![CDATA[#&#60Lambda 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc> (foo)         </sc>]]></Expression>
+        <Note><![CDATA[Call the function foo.  The result from caling foo is:]]></Note>
+        <Returns><![CDATA[ Foo got the following error: !badFoo!]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

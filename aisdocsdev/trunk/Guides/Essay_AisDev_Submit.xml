@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Essay SYSTEM "../DTD/Essay.dtd">
+<Essay>
+	<KnowledgeBase>
+	    <Title>Submitting AMP Messages</Title>
+		<Topic>AIS Internals</Topic>
+		<SubTopic>Overview</SubTopic>
+		<HumanKeywords>Development AIS Message Protocol API</HumanKeywords>
+	</KnowledgeBase>
+	<Section>
+	    <Heading>Submitting AMP Messages</Heading>
+		<Description><![CDATA[
+			<p>Every application, regardless of the protocol used, submits requests to AIS using AMP
+			and only AMP.  Provided that the user has sufficient authorization, both built-in (_ais)
+			and application-specific messages may be submitted.  Before launching into a detailed
+			discussion of each protocol, a few examples are shown in this section.</p>
+			<p>
+			Important Note!  Except for the domain name, AMP message names are case-sensitive.  Param1
+			will not be recognized if param1 is expected.</p>
+			<p>
+			<b>Assumptions.</b>  In the discussion below, a representative built-in message of the
+			form:<br>
+			 _ais<b>[]</b>noop<b>[]</b>arg0<b>[]</b>hello<br>
+			 and a sample application-specific message of the form:<br>
+			 testLambda<b>[]</b>ampAct<b>[]</b>param1<b>[]</b>Some value<br>
+			are included in the examples.  These sample AMP messages can be replaced by any valid AMP
+			message supported by the application.  Also, the domain name, www.byLambda.com can be
+			replaced by the specific Analytic Information Server that you are using; however, amp.dll
+			should not be modified.</p>
+			<h3> HTTP HyperText Transfer Protocol</h3>
+			The HTTP is utilized by several types of clients.  Some examples:
+			<ul>
+				<li>Browser, such as Internet Explorer 5.5 or above</li>
+				<li>Client-side JavaScript embedded in a web page</li>
+				<li>Macromedia Flash player using HTTP</li>
+			</ul>
+			<p>
+			<b>Examples.</b> A wide variety of formats are supported by the HTTP interface.  A
+			URL-encoded query string may be appended to the URL, a URL-encoded string may be
+			included in the body of a POST request, or an XML document may be included in the
+			body of a POST request.</p>
+			<b>Query String Examples:</b>
+			<ul>
+			http://www.byLambda.com/amp.dll?_ais=noop&amp;arg0=hello<br>
+			http://www.byLambda.com/amp.dll?testLambda=ampAct&amp;param1=Some&nbsp;Value
+			</ul>
+			<p>
+			<b>POST body (from a form or javascript) Examples:</b></p>
+			<ul>
+				_ais=noop&amp;arg0=hello
+				testLambda=ampAct&amp;param1=Some Value
+			</ul>
+			<b>XML POST (Flash player using HTTP) Examples</b>:
+			<ul>
+				&lt;amp target&quot;_ais&quot; act=&quot;noop&quot;/&gt;<br>
+				&lt;amp target&quot;targetLambda&quot; act=&quot;ampAct&quot;&gt;&lt;param1&gt;Some Value
+				&lt;/param1&gt;&lt;/amp&gt;
+			</ul>
+			<h3> XML Socket Protocol</h3><p>
+			Unlike HTTP, all requests use a single format, XML (eXtensible Markup Language).  The XML
+			socket is utilized by several clients.  Also unlike HTTP, this protocol just sends a
+			XML document terminated by a null or ctrl-A.  Some example clients using this protocol:</p>
+			<ul>
+				<li>Macromedia Flash player connecting to an XML socket.</li>
+				<li>JavaScript with embedded ActiveXControl that supports a socket connection.</li>
+			</ul>
+			<b>Sample XML Documents:</b>
+			<ul>
+				&lt;amp target=&quot;_ais&quot; act=&quot;noop&quot;&gt;&lt;arg0&gt;Hello&lt;
+				/arg0&gt;&lt;/amp&gt;<br>
+				&lt;amp target=&quot;targetLambda&quot; act=&quot;ampAct&quot;&gt;&lt;param1&gt;
+				Some Value&lt;/param1&gt;&lt;/amp&gt;<br>
+			</ul>
+			<h3> APP Protocol</h3><p>
+			Requests to the engine can be submitted from the console-edit combo box at the top of the
+			Console tab.  A DEL character may be entered into the command-line by pressing Ctrl-|.
+			Under the covers, SmartLisp expressions are converted into AMP messages.  Also, an
+			application-specific AMP request start with a percent sign.  The request is converted into
+			an AMP message.   In either case the AMP message is processed in the same way as for any
+			other protocol server.</p>
+			<b>Sample APP Requests (entered on the console-edit line)</b>
+			<ul>
+			SmartLisp Expression:<br>
+				(setq x {hello})<br>
+			Built-in AMP message:<br>
+				_ais<b>[]</b>noop<b>[]</b>arg0<b>[]</b>Hello<br>
+			Application-specific AMP message:<br>
+				%testLambda<b>[]</b>ampAct<b>[]</b>param1<b>[]</b>Some Value<br>
+			</ul>
+			<p>
+			Be sure to use a DEL character as a separator. It appears as a <em>dark</em> vertical bar
+			in the console's command-line window.  Also, keep in mind that case matters.</p>
+	    ]]></Description>
+	</Section>      
+	<Section>
+	    <Heading>HTTP Server</Heading>
+		<Description><![CDATA[
+			<p>An HTTP client may send AMP messages to AIS using the HTTP GET method. For instance,
+			using a web browser, specify a URL in which the &quot;file&quote; is amp.dll with
+			a query string appended.  The AMP message is URL-encoded in the query portion of the
+			request.  Notice that the target Lambda and the speech act must be placed at the front
+			of the query string.</p>
+			<b>Example:</b>
+			<ul>
+			<b>General Form:</b> http://www.byLambda.com/amp.dll?testLambda=ampAct&amp;amp;param1=value1<br>
+			<b>Built-in:</b> http://www.byLambda.com/amp.dll?_ais=login&amp;amp;username=tmay&amp;amp;
+			password=&amp;lt;!@&amp;gt;-/
+			</ul>
+			<p>
+			<b>HTTP POST Example.</b> On a web page, use a form similar the following HTML form
+			to send an HTTP POST request to AIS:</p>
+			<ul>
+			&lt;FORM action=&quot;/amp.dll&quot; method=&quot;post&quot;&gt;<br>
+			&lt;INPUT type=&quot;hidden&quot; name=&quot;testLambda&quot; value=&quot;ampAct&quot;&gt;<br>
+			&lt;INPUT type=&quot;text&quot; name=&quot;param1&quot;&gt;<br>
+			&lt;INPUT type=&quot;submit&quot; value=&quot;Submit&quot;&gt;<br>
+			&lt;/FORM&gt;
+			</ul>
+			<h3> HTTP Encoding</h3><p>
+			AMP Messages sent to AIS using the HTTP protocol is URL-encoded (except a POST body
+			using XML). AIS will URL-decode the incoming query string or POST body and convert the
+			result into a DEL-delimited AMP message into a form appropriate for submission
+			to the specified target Lambda. Encoding is typically performed automatically by the
+			browser or other HTTP client.</p>
+			<h3> HTTP Limitations</h3><p>
+			HTTP has severe limitations as an application protocol. Keep the following aspects of HTTP
+			in mind when using HTTP to talk to AIS:</p>
+			<ul>
+				<li>HTTP is a request/response protocol. This means that the client must make a
+				 request and then wait for a response from AIS. There must always be one and only one
+				 response to each client HTTP request.  Although multiple requests may be submitted,
+				 no request is processed until a response to the previous request from that web
+				 client is received (or cancelled by the user). A server can never initiate a message
+				 to a HTTP client.</li>
+				<li>HTTP clients must support cookies for AIS to keep track of important client
+				connection information.</li>
+			</ul>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>XML Socket Server</Heading>
+		<Description><![CDATA[
+			<p>AIS supports an XML Socket server interface. This interface allows TCP/IP clients to
+			establish a permanent connection and then exchange AMP messages packaged in an XML format.
+			Unlike HTTP, the XML Socket interface is bi-directional and allows AIS to push AMP messages
+			to the client at anytime. XML Socket clients must be event-driven to take full advantage
+			of the AIS XML server.  The XML client is not required to suspend operation and wait for
+			an immediate return to a request.  Rather, all requests, even those that can be computed
+			quickly by AIS, are treated as asynchronous calls by the XML client.  A typical XML request
+			is of the form:</p>
+			<ul>
+			 &lt;amp xtype=&quot;msg&quot; target=&quot;_ais&quot; act=&quot;login&quot;&gt;<br>
+			 &lt;username&gt;tmay&lt;/username&gt;<br>
+			&lt;password&gt;!@&amp;gt;-/&lt;/password&gt;<br>
+			&lt;/amp&gt;
+			</ul>
+			where the following attributes of the root element, amp, are required:
+			<ul>
+				<li>xtype - &quot;msg&quot;, &quot;return&quot;, &quot;error&quot;.  Indicates the type of document.  Xtype is
+				 always &quot;msg&quot; for AMP requests.  This attribute is optional.</li>
+				<li>target - target Lambda. The target Lambda is the name of a target Lambda supported by
+				the application or _ais for built-in functions.</li>
+				<li>act - speech act. Any child Lambda provided by the named target Lambda.</li>
+			</ul>
+			<p>
+			The contents of the root element may include zero or more child elements that specify
+			a set of name-value pairs appropriate for the speech act named.</p>
+			<h3> XML Encoding</h3>
+			<p>
+			AMP Messages sent to AIS using the XML protocol must encoded according to XML specifications.
+			There are five, and only five, special characters that should be encoded as specified
+			by the XML standard.  All other HTML encodings are neither necessary nor desirable.
+			The predefined entities are shown on the right  for the following symbols (shown on the
+			left):</p>
+			<ul>
+				<li>&amp;   &amp;amp;</li>
+				<li>&lt;   &amp;lt;</li>
+				<li>&gt;   &amp;gt;</li>
+				<li>'   &amp;apos;</li>
+				<li>&quot;   &amp;quot;</li>
+			</ul>
+			<p>
+			The standard requires that these characters (except the less-than sign (&lt;)) embedded
+			in the content of an XML doc be encoded as predefined entities.</p>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>APP Server</Heading>
+		<Description><![CDATA[
+			<p>A target Lambda can be called directly using an AMP message of the form:<br>
+			targetLambda<b>[]</b> * <b>[]</b>paramName<b>[]</b>paramValue&#133;</p>
+			<p>
+			A speech act can be called directly using an AMP message of the form:<br>
+			targetLambda<b>[]</b>speechAct<b>[]</b>paramName<b>[]</b>paramValue&#133;</p>
+			<p>
+			In the first case, the faces statement in the definition of the target Lambda determines
+			the type of access that is allowed.  In the second case, the faces statement in the
+			definition of the speech act determines the type of access.  In either case, the faces
+			statement is of the form:</p> 
+			<blockquote>
+			<pRE class="code">
+			(defun someLambda (arg)
+			    faces: (
+			        (public type)     ; the type of access as noted below
+			        (security level)  ; level is a value from 0 to 7 (7 is highest)
+			)
+			...
+			)
+			</pre> 
+			</blockquote>
+			<p>
+			Type is one of the following:</p>
+			<ul>
+				<li><b>Amp:</b>   arg is a message structure described above.  The Lambda is
+				 expected to return a message structure.</li>
+				<li><b>true</b>   arg represents zero or more parameters passed as the parameter
+				 values in the incoming AMP message.  The target Lambda, speech act, and parameter
+				 names are not passed to the Lambda.  The return value does not have to be a structure.
+				 The return value is converted to a string and returned to the client.</li>
+				<li><b>false</b>    access is denied.  The Lambda can only be invoked internally.</li>
+			</ul>
+			<p>
+			If the security value is omitted, it is set to zero.  If the public value is omitted,
+			it is set to false.  Note that the target Lambda can have no access, but its speech acts
+			can be accessible or vice versa.  Typically, the target Lambda is called for performing
+			the initialization of an Lambda.</p>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>AIS Return Messages</Heading>
+		<Description><![CDATA[
+			<p>AMP Lambdas return a structure. This structure is called the AIS Return Message
+			Structure or just the AIS Return Structure.  The AIS Return Structure is processed, by
+			AIS, into an AIS Output Message or just Aisout.  Aisout is a DEL-delimited
+			string returned directly to the APP client.   HTTP and XML protocols transform Aisout
+			into the appropriate format as described below.</p>
+			<p>
+			The structure returned by an AMP Lambda will often contain the same elements that were
+			contained in the structure passed to the AMP Lambda when it was first called. It is
+			expected that the AMP Lambda may modify and/or add elements to the structure during
+			its processing. Of particular interest to AIS is the element named &quot;_returntype&quot;.
+			The value of this structure element instructs AIS on how to package the AIS return
+			structure for return to the client application.</p>
+			<p>
+			The processing, performed by AIS, on the AIS Return Structure is driven by the value of
+			the &quot;_returntype&quot; element. Valid _returntype values include:</p>
+			<ol>
+				<li>AMP Message Processing</li>
+				<li>URL Message Processing</li>
+				<li>File Message Processing</li>
+				<li>Text Message Processing</li>
+			</ol>
+			<p>
+			If no _returntype element is provided by the AMP Lambda, AMP Message Processing will be
+			performed.  Besides AMP requests, other requests, such as built-in requests, can be
+			submitted which do not involve a _returntype.  In these cases, the returned response
+			is described for each protocol below.</p>
+			<h3> Return Message Structure Processing</h3>
+			<p> 
+			When AMP Messages are returned from an AMP Lambda, they are processed in two phases. The
+			first phase handles all transformations required regardless of the type of client
+			connection protocol in use.  The second phase is performed by the connection protocol
+			server communicating with the client.  AIS currently supports HTTP and XML Sockets
+			connection protocols as well as an APP in-process protocol.</p>
+			<p>
+			In the first processing phase, the following steps are taken:</p>
+			<ol>
+				<li>The _returntype element is found and a note of the requested processing made.
+				 AMP message processing is assumed if no _returntype element is found.</li>
+				<li>The _error element is searched for and if it exists a note is made of the _error
+				element value is returned separately.  This error message is logged using the system
+				message log.</li>
+				<li>Elements that begin with an underscore in the AIS Return Structure are not
+				returned.</li>
+			</ol>
+			<p>
+			In the second processing phase, the message is packaged according to the type of client
+			communication protocol in use.</p>
+			<p>
+			<b>_error Elements</b><br>
+			The _error element allows an AMP Lambda to record an error in the system log. The _error
+			element is never returned to the client.   Include error messages intended for the client
+			in application-defined elements of the AMP message.</p>
+			<table  cellspacing=0 border=0 cellpadding=2>
+				<tr valign=top><td><b>_returntyp</b></td>
+					<td><b>Message Processing</b></td></tr>
+				<tr valign=top><td>0 - AMP processing</td>
+					<td>The AIS Return Structure is transformed into a DEL-separated list of
+					name-value pairs with all private elements removed.  Private elements are those
+					whose name begins with an underscore.  This string is referred to as the retmsg. The
+					initiating targetLambda and speechAct are automatically prepended to the retmsg.</td>
+				</tr>
+				<tr valign=top><td>1 - URL processing</td>
+					<td>The AIS Return Structure is searched for an element having the name _url. The
+					client is sent a redirect message to the resource specified by the value of the
+					_url element. The returned URL may contain a query string.  In this case, the AMP
+					Lambda itself is responsible for URL encoding the value of the _url element.</td>
+				</tr>
+				<tr valign=top><td>2 - FILE processing</td>
+					<td>The AIS Return Structure is searched for an element having the name _file.
+					The value of the _file element is a file specification relative to the AIS root
+					directory (a root directory in AIS is defined for each protocol ). The client is
+					sent the contents of the named file.  Due to the caching performed by some web
+					clients and proxies, redirection using a return type of &quot;1 - URL processing&quot;
+					may be a safer option than returning the contents of a file. </td>
+				</tr>
+					<tr valign=top><td>3- TEXT</td>
+					<td>The AIS Return Structure is searched for an element having the name _mimetext
+					and an element having the name _enctype. The client is sent the contents of the
+					_mimetext element encoded according to the encoding type specified by the value
+					of _enctype. In general, a _enctype of &quot;text/html&quot; or &quot;text/plain&quot; should be used
+					for returning text to the client.</td>
+				</tr>
+			</table>
+			<p>
+			Binary can be returned to the client by placing the binary in a local file in a
+			subdirectory reserved for temporary files and then using the URL element to redirect
+			the client to fetch the local file. Binary can also be returned using FILE processing.
+			AIS will delete old temporary files from the temporary file directory from time-to-time.
+			The file extension provides the web client with important information regarding the nature
+			of the binary file.  For example, foo.bmp is interpreted by most HTTP clients as a
+			bit-mapped image file.</p>
+			<h4>Supported Enctypes</h4>
+			<p>
+			If the returntype is set to 3 (TEXT) the following enctypes are supported:</p>
+			<ul>
+				<li><b>text/plain</b> The _mimetext is returned to the client without any modification.</li>
+				<li><b>text/html</b>  The _mimetext is returned to the client without any modification.
+				The web client expects this text to conform to the HTML standard.</li>
+				<li><b>application/x-ampmsg</b>   The _mimetext should be a url-encoded query string that
+				consists of a set of name-value pairs.  Typically, the first pair should be the calling
+				target Lambda and its speech act.  The query string is url-decoded and converted into
+				an AMP message string.   HTTP processing and XML processing proceeds in the same
+				fashion as for a retmsg as described below for return type 0.</li>
+			</ul>
+			<h4>Application/x-ampmsg Example</h4>
+			<p>
+			Suppose _returntype is set to 3, _enctype is set to application/x-ampmsg and _mimetext
+			is set to:</p>
+			<ul>
+				someLambda=someSpeechAct&amp;name=Bill%20House&mp;zip=92866
+			</ul>
+			<p>
+			Then, the query string is url-decoded and converted to an aisout message:</p>
+			<ul>
+				someLambda<b>[]</b>someSpeechAct<b>[]</b>name<b>[]</b>Bill House<b>[]</b>zip<b>[]</b>92866
+			</ul>
+			<p>
+			This aisout message is further processed as noted below for each protocol as described
+			below.</p>
+			<h3> Returned AIS Messages</h3>
+			<p>
+			If the request is submitted to the engine for processing, the RequestID is returned to APP
+			clients immediately (HTTP and XML clients do not get back a RequestID).  Later, the response
+			to the client's request is returned.  In the case of a request from an APP server, the RequestID
+			is prepended to the response.</p>
+			<p>
+			<b>Pushed Output. </b> Pushed output includes display output and other output
+			(e.g. send-to-client).  The target Lambda and the speech act are not prepended to display
+			output but they are prepended to other unsolicited output.</p>
+			<p>
+			<b>Buffered Output.</b>  Console output generated by writeln, display, etc is buffered
+			at the server and then sent out after a timeout occurs or when the return result is sent
+			back to the client.  Output buffering enhances the performance of the server considerably.</p>
+			<h3> Returned XML Messages</h3>
+			<p>
+			AMP Return Message Structures are packaged and returned to XML Socket clients based upon the
+			type of processing specified by the _returntype element in that structure. The following
+			table enumerates the types of processing performed in phase two for XML message responses.</p>
+			<p>
+			The XML server includes four attributes to the root element of the returned XML document.</p>
+			<ul>
+				<li><b>xid</b> If an xid attribute with an integer value is supplied in the original
+				request, the xid is returned unmodified in the response.</li>
+				<li><b>xtype</b> The xtype is set to &quot;return&quot; to distinguish it from other
+				message types.</li>
+				<li><b>target</b> The target attribute is set to the original targetLambda that made
+				the request.</li>
+				<li><b>act</b> The act attribute is set to the speech act of the originating request.</li>
+			</ul>
+			<h4>Example</h4>
+			Given a logon request as guest with an xid of 123, the returned XML document would be:
+			<pre>
+			&lt;amp xid=&quot;123&quot; xtype=&quot;return&quot; target=&quot;_ais&quot; act=&quot;logon&quot&gt;
+			&lt;userid&gt;5&lt;/userid&gt;&lt;level&gt;1&lt;/level&gt;&lt;days&gt;512&lt;/days&gt;
+			&lt;comment&gt;Guest logon&lt;/comment&gt;&lt;/amp&gt;
+			</pre>
+			<h2>2.6 SendToClient</h2>
+			<p>
+			AMP Lambdas may send messages to selected clients using the sendToClient SmartLisp function.
+			SendToClient takes two arguments. The first the sessionID of the client to whom the information
+			should be sent. The second argument is a structure that will be converted to an Aisout message
+			by AIS and then sent to the client associated with the specified sessionID.</p> 
+			<p>
+			Consider the following example:   
+			<blockquote>
+			<pRE class="code">
+			(defun sendToClientAct(iMsgStruct)
+				faces:((public Amp:))
+				vars:(aResult aSessionId aMsg)
+				;; Send a message
+				(setq aSessionId iMsgStruct[_sessionid:])
+				(setq aMsg #{
+						testLambda: &quot;sendToClient&quot;})
+			msg: &quot;Message from sendToClientAct&quot;
+			})
+				(sendToClient aSessionId aMsg)
+				;; Set the result
+				(setq aResult &quot;message was sent&quot;)
+			
+				;; Put the result into the returned structure.
+				(setq iMsgStruct[_mimetext:] aResult)
+				(setq iMsgStruct[_enctype:] &quot;text/plain&quot;)
+				(setq iMsgStruct[_returntype:] 3)	; Return text to client
+				;; Check result
+				(writeln iMsgStruct)
+				(return iMsgStruct)
+			 )
+			</pre>      
+			</blockquote>
+			Three returns will be made:
+			<ul>
+				<li>The structure aMsg returned by call to sendToClient</li>
+				<li>Contents of writeln showing the internal AMP message structure (sent to Server
+				 Status Window)</li>
+				<li>Text returned by the AMP call (return type 3)</li>
+			</ul>
+			<p>
+			An example of these three returns (shown here as DEL-delimited strings) is:</p>
+			<ul>
+			testLambda<b>_</b>sendToClientAct<b>_</b>msg<b>_</b>Message from sendToClientAct<br><br>
+			#{testLambda: &quot;sendToClientAct&quot; _sessionid: 0 _userid: 1 _level: 7 _mimetext:
+			&quot;message was sent&quot; _enctype: &quot;text/plain&quot; _returntype: 3}<br><br>
+			testAgen<b>_</b>sendToClientAct<b>_</b>message was sent<br>
+			</ul>
+			<p>
+			Http clients only receive the final return result (the last message) since HTTP requires
+			one response per request.  XML clients receive the first and last messages formatted as XML
+			documents.  App clients receive the messages as shown above where <b>[]</b> indicates a DEL
+			character.</p>
+			<p>
+			For XML-oriented applications, the choice of the first element in the sendToClient return is
+			returned as a pair of attributes in the root element.  The &quot;target&quot; attribute is set
+			to the name of the first element.  The &quot;act&quot; attribute is set to the value of the
+			first element.  This allows the client to process sendToclient messages with the same logic as
+			for all other responses from AIS.  Typically, applications make the first element the name of a
+			target Lambda with its value set to an associated speech act, but this choice is not required.</p>
+	    ]]></Description>
+	</Section>
+</Essay>

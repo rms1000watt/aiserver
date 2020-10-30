@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>bitToNumberVector</Title>
+		<FunctionName>bitToNumberVector</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+        <ArgumentTypes> Vector NumVector BitVector</ArgumentTypes>
+        <DataType> NumVector BitVector</DataType>
+	    <RelatedFunctions> bitToIntegerVector</RelatedFunctions>
+        <RelatedVMInstructions> vmsetnumvector vmsetintvector vmsetvector </RelatedVMInstructions>
+		<HumanKeywords>bitvector intvector numvector exponent mantissa convert bits</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>bitToNumberVector</b>  Function converts a Bit Vector into a Number Vector.</p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The  <b>bitToNumberVector</b> function converts a Bit Vector into a Number Vector. 
+           The Bit vector is treated as a series of 48-bit groups. Each 48-bit group is converted 
+           into a Number as follows: (a) the first 8 bits become the signed exponent, and 
+           (b) the trailing 40 bits become the signed mantissa. </p>
+        <p>Only Bit Vectors, which are an exact multiple of 48 bits in length, can be converted. 
+           If a Bit Vector, which is not an even multiple of 48 bits in length is inputted, an 
+           error message is returned;otherwise the Bit Vector is converted into a Number Vector 
+           containing one number for every 48 bits in the input Bit vector. For instance, 
+           passing a Bit Vector of length 144 will return a Number Vector of length 3; 
+           while, passing a Bit Vector of length 100 will return an error message. </p>
+        ]]></Overview>
+       <Usage><![CDATA[
+        <p>When a Bit Vector has been evolved, using a genetic algorithm, as a genome, 
+           the <b>bitToNumberVector </b> function is an efficient way to convert the Bit 
+           Vector genome into a Number Vector for direct use in solving the target problem
+		</p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p>     (bitToIntegerVector  bitVector) </p>
+                    <p>     (bitToIntegerVector  bitVector numVector) </p>]]></Expression>
+		<Argument> 
+		  <Name>bitVector</Name>
+		  <Note><![CDATA[
+		  <p> A Bit Vector to be converted into a Number Vector</p>
+          ]]></Note>
+		  <AISTypes>BitVector </AISTypes>
+		</Argument>
+     	<Argument> 
+		  <Name>numVector</Name>
+		  <Note><![CDATA[
+		  <p>(Optional) a Number Vector to receive the converted bits from the Bit Vector</p>
+          ]]></Note>
+		  <AISTypes>NumVector</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns a Number Vector.
+        </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

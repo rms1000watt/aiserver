@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Essay SYSTEM "../DTD/Essay.dtd">
+<Essay>
+	<KnowledgeBase>
+	    <Title>Context Variables</Title>
+		<Topic>Lisp</Topic>
+		<SubTopic>Overview</SubTopic>
+		<HumanKeywords>Lisp Context Lambda AIS Programming</HumanKeywords>
+	</KnowledgeBase>
+	<Section>
+	    <Heading>_Blackboard</Heading>
+		<Description><![CDATA[		
+		<div class="h2section" id="_Blackboard">
+			<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'><u>Overview</u>         </b></p>
+		<p class=MsoBodyText>The<b style='mso-bidi-font-weight:normal'>
+		_Blackboard</b> variable is assigned, by the user, the current Analytic Information
+		Server ObjectRepository for the publishing of Lambda knowledge structures and
+		opinions. The <b style='mso-bidi-font-weight:normal'>_Blackboard</b> is the
+		conventional location for publishing Lambda knowledge structures and opinions.</p>
+		<p class=MsoBodyText>&nbsp;</p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>Type:               Variable</b></p>
+		<p class=MsoBodyText style='line-height:117%;page-break-after:avoid'><b style='mso-bidi-font-weight:normal'><u>&nbsp;</u></b></p>
+		<p class=MsoBodyText style='line-height:117%;page-break-after:avoid'><b style='mso-bidi-font-weight:normal'><u>When To Use               </u></b></p>
+		<p class=MsoBodyText>The use of the <b style='mso-bidi-font-weight:
+		normal'>_Blackboard</b> variable is a convention. The _<b style='mso-bidi-font-weight:
+		normal'>Blackboard</b> variable usually contains the Lambda repository where
+		Lambda opinions are published.</p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'><u>&nbsp;</u></b></p>
+		<p class=MsoBodyText style='line-height:117%;page-break-after:avoid'><b style='mso-bidi-font-weight:normal'><u>Example1                     </u></b></p>
+		<blockquote>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>(define
+		_Blackboard (new ObjectRepository: &quot;blackboard.db&quot; clear:))</b>   </p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>(setq
+		_Blackboard[foo:]  &quot;foo says, I
+		like ice cream.&quot;)</b>      </p>
+		 </blockquote>
+		<p class=MsoBodyText>Publish an opinion in the blackboard.</p>
+		  </div>
+	    ]]></Description>
+	</Section>             
+	<Section>
+	    <Heading>_error</Heading>
+		<Description><![CDATA[		
+		<div class="h2section" id="_error">
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'><u>Overview                     </u>            </b></p>
+		<p class=MsoBodyText>The <b style='mso-bidi-font-weight:normal'>_error</b>  Variable returns the error vector
+		information saved by Analytic Information Server when the last error
+		occurred.  The error vector records the
+		error information and the Lambdas that were active when the error occurred.</p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>&nbsp;</b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>Type:               Variable</b></p>
+		<p class=MsoBodyText style='line-height:117%;page-break-after:avoid'><b style='mso-bidi-font-weight:normal'><u>&nbsp;</u></b></p>
+		<p class=MsoBodyText style='line-height:117%;page-break-after:avoid'><b style='mso-bidi-font-weight:normal'><u>&nbsp;</u></b></p>
+		<p class=MsoBodyText style='line-height:117%;page-break-after:avoid'><b style='mso-bidi-font-weight:normal'><u>When To Use               </u></b></p>
+		<p class=MsoBodyText>Use this variable when examining the error
+		vector produced by an exception condition.<b style='mso-bidi-font-weight:normal'><u></u></b></p>
+		<p class=MsoNormal>&nbsp;</p>
+		<p class=MsoBodyText style='line-height:117%;page-break-after:avoid'><b style='mso-bidi-font-weight:normal'><u>Example1                     </u></b></p>
+		<p class=MsoBodyText>This example shows the error vector produced
+		by an exception condition. Each element in the error vector contains the
+		function name and displacement within the function at the time of the error.<b style='mso-bidi-font-weight:normal'></b></p>
+         <blockquote> 
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>(defun  foo(n)
+		(moo  n))</b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>(defun  moo(n)
+		(n  1  2))</b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>(foo  3)                                     </b>Returns
+		error:  <b style='mso-bidi-font-weight:
+		normal'>!Missing or Invalid Function Name!</b>&quot; <b style='mso-bidi-font-weight:
+		normal'></b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>_error                                      </b></p>
+		<p class=MsoBodyText>The error vector<b style='mso-bidi-font-weight:
+		normal'> </b>contains <b style='mso-bidi-font-weight:normal'>#(</b>&quot;<b style='mso-bidi-font-weight:normal'>!Missing
+		or Invalid Function Name!</b>&quot; <b style='mso-bidi-font-weight:normal'>3  #(foo
+		12)  #(moo  8))</b></p>
+        </blockquote>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>_FileCabinet</Heading>
+		<Description><![CDATA[		
+		<div class="h2section" id="_FileCabinet">
+			<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'><u>Overview</u>         </b></p>
+		<p class=MsoBodyText>The <b style='mso-bidi-font-weight:normal'>_FileCabinet</b>  variable is assigned, by the user, the
+		current Analytic Information Server ObjectRepository for the storing of Lambda
+		scripts. The <b style='mso-bidi-font-weight:normal'>_FileCabinet</b> is the
+		conventional location for storing Lambda scripts and Lambda components. </p>
+		<p class=MsoBodyText>&nbsp;</p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>Type:               Variable</b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>&nbsp;</b></p>
+		<p class=MsoBodyText style='line-height:117%;page-break-after:avoid'><b style='mso-bidi-font-weight:normal'><u>When To Use               </u></b></p>
+		<p class=MsoBodyText style='line-height:117%;page-break-after:avoid'>The
+		use of the _<b style='mso-bidi-font-weight:normal'>FileCabinet</b> variable is
+		a convention. The _FileCabinet variable usually contains the main Lambda
+		repository for the server side application.</p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'><u>&nbsp;</u></b></p>
+		<p class=MsoBodyText style='line-height:117%;page-break-after:avoid'><b style='mso-bidi-font-weight:normal'><u>Example1                     </u></b></p>
+		<blockquote>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>(define
+		_FileCabinet (new ObjectRepository: &quot;Lambda.db&quot; clear:))</b>
+		</p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>(setq
+		_FileCabinet[foo:]  &quot;(defun foo(n)
+		(* n n))&quot;)        </b>            </p>
+		 </blockquote>
+		<p class=MsoBodyText><span style='mso-bookmark:_Toc318211051'>&nbsp;</p>
+		<p class=MsoBodyText>Places an Lambda script in the new Lambda file
+		cabinet.</p>
+		</div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>_globals</Heading>
+		<Description><![CDATA[		
+		<div class="h2section" id="_globals">
+			<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'><u>Overview                     </u>            </b></p>
+		<p class=MsoBodyText>The <b style='mso-bidi-font-weight:normal'>_globals</b>  Variable returns the Analytic Information
+		Server global symbol table object. The global symbol table serves as the top
+		level environment for Analytic Information Server.</p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>&nbsp;</b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>Type:               Variable</b></p> 
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>_MasterLambda</Heading>
+		<Description><![CDATA[		
+		<div class="h2section" id="_MasterLambda">
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'><u>Overview</u>         </b></p>
+		<p class=MsoBodyText>The<b style='mso-bidi-font-weight:normal'>
+		_MasterLambda</b>  variable, by
+		convention, is set by the user to the Master Lambda which supervises the current
+		server side application.</p>
+		<p class=MsoBodyText>By convention, the user defined File Cabinet
+		(see <b style='mso-bidi-font-weight:normal'>_FileCabinet</b>) contains all of
+		the components necessary to build a Master Lambda and to set into operation a
+		user defined server side application. The supervisor of every server side
+		application is its Master Lambda. Some Analytic Information Server host shell
+		programs contain a Console menu item called &quot;MasterLambda(Ma)&quot; just to
+		allow easy invocation of the Master Lambda in the current user analytic model.</p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>&nbsp;</b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>Type:               Variable</b></p>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>_parser</Heading>
+		<Description><![CDATA[		
+		<div class="h2section" id="_parser">
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'><u>Overview                     </u>            </b></p>
+		<p class=MsoBodyText>The _<b style='mso-bidi-font-weight:normal'>parser</b>  variable returns the current Lambda
+		Information Server parser function which is to be used by the client prior to
+		compilation. See the <b style='mso-bidi-font-weight:normal'>lisp</b>, <b style='mso-bidi-font-weight:normal'>basic</b>, <b style='mso-bidi-font-weight:
+		normal'>morph</b>, and <b style='mso-bidi-font-weight:normal'>compile</b>
+		functions for more information. </p>
+		<p class=MsoBodyText>Changing the <b style='mso-bidi-font-weight:
+		normal'>_parser</b> variable causes the language syntax of the engine to
+		change. After changing the <b style='mso-bidi-font-weight:normal'>_parser</b>
+		variable, the Analytic Information Server scripting language would be determined
+		by the new system parser function.</p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>Type:               variable</b></p>	 
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>_path</Heading>
+		<Description><![CDATA[		
+		<div class="h2section" id="_path">
+			<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'><u>Overview</u>         </b></p>
+		<p class=MsoBodyText>The
+		global variable, <b style='mso-bidi-font-weight:normal'>_path</b>,  is reserved by the system to hold the
+		directory and  path name of the current
+		working directory. The <b style='mso-bidi-font-weight:normal'>_path</b>
+		variable is set  to the  empty string &quot;&quot; at system
+		startup.  It is the programmer's
+		responsibility to initialize the <b style='mso-bidi-font-weight:normal'>_path</b>
+		variable. When the <b style='mso-bidi-font-weight:normal'>_path</b>  variable is referenced, the text contents of
+		the <b style='mso-bidi-font-weight:normal'>_path</b> variable are automatically
+		attached to the beginning of  database
+		archive file named in the <b style='mso-bidi-font-weight:normal'>new</b>
+		function. The contents of the<b style='mso-bidi-font-weight:normal'> _path</b>
+		variable are also automatically prepended to the file names in both the  <b style='mso-bidi-font-weight:normal'>new
+		ObjectRepository:</b>  function and
+		the  <b style='mso-bidi-font-weight:
+		normal'>fileOpen</b>  function.</p>
+		<p class=MsoBodyText>&nbsp;</p>
+		<p class=MsoBodyText>&nbsp;</p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>Type:               Variable</b></p>
+		<p class=MsoBodyText style='line-height:117%;page-break-after:avoid'><b style='mso-bidi-font-weight:normal'><u>&nbsp;</u></b></p>
+		<p class=MsoBodyText style='line-height:117%;page-break-after:avoid'><b style='mso-bidi-font-weight:normal'><u>When To Use               </u></b></p>
+		<p class=MsoBodyText>The <b style='mso-bidi-font-weight:normal'>_path</b>
+		is a global variable used to hold a path name string assigned by the
+		programmer.   If the <b style='mso-bidi-font-weight:normal'>_path</b> variable is something other than
+		a null string, the <b style='mso-bidi-font-weight:normal'>_path</b> variable
+		string will be prepended to the filename specified in the <b style='mso-bidi-font-weight:
+		normal'>new</b> function.<b style='mso-bidi-font-weight:normal'></b></p>
+		<p class=MsoBodyText style='line-height:117%;page-break-after:avoid'><b style='mso-bidi-font-weight:normal'>  </b></p>
+		<p class=MsoBodyText style='line-height:117%;page-break-after:avoid'><b style='mso-bidi-font-weight:normal'><u>Example1                     </u></b></p>
+		<blockquote>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>(setq
+		_path  &quot;&quot;)</b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>(setq
+		gor (new ObjectRepository: &quot;myarchive.odb&quot;))  </b></p>
+		  </blockquote>
+		<p class=MsoBodyText>The database archive file name is now<b style='mso-bidi-font-weight:normal'> &quot;myarchive.odb&quot;</b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>&nbsp;</b></p>
+		<p class=MsoBodyText style='line-height:117%;page-break-after:avoid'><b style='mso-bidi-font-weight:normal'><u>Example2                     </u></b></p>
+		 <blockquote>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>(setq
+		_path  &quot;d:\\test\\&quot;)</b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>(setq
+		gor (new ObjectRepository: &quot;myarchive.odb&quot;))  </b></p>
+		     </blockquote>
+		<p class=MsoBodyText>The database archive file name is now<b style='mso-bidi-font-weight:normal'> &quot;d:\test\myarchive.odb&quot;</b></p> 
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>_saveTypes</Heading>
+		<Description><![CDATA[		
+		<div class="h2section" id="_saveTypes">
+			 <p class=MsoBodyText><b style='mso-bidi-font-weight:normal'><u>Overview                     </u>            </b></p>
+		<p class=MsoBodyText>The
+		_<b style='mso-bidi-font-weight:normal'>saveTypes</b> is a global
+		variable that contains a Boolean value.
+		The contents of the _<b style='mso-bidi-font-weight:normal'>saveTypes</b>
+		variable determine the calculation of the object closure when objects are saved
+		to an Object Repository, a file, or a vector. At system startup, the _<b style='mso-bidi-font-weight:normal'>saveTypes</b> variable is initialized to <b style='mso-bidi-font-weight:normal'>False</b>.
+		If the _<b style='mso-bidi-font-weight:normal'>saveTypes</b> variable is
+		later set to <b style='mso-bidi-font-weight:normal'>True</b>,  global value and type information are to be
+		saved along with symbol objects.</p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>&nbsp;</b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>Type:               Variable</b></p>
+		<p class=MsoBodyText style='line-height:117%;page-break-after:avoid'><b style='mso-bidi-font-weight:normal'><u>&nbsp;</u></b></p>
+		<p class=MsoBodyText style='line-height:117%;page-break-after:avoid'><b style='mso-bidi-font-weight:normal'><u>&nbsp;</u></b></p>
+		<p class=MsoBodyText style='line-height:117%;page-break-after:avoid'><b style='mso-bidi-font-weight:normal'><u>When To Use               </u></b></p>
+		<p class=MsoBodyText style='line-height:117%;page-break-after:avoid'>Lambda
+		Information Server Symbols have the two properties associated with them: type
+		property and global value property.
+		Typically,  the preservation of
+		type and global value information is needed when a Symbol is being used as a
+		container.  However, Symbols, are
+		themselves data and may not be associated with a type or value.  In the latter case, the type and global
+		value properties are not important.  The
+		<b style='mso-bidi-font-weight:normal'>_saveTypes</b> variable allows the
+		programmer to control whether type and global information should be saved along
+		with a Symbol object when the object is saved in an Object Repository, or file
+		or vector.  </p>
+		<p class=MsoBodyText style='line-height:117%;page-break-after:avoid'><b style='mso-bidi-font-weight:normal'><u>Example1                     </u></b></p>
+		<blockquote>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>(defineStructure
+		x:  Old1:)                   ;; Global type info linked to x</b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>(setq
+		x #(1 2 3))                                   ;;
+		Global value  stored in x</b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>(setq
+		y x:)                                            ;;
+		y contains the Symbol x:</b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>(setq
+		db (new ObjectRepository: &quot;test.db&quot;))               </b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>(setq
+		_saveTypes  false)                      ;; Do NOT save Symbol
+		global and type info</b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>(setq
+		db[0] y)                                       ;;
+		Save record data only</b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>(setq
+		x #void)                                       ;;
+		Destroy global value in x</b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>(defineStructure
+		x: New1: )                 ;; Destroy
+		global type info in x </b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>(setq
+		y db[0])                                       ;;
+		Read previously saved record into y</b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>(writeln
+		"y = " y  ",  x = " x  ", fieldsof (x) =
+		" (fieldsOf x: ) )</b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>&nbsp;</b></p>
+		<p class=MsoBodyText>The result output from the <b style='mso-bidi-font-weight:normal'>writeln</b> statement is:</p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>y =
+		x,  x = #void,  fieldsof (x) = #{New1: #void}</b></p>
+		<p class=MsoBodyText>Note that the contents of the Symbol<b style='mso-bidi-font-weight:normal'> x: </b>is<b style='mso-bidi-font-weight:
+		normal'> #void.  </b></p>
+		     </blockquote>
+		<p class=MsoBodyText>Note that the type information of the Symbol
+		<b style='mso-bidi-font-weight:normal'>x:</b> is different from the original <b style='mso-bidi-font-weight:normal'>defineStructure</b> statement.</p>
+		<p class=MsoBodyText>  </p>
+		<p class=MsoBodyText style='line-height:117%;page-break-after:avoid'><b style='mso-bidi-font-weight:normal'><u>Example2                     </u></b></p>
+		<blockquote>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>(defineStructure
+		x:  Old1:)                   ;; Global type info linked to x</b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>(setq
+		x #(1 2 3))                                   ;;
+		Global value  stored in x</b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>(setq
+		y x:)                                            ;;
+		y contains the Symbol x:</b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>(setq
+		db (new ObjectRepository: &quot;test.db&quot;))               </b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>(setq
+		_saveTypes  true)                       ;; DO
+		save Symbol global and type info</b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>(setq
+		db[0] y)                                       ;;
+		Save Symbol global and type info</b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>(setq
+		x #void)                                       ;;
+		Destroy global value in x</b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>(defineStructure
+		x: New1: )                 ;; Destroy
+		global type info in x </b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>(setq
+		y db[0])                                       ;;
+		Read previously saved record into y</b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>(writeln
+		"y = " y  ",  x = " x  ", fieldsOf (x) =
+		" (fieldsOf x: ) )</b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>&nbsp;</b></p>
+		<p class=MsoBodyText>The result output from the <b style='mso-bidi-font-weight:normal'>writeln</b> statement is:</p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>y =
+		x,  x = #void,  fieldsOf (x) = #{New1: #void}</b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>&nbsp;</b></p>
+		<p class=MsoBodyText>Note that the contents of the <b style='mso-bidi-font-weight:normal'>Symbol x: </b>is<b style='mso-bidi-font-weight:
+		normal'> </b>the<b style='mso-bidi-font-weight:normal'> Vector #(1 2 3)  </b></p>
+		             </blockquote>
+		<p class=MsoBodyText>Note that the type information of the Symbol
+		<b style='mso-bidi-font-weight:normal'>x:</b> is the same as the original <b style='mso-bidi-font-weight:normal'>defineStructure</b> statement.</p>
+		<p class=MsoBodyText style='line-height:117%;page-break-after:avoid'><a name="_Toc378041090"><b style='mso-bidi-font-weight:normal'>&nbsp;</b></a></p>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>_schema</Heading>
+		<Description><![CDATA[		
+		<div class="h2section" id="_schema">
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'><u>Overview                     </u>            </b></p>
+		<p class=MsoBodyText>The
+		_<b style='mso-bidi-font-weight:normal'>schema</b>  variable returns the current top level schema Lambdas. The current
+		database schema is specific to each server side database application, and is
+		assigned by the database administrator's startup script at the start of each
+		application. By convention, the _<b style='mso-bidi-font-weight:normal'>schema</b>
+		variable contains a Vector of Lambdas. The client examines the Interfaces data
+		for each schema Lambda (see the Lambda's In property) to determine how the
+		interact with the database.</p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>Type:               variable</b></p>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>_Startup</Heading>
+		<Description><![CDATA[		
+		<div class="h2section" id="_Startup">
+			<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'><u>Overview</u>         </b></p>
+		<p class=MsoBodyText>The <b style='mso-bidi-font-weight:normal'>_StartUp</b>  Variable, by convention is set by the
+		user.   The <b style='mso-bidi-font-weight:
+		normal'>_Startup</b> Variable should contain the initialization Lambda which
+		loads the current analytic model and the Master Lambda into the Workspace.  </p>
+		<p class=MsoBodyText>Every user defined file cabinet contains all
+		of the components necessary to build a Master Lambda and to set into operation a
+		user defined analytic model. The supervisor of every user defined analytic
+		model is its Master Lambda. Some Analytic Information Server host shell programs
+		contain a Console menu item called &quot;MasterLambda(Ma)&quot; just to allow
+		easy invocation of the Master Lambda in the current user analytic model.</p>
+		<p class=MsoBodyText>&nbsp;</p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>Type:               Variable</b></p> 
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>_sysError</Heading>
+		<Description><![CDATA[		
+		<div class="h2section" id="_sysError">
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'><u>Overview                     </u>            </b></p>
+		<p class=MsoBodyText>The <b style='mso-bidi-font-weight:normal'>_sysError</b>
+		Variable returns the engine system error when a system error occurs.  The<b style='mso-bidi-font-weight:normal'>
+		_sysError</b> code, if present, must be a number.</p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>&nbsp;</b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>Type:               Variable</b></p>
+		<p class=MsoBodyText style='line-height:117%;page-break-after:avoid'><b style='mso-bidi-font-weight:normal'><u>&nbsp;</u></b></p>
+		<p class=MsoBodyText style='line-height:117%;page-break-after:avoid'><b style='mso-bidi-font-weight:normal'><u>&nbsp;</u></b></p>
+		<p class=MsoBodyText style='line-height:117%;page-break-after:avoid'><b style='mso-bidi-font-weight:normal'><u>When To Use               </u></b></p>
+		<p class=MsoBodyText>The <b style='mso-bidi-font-weight:normal'>_sysError</b>
+		variable is used when we want to know what system error occurred.<b style='mso-bidi-font-weight:normal'><u></u></b></p>
+		<p class=MsoNormal>&nbsp;</p>
+		<p class=MsoBodyText style='line-height:117%;page-break-after:avoid'><b style='mso-bidi-font-weight:normal'><u>Example1                     </u></b></p>
+		<p class=MsoBodyText>&nbsp;</p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>The
+		valid system error codes are as follows:</b></p>
+		<p class=MsoBodyText>&nbsp;</p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>Out
+		of memory                                                 1001</b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>Garbage
+		frame overflow                                              1002</b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>Damaged
+		memory handle                                            1003</b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>Lisp
+		stack overflow                                                      1004</b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>User
+		requested escape                                                1005</b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>Invalid
+		pcode encountered                                           1006</b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>Damaged
+		object discovered                                         1007</b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>Lisp
+		recursion limit exceeded                                      1008</b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>Garbage
+		frame release failure                                      1009</b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>Lisp
+		stack release failure                                             1010</b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>Lisp
+		resursion imbalance                                             1011</b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>User
+		requested quit                                                     1012</b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>Wrong
+		file or database version                                    1013</b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>&nbsp;</b></p>
+		  </div>
+	    ]]></Description>
+	</Section>
+</Essay>

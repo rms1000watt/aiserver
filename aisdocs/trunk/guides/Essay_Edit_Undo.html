@@ -1,0 +1,45 @@
+<html><head>
+<link rel="stylesheet" type="text/css" href="../CoreContent/help.css">
+<title>AIS Essay Template</title></head>
+<!--Page Parameters -->
+<body bgcolor="#FFFFF0" text="#000000" LINK="#0000ff">
+<a name="topage"></a>
+<a href="top"></a>
+<p>&nbsp;</p>
+<font color="#000080"><h1>Undo Redo</h1></font>
+<p>&nbsp;</p>
+<ul>
+<li><a href="#S1"><FONT SIZE=2>6.1 Undo</font></a></li><li><a href="#S2"><FONT SIZE=2>6.2 Redo</font></a></li>
+</ul>
+<P><H2><A NAME="S1"></A>6.1 Undo</H2></P>		
+		    <div class="h2section" id="6.1 Undo">
+			<h3>6.1.1 Overview</h3>
+			All edit operations can be divided into three categories, move, insert, or delete.  Of these, insert
+			and delete operations are saved in an ordered undo stack.  The last insert or delete operation can be undone by pressing
+			Ctrl-Z even if the cursor has been moved around after the last insert or delete.  The next-to-last insert or
+			delete operation can also be undone by pressing Ctrl-Z again and so on up to a limit
+			of the maximum number of undo operations. This limit is a configurable parameter. For example:
+			<ol>
+				<li>InsertA.  Insert a sequence of chars.</li>
+				<li>DeleteB.  Delete a char.</li>
+				<li>Undo.  Undo DeleteB by inserting the deleted char back into the text.</li>
+				<li>InsertC.  Insert a second sequence of chars.</li>
+				<li>Undo.  Undo InsertC by deleting the second sequence of chars.</li>
+				<li>Undo.  Undo InsertA by deleting the first sequence of chars.</li>
+			</ol>
+			
+			<h3>6.1.2 Exceptions</h3>
+			A few operations that cannot be be undone are not kept on the list. Operations that are not supported by undo are
+			indent, unindent, comment, uncomment, tabify, and detab.		 
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="S2"></A>6.2 Redo</H2></P>		
+		    <div class="h2section" id="6.2 Redo">
+			<p> A Ctrl-Y launches a &quot;redo&quot; operation which reverses the previous undo operation.  So, if undo deletes
+			inserted text, redo re-inserts the text back into the text.  Similarly, if an undo inserts previously deleted text,
+			the corresponding redo deletes the inserted text a second time.
+			Note that only the last consecutive undo operations can be redone.  That is, the list of redo operations is reset
+			if a new insert or delete operation is performed. So, in a sequence of operations such as undo, insert, undo, you
+			can only redo the last undo.     </p>
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P>
+</body></html>

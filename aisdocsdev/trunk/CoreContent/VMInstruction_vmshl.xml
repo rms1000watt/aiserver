@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmshl</Title>
+		<InstructionName>vmshl</InstructionName>
+		<InstructionType>Generic</InstructionType>
+		<ArgumentTypes>   Integer  </ArgumentTypes>
+		<RelatedVMInstructions>  vmshr</RelatedVMInstructions>
+		<HumanKeywords>   shift left right shl</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[                                                  
+		<p>When evaluated, this vm instruction bitwise left shifts the 
+		<b>source</b> integer value by the <b>count</b> integer value. 
+		The result is placed in the <b>target</b> word as an Integer data 
+		type. Both words are assumed to be integer types (the types are not 
+		checked). There are no conversions made between different types. 
+		The result will be returned as an Integer type. This instruction will 
+		never return an Error value. After the operation, the Instruction 
+		Pointer is promoted. The operation of this vm instruction is expressed 
+		in the following C expression: 
+        </p>	
+        <ul><li><b>    (word:int)target = (int)source &lt;&lt; (int)count; </b></li></ul>
+    ]]></Description>
+    <Example>
+        <![CDATA[ <sc> <pre>
+			(defun vmshl_test(arg1 arg2)
+    			vars: (c)
+    			(vmshl arg1 arg2 c)
+    			(vmreturn c)
+			)
+			(writeln(vmshl_test 1 100))
+        </pre>  </sc>
+        ]]>
+    </Example>
+	<Syntax>
+	    <Expression><![CDATA[  (vmshl count source target) ]]></Expression>
+		<Argument> 
+		  <Name>count</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>   
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>     
+		<Argument> 
+		  <Name>target</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>(word:integer)</AISTypes>
+		</Argument>
+	</Syntax>
+</VMInstruction>

@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Essay SYSTEM "../DTD/Essay.dtd">
+<Essay>
+	<KnowledgeBase>
+	    <Title>Editor FAQs</Title>
+		<Topic>Analytic Information Server</Topic>
+		<SubTopic>User's Guide</SubTopic>
+		<HumanKeywords>Development AIS Guide</HumanKeywords>
+	</KnowledgeBase>
+	<Section>
+	    <Heading>9.1 Configuration</Heading>
+		<Description><![CDATA[
+				<h3>9.1.1 How do I change the configuration of the editor?</h3>
+			Add or copy an aised.ini file, as described above, to the same directory as the one containing the aised.exe file.
+			Or, add an environment variable, AISDIR, whose value is the path to a folder containing aised.ini.
+			If no aised.ini file is in either directory, the default values for the configurable parameters are used.
+			
+			<h3>9.1.2 Where can I put the aised.ini file?</h3>
+			You can put an aised.ini file in the install directory where the aised.exe file resides.  You can also create
+			and AISDIR environment variable with a path such as, C:/ais or user/bin/ais.  If aised cannot find an aised.ini
+			file in the install directory, it will look in the folder specified by the value of AISDIR for a copy of aised.ini.
+			
+			<h3>9.1.3 How do I make AisEd my default text editor?</h3>
+			In Windows, the application associated with a file extension can be adjusted using the &quot;Folders Option&quot;
+			in the Control Panel.  Select the &quot;File Types&quot; tab and then change the file associated with the
+			&quot;Open&quot; command to aised.exe for those extensions associated with text files, e.g., .txt and .ini.
+			
+			<h3>9.1.4 How do I modify the key used for a command?</h3>
+			Currently, the only way to change the command-key bindings is to modify the source code and recompile.  Be
+			warned that such changes will invalidate the current editor help and documentation.
+			
+			<h3>9.1.5 How do I modify the print margins or the page numbering?</h3>
+			Currently, the only way to change these printing parameters is to modify the defined constants in the
+			AisEd header file and recompile.
+			
+			<h3>9.1.6 How do I modify the syntax coloring?</h3>
+			Currently, the only way to change the colors or parsing of the text is to modify the source code and
+			recompile.
+			
+			<h3>9.1.7 How can I view HTML text?</h3>
+			This editor displays HTML tags as plain text.  Modifications could be made to the display portion of the source code
+			to render HTML text, but images and hypertext links are not recognized.
+			
+			<h3>9.1.8 How can the editor operation be verified if a problem is encountered?</h3>
+			The editor has a built-in test facility that can run a test suite of your own choosing.  See section 3.6 on the
+			test suite dialog for more information.  The challenge is to implement a sequence of tests that explore all the
+			nooks and crannies of the code.   The existing test suite starts with a set of edit files and a file containing
+			edit operations for each API command.  Each operation file is run against a variety of the edit files.  That way
+			every edit operation is tested in several environments to obtain wide coverage.<br>
+			For developers, the built-in instrumentation can be turned on by defining ATED_DEBUG to catch any errors generated
+			by the test suite.  Finally, BoundsChecker or other C++ checking facility is currently used to catch pointer errors
+			or memory leaks not detected by the built-in checks.	 
+		  
+	    ]]></Description>
+	</Section>            
+	<Section>
+	    <Heading>9.2 Edit Operations</Heading>
+		<Description><![CDATA[
+			  <h3>9.2.1 How do I undo a massive number of changes that I did not mean to make?</h3>
+			The number of undo operations are limited because they consume significant space.  Here are some possible
+			ways to undo a large number of insert and/or delete operations:
+			<ul>
+				<li><b>Undo.</b> If the number of changes is less than the maximum number of saved undo operations, just
+				use Ctrl-Z to undo the changes.</li>
+				<li><b>Replace.</b> If a distinct sequence of characters are left at each change, the replace dialog will
+				allow you to replace this distinct sequence with the original contents.</li>
+				<li><b>Exit.</b> If the text has been saved recently, just exit and do not save the recent changes.  Then
+				open the document again and you will be back to the last save.</li>
+				<li><b>Backup.</b> Restore an earlier version of the document from backup or from the change management
+				system, if one is available.  Be careful to not write over an earlier version of the document before
+				you have had a chance to retrieve it.</li>
+			</ul>
+			<h3>9.2.2 How do I move back to the previous tab stop?</h3>
+			Use the back tab (Shift-Tab) to move back to the previous tab stop.  Make sure that no text is currently
+			selected.  Currently, there is no mechanism to move forward to the next tab stop.
+			
+			<h3>9.2.3 Why does the cursor move left/right when moving the cursor up/down?</h3>
+			There are two reasons.  First, the cursor is moved to the beginning column of a tab.  Second,
+			the cursor is moved to the end of a short line.  The editor remembers the original column position and
+			moves back to the original column position when moving from a short line to a long line.
+			
+			<h3>9.2.4 How can I move past the end of a line or past the end of the text?</h3>
+			The cursor is restricted to move no further than just in front of the last character in a line.  To extend a
+			line to the right, just move to the end of the line and then press the space
+			bar or the tab key to extend the line to the right.
+			<p>
+			To extend the text past the last line, move to the end of the text (Ctrl-End) and then press the Enter (or Return)
+			key to create a new last line.</p>
+			<h3>9.2.5 What are some helpful strategies for touch typists?</h3>
+			Most touch typists are slowed down when they have to move their hands from their &quot;home&quot; position to
+			reach for cursor keys.  Almost every cursor operation has an equivalent Ctrl-Key option.  Memorize these
+			alternatives to make editing faster with less strain.  Press F1 to see all the cursor key alternatives.
+			
+			<h3>9.2.6 How much is a page?</h3>
+			A page is just short of the number of lines of the current window (viewport).  Moving up/down by page shows new text
+			without skipping any lines.  To increase/decrease the page size, adjust the height of the viewport.  Use Ctrl-UpArrow
+			and Ctrl-DownArrow to move a half a page at a time.
+			
+			<h3>9.2.7 Some edits on a very large file are slow. How to make the edits faster?</h3>
+			The following modifications will improve performance:
+			<ol>
+				<li>Restart. Close the file and reopen it to minimize fragmentation.</li>
+				<li>No Language. Change the extension on the file to an extension that is not associated with any language,
+				such as txt.  Syntax highlighting requires extra computation.</li>
+				<li>No word wrap. Turn off word wrap.  Word wrapping imposes a significant computational overhead.</li>
+				<li>No paren matching.  Turn off paren matching.  It requires a scan through the text every time that
+				the cursor is moved before an opening bracket or after a closing bracket.</li>
+				<li>Reduce undo stack. Reduce the maximum number of saved undo operations to conserve memory.</li>
+				<li>No cut or paste.  Cut, copy, and paste are slow on large quantities of text.</li>
+				<li>Split the File. If possible, divide the file into several smaller files.</li>
+			</ol>
+			<h3>9.2.8 What is the rationale for using control H, J, K and L as substitutes for the arrow keys?
+			Why use control I for a tab?</h3>
+			Long ago and far away, keyboards had arrows marked on these keys.  Many users still use these keys for moving
+			the cursor.  The ASCII code for a tab is Ctrl-I, so this choice matches reality.
+			
+			<h3>9.2.9 What are some of the ways to move around to various sections in a large file?</h3>
+			Several nifty ways to get around:
+			<ul>
+				<li>Function List Dialog.  Ctrl-RightClick brings up a list of the functions.  Double click on any one
+				to go to that function.</li>
+				<li>Move to previous cursor. Ctrl-PageUp moves the cursor back to the previous section of code that
+				you visited.  After a Ctrl-PageUp,  Ctrl-PageDown moves you back to where you came from.</li>
+				<li>Move to other end.  Ctrl-^ moves the cursor to the other end of a hunk of selected text or to the
+				other end of matching brackets.  By selecting or matching an entire function, it is possible to move
+				to the other end of the function.</li>
+				<li>Move to end. Ctrl-Home moves to beginning-of-text and Ctrl-End moves to the end-of-text.</li>
+				<li>Find Dialog.  Ctrl-F brings up the find dialog.  Enter or recall a pattern and then click on Find to
+				 move back to the section of code with that pattern.</li>
+				 <li>Repeat Search.  Plant a distinctive pattern in the vicinity of those regions you wish to visit.
+				 Press F3 or Shift-F3 to repeat the search for the pattern until you arrive at the desired section of code.</li>
+				<li>Goto Dialog. Press Ctrl-G and then enter the approximate line number for the section of code you
+				wish to visit.</li>
+			</ul>
+			<h3>9.2.10 When is it possible to undo a redo operation? Is it possible to redo an undo operation?</h3>
+			First, a couple of points. You can only perform an undo operation after an insert or delete operation has been
+			performed and you can only perform a redo operation after an undo has been performed Only the last N insert or
+			delete operations can be undone, where N is set by the MaximumUndoDepth parameter. Operations must be undone in
+			reverse order.
+			After an undo operation is performed, it becomes a pending redo operation and after a redo operation the operation
+			becomes a pending undo.  Finally, all pending redo operations are discarded after an insert or delete operation.<br>
+			So, after a redo operation has been performed, it is possible to undo it for as long as it remains on the undo
+			stack.<br>
+			And, after an undo operation has been performed, it is possible to redo it as long as long as no intervening insert or
+			delete operations are performed.
+		  
+	    ]]></Description>
+	</Section>        
+	<Section>
+	    <Heading>9.3 Selected Text</Heading>
+		<Description><![CDATA[
+			   <h3>9.3.1 How should I view selected text?</h3>
+			View the process of selecting text and then performing an operation on that text as a single operation that
+			requires an intermediate step.  After selecting text you can delete the selected text, copy it to the clip
+			board, or do both (cut).  You can also indent, unindent, comment, or uncomment selected text.
+			
+			<h3>9.3.2 How can I select an entire Lambda with a single keystroke?</h3>
+			If paren matching is enabled, and if a pair of brackets are matched, Ctrl-S will select the text between the
+			brackets, or just use the mouse to move to the I-beam cursor to the opening (or closing) bracket and then rapidly
+			press the left button twice to select the entire Lambda.
+			
+			<h3>9.3.3  Are there any operations that don't either delete or deselect the currently selected text?</h3>
+			Yes, there are a few operations that do not deselect the currently selected text: copy, indent/unindent,
+			comment/uncomment, set tabs and replace-all in a selection.
+			
+			<h3>9.3.4 How do I replace selected text with a tab character?</h3>
+			Use Ctrl-I.  The tab key is usurped for indenting.
+			
+			<h3>9.3.5 What is the best way to select a large amount of text?</h3>
+			Use Click to set the cursor at one end of the block of text to be selected  Then, move up or
+			down to the end of the block of text to be selected.  Depress the shift key and then
+			press the left mouse button to extend the selected text to the new position.
+			
+			<h3>9.3.6 How do I deselect currently selected text?</h3>
+			Just move the cursor to a new position.  Do not hold down the shift key while moving the cursor.
+			
+			<h3>9.3.7 How do I extend the currently selected text?</h3>
+			When first selecting text, an anchor is set at the starting position of the selected area.  If selecting text
+			backwards, the anchor is at the end of the selected area; else, the anchor is at the front of the selected area.
+			To extend the selected text past the anchor, use any of the move commands, including the mouse, while holding
+			down the shift key.
+			
+			<h3>9.3.8 How can I fix the indenting of a chunk of source code copied from elsewhere?</h3>
+			Sometimes imported source code does not conform to standard format.  Statement blocks may be indented
+			using a mixture of spaces and tabs based upon a non-standard tab width.  Select a section of the text to be
+			repaired and then press Ctrl-T to bring up the Set Tab Dialog.  You can use Detab to replace leading tabs in
+			the selected rows with the equivalent number of spaces.  The tab width to be used while replacing the tabs
+			may be set using the SpacesPerTab spin box.  A mixture of spaces and tabs can be replaced with just leading spaces.
+			Also, you can use Tabify to replace leading spaces with the equivalent number of tabs.  The number in the
+			SpacesPerTab box is used to determine the tabwidth of the inserted tabs.  The option selected in the ExtraSpaces
+			group determines what to do with the left over spaces.  See section 3.5 on the TabSet Dialog for more details.
+		  
+	    ]]></Description>
+	</Section>     
+	<Section>
+	    <Heading>9.4 Formatting</Heading>
+		<Description><![CDATA[
+			  <h3>9.4.1 When I move the cursor next to an opening bracket (,{,[,&lt; or next to a closing bracket &gt;,],},),
+			The region between the brackets is not highlighted?</h3>
+			There are several reasons for this.  Check the following items:
+			<ol>
+				<li>Paren matching disabled. Press Ctrl-( (Ctrl-9) or Ctrl-) (Ctrl-0) to enable paren matching.</li>
+				<li>No matching bracket.  The number of opening brackets must match the number of closing brackets.  Thus,
+				the first bracket will not be matched in &quot;X[ Y[ Z ]&quot; if the cursor is in front of the first brace.</li>
+				<li>Cursor position.  The cursor position must be moved to the front of an opening bracket or just past
+				a closing bracket to trigger the highlighting.</li>
+				<li>Cursor not moved.  Highlighting may not be triggered by some insert or delete operations.  Move the cursor
+				a short distance and then move it back.</li>
+			</ol>
+			<h3>9.4.2 How can I represent underline, bold, or italicized characters?</h3>
+			Currently, the only mechanism to highlight characters is to select a different text color or background color.
+			The source code would have to be modified to represent tagged text with a different color.
+			
+			<h3>9.4.3 How do I center or right-justify a block of text?</h3>
+			Currently, AisEd does not support center or right-justify.  You can approximate these effects using
+			the indent/unindent commands. 
+			
+			<h3>9.4.4 How do I change the size of the font?</h3>
+			The font size can be modified by changing the FontSize parameter in the configuration file. The font size
+			is in units of &quot;points&quot; where 72 points is one inch.  Recommended point sizes
+			are 8, 9, 10, 11, 12, 14, 16, 18, 20.
+			
+			<h3>9.4.5 How can I do double-sided printing?</h3>
+			Currently, the text editor does not support double-sided unless the printer itself is capable of double-sided
+			printing.
+			
+			<h3>9.4.6 How can I distinguish between tabs, spaces, and newlines?</h3>
+			Tabs, spaces, and newlines are not normally visible.  Tabs and newlines can be made visible by setting
+			ShowNewlines and ShowTabs to one in the configuration file or by pressing Ctrl-Insert.
+			
+			<h3>9.4.7 How can I check for extra tabs, spaces past the last visible character in a row?</h3>
+			There are two ways to do this.  One way is to make tabs and newlines visible as noted in the above FAQ.
+			Extra tabs and spaces can be identified as blank space between the last visible character and the newline character.
+			A second way is to select a block of text.  Lines where the highlighting extends more than one character position past
+			the last visible character have extra spaces or tabs on the end of the line.
+			
+			<h3>9.4.8 In the SetTab Dialog, how can I undo a conversion?</h3>
+			If converting spaces to tabs using Tabify, be sure to select the Keep option.  To undo a conversion just select
+			Detab with the same SpacesPerTab as used to Tabify.  If the Tab or Delete options are selected, the extra spaces
+			cannot be restored.<br>
+			If converting tabs to spaces using Detab, undo the conversion by clicking on Tabify with the same number of SpacesPerTab.
+		  
+	    ]]></Description>
+	</Section>     
+	<Section>
+	    <Heading>9.5 Searching</Heading>
+		<Description><![CDATA[
+			    <h3>9.5.1 How can I search just the current module?</h3>
+			Double-click on the beginning paren or curly brace of a module to select the module.  Choose to search this
+			selected region using the Select option in the Region button group.
+			
+			<h3>9.5.2 How can I repeat the last search from the top?</h3>
+			F3 continues the search forward from the current cursor position.  To repeat a search from the top, press
+			Ctrl-Home to move the cursor to the top of the text and then press F3.  Likewise, to search backwards from
+			the bottom of the text, press Ctrl-End to move the cursor to the bottom of the text and then press Shift-F3.
+			To search the entire text from the current cursor position, use Ctrl-F3.
+			
+			<h3>9.5.3 How can I reverse the direction of my last search?</h3>
+			While using the Find or Replace dialog, select the Down option to search forward from the cursor.  Select Up
+			to search backwards from the cursor.  While repeating the search, use F3 to search forward and use Shift-F3 to
+			search backwards.  Unlike some other editors, F3 always searches forward and Shift-F3 always searches backward.
+			
+			<h3>9.5.4 How can I modify the pattern or check-box options while repeating the last search?</h3>
+			Use Ctrl-F to bring up the search dialog.  Modify the settings and then press Return to perform at least one
+			search. Select Close and continue searching using F3 or Shift-F3.
+			
+			<h3>9.5.5 How can I delete all occurences of a word?</h3>
+			Use Ctrl-R to bring up the replace dialog.  Enter the word or phrase to be deleted in the Find text box.
+			Leave the Replace text box empty and then select Replace All.
+			
+			<h3>9.5.6 How can I check the current search settings while repeating a search?</h3>
+			Use Ctrl-F to bring up the Find dialog in order to view the current settings.  Press Close to dismiss the
+			dialog.
+			
+			<h3>9.5.7 How can I search for words that may contain a period?</h3>
+			Use [\w\.] to match a word character or a period.  Thus [\w\.]+  will match &quot;foo.txt&quot;.
+			
+			<h3>9.5.8 How can I match any character except a letter?</h3>
+			Use [^A-Za-z] to match any character except a letter.  Thus [^A-Za-z]+ will match &quot;123= 120 + 3&quot;.
+			
+			<h3>9.5.9 How can I find a pattern with just a trailing word boundary? I want to match any word ending in xyz.</h3>
+			Press Ctrl-F to bring up the Find dialog.  Don't check either the match-word check box.  Enter the pattern xyz\b and then
+			press Return.  The pattern will match &quot;UVxyz=W&quot; but not &quot;UVxyzW&quot;.  Note that \b does not
+			match a character; it matches a boundary.  For example, the pattern \bxyz matches &quot;xyz&quot;.  Since
+			nothing precedes xyz in the text, xyz starts on a word boundary.  
+			
+			<h3>9.5.10 Why does the pattern $ move the cursor to the end of the line?</h3>
+			The element $ matches the end-of-line boundary (it does not match any character). Either use \$ to match the
+			dollar-sign or uncheck the RegularExp check box.
+			
+			<h3>9.5.11 How do I search for a pattern that spans more than one row?</h3>
+			The pattern is applied to each row in turn.  If it fails, the next row is searched for a match.  To find a
+			pattern that spans more than one row, devise a pattern that spans just one row at a time and then check the
+			matches manually.
+			
+			<h3>9.5.12 How do I search for line that just contains the pattern P and nothing else?</h3>
+			Use ^P$ where P is the pattern you wish to match.  For example, ^\d+$ will match the row 123 but not X123.
+			
+			<h3>9.5.13 Why doesn't the pattern X^Y match the text X^Y?</h3>
+			The tilde is a special character (even in the middle of a pattern). Compose the pattern with a backslash in front
+			of the tilde, X\^Y.
+			
+			<h3>9.5.14 Why doesn't the pattern X$Y match the text X$Y?</h3>
+			The dollar-sign is a special character (even in the middle of a pattern).  Compose the pattern with a backslash
+			in front of the dollar-sign, X\$Y.
+			
+			<h3>9.5.15 How can I replace four spaces with a tab?</h3>
+			The replace text box interprets the escaped characters \a, \f, \n, \r, \t, \v, \0nnn as described in Section 3.1.4
+			Elements above.  Press Ctrl-R to bring up the Replace dialog.  Enter four spaces in the Find
+			text box, and enter \t in the replace box.  Every row must have a single newline on the end, so don't add or
+			remove newlines from a row.  To replace leading spaces with a tab, see section 3.5 on the SetTab Dialog.
+			
+			<h3>9.5.16 What does turning off regular expressions buy me?</h3>
+			Not much and the loss of pattern matching is significant.  If you uncheck the regular expression checkbox, the fourteen
+			special characters described above are no longer special. That is, they just match themselves.  You can accomplish the
+			same thing by prepending a backslash in front of a special character in a regular expression.  Thus, the regular
+			expression &quot;foo\.txt&quot; is the same as &quot;foo.txt&quot; with regular expressions turned off.  The added
+			power of regular expressions is well worth the small cost of inserting an occasional backslash. 
+		  
+	    ]]></Description>
+	</Section>
+</Essay>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Context getSymbolTable 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>getSymbolTable</FunctionKeywords>
+		<TypeKeywords>Symbol Context</TypeKeywords>
+		<RelatedFunctions>getGlobalValue</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>symbol global symbol value table</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines two Strings as Symbols.  These Symbols are automatically stored in
+
+                  the Symbol Table.   The <b>getSymbolTable</b> then retrieves the stored 
+
+                  Symbols in the Symbol table.                 
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(clear) </sc>]]></Expression>
+        <Note><![CDATA[ Clear all Symbols ]]></Note>
+        <Returns><![CDATA[  ]]></Returns>
+        <Expression><![CDATA[ <sc>(define A  "animal") </sc>]]></Expression>
+        <Note><![CDATA[Defines Symbol A ]]></Note>
+        <Returns><![CDATA[animal ]]></Returns>
+        <Expression><![CDATA[ <sc>(define B  "beast") </sc>]]></Expression>
+        <Note><![CDATA[Defines Symbol B ]]></Note>
+        <Returns><![CDATA[beast ]]></Returns>
+        <Expression><![CDATA[ <sc>(getSymbolTable) </sc>]]></Expression>
+        <Note><![CDATA[Gets current Symbol Table stored as an Object Vector]]></Note>
+        <Returns><![CDATA[#&#60ObjVector 190451&#62]]></Returns>
+        <Expression><![CDATA[ <sc>#&#60ObjVector 190451&#62[0] </sc>]]></Expression>
+        <Note><![CDATA[Gets the first Symbol stored in the Symbol Table.]]></Note>
+        <Returns><![CDATA[A]]></Returns>
+        <Expression><![CDATA[ <sc>#&#60ObjVector 190451&#62[1] </sc>]]></Expression>
+        <Note><![CDATA[Gets the second Symbol stored in the Symbol Table.]]></Note>
+        <Returns><![CDATA[B]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>sort</Title>
+		<FunctionName>sort</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes> Structure Dictionary Directory  List NumMatrix ShortVector
+                        Matrix Vector String Text Integer Boolean</ArgumentTypes>
+		<DataType>Structure Dictionary Directory Vector Matrix NumMatrix FltVector ShortVector IntVector NumVector ObjVector  BitVector List</DataType>
+        <RelatedFunctions>binarySearch ref setq binaryInsert</RelatedFunctions>
+        <RelatedVMInstructions>  </RelatedVMInstructions> 
+		<HumanKeywords>sort arrange </HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The sort  function returns a sorted copy of the specified
+                 Structure, Dictionary, Directory, Matrix, Vector, or List.
+                  argument in the order specified by the argument predicate.     </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>sort</b> function returns a sorted copy of the specified 
+           Structure, Dictionary, Directory, Vector, Matrix, Pair or List argument 
+           <b>{target}</b> in the order specified by the argument predicate <b>{predicate}</b>.  
+           If the optional Boolean argument <b>{true}</b> is present, the sort function does not
+           sort the specified target; but instead, returns a sorted integer vector of indices 
+           into the specified target. 
+        </p>
+        ]]></Overview>
+       <Usage><![CDATA[
+        <p>The <b>sort</b> function sorts all the elements in a vector and returns the sorted 
+           version of the Vector. The <b>sort</b> function is destructive except for the option 
+           containing the keyword <b>{true}</b>, which returns a new sorted integer vector.</p>
+        ]]></Usage>
+        <Usage-Structure><![CDATA[
+        <p>The <b>sort</b> function can be used to sort an AIS Object by the values or by keys,
+           destructively or non-destructively.</p>
+        ]]></Usage-Structure>
+        <Usage-Dictionary><![CDATA[
+        <p>The <b>sort</b> function can be used to sort an AIS Object by the values or by keys,
+           destructively or non-destructively.</p>
+        ]]></Usage-Dictionary>
+       <Usage-Directory><![CDATA[
+        <p>The <b>sort</b> function can be used to sort an AIS Object  by the values or by keys,
+           destructively or non-destructively.</p>
+        ]]></Usage-Directory>
+       <Usage-List><![CDATA[
+        <p>The <b>sort</b> function can be used to sort an AIS Object by the values or by keys,
+           destructively or non-destructively.</p>
+        ]]></Usage-List>
+        <Usage-Matrix><![CDATA[
+        <p>The <b>sort</b> function sorts all the elements in a Matrix  and returns the sorted 
+           version of the Matrix . The <b>sort</b> function is destructive except for the option 
+           containing the keyword <b>{true}</b>, which returns a new sorted integer Matrix .</p>
+        ]]></Usage-Matrix>
+       <Usage-NumMatrix><![CDATA[
+        <p>The <b>sort</b> function sorts all the elements in a NumMatrix  and returns the sorted 
+           version of the NumMatrix . The <b>sort</b> function is destructive except for the option 
+           containing the keyword <b>{true}</b>, which returns a new sorted integer NumMatrix .</p>
+        ]]></Usage-NumMatrix>
+    </Brief>
+	<Syntax-Structure>
+	    <Expression><![CDATA[<p><b>  (sort  struct predicate )  </b></p>                  
+                    <p><b>  (sort  struct predicate  true)) </b></p>]]></Expression>
+		<Argument>
+		  <Name>struct </Name>
+		  <Note><![CDATA[
+		  <p>The structure to be sorted</p>
+          ]]></Note>
+		 <AISTypes> Structure </AISTypes>
+		</Argument>
+        <Argument>
+		  <Name>predicate</Name>
+		  <Note><![CDATA[
+		  <p>predicate &#62 means sort in descending order, predicate &#60 means sort in 
+             ascending order</p>
+          ]]></Note>
+		  <AISTypes>none</AISTypes>
+		</Argument>
+     	<Argument> 
+		  <Name>true</Name>
+		  <Note><![CDATA[
+		  <p> Optional argument: If present it means to return an integer vector 
+              containing sorted indices to the structure. </p>
+          ]]></Note>
+		 <AISTypes> Boolean</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>If {true} is present, an integer vector containing the sorted  indices to 
+            the structure is returned. If {true} is not present, the sorted structure is returned.
+        </p>
+	    ]]></Return>
+	</Syntax-Structure>
+	<Syntax-Dictionary>
+	    <Expression><![CDATA[<p><b>  (sort  dict predicate )  </b></p>                    
+                    <p><b>  (sort  dict predicate  true)) </b></p>]]></Expression>
+		<Argument> 
+		  <Name>dict </Name>
+		  <Note><![CDATA[
+		  <p>The dictionary to be sorted</p>
+          ]]></Note>
+		 <AISTypes> Dictionary </AISTypes>
+		</Argument>
+        <Argument> 
+		  <Name>predicate</Name>
+		  <Note><![CDATA[
+		  <p>predicate &#62 means sort in descending order, predicate &#60 means sort in 
+             ascending order</p>
+          ]]></Note>
+		  <AISTypes>none</AISTypes>
+		</Argument>
+     	<Argument> 
+		  <Name>true</Name>
+		  <Note><![CDATA[
+		  <p> Optional argument: If present it means to return an integer vector 
+              containing sorted indices to the dictionary. </p>
+          ]]></Note>
+		 <AISTypes> Boolean</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>If {true} is present, an integer vector containing the sorted  indices to 
+            the dictionary is returned. If {true} is not present, the sorted dictionary is returned.
+        </p>
+	    ]]></Return>   
+	</Syntax-Dictionary>
+	<Syntax-Directory>
+	    <Expression><![CDATA[<p><b>  (sort  dir predicate )  </b></p>                   
+                    <p><b>  (sort  dir predicate true)) </b></p>]]></Expression>
+		<Argument> 
+		  <Name>dir </Name>
+		  <Note><![CDATA[
+		  <p>The directory to be sorted</p>
+          ]]></Note>
+		 <AISTypes> Directory </AISTypes>
+		</Argument>
+        <Argument> 
+		  <Name>predicate</Name>
+		  <Note><![CDATA[
+		  <p>predicate &#62 means sort in descending order, predicate &#60 means sort in 
+             ascending order</p>
+          ]]></Note>
+		  <AISTypes>none</AISTypes>
+		</Argument>
+     	<Argument> 
+		  <Name>true</Name>
+		  <Note><![CDATA[
+		  <p> Optional argument: If present it means to return an integer vector 
+              containing sorted indices to the directory. </p>
+          ]]></Note>
+		 <AISTypes> Boolean</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>If {true} is present, an integer vector containing the sorted  indices to 
+            the directory is returned. If {true} is not present, the sorted directory is returned.
+        </p>
+	    ]]></Return>   
+	</Syntax-Directory>
+	<Syntax>
+	    <Expression><![CDATA[<p><b>  (sort  vector predicate )  </b></p>                    
+                    <p><b>  (sort  vector predicate  true)) </b></p>]]></Expression>
+		<Argument> 
+		  <Name>vector </Name>
+		  <Note><![CDATA[
+		  <p>The vector to be sorted</p>
+          ]]></Note>
+		 <AISTypes> Vector FltVector ShortVector IntVector NumVector ObjVector  BitVector  </AISTypes>
+		</Argument>
+        <Argument> 
+		  <Name>predicate</Name>
+		  <Note><![CDATA[
+		  <p>predicate &#62 means sort in descending order, predicate &#60 means sort in 
+             ascending order</p>
+          ]]></Note>
+		  <AISTypes>none</AISTypes>
+		</Argument>
+     	<Argument> 
+		  <Name>true</Name>
+		  <Note><![CDATA[
+		  <p> Optional argument: If present it means to return an integer vector 
+              containing sorted indices to the vector. </p>
+          ]]></Note>
+		 <AISTypes> Boolean</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The sorted Vector.
+        </p>
+	    ]]></Return>   
+	</Syntax>
+	<Syntax-Matrix>
+	    <Expression><![CDATA[<p><b>  (sort  matrix predicate )  </b></p>                    
+                    <p><b>  (sort  matrix predicate  true)) </b></p>]]></Expression>
+		<Argument> 
+		  <Name>matrix </Name>
+		  <Note><![CDATA[
+		  <p>The Matrix to be sorted</p>
+          ]]></Note>
+		 <AISTypes> Matrix </AISTypes>
+		</Argument>
+        <Argument> 
+		  <Name>predicate</Name>
+		  <Note><![CDATA[
+		  <p>predicate &#62 means sort in descending order, predicate &#60 means sort in 
+             ascending order</p>
+          ]]></Note>
+		  <AISTypes>none</AISTypes>
+		</Argument>
+     	<Argument> 
+		  <Name>true</Name>
+		  <Note><![CDATA[
+		  <p> Optional keyword, if present, an integer Vector containing stored indices to the 
+              Matrix to be sorted.</p>
+          ]]></Note>
+		 <AISTypes> Boolean</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The sorted Matrix is returned.</p>
+	    ]]></Return>   
+	</Syntax-Matrix>
+	<Syntax-NumMatrix>
+	    <Expression><![CDATA[<p><b>  (sort  nummatrix predicate )  </b></p>                    
+                    <p><b>  (sort  nummatrix predicate  true)) </b></p>]]></Expression>
+		<Argument> 
+		  <Name>nummatrix </Name>
+		  <Note><![CDATA[
+		  <p>The NumMatrix to be sorted</p>
+          ]]></Note>
+		 <AISTypes> NumMatrix </AISTypes>
+		</Argument>
+        <Argument> 
+		  <Name>predicate</Name>
+		  <Note><![CDATA[
+		  <p>predicate &#62 means sort in descending order, predicate &#60 means sort in 
+             ascending order</p>
+          ]]></Note>
+		  <AISTypes>none</AISTypes>
+		</Argument>
+     	<Argument> 
+		  <Name>true</Name>
+		  <Note><![CDATA[
+		  <p> Optional keyword, if present, an integer Vector containing stored indices to the 
+              NumMatrix to be sorted.</p>
+          ]]></Note>
+		 <AISTypes> Boolean</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The sorted NumMatrix is returned.</p>
+	    ]]></Return>   
+	</Syntax-NumMatrix>
+	<Syntax-List>
+	    <Expression><![CDATA[<p><b>  (sort  list predicate )  </b></p>                    
+                    <p><b>  (sort  list predicate  true)) </b></p>]]></Expression>
+		<Argument> 
+		  <Name>list </Name>
+		  <Note><![CDATA[
+		  <p>The List to be sorted</p>
+          ]]></Note>
+		 <AISTypes> List </AISTypes>
+		</Argument>
+        <Argument> 
+		  <Name>predicate</Name>
+		  <Note><![CDATA[
+		  <p>predicate &#62 means sort in descending order, predicate &#60 means sort in 
+             ascending order</p>
+          ]]></Note>
+		  <AISTypes>none</AISTypes>
+		</Argument>
+     	<Argument> 
+		  <Name>true</Name>
+		  <Note><![CDATA[
+		  <p> Optional keyword, if present, an integer Vector containing stored indices to the 
+              List to be sorted.</p>
+          ]]></Note>
+		 <AISTypes> Boolean</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The sorted Matrix, or the integer Vector in case the argument {true} is specified, is returned.</p>
+	    ]]></Return>   
+	</Syntax-List>
+</Function>

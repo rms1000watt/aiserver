@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure new 003</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>new</FunctionKeywords>
+		<TypeKeywords>Structure Symbol Integer</TypeKeywords>
+		<RelatedFunctions>string makeStructure define defineStructure</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>new pointer create initialize</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples show how to create an instance of
+
+                  a Structure through the <b>new</b> function.
+
+                  The <b>new</b> function initializes the
+
+
+	              Structures with the specified bindings.
+
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(setq Employee  (new Structure:  Name: "John Doe"  Title:  "Director"))   </sc>]]></Expression>
+        <Note><![CDATA[ Create a new structure, named Employee, and initialize it with two bindings.]]></Note>
+        <Returns><![CDATA[#&#60Structure 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display Employee)     </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[ #{Name: "John Doe" Title: "Director"}]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq  aStruct   (new Structure:  X:  22  Y:  34  .  3))    </sc>]]></Expression>
+        <Note><![CDATA[Create a new structure, aStruct and initialize it with two bindings and cdr]]></Note>
+        <Returns><![CDATA[#&#60Structure 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(cdr aStruct)       </sc>]]></Expression>  
+        <Note><![CDATA[Displays the cdr value of aStruct.]]></Note> 
+        <Returns><![CDATA[3]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

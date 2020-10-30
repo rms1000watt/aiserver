@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number fraction 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>fraction</FunctionKeywords>
+		<TypeKeywords>Number </TypeKeywords>
+		<RelatedFunctions>  gcd  </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>fraction</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[  <p> The <b>fraction</b> function returns the fractional part of the Number.  
+                  In this case, it returns the values after the decimal point.</p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+(fraction 2.715)  </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[0.715 ]]></Returns>
+        <Expression><![CDATA[ <sc>(fraction -10.9)  </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[0.9]]></Returns>
+        <Hints><![CDATA[none
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example NumVector compareLE 014</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compareLE</FunctionKeywords>
+		<TypeKeywords>NumVector Boolean</TypeKeywords>
+		<RelatedFunctions>compare compareEQ compareNE compareGE compareLT  compareGT </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare symbol equal lesser </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>compareLE</b> function to compare two Vectors and return
+                  the Boolean value, true or false.  The corresponding values of each Vector are compared
+                  to determine whether one Vector is lesser than or equal to the other.
+	]]></Description>
+	<Syntax> 
+        <Expression><![CDATA[ <sc>(compareLE #(num| 11.433 -2.6 ) #(num| 11.433 -2.600 ))     </sc>]]></Expression>  
+        <Note><![CDATA[Both Vectors are equal.]]></Note> 
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>(compareLE #(num| 11.433 -2.6 ) #(float| 11.433 -2.6 ))     </sc>]]></Expression>  
+        <Note><![CDATA[The Vectors are equal since their values are equal.]]></Note> 
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

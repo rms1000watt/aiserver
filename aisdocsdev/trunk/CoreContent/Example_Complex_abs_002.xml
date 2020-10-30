@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Complex abs 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>abs</FunctionKeywords>
+		<TypeKeywords>Complex</TypeKeywords>
+		<RelatedFunctions>  </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>absolute value</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[  <p> The magnitude of a variety of complex numbers is shown below. 
+      The result of the operation is shown in the comment. The result is always a real number.</p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+(setq X (new Complex: 3.0 4.0))   </sc>   ]]></Expression>
+        <Note><![CDATA[The Complex Number is defined.]]></Note>
+        <Returns><![CDATA[#&#60Complex 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(abs X)   </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[5.0]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq X (new Complex: 3.0 -4.0))   </sc>   ]]></Expression>  
+        <Note><![CDATA[The Complex Number is defined.]]></Note> 
+        <Returns><![CDATA[#&#60Complex 234567&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(abs X)   </sc>   ]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[5.0]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq X (new Complex: -3.0 -4.0))   </sc>   ]]></Expression>  
+        <Note><![CDATA[The Complex Number is defined.]]></Note> 
+        <Returns><![CDATA[#&#60Complex 345678&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(abs X)   </sc>   ]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[5.0]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq X (new Complex: 0.0 5.0))   </sc>   ]]></Expression>  
+        <Note><![CDATA[The Complex Number is defined.]]></Note> 
+        <Returns><![CDATA[#&#60Complex 456789&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(abs X)   </sc>   ]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[5.0]]></Returns>
+        <Hints><![CDATA[none
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

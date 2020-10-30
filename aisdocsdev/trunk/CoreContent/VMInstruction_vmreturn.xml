@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmreturn</Title>
+		<InstructionName>vmreturn</InstructionName>
+		<InstructionType>Generic</InstructionType>
+		<ArgumentTypes> Word</ArgumentTypes>
+		<RelatedVMInstructions>  vmcall vmref vmset vmmove  </RelatedVMInstructions>
+		<HumanKeywords>  return call ref set move</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[                                                  
+		<p>When evaluated, this vm instruction returns the <b>source</b> word value 
+		to the caller.  The execution of the current Lambda is terminated and 
+		control is returned to the caller. The source argument must be a word. 
+		The result will be returned as a word. This instruction will never an 
+		Error value. After the operation, control is returned to the caller. 
+		The operation of this vm instruction is expressed in the following 
+		C expression
+        </p>	
+        <ul><li><b>  return((word)source);</b></li></ul>
+    ]]></Description>
+	<Example>
+	    <![CDATA[ <sc> <pre>
+		(defun vmmove_test(e)
+    		vars: (a)
+    		pvars: (b)
+    		cvars: (c)
+    		(vmmove e a)
+    		(vmmove a b)
+    		(vmmove b c)
+    		(vmreturn c)
+		)
+		(writeln(vmmove_test "ab"))
+		</pre>  </sc>
+ 		]]>
+	</Example>
+	<Syntax>
+	    <Expression><![CDATA[  (vmreturn source) ]]></Expression>
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>word</AISTypes>
+		</Argument>
+	</Syntax>
+</VMInstruction>

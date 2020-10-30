@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Document SYSTEM "../DTD/Document.dtd">
+<Document>
+	<KnowledgeBase>
+	    <Title>Analytic Information Server</Title>
+		<Topic>Lambdas</Topic>
+		<SubTopic>Analytic Information Server</SubTopic>
+		<HumanKeywords>AIS</HumanKeywords>
+	</KnowledgeBase>
+	<Essay>Essay_AIS_Overview</Essay>
+	<Essay>Essay_Lambda_Object</Essay>
+	<Essay>Essay_Lambda_Repositories</Essay>
+	<Essay>Essay_Lambda_Context_Overview</Essay>
+	<Essay>Essay_Lambda_Built-in_Services</Essay>
+</Document>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmregSaveDeclType   </Title> 
+		<InstructionName> vmregSaveDeclType    </InstructionName>
+		<InstructionType>Register</InstructionType>
+		<ArgumentTypes>  Integer Word  </ArgumentTypes>
+		<RelatedVMInstructions> vmregSaveDeclTypeImmediate vmregSaveNumber
+		                        vmregSaveTail vmregSaveTailImmediate
+		                        vmregSaveNumber</RelatedVMInstructions>
+		<HumanKeywords> DeclType DeclTypeImmediate save  </HumanKeywords>
+	</KnowledgeBase>                   
+	<Description><![CDATA[
+		<p>When evaluated, this vm instruction saves the register <b>source</b> 
+		integer value into the variable as its declared type. The <b>variable</b> 
+		argument must be a word. This instruction may return an Error value. 
+		After the operation, the Instruction Pointer is promoted. The operation 
+		of this vm instruction is expressed in the following C expression:
+    	</p>      
+        <ul><li><b> ((word*)variable)->DeclaredType = (int)source;</b></li></ul>
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[(vmregSaveDeclType source variable)]]></Expression>
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>register</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>		 
+		<Argument> 
+		  <Name>variable</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>word</AISTypes>			     
+		</Argument>
+	</Syntax>
+</VMInstruction>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example String setq 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>setq</FunctionKeywords>
+		<TypeKeywords>Symbol</TypeKeywords>
+		<RelatedFunctions>append new</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>set setq replace global value </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows the <b>new</b> function initializing a
+
+                  String data type with a value. Then it modifies the 
+                  I-th character of the String using the <b>setq</b> function.  
+
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(setq S  (new String: "Hello"))     </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ Hello]]></Returns>
+        <Expression><![CDATA[ <sc>(type S)  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[ String]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq S  0 #\J)     </sc>]]></Expression>
+        <Note><![CDATA[Here, the first character of the String with index 0 is replaced with "J".]]></Note>
+        <Returns><![CDATA[Jello]]></Returns>
+        <Expression><![CDATA[ <sc>(setq S 10 #\!) </sc>]]></Expression>
+        <Note><![CDATA[Since the index 10 is greater than the length of S, then the String is
+              resized. ]]></Note>
+        <Returns><![CDATA[ Jello    ! ]]></Returns>
+        <Expression><![CDATA[ <sc>(length S)    </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[ 11 ]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

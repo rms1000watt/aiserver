@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Vector copy 005</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>copy</FunctionKeywords>
+		<TypeKeywords>Vector</TypeKeywords>
+		<RelatedFunctions>setq</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>copy  memcopy pointer</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines a Vector containing another Vector and shows how
+                  the <b>copy</b> function is still able to copy the 
+                  embedded Vector.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define x  #( 1 #(1 2) "hello"))  </sc>]]></Expression>
+        <Note><![CDATA[A Vector with another embedded Vector.  ]]></Note>
+        <Returns><![CDATA[#&#60Vector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq w (copy x))  </sc>]]></Expression>  
+        <Note><![CDATA[Vector w points to another memory location though it still
+              contains the same values as Vector x.  ]]></Note> 
+        <Returns><![CDATA[#&#60Vector 234567&#62 ]]></Returns>
+ <Expression><![CDATA[ <sc>w[0]  </sc>]]></Expression>
+        <Note><![CDATA[The contents of w  ]]></Note>
+        <Returns><![CDATA[1]]></Returns>
+        <Expression><![CDATA[ <sc>w[1]  </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#&#60Vector 234567&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>w[2]  </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[hello]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

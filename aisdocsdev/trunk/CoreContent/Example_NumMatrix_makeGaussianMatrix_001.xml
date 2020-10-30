@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example NumMatrix makeGaussianMatrix 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>makeGaussianMatrix</FunctionKeywords>
+		<TypeKeywords>NumMatrix  Integer</TypeKeywords>
+		<RelatedFunctions> makeGramMatrix matrixGaussianEliminate matrixGaussianSubstitute </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords> Matrix NumMatrix Boolean Gaussian 
+                        least squares primal regression</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example converts a Number Matrix to a Gaussian Matrix.
+
+	]]></Description>
+	<Syntax>
+  	     <Expression><![CDATA[ <sc> (define X  #(nummat[5 4]| 12 2  3 17 
+<br>
+                          1 5 -3 3 
+<br>
+                          9 5 -3 11 
+<br>
+                          9 51 -3 57 
+<br>
+                          2 11 -3 10))          </sc>]]></Expression>
+        <Note><![CDATA[Create a number Matrix containing the original independent observations:]]></Note>
+        <Returns><![CDATA[#&#60NumMatrix 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(setq G (makeGaussianMatrix X))      </sc>]]></Expression>
+        <Note><![CDATA[Convert the observation matrix to its Gaussian matrix: ]]></Note>
+        <Returns><![CDATA[ #&#60NumMatrix 234567&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60NumMatrix 234567&#62 )     </sc>]]></Expression>
+        <Note><![CDATA[The contents of the Gaussian matrix: ]]></Note>
+        <Returns><![CDATA[ #(nummat[3 4]| 311.0 555.0  -27.0  839.0  <br>
+                                     555.0 2776.0 -210.0 3121.0  <br>
+                                      -27.0 -210.0  45.0 -192.0 ) ]]></Returns>
+        <Hints><![CDATA[<p>Note, The Gaussian matrix contains one row for each independent variable and 
+                     an extra column for the dependent variable. Each cell in the Gaussian matrix 
+                     is the statistical cross correlation of the specified independent variable
+                    (row index) with the specified correlation variable (col index). The final 
+                    column of the Gaussian matrix is the statistical cross correlation of the 
+                   dependent variable with each of the independent variables. </p>]]></Hints>
+   </Syntax>
+</Example>

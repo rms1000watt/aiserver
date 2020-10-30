@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Dictionary new 004</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>new</FunctionKeywords>
+		<TypeKeywords>Symbol Integer Dictionary String</TypeKeywords>
+		<RelatedFunctions>string makeDictionary define </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>new pointer create initialize</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples show how to create an instance of
+
+
+                  a Dictionary through the <b>new</b> function.
+
+
+                  The key-value pairs specified in the new function are transformed 
+                  into Dictionary bindings.  The order specified in the new function 
+                  Dictionary may not match the internal representation because 
+                  Dictionary keys are always maintained in ascending order.  
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(setq A (new  Dictionary: Name:  "John Doe"  Address: "184 B Street"  State: "California") )</sc>]]></Expression>
+        <Note><![CDATA[ Create a new dictionary, named A, and initialize it with three bindings.]]></Note>
+        <Returns><![CDATA[#&#60Dictionary 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>A[0 0]     </sc>]]></Expression>
+        <Note><![CDATA[The key-value pairs are displayed through accessing its index value. ]]></Note>
+        <Returns><![CDATA[Address:]]></Returns>
+        <Expression><![CDATA[ <sc>A[1 0]     </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[Name:]]></Returns>
+        <Expression><![CDATA[ <sc>A[2 0]     </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[State:]]></Returns>
+  	    <Expression><![CDATA[ <sc>A.Name    </sc>]]></Expression>
+        <Note><![CDATA[However, Dictionaries are normally accessed by keys, thus the internal ordering is less important.]]></Note>
+        <Returns><![CDATA[John Doe]]></Returns>
+        <Expression><![CDATA[ <sc>A.Address    </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[184 B Street]]></Returns>   
+        <Expression><![CDATA[ <sc>A.State    </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[California]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

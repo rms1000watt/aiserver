@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example ObjectRepository compareNE 022</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compareNE</FunctionKeywords>
+		<TypeKeywords>ObjectRepository Boolean</TypeKeywords>
+		<RelatedFunctions> compare compareNE compareGT compareGE compareLT  compareLE </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare equal boolean </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example uses the <b>setq</b> function to create two identical Object Repositories.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+(setq number (new ObjectRepository: "myfile1.odb"))     </sc>   ]]></Expression>
+        <Note><![CDATA[Specify the name of the first ObjectRepository.  ]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq number[1] "One")     </sc>   ]]></Expression>  
+        <Note><![CDATA[Initialize ObjectRepository with a key & value pair. ]]></Note> 
+        <Returns><![CDATA[#&#60ObjectRepository 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq number[2] "Two")     </sc>   ]]></Expression>  
+        <Note><![CDATA[Initialize ObjectRepository with a key & value pair. ]]></Note> 
+        <Returns><![CDATA[#&#60ObjectRepository 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq number[3] "Three")     </sc>   ]]></Expression>  
+        <Note><![CDATA[Initialize ObjectRepository with a key & value pair. ]]></Note> 
+        <Returns><![CDATA[#&#60ObjectRepository 123456&#62]]></Returns>
+ 	    <Expression><![CDATA[ <sc>(setq numeric number)     </sc>   ]]></Expression>  
+        <Note><![CDATA[Make a copy of ObjectRepository.]]></Note> 
+        <Returns><![CDATA[#&#60ObjectRepository 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc>(compareNE number numeric)      </sc>   ]]></Expression>  
+        <Note><![CDATA[Both have the same Object ID, therefore both are equal.]]></Note> 
+        <Returns><![CDATA[false]]></Returns>
+        <Hints><![CDATA[none
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

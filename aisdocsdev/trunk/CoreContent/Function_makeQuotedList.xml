@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>makeQuotedList</Title>
+		<FunctionName>makeQuotedList</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>Character String Symbol Vector BitVector ByteVector IntVector
+
+
+
+                       FltVector ObjVector Structure Dictionary Directory
+Brick
+ Pair List
+
+                       Matrix NumMatrix Integer Float Number Complex Boolean</ArgumentTypes>
+        <DataType>  List</DataType>
+		<RelatedFunctions> last list objectToList</RelatedFunctions>
+        <RelatedVMInstructions>   none  </RelatedVMInstructions>
+		<HumanKeywords>create list arguments quoted macro function</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>makeQuotedList</b> function creates a quoted List from its arguments.</p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>makeQuotedList</b> function creates a quoted List from its arguments.  
+            A period before the final argument sets the cdr of the quoted list. 
+        </p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>makeQuotedList</b> function is used in macros and other functions which must return 
+           quoted Lists rather than normal or unquoted Lists.
+        </p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p>   (makeQuotedList  obj1 ...  objn) </p>
+                    <p>   (makeQuotedList obj1 ... objn . cdrValue) </p>]]></Expression>
+		<Argument>
+		  <Name>obj</Name>
+		  <Note><![CDATA[
+		  <p> An arbitrary number of objects to be installed in the quoted list (Pair).</p>
+          ]]></Note>
+		  <AISTypes>Character, String, Symbol, Vector, BitVector, ByteVector, IntVector,
+
+
+
+                       FltVector, ObjVector, Structure, Dictionary, Directory, Pair, List
+
+
+
+                       Matrix, NumMatrix, Integer, Float, Number, Complex, Brick</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>.cdrValue</Name>
+		  <Note><![CDATA[
+		  <p> An optional cdr value (preceded by a period).</p>
+          ]]></Note>
+		  <AISTypes>Character, String, Symbol, Vector, BitVector, ByteVector, IntVector,
+                       FltVector, ObjVector, Structure, Dictionary, Directory, Pair, List
+                       Matrix, NumMatrix, Integer, Float, Number, Complex, Brick</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>A quoted list (Pair).
+        </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

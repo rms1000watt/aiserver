@@ -1,0 +1,55 @@
+ais/docs/installation/InstallNotes.txt
+
+                            AIS INSTALLATION PROCEDURE
+Install. To install AIS carry out the following steps:
+ 1.	Checkout. Check out the latest version of _ais from StarTeam or ???.  The date/time
+setting on your computer must be set to the current time to make sure that you get the
+latest changes from StarTeam.  Also, make sure that all files are marked as "current".
+See StarTeam.txt in this folder for more details on using StarTeam.
+
+ 2.	Installation Directory.  The installation directory is the top-level directory where
+the ais project resides on your computer. This directory is referred to as AISDIR in this
+discussion.  For example, if the _ais project is placed in the ais folder in the C drive
+of your local computer, then AISDIR=C:\ais.
+
+ 3.	File Types.
+In order to start AIS by double-clicking on any astartup.sl, it is necessary to
+associate the .sl extension with webide.exe as follows:
+	  *	From the Control Panel, select Folder Options.
+	  *	Select the File Types tab and select New.  Set the extension to SL.
+	  * Under "Details for SL extension", select Advanced.
+	  * To change the Icon, navigate to ais/include/images/abase.bmp
+	  *	Under Actions, select New and then enter the name Open.
+	  *	Select Browse and then navigate to webide.exe in the ais installation folder,
+		AISDIR.
+
+ 4.	Test.
+To test the install, do the following tasks. If any task fails, follow the troubleshooting
+suggestions below.
+1. Double-click on webide.exe in the ais folder.  The Server Form window should appear with
+no error messages.
+2. Double-click on astartup.sl in the ais folder. AIS should start with a Server Form and a
+Session Form.  The last 4 digits of the version number in the title bar at the top of the
+Session Form should be the same as the 4 digits in the name of the latest release notes
+in this folder.
+
+ 5.	Troubleshooting.
+* Webide.exe fails on startup when I click on the webide.exe file in ais folder.
+	1. Check the minimum install as described in Terms above.
+	2. Reboot.
+	3. Copy the error message and send it to IBA Customer Support (twilliams@byagent.com).
+	4. Check the logs in the AISDIR/logs folder.
+
+* Webide.exe starts up OK but clicking on astartup.sl in the ais directory fails.
+	1. Check that ais/webide.exe is associated with the .SL extension as noted in section 3.
+	2. Make sure astartup.sl is current.
+	3. Undo any changes that you may have been made to ais/ais.ini.
+	4. Search for any other copies of webide.exe in your file system and delete them.
+
+* The .SL extension is not associated with ais/webide.exe.
+	See section 3 above.
+
+If none of these options help, please send an email to support@inscico.com.  See support.txt
+for more information on submitting reports to us.
+
+Updated: April 29, 2006 by tlw

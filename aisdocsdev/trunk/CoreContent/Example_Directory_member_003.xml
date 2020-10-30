@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Directory member 003</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>member</FunctionKeywords>
+		<TypeKeywords>   Directory Boolean Symbol
+Integer
+
+</TypeKeywords>
+		<RelatedFunctions>  inside isInside isMember</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>Directory Equal Analytic Object </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples check if the key is a member of the Directory using the
+
+
+
+
+
+                  <b>member</b> function.
+If the key is a member of the Directory, its
+
+
+                  index value will be returned, if not the Boolean, false will be returned.
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(member SSN:  #{dir| Name: "John Doe" SSN "555 12 1324"}) </sc>]]></Expression>
+        <Note><![CDATA[SSN: is a key in the Directory. The index value of the key is returned. ]]></Note>
+        <Returns><![CDATA[1]]></Returns>
+        <Expression><![CDATA[ <sc>(member  Address:  #{dir| Name: "John Doe"  SSN: 556-12-5151})         </sc>]]></Expression>
+        <Note><![CDATA[Address: is a not key contained in the Directory. ]]></Note>
+        <Returns><![CDATA[false ]]></Returns>
+        <Hints><![CDATA[none  ]]></Hints>
+   </Syntax>
+</Example>

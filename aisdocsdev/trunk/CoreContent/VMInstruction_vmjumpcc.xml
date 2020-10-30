@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmjumpcc</Title>
+		<InstructionName>vmjumpcc</InstructionName>
+		<InstructionType>Generic</InstructionType>
+		<ArgumentTypes> Character  Complex  Date  Integer  Money  Number 
+				ByteVector  String  Symbol  Text </ArgumentTypes>
+		<RelatedVMInstructions>vmjump </RelatedVMInstructions>
+		<HumanKeywords> cc jump jumpcc comparitor label </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[                                                  
+		<p>When evaluated, this vm instruction performs a generic dynamically 
+		typed compare of the <b>source</b> value with the <b>comparitor</b> value. 
+		If the comparison is true, the instruction pointer is set equal to the 
+		<b>label</b> argument; otherwise, the instruction pointer is promoted as 
+		usual. Conversion between different numeric types is automatic. Comparison 
+		of String types and Symbol types involves a full ascii comparison of their 
+		string data. Comparison of all other object types involves a deep 
+		comparison of their structured content.
+        </p>
+		<p>The condition code for this instruction <b>cc</b> may compare for 
+		less than, less than or equal, equal, not equal, greater than, greater 
+        than or equal, all depending upon the value of cc. The condition code cc 
+		is an extension to the instruction name so that there are really six 
+		JMPcc instructions. <b>vmjmplt</b>, <b>vmjmple</b>, <b>vmjmpeq</b>, 
+		<b>vmjmpne</b>, <b>vmjmpge</b>, and <b>vmjmpgt</b>.
+		</p>
+		<p>The operation of this vm instruction is expressed in the following 
+		C expression:
+		</p>
+        <ul><li><b>if ((word)source &#060  (word)comparitor) Ip = label; </b></li></ul>
+		<ul><li><b>if ((word)source &#8804  (word)comparitor) Ip = label; </b></li></ul>   
+		<ul><li><b>if ((word)source &#061&#061 (word)comparitor) Ip = label; </b></li></ul> 
+		<ul><li><b>if ((word)source &#8800 (word)comparitor) Ip = label; </b></li></ul> 
+		<ul><li><b>if ((word)source &#8805 (word)comparitor) Ip = label; </b></li></ul> 		   
+		<ul><li><b>if ((word)source &#062  (word)comparitor) Ip = label; </b></li></ul>
+	<p>This virtual machine instruction performs a generic compare operation 
+	<i>(see the compare built-in function)</i>. So that all value pairs may be 
+	compared, this instruction compares <i>incompatible</i> data types in the 
+	order of their type codes <i>(for instance Integers always compare less than 
+	Strings)</i>. The disparate types which are compared by their values are 
+	as follows: 	
+    </p>
+	<ul><li><b>Numeric:</b> Character  Complex  Date  Integer  Money  Number </li></ul>
+	<ul><li><b>String: </b>  ByteVector  String  Symbol  Text </li></ul>
+    ]]></Description>
+	<Syntax>
+	  <Expression><![CDATA[  (vmjmplt source comparitor label) ]]></Expression>	 
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>word</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>comparitor</Name>
+		  <Format>regoffset </Format>
+		  <AISTypes>word</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name> label </Name>
+		  <Format>immediate</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>  
+	 <Expression><![CDATA[  (vmjmple source comparitor label)]]></Expression>		 
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>word</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>comparitor</Name>
+		  <Format>regoffset </Format>
+		  <AISTypes>word</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name> label </Name>
+		  <Format>immediate</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+	 <Expression><![CDATA[  (vmjmpeq source comparitor label)]]></Expression> 
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>word</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>comparitor</Name>
+		  <Format>regoffset </Format>
+		  <AISTypes>word</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name> label </Name>
+		  <Format>immediate</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+	  <Expression><![CDATA[  (vmjmpne source comparitor label)]]></Expression>		 
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>word</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>comparitor</Name>
+		  <Format>regoffset </Format>
+		  <AISTypes>word</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name> label </Name>
+		  <Format>immediate</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+      <Expression><![CDATA[  (vmjmpge source comparitor label)]]></Expression>		 
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>word</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>comparitor</Name>
+		  <Format>regoffset </Format>
+		  <AISTypes>word</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name> label </Name>
+		  <Format>immediate</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+     <Expression><![CDATA[  (vmjmpgt source comparitor label)]]></Expression>
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>word</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>comparitor</Name>
+		  <Format>regoffset </Format>
+		  <AISTypes>word</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name> label </Name>
+		  <Format>immediate</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+	</Syntax>
+</VMInstruction>

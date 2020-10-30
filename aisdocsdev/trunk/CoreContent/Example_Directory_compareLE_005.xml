@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Directory compareLE 005</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compareLE</FunctionKeywords>
+		<TypeKeywords>Directory Boolean</TypeKeywords>
+		<RelatedFunctions>compare compareEQ compareNE compareGE compareLT  compareGT </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare symbol equal lesser </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>compareLE</b> function to compare two Directories and return
+
+
+
+
+
+
+                  the Boolean value, true or false.  The corresponding keys and values of each Directory are compared
+
+
+
+                  to determine whether one Directory is lesser than or equal to the other.
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(compareLE #{dir|X: 1 Y: 2} #{dir|X: 1 Y: 2})  </sc>]]></Expression>
+        <Note><![CDATA[Both Directories are equal.]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>(compareLE  #{dir|A: 1 B: 2} #{dir|X: 1 Y: 2})  </sc>]]></Expression>
+        <Note><![CDATA[The first Directory is lesser than the second Directory.]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

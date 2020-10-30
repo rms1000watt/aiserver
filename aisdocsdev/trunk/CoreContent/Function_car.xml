@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>car</Title>
+		<FunctionName>car</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+        <ArgumentTypes> Pair  List </ArgumentTypes>
+        <DataType>Pair List</DataType>
+	    <RelatedFunctions>setCar cdr setCdr</RelatedFunctions>
+        <RelatedVMInstructions>  </RelatedVMInstructions>
+		<HumanKeywords>search associate find car cdr</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>car</b> returns the head of a List.  </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The  <b>car</b> function returns the head of a List. The argument to the car  
+           function is a List (a set of Pairs linked together).</p>
+        ]]></Overview>
+       <Usage><![CDATA[
+        <p>The <b>car</b> function is used to retrieve the head of a  Pair or List.</p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p>  (car obj ) </p>
+]]></Expression>
+		<Argument>
+		  <Name>obj</Name>
+		  <Note><![CDATA[
+		  <p> The target must be a pair or list.</p>
+          ]]></Note>
+		  <AISTypes>List Pair </AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>The head of the List.
+        </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

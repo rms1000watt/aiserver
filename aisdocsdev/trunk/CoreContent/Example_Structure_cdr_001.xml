@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure cdr 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>cdr</FunctionKeywords>
+		<TypeKeywords>Structure</TypeKeywords>
+		<RelatedFunctions>ref refValues refAttributes setCdr</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>tail ref index</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines a Structure and sets the tail key-binding value
+
+
+                  of the defined Structure using the <b>setCdr</b> function.  Then it
+
+
+
+                  uses the <b>cdr</b> function to display the Structure's tail key-binding value.
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define ClassRec  #{Bldg: 200 Room: 34 Period: 1 } )</sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60Structure 188141&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(setCdr  ClassRec  #{Teacher: "Smith"  Subject: "Math" }) </sc>]]></Expression>
+        <Note><![CDATA[Sets the defined Structure as the tail of the ClassRec Structure.]]></Note>
+        <Returns><![CDATA[#&#60Structure 188141&#62]]></Returns>
+        <Expression><![CDATA[ <sc> (display ClassRec)    </sc>]]></Expression>
+        <Note><![CDATA[Displays the contents of the ClassRec structure.]]></Note>
+        <Returns><![CDATA[#{Bldg: 200 Room: 34 Period: 1 . #{Teacher: "Smith" Subject: "Math"}}true ]]></Returns>
+        <Expression><![CDATA[ <sc> (display (cdr ClassRec))    </sc>]]></Expression>
+        <Note><![CDATA[Displays the contents of the ClassRec structure tail as defined by the setCdr function.]]></Note>
+        <Returns><![CDATA[#{Teacher: "Smith" Subject: "Math"}true ]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

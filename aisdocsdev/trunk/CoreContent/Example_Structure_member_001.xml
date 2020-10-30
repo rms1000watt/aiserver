@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure member 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>member</FunctionKeywords>
+		<TypeKeywords>  Structure Symbol Integer Boolean
+
+</TypeKeywords>
+		<RelatedFunctions>  inside isInside isMember</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>Structure Equal Analytic Object </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples check if the key is a member of the Structures using the
+
+
+
+                  <b>member</b> function.
+If the key is a member of the Structure, its
+                  index value will be returned, if not the Boolean, false will be returned.
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(member SSN:  #{Name: "John Doe" SSN "555 12 1324"}) </sc>]]></Expression>
+        <Note><![CDATA[SSN: is a key in the Structure.]]></Note>
+        <Returns><![CDATA[1]]></Returns>
+        <Expression><![CDATA[ <sc>(member  Address:  #{Name: "John Doe"  SSN: 556-12-5151})         </sc>]]></Expression>
+        <Note><![CDATA[Address: is a not key contained in the Structure. ]]></Note>
+        <Returns><![CDATA[false ]]></Returns>
+        <Hints><![CDATA[none  ]]></Hints>
+   </Syntax>
+</Example>

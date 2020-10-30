@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example BitVector findBlock 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>findBlock</FunctionKeywords>
+		<TypeKeywords>  BitVector Integer</TypeKeywords>
+		<RelatedFunctions>freeBlock setBlock cdr</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>bitvector intvector numvector convert sign magnitude bits</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples show how the <b>findBlock</b> function  works on the BitVector
+
+                  by returning the bit index of the first vacant block.
+
+	]]></Description>
+	<Syntax>
+  	   <Expression><![CDATA[ <sc>(setq BV (new Vector: bit: 10 1110110011))      </sc>]]></Expression>
+        <Note><![CDATA[The BV bit vector is set to occupied for the bits found. 
+
+              Vacant blocks are represented by 0 bits, while occupied blocks 
+
+              are represented by 1 bits.]]></Note>
+        <Returns><![CDATA[#&#60BitVector 199917&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(findBlock  BV  2)      </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[0]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60BitVector 199917&#62 )           </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#(bit| 1 1 0 0 0 0 0 0 0 0  . 0)]]></Returns>
+        <Hints><![CDATA[This functions uses the <b>cdr</b> of the BitVector to store the last 
+
+               location found. The last location found, is pulled from the BitVector's cdr 
+
+               as a memoed hint showing where to start looking the next time 
+
+               <b>findBlock</b> is called.]]></Hints>
+   </Syntax>
+</Example>

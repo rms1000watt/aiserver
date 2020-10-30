@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Dictionary sort 004</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>sort</FunctionKeywords>
+		<TypeKeywords>Dictionary</TypeKeywords>
+		<RelatedFunctions>binarySearch ref setq binarySearch</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>sort arrange  ascending descending</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples show how the <b>sort</b> function sorts the 
+
+                  elements of the Dictionary by comparing its <b>keys</b>.  These examples
+
+                  use the <b>(sort  dictionary predicate )</b> without the optional keywords. 
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(sort  #{dic|A: 2  B: 3  C: 1} &#62)  </sc>]]></Expression>
+        <Note><![CDATA[Sort a Dictionary by keys in descending order. ]]></Note>
+        <Returns><![CDATA[#&#60Dictionary 123456&#62 ]]></Returns>
+ <Expression><![CDATA[ <sc>(display #&#60Dictionary 123456&#62 )  </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#{dic|C: 1  B: 3  A: 2}]]></Returns>
+        <Expression><![CDATA[ <sc>(sort  #{dic| C: 2  F: 3  F: 1 A: 4 G: 2 C: 5}  &#60)  </sc>]]></Expression>
+        <Note><![CDATA[Sort a Dictionary by keys in ascending order. ]]></Note>
+        <Returns><![CDATA[#&#60Dictionary 234567&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60Dictionary 234567&#62)   </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#{dic|| A 4 C 5 F 1 G 2}true ]]></Returns>
+        <Hints><![CDATA[Only the keys are sorted.  No regard is given to the value even if the
+            keys are equal. ]]></Hints>
+   </Syntax>
+</Example>

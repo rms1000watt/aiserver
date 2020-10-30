@@ -1,0 +1,105 @@
+#!/bin/bash
+# This script initializes an AIS application directory.
+#
+# Usage: $0 [Application Directory] [Application Name] [App Port] [Http Port] [Xml Port]
+#        $0 help - displays the usage
+
+# default values
+AIS_HOME=$HOME/ais
+APP_NAME="Default"
+APP_PORT=8081
+HTTP_PORT=8084
+XML_PORT=8080
+AIS_LIBS=/usr/share/ais/Libraries
+MEMORY=100
+
+if [ $# -gt 0 ]
+then
+    PARAM=`echo $1 | tr [A-Z] [a-z]`
+    if [ $PARAM = "help" ]
+    then
+        echo "Usage: $0 [App Dir] [App Name] [APP Port] [HTTP Port] [XML Port] [Memory]"
+        exit 0
+    fi
+fi
+
+[ $# -gt 0 ] && AIS_HOME=$1
+[ $# -gt 1 ] && APP_NAME=$2
+[ $# -gt 2 ] && APP_PORT=$3
+[ $# -gt 3 ] && HTTP_PORT=$4
+[ $# -gt 4 ] && XML_PORT=$5
+[ $# -gt 5 ] && MEMORY=$6
+
+
+AIS_INI=$AIS_HOME/ais.ini
+CONTEXT_INI=$AIS_HOME/context.ini
+STARTUP_FILE=$AIS_HOME/AStartup.sl
+
+echo "Application Directory = " $AIS_HOME
+echo "Application Name      = " $APP_NAME
+echo "Application Port      = " $APP_PORT
+echo "HTTP Port             = " $HTTP_PORT
+echo "XML Port              = " $XML_PORT
+echo "Context Memory        = " $MEMORY
+
+echo "Creating application directory ($AIS_HOME)..."
+mkdir -p "$AIS_HOME/Binaries"
+if [ $? -ne 0 ]
+then
+    exit 1
+fi
+
+echo "Copying default libraries ($AIS_LIBS)..."
+cp -r "$AIS_LIBS" "$AIS_HOME"
+if [ $? -ne 0 ]
+then
+    exit 1
+fi
+
+echo "Creating AIS configuration file..."
+echo "# ais.ini" > $AIS_INI
+echo "" >> $AIS_INI
+echo "# Default Startup Script" >> $AIS_INI
+echo "GblAisDefaultStartupScript = AStartup.sl" >> $AIS_INI
+echo "" >> $AIS_INI
+echo "# Default Application Port" >> $AIS_INI
+echo "GblAppPort = $APP_PORT" >> $AIS_INI
+echo "" >> $AIS_INI
+echo "# Default HTTP Port" >> $AIS_INI
+echo "GblHttpPort = $HTTP_PORT" >> $AIS_INI
+echo "" >> $AIS_INI
+echo "# Default XML Port" >> $AIS_INI
+echo "GblXmlPort = $XML_PORT" >> $AIS_INI
+
+echo "Creating Context configuration file..."
+echo "# context.ini" > $CONTEXT_INI
+echo "" >> $CONTEXT_INI
+echo "# Context Name" >> $CONTEXT_INI
+echo "ContextName = $APP_NAME" >> $CONTEXT_INI
+echo "" >> $CONTEXT_INI
+echo "# Context Memory Size" >> $CONTEXT_INI
+echo "Memory = $MEMORY" >> $CONTEXT_INI
+echo "" >> $CONTEXT_INI
+echo "# JIT Mode" >> $CONTEXT_INI
+echo "DefaultJitMode = on" >> $CONTEXT_INI
+
+echo "Creating Startup file..."
+echo "(setq _libPath (append _ais.applicationPath \"Libraries/\"))" > $STARTUP_FILE
+echo "(runScript (append _libPath \"BrowseLib/BrowseLib.sl\"))" >> $STARTUP_FILE
+echo "" >> $STARTUP_FILE
+echo "(browseLib DataMineLib: \"Binaries/DataMineLib.db\" \"Libraries/DataMineLib/DataMineLib.sl\" \"file\" \"auto\" \"auto\" \"true\")" >> $STARTUP_FILE
+echo "(browseLib ParseLib:    \"Binaries/ParseLib.db\"    \"Libraries/ParseLib/ParseLib.sl\"       \"file\" \"auto\" \"auto\" \"true\")" >> $STARTUP_FILE
+echo "(browseLib JavaScript:  \"Binaries/JavaScript.db\"  \"Libraries/JavaScript/JavaScript.sl\"   \"file\" \"auto\" \"auto\" \"true\")" >> $STARTUP_FILE
+echo "(browseLib Math:        \"Binaries/Math.db\"        \"Libraries/Math/Math.sl\"               \"file\" \"auto\" \"auto\" \"true\")" >> $STARTUP_FILE
+echo "(browseLib Gsm:         \"Binaries/Gsm.db\"         \"Libraries/Gsm/Gsm.sl\"                 \"file\" \"auto\" \"auto\" \"true\")" >> $STARTUP_FILE
+echo "(browseLib RulesLib:    \"Binaries/RulesLib.db\"    \"Libraries/RulesLib/RulesLib.sl\"       \"file\" \"auto\" \"auto\" \"true\")" >> $STARTUP_FILE
+echo "" >> $STARTUP_FILE
+echo "(lock _globals)" >> $STARTUP_FILE
+echo "(writeln \"Welcome to AIS.\")" >> $STARTUP_FILE
+
+echo "Setup complete."
+echo "Start the AIS application using the following command:"
+echo "  webidedevexe $STARTUP_FILE"
+
+exit 0
+

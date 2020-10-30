@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmregSetWord</Title> 
+		<InstructionName> vmregSetWord  </InstructionName>
+		<InstructionType>Register</InstructionType>
+		<ArgumentTypes>  Integer Word  WordPointer </ArgumentTypes>
+		<RelatedVMInstructions> vmregSetCharImmediate vmregSetCharacter 
+		                        vmregSetInteger vmregSetIntImmediate vmregSetFloat
+		                        vmregSetNumber </RelatedVMInstructions>
+		<HumanKeywords>  Word Intger WordPointer set  </HumanKeywords>
+	</KnowledgeBase>                   
+	<Description><![CDATA[
+		<p>When evaluated, this vm instruction, uses the WordPointer in the 
+		register <b>pointer</b>, to save a Word value from the register 
+		<b>source</b>. The result is saved into the memory location pointed 
+		to by the <b>pointer</b> register. The result will be saved as a type 
+		Word from the Integer value in the <b>source</b> register. 
+		This instruction may return an Error value. After the operation, the 
+		Instruction Pointer is promoted. The operation of this vm instruction 
+		is expressed in the following C expression:
+     	</p>      
+        <ul><li><b>   *((word*)pointer) = (word)((int)source);</b></li></ul>
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[(vmregSetWord source pointer)]]></Expression>
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>word</AISTypes>
+		</Argument>		 
+		<Argument> 
+		  <Name>pointer</Name>
+		  <Format>register</Format>
+		  <AISTypes>WordPointer</AISTypes>			     
+		</Argument>
+	</Syntax>
+</VMInstruction>

@@ -1,0 +1,101 @@
+aisdev/Release.txt
+									RELEASE NOTES
+This document explains the steps to release a new version of AIS.  These steps are only
+carried out by the AIS administrator when a new ais is built.  All others should just check
+out ais from the StarTeam _ais project.
+
+First a new ais folder is created on the administrator's computer, a new ais is built, and
+then the files in this folder are checked in to StarTeam.  The following explains how to
+create a new ais folder from scratch.
+
+Release build. The executables in the ais folder are updated by compiling the release version
+ of the aisdev project. In particular, the following files are updated:
+	ais.exe aised.exe, egm.dll, ride.exe, testaisclient/testaisclient.exe webide.exe, xml.dll,
+	xml/xml.c, xml/xml.h
+
+Configuration Parameters. Any time that configuration parameters are modified, the
+parameters and associated documentation should be updated as noted in aisdev/aisinstall.ini.
+See also the description of all the parameters in parameters.txt. These updates are
+transferred to the ais folder described next.
+
+Transfer from aisdev.  The DLLs, libraries, HTML, and other supporting files are updated by the
+script aisdev/ReleaseCopy.bat.  Use ReleaseCopy.bat on a clean ais folder in order to avoid
+leaving stale files around.  When running StarTeam, some of the
+copied files will appear in StarTeam as modified requiring a FileUpdate to the files in
+the _ais project on the StarTeam Server to find the files that really were modified.
+Do the following tasks prior to doing the transfer.
+ 1. Create a new docs/installation/realeasenotesXXXXX.doc. Edit installation docs.
+ 2. Note changes in aisdev/installation/installnotes.txt.
+ 3. Update configuration parameters as noted above.
+
+Bin. To update, check out the current version from ais. Bin holds utilities generated from
+a variety of sources. It is updated from time-to-time by several developers.
+
+Demo. To update, check out the current version from ais. Ted Williams updates this folder
+from time-to-time.  Check with him to make sure that the current version works with the
+latest release.
+
+Docs. Files are transferred from aisdev. Check with the documentation department to make
+sure that the documentation reflects changes made in the current release.  The procedure
+for updating the online documentation can be found in (to be determined...).
+
+Docs/installation. Docs/installation is maintained by the AIS administrator and updated prior
+to each release.  In particular, create a new releasenotesXXXX.doc describing the bug fixes
+and enhancements since the last release in the aisdev project prior to the transfer.  Any
+changes to the installation process should be noted in
+aisdev/docs/installation/installnotes.txt.  Any changes in the configuration parameters
+since the last release should be noted in aisdev/docs/installation/configurationNotes.txt.
+Add any suggestions, tips, or requirements regarding the customization of the ini files to
+configurationnotes.txt
+
+FlashClient. To update, check out the current version from ais. Ted Williams updates this
+folder from time-to-time.  Check with him to make sure that the current version works with
+the latest release.
+
+Include. Files and images are transferred from aisdev.
+
+Libraries.  Files are transferred from aisdev. After the installation, the user will have
+to run libupdate to create the db files for each library.
+
+Logs.  An empty directory named log must be included in the release.  A dummy file may have
+to be included in each folder to make sure that the installation package includes any
+empty directories.
+
+Test. Files are transferred from aisdev.  These files are updated from time-to-time by
+developers.
+
+TestAis. Files are transferred from aisdev.
+
+TestAisClient. Files are transferred from aisdev.
+
+Usr. Files are transferred from aisdev.
+
+Wwwroot. Files are transferred from aisdev.
+
+Xml. Files are transferred from aisdev.  They are also updated by a release build of the
+Xml project in Visual Studio.
+
+Validation.  After all the above updates have been performed, notify the QA department for
+validation of the current release prior to its distribution.
+
+Check In.  Check in all of the changes into aisdev.  Check out selected folders as noted
+above.  Remove stale files marked as missing from other folders. Force a check-in of
+out-of-date and merged files (check differences to see that no updates are being lost).
+
+Summary.  The methods for updating each folder in ais are:
+ais			Release build and transferred from aisdev.
+bin			Check out from ais.
+demo		Check out from ais
+docs		Transferred from aisdev
+flashclient	Check out from ais.
+include		Transferred from aisdev
+libraries	Transferred from aisdev.
+logs		Empty folder created when files transferred from aisdev
+test		Transferred from aisdev.
+testais		Transferred from aisdev
+testaisclient Transferred from aisdev
+usr			Transferred from aisdev
+wwwroot		Transferred from aisdev
+xml			Transferred from aisdev.
+
+end

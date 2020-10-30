@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Matrix map 007</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>map</FunctionKeywords>
+		<TypeKeywords>Matrix  </TypeKeywords>
+		<RelatedFunctions>mapc new</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>map mapc copy process</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines a Matrix and applies the <b>add1</b>
+                 function to each element of the Matrix using the  <b>map</b> function.   
+
+
+
+
+                
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define Scores  #(mat| 5 8 4 9 ) ) </sc>]]></Expression>
+        <Note><![CDATA[A  Matrix is defined. ]]></Note>
+        <Returns><![CDATA[#&#60Matrix 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq  NewScores  (map  add1  Scores))      </sc>]]></Expression>
+        <Note><![CDATA[Increments the values by  one.]]></Note>
+        <Returns><![CDATA[#&#60Matrix 123456&#62 ]]></Returns>
+       <Expression><![CDATA[ <sc>(define Scores  #(mat| 5 8 4 9 ) )</sc>
+                    <sc>(setq NewScores (copy Scores ) )<sc>
+                    <sc>(loop for  n  from 0  until (length NewScores)  by 1  do </sc>
+                    <sc><blockquote>(setq NewScores[n] (add1 NewScores[n]) ) )</blockquote></sc>
+        ]]></Expression>
+        <Note><![CDATA[Alternatively, the loop form may have been used]]></Note>
+        <Returns><![CDATA[4]]></Returns>
+        <Expression><![CDATA[ <sc>  NewScores[0]  </sc>]]></Expression>
+        <Note><![CDATA[Displays the resulting Matrix whether the map function or the loop form is used.]]></Note>
+        <Returns><![CDATA[6]]></Returns>
+        <Expression><![CDATA[ <sc>  NewScores[1]  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[9]]></Returns>
+        <Expression><![CDATA[ <sc>  NewScores[2]  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[5]]></Returns>
+        <Expression><![CDATA[ <sc>  NewScores[3]  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[10]]></Returns>
+        <Hints><![CDATA[<p>Note, in this example that a copy was made, and the argument <b>{proc}</b>, 
+
+                  <b>add1</b>, was applied to each member in the copy of the Matrix. 
+
+                   The Scores Matrix is left untouched, because the map function is non-destructive. 
+
+                   Also note, the return value from the <b>loop</b> is the number of iterations 
+
+                   performed.  In this case, it is the number 4. </p>
+       ]]></Hints>
+   </Syntax>
+</Example>

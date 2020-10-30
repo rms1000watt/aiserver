@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example BitVector append 010</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>append</FunctionKeywords>
+		<TypeKeywords>BitVector</TypeKeywords>
+		<RelatedFunctions>new replace rept</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>append concatenate vector </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example takes 2 existing Bit Vectors and appends 
+                  the values of each Bit Vector.  The result is placed in a new Bit Vector.
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc> (setq X (new Vector:  bit: 5  1))         </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60BitVector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Y (new Vector:  bit: 4  0))           </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60BitVector 234567&#62   ]]></Returns>
+        <Expression><![CDATA[ <sc> (append X Y )    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60BitVector 456789&#62   ]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60BitVector 456789&#62 )       </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#(bit| 1 1 1 1 1 0 0 0 0 )]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   	</Syntax>
+</Example>

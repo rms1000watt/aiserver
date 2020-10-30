@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Date compareLE 012</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compareLE</FunctionKeywords>
+		<TypeKeywords> Date</TypeKeywords>
+		<RelatedFunctions>compare compareEQ compareNE compareGT compareGE  compareLT</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare date lesser equal</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>compareLE</b> function to compare two objects and return
+
+
+
+
+
+
+
+
+
+
+
+
+                  the Boolean value true if the first argument is lesser than or equal to the
+                  second argument, or false, if otherwise.  
+	]]></Description>
+	<Syntax>
+         <Expression><![CDATA[ <sc>(compareLE #Jan,1,1992 #Jan,1,1993 )                      </sc>]]></Expression>  
+        <Note><![CDATA[ none]]></Note> 
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>(compareLE #Jan,2,1993 #Jan,1,1993 )                      </sc>]]></Expression>  
+        <Note><![CDATA[ none]]></Note> 
+        <Returns><![CDATA[false]]></Returns>
+         <Expression><![CDATA[ <sc>(compareLE #Jan,2,1993 #Jan,2,1993 )                          </sc>]]></Expression>  
+        <Note><![CDATA[ none]]></Note> 
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

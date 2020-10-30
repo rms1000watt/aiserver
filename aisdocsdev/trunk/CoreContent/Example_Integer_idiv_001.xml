@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Integer idiv 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>idiv</FunctionKeywords>
+		<TypeKeywords>Integer   </TypeKeywords>
+		<RelatedFunctions>iadd isub imul imod</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>integer addition subtraction division multiplication</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ <p>These examples show the <b>idiv</b> function perform division on the Integer arguments.
+                  The function does not operate on non-Integer arguments.</p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+ (idiv 12 4)           </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[3]]></Returns>
+ 	    <Expression><![CDATA[ <sc>
+(idiv 20 -10)    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[-2]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

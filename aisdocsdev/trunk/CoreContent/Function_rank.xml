@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>rank</Title>
+		<FunctionName>rank</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+        <ArgumentTypes> Vector Matrix Integer</ArgumentTypes>
+        <DataType>NumMatrix Matrix </DataType>
+	    <RelatedFunctions>new  objectToNumMatrix objectToMatrix</RelatedFunctions>
+        <RelatedVMInstructions> vmregObjPointer </RelatedVMInstructions>
+		<HumanKeywords>rank dimension </HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>rank</b> function returns a Vector containing the number of elements in each 
+                 dimension of  a Matrix.   </p>
+          ]]></Description>
+	<Brief>
+       <Overview><![CDATA[
+       	<p>The <b>rank</b> function returns a Vector containing the number of elements in each 
+           dimension of  a Matrix. The length of the returned Vector is the rank of the Matrix. 
+        ]]></Overview>
+	   <Usage><![CDATA[
+		<p>The <b>rank</b> function should be used when you need to determine the number of elements 
+            in each dimension of a matrix.  </p>
+        ]]></Usage>
+    </Brief>
+  <Syntax>
+	    <Expression><![CDATA[<p><b>   (rank  matrix) </b></p> ]]></Expression>
+    	<Argument>
+		  <Name>matrix</Name>
+		  <Note><![CDATA[
+		  <p>The Matrix which you want to view  the dimension list</p>
+          ]]></Note>
+		  <AISTypes> Matrix</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>Returns the number of values in a Matrix</p>
+	    ]]></Return>
+	</Syntax>
+</Function>

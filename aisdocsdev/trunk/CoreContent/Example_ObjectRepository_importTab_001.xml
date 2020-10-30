@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example ObjectRepository importTab 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>importTab</FunctionKeywords>
+		<TypeKeywords>ObjectRepository ObjVector</TypeKeywords>
+		<RelatedFunctions>exportTab</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>file text import format</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ <p>The <b>stockLambda</b> Lambda is a simple Lambda that reads a file, and imports
+          the data into an in-memory table that is represented as an Object Vector. Each item in 
+          the object Vector is a record. Note that the stockLambda example supplies the minimum
+          method needed by <b>importTab</b>, i.e., <b>refImport</b>, and <b>setImport</b> and 
+          provides additional methods: <b>refRowCount</b> and <b>refColCount</b> which queries
+          the Lambda how many rows and columns have been imported and <b>doClear</b>
+          which performs initialization of persistent variables. </p>  
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ 
+        <sc>   <pre>
+		(defun StockLambda()
+		   pvars: (rowCount colCount rowVector colVector)  
+		   (defun doClear()                                 ;; Manage clear at start of import. 
+		      (setq rowCount 0) (setq colCount 0)
+		      (setq colVector #void)
+		      (setq rowVector (^new Vector: object: 0)))    ;; end of doClear  
+		   (defun setImport(row  record)                    ;; Mandatory child function for importTab                         
+		      (setq rowVector[row] record)                  ;; Install the data in a vector  
+		      (setq rowCount row)                           ;; Update the row count
+		      rowCount)                                     ;; end of setImport
+		   (defun refExport(rowIndex)                       ;; Mandatory child function for exportTab
+		      (if (>= rowIndex rowCount) (return false))    ;; Return "false" to stop the export 
+		      (return rowVector[rowIndex]))                 ;; Pass a filled record to exportTab.
+		   (defun refImport(row)                            ;; Mandatory child function for importTab
+		      (return (^new String: 256)))                  ;; Pass an empty string container to importTab.
+		   (defun refRowCount() rowCount)
+		   (defun refColCount() colCount)
+		)      
+        </pre></sc>
+        ]]></Expression>
+        <Note><![CDATA[The stockLambda Lambda is defined. ]]></Note>
+        <Returns><![CDATA[#&#60Lambda 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ 
+        <sc> <pre>
+			(define  myLambda (new StockLambda))                   ;; Create a new instance of the StockLambda
+			(myLambda.doClear)                                    ;; initialize persistent variables
+			(setq fileid (fileOpen "stocks.sbf" 0 0))            ;; Open an existing text file
+			(importTab  fileid  myLambda recordsOnly:)            ;; Import the file                                   
+			(fileClose fileid 1)                                 ;; Close the file
+			(myLambda.refRowCount)                                ;; Ask the Lambda for a row count
+        </pre></sc>
+        ]]></Expression>
+        <Note><![CDATA[ The stockLambda is used to work with the ObjectRepository file. ]]></Note>
+        <Returns><![CDATA[ ---  ]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

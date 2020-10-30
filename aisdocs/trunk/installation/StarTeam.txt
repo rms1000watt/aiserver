@@ -1,0 +1,125 @@
+ais/docs/starteam.txt
+
+                             GETTING STARTED WITH STARTEAM
+StarTeam. This is a short introduction to StartTeam for new users.  Please click on
+starteam/StarTeamGuidelines.htm for more details on using StarTeam.  Also refer to
+Help Topics in the StarTeam Help menu.  Be sure that your machine is connected
+to the internet to carry out the following steps:
+
+1. Install StarTeam.
+	 *	Insert Starteam CD in your CD player.
+	 *	It should autostart. If not, open Explorer and navigate to your CD drive.
+		Double-click on SETUP.EXE.
+	 *	In the first blue screen, select Install StarTeam. Select a "typical"
+		install, "StarTeam 4" program group. 
+
+2. Run StarTeam.
+	Under Start->Programs, select StarTeam.
+
+3. Login.
+	Login:		<username>
+	Password:	425QSB
+	where <username> is the first letter of your first name followed by your last
+	name, all in lower case. For example, the user name for John Doe is jdoe.
+
+4. Register Product.
+	Run StarTeam. In menu at top, select Help->About StarTeam->Register Button
+	Enter the following license number.
+		License: 36-000425QSB
+
+5. Add Server.
+	Run StarTeam. Select OpenProject Icon on toolbar or select Program->Open from
+	menu at top. Enter the following information:
+		Description: ByAgent.com
+		Address:	24.234.157.5
+		Protocol:	TCP/IP (Sockets)
+		Endpoint:	49201
+		Encryption:	No
+		Compress:	Yes
+
+6. Open Server.
+	Run StarTeam.  Select OpenProject Icon on toolbar or select Program->Open from
+	menu at top. Click on + next to ByAgent.com to view projects. Select _ais project
+	then select Finish button.
+
+7. Set Target Directory.
+	In StarTeam, from menu at top, select View->Properties->Info tab.
+	Select Alternate option and then enter path to where you wish to place the _ais
+	project files on your machine.
+
+8. All Descendants.
+	To view all the files in the _ais project and all its sub folders, select the All
+	Descendants button. It is the icon with 4 rows of dashes on the tool bar.
+
+9. Check Out Files.
+	Open Server as noted above.
+	Missing. Highlight Missing Files entry on the right but do not expand this item.
+		Missing means files	missing from your target folder.
+		Select the CheckOut icon. The CheckOut icon shows a black arrow	indicating
+		files flowing out of the StarTeam vault (shown as a cylinder). A copy of
+		these files are downloaded into your target directory.
+	Out Of Date. Highlight the Out-Of-Date entry on the right but do not expand.
+		Select the CheckOut icon as noted above.  The files in your target directory
+		will be replaced with a newer version.  If you update a cabinet, such as
+		Main.sl, you will have to reload the cabinet using astartup.sl
+
+ 10. Set File Option.
+	Although this step is not related to StarTeam, it is mentioned here. In order
+	to start AIS by double-clicking on astartup.sl in the _ais project files, you
+	have to associate the .sl extension with webide.exe as follows:
+	  *	From the Control Panel, start Folder Options.
+	  *	Select the File Types tab and select New.  Set the extension to SL.
+	  * Under "Details for SL extension", select Advanced.
+	  * To change the Icon, navigate to ais/include/images/abase.bmp
+	  *	Under Actions, select New and then enter the name Open.
+	  *	Select Browse and then navigate to webide.exe in the ais target folder.
+
+
+STARTEAM FILE STATUS
+In StarTeam the files are typically lumped into groups according their File Status.  Be sure to resolve
+any discrepencies between the files in your local file system and those in the StartTeam server.  Do not
+"check in" any files into StarTeam.  Just check out those files that are not current on your system.
+If you are not familiar with the procedures for checking out a file from StarTeam, please contact IBA
+support.  The status pertains to the file that is on your local file system.  Press F5 to refresh the
+file status displayed to the current status.  This is most important if you have check out or deleted
+any files in ais since the last time that the status was refereshed.
+
+Current - The local file is the same as the file in the StarTeam vault.  No action is necessary.
+
+Merge - Both the local file and the file in the StarTeam vault have been modified. To bring the local file
+into conformance with the StarTeam file (local modifications will be lost), force a check out of the file.
+
+Modified - The local copy of the file has been modified since the last time that the file was checked out.
+To remove the modifications so that the file is the same as the one in StarTeam vault, force a check out.
+Certain files, such as ais.ini may be intentionally modified. In this case, no action is necessary. Do
+not check in your changes back into StarTeam.
+
+Missing - A file the StarTeam vault is missing from the local file system.  Just check out these files from
+StarTeam.
+
+Not-in-View - The local file is not in the StarTeam vault. If this is a file that has been moved to another
+location, it is important to delete this file from your local file system. It can and it will cause
+problems if you leave it lying around.  Do not delete files in the StarTeam vault just local files.
+
+Out-of-Date - The version in the StarTeam vault has been modified.  The outdated local file can be updated
+by simply checking out the file from StarTeam.
+
+Unknown - The file status could not be established.  Force a check out to update the local file to conform
+to the version in StarTeam.
+
+
+
+
+
+
+
+The following is rarely needed. Most everyone can ignore the following:
+Add Project
+	1. Log in to any existing project on StarTeam Server
+	2. Project->New->Select Server->Next
+	3. Enter project number & description
+	4. Enter Default Working Directory on YOUR machine. For example:
+		C:\IBA\Starteam
+	5. Select Finish
+
+

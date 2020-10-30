@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number divi 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>divi</FunctionKeywords>
+		<TypeKeywords>Number</TypeKeywords>
+		<RelatedFunctions> addi divi  muli subi iadd isub imul idiv </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>number arithmetic division integer operators</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[  <p> The <b>divi</b> function performs division of the argument values   and returns the result
+
+                     as an Integer.</p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+(divi  12  3  4)         </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[1]]></Returns>
+        <Expression><![CDATA[ <sc>(divi  8.4  -4)       </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[-2]]></Returns>
+        <Expression><![CDATA[ <sc>(divi  20  4.4)           </sc>  ]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[5]]></Returns>
+        <Expression><![CDATA[ <sc>(divi  2.2  1.1)              </sc> ]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[2]]></Returns>
+        <Hints><![CDATA[none
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure isMember 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isMember</FunctionKeywords>
+		<TypeKeywords>  Structure  Boolean Symbol</TypeKeywords>
+		<RelatedFunctions>compareEQ comparison isEqual isIdentical inside isInside isMember</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>Structure Equal Analytic Object </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples check if the key is a member of the Structures using the
+
+
+                  <b>isMember</b> function.
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(isMember  Address:  #{Name: "John Doe"  SSN: 556-12-5151})                 </sc>]]></Expression>
+        <Note><![CDATA[Address: is not a key contained the  Structure.]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(isMember  Name:  #{Name: "John Doe"  SSN: 556-12-5151})         </sc>]]></Expression>
+        <Note><![CDATA[Name: is a key contained in the Structure. ]]></Note>
+        <Returns><![CDATA[true ]]></Returns>
+        <Hints><![CDATA[none  ]]></Hints>
+   </Syntax>
+</Example>

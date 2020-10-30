@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure ref 006</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>ref</FunctionKeywords>
+		<TypeKeywords> Structure  Integer Text Symbol</TypeKeywords>
+		<RelatedFunctions>setq  ref fieldsOf   refValues  </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>ref reference set position</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows the <b>ref</b> function returns the
+key or
+                  value of the Structure through the <b>index</b> reference.
+This example
+                  uses the <b>(ref aStruct index1 index2)</b> function syntax.
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(setq Employee  (new Structure:  Name: "John Doe"  Title:  "Director")) </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60Structure 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display Employee)    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#{Name: "John Doe" Title: "Director"}]]></Returns>
+        <Expression><![CDATA[ <sc>(ref  Employee 0 0)  </sc>]]></Expression>
+        <Note><![CDATA[The ref function returns keys of the Structure. ]]></Note>
+        <Returns><![CDATA[Name:]]></Returns>
+        <Expression><![CDATA[ <sc>(ref  Employee 1 0)  </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[Title:]]></Returns>
+  	    <Expression><![CDATA[ <sc>(ref  Employee 0 1)       </sc>]]></Expression>
+        <Note><![CDATA[The ref function returns the values of the  Structure.]]></Note>
+        <Returns><![CDATA[John Doe]]></Returns>
+  	    <Expression><![CDATA[ <sc>(ref  Employee 1 1)       </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[Director]]></Returns>
+        <Hints><![CDATA[ An often used shorthand to reference a structure value or key is the . 
+                (period) operator  or the [ ]  (bracket) operator.  
+               <p><b>(setq Employee  (new Structure:  Name: "John Doe"  Title:  "Director"))</b></p>
+               <table>
+                 <tr><td width=60%><b>Employee.Name or  Employee[0]</b></td>
+                     <td width=40%>Returns:<b>John Doe</b></td></tr>
+                 <tr><td width=60%><b>Employee.Title   or  Employee[0]</b></td>
+                     <td width=40%>Returns:<b>Director</b></td></tr>
+               </table>     
+               <p> When a single index is used, the value portion of the specified binding is 
+                   returned. However two indices offer the flexibility of referencing either the 
+                   key or value as seen in the examples above.</p>
+]]></Hints>
+   </Syntax>
+</Example>

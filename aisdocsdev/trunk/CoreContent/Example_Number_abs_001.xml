@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number abs 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>abs</FunctionKeywords>
+		<TypeKeywords>Number</TypeKeywords>
+		<RelatedFunctions>  </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>absolute value</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[  <p> The <b>abs</b> function returns the absolute of all the numbers in the argument list. </p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+(abs 12)   </sc>   ]]></Expression>
+        <Note><![CDATA[The absolute value of the Integer argument is returned.]]></Note>
+        <Returns><![CDATA[12.0]]></Returns>
+        <Expression><![CDATA[ <sc>(abs -4)   </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[4.0]]></Returns>
+        <Expression><![CDATA[ <sc>(abs 42.45)   </sc>   ]]></Expression>  
+        <Note><![CDATA[The absolute value of the Number argument is returned.]]></Note> 
+        <Returns><![CDATA[42.45]]></Returns>     
+         <Expression><![CDATA[ <sc>(abs #c1.0+2.0i)   </sc>   ]]></Expression>  
+        <Note><![CDATA[The absolute value of the Complex Number argument is returned.]]></Note> 
+        <Returns><![CDATA[2.2360679775]]></Returns>
+        <Hints><![CDATA[none
+
+        ]]></Hints>
+   </Syntax>
+</Example>

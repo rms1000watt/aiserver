@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example IntVector new 010</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>new</FunctionKeywords>
+		<TypeKeywords> IntVector</TypeKeywords>
+		<RelatedFunctions> setq  define </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>new pointer create initialize</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples show how to construct a typed Vector.
+
+                  An Integer Vector is constructed using the
+
+                  <b>new</b> function.
+
+	]]></Description>
+	<Syntax>
+        <Expression><![CDATA[ <sc>(setq X (new Vector:  integer: 5  4  5 6 3 4)  )                   </sc>]]></Expression>
+        <Note><![CDATA[  Returns an Integer Vector containing 5 integers. ]]></Note> 
+        <Returns><![CDATA[&#60IntVector 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display X)    </sc>]]></Expression>
+        <Note><![CDATA[ Displays the contents of the Integer Vector.]]></Note>
+        <Returns><![CDATA[#(int| 4 5 6 3 4 )]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

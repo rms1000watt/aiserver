@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example ObjectRepository compareLT 021</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compareLT</FunctionKeywords>
+		<TypeKeywords>ObjectRepository Boolean</TypeKeywords>
+		<RelatedFunctions> compare compareEQ compareNE compareGT compareGE  compareLE </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare lesser than boolean</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example show the <b>compareLT</b> function operate on two Object Repositories with the same exact values
+                   but with differenct Object IDs. 
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+(setq number (new ObjectRepository: "myfile1.odb"))     </sc>   ]]></Expression>
+        <Note><![CDATA[Specify the name of the first ObjectRepository.  ]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq number[1] "One")     </sc>   ]]></Expression>
+        <Note><![CDATA[Initialize ObjectRepository with a key & value pair. ]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq number[2] "Two")     </sc>   ]]></Expression>
+        <Note><![CDATA[Initialize ObjectRepository with a key & value pair. ]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq number[3] "Three")     </sc>   ]]></Expression>
+        <Note><![CDATA[Initialize ObjectRepository with a key & value pair. ]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 123456&#62]]></Returns>
+ 	    <Expression><![CDATA[ <sc>(setq numeric (new ObjectRepository: "myfile2.odb"))     </sc>   ]]></Expression>
+        <Note><![CDATA[Specify the name of the first ObjectRepository.  ]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq numeric[1] "One")     </sc>   ]]></Expression>
+        <Note><![CDATA[Initialize ObjectRepository with a key & value pair. ]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq numeric[2] "Two")     </sc>   ]]></Expression>
+        <Note><![CDATA[Initialize ObjectRepository with a key & value pair. ]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq numeric[3] "Three")     </sc>   ]]></Expression>
+        <Note><![CDATA[Initialize ObjectRepository with a key & value pair. ]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc>(compareLT number numeric)      </sc>   ]]></Expression>
+        <Note><![CDATA[The first Repository has a lesser value than the second Repository. 
+              The basis of the comparison are the Object IDs of the Object Repository.]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[none
+
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

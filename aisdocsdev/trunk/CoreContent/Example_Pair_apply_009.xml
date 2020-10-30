@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Pair apply 009</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>apply</FunctionKeywords>
+		<TypeKeywords>Pair</TypeKeywords>
+		<RelatedFunctions>   makeStructure defstruct defmethod addMethod</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>apply functions   method</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines a Pair containing Integer values.  Then it
+
+                  uses the <b>apply</b> function to add all the values in the Vector.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define  X '( 2  5 10  3 ) )  </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60Pair 197815&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(apply  +  X)</sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[20]]></Returns>
+        <Hints><![CDATA[Equivalent expression not using <b>apply</b>:
+               <p><b>(+ (+  X[0]  X[1]) X[2] ) </b> <blockquote>Returns:20</blockquote></p>
+               <p><b>(+  X[0] X[1] X[2]  )</b> <blockquote>Returns:20</blockquote></p>
+        ]]></Hints>
+   </Syntax>
+</Example>

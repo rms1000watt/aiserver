@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>lcm</Title>
+		<FunctionName>lcm</FunctionName>
+		<FunctionType>Builtin(Math)</FunctionType>
+		<ArgumentTypes>  Integer </ArgumentTypes>
+		<DataType>Integer</DataType>
+		<RelatedFunctions> (sym)mul</RelatedFunctions>
+        <RelatedVMInstructions>   none  </RelatedVMInstructions>
+		<HumanKeywords>least common multiple  </HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>lcm</b> function computes the least common multiple of a set of integers.</p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>lcm</b> function computes the least common multiple of a set of integers.
+         </p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>lcm</b> function is used to compute the least common multiple of a set of integers
+         </p>
+         ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[   (lcm int1 int2 ...)]]></Expression>
+		<Argument>
+		  <Name>int1 ... </Name>
+		  <Note><![CDATA[
+		  <p></p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>Computes the least common divisor of int1 and int2 and returns it.
+         value.
+	    </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

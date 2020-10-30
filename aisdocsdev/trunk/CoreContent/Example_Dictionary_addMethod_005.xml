@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Dictionary addMethod 005</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>addMethod</FunctionKeywords>
+		<TypeKeywords> Dictionary Symbol</TypeKeywords>
+		<RelatedFunctions>defmethod send methodsOf</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>method message messageName</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example uses the added method <b>Increment</b> which will increment 
+                a specific field in a Dictionary.
+	]]></Description>
+	<Syntax>
+	<Expression><![CDATA[<sc>(addMethod  Dictionary: Increment: (lambda (s n )  (add1 s[n])))   </sc>]]></Expression>
+    <Note><![CDATA[ Define a method Increment which  adds the defined  value to a field in the Dictionary.
+    ]]></Note>
+    <Returns><![CDATA[ #&#60Dictionary 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(define Score  #{dic| Sam: 1  Sue: 1 Sylvia: 5})    <sc> ]]></Expression>
+    <Note><![CDATA[Define a Dictionary that contains scores for a list of students. ]]></Note>
+    <Returns><![CDATA[#&#60Dictionary 234567&#62]]></Returns>
+    <Expression><![CDATA[<sc>(send  Increment:  Score 2)       <sc> ]]></Expression>
+    <Note><![CDATA[ Invoke the method named Increment ]]></Note>
+    <Returns><![CDATA[6]]></Returns>
+    <Expression><![CDATA[<sc>(Increment:  Score 2)   <sc> ]]></Expression>
+    <Note><![CDATA[The method can be invoked simply by name:]]></Note>
+    <Returns><![CDATA[6 ]]></Returns>
+    <Hints><![CDATA[
+        <p>To view the entry in the methods Dictionary created by the addMethod function, 
+
+           you can use the method name to access the dictionary entry by </p>
+        <p><b> #&#60Dictionary 123456&#62[methodName:] or </b></p>
+        <p> To determine the number of assigned methods:</p>
+        <p><b>(length  (methodsOf Structure: ))</b></p>
+        <p><b>(length (methodsOf StockTransaction:) )</b></p>
+        <p>To access the nth method name:</p>
+        <p><b>(methodsOf Dictionary: )[n  0]</b></p>
+        <p>To view the Methods Dictionary:</p>
+        <table>
+           <tr><td width=60%> <p><b>(display (methodsOf Dictionary: ))  </td>
+               <td width=40%>  Returns <b> #{dic| addValues #&#60Lambda 5315&#62}</b> </td></tr>
+        </table>
+]]></Hints>
+</Syntax>
+</Example>

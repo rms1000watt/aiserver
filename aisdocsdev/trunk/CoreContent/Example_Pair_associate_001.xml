@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Pair associate 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>associate</FunctionKeywords>
+		<TypeKeywords>Pair List</TypeKeywords>
+		<RelatedFunctions>  setCar setCdr</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>search associate find car cdr</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples show the <b>associate</b> function return the Pair in the List
+	              that matches the <b>car</b> specified by the user.
+	              
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(associate  'B  '((A . 1)  ((B  . 3)  . 2)  (B  . 4)))  </sc>]]></Expression>
+        <Note><![CDATA[The car B is specified by the user. ]]></Note>
+        <Returns><![CDATA[(B . 4)]]></Returns>
+        <Expression><![CDATA[ <sc>(associate  'A  '((A . 1)  (B . 2)  (A . 3)))         </sc>]]></Expression>
+        <Note><![CDATA[The car A is specified by the user. ]]></Note>
+        <Returns><![CDATA[(A . 1)]]></Returns>
+        <Expression><![CDATA[ <sc>(associate  'Z  '((A . 1)  (B . 2)  (A . 3)))          </sc>]]></Expression>
+        <Note><![CDATA[The car specified by the user does not exist. ]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Hints><![CDATA[none
+        ]]></Hints>
+   </Syntax>
+</Example>

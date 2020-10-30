@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>  
+		<Title>Example String clean 001</Title>  
+		<Template>Example</Template> 
+		<FunctionKeywords>clean</FunctionKeywords>
+		<TypeKeywords>Text String</TypeKeywords>	
+		<RelatedFunctions> trim</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>clean non-printable</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example use the <b>clean</b> function to remove ASCII 
+                  non-printable characters in the string.
+	]]></Description>
+	<Syntax> 
+  	    <Expression><![CDATA[ <sc>(setq X  (append  (char 7)  "TEXT"   (char 233))) </sc>]]></Expression>  
+        <Note><![CDATA[The variable X has non-printable texts with ASCII code 7 and 33. ]]></Note> 
+        <Returns><![CDATA[TEXT??]]></Returns>
+        <Expression><![CDATA[ <sc>(clean X)</sc>]]></Expression>  
+        <Note><![CDATA[The <b>clean</b> function removes these non-printable characters. ]]></Note> 
+        <Returns><![CDATA[TEXT]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

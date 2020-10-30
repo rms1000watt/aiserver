@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>system  </Title>
+		<FunctionName>system  </FunctionName>
+		<FunctionType>Builtin(FileIO)</FunctionType>
+        <ArgumentTypes> ByteVector Text String Integer</ArgumentTypes>
+        <DataType> ByteVector Text </DataType>
+	    <RelatedFunctions>  </RelatedFunctions>
+        <RelatedVMInstructions> none  </RelatedVMInstructions>
+		<HumanKeywords>host operating system command</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p>The <b>system</b> function sends a string command to the host operating system. </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+	     <p>The <b>system</b> function sends a string command to the host operating system. 
+           The string command must be a valid command phrase in the language of the host operating 
+           system. The contents of the command string are host operating system dependent.</p>
+      ]]></Overview>
+       <Usage><![CDATA[
+       <p>The <b>system </b> function allows access to the command language of the host operating system.</p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p><b>     (system command) </b></p>
+]]></Expression>        
+		<Argument>
+		  <Name>command</Name>
+		  <Note><![CDATA[
+		  <p> A valid command phrase in the host operating system command language. </p>
+          ]]></Note>
+		  <AISTypes>Text String ByteVector</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>Zero if there was no error, or an error code.</p>
+	    ]]></Return>
+	</Syntax>
+</Function>

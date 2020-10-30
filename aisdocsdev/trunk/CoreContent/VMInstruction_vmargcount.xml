@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmargcount</Title>
+		<InstructionName>vmargcount</InstructionName>
+		<InstructionType>Generic</InstructionType>
+		<ArgumentTypes> Integer Word </ArgumentTypes>
+		<RelatedVMInstructions> vmapply vmargfetch vmcall vmsend</RelatedVMInstructions>
+		<HumanKeywords> count arguments fetch call send apply  </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[
+		<p> When evaluated, this vm instruction places the number 
+		of arguments received by the current Lambda into the 
+		<b>target</b> word, as an Integer type. 
+		There are no conversions made between different types. 
+		The result will be returned as an Integer data type. 
+		This instruction will never return an Error value. 
+		After the operation, the Instruction Pointer is promoted. 
+		The operation of this vm instruction is expressed in the following C expression:
+        </p>
+        <ul><li><b>(word:int)target = 
+       ((char*)Tv - (char*)Av)/sizeof(word); </b></li></ul>
+    ]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ (vmargcount target)]]></Expression>
+		 <Argument> 
+		  <Name>target</Name>
+		  <Format>regoff</Format>
+		  <AISTypes>(word:integer)</AISTypes>
+		</Argument>
+	</Syntax>
+</VMInstruction>

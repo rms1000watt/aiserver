@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmregSetFloat  </Title> 
+		<InstructionName> vmregSetFloat    </InstructionName>
+		<InstructionType>Register</InstructionType>
+		<ArgumentTypes>  Integer FloatPointer Number Float  </ArgumentTypes>
+		<RelatedVMInstructions> vmregSetChar vmregSetCharacter 
+		                        vmregSetNumber vmregSetInteger vmregSetIntImmediate
+		                        vmregSetShort vmregSetShortImmediate</RelatedVMInstructions>
+		<HumanKeywords>   float set  </HumanKeywords>
+	</KnowledgeBase>                   
+	<Description><![CDATA[
+		<p>When evaluated, this vm instruction, uses the FloatPointer in the 
+		register <b>pointer</b>, to save a Number value from the register 
+		<b>source</b>. The result is saved into the memory location pointed 
+		to by the <b>pointer</b> register. The result will be saved as a type 
+		Float from the Number value in the <b>source</b> register. 
+		This instruction may return an Error value. After the operation, the 
+		Instruction Pointer is promoted. The operation of this vm instruction 
+		is expressed in the following C expression:
+     	</p>      
+        <ul><li><b>  *((float*)pointer) = (float)((double)source);</b></li></ul>
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[(vmregSetFloat source pointer)]]></Expression>
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>register</Format>
+		  <AISTypes>number</AISTypes>
+		</Argument>		 
+		<Argument> 
+		  <Name>pointer</Name>
+		  <Format>register</Format>
+		  <AISTypes>FloatPointer</AISTypes>			     
+		</Argument>
+	</Syntax>
+</VMInstruction>

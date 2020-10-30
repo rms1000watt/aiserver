@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example ObjectRepository saveRepository 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>saveRepository</FunctionKeywords>
+		<TypeKeywords>ObjectRepository </TypeKeywords>
+		<RelatedFunctions>loadRepository</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>load retrieve key block read RAM</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows the <b>saveRepository</b> function create 
+              a new child repository inside the parent Object Repository. 
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+(setq gor (new ObjectRepository: "phrases.db"))     </sc>   ]]></Expression>
+        <Note><![CDATA[Specify the name of the Parent ObjectRepository.  ]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq gor["one"] "Hello world")     </sc>   ]]></Expression>
+        <Note><![CDATA[Install a key and value in the parent Object Repository. ]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc>(ref gor "one")     </sc>   ]]></Expression>
+        <Note><![CDATA[Reference the key in the parent Object Repository.  ]]></Note>
+        <Returns><![CDATA[Hello World]]></Returns>
+  	    <Expression><![CDATA[ <sc>(saveRepository gor Terminators: 10000)     </sc>   ]]></Expression>
+        <Note><![CDATA[Create a new child repository inside the parent Object Repository gor where the child repository is 1000 bytes long.]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq gor.Terminators["one"] "Goodbye world")     </sc>   ]]></Expression>  
+        <Note><![CDATA[Install a key and value in the child repository.]]></Note> 
+        <Returns><![CDATA[#&#60ObjectRepository 234567&#62]]></Returns>
+  	<Expression><![CDATA[ <sc>(ref gor Terminators:)     </sc>   ]]></Expression>  
+        <Note><![CDATA[Reference the child repository. Returns the Object Id of the child repository.]]></Note> 
+        <Returns><![CDATA[#&#60ObjectRepository 234567&#62]]></Returns>
+   	     <Expression><![CDATA[ <sc>(ref (ref gor Terminators:) "one")      </sc>   ]]></Expression>  
+        <Note><![CDATA[Reference a key in the child repository.]]></Note> 
+        <Returns><![CDATA[Hello world]]></Returns>
+        <Hints><![CDATA[<p>
+After the <b>saveRepository</b>, we have a nested index of conversation 
+         terminator phrases. This is a separate nested child repository from the parent repository. </p>
+        ]]></Hints>
+   </Syntax>
+</Example>

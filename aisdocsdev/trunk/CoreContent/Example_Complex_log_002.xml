@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Complex log 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>log</FunctionKeywords>
+		<TypeKeywords>Number Integer</TypeKeywords>
+		<RelatedFunctions>logbase log10 log2 exp</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords> logarithm natural</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>log</b> function to compute the natural logarithm of its argument.
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq X (new Complex: 3.0 4.0))  </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60Complex 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(log X) </sc>]]></Expression>
+        <Note><![CDATA[The result of the log function is: ]]></Note>
+        <Returns><![CDATA[#c1.61+0.927i]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq X (new Complex: 3.0 -4.0))  </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[#&#60Complex 234567&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(log X) </sc>]]></Expression>  
+        <Note><![CDATA[The result of the log function is: ]]></Note> 
+        <Returns><![CDATA[#c1.61-0.927i]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq X (new Complex: -2.71828))  </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[#&#60Complex 345678&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(log X) </sc>]]></Expression>  
+        <Note><![CDATA[The result of the log function is: ]]></Note> 
+        <Returns><![CDATA[#c1.0+3.142i]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq X (new Complex: 0.0 2.71828))  </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[#&#60Complex 3456789&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(log X) </sc>]]></Expression>  
+        <Note><![CDATA[The result of the log function is: ]]></Note> 
+        <Returns><![CDATA[#c1.0+1.571i]]></Returns>
+        <Hints><![CDATA[<p>The logarithm is the inverse of expt. For example, for Value given by 
+                <b>(setq Value (expt 2.71828 power))</b>, <b>(log Value)</b> returns power. ]]></Hints>
+   </Syntax>
+</Example>

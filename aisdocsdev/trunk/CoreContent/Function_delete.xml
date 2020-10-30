@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>delete</Title>
+		<FunctionName>delete</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>Structure Dictionary Directory Integer Vector Pair List Symbol NumMatrix
+                  ObjectRepository Matrix FltVector ShortVector IntVector NumVector ObjVector </ArgumentTypes>      
+		<DataType>Structure Dictionary Directory Vector Matrix Pair List FltVector IntVector ShortVector NumVector ObjVector ObjectRepository NumMatrix </DataType>
+		<RelatedFunctions>remove insert</RelatedFunctions>
+        <RelatedVMInstructions> vmregObjLength   </RelatedVMInstructions>
+		<HumanKeywords>delete remove key binding </HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>delete</b> function deletes the specified binding from a Structure, Matrix 
+                 Dictionary, Directory, Vector, ObjectRepository, Pair or List.  </p>
+          ]]></Description>
+	<Brief>
+	   <Overview-Structure><![CDATA[
+		<p>The <b>delete</b> function destructively deletes the specified binding from a Structure.
+             The key is specified explicitly as an argument
+          <b>{key}</b> or by the index <b>{index}</b> into the Structure. The Structure,
+           is decreased in size to reflect the lost value. </p>
+        ]]></Overview-Structure>
+	   <Overview-Dictionary><![CDATA[
+		<p>The <b>delete</b> function destructively deletes the specified binding from a  
+           Dictionary.  The key is specified explicitly as an argument
+          <b>{key}</b> or by the index <b>{index}</b> into the Dictionary. The 
+           Dictionary is decreased in size to reflect the lost value. </p>
+        ]]></Overview-Dictionary>
+	   <Overview-Directory><![CDATA[
+		<p>The <b>delete</b> function destructively deletes the specified binding from a Directory.  The key is specified explicitly as an argument
+          <b>{key}</b> or by the index <b>{index}</b> into the   Directory. The Directory is decreased in size to reflect the lost value. </p>
+        ]]></Overview-Directory>
+	   <Overview-ObjectRepository><![CDATA[
+		<p>The <b>delete</b> function destructively deletes the specified binding from a ObjectRepository.  The key is specified explicitly as an argument
+          <b>{key}</b> or by the index <b>{index}</b> into the   ObjectRepository. The ObjectRepository is decreased in size to reflect the lost value. </p>
+        ]]></Overview-ObjectRepository>
+       <Overview><![CDATA[
+		<p>The <b>delete</b> function destructively deletes the specified value from a Vector.  The object is specified 
+           explicitly as an argument
+          <b>{obj}</b> or by the index <b>{index}</b> into the Vector. The Vector is decreased in 
+           size to reflect the lost value. </p>
+        ]]></Overview>
+        <Overview-Matrix><![CDATA[
+		<p>The <b>delete</b> function destructively deletes the specified object from a Matrix. 
+           The object is specified explicitly as an argument <b>{obj}</b> or by the index  <b>{index}</b>
+           into the Matrix.  The Matrix is decreased in size to reflect the lost value.</p>
+        ]]></Overview-Matrix>
+        <Overview-NumMatrix><![CDATA[
+		<p>The <b>delete</b> function destructively deletes the specified object from a NumMatrix. 
+           The object is specified explicitly as an argument <b>{obj}</b> or by the index  <b>{index}</b>
+           into the NumMatrix.  The NumMatrix is decreased in size to reflect the lost value.</p>
+        ]]></Overview-NumMatrix>
+        <Overview-Pair><![CDATA[
+		<p>The <b>delete</b>  function removes the occurrence of the specified key  from the 
+           specified source Pair.  The <b>delete</b> function Is non-destructive, ie, it 
+           returns a new Pair that has the specified item removed from it. </p>
+        ]]></Overview-Pair>
+       <Overview-List><![CDATA[
+		<p>The <b>delete</b>  function removes the occurrence of the specified key  from the 
+           specified source  List.  The <b>delete</b> function Is non-destructive, ie, it 
+           returns a new List that has the specified item removed from it. </p>
+        ]]></Overview-List>
+        <Usage><![CDATA[
+        <p>Use <b>delete</b> function is used to remove a binding from a Structure, 
+           Dictionary, ObjectRepository or Directory.  
+           The binding to be deleted can be specified by key or as a numeric index.</p>
+          <p> The <b>delete</b> function behaves like the <b>remove</b> function with 
+           the following exception:
+           <li> The <b>delete</b> function is destructive and the <b>remove</b> 
+           function is non-destructive.</li>
+           <li>  The <b>delete</b>  function deletes a member  by specifying the
+                 key or a numeric index and the <b>remove</b> deletes a member by specifying the 
+                 key only.</li>
+           </p>
+        ]]></Usage>
+        <Usage-Vector><![CDATA[
+        <p>The <b>delete</b> function is used to remove an object from a Vector.  
+           The object to be deleted must be specified as an index into the Vector.  
+           The <b>delete</b> function behaves like the <b>remove</b> function with the following 
+           exception: The <b>delete</b> function is destructive and the <b>remove</b> function is 
+           non-destructive.
+           </p>
+        ]]></Usage-Vector>
+        <Usage-FltVector><![CDATA[
+        <p>The <b>delete</b> function is used to remove an object from a FltVector.  
+           The object to be deleted must be specified as an index into the FltVector.  
+           The <b>delete</b> function behaves like the <b>remove</b> function with the following 
+           exception: The <b>delete</b> function is destructive and the <b>remove</b> function is 
+           non-destructive.
+           </p>
+        ]]></Usage-FltVector>
+        <Usage-IntVector><![CDATA[
+        <p>The <b>delete</b> function is used to remove an object from a IntVector.  
+           The object to be deleted must be specified as an index into the IntVector.  
+           The <b>delete</b> function behaves like the <b>remove</b> function with the following 
+           exception: The <b>delete</b> function is destructive and the <b>remove</b> function is 
+           non-destructive.
+           </p>
+        ]]></Usage-IntVector>
+        <Usage-ShortVector><![CDATA[
+        <p>The <b>delete</b> function is used to remove an object from a ShortVector.  
+           The object to be deleted must be specified as an index into the ShortVector.  
+           The <b>delete</b> function behaves like the <b>remove</b> function with the following 
+           exception: The <b>delete</b> function is destructive and the <b>remove</b> function is 
+           non-destructive.
+           </p>
+        ]]></Usage-ShortVector>
+        <Usage-NumVector><![CDATA[
+        <p>The <b>delete</b> function is used to remove an object from a NumVector.  
+           The object to be deleted must be specified as an index into the NumVector.  
+           The <b>delete</b> function behaves like the <b>remove</b> function with the following 
+           exception: The <b>delete</b> function is destructive and the <b>remove</b> function is 
+           non-destructive.
+           </p>
+        ]]></Usage-NumVector>
+        <Usage-ObjVector><![CDATA[
+        <p>The <b>delete</b> function is used to remove an object from a ObjVector.  
+           The object to be deleted must be specified as an index into the ObjVector.  
+           The <b>delete</b> function behaves like the <b>remove</b> function with the following 
+           exception: The <b>delete</b> function is destructive and the <b>remove</b> function is 
+           non-destructive.
+           </p>
+        ]]></Usage-ObjVector>
+       <Usage-Matrix><![CDATA[
+        <p><FONT COLOR="#0000ff"> Note: </FONT> <b>Returns an error message if the Matrix is not of rank one. </b></p>
+        <p>Use <b>delete</b> function is used to remove an object from a Matrix.  The object to 
+          be deleted must be specified as an index into the Matrix.  The <b>delete</b> function 
+          behaves like the <b>remove</b> function with the following exception: The <b>delete</b> 
+         function is destructive and the <b>remove</b> function is non-destructive.          </p>
+        ]]></Usage-Matrix>
+       <Usage-NumMatrix><![CDATA[
+        <p><FONT COLOR="#0000ff"> Note: </FONT> <b>Returns an error message if the NumMatrix is not of rank one. </b></p>
+        <p>Use <b>delete</b> function is used to remove an object from a NumMatrix.  The object to 
+          be deleted must be specified as an index into the NumMatrix.  The <b>delete</b> function 
+          behaves like the <b>remove</b> function with the following exception: The <b>delete</b> 
+         function is destructive and the <b>remove</b> function is non-destructive.          </p>
+        ]]></Usage-NumMatrix>
+       <Usage-Pair><![CDATA[
+        <p>Use <b>delete</b> function to remove an object from a List</p>
+        ]]></Usage-Pair>
+    </Brief>
+	<Syntax-Structure>
+	    <Expression><![CDATA[<p>(delete  struct  key)</p>]]></Expression>
+		<Argument> 
+		  <Name>struct</Name>
+		  <Note><![CDATA[
+		  <p>The Structure you wish to modify.</p>
+          ]]></Note>
+		  <AISTypes>Structure  </AISTypes>
+		</Argument>
+	    <Argument> 
+		  <Name>key</Name>
+		  <Note><![CDATA[
+		  <p>An existing key in the Structure.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The modified Structure. If the key or index is not found the Structure is 
+           returned unmodified
+        </p>
+	    ]]></Return>   
+	</Syntax-Structure>
+	<Syntax-Structure>
+        <Expression><![CDATA[<p>(delete  struct  index)</p>]]></Expression>
+		<Argument> 
+		  <Name>struct</Name>
+		  <Note><![CDATA[
+		  <p>The Structure you wish to modify.</p>
+          ]]></Note>
+		  <AISTypes>Structure  </AISTypes>
+		</Argument>
+        <Argument> 
+		  <Name>index</Name>
+		  <Note><![CDATA[
+		  <p>The numeric index of the object you wish to delete.</p>
+          ]]></Note>
+		  <AISTypes>Integer  </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The modified Structure. If the key or index is not found the Structure is 
+           returned unmodified
+        </p>
+	    ]]></Return>   
+	</Syntax-Structure>
+	<Syntax-Dictionary>
+	    <Expression><![CDATA[<p>(delete  dictionary  key)</p>]]></Expression>
+		<Argument> 
+		  <Name>dictionary</Name>
+		  <Note><![CDATA[
+		  <p>The Dictionary you wish to modify.</p>
+          ]]></Note>
+		  <AISTypes>Dictionary  </AISTypes>
+		</Argument>
+	    <Argument> 
+		  <Name>key</Name>
+		  <Note><![CDATA[
+		  <p>An existing key in the Dictionary.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The modified Dictionary. If the key or index is not found the Dictionary is 
+           returned unmodified
+        </p>
+	    ]]></Return>
+	  </Syntax-Dictionary>
+	<Syntax-Dictionary>
+        <Expression><![CDATA[<p>(delete  dictionary  index)</p>]]></Expression>
+		<Argument> 
+		  <Name>dictionary</Name>
+		  <Note><![CDATA[
+		  <p>The Dictionary you wish to modify.</p>
+          ]]></Note>
+		  <AISTypes>Dictionary  </AISTypes>
+		</Argument>
+        <Argument> 
+		  <Name>index</Name>
+		  <Note><![CDATA[
+		  <p>The numeric index of the object you wish to delete.</p>
+          ]]></Note>
+		  <AISTypes>Integer  </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The modified Dictionary. If the key or index is not found the Dictionary is 
+           returned unmodified
+        </p>
+	    ]]></Return>   
+	</Syntax-Dictionary>
+	<Syntax-Directory>
+	    <Expression><![CDATA[<p>(delete  directory  key)</p>]]></Expression>
+		<Argument> 
+		  <Name>directory</Name>
+		  <Note><![CDATA[
+		  <p>The Directory you wish to modify.</p>
+          ]]></Note>
+		  <AISTypes>Directory  </AISTypes>
+		</Argument>
+	    <Argument> 
+		  <Name>key</Name>
+		  <Note><![CDATA[
+		  <p>An existing key in the Directory.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The modified Directory. If the key or index is not found the Directory is 
+           returned unmodified
+        </p>
+	    ]]></Return>
+	</Syntax-Directory>
+	<Syntax-Directory>
+        <Expression><![CDATA[<p>(delete  directory  index)</p>]]></Expression>
+		<Argument> 
+		  <Name>directory</Name>
+		  <Note><![CDATA[
+		  <p>The Directory you wish to modify.</p>
+          ]]></Note>
+		  <AISTypes>Directory  </AISTypes>
+		</Argument>
+        <Argument> 
+		  <Name>index</Name>
+		  <Note><![CDATA[
+		  <p>The numeric index of the object you wish to delete.</p>
+          ]]></Note>
+		  <AISTypes>Integer  </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The modified Directory. If the key or index is not found the Directory is 
+           returned unmodified
+        </p>
+	    ]]></Return>   
+	</Syntax-Directory>
+	<Syntax>
+	    <Expression><![CDATA[<p>(delete  vector  key)</p>]]></Expression>
+		<Argument> 
+		  <Name>vector</Name>
+		  <Note><![CDATA[
+		  <p>The Vector you wish to modify.</p>
+          ]]></Note>
+		  <AISTypes>Vector FltVector IntVector ShortVector NumVector ObjVector </AISTypes>
+		</Argument>
+	    <Argument> 
+		  <Name>key</Name>
+		  <Note><![CDATA[
+		  <p>An existing key in the Vector.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The modified Vector. If the key or index is not found the Vector is 
+           returned unmodified
+        </p>
+	    ]]></Return>
+	</Syntax>
+	<Syntax> 
+        <Expression><![CDATA[<p>(delete  vector  index)</p>]]></Expression>
+		<Argument> 
+		  <Name>vector</Name>
+		  <Note><![CDATA[
+		  <p>The Vector you wish to modify.</p>
+          ]]></Note>
+		  <AISTypes>Vector FltVector IntVector ShortVector NumVector ObjVector </AISTypes>
+		</Argument>
+        <Argument> 
+		  <Name>index</Name>
+		  <Note><![CDATA[
+		  <p>The numeric index of the object you wish to delete.</p>
+          ]]></Note>
+		  <AISTypes>Integer  </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The modified Vector. If the key or index is not found the Vector is 
+           returned unmodified
+        </p>
+	    ]]></Return>   
+	</Syntax>
+	<Syntax-Matrix>
+	    <Expression><![CDATA[<p>(delete  matrix  index)</p>]]></Expression>
+		<Argument> 
+		  <Name>matrix</Name>
+		  <Note><![CDATA[
+		  <p>The Matrix you wish to modify.</p>
+          ]]></Note>
+		  <AISTypes>Matrix  </AISTypes>
+		</Argument>
+	    <Argument> 
+		  <Name>index</Name>
+		  <Note><![CDATA[
+		  <p>If present, it must be the index of the object you wish to delete</p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The modified Matrix. If the object or index is not found the Matrix is returned 
+            unmodified.</p>
+	    ]]></Return>       
+	</Syntax-Matrix>
+	<Syntax-NumMatrix>
+	    <Expression><![CDATA[<p>(delete  nummatrix  index)</p>]]></Expression>
+		<Argument> 
+		  <Name>nummatrix</Name>
+		  <Note><![CDATA[
+		  <p>The NumMatrix you wish to modify.</p>
+          ]]></Note>
+		  <AISTypes>NumMatrix  </AISTypes>
+		</Argument>
+	    <Argument> 
+		  <Name>index</Name>
+		  <Note><![CDATA[
+		  <p>If present, it must be the index of the object you wish to delete</p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The modified NumMatrix. If the object or index is not found the NumMatrix is returned 
+            unmodified.</p>
+	    ]]></Return>       
+	</Syntax-NumMatrix>
+	<Syntax-Pair>
+	    <Expression><![CDATA[<p> (delete obj  pair)</p>]]></Expression>
+		<Argument> 
+		  <Name>obj</Name>
+		  <Note><![CDATA[
+		  <p>The object  to delete.</p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory Brick
+                       Matrix NumMatrix Integer Float Number Complex Boolean  </AISTypes>
+		</Argument>
+	    <Argument> 
+		  <Name>pair</Name>
+		  <Note><![CDATA[
+		  <p>The source Pair.</p>
+          ]]></Note>
+		  <AISTypes>Pair</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns a new Pair.</p>
+	    ]]></Return>         
+	</Syntax-Pair>
+	<Syntax-List>
+	    <Expression><![CDATA[  <p> (delete obj  list)</p>]]></Expression>
+        <Argument> 
+		  <Name>obj</Name>
+		  <Note><![CDATA[
+		  <p>The object  to delete.</p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory Brick
+                       Matrix NumMatrix Integer Float Number Complex Boolean  </AISTypes>
+		</Argument>
+	    <Argument> 
+		  <Name>list</Name>
+		  <Note><![CDATA[
+		  <p>The source List.</p>
+          ]]></Note>
+		  <AISTypes>List</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns a new  List.</p>
+	    ]]></Return>         
+	</Syntax-List>
+	<Syntax-ObjectRepository>
+	    <Expression><![CDATA[<p> (delete aGor key) </p>]]></Expression>
+		<Argument> 
+		  <Name>aGor</Name>
+		  <Note><![CDATA[
+		  <p>The ObjectRepository you wish to modify.</p>
+          ]]></Note>
+		  <AISTypes>ObjectRepository </AISTypes>
+		</Argument>
+	    <Argument> 
+		  <Name>key</Name>
+		  <Note><![CDATA[
+		  <p>Must be an existing object in the ObjectRepository.</p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory Brick
+                       Matrix NumMatrix Integer Float Number Complex Boolean </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Always returns the Object Repository. If the key is found, the Object Repository has
+         the key removed. If the key index is not found the ObjectRepository is returned 
+          unmodified. </p>
+	    ]]></Return>         
+	</Syntax-ObjectRepository>
+</Function>

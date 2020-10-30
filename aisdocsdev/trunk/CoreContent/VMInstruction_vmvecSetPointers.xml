@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmvecSetPointers</Title>
+		<InstructionName>vmvecSetPointers</InstructionName>
+		<InstructionType>Vector</InstructionType>
+		<ArgumentTypes> Integer </ArgumentTypes>
+		<RelatedVMInstructions>vmvecSetIncrements vmvecNumScalar vmvecNumVector</RelatedVMInstructions>
+		<HumanKeywords>vector set pointer numvector numscalar increments</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[
+		<p>When evaluated, this vm instruction declares the <b>argument, source,</b> 
+		and <b>target</b> pointer registers to be used in the following hardware 
+		mode register and data vector instructions. The three registers must 
+		contain pointer values. There are no conversions made between different 
+		types. The initial values in the three pointer registers are NOT 
+		altered by this instruction. This instruction may return an Error 
+		value. After the operation, the Instruction Pointer is promoted. 
+		The operation of this vm instruction is expressed in the following 
+		C expression:
+	    </p>
+        <ul><li> <b>     {argInc,srcInc,tarInc} = {argument,source,target};  </b></li></ul>          
+    ]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[(vmvecSetPointers argument source target)]]></Expression>   
+	    <Argument> 
+		  <Name>argument</Name>
+		  <Format>register</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>   
+		 <Argument> 
+		  <Name>source</Name>
+		  <Format>register</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument> 
+		 <Argument> 
+		  <Name>target</Name>
+		  <Format>register</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+	</Syntax>
+</VMInstruction>

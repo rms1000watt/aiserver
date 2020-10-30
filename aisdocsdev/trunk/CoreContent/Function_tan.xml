@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>tan</Title>
+		<FunctionName>tan</FunctionName>
+		<FunctionType>Builtin(Trig)</FunctionType>
+		<ArgumentTypes> Number  </ArgumentTypes>
+		<DataType>Number Complex </DataType>
+		<RelatedFunctions> cos sin tanh</RelatedFunctions>
+        <RelatedVMInstructions>none</RelatedVMInstructions>
+		<HumanKeywords>  tan radians angle </HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>tan</b> function computes the tangent of its argument.</p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+	   <p> The <b>tan</b> function computes the tangent of its argument .</p>
+        ]]></Overview>
+	   <Overview-Complex><![CDATA[
+	   <p> The <b>tan</b> function returns the tangent of a complex argument expressed in 
+         radians (pi radians equals 180 degrees).</p>
+        ]]></Overview-Complex>
+        <Usage><![CDATA[
+        <p>The <b>tan</b> function is used to compute the tangent of a value.
+
+         </p>
+        ]]></Usage>
+        <Usage-Complex><![CDATA[
+        <p>The <b>tan</b> function is used to compute the tangent of a value.
+         </p>
+        ]]></Usage-Complex>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p><b> (tan num)</b></p>]]></Expression>
+		<Argument>
+		  <Name>num</Name>
+		  <Note><![CDATA[
+		  <p>A Number</p>
+          ]]></Note>
+		  <AISTypes>Number</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>Computes and returns the tangent of the Number argument.</p>
+	    ]]></Return>
+	</Syntax>
+	<Syntax-Complex>
+	    <Expression><![CDATA[<p><b> (tan angle)</b></p>]]></Expression>
+		<Argument> 
+		  <Name>angle</Name>
+		  <Note><![CDATA[
+		  <p>The angle expressed in radians.</p>
+          ]]></Note>
+		  <AISTypes>Number</AISTypes>
+		</Argument>  	        	 
+		<Return><![CDATA[ 
+	    <p>A complex number holding the tangent of the angle.</p>
+	    ]]></Return>    	      
+	</Syntax-Complex>
+</Function>

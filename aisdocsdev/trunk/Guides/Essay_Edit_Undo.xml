@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Essay SYSTEM "../DTD/Essay.dtd">
+<Essay>
+	<KnowledgeBase>
+	    <Title>Undo Redo</Title>
+		<Topic>Analytic Information Server</Topic>
+		<SubTopic>User's Guide</SubTopic>
+		<HumanKeywords>Development AIS Guide</HumanKeywords>
+	</KnowledgeBase>
+	<Section>
+	    <Heading>6.1 Undo</Heading>
+		<Description><![CDATA[
+			<h3>6.1.1 Overview</h3>
+			All edit operations can be divided into three categories, move, insert, or delete.  Of these, insert
+			and delete operations are saved in an ordered undo stack.  The last insert or delete operation can be undone by pressing
+			Ctrl-Z even if the cursor has been moved around after the last insert or delete.  The next-to-last insert or
+			delete operation can also be undone by pressing Ctrl-Z again and so on up to a limit
+			of the maximum number of undo operations. This limit is a configurable parameter. For example:
+			<ol>
+				<li>InsertA.  Insert a sequence of chars.</li>
+				<li>DeleteB.  Delete a char.</li>
+				<li>Undo.  Undo DeleteB by inserting the deleted char back into the text.</li>
+				<li>InsertC.  Insert a second sequence of chars.</li>
+				<li>Undo.  Undo InsertC by deleting the second sequence of chars.</li>
+				<li>Undo.  Undo InsertA by deleting the first sequence of chars.</li>
+			</ol>
+			<h3>6.1.2 Exceptions</h3>
+			A few operations that cannot be be undone are not kept on the list. Operations that are not supported by undo are
+			indent, unindent, comment, uncomment, tabify, and detab.		 
+		  
+	    ]]></Description>
+	</Section>            
+	<Section>
+	    <Heading>6.2 Redo</Heading>
+		<Description><![CDATA[
+			<p> A Ctrl-Y launches a &quot;redo&quot; operation which reverses the previous undo operation.  So, if undo deletes
+			inserted text, redo re-inserts the text back into the text.  Similarly, if an undo inserts previously deleted text,
+			the corresponding redo deletes the inserted text a second time.
+			Note that only the last consecutive undo operations can be redone.  That is, the list of redo operations is reset
+			if a new insert or delete operation is performed. So, in a sequence of operations such as undo, insert, undo, you
+			can only redo the last undo.     </p>
+	    ]]></Description>
+	</Section>
+</Essay>

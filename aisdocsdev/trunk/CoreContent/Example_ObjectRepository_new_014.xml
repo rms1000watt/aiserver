@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example ObjectRepository new 014</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>new</FunctionKeywords>
+		<TypeKeywords>ObjectRepository</TypeKeywords>
+		<RelatedFunctions>  defmethod   </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>new pointer create initialize</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows the <b>new</b> function create a new Object Repository with
+                  two key-value pairs.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq gor (new ObjectRepository: "myarchive.odb"))      </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 197815&#62 ]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq gor["one"] "Hello World")      </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 197815&#62 ]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq gor["two"] "Goodbye World")      </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 197815&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(length gor)  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[2]]></Returns>
+        <Expression><![CDATA[ <sc>(clear gor)  </sc>]]></Expression>
+        <Note><![CDATA[The contents of the Object REpository are cleared.]]></Note>
+        <Returns><![CDATA[ --- ]]></Returns>
+        <Expression><![CDATA[ <sc>(length gor)  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[0]]></Returns>
+        <Hints><![CDATA[<p><b>SECURITY WARNING:</b> If the ObjectRepository is later <b>opened</b>
+         with a different key value from was specified during file creation, as a security
+         measure, the ObjectRepository will be made unrecoverable. </p>
+        ]]></Hints>
+   </Syntax>
+</Example>

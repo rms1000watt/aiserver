@@ -1,0 +1,116 @@
+aisclienttest/aisclienttestnotes.txt
+
+								AIS Test Notes
+
+This project tests the abasedev project.  It provides a monitor
+GUI for displaying the progress of serving a web client request.
+
+DOCUMENTATION GUIDE
+-------------------
+*	aisclienttest/aisclienttestnotes.txt - project setup and configuration.
+*	../include/httpsvr.h - AHttpSvr class specification. 
+*	Docs/InternalDocumentation/Qt/QtProcedures.doc - Qt Gui
+	design procedures.
+*	Docs/InternalDocumentation/VisualStudio/VsProcedures.doc -
+	General settings and procedures	for use with Qt projects.
+
+
+GENERAL NOTES
+-------------
+1.	AHttpSvr Class. Depends upon the AHttpSvr class as specified in
+	Include/HttpSvr.h.
+2.	Event Loop. An instance of AHttpSvr must run on the same thread
+	as the event loop (i.e. a GUI).  It depends upon receiving
+	actions initiated by events.	
+3.	Usage. AisClientTest can easily be replaced by another GUI, such
+	as the Lambda Base IDE.  Just replace main.cpp with a new version.
+4.	Modifications. It is important to make modifications to the
+	Gui, signals, and slots in Qt Designer.  Then, reload the code
+	into Visual Studio using the "Open Qt Project" icon on the Vs
+	Toolbar as described in VsProcedures.doc.
+
+							AIS Test GUI Project Setup
+PROJECT SETUP
+-------------
+This project was created as follows:
+1.	From QtDesigner, compose a Gui.  See
+	Docs/InternalDocumentation/Qt/QtProcedures.doc for more info.
+	QtDesigner generates aisclienttest.pro
+2.	Start Visual Studio. Select "Open Qt Project" icon in Qt
+	add-in toolbar and select aisclienttest.pro to create the VS project
+	aisclienttest.dsp.
+3.	Select File->OpenWorkspace->FileType->*.dsp.
+4.	Select aisclienttest.dsp to create the aisclienttest.dsw workspace.
+5.	Modify project settings as noted below.  Build debug and
+	release configurations.
+	
+								
+PROJECT SETTINGS
+----------------
+Project->Settings
+	C/C++ tab
+		General:
+			WarningLevel: 3
+		C++Language:
+			Enable Exception Handling
+		CodeGeneration:
+			Blend,DebugMultithreadedDLL,cdecl,8bytes
+		PreProcessor
+			IncludeDirs:
+				../include,$(QTDIR)/Include,$(QTDIR)/mkspecs/win32-msvc
+			Definitions:
+				WIN32,_DEBUG,_WINDOWS,_MBCS,UNICODE,QT_DLL,QT_THREAD_SUPPORT
+	Link tab
+		Input
+			Library modules:
+				$(QTDIR)\lib\qt-mt310.lib $(QTDIR)\lib\qtmain.lib ampmgr.lib
+				glue.lib sessionmgr.lib usrmgr.lib websvr.lib kernel32.lib
+				user32.lib gdi32.lib comdlg32.lib advapi32.lib shell32.lib
+				ole32.lib oleaut32.lib uuid.lib imm32.lib winmm.lib wsock32.lib
+				winspool.lib 
+			Ignore: libcmtd.lib
+			AdditionalPath: ../bin/debug
+
+Windows Debug Project Options:
+/nologo /MDd /W3 /Gm /GX /Zi /Od /I "..\Include" /I "$(QTDIR)\include"
+/I "$(QTDIR)\mkspecs\win32-msvc" /D "WIN32" /D "_DEBUG" /D "_WINDOWS"
+/D "_MBCS" /D "UNICODE" /D "QT_DLL" /D "QT_THREAD_SUPPORT"
+/Fo"Debug/" /Fd"Debug/" /FD /GZ /c
+
+Windows Release Project Options:
+...
+ 
+COMPILER OPTIONS
+----------------
+See Docs/InternalDocumentation/VisualStudio/VsProcedures.doc
+for a description of the above compiler options.
+
+FD - Generate file dependencies
+G5 - Favor Pentium processor
+Gm - Enable minimal rebuild
+GX - enable synchronous exception handling
+GZ - Catch release-build errors in debug
+MD  - Creates a multithreaded DLL, (MSVCRT.LIB)
+MDd - Creates debug multithreaded DLL   (MSVCRTD.LIB)
+ML  - Creates a single-threaded exe file, (LIBC.LIB)
+MLd - Creates debug single-threaded exe, (LIBCD.LIB)
+MT  - Creates a multithreaded executable file,(LIBCMT.LIB) 
+MTd - Creates a debug multithreaded exe file, (LIBCMTD.LIB)
+O1  - Create smallest code
+O2  - Create fast code
+Od  - Disable optimizations
+ZI  - Generate debug information for Edit&Continue
+Zi  - Generate debugging information
+MBCS - Include multibyte character set mappings
+UNICODE - Include unicode character set mappings
+
+BUILD
+-----
+Uic'ing aisclienttest.ui...
+Compiling...
+main.cpp
+moc_aistest.cpp
+aaisclienttest.cpp
+Generating Code...
+Linking...
+

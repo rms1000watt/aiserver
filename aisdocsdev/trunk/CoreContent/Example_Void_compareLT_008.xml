@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Void compareLT 008</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compareLT</FunctionKeywords>
+		<TypeKeywords>Void Boolean</TypeKeywords>
+		<RelatedFunctions>compare compareEQ compareNE compareGT compareGE compareLE</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare void lesser than </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>compareLT</b> function to compare two objects and return
+
+
+
+
+
+
+
+
+                  the Boolean value, true or false. The  values of each object are compared
+
+
+
+
+
+                  to determine whether the first object is lesser in value than the second object.
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+        <Expression><![CDATA[ <sc>(compareLT x  #void )         </sc>]]></Expression>
+        <Note><![CDATA[The uninitialized value of x is equal to #void.]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(compareLT #void "Hello World" )       </sc>]]></Expression>
+        <Note><![CDATA[ The value #void is lesser than the value of the String.]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

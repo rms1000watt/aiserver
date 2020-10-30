@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Matrix copy 006</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>copy</FunctionKeywords>
+		<TypeKeywords>Matrix</TypeKeywords>
+		<RelatedFunctions>setq</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>copy  memcopy pointer</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows how a Matrix may be modified destructively or
+
+                   non-destructively  using the  
+
+                   the <b>copy</b> and <b>setq</b> function. 
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define x #(mat| "The " "Rain "  "in " "Spain") )  </sc>]]></Expression>
+        <Note><![CDATA[The original Matrix.  ]]></Note>
+        <Returns><![CDATA[#&#60Matrix 123456&#62 ]]></Returns>
+ <Expression><![CDATA[ <sc>(setq z (copy x))  </sc>]]></Expression>
+        <Note><![CDATA[The copied Matrix using the copy function.  ]]></Note>
+        <Returns><![CDATA[#&#60Matrix 234567&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq twin x)   </sc>]]></Expression>
+        <Note><![CDATA[The copied Matrix using the setq function.  ]]></Note>
+        <Returns><![CDATA[#&#60Matrix 345678&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>z[0]     </sc>]]></Expression>
+        <Note><![CDATA[After the first setq function, the values of Matrix z are: ]]></Note>
+        <Returns><![CDATA[The ]]></Returns>
+        <Expression><![CDATA[ <sc>z[1]     </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[Rain ]]></Returns>
+        <Expression><![CDATA[ <sc>z[2]     </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[in ]]></Returns>
+        <Expression><![CDATA[ <sc>z[3]     </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[Spain ]]></Returns>
+        <Expression><![CDATA[ <sc>z[0]     </sc>]]></Expression>
+        <Note><![CDATA[After the first setq function, the values of Matrix x are: ]]></Note>
+        <Returns><![CDATA[The ]]></Returns>
+        <Expression><![CDATA[ <sc>x[1]     </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[Rain ]]></Returns>
+        <Expression><![CDATA[ <sc>x[2]     </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[in ]]></Returns>
+        <Expression><![CDATA[ <sc>x[3]     </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[Spain ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq twin[1] "Hail" )   </sc>]]></Expression>
+        <Note><![CDATA[The container named z is a copy of x (both are Matrices) and z has a separate 
+
+              memory space.  However, the containers named x and twin point to the same memory 
+
+              spaces on the heap.  Therefore ]]></Note>
+        <Returns><![CDATA[#&#60Matrix 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>twin[1]   </sc>]]></Expression>
+        <Note><![CDATA[The setq command results in the contents of both twin and x being both the same. ]]></Note>
+        <Returns><![CDATA[Hail ]]></Returns>
+      <Expression><![CDATA[ <sc>x[1]   </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[Hail ]]></Returns>
+        <Expression><![CDATA[ <v>z[1]   </sc>]]></Expression>
+        <Note><![CDATA[Since z points to a different memory space, it still retained the original value
+
+              which was copied from x before the values of x were modified.]]></Note>
+        <Returns><![CDATA[Rain ]]></Returns>
+        <Hints><![CDATA[Using the setq function results in objects having the same object id.
+
+
+
+               But the object that is being assigned the copied object has a
+
+
+
+              different object id than original object.  In this example twin and 
+
+
+
+              x have the same object id while z has a different object id. ]]></Hints>
+   </Syntax>
+</Example>

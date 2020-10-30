@@ -1,0 +1,2804 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Essay SYSTEM "../DTD/Essay.dtd">
+<Essay>
+	<KnowledgeBase>
+	    <Title>browseLib.dir Lambda</Title>
+		<Topic>Data Management</Topic>
+		<SubTopic>Overview</SubTopic>
+		<HumanKeywords>Database Data Management Lambda Programming XML</HumanKeywords>
+	</KnowledgeBase>
+	<Section>
+	    <Heading>dir Overview</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="dir Overview">
+			<p>
+			 The dir Lambda provides access to directory structures and 
+			 their contents in a platform-independent way. 
+			 A dir instance is used to manipulate path names, access 
+			 information regarding paths and files, and manipulate 
+			 the underlying file system.</p>
+			 <p>A dir instance can point to a file using either a relative 
+			 or an absolute path. Absolute paths begin with the directory 
+			 separator "/" (optionally preceded by a drive specification 
+			 under Windows). If you always use "/" as a directory 
+			 separator, the dir Lambda will translate your paths to conform 
+			 to the underlying operating system. Relative file names 
+			 begin with a directory name or a file name and 
+			 specify a path relative to the current directory. </p>
+			<p>The "current" path refers to the application's working 
+			 directory. A dir's own path is set and retrieved with 
+			 setPath and path. An example of an absolute path is the 
+			 string "/tmp/quartz", a relative path might look like "src/fatlib". 
+			 You can use the child Lambda isRelative to check if a dir is 
+			 using a relative or an absolute file path. Call convertToAbs 
+			 to convert a relative dir to an absolute one. For a simplified 
+			 path use cleanDirPath. To obtain a path which has no symbolic 
+			 links or redundant ".." elements use canonicalPath. The path 
+			 can be set with setPath, and changed with cd and cdUp. </p>
+			 <p>The dir Lambda provides several child Lambdas, for example, setCurrent to 
+			 set the application's working directory and currentDirPath to 
+			 retrieve the application's working directory. Access to some 
+			 common paths is provided with the child Lambdas, current, home 
+			 and root which return a dir instance. Use currentDirPath, 
+			 homeDirPath and rootDirPath to return a path string.</p>
+			<p> The number of entries in a directory is returned by count. 
+			 Obtain a string list of the names of all the files and directories 
+			 in a directory with entryList. If you prefer a list of fileInfo 
+			 Lambdas use entryInfoList. Use entryStructList to get a vector of
+			 entry information sturctures. These functions can apply a name 
+			 filter, an attributes filter (e.g. read-only, files not 
+			 directories, etc.), and a sort order. The filters and sort may 
+			 be set with calls to setNameFilter, setFilter and 
+			 setSorting. They may also be specified in the entryList, entryStructList and 
+			 entryInfoList's arguments. </p>
+			<p> Create a new directory with mkdir, rename a directory with rename 
+			 and remove an existing directory with rmdir. Remove a file with 
+			 remove. You can interrogate a directory with exists, isReadable 
+			 and isRoot. </p>
+			<p> To get a path with a filename use filePath, and to get a directory 
+			 name use dirName, neither of these functions checks for the 
+			 existence of the file or directory. </p>
+			<p> The list of root directories is provided by the drives Lambda, on Unix systems 
+			 this returns a list containing one root directory, "/", on Windows 
+			 the list will usually contain "C:/", and possibly "D:/", etc. 
+			 It is easiest to work with "/" separators in lisp code. If you need 
+			 to present a path to the user or need a path in a form suitable for a 
+			 function in the underlying operating system use convertSeparators. </p>
+			<B>STATIC LambdaS/FUNCTIONS</B> 
+			<p>The underlying C++ class mapped by the dir Lambda has static member functions - 
+			 i.e. functions that can be called directly on the class without an instance of an object
+			 of that class. This is reflected in the dir Lambda by child Lambdas identified with
+			 a Type of "Static Child Lambda". You may call these Lambdas directly without creating
+			 an Lambda instance of dir. The other child Lambdas have a type of "Instance Child Lambda" and
+			 may only be called on an instance of the dir Lambda.
+			</p>
+			 <strong>Notes</strong>
+			 <p>This Lambda surfaces the full functionality of the QDir object. Most
+			 of the functionality of this Lambda resides in the glueLayer and is
+			 accessed by calls to the _AISQDir function. When you create a new 
+			 dir instance, a corrosponding QDir C++ object is created. Calls
+			 to child Lambdas of the dir Lambda result in corrosponding calls to the
+			 member functions of the C++ QDir object. All of these calls are
+			 made through the _AISQDir function.
+			</p> 
+			 <p>A child Lambda called "free" is provided to force the early destruction
+			 of the underlying C++ QDir object prior to garbage collection of a
+			 dir Lambda. The C++ object will always be destroyed when the Lambda that created
+			 it is garbage collected.</p>
+			<p>Extensions to underlying QDir object (features not in the underlying QDir object):
+			 See entryStructList - this child Lambda returns a vector of entry information structures.</p>	     
+		  </div>
+	    ]]></Description>
+	</Section>        
+	<Section>
+	    <Heading>browseLib.dir Tutorial</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="browseLib.dir Tutorial">
+			<p>The following code examples serve as a general tutorial on the use
+			of the browseLib.dir Lambda. See the individual child Lambda documentation
+			for more specific information.</p>  
+			<blockquote>
+			<pre class=code id="Ex_browseLib_dir_tutorial_1">
+		;;***********************************************
+		;; Using the browseLib.dir Static child Lambdas.
+		;;***********************************************
+		(defun Ex_browseLib_dir_tutorial_1()
+			;;Use browseLib.dir.currentDirPath to get the current application path.
+			(writeln (browseLib.dir.currentDirPath)) ;;-> C:/somepath
+		
+			;;Use browseLib.dir.homeDirPath to get the user's home directory path.
+			(writeln (browseLib.dir.homeDirPath)) ;;-> C:/somepath
+			
+			;;Use browseLib.dir.rootDirPath to get the system's root directory path.
+			(writeln (browseLib.dir.rootDirPath)) ;;-> C:/
+			
+			;;Use browseLib.dir.separator to get the OS path separator character.
+			(writeln (browseLib.dir.separator)) ;;-> \ or /
+				
+			;;Use browseLib.dir.home to get a dir Lambda instance for the user's 
+			;;home path.
+			(setq dirInstance (new browseLib.dir.home)) ;;-> #&lt;Lambda 99999>
+			;;Use browseLib.dir.root to get a dir Lambda instance for the root path of 
+			;;the system.
+			(setq dirInstance (new browseLib.dir.root)) ;;-> #&lt;Lambda 99999>
+			</pre> 
+			</blockquote>
+			<br>
+			<blockquote>
+			<pre class=code id="Ex_browseLib_dir_tutorial_2">
+		;;*************************************************
+		;;Using the browseLib.dir instance child Lambdas.
+		;;*************************************************
+		(defun Ex_browseLib_dir_tutorial_2()
+			vars:(d n InfoItemList )
+			;;Create a dir instance for the current directory
+			(writeln (setq d (browseLib.dir.current))) ;;-> &lt;Lambda 9999>
+			;;Use entryList to get the names of the items in the directory.
+			(writeln (d.entryList)) 
+			;;->#(obj| "." ".." "astartup.sl" "Dir.db" "dir.html" "dir.sl" "junk.sl" 
+			
+			;;Use entryList with arguments to get the names of Files: in the directory 
+			;;sorted by Name:
+			(writeln (d.entryList #void  Files: Name:)) 
+			;;->#(obj| "Dir.db" "astartup.sl" "dir.html" "dir.sl" "junk.sl" )
+		
+			;;Use entryList with arguments to get the names of Files: in the directory 
+			;;sorted Name: in descending order.
+			(writeln (d.entryList "*.sl"  Files: #(Name: Reversed:))) 
+			;;->#(obj| "junk.sl" "dir.sl" "astartup.sl" )
+		
+			;;Use entryList with arguments to get only the names of Files: with the .sl 
+			;; extension.
+			(writeln (d.entryList "*.sl" )) 
+			;;->#(obj| "astartup.sl" "dir.sl" "junk.sl")
+			
+			;;Use entryInfoList to get infoItems for the current directory.
+			(writeln (setq InfoItemList (d.entryInfoList))) 
+			;; ->#(#&lt;Lambda 9991> #&lt;Lambda 9992> #&lt;Lambda 9993>)
+			(loop for n from 0 until (length InfoItemList) 
+				(writeln (InfoItemList[n].fileName))
+			)
+			;;-> astartup.sl
+			;;-> dir.sl
+			;;-> junk.sl
+			
+			;;Use fileList to get a vector of directory item information structures. Each 
+			;;structure contains extensive information about the directory item.
+			(setq InfoItemList (d.fileList))
+			(loop for n from 0 until (length InfoItemList) 
+				(writeln InfoItemList[n])
+			)
+			;;-> #(obj| 
+			;;-> #{Type: File 
+			;;-> 	FileName: "astartup.sl" 
+			;;-> 	Size: 218 
+			;;-> 	Extension: "sl" 
+			;;-> 	FilePath: "./astartup.sl" 
+			;;-> 	Created: #Feb,24,2004:09:43:38 
+			;;-> 	Exists: true 
+			;;-> 	Group: "None" 
+			;;-> 	GroupId: -2 
+			;;-> 	Executable: true 
+			;;-> 	Hidden: false 
+			;;-> 	Readable: true 
+			;;-> 	Relative: false 
+			;;-> 	SymLink: false 
+			;;-> 	Writable: true 
+			;;-> 	Modified: #Feb,24,2004:09:48:27 
+			;;-> 	Read: #Mar,24,2004:09:47:17 
+			;;-> 	Owner: "Administrators" 
+			;;-> 	OwnerId: -2 Link: ""}
+			;;-> #{Type: File FileName: "dir.sl" ...
+			;;-> #{Type: File FileName: "junk.sl" ...
+			;;-> )	
+			true);
+				</pre>	
+				</blockquote>	     
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>dir.absFilePath</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="dir.absFilePath">       
+		    <p class=overview>Overview</p>
+		<p>Returns the absolute path name of a file in the directory. 
+			Does not check if the file actually exists in the directory. 
+			Redundant multiple separators or "." and ".." directories in fileName will not be removed.<br>
+			See also filePath.</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(dirInstance.absFilePath "somefile.sl")
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>fileName</th>
+			    <td>String</td>
+			    <td>Filename or absolute path</td>
+			  </tr>
+			  <tr>
+			    <th>accepthAbsPath</th>
+			    <td>Boolean - Optional<br>Default=true</td>
+			    <td>If acceptAbsPath is TRUE a fileName starting with a separator "/" will be returned without change. 
+			If acceptAbsPath is FALSE an absolute path will be prepended to the fileName and the resultant string returned.</td>
+			  </tr>
+			  <tr>
+			    <th>Returns</th>
+			    <td>String</td>
+			    <td>Returns the absolute path string of a file in the directory. </td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a dir Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+			<p class=example>Examples</p>   
+			<blockquote>
+		    <pre class=code id="Ex_browseLib_dir_absFilePath_1">
+		;;***************************************************************
+		;;Getting the full path for a new file in the current directory.
+		;****************************************************************
+		(defun Ex_browseLib_dir_absFilePath_1()
+			vars:(d)
+			(setq d (browseLib.dir.current)) ;; get current directory
+			(writeln (d.absFilePath "myfile.sl")) ;; -> C:/myapplication/myfile.sl
+			true)
+			</pre>         
+			</blockquote>
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>The file specified by the fileName argument does not have to exist.</P>		     
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>dir.absPath</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="dir.absPath">        
+		    <p class=overview>Overview</p>
+		<p>Returns the absolute path (a path that starts with "/" or with a drive specification), which 
+		may contain symbolic links, but never contains redundant ".", ".." or multiple separators. <br>
+		See also setPath, canonicalPath, exists, cleanDirPath, dirName, and absFilePath.</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(dirInstance.absPath)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  </tr>
+			  <tr>
+			    <th>Returns</th>
+			    <td>String</td>
+			    <td>Returns the absolute path string.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a dir Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>        
+		    <blockquote>
+		    <pre class=code id="Ex_browseLib_dir_absPath_1">
+		;;****************************************
+		;;Using absPath on the current directory.
+		;;****************************************
+		(defun Ex_browseLib_dir_absPath_1()
+			vars:(d)
+			(setq d (browseLib.dir.current)) ;; get the current directory
+			(writeln (d.absPath)) ;; -> C:/myapplication
+			true)
+			</pre>  
+			</blockquote>
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>dir.canonicalPath</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="dir.canonicalPath"> 
+		    <p class=overview>Overview</p>
+			<p>Returns the canonical path, i.e. a path without symbolic links or redundant "." or ".." elements.
+			On systems that do not have symbolic links this function will always return the same string that 
+			absPath returns. If the canonical path does not exist (normally due to dangling symbolic links) 
+			canonicalPath returns #void.</p>
+			    <!-- Type and Syntax Template -->
+			    <p class=type>Type:
+			    <font color='black'>Instance Child Lambda</font></p>
+			    <p class=syntax>Syntax examples</p>
+			    <pre class=code>
+				(dirInstance.canonicalPath)
+				</pre>
+			    <!-- Arguments Table Template -->
+			    <p class=arguments>Arguments</p>
+			    <hr>
+				<table class=members_table>
+				  <colgroup><col><col style="font-style:italic"><col></colgroup>
+				  <tr>
+				    <th>Returns</th>
+				    <td>String or #Void</td>
+				    <td>Canonical Path</td>
+				  </tr>
+				</table>
+			    <hr>
+			    <!-- When To Use Template -->
+			    <p class=whentouse>When To Use</p>
+			    <p>Use this child Lambda only on an instance of a dir Lambda.</P>
+			    <!-- Code Eaxmples Template -->
+			    <p class=example>Examples</p>        
+			    <blockquote>
+			    <pre class=code id="Ex_browseLib_dir_canonicalPath_1">
+			;;**********************************************
+			;;Using canonicalPath on the current directory.
+			;;**********************************************
+			(defun Ex_browseLib_dir_canonicalPath_1()
+				vars:(d)
+				(setq d (browseLib.dir.current)) ;; get the current directory
+				(writeln (d.canonicalPath)) ;; -> C:/myapplication
+				true)
+				</pre>         
+				</blockquote>
+			    <!-- Notes & Hints Template -->
+			    <p class=notes>Notes &amp; Hints</p>
+			    <p>No special notes.</P>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>dir.cd</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="dir.cd">    
+		    <p class=overview>Overview</p>
+		<p>Changes the dir's directory to dirName. 
+		If acceptAbsPath is TRUE a path starting with separator "/" will cause the function to change 
+		to the absolute directory. If acceptAbsPath is FALSE any number of separators at the beginning 
+		of dirName will be removed and the function will descend into dirName. 
+		Returns TRUE if the new directory exists and is readable otherwise returns FALSE. 
+		Note that the logical cd operation is not performed if the new directory does not exist. 
+		Calling (dirInstance.cd ".." ) is equivalent to calling (dirInstance.cdUp). 
+		See also; cdUp, isReadable, exists, and path. </p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(dirInstance.cd "somedir")
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>dirName</th>
+			    <td>String</td>
+			    <td>Name of target directory.</td>
+			  </tr>
+			  <tr>
+			    <th>accepthAbsPath</th>
+			    <td>Boolean - Optional<br>Default=true</td>
+			    <td>If acceptAbsPath is TRUE a path starting with separator "/" will cause the function to change 
+		to the absolute directory. If acceptAbsPath is FALSE any number of separators at the beginning 
+		of dirName will be removed and the function will descend into dirName. </td>
+			  </tr>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Boolean</td>
+			    <td>True if sucessful or False otherwise.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a dir Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>   
+		    <blockquote>
+		    <pre class=code id="Ex_browseLib_dir_cd_1">
+		;;**************************************
+		;;Using dir.cd to navigate directories.
+		;;**************************************
+		(defun Ex_browseLib_dir_cd_1()
+			vars:(d d2)
+			(setq d (browseLib.dir.current)) ;; get the current directory
+			(writeln (d.absPath)) ;; -> C:/myapplication
+			(d.cd "Source") ;; change directory 
+			(writeln (d.absPath)) ;;-> C:/myapplication/Source
+			
+			;; Show that using cd did not change the current application directory
+			(setq d2 (browseLib.dir.current)) ;; get the current directory
+			(writeln (d2.absPath)) ;;-> C:/myapplication
+			true)
+			</pre>         
+			</blockquote>
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>Remember that the cd Lambda changes the directory assoicated with the instance of d
+			on which it is called. It does not change your current applciation directory.</P>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>dir.cdUp</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="dir.cdUp">    
+		    <p class=overview>Overview</p>
+				<p>Changes directory by moving one directory up from the dir's current directory. 
+		Returns TRUE if the new directory exists and is readable otherwise returns FALSE.
+		Note that the logical cdUp operation is not performed if the new directory does not exist. <br>
+		See also cd, isReadable, exists, and path.</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+			(dirInstance.cdUp)
+		    <pre class=code>
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Boolean</td>
+			    <td>Returns TRUE if the new directory exists and is readable otherwise returns FALSE.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a dir Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>   
+		    <blockquote>
+		    <pre class=code id="Ex_browseLib_dir_cdUp_1">
+		;;************************************
+		;;Using cdUp to navigate directories.
+		;;************************************
+		(defun Ex_browseLib_dir_cdUp_1()
+			vars:(d d2)
+			(setq d (browseLib.dir.current)) ;; get the current directory
+			(writeln (d.absPath)) ;; -> C:/myapplication
+			(d.cdUp) ;; Change directory to the parent directory
+			(writeln (d.absPath)) ;;-> C:/
+			
+			;; Show that we did not change the current application directory
+			(setq d2 (browseLib.dir.current)) ;; get the current directory
+			(writeln (d2.absPath)) ;;-> C:/myapplication
+			true)
+			</pre>
+		    </blockquote>
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>Remember that the cdUp Lambda changes the directory assoicated with the instance of d
+			on which it is called. It does not change your current applciation directory.</P>	     
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>dir.cleanDirPath</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="dir.cleanDirPath">    
+		    <p class=overview>Overview</p>
+			<p>Removes all multiple directory separators "/" and resolves any "."s or ".."s found in the path, filePath. 
+		Symbolic links are kept. This function does not return the canonical path, but rather the simplest
+		version of the input. For example, "./local" becomes "local", "local/../bin" becomes "bin" and
+		 "/local/usr/../bin" becomes "/local/bin". <br>
+		See also absPath and canonicalPath.</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Static Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(browseLib.dir.cleanDirPath somepath)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>filePath</th>
+			    <td>String</td>
+			    <td>File path.</td>
+			  </tr>
+			  <tr>
+			    <th>Returns</th>
+			    <td>String</td>
+			    <td>Simplest version of the input path.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Call this child Lambda on the browseLib.dir Lambda or an instance of the dir Lambda.
+			Use this function to simplify path's returned from other calls or received as input
+			from users.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>    
+		    <blockquote>
+		    <pre class=code id="Ex_browseLib_dir_cleanDirPath_1">
+		;;************************************************************
+		;;Use this child Lambda to reduce a path to its simplest form.
+		;;************************************************************
+		(defun Ex_browseLib_dir_cleanDirPath_1()
+			(writeln (browseLib.dir.cleanDirPath 
+				"C:///ais/libraries/../libraries//browseLib"))
+			;;-> C:/ais/libraries/browseLib
+			true)
+			</pre>         
+			</blockquote>
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>dir.currentDirPath</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="dir.currentDirPath">   
+		    <p class=overview>Overview</p>
+			<p>Returns the absolute path of the application's current directory.
+		See also current</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Static Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(browseLib.dir.currentDirPath)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Stirng</td>
+			    <td>The abosolute path of the application's current directory.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Call this child Lambda on the browseLib.dir Lambda or an instance of the dir Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>     
+		    <blockquote>
+		    <pre class=code id="Ex_browseLib_dir_currentDirPath_1">
+		(defun Ex_browseLib_dir_currentDirPath_1()
+			(writeln (browseLib.dir.currentDirPath)) ;;-> C:/myapplication
+			true)
+			</pre>         
+			</blockquote>
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>		     
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>dir.convetToAbs</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="dir.convetToAbs">      
+		    <p class=overview>Overview</p>
+			<p>Converts the directory path to an absolute path. If it is already absolute nothing is done.
+		See also isRelative.</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(dirInstance.convertToAbs)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Boolean</td>
+			    <td>Returns TRUE.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a dir Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>   
+		    <blockquote>
+		    <pre class=code id="Ex_browseLib_dir_convertToAbsPath_1">
+		;;*****************************************************************************
+		;;Use covertToAbs to convert a dir instance from a relative to a absolute path.
+		;;*****************************************************************************
+		(defun Ex_browseLib_dir_convertToAbsPath_1()
+			vars:(d)
+			;; get current directory using a relative path
+			(setq d (new browseLib.dir ".")) 
+			(writeln (d.path)) ;; -> .
+			(d.convertToAbs)
+			(writeln (d.path)) ;;-> C:/myapplciation
+			true)
+			</pre>
+		    </blockquote>
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>dir.convertSeparators</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="dir.convertSeparators">   
+		    <p class=overview>Overview</p>
+				<p>Returns pathName with the '/' separators converted to separators that are appropriate for 
+		the underlying operating system.
+		On Windows, convertSeparators("c:/winnt/system32") returns "c:\winnt\system32". 
+		The returned string may be the same as the argument on some operating systems, 
+		for example on Unix.</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Static Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(browseLib.dir.converSeparators somePath)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>pathName</th>
+			    <td>String</td>
+			    <td>A path</td>
+			  </tr>
+			  <tr>
+			    <th>Returns</th>
+			    <td>String</td>
+			    <td>Returns pathName with the '/' separators converted to separators that are appropriate for 
+		the underlying operating system.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Call this child Lambda on the browseLib.dir Lambda or an instance of the dir Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>  
+		    <blockquote>
+		    <pre class=code id="Ex_browseLib_dir_convertSeparators_1">
+		;;***********************************************************************
+		;;Use this child Lambda to convert path separators for the underlying OS.
+		;;***********************************************************************
+		(defun Ex_browseLib_dir_convertSeparators_1()
+			;; On Windows
+			(browseLib.dir.converSeparators "c:/winnt") ;;->c:\winnt
+			true)
+			</pre>
+		    </blockquote>
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>You don't normally have to worry about converting separators as AIS performs this
+			function automatically in most calls.</P>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>dir.count</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="dir.count">       
+		    <p class=overview>Overview</p>
+				<p>Returns the total number of directories and files that were found.</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(dirInstance.count)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Integer</td>
+			    <td>Number of items found in directory.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a dir Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>   
+		    <blockquote>
+		    <pre class=code id="Ex_browseLib_dir_count_1">
+		(defun Ex_browseLib_dir_count_1()
+			vars:(d)
+			(setq d (browseLib.dir.current)) ;; get the current directory
+			(writeln (d.count)) ;; -> 3
+			true)
+			</pre>
+		    </blockquote>
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>	     
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>dir.current</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="dir.current">   
+		    <p class=overview>Overview</p>
+			<p>Returns the application's current directory.</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Static Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(browseLib.dir.current)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Object</td>
+			    <td>Returns a dir instance associated with the application's current directory.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Call this child Lambda on the browseLib.dir Lambda or an instance of the dir Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>   
+		    <blockquote>
+		    <pre class=code id="Ex_browseLib_dir_current_1">
+		(defun Ex_browseLib_dir_current_1()
+			vars:(d)
+			(setq d (browseLib.dir.current)) ;; get the current directory
+			(writeln (d.absPath)) ;;-> C:/myapplication
+			true)
+			</pre>
+		    </blockquote>
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>dir.dirName</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="dir.dirName">    
+		    <p class=overview>Overview</p>
+			<p>Returns the name of the directory, this is not the same as the path, e.g. a 
+		directory with the name "mail", might have the path "/var/spool/mail". If the 
+		directory has no name (e.g. it is the root directory) #void is returned.
+		No check is made to ensure that a directory with this name actually exists. 
+		See also path, absPath, absFilePath and exists.</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(dirInstance.dirName)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>Returns</th>
+			    <td>String or Void</td>
+			    <td>Returns the name of the directory or #void if at root directory.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a dir Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p> 
+		    <blockquote>
+		    <pre class=code id="Ex_browseLib_dir_dirName_1">
+		;;*****************************
+		;;Get the name of a directory
+		;;*****************************
+		(defun Ex_browseLib_dir_dirName_1()
+			vars:(d)
+			(setq d (new browseLib.dir "C:/winnt/System32"))
+			(writeln (d.dirName)) ;;-> System32
+			true)
+			</pre>
+		    </blockquote>
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>dir.drives</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="dir.drives">  
+		    <p class=overview>Overview</p>
+		<p>Returns a vector of the root directories on this system. On Windows this returns a number 
+		of fileInfo objects containing "C:/", "D:/" etc. On other operating systems, it returns 
+		just one fileInfo object for the root directory (e.g. "/").
+		The vector returned is a copy of the information maintained internally by the dir Lambda.</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Static Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(browseLib.dir.drives)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Object Vector</td>
+			    <td>Vector of fileInfo objects.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Call this child Lambda on the browseLib.dir Lambda or an instance of the dir Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>      
+		    <blockquote>
+		    <pre class=code id="Ex_browseLib_dir_drives_1">
+		;;****************************************
+		;;Get a list of the drives on the system.
+		;;****************************************
+		(dir Ex_browseLib_dir_drives_1()
+			vars:(i drives)
+			(setq drives (browseLib.dir.drives))
+			(loop for i from 0 until (length drives) do
+				(writeln drives[i].path)
+			)
+			;;-> A:/
+			;;-> C:/
+			;;-> D:/
+			true)
+			</pre>
+		    </blockquote>
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>	     
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>dir.entryInfoList</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="dir.entryInfoList"> 
+		    <p class=overview>Overview</p>
+		<p>Returns a vector of fileInfo objects for all the files and directories in the directory, 
+		ordered in accordance with setSorting and filtered in accordance with setFilter and setNameFilter. 
+		 The vector returned is a COPY of the information maintained internally by the dir Lambda.
+		The filter and sorting specifications can be overridden using the nameFilter, 
+		filterSpec and sortSpec arguments. 
+		Returns #void if the directory is unreadable or does not exist or an argument error was encountered.<br> 
+		See also entryList, setNameFilter, setSorting, and setFilter. </p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(dirInstance.entryInfoList)
+			(dirInstance.entryInfoList nameFilter)
+			(dirInstance.entryInfoList nameFilter filterSpec)
+			(dirInstance.entryInfoList nameFilter filterSpec sortSpec)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>NameFilter</th>
+			    <td>String</td>
+			    <td>Regular Expression Specification for match against filename</td>
+			  </tr>
+			  <tr>
+			    <th>FilterSpec</th>
+			    <td>Symbol or vector of Symbols</td>
+			    <td>Filter spec symbols include: Dirs, Files, Drives, NoSymLink, All, TypeMask, Readable,
+				 Writeable, Executable, RWEMask, Modified, Hidden, System, AccessMask, DefaultFilter</td>
+			  </tr>
+			  <tr>
+			    <th>SortSpec</th>
+			    <td>Symbol or vector of Symbols</td>
+			    <td>Sort spec symbols include: Name, Time, Size, Unsorted, SortByMask, DirsFirst, Reversed, IgnoreCase, DefaultSort</td>
+			  </tr>
+			  <tr>
+			    <th>Returns</th>
+			    <td>retType</td>
+			    <td>retDesc</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Call this child Lambda on the browseLib.dir Lambda or an instance of the dir Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>       
+		    <blockquote>
+		    <pre class=code id="Ex_browseLib_dir_entryInfoList_1">
+		;;********************************************************************************
+		;;Use entryInfoList to examine detailed file information in the current directory.
+		;;********************************************************************************
+		(defun Ex_browseLib_dir_entryInfoList_1()
+			vars:(d n list)
+			(setq d (browseLib.dir.current)) ;; get a dir instance for the current directory
+			(setq list (d.entryInfoList))
+			(loop for n from 0 until (length list) do
+				(writeln (list[n].fileName))
+			);n
+			true)
+			</pre>
+		    </blockquote>
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>	     
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>dir.entryList</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="dir.entryList"> 
+		    <p class=overview>Overview</p>
+		<p>Returns a vector of the names of all the files and directories in the directory, 
+		ordered in accordance with setSorting and filtered in accordance with setFilter and setNameFilter. 
+		</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(dirInstance.entryList)
+			(dirInstance.entryList nameFilter)
+			(dirInstance.entryList nameFilter filterSpec)
+			(dirInstance.entryList nameFilter filterSpec sortSpec)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>NameFilter</th>
+			    <td>String</td>
+			    <td>Regular Expression Specification for match against filename</td>
+			  </tr>
+			  <tr>
+			    <th>FilterSpec</th>
+			    <td>Symbol or vector of Symbols</td>
+			    <td>Filter spec symbols include: Dirs, Files, Drives, NoSymLink, All, TypeMask, Readable,
+				 Writeable, Executable, RWEMask, Modified, Hidden, System, AccessMask, DefaultFilter</td>
+			  </tr>
+			  <tr>
+			    <th>SortSpec</th>
+			    <td>Symbol or vector of Symbols</td>
+			    <td>Sort spec symbols include: Name, Time, Size, Unsorted, SortByMask, DirsFirst, Reversed, IgnoreCase, DefaultSort</td>
+			  </tr>
+			  <tr>
+			    <th>Returns</th>
+			    <td>retType</td>
+			    <td>retDesc</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Call this child Lambda on the browseLib.dir Lambda or an instance of the dir Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>    
+		    <blockquote>
+		    <pre class=code id="Ex_functionTitle_1">
+		;;********************************************************************************
+		;;Use entryList to get the names of items in the current directory.
+		;;********************************************************************************
+		(defun Ex_browseLib_dir_entryList_1()
+			vars:(d n list)
+			(setq d (browseLib.dir.current)) ;; get a dir instance for the current directory
+			(setq list (d.entryList))
+			(loop for n from 0 until (length list) do
+				(writeln list[n])
+			);n
+			true)
+			</pre>
+		    </blockquote>
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>	     
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>dir.entryStructList</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="dir.entryStructList">      
+		    <p class=overview>Overview</p>
+				<p>Returns a vector of directory entry information structures for all the files and directories in the 
+		directory, ordered in accordance with setSorting and filtered in accordance 
+		with setFilter and setNameFilter. The filter and sorting specifications can be overridden using the 
+		filterSpec and sortSpec arguments. Returns an empty vector if the directory is unreadable or does not exist. </p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(dirInstance.entryStructList)
+			(dirInstance.entryStructList nameFilter)
+			(dirInstance.entryStructList nameFilter filterSpec)
+			(dirInstance.entryStructList nameFilter filterSpec sortSpec)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>NameFilter</th>
+			    <td>String</td>
+			    <td>Regular Expression Specification for match against filename</td>
+			  </tr>
+			  <tr>
+			    <th>FilterSpec</th>
+			    <td>Symbol or vector of Symbols</td>
+			    <td>Filter spec symbols include: Dirs, Files, Drives, NoSymLink, All, TypeMask, Readable,
+				 Writeable, Executable, RWEMask, Modified, Hidden, System, AccessMask, DefaultFilter</td>
+			  </tr>
+			  <tr>
+			    <th>SortSpec</th>
+			    <td>Symbol or vector of Symbols</td>
+			    <td>Sort spec symbols include: Name, Time, Size, Unsorted, SortByMask, DirsFirst, Reversed, IgnoreCase, DefaultSort</td>
+			  </tr>
+			  <tr>
+			    <th>Returns</th>
+			    <td>retType</td>
+			    <td>retDesc</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a dir Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>              
+		    <blockquote>
+		    <pre class=code id="Ex_browseLib_dir_entryStructuList_1">
+		;;************************************************
+		;; Get information for the entries in a directory
+		;;************************************************
+		(defun Ex_browseLib_dir_entryStructuList_1()
+			vars:(d list n)
+			(setq d (browseLib.dir.current)) ;; get a dir instance for the current directory
+			(setq list (d.entryStructList))
+			(loop for n from 0 until (length list) (writeln list[n]))	
+			true)
+			</pre>
+		    </blockquote>
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>NOTE: This child Lambda has no corrosponding QDir counterpart. We are taking
+		the results of an entryInfoList call and creating the file information structures.</P>	     
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>dir.exists</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="dir.exists">      
+		    <p class=overview>Overview</p>
+			<p>Checks for the existence of the file name or existence of directory if
+		no argument is passed.</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(dirInstance.exists)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>fileName</th>
+			    <td>String</td>
+			    <td>Name of file</td>
+			  </tr>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Boolean</td>
+			    <td>True if file or directory exists or False otherwise.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a dir Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>      
+		    <blockquote>
+		    <pre class=code id="Ex_browseLib_dir_exists_1">
+		;;**************************************
+		;; Check if directories and files exist.
+		;;**************************************
+		(defun Ex_browseLib_dir_exists_1()
+			vars:(d)
+			(setq d (browseLib.dir.current)) ;; get a dir instance for the current directory
+			(writeln (d.exists)) ;;-> true
+			(writeln (d.exists "somefile.yada")) ;;-> false
+			true)
+			</pre>
+		    </blockquote>
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>dir.filePath</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="dir.filePath">  
+		    <p class=overview>Overview</p>
+			<p>Returns the path name of a file in the directory. Does not check if the file 
+		actually exists in the directory. If the dir is relative the returned path 
+		name will also be relative. Redundant multiple separators or "." and ".." 
+		directories in fileName will not be removed (see cleanDirPath).</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(dirInstance.filePath)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>fileName</th>
+			    <td>String</td>
+			    <td></td>
+			  </tr>
+			    <th>accepthAbsPath</th>
+			    <td>Boolean - Optional<br>Default=true</td>
+			    <td>If acceptAbsPath is TRUE a fileName starting with a separator "/" will be returned without change. 
+			If acceptAbsPath is FALSE an absolute path will be prepended to the fileName and the resultant string returned.</td>
+			  </tr>
+			  <tr>
+			    <th>Returns</th>
+			    <td>retType</td>
+			    <td>retDesc</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a dir Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>    
+		    <blockquote>
+		    <pre class=code id="Ex_browseLib_dir_filePath_1">
+		;;**********************
+		;; Get the filepath of a file in a directory.
+		;;**********************
+		(defun Ex_browseLib_dir_filePath_1()
+			vars:(d)
+			(setq d (new browseLib.dir "C:/mydir")) ;; get the current directory
+			(writeln (d.filePath "anewfile.txt" true)) ;-> C:/mydir/anewfile.txt
+			true)
+			</pre>
+		    </blockquote>
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>		     
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>dir.filter</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="dir.filter">  
+		    <p class=overview>Overview</p>
+			<p>Returns the vector of filter specificaiton symbols that were set by setFilter. 
+			See setFilter for a list of allowed filter specifications. <br>
+			Filter Specification Symbols Include:
+		<ul>
+			<li>Dirs - List directories only. 
+			<li>Files - List files only. 
+			<li>Drives - List disk drives (ignored under Unix). 
+			<li>NoSymLink - NoSymLinks - Do not list symbolic links (ignored by operating systems that don't support symbolic links). 
+			<li>All - List directories, files, drives and symlinks (this does not list broken symlinks unless you specify System). 
+			<li>TypeMask -  A mask for the the Dirs, Files, Drives and NoSymLinks flags.
+			<li>Readable - List files for which the application has read access.
+			<li>Writeable - List files for which the application has write access.
+			<li>Executable - List files for which the application has execute access. Executables needs to be combined with Dirs or Files. 
+			<li>RWEMask - A mask for the Readable, Writable and Executable flags. 
+			<li>Modified - Only list files that have been modified (ignored under Unix). 
+			<li>Hidden - List hidden files (on Unix, files starting with a .). 
+			<li>System - List system files (on Unix, FIFOs, sockets and device files) 
+			<li>AccessMask -  A mask for the Readable, Writable, Executable Modified, Hidden and System flags 
+			<li>DefaultFilter - Internal flag.
+		</ul>
+			</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(dirInstance.filter)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			    <th>Returns</th>
+			    <td>Vector</td>
+			    <td>A vector of filter specification symbols.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a dir Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>   
+		    <blockquote>
+		    <pre class=code id="Ex_browseLib_dir_filter_1">
+		;;**********************
+		;; Example_Description
+		;;**********************
+		(defun Ex_browseLib_dir_filter_1()
+			vars:(d)
+			;Get current filter specifications
+			(setq d (new browseLib.dir "C:/mydir")) ;; get a dir instance for the current directory
+			(d.setFilter #(Files: Writeable:)) ; list only writeable files in directory
+			(writeln (d.filter)) ;;-> #(Files: Writeable:)
+			true)
+			</pre>
+		    </blockquote>
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>		     
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>dir.home</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="dir.home">         
+		    <p class=overview>Overview</p>
+				<p>Returns the home directory.
+		Under Windows the HOME environment variable is used. If this does not exist the 
+		USERPROFILE environment variable is used. If that does not exist the path is 
+		formed by concatenating the HOMEDRIVE and HOMEPATH environment variables. 
+		If they don't exist the rootDirPath is used (this uses the SystemDrive 
+		environment variable). If none of these exist "C:\" is used. 
+		Under non-Windows operating systems the HOME environment variable is 
+		used if it exists, otherwise rootDirPath is used. <br>
+		See also homeDirPath. 
+		</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Static Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(browseLib.dir.home)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>Returns</th>
+			    <td>dir Object</td>
+			    <td>Returns an Lambda instance of the dir Lambda.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Call this child Lambda on the browseLib.dir Lambda or an instance of the dir Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>   
+		    <blockquote>
+		    <pre class=code id="Ex_dir_home_1">
+		;;*******************************************************************
+		;; Get a dir Lambda instance associated with the user's home directory
+		;;*******************************************************************
+		(defun Ex_dir_home_1()
+			vars:(d)
+			(setq d (browseLib.dir.home))
+			(writlen (d.path))
+			true)
+			</pre>
+		    </blockquote>
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>	     
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>dir.homeDirPath</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="dir.homeDirPath">     
+		    <p class=overview>Overview</p>
+			<p>Returns the absolute path of the user's home directory. </p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Static Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(browseLib.dir.homeDirPath)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>Returns</th>
+			    <td>String</td>
+			    <td>User's home directory path.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Call this child Lambda on the browseLib.dir Lambda or an instance of the dir Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>   
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_dir_homeDirPath_1">
+		;;********************************
+		;; Get user's home directory path
+		;;********************************
+		(defun Ex_browseLib_dir_homeDirPath_1()
+			(writeln (browseLib.dir.homeDirPath)) ;;-> C:/myhomedirectory
+			true)
+			</pre>
+		    </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>		     
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>dir.isReadable</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="dir.isReadable">     
+		    <p class=overview>Overview</p>
+			<p>Returns true if the directory is readable.</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(dirInstance.isReadable)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Boolean</td>
+			    <td>True if directory is readable - False otherwise.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a dir Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>  
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_dir_isReadable_1">
+		;;*********************************
+		;; Check if a directory is readable
+		;;*********************************
+		(defun Ex_browseLib_dir_isReadable_1()
+			vars:(d)
+			(setq d (browseLib.dir.current))
+			(writeln (d.isReadable)) ;;-> true
+			true)
+			</pre>
+		    </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>		     
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>dir.isRelative</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="dir.isRelative">          
+		    <p class=overview>Overview</p>
+			<p>Returns TRUE if the directory path is relative to the current directory and 
+		returns FALSE if the path is absolute (e.g. under UNIX a path is relative 
+		if it does not start with a "/".<br>
+		See also convertToAbs.
+		</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Instance Child Lambda</p>
+		    <pre class=code>
+			(dirInstance.isRelative)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Boolean</td>
+			    <td>True if directory is relative.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a dir Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>  
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_dir_isRelative_1">
+		;;**********************
+		;; Check if the current directory is relative
+		;;**********************
+		(defun Ex_browseLib_dir_isRelative_1()
+			vars:(d)
+			(setq d (browseLib.dir.current))
+			(writeln (d.isRelative)) ;;-> false
+			true)
+			</pre>
+		    </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>		     
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>dir.isRelativePath</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="dir.isRelativePath">  
+		    <p class=overview>Overview</p>
+			<p>Returns TRUE if path is relative returns FALSE if it is absolute.<br>
+		See also isRelative. </p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Static Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(browseLib.dir.isRelatativePath pathName)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>pathName</th>
+			    <td>String</td>
+			    <td>Path</td>
+			  </tr>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Boolean</td>
+			    <td>True if path is relative - False otherwise.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Call this child Lambda on the browseLib.dir Lambda or an instance of the dir Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>  
+		    <blockquote> 
+		    <pre class=code id="Ex_dir_isRelativePath_1">
+		;;********************************************
+		;; Determine if a path is relative or absolute
+		;;********************************************
+		(defun Ex_dir_isRelative_1()
+			(writeln (browseLib.dir.isRelativePath "C:/somedir")) ;-> false
+			(writeln (browseLib.dir.isRelativePath "./somedir")) ;-> true
+			true)
+			</pre>
+		     </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>		     
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>dir.isRoot</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="dir.isRoot">   
+		    <p class=overview>Overview</p>
+			<p>Returns true if the dir instance is associated with the root directory.<br>
+			See also root and rootDirPath.</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(dirInstance.isRoot)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Boolean</td>
+			    <td>True if dir instance is associated with root directory - otherwise False.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a dir Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>  
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_dir_isRoot_1">
+		;;******************************************************
+		;; Check if the current directory is the root directory
+		;;******************************************************
+		(defun Ex_browseLib_dir_isRoot_1()
+			vars:(d)
+			(setq d (browseLib.dir.current))
+			(writeln (d.isRoot)) ;;-> false
+			
+			;Check if current directory is a symbolic link pointing to root directory
+			(setq d (new browseLib.dir (d.canonicalPath)))
+			(writeln (d.isRoot)) ;-> false
+		
+			true)
+			</pre>
+		    </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>Note: If the directory is a symbolic link to the root directory 
+		this function returns False. If you want to test for this use canonicalPath as shown
+		in the example above.
+		</P>		     
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>dir.match</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="dir.match">         
+		    <p class=overview>Overview</p>
+			<p>Returns TRUE if the fileName matches the wildcard (glob) pattern filter otherwise 
+		returns FALSE. The filter may contain multiple patterns separated by spaces or semicolons. <br>
+		See QRegExp wildcard matching and QRegExp::match(). 
+		</p>
+		        <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Static Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(browseLib.dir.match filter fileName)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>filter</th>
+			    <td>String</td>
+			    <td>Wildcard pattern</td>
+			  </tr>
+			  <tr>
+			    <th>fileName</th>
+			    <td>String</td>
+			    <td>File name</td>
+			  </tr>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Boolean</td>
+			    <td>Returns True if the fileName matches the wildcard pattern - otherwise False.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Call this child Lambda on the browseLib.dir Lambda or an instance of the dir Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>      
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_dir_match_1">
+		;;**********************
+		;; Example_Description
+		;;**********************
+		(defun Ex_browseLib_dir_match_1()
+			(writeln (browseLib.dir.match "*.sl" "filename.sl")) ;;-> true
+			true)
+			</pre>
+		     </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>
+		  </div>
+	    ]]></Description>
+	</Section>      
+	<Section>
+	    <Heading>dir.matchAllDirs</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="dir.matchAllDirs">  
+		    <p class=overview>Overview</p>
+			<p>Returns the value set by setMatchAllDirs.</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(dirInstance.matchAllDirs)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Boolean</td>
+			    <td>Value set with setMatchAllDirs.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Call this child Lambda on the browseLib.dir Lambda or an instance of the dir Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>   
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_dir_matchAllDirs_1">
+		;;************************************************
+		;; Change value of matchAllDirs in a dir instance
+		;;************************************************
+		(defun Ex_browseLib_dir_matchAllDirs_1()
+			vars:(d)
+			(setq d (new browseLib.dir "C:/AIS" ))
+			(d.setNameFilter "*.sl")
+			(d.setMatchAllDirs false)
+			(writeln (d.entryList)) ;;-> #(obj| "astartup.sl") 
+			(d.setMatchAllDirs true)
+			(writeln (d.entryList)) 
+			;;-> #(obj| "." ".." "astartup.sl" "docs" "Libraries" "logs" "usr" "wwwroot" )
+			true)
+			</pre>
+		    </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>		     
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>dir.mkdir</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="dir.mkdir"> 
+		    <p class=overview>Overview</p>
+			<p>Creates a directory.<br>
+		See also rmdir. 
+		</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(dirInstance.mkdir dirName)
+			(dirInstance.mkdir dirName true)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>dirName</th>
+			    <td>String</td>
+			    <td>A relative or absolute path directory name.</td>
+			  </tr>
+			  <tr>
+			    <th>acceptAbsPath</th>
+			    <td>Boolean</td>
+			    <td>If acceptAbsPath is TRUE a path starting with a separator ('/') will 
+		create the absolute directory. If acceptAbsPath is FALSE any number 
+		of separators at the beginning of dirName will be removed.</td>
+			  </tr>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Boolean</td>
+			    <td>Returns True if successful - otherwise returns False</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a dir Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>    
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_dir_mkdir_1">
+		;;*******************************************************
+		;; Create and remove a directory under current directory
+		;;*******************************************************
+		(defun Ex_browseLib_dir_mkdir_1()
+			vars:(d)
+			(setq d (browseLib.dir.current))
+			(if (d.exists "JUNKDIR") (d.rmdir "JUNKDIR"))
+			(d.mkdir "JUNKDIR")
+			(writeln (d.exists "JUNKDIR"))
+			(d.rmdir "JUNKDIR")
+			true)
+			</pre>
+		    </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>		     
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>dir.nameFilter</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="dir.nameFilter">   
+		    <p class=overview>Overview</p>
+				<p>Returns value set with setNameFilter.<br>
+			See setNameFilter.
+			</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(dirInstance.nameFilter)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>Returns</th>
+			    <td>String</td>
+			    <td>Value set with setNameFilter.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a dir Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>  
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_dir_nameFilter_1">
+		;;**************************************************
+		;; Get the current nameFilter value of dir instance
+		;;**************************************************
+		(defun Ex_browseLib_dir_nameFilter_1()
+			vars:(d)
+			(setq d (browseLib.dir.current))
+			(d.setNameFilter "*.sl")
+			(writeln (d.nameFilter)) ;;-> "*.sl"
+			true)
+			</pre>
+		    </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>	     
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>dir.new</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="dir.new">  
+		    <p class=overview>Overview</p>
+			<p>Construct a new dir Lambda instance with path dirPath, that filters its entries by name using 
+		nameFilter and by attributes using filterSpec. It also sorts the names using sortSpec. <br>
+		The default nameFilter is an empty string, which excludes nothing.<br>
+		The default filterSpec is All, which also means exclude nothing.<br> 
+		The default sortSpec is #(Name: IgnoreCase:), i.e. sort by name case-insensitively.<br>
+		</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Function</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(math.cursorToMatrix cursor fieldNames)
+			(browseLib.dir.current)
+			(new browseLib.dir dirPath)
+			(new browseLib.dir dirPath nameFilter)
+			(new browseLib.dir dirPath nameFilter sortSpec)
+			(new browseLib.dir dirPath nameFilter sortSpec filterSpec)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>dirPath</th>
+			    <td>String - optional</td>
+			    <td>Directory path.</td>
+			  </tr>
+			  <tr>
+			    <th>nameFilter</th>
+			    <td>String - optional</td>
+			    <td>Wildcard specification.</td>
+			  </tr>
+			  <tr>
+			    <th>FilterSpec</th>
+			    <td>Symbol or vector of Symbols</td>
+			    <td>Filter spec symbols include: Dirs, Files, Drives, NoSymLink, All, TypeMask, Readable,
+				 Writeable, Executable, RWEMask, Modified, Hidden, System, AccessMask, DefaultFilter</td>
+			  </tr>
+			  <tr>
+			    <th>SortSpec</th>
+			    <td>Symbol or vector of Symbols</td>
+			    <td>Sort spec symbols include: Name, Time, Size, Unsorted, SortByMask, DirsFirst, Reversed, IgnoreCase, DefaultSort</td>
+			  </tr>
+			  <tr>
+			    <th>Returns</th>
+			    <td>dir Object</td>
+			    <td>dir Lambda instance.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use the new function to create dir instances.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_dir_new_1">
+		;;**********************************************
+		;; Create a dir instance using the new function
+		;;**********************************************
+		(defun Ex_browseLib_dir_new_1()
+			vars:(d)
+			(setq d (new browseLib.dir "C:")) ;; get c drive root directory
+			;; get directory of sl files in current application directory
+			(setq d (new browseLib.dir #void "*.sl")) 
+			;; get all files in current application directory sorted by date time stamp
+			(setq d (new browseLib.dir #void #void Time:)) 
+			true)
+			</pre>
+		    </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>		     
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>dir.path</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="dir.path">          
+		    <p class=overview>Overview</p>
+			<p>Returns the path, this may contain symbolic links, but never contains 
+		redundant ".", ".." or multiple separators.
+		The returned path can be either absolute or relative, see setPath. <br>
+		See also setPath, absPath, exists, cleanDirPath, dirName, 
+		absFilePath, and convertSeparators.</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(dirInstance.path)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>Returns</th>
+			    <td>String</td>
+			    <td>Path assoicated with dir instance.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a dir Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>  
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_dir_path_1">
+		;;*************************
+		;; Get path of a directory
+		;;*************************
+		(defun Ex_browseLib_dir_path_1()
+			vars:(d)
+			(setq d (browseLib.dir.current))
+			(writeln (d.path)) ;;-> C:/AIS
+			true)
+			</pre>
+		    </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>		     
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>dir.refresh</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="dir.refresh">     
+		    <p class=overview>Overview</p>
+			<p>Refreshes the directory information.</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(dirInstance.refresh)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			    <th>Returns</th>
+			    <td>Boolean</td>
+			    <td>Returns True.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a dir Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p> 
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_dir_refresh_1">
+		;;***************************************************************
+		;; Use refresh to force an update of the dir instance information
+		;;***************************************************************
+		(defun Ex_browseLib_dir_refresh_1()
+			vars:(d)
+			(setq d (browseLib.dir.current))
+			;.. code that modifies the contents of the directory
+			(d.refresh) ;;-> true
+			true)
+			</pre>
+		    </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>		     
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>dir.remove</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="dir.remove">      
+		    <p class=overview>Overview</p>
+			<p>Removes a file from the directory.</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(dirInstance.remove fileName)
+			(dirInstance.remove fileName false)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>fileName</th>
+			    <td>String</td>
+			    <td>File path</td>
+			  </tr>
+			  </tr>
+			    <th>accepthAbsPath</th>
+			    <td>Boolean - Optional<br>Default=true</td>
+			    <td>If acceptAbsPath is TRUE a path starting with separator "/" will 
+		remove the file with the absolute path. If acceptAbsPath is FALSE 
+		any number of separators at the beginning of fileName will be removed 
+		and the resultant file name will be removed.</td>
+			  </tr>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Boolean</td>
+			    <td>Returns TRUE if the file is removed successfully otherwise returns FALSE.  </td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a dir Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>  
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_dir_remove_1">
+		;;********************************
+		;; Removed a file from a directory
+		;;********************************
+		(defun Ex_browseLib_dir_remove_1()
+			vars:(d filePath fileID)
+			(setq d (browseLib.dir.current))
+			(setq filePath (d.absFilePath "_afiletodelete.txt"))
+			(setq fileID (fileOpen filePath 1 0)) ; open a new text file
+			(fileClose fileID 1) ; close file
+			(d.refresh) ; refresh directory to show newly created file
+			(writeln (d.entryList)) ;;-> #(obj| _afiletodelete.txt ...)
+			(writeln (d.remove filePath))
+			(d.refresh)
+			(writeln (d.entryList))
+			true)
+			</pre>
+		    </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>		     
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>dir.rename</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="dir.rename">   
+		    <p class=overview>Overview</p>
+			<p>	Renames a file or directory. <br>
+		On most file systems, rename fails only if oldName does not exist or 
+		if newName and oldName are not on the same partition. On Windows, 
+		rename will fail if newName already exists. However, there are also 
+		other reasons why rename can fail. For example, on at least one 
+		file system rename fails if newName points to an open file. 
+		</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(dirInstance.rename oldName newName)
+			(dirInstance.rename oldName newName false)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>oldName</th>
+			    <td>String</td>
+			    <td>file path</td>
+			  </tr>
+			  <tr>
+			    <th>newName</th>
+			    <td>String</td>
+			    <td>file path</td>
+			  </tr>
+			  <tr>
+			    <th>accepthAbsPath</th>
+			    <td>Boolean - optional default=True</td>
+			    <td>If acceptAbsPaths is TRUE a path starting with a separator ('/') will 
+		rename the file with the absolute path if acceptAbsPaths is FALSE any 
+		number of separators at the beginning of the names will be removed.</td>
+			  </tr>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Boolean</td>
+			    <td>Returns TRUE if successful otherwise returns FALSE.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a dir Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>   
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_dir_rename_1">
+		;;**********************
+		;; Rename a file
+		;;**********************
+		(defun Ex_browseLib_dir_rename_1()
+			vars:(d filePath newFilePath fileID)
+			(setq d (browseLib.dir.current))
+			;create a new file
+			(setq filePath (d.absFilePath "_afiletorename.txt"))
+			(setq fileID (fileOpen filePath 1 0)) ; open a new text file
+			(fileClose fileID 1) ; close file
+			(d.refresh) ; refresh directory to show newly created file
+			(writeln (d.entryList)) ;;-> #(obj| _afiletodelete.txt ...)
+			(setq newFilePath (d.absFilePath "_afilerenamed.txt"))
+			(writeln (d.rename filePath newFilePath))
+			(d.refresh)
+			(writeln (d.entryList))
+			;Clean up directory by deleting our work file
+			(d.remove newFilePath)
+			true)
+			</pre>
+		    </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>		     
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>dir.rmdir</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="dir.rmdir">      
+		    <p class=overview>Overview</p>
+			<p>Removes a directory.	The directory must be empty for rmdir() to succeed. 
+			</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(dirInstance.rmdir dirPath)
+			(dirInstance.rmdir dirPath false)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>dirName</th>
+			    <td>String</td>
+			    <td>Directory path.</td>
+			  </tr>
+			  <tr>
+			    <th>accepthAbsPath</th>
+			    <td>Boolean - optional default=True</td>
+			    <td>If acceptAbsPath is TRUE a path starting with a separator ('/') will 
+		remove the absolute directory if acceptAbsPath is FALSE any number of 
+		separators at the beginning of dirName will be removed. </td>
+			  </tr>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Boolean</td>
+			    <td>Returns TRUE if successful otherwise returns FALSE.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a dir Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>   
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_dir_rmdir_1">
+		;;**********************
+		;; Remove a directory
+		;;**********************
+		(defun Ex_browseLib_dir_rmdir_1()
+			vars:(d newDir dirPath)
+			(setq d (browseLib.dir.current))
+			(if (d.exists "JUNKDIR") (d.rmdir "JUNKDIR"))
+			(d.mkdir "JUNKDIR")
+			(writeln (d.exists "JUNKDIR"))
+			(d.rmdir "JUNKDIR")
+			true)
+			</pre>
+			</blockquote>
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>		     
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>dir.root</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="dir.root">    
+		    <p class=overview>Overview</p>
+			<p>Returns the root directory.<br>
+		See also rootDirPath and drives. </p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Static Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(browseLib.dir.root)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>Returns</th>
+			    <td>dir Object</td>
+			    <td>Returns a dir Lambda instance associated with the root directory of system.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Call this child Lambda on the browseLib.dir Lambda or an instance of the dir Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>      
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_dir_root_1">
+		;;*************************************
+		;; Get the root directory of the system
+		;;*************************************
+		(defun Ex_browseLib_dir_root_1()
+			vars:(d)
+			(setq d (browseLib.dir.root))
+			(writeln (d.entryList)) ;;-> ...files in the root directory...
+			true)
+			</pre>
+		    </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>		     
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>dir.rootDirPath</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="dir.rootDirPath">       
+		    <p class=overview>Overview</p>
+			<p>Returns the absolute path for the root directory.<br>
+		For UNIX operating systems this returns "/". For Windows file systems 
+		this normally returns "c:/". <br>
+		See also root and drives.</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Static Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(browseLib.dir.rootDirPath)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>Returns</th>
+			    <td>String</td>
+			    <td>Path of root directory in system.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Call this child Lambda on the browseLib.dir Lambda or an instance of the dir Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>   
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_dir_rootDirPath_1">
+		;;**************************************************
+		;; Get the path to the root directory of the system.
+		;;**************************************************
+		(defun Ex_browseLib_dir_rootDirPath_1()
+			(writeln (browseLib.dir.rootDirPath))
+			true)
+			</pre>
+		     </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>		     
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>dir.separator</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="dir.separator">    
+		    <p class=overview>Overview</p>
+			<p>Returns the native directory separator "/" under UNIX (including 
+		 Mac OS X) and "\" under Windows.
+		You do not need to use this function to build file paths. 
+		If you always use "/", AIS will translate your paths to conform to 
+		the underlying operating system. </p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Static Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(browseLib.dir.separator)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Text</td>
+			    <td>Character Separator used on the underying operating system.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Call this child Lambda on the browseLib.dir Lambda or an instance of the dir Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>  
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_dir_separator_1">
+		;;***************************************************************
+		;; Get the directory separator used on the host operating system.
+		;;***************************************************************
+		(defun Ex_browseLib_dir_separator_1()
+			(writeln (browseLib.dir.separator))
+			true)
+			</pre>
+		    </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>		     
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>dir.setCurrent</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="dir.setCurrent">    
+		    <p class=overview>Overview</p>
+			<p>Sets the application's current working directory.
+		</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Static Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(browseLib.dir.setCurrent path)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>path</th>
+			    <td>String</td>
+			    <td>Path</td>
+			  </tr>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Boolean</td>
+			    <td>Returns TRUE if the directory was successfully changed otherwise 
+		returns FALSE.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Call this child Lambda on the browseLib.dir Lambda or an instance of the dir Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p> 
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_dir_setCurrent_1">
+		;;******************************************
+		;; Change the applications current directory
+		;;******************************************
+		(defun Ex_browseLib_dir_setCurrent_1()
+			vars:(d dirPath)
+			(setq d (browseLib.dir.current)) ; get the applications current directory
+			(setq dirPath (d.absPath))
+			(if (not (d.exists "NEWAPPDIR")) 
+				(d.mkdir "NEWAPPDIR"))
+			(d.setCurrent "NEWAPPDIR")
+			(writeln (d.current))
+			(d.setCurrent dirPath)
+			(d.rmdir "NEWAPPDIR")
+			true)
+			</pre>
+		     </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>		     
+		  </div>
+	    ]]></Description>
+	</Section>       
+	<Section>
+	    <Heading>dir.setFilter</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="dir.setFilter">   
+		    <p class=overview>Overview</p>
+				<p>Sets the filter used by entryList and entryInfoList to filterSpec. 
+		The filter is used to specify the kind of files that should be 
+		returned by entryList and entryInfoList. <br>
+		Filter Specification Symbols Include:
+		<ul>
+			<li>Dirs - List directories only. 
+			<li>Files - List files only. 
+			<li>Drives - List disk drives (ignored under Unix). 
+			<li>NoSymLink - NoSymLinks - Do not list symbolic links (ignored by operating systems that don't support symbolic links). 
+			<li>All - List directories, files, drives and symlinks (this does not list broken symlinks unless you specify System). 
+			<li>TypeMask -  A mask for the the Dirs, Files, Drives and NoSymLinks flags.
+			<li>Readable - List files for which the application has read access.
+			<li>Writeable - List files for which the application has write access.
+			<li>Executable - List files for which the application has execute access. Executables needs to be combined with Dirs or Files. 
+			<li>RWEMask - A mask for the Readable, Writable and Executable flags. 
+			<li>Modified - Only list files that have been modified (ignored under Unix). 
+			<li>Hidden - List hidden files (on Unix, files starting with a .). 
+			<li>System - List system files (on Unix, FIFOs, sockets and device files) 
+			<li>AccessMask -  A mask for the Readable, Writable, Executable Modified, Hidden and System flags 
+			<li>DefaultFilter - Internal flag.
+		</ul>
+		</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(dirInstance.setFilter #(Dirs: Files: Modified:))
+			(dirInstance.setFilter Dirs:)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>filterSpec</th>
+			    <td>Vector or Symbol</td></td>
+			    <td>Vector of filter specifications or single filterSpec symbol</td>
+			  </tr>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Boolean</td>
+			    <td>True</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a dir Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>       
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_dir_setFilter_1">
+		;;****************************************************
+		;; Change the filter specifications on a dir instance
+		;;****************************************************
+		(defun Ex_browseLib_dir_setFilter_1()
+			vars:(d)
+			(setq d (browseLib.dir.current))
+			(d.setFilter Dirs:)
+			(writeln (d.entryList)) ;;-> list of directories under current application directory
+			true)
+			</pre>
+		    </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>dir.setMatchAllDirs</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="dir.setMatchAllDirs">     
+		    <p class=overview>Overview</p>
+			<p>Changes the effect of nameFilter. If enable is TRUE then all directories are included (e.g. in entryList), 
+		and the nameFilter is only applied to the files. If enable is FALSE then the 
+		nameFilter is applied to both directories and files.
+		</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(dirInstance.setMatchAllDirs enable)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>enable</th>
+			    <td>Boolean</td>
+			    <td>If enable is TRUE then all directories are included (e.g. in entryList), 
+		and the nameFilter is only applied to the files. If enable is FALSE then the 
+		nameFilter is applied to both directories and files.</td>
+			  </tr>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Boolean</td>
+			    <td>True</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a dir Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>    
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_dir_setMatchAllDirs_1">
+		;;*************************************************
+		;; Use name filter on directories as well as files.
+		;;*************************************************
+		(defun Ex_browseLib_dir_setMatchAllDirs_1()
+			vars:(d)
+			(setq d (browseLib.dir.current))
+			(d.setMatchAllDirs true)
+			(d.setNameFilter "_*") ; match entry items that begin with "_"
+			(writeln (d.entryList)) ;;-> ...items that begin with "_"
+			true)
+			</pre>
+		   </blockquote>  
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>dir.setNameFilter</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="dir.setNameFilter">   
+		    <p class=overview>Overview</p>
+			<p>Sets the name filter used by entryList, entryStructList and  entryInfoList to nameFilter. </p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(dirInstance.setNameFilter nameFilter)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>nameFilter</th>
+			    <td>String</td>
+			    <td>One or more Wildcard match patterns separated by semicolons.</td>
+			  </tr>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Boolean</td>
+			    <td>True</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a dir Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>   
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_dir_setNameFilter_1">
+		;;*********************************************************
+		;; Using name filter to filter contents of directory lists
+		;;*********************************************************
+		(defun Ex_browseLib_dir_setNameFilter_1()
+			vars:(d)
+			(setq d (browseLib.dir.current))
+			(d.setNameFilter "*.sl")
+			(writeln (d.entryList)) ;;--> Show only files ending with .sl
+			true)
+			</pre>
+		    </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>dir.setPath</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="dir.setPath">     
+		    <p class=overview>Overview</p>
+				<p>Sets the path of the directory to path. The path is cleaned of redundant ".", ".." 
+		and of multiple separators. No check is made to ensure that a directory with this path exists. <br>
+		The path can be either absolute or relative. Absolute paths begin with the directory separator "/" 
+		(optionally preceded by a drive specification under Windows). Relative file names begin with a 
+		directory name or a file name and specify a path relative to the current directory. An example of an 
+		absolute path is the string "/tmp/quartz", a relative path might look like "src/fatlib".
+		</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(dirInstance.setPath path)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>path</th>
+			    <td>String</td>
+			    <td>Directory path.</td>
+			  </tr>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Boolean</td>
+			    <td>True</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a dir Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p> 
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_dir_setPath_1">
+		;;*******************************************
+		;; Recurse a directory tree using dir.setPath
+		;; This example uses a single instance of a dir
+		;; Lambda to traverse all directories off the
+		;; root path of the system.
+		;;*******************************************
+		(defun Ex_browseLib_dir_setPath_1()
+			pvars:(recurseDir )
+			(defun recurseDir(dirInstance indent)
+				vars:(i list fill)
+				(setq fill (rept " " indent))
+				(setq indent (+ indent 1))
+				(setq list (dirInstance.entryList))
+				(loop for i from 0 until (length list) do
+					(if (not (or (= "." list[i]) (= ".." list[i]))) (begin
+						(writeln fill list[i])
+						(dirInstance.setPath (dirInstance.absFilePath list[i]))
+						(dirInstance.refresh)
+						(recurseDir dirInstance indent)
+						(dirInstance.cdUp)
+						))
+					);i
+				true);end of recurseDir
+			
+			;*** Main Logic ****		
+			vars:(d list dirInstance)
+			(setq dirInstance (browseLib.dir.root))
+			(dirInstance.setFilter Dirs:) ; return only directory entries when using entryList
+			(writeln (dirInstance.absPath))
+			(recurseDir dirInstance 1)
+			true)
+			</pre>
+		    </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>	     
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>dir.setSorting</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="dir.setSorting">
+		    <p class=overview>Overview</p>
+			<p>Sets the sort order used by entryList, entryStructList and entryInfoList.
+		The sortSpec is a vector of sort specification symbols or a single sort specification symbol.<br>
+		See also sorting and SortSpec. 
+		<ul>
+		<li>Name - Sort by name. 
+		<li>Time - Sort by time (modification time). 
+		<li>Size - Sort by file size. 
+		<li>Unsorted - Do not sort. 
+		<li>SortByMask - A mask for Name, Time and Size. 
+		<li>DirsFirst - Put the directories first, then the files. 
+		<li>Reversed - Reverse the sort order. 
+		<li>IgnoreCase - Sort case-insensitively. 
+		<li>DefaultSort - Internal flag.  
+		</ul>
+		</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(dirInstance.setSorting sortSpec)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>sortSpec</th>
+			    <td>Vector or Symbol</td>
+			    <td>A vector of sort spec symbols or a single sort spec symbol.</td>
+			  </tr>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Boolean</td>
+			    <td>True</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a dir Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p> 
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_dir_setSorting_1">
+		;;*******************************
+		;; Sorting a directory entry list 
+		;;*******************************
+		(defun Ex_browseLib_dir_setSorting_1()
+			vars:(d)
+			(setq d (browseLib.dir.current))
+			(d.setSorting Size:)
+			(writeln (d.entryList)) ;;-> ..items listed in order by size ascending..
+			(d.setSorting #(Size: Reversed:)) 
+			;;-> ..items listed in order by size descending..
+			true)
+			</pre>
+		    </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>		     
+		  </div>
+	    ]]></Description>
+	</Section>
+</Essay>

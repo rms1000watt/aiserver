@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Integer binaryNot 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>binaryNot</FunctionKeywords>
+		<TypeKeywords>Integer</TypeKeywords>
+		<RelatedFunctions>bitwiseNot binaryNand </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>numerical not bitwise macro</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[  <p> This example shows how the <b>binaryNot</b> macro performs 
+              a numeric bitwise not of the argument expression. </p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+(binaryNot 0)    </b>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[1]]></Returns>
+  	    <Expression><![CDATA[ <sc>(binaryNot 1)   </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[0]]></Returns>
+        <Hints><![CDATA[none
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

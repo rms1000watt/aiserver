@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Matrix cdr 008</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>cdr</FunctionKeywords>
+		<TypeKeywords>Matrix Structure</TypeKeywords>
+		<RelatedFunctions>ref   setCdr setLastCdr</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>tail ref index</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows that the tail value of a Matrix
+
+
+
+
+                  must first be defined before it can be accessed by the <b>cdr</b>
+                  function.  If no tail value is defined, then the <b>cdr</b> function
+
+
+
+
+                  returns #void.
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define ClassRec #(mat| 30 15 4 ) )</sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60Matrix 188141&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq TeacherRec (cdr ClassRec)) </sc>]]></Expression>
+        <Note><![CDATA[No cdr value is assigned to the variable TeacherRec.]]></Note>
+        <Returns><![CDATA[#void]]></Returns>
+        <Hints><![CDATA[The cdr is not reachable by the [] operator. ]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>binaryInsert</Title>
+		<FunctionName>binaryInsert</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+        <ArgumentTypes>Character String Symbol Vector BitVector Brick ByteVector IntVector ShortVector
+                       FltVector ObjVector Structure Dictionary Directory CpxVector
+                       Matrix NumMatrix Integer Float Number Complex Boolean</ArgumentTypes>   
+        <DataType> Structure Vector Matrix  ShortVector FltVector IntVector NumVector NumMatrix CpxVector</DataType>
+	    <RelatedFunctions>insert uniqueInsert binarySearch sort</RelatedFunctions>
+        <RelatedVMInstructions> vmregRefPointer vmrefbytevector</RelatedVMInstructions>
+		<HumanKeywords>binary insert structure sort</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>binaryInsert</b> function Function destructively inserts the 
+                 specified new value into the Structure,Vector or Matrix at the proper location.  </p>
+          ]]></Description>
+	<Brief>
+	   <Overview-Structure><![CDATA[
+		<p>The  <b>binaryInsert</b>  Function destructively inserts the specified new value 
+           into the Structure at the proper location to preserve ascending sort order. 
+           The Structure is increased in size to accommodate the new value. 
+           If a matching value is already in the Structure, no insertion is made.  </p>
+        <p>Since there is always a matching object, either before or after insertion, 
+           the <b>binaryInsert</b> function always returns the index of the newly inserted 
+           value or the location of the matched object.</p>
+        ]]></Overview-Structure>
+        <Overview><![CDATA[
+		<p>The  <b>binaryInsert</b>  Function destructively inserts the specified new value 
+           into the Vector at the proper location to preserve ascending sort order. 
+           The Vector is increased in size to accommodate the new value. 
+           If a matching value is already in the Vector, no insertion is made.  </p>
+        <p>Since there is always a matching object, either before or after insertion, 
+           the <b>binaryInsert</b> function always returns the index of the newly inserted 
+           value or the location of the matched object.</p>
+        ]]></Overview>
+        <Overview-Matrix><![CDATA[
+		<p>The  <b>binaryInsert</b>  Function destructively inserts the specified new value 
+           into the Matrix  at the proper location to preserve ascending sort order. 
+           The Matrix  is increased in size to accommodate the new value. 
+           If a matching value is already in the Matrix , no insertion is made.  </p>
+        <p>Since there is always a matching object, either before or after insertion, 
+           the <b>binaryInsert</b> function always returns the index of the newly inserted 
+           value or the location of the matched object.</p>
+        ]]></Overview-Matrix>
+        <Overview-NumMatrix><![CDATA[
+		<p>The  <b>binaryInsert</b>  Function destructively inserts the specified new value 
+           into the NumMatrix  at the proper location to preserve ascending sort order. 
+           The NumMatrix  is increased in size to accommodate the new value. 
+           If a matching value is already in the NumMatrix , no insertion is made.  </p>
+        <p>Since there is always a matching object, either before or after insertion, 
+           the <b>binaryInsert</b> function always returns the index of the newly inserted 
+           value or the location of the matched object.</p>
+        ]]></Overview-NumMatrix>
+        <Usage-Structure><![CDATA[
+        <p>Normally a structure is not maintained in sort order, but can be sorted by 
+           invoking the <b>sort</b> function.  If a structure has been sorted, 
+           the <b>binaryInsert</b> function should be used to add new keys to the structure 
+           and preserve the sort order.
+		</p>
+        ]]></Usage-Structure>
+        <Usage><![CDATA[
+        <p>Normally a vector is not maintained in sort order, but can be sorted by 
+           invoking the <b>sort</b> function.  If a vector has been sorted, 
+           the <b>binaryInsert</b> function should be used to add new values to the vector 
+           and preserve the sort order. The <b>binaryInsert</b> function assumes <b>sorted 
+            ascending</b> order only.
+		</p>
+        ]]></Usage>
+       <Usage-Matrix><![CDATA[
+        <p><FONT COLOR="#0000ff"> Note: </FONT> <b>Returns an error message if the Matrix is not of rank one. </b></p>
+        <p>Normally a Matrix is not maintained in sort order, but can be sorted by 
+           invoking the <b>sort</b> function.  If a Matrix has been sorted in ascending order, 
+           the <b>binaryInsert</b> function should be used to add new values to the Matrix 
+           and preserve the sort order. The <b>binaryInsert</b> function assumes <b>sorted 
+            ascending</b> order only.
+		</p>
+        ]]></Usage-Matrix>
+       <Usage-NumMatrix><![CDATA[
+        <p><FONT COLOR="#0000ff"> Note: </FONT> <b>Returns an error message if the NumMatrix is not of rank one. </b></p>
+        <p>Normally a NumMatrix is not maintained in sort order, but can be sorted by 
+           invoking the <b>sort</b> function.  If a NumMatrix has been sorted in ascending order, 
+           the <b>binaryInsert</b> function should be used to add new values to the Matrix 
+           and preserve the sort order. The <b>binaryInsert</b> function assumes <b>sorted 
+            ascending</b> order only.
+		</p>
+        ]]></Usage-NumMatrix>
+    </Brief>
+	<Syntax-Structure>
+	    <Expression><![CDATA[<p> (binaryInsert struct newkey)</p>]]></Expression>
+		<Argument>
+		  <Name>struct</Name>
+		  <Note><![CDATA[
+		  <p> A predefined Structure variable or constant. </p>
+          ]]></Note>
+		  <AISTypes>Structure </AISTypes>
+		</Argument>
+     	<Argument>
+		  <Name>newkey</Name>
+		  <Note><![CDATA[
+		  <p> The new key to be installed in the Structure.</p>
+          ]]></Note>
+		  <AISTypes>Symbol </AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>The index where the new key was installed.
+        </p>
+	    ]]></Return>
+	</Syntax-Structure>
+	<Syntax>
+	    <Expression><![CDATA[<p> (binaryInsert vector newValue)</p>]]></Expression>
+		<Argument> 
+		  <Name>vector</Name>
+		  <Note><![CDATA[
+		  <p> A predefined vector variable or constant. </p>
+          ]]></Note>
+		  <AISTypes>Vector FltVector IntVector NumVector BitVector ShortVector </AISTypes>
+		</Argument>
+     	<Argument> 
+		  <Name>newValue</Name>
+		  <Note><![CDATA[
+		  <p> The new value to be installed in the Vector.</p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector Brick ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory 
+                       Matrix NumMatrix Integer Float Number Complex Boolean </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The index where the new key was installed.
+        </p>
+	    ]]></Return>   
+	</Syntax>
+	<Syntax-Matrix>
+	    <Expression><![CDATA[<p> (binaryInsert matrix newValue)</p>]]></Expression>
+		<Argument> 
+		  <Name>matrix</Name>
+		  <Note><![CDATA[
+		  <p>a previously sorted Matrix </p>
+          ]]></Note>
+		  <AISTypes>Matrix </AISTypes>
+		</Argument>
+     	<Argument> 
+		  <Name>newValue</Name>
+		  <Note><![CDATA[
+		  <p> The new value to be installed in the Matrix.</p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector Brick ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory 
+                       Matrix NumMatrix Integer Float Number Complex Boolean </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The index where the new key was installed.
+        </p>
+	    ]]></Return>   
+	</Syntax-Matrix>
+	<Syntax-NumMatrix>
+	    <Expression><![CDATA[<p> (binaryInsert nummatrix newValue)</p>]]></Expression>
+		<Argument> 
+		  <Name>nummatrix</Name>
+		  <Note><![CDATA[
+		  <p>a previously sorted Matrix </p>
+          ]]></Note>
+		  <AISTypes>NumMatrix </AISTypes>
+		</Argument>
+     	<Argument> 
+		  <Name>newValue</Name>
+		  <Note><![CDATA[
+		  <p> The new value to be installed in the NumMatrix.</p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector Brick ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory 
+                       Matrix NumMatrix Integer Float Number Complex Boolean </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The index where the new key was installed.
+        </p>
+	    ]]></Return>   
+	</Syntax-NumMatrix>
+</Function>

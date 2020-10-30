@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>fileReadRecord</Title>
+		<FunctionName>fileReadRecord</FunctionName>
+		<FunctionType>Builtin(FileIO)</FunctionType>
+		<ArgumentTypes>Integer String</ArgumentTypes>
+		<DataType>ByteVector  Text String</DataType>
+		<RelatedFunctions>fileClose fileRead  fileOpen fileWrite writeln display </RelatedFunctions>
+        <RelatedVMInstructions> none   </RelatedVMInstructions>
+		<HumanKeywords> file fileID ASCII  record buffer database eol</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>fileReadRecord</b> function reads end-of-line terminated records from a buffered file
+            returning record string String Object.</p>
+          ]]></Description>
+	<Brief>
+	   <Overview>
+       <![CDATA[
+	     <p> The <b>fileReadRecord</b> function reads end-of-line terminated records from 
+             a buffered file <b>{fileID}</b> returning record String Object <b>{record}</b>. 
+             If no buffer size <b>{bufferSize}</b> is specified, one will be created, of a default size, 
+             to hold the data that is read from the file.</p>
+         <p>Data is entered into a file with the <b>fileWrite, fwriteln,</b> or <b>fdisplay</b>
+            functions, however, records are not actually committed to the file until the file 
+            is closed. Thus, attempting to read a record immediately after a <b>fileWrite</b> or 
+            <b>fdisplay</b> will result in an error. In order to verify records that have been 
+            written, it is necessary to close the file and save the file (<b>fileClose</b>
+            with an option argument equal to 1) . The file can then be re-opened and read 
+            with the <b>fileReadRecord</b> function.</p>
+
+         <p>For example here is example code which writes a file and then reads records from it.</p>
+
+		 <p>(writeTestFile)</p>
+		 <p>(readTestFile)</p>		
+
+         <p>Where <b>readTestFile</b> is defined as follows.</p>
+
+		 <p>(defun readTestFile()</p>
+		 <p>&nbsp&nbsp&nbsp vars:(n N aEOF aBuffer (aLine ""))</p>
+		 <p>&nbsp&nbsp&nbsp (setq aFile (fileOpen aFileName 0 0))</p>
+		 <p>&nbsp&nbsp&nbsp <b>(setq aBuffer (fileReadRecord aFile))</b></p>
+		 <p>&nbsp&nbsp&nbsp (while (<> aLine #void) do</p>
+		 <p>&nbsp&nbsp&nbsp&nbsp&nbsp <b>(setq aLine (fileReadRecord aFile aBuffer))</b></p>
+		 <p>&nbsp&nbsp&nbsp&nbsp&nbsp (writeln aLine)</p>
+		 <p>&nbsp&nbsp&nbsp ) ; end of while</p>
+		 <p>&nbsp&nbsp&nbsp (setq aFile (fileClose aFile 1))</p>
+		 <p>&nbsp&nbsp&nbsp true)</p>	
+
+
+         <p>And where <b>writeTestFile</b> is defined as follows.</p>
+
+		 <p>(defun writeTestFile()</p>
+		 <p>&nbsp&nbsp&nbsp vars:(n N)</p>
+		 <p>&nbsp&nbsp&nbsp (setq aFile (fileOpen aFileName 1 0))</p>
+		 <p>&nbsp&nbsp&nbsp (loop for n from 0 until 10 do</p>
+		 <p>&nbsp&nbsp&nbsp&nbsp&nbsp (fileWriteln aFile n #\tab "some text" )</p>
+		 <p>&nbsp&nbsp&nbsp ) ; end of loop</p>
+		 <p>&nbsp&nbsp&nbsp (setq aFile (fileClose aFile 1))</p>
+		 <p>&nbsp&nbsp&nbsp true)</p>		
+		 <p>;;Main Code</p>	
+		 <p>(writeTestFile)</p>
+		 <p>(readTestFile)</p>		
+			
+        ]]></Overview>
+        <Usage>
+        <![CDATA[
+          <p>The <b>fileReadRecord</b> function is used to read end-of-line terminated 
+             text data from an existing file (One that have been previously written and closed). 
+             See the <b>fileOpen</b>  <b>fileWrite</b> and <b>fileClose</b> functions. </p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression>
+        <![CDATA[
+                    <p>(fileReadRecord fileID)</p>
+                    <p>(fileReadRecord fileID buffer)</p>
+       ]]>
+       </Expression>
+		<Argument>
+		  <Name>fileID </Name>
+		  <Note><![CDATA[
+		  <p>An Integer representing the fileID to be read (must be the fileID returned from a previous fileOpen function).</p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>
+        <Argument>
+		  <Name>buffer</Name>
+		  <Note><![CDATA[
+		  <p>(Optional) The file buffer to parse looking for the next record (must be the buffer returned from the first call to the fileReadRecord function).</p>
+          ]]></Note>
+		  <AISTypes>ByteVector</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>If no buffer argument is passed, the buffer object to parse looking for the next record.
+	       If a buffer argument is passed, the next sequential record in the file.
+	       If no buffer argument is passed and there are no more records, a void object is returned.
+        </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

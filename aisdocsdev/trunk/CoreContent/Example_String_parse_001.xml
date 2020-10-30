@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example String parse 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>parse</FunctionKeywords>
+		<TypeKeywords>String   Vector   Structure Dictionary Directory
+                       Matrix  Integer Float Number Date Complex</TypeKeywords>
+		<RelatedFunctions>new</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>converts parse value</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows how a String may be parsed, 
+	              using the builtin LISP parsing rules. Each of the 
+	              examples is parsed and converted, except the 
+	              last example. It cannot be recognized, and the 
+	              original String is returned.
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(parse  "3.141592") </sc>]]></Expression>  
+        <Note><![CDATA[The parse function converts the String "3.141592"	
+              into the Number 3.141592.  ]]></Note> 
+        <Returns><![CDATA[3.141592]]></Returns>
+        <Expression><![CDATA[ <sc>(parse  "#Jan,19,1993")   </sc>]]></Expression>  
+        <Note><![CDATA[The parse function converts the String "#Jan,19,1993"	
+              into the Date  #Jan,19,1993. ]]></Note> 
+        <Returns><![CDATA[ #Jan,19,1993]]></Returns>
+  	    <Expression><![CDATA[ <sc>(parse  "#(1 2 3)") </sc>]]></Expression>
+        <Note><![CDATA[The parse function converts the String "#(1 2 3)"	
+              into a Vector. ]]></Note>
+        <Returns><![CDATA[ #&#60Vector 2194&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(parse "23Hello") </sc>]]></Expression>  
+        <Note><![CDATA[The parse function cannot recognize the type of 23Hello
+              so the original String is returned. ]]></Note> 
+        <Returns><![CDATA[ 23Hello ]]></Returns>
+        <Hints><![CDATA[The <b>parse</b> function removes the double-quotes(") before and
+               after the String determines the data type of parsed value.
+        ]]></Hints>
+   </Syntax>
+</Example>

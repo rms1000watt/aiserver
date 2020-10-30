@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example NumVector isNumberVector  001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isNumberVector</FunctionKeywords>
+		<TypeKeywords>Vector NumVector Integer</TypeKeywords>
+		<RelatedFunctions>isType isIntegerVector isFloatVector 
+
+
+                          isByteVector isBitVector isIdentical
+
+
+                           isObjectVector isPcodeVector isVector</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords> Vector bit byte numvector Boolean</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example checks if the Vector evaluated is a Number Vector.
+
+
+                  If it is, the function returns true, otherwise, it returns false.
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq X (new Vector:  number:  2  11.433  -2.6))        </sc>]]></Expression>
+        <Note><![CDATA[A NumVector with 2 values is defined.]]></Note>
+        <Returns><![CDATA[#&#60NumVector 199917&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display X)        </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#(num| 11.433 -2.6 )]]></Returns>
+        <Expression><![CDATA[ <sc>(isNumberVector X)      </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

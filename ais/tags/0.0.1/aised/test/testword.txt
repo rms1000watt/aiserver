@@ -1,0 +1,22 @@
+# aised/test/testword.txt
+
+#							AISED - TEST WORD
+
+# CHANGE HISTORY
+# Version	Date		Who		Change
+# 1.0109	10/7/2006	tlw		Original
+
+# SYNTAX
+# WORD - word(Select)
+
+#	*************************************************************************************************
+# WORD - word(Select)
+clear
+append("abc A \n", Backward)
+move(nextbow, NoSelect)
+word(NoSelect)
+move(bol, NoSelect)
+move(nexteow, NoSelect)
+word(Select)
+#end
+

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example NumMatrix ref 035</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>ref</FunctionKeywords>
+		<TypeKeywords> NumMatrix Text String Integer</TypeKeywords>
+		<RelatedFunctions>setq  ref fieldsOf   refValues  </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>ref reference set position</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This examples show the shorthand form of NumMatrix reference through
+
+
+                  the bracket [] operators. In this example, the NumMatrix value is referenced 
+
+
+                  by using its index. The <b>ref</b> function is used either with the Matrix Name or the 
+
+
+                  NumMatrix' Object ID.
+  
+
+
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(define X  #(nummat| 1 2 3))          </sc>]]></Expression>
+        <Note><![CDATA[Define a NumMatrix containing various fruit names: ]]></Note>
+        <Returns><![CDATA[#&#60NumMatrix 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Y  (new NumMatrix: number: 2 2 2 1 2 3 4))  </sc>]]></Expression>
+        <Note><![CDATA[Define another NumMatrix.]]></Note>
+        <Returns><![CDATA[#&#60NumMatrix 234567&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>X[0] </sc>]]></Expression>
+        <Note><![CDATA[Accesses the NumMatrix value with index 0.]]></Note>
+        <Returns><![CDATA[1.0]]></Returns>
+       <Expression><![CDATA[ <sc>X[1] </sc>]]></Expression>
+        <Note><![CDATA[Accesses the NumMatrix value with index 1.]]></Note>
+        <Returns><![CDATA[2.0]]></Returns>
+        <Expression><![CDATA[ <sc> Y[1 0]</sc>]]></Expression>
+        <Note><![CDATA[Accesses the NumMatrix value with index [1 0].]]></Note>
+        <Returns><![CDATA[3.0]]></Returns>
+        <Expression><![CDATA[ <sc>#&#60NumMatrix 123456&#62[0]        </sc>]]></Expression>
+        <Note><![CDATA[Instead of the NumMatrix  name, the object ID may be used to 
+
+
+              access the NumMatrix  values]]></Note>
+        <Returns><![CDATA[1.0]]></Returns>
+        <Expression><![CDATA[ <sc>#&#60NumMatrix  123456&#62[1]      </sc>]]></Expression>
+        <Note><![CDATA[Accesses the NumMatrix  value with index 1.]]></Note>
+        <Returns><![CDATA[2.0]]></Returns>
+        <Hints><![CDATA[An element in a Matrix can optionally be referenced with the []
+
+         operator.   The brackets must contain a valid integer index to the specified Matrix
+
+        element.]]></Hints>
+   </Syntax>
+</Example>

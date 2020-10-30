@@ -1,0 +1,3349 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioProject
+	ProjectType="Visual C++"
+	Version="9.00"
+	Name="aforms"
+	ProjectGUID="{B2376B93-DBBA-4722-BA79-92E22248D519}"
+	RootNamespace="aforms"
+	Keyword="Qt4VSv1.0"
+	TargetFrameworkVersion="131072"
+	>
+	<Platforms>
+		<Platform
+			Name="Win32"
+		/>
+		<Platform
+			Name="x64"
+		/>
+	</Platforms>
+	<ToolFiles>
+	</ToolFiles>
+	<Configurations>
+		<Configuration
+			Name="Debug|Win32"
+			OutputDirectory="..\$(PlatformName)\$(ConfigurationName)"
+			IntermediateDirectory="$(PlatformName)\$(ConfigurationName)"
+			ConfigurationType="4"
+			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="false"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalOptions="-Zm200 "
+				Optimization="0"
+				AdditionalIncludeDirectories="$(QTDIR)\include;.\..\include;.\gen;."
+				PreprocessorDefinitions="WIN32;_WIN;_M32;_DEBUG;_LIB;UNICODE;QT_LARGEFILE_SUPPORT;_CRT_SECURE_NO_WARNINGS"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="3"
+				StructMemberAlignment="0"
+				PrecompiledHeaderFile="$(IntDir)\aforms.pch"
+				AssemblerListingLocation="$(IntDir)\"
+				ObjectFile="$(IntDir)\"
+				ProgramDataBaseFileName="$(IntDir)\"
+				BrowseInformation="1"
+				BrowseInformationFile="$(IntDir)\"
+				WarningLevel="3"
+				SuppressStartupBanner="true"
+				DebugInformationFormat="3"
+				CompileAs="0"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="_DEBUG"
+				Culture="1033"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLibrarianTool"
+				OutputFile="$(OutDir)\aformsD.lib"
+				SuppressStartupBanner="true"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
+			Name="Release|Win32"
+			OutputDirectory="..\$(PlatformName)\$(ConfigurationName)"
+			IntermediateDirectory="$(PlatformName)\$(ConfigurationName)"
+			ConfigurationType="4"
+			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="false"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalOptions="-Zm200 "
+				Optimization="3"
+				InlineFunctionExpansion="0"
+				AdditionalIncludeDirectories="$(QTDIR)\include;.\..\include;.\gen;."
+				PreprocessorDefinitions="WIN32;_WIN;_M32;NDEBUG;_LIB;UNICODE;QT_LARGEFILE_SUPPORT;_CRT_SECURE_NO_WARNINGS"
+				StringPooling="false"
+				BasicRuntimeChecks="0"
+				RuntimeLibrary="2"
+				StructMemberAlignment="4"
+				EnableFunctionLevelLinking="false"
+				PrecompiledHeaderFile="$(IntDir)\aforms.pch"
+				AssemblerListingLocation="$(IntDir)\"
+				ObjectFile="$(IntDir)\"
+				ProgramDataBaseFileName="$(IntDir)\"
+				BrowseInformationFile="$(IntDir)\"
+				WarningLevel="3"
+				SuppressStartupBanner="true"
+				CompileAs="0"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="NDEBUG"
+				Culture="1033"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLibrarianTool"
+				OutputFile="$(OutDir)\aforms.lib"
+				SuppressStartupBanner="true"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
+			Name="Debug|x64"
+			OutputDirectory="..\$(PlatformName)\$(ConfigurationName)"
+			IntermediateDirectory="$(PlatformName)\$(ConfigurationName)"
+			ConfigurationType="4"
+			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="false"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				TargetEnvironment="3"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalOptions="-Zm200 "
+				Optimization="0"
+				AdditionalIncludeDirectories="$(QTDIR)\include;.\..\include;.\gen;.;..\atextedit;..\atextedit\gen"
+				PreprocessorDefinitions="_WIN64;_DEBUG;_LIB;UNICODE;_WIN;_M64;_MSVC;QT_LARGEFILE_SUPPORT;_CRT_SECURE_NO_WARNINGS"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="3"
+				StructMemberAlignment="0"
+				PrecompiledHeaderFile="$(IntDir)\aforms.pch"
+				AssemblerListingLocation="$(IntDir)\"
+				ObjectFile="$(IntDir)\"
+				ProgramDataBaseFileName="$(IntDir)\"
+				BrowseInformation="1"
+				BrowseInformationFile="$(IntDir)\"
+				WarningLevel="3"
+				SuppressStartupBanner="true"
+				DebugInformationFormat="3"
+				CompileAs="0"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="_DEBUG"
+				Culture="1033"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLibrarianTool"
+				OutputFile="$(OutDir)\aformsD.lib"
+				SuppressStartupBanner="true"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
+			Name="Release|x64"
+			OutputDirectory="..\$(PlatformName)\$(ConfigurationName)"
+			IntermediateDirectory="$(PlatformName)\$(ConfigurationName)"
+			ConfigurationType="4"
+			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="false"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				TargetEnvironment="3"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalOptions="-Zm200 "
+				Optimization="3"
+				InlineFunctionExpansion="0"
+				AdditionalIncludeDirectories="$(QTDIR)\include;.\..\include;.\gen;.;..\atextedit;..\atextedit\gen"
+				PreprocessorDefinitions="_WIN64;NDEBUG;_LIB;UNICODE;_WIN;_M64;_MSVC;QT_LARGEFILE_SUPPORT;_CRT_SECURE_NO_WARNINGS"
+				StringPooling="false"
+				BasicRuntimeChecks="0"
+				RuntimeLibrary="2"
+				StructMemberAlignment="4"
+				EnableFunctionLevelLinking="false"
+				FloatingPointModel="2"
+				PrecompiledHeaderFile="$(IntDir)\aforms.pch"
+				AssemblerListingLocation="$(IntDir)\"
+				ObjectFile="$(IntDir)\"
+				ProgramDataBaseFileName="$(IntDir)\"
+				BrowseInformationFile="$(IntDir)\"
+				WarningLevel="3"
+				SuppressStartupBanner="true"
+				CompileAs="0"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="NDEBUG"
+				Culture="1033"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLibrarianTool"
+				OutputFile="$(OutDir)\aforms.lib"
+				SuppressStartupBanner="true"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+	</Configurations>
+	<References>
+	</References>
+	<Files>
+		<Filter
+			Name="Source Files"
+			Filter="cpp;c;cxx;rc;qrc;def;r;odl;idl;hpj;bat"
+			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
+			>
+			<File
+				RelativePath=".\aaboutdialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\aadduserdialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\acabinetpage.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\acabsettingsdialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\aclosedialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\aconnectmgr.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\aconsolepage.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\adebugpage.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\aeditortab.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\aeditpage.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\aform.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\aforms.qrc"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Compiling Qt resource file: .\aforms.qrc..."
+						CommandLine="&quot;$(QTDIR)\bin\rcc.exe&quot; -name &quot;aforms&quot; -no-compress &quot;.\aforms.qrc&quot; -o &quot;gen\qrc_aforms.cpp&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\rcc.exe;images/aisedit.png;images/checkoff.png;images/checkon.png;images/codecomment.png;images/codeindent.png;images/codeoutdent.png;images/codeshowagents.png;images/codeuncomment.png;images/compileoff.png;images/compileon.png;images/connectcontextoff.png;images/connectcontexton.png;images/connectserveroff.png;images/connectserveron.png;images/connectsessionoff.png;images/connectsessionon.png;images/consoleerrortrace.png;images/consolego.png;images/consoleinstructiontrace.png;images/consolejit.png;images/consolestop.png;images/consolesyscheck.png;images/debugcurrent.png;images/debuggo.png;images/debughelp.png;images/debugquit.png;images/debugrunto.png;images/debugshowvars.png;images/debugsourceoff.png;images/debugsourceon.png;images/debugstepinto.png;images/debugstepout.png;images/debugstepover.png;images/editback.png;images/editcopy.png;images/editcut.png;images/editfind.png;images/editforward.png;images/editpaste.png;images/editprint.png;images/editredo.png;images/editundo.png;images/fileclose.png;images/filecompile.png;images/filenew.png;images/fileopen.png;images/filesave.png;images/filesaveall.png;images/folderclosed.png;images/folderdocument.png;images/folderdrive.png;images/foldernew.png;images/folderopen.png;images/folderrefresh.png;images/folderroot.png;images/folderup.png;images/mainabase.png;images/mainenginebusy.png;images/mainengineidle.png;images/mainhelp.png;images/mainserver.png;images/sessionview.png"
+						Outputs="&quot;gen\qrc_aforms.cpp&quot;"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Compiling Qt resource file: .\aforms.qrc..."
+						CommandLine="&quot;$(QTDIR)\bin\rcc.exe&quot; -name &quot;aforms&quot; -no-compress &quot;.\aforms.qrc&quot; -o &quot;gen\qrc_aforms.cpp&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\rcc.exe;images/aisedit.png;images/checkoff.png;images/checkon.png;images/codecomment.png;images/codeindent.png;images/codeoutdent.png;images/codeshowagents.png;images/codeuncomment.png;images/compileoff.png;images/compileon.png;images/connectcontextoff.png;images/connectcontexton.png;images/connectserveroff.png;images/connectserveron.png;images/connectsessionoff.png;images/connectsessionon.png;images/consoleerrortrace.png;images/consolego.png;images/consoleinstructiontrace.png;images/consolejit.png;images/consolestop.png;images/consolesyscheck.png;images/debugcurrent.png;images/debuggo.png;images/debughelp.png;images/debugquit.png;images/debugrunto.png;images/debugshowvars.png;images/debugsourceoff.png;images/debugsourceon.png;images/debugstepinto.png;images/debugstepout.png;images/debugstepover.png;images/editback.png;images/editcopy.png;images/editcut.png;images/editfind.png;images/editforward.png;images/editpaste.png;images/editprint.png;images/editredo.png;images/editundo.png;images/fileclose.png;images/filecompile.png;images/filenew.png;images/fileopen.png;images/filesave.png;images/filesaveall.png;images/folderclosed.png;images/folderdocument.png;images/folderdrive.png;images/foldernew.png;images/folderopen.png;images/folderrefresh.png;images/folderroot.png;images/folderup.png;images/mainabase.png;images/mainenginebusy.png;images/mainengineidle.png;images/mainhelp.png;images/mainserver.png;images/sessionview.png"
+						Outputs="&quot;gen\qrc_aforms.cpp&quot;"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Compiling Qt resource file: .\aforms.qrc..."
+						CommandLine="&quot;$(QTDIR)\bin\rcc.exe&quot; -name &quot;aforms&quot; -no-compress &quot;.\aforms.qrc&quot; -o &quot;gen\qrc_aforms.cpp&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\rcc.exe;images/aisedit.png;images/checkoff.png;images/checkon.png;images/codecomment.png;images/codeindent.png;images/codeoutdent.png;images/codeshowagents.png;images/codeuncomment.png;images/compileoff.png;images/compileon.png;images/connectcontextoff.png;images/connectcontexton.png;images/connectserveroff.png;images/connectserveron.png;images/connectsessionoff.png;images/connectsessionon.png;images/consoleerrortrace.png;images/consolego.png;images/consoleinstructiontrace.png;images/consolejit.png;images/consolestop.png;images/consolesyscheck.png;images/debugcurrent.png;images/debuggo.png;images/debughelp.png;images/debugquit.png;images/debugrunto.png;images/debugshowvars.png;images/debugsourceoff.png;images/debugsourceon.png;images/debugstepinto.png;images/debugstepout.png;images/debugstepover.png;images/editback.png;images/editcopy.png;images/editcut.png;images/editfind.png;images/editforward.png;images/editpaste.png;images/editprint.png;images/editredo.png;images/editundo.png;images/fileclose.png;images/filecompile.png;images/filenew.png;images/fileopen.png;images/filesave.png;images/filesaveall.png;images/folderclosed.png;images/folderdocument.png;images/folderdrive.png;images/foldernew.png;images/folderopen.png;images/folderrefresh.png;images/folderroot.png;images/folderup.png;images/mainabase.png;images/mainenginebusy.png;images/mainengineidle.png;images/mainhelp.png;images/mainserver.png;images/sessionview.png"
+						Outputs="&quot;gen\qrc_aforms.cpp&quot;"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Compiling Qt resource file: .\aforms.qrc..."
+						CommandLine="&quot;$(QTDIR)\bin\rcc.exe&quot; -name &quot;aforms&quot; -no-compress &quot;.\aforms.qrc&quot; -o &quot;gen\qrc_aforms.cpp&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\rcc.exe;images/aisedit.png;images/checkoff.png;images/checkon.png;images/codecomment.png;images/codeindent.png;images/codeoutdent.png;images/codeshowagents.png;images/codeuncomment.png;images/compileoff.png;images/compileon.png;images/connectcontextoff.png;images/connectcontexton.png;images/connectserveroff.png;images/connectserveron.png;images/connectsessionoff.png;images/connectsessionon.png;images/consoleerrortrace.png;images/consolego.png;images/consoleinstructiontrace.png;images/consolejit.png;images/consolestop.png;images/consolesyscheck.png;images/debugcurrent.png;images/debuggo.png;images/debughelp.png;images/debugquit.png;images/debugrunto.png;images/debugshowvars.png;images/debugsourceoff.png;images/debugsourceon.png;images/debugstepinto.png;images/debugstepout.png;images/debugstepover.png;images/editback.png;images/editcopy.png;images/editcut.png;images/editfind.png;images/editforward.png;images/editpaste.png;images/editprint.png;images/editredo.png;images/editundo.png;images/fileclose.png;images/filecompile.png;images/filenew.png;images/fileopen.png;images/filesave.png;images/filesaveall.png;images/folderclosed.png;images/folderdocument.png;images/folderdrive.png;images/foldernew.png;images/folderopen.png;images/folderrefresh.png;images/folderroot.png;images/folderup.png;images/mainabase.png;images/mainenginebusy.png;images/mainengineidle.png;images/mainhelp.png;images/mainserver.png;images/sessionview.png"
+						Outputs="&quot;gen\qrc_aforms.cpp&quot;"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\aideprefdialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\alogondialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\alogpage.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\amainwindow.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\amanagecabinetsdialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\anodevaluedialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\apage.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\aregisterdirdialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\aremotefiledialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\asaveasagentdialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\aserverdialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\aserverform.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\aservertreemodel.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\asessionform.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\asysresmonpage.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\ausermgmtpage.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\awatchdialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\codeeditor.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						AdditionalIncludeDirectories="&quot;$(QTDIR)\include&quot;"
+					/>
+				</FileConfiguration>
+			</File>
+		</Filter>
+		<Filter
+			Name="Header Files"
+			Filter="h;hpp;hxx;hm;inl"
+			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
+			>
+			<File
+				RelativePath=".\aaboutdialog.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aaboutdialog.h..."
+						CommandLine="$(QTDIR)\bin\moc aaboutdialog.h -o gen\moc_aaboutdialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aaboutdialog.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aaboutdialog.h..."
+						CommandLine="$(QTDIR)\bin\moc aaboutdialog.h -o gen\moc_aaboutdialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aaboutdialog.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aaboutdialog.h..."
+						CommandLine="$(QTDIR)\bin\moc aaboutdialog.h -o gen\moc_aaboutdialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aaboutdialog.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aaboutdialog.h..."
+						CommandLine="$(QTDIR)\bin\moc aaboutdialog.h -o gen\moc_aaboutdialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aaboutdialog.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\aadduserdialog.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aadduserdialog.h..."
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  -DWIN32 -D_WIN -D_M32 -D_DEBUG -D_LIB -DUNICODE -DQT_LARGEFILE_SUPPORT -D_CRT_SECURE_NO_WARNINGS -I&quot;$(QTDIR)\include&quot; -I&quot;.\..\include&quot; -I&quot;.\gen&quot; -I&quot;.&quot; &quot;.\aadduserdialog.h&quot; -o &quot;.\gen\moc_aadduserdialog.cpp&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;.\aadduserdialog.h"
+						Outputs="&quot;.\gen\moc_aadduserdialog.cpp&quot;"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aadduserdialog.h..."
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  -DWIN32 -D_WIN -D_M32 -DNDEBUG -D_LIB -DUNICODE -DQT_LARGEFILE_SUPPORT -D_CRT_SECURE_NO_WARNINGS -I&quot;$(QTDIR)\include&quot; -I&quot;.\..\include&quot; -I&quot;.\gen&quot; -I&quot;.&quot; &quot;.\aadduserdialog.h&quot; -o &quot;.\gen\moc_aadduserdialog.cpp&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;.\aadduserdialog.h"
+						Outputs="&quot;.\gen\moc_aadduserdialog.cpp&quot;"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aadduserdialog.h..."
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  -D_WIN64 -D_DEBUG -D_LIB -DUNICODE -D_WIN -D_M64 -D_MSVC -DQT_LARGEFILE_SUPPORT -D_CRT_SECURE_NO_WARNINGS -I&quot;$(QTDIR)\include&quot; -I&quot;.\..\include&quot; -I&quot;.\gen&quot; -I&quot;.&quot; -I&quot;.\..\atextedit&quot; -I&quot;.\..\atextedit\gen&quot; &quot;.\aadduserdialog.h&quot; -o &quot;.\gen\moc_aadduserdialog.cpp&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;.\aadduserdialog.h"
+						Outputs="&quot;.\gen\moc_aadduserdialog.cpp&quot;"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aadduserdialog.h..."
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  -D_WIN64 -DNDEBUG -D_LIB -DUNICODE -D_WIN -D_M64 -D_MSVC -DQT_LARGEFILE_SUPPORT -D_CRT_SECURE_NO_WARNINGS -I&quot;$(QTDIR)\include&quot; -I&quot;.\..\include&quot; -I&quot;.\gen&quot; -I&quot;.&quot; -I&quot;.\..\atextedit&quot; -I&quot;.\..\atextedit\gen&quot; &quot;.\aadduserdialog.h&quot; -o &quot;.\gen\moc_aadduserdialog.cpp&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;.\aadduserdialog.h"
+						Outputs="&quot;.\gen\moc_aadduserdialog.cpp&quot;"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\acabinetpage.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing acabinetpage.h..."
+						CommandLine="$(QTDIR)\bin\moc acabinetpage.h -o gen\moc_acabinetpage.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_acabinetpage.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing acabinetpage.h..."
+						CommandLine="$(QTDIR)\bin\moc acabinetpage.h -o gen\moc_acabinetpage.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_acabinetpage.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing acabinetpage.h..."
+						CommandLine="$(QTDIR)\bin\moc acabinetpage.h -o gen\moc_acabinetpage.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_acabinetpage.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing acabinetpage.h..."
+						CommandLine="$(QTDIR)\bin\moc acabinetpage.h -o gen\moc_acabinetpage.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_acabinetpage.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\acabsettingsdialog.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing acabsettingsdialog.h..."
+						CommandLine="$(QTDIR)\bin\moc acabsettingsdialog.h -o gen\moc_acabsettingsdialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_acabsettingsdialog.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing acabsettingsdialog.h..."
+						CommandLine="$(QTDIR)\bin\moc acabsettingsdialog.h -o gen\moc_acabsettingsdialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_acabsettingsdialog.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing acabsettingsdialog.h..."
+						CommandLine="$(QTDIR)\bin\moc acabsettingsdialog.h -o gen\moc_acabsettingsdialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_acabsettingsdialog.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing acabsettingsdialog.h..."
+						CommandLine="$(QTDIR)\bin\moc acabsettingsdialog.h -o gen\moc_acabsettingsdialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_acabsettingsdialog.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\aclosedialog.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aclosedialog.h..."
+						CommandLine="$(QTDIR)\bin\moc aclosedialog.h -o gen\moc_aclosedialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aclosedialog.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aclosedialog.h..."
+						CommandLine="$(QTDIR)\bin\moc aclosedialog.h -o gen\moc_aclosedialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aclosedialog.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aclosedialog.h..."
+						CommandLine="$(QTDIR)\bin\moc aclosedialog.h -o gen\moc_aclosedialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aclosedialog.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aclosedialog.h..."
+						CommandLine="$(QTDIR)\bin\moc aclosedialog.h -o gen\moc_aclosedialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aclosedialog.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\aconnectmgr.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aconnectmgr.h..."
+						CommandLine="$(QTDIR)\bin\moc aconnectmgr.h -o gen\moc_aconnectmgr.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aconnectmgr.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aconnectmgr.h..."
+						CommandLine="$(QTDIR)\bin\moc aconnectmgr.h -o gen\moc_aconnectmgr.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aconnectmgr.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aconnectmgr.h..."
+						CommandLine="$(QTDIR)\bin\moc aconnectmgr.h -o gen\moc_aconnectmgr.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aconnectmgr.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aconnectmgr.h..."
+						CommandLine="$(QTDIR)\bin\moc aconnectmgr.h -o gen\moc_aconnectmgr.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aconnectmgr.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\aconsolepage.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aconsolepage.h..."
+						CommandLine="$(QTDIR)\bin\moc aconsolepage.h -o gen\moc_aconsolepage.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aconsolepage.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aconsolepage.h..."
+						CommandLine="$(QTDIR)\bin\moc aconsolepage.h -o gen\moc_aconsolepage.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aconsolepage.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aconsolepage.h..."
+						CommandLine="$(QTDIR)\bin\moc aconsolepage.h -o gen\moc_aconsolepage.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aconsolepage.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aconsolepage.h..."
+						CommandLine="$(QTDIR)\bin\moc aconsolepage.h -o gen\moc_aconsolepage.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aconsolepage.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\adebugpage.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing adebugpage.h..."
+						CommandLine="$(QTDIR)\bin\moc adebugpage.h -o gen\moc_adebugpage.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_adebugpage.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing adebugpage.h..."
+						CommandLine="$(QTDIR)\bin\moc adebugpage.h -o gen\moc_adebugpage.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_adebugpage.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing adebugpage.h..."
+						CommandLine="$(QTDIR)\bin\moc adebugpage.h -o gen\moc_adebugpage.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_adebugpage.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing adebugpage.h..."
+						CommandLine="$(QTDIR)\bin\moc adebugpage.h -o gen\moc_adebugpage.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_adebugpage.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\aeditortab.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aeditortab.h..."
+						CommandLine="$(QTDIR)\bin\moc aeditortab.h -o gen\moc_aeditortab.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aeditortab.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aeditortab.h..."
+						CommandLine="$(QTDIR)\bin\moc aeditortab.h -o gen\moc_aeditortab.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aeditortab.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aeditortab.h..."
+						CommandLine="$(QTDIR)\bin\moc aeditortab.h -o gen\moc_aeditortab.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aeditortab.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aeditortab.h..."
+						CommandLine="$(QTDIR)\bin\moc aeditortab.h -o gen\moc_aeditortab.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aeditortab.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\aeditpage.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aeditpage.h..."
+						CommandLine="$(QTDIR)\bin\moc aeditpage.h -o gen\moc_aeditpage.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aeditpage.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aeditpage.h..."
+						CommandLine="$(QTDIR)\bin\moc aeditpage.h -o gen\moc_aeditpage.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aeditpage.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aeditpage.h..."
+						CommandLine="$(QTDIR)\bin\moc aeditpage.h -o gen\moc_aeditpage.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aeditpage.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aeditpage.h..."
+						CommandLine="$(QTDIR)\bin\moc aeditpage.h -o gen\moc_aeditpage.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aeditpage.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\aform.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aform.h..."
+						CommandLine="$(QTDIR)\bin\moc aform.h -o gen\moc_aform.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aform.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aform.h..."
+						CommandLine="$(QTDIR)\bin\moc aform.h -o gen\moc_aform.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aform.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aform.h..."
+						CommandLine="$(QTDIR)\bin\moc aform.h -o gen\moc_aform.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aform.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aform.h..."
+						CommandLine="$(QTDIR)\bin\moc aform.h -o gen\moc_aform.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aform.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\aideprefdialog.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aideprefdialog.h..."
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  -DWIN32 -D_WIN -D_M32 -D_DEBUG -D_LIB -DUNICODE -DQT_LARGEFILE_SUPPORT -D_CRT_SECURE_NO_WARNINGS -I&quot;$(QTDIR)\include&quot; -I&quot;.\..\include&quot; -I&quot;.\gen&quot; -I&quot;.&quot; &quot;.\aideprefdialog.h&quot; -o &quot;gen\moc_aideprefdialog.cpp&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe"
+						Outputs="gen\moc_aideprefdialog.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aideprefdialog.h..."
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  -DWIN32 -D_WIN -D_M32 -DNDEBUG -D_LIB -DUNICODE -DQT_LARGEFILE_SUPPORT -D_CRT_SECURE_NO_WARNINGS -I&quot;$(QTDIR)\include&quot; -I&quot;.\..\include&quot; -I&quot;.\gen&quot; -I&quot;.&quot; &quot;.\aideprefdialog.h&quot; -o &quot;gen\moc_aideprefdialog.cpp&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe"
+						Outputs="gen\moc_aideprefdialog.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aideprefdialog.h..."
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  -D_WIN64 -D_DEBUG -D_LIB -DUNICODE -D_WIN -D_M64 -D_MSVC -DQT_LARGEFILE_SUPPORT -D_CRT_SECURE_NO_WARNINGS -I&quot;$(QTDIR)\include&quot; -I&quot;.\..\include&quot; -I&quot;.\gen&quot; -I&quot;.&quot; -I&quot;.\..\atextedit&quot; -I&quot;.\..\atextedit\gen&quot; &quot;.\aideprefdialog.h&quot; -o &quot;gen\moc_aideprefdialog.cpp&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe"
+						Outputs="gen\moc_aideprefdialog.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aideprefdialog.h..."
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  -D_WIN64 -DNDEBUG -D_LIB -DUNICODE -D_WIN -D_M64 -D_MSVC -DQT_LARGEFILE_SUPPORT -D_CRT_SECURE_NO_WARNINGS -I&quot;$(QTDIR)\include&quot; -I&quot;.\..\include&quot; -I&quot;.\gen&quot; -I&quot;.&quot; -I&quot;.\..\atextedit&quot; -I&quot;.\..\atextedit\gen&quot; &quot;.\aideprefdialog.h&quot; -o &quot;gen\moc_aideprefdialog.cpp&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe"
+						Outputs="gen\moc_aideprefdialog.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\alogondialog.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing alogondialog.h..."
+						CommandLine="$(QTDIR)\bin\moc alogondialog.h -o gen\moc_alogondialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_alogondialog.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing alogondialog.h..."
+						CommandLine="$(QTDIR)\bin\moc alogondialog.h -o gen\moc_alogondialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_alogondialog.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing alogondialog.h..."
+						CommandLine="$(QTDIR)\bin\moc alogondialog.h -o gen\moc_alogondialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_alogondialog.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing alogondialog.h..."
+						CommandLine="$(QTDIR)\bin\moc alogondialog.h -o gen\moc_alogondialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_alogondialog.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\alogpage.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing alogpage.h..."
+						CommandLine="$(QTDIR)\bin\moc alogpage.h -o gen\moc_alogpage.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_alogpage.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing alogpage.h..."
+						CommandLine="$(QTDIR)\bin\moc alogpage.h -o gen\moc_alogpage.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_alogpage.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing alogpage.h..."
+						CommandLine="$(QTDIR)\bin\moc alogpage.h -o gen\moc_alogpage.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_alogpage.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing alogpage.h..."
+						CommandLine="$(QTDIR)\bin\moc alogpage.h -o gen\moc_alogpage.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_alogpage.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\include\amainwindow.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing amainwindow.h..."
+						CommandLine="$(QTDIR)\bin\moc ..\include\amainwindow.h -o gen\moc_amainwindow.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_amainwindow.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing amainwindow.h..."
+						CommandLine="$(QTDIR)\bin\moc ..\include\amainwindow.h -o gen\moc_amainwindow.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_amainwindow.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing amainwindow.h..."
+						CommandLine="$(QTDIR)\bin\moc ..\include\amainwindow.h -o gen\moc_amainwindow.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_amainwindow.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing amainwindow.h..."
+						CommandLine="$(QTDIR)\bin\moc ..\include\amainwindow.h -o gen\moc_amainwindow.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_amainwindow.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\amanagecabinetsdialog.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing amanagecabinetsdialog.h..."
+						CommandLine="$(QTDIR)\bin\moc amanagecabinetsdialog.h -o gen\moc_amanagecabinetsdialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_amanagecabinetsdialog.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing amanagecabinetsdialog.h..."
+						CommandLine="$(QTDIR)\bin\moc amanagecabinetsdialog.h -o gen\moc_amanagecabinetsdialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_amanagecabinetsdialog.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing amanagecabinetsdialog.h..."
+						CommandLine="$(QTDIR)\bin\moc amanagecabinetsdialog.h -o gen\moc_amanagecabinetsdialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_amanagecabinetsdialog.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing amanagecabinetsdialog.h..."
+						CommandLine="$(QTDIR)\bin\moc amanagecabinetsdialog.h -o gen\moc_amanagecabinetsdialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_amanagecabinetsdialog.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\anodevaluedialog.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing anodevaluedialog.h..."
+						CommandLine="$(QTDIR)\bin\moc anodevaluedialog.h -o gen\moc_anodevaluedialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_anodevaluedialog.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing anodevaluedialog.h..."
+						CommandLine="$(QTDIR)\bin\moc anodevaluedialog.h -o gen\moc_anodevaluedialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_anodevaluedialog.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing anodevaluedialog.h..."
+						CommandLine="$(QTDIR)\bin\moc anodevaluedialog.h -o gen\moc_anodevaluedialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_anodevaluedialog.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing anodevaluedialog.h..."
+						CommandLine="$(QTDIR)\bin\moc anodevaluedialog.h -o gen\moc_anodevaluedialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_anodevaluedialog.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\apage.h"
+				>
+			</File>
+			<File
+				RelativePath=".\aregisterdirdialog.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aregisterdirdialog.h..."
+						CommandLine="$(QTDIR)\bin\moc aregisterdirdialog.h -o gen\moc_aregisterdirdialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aregisterdirdialog.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aregisterdirdialog.h..."
+						CommandLine="$(QTDIR)\bin\moc aregisterdirdialog.h -o gen\moc_aregisterdirdialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aregisterdirdialog.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aregisterdirdialog.h..."
+						CommandLine="$(QTDIR)\bin\moc aregisterdirdialog.h -o gen\moc_aregisterdirdialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aregisterdirdialog.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aregisterdirdialog.h..."
+						CommandLine="$(QTDIR)\bin\moc aregisterdirdialog.h -o gen\moc_aregisterdirdialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aregisterdirdialog.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\aremotefiledialog.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aremotefiledialog.h..."
+						CommandLine="$(QTDIR)\bin\moc aremotefiledialog.h -o gen\moc_aremotefiledialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aremotefiledialog.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aremotefiledialog.h..."
+						CommandLine="$(QTDIR)\bin\moc aremotefiledialog.h -o gen\moc_aremotefiledialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aremotefiledialog.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aremotefiledialog.h..."
+						CommandLine="$(QTDIR)\bin\moc aremotefiledialog.h -o gen\moc_aremotefiledialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aremotefiledialog.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aremotefiledialog.h..."
+						CommandLine="$(QTDIR)\bin\moc aremotefiledialog.h -o gen\moc_aremotefiledialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aremotefiledialog.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\asaveasagentdialog.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing asaveasagentdialog.h..."
+						CommandLine="$(QTDIR)\bin\moc asaveasagentdialog.h -o gen\moc_asaveasagentdialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_asaveasagentdialog.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing asaveasagentdialog.h..."
+						CommandLine="$(QTDIR)\bin\moc asaveasagentdialog.h -o gen\moc_asaveasagentdialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_asaveasagentdialog.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing asaveasagentdialog.h..."
+						CommandLine="$(QTDIR)\bin\moc asaveasagentdialog.h -o gen\moc_asaveasagentdialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_asaveasagentdialog.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing asaveasagentdialog.h..."
+						CommandLine="$(QTDIR)\bin\moc asaveasagentdialog.h -o gen\moc_asaveasagentdialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_asaveasagentdialog.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\aserverdialog.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aserverdialog.h..."
+						CommandLine="$(QTDIR)\bin\moc aserverdialog.h -o gen\moc_aserverdialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aserverdialog.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aserverdialog.h..."
+						CommandLine="$(QTDIR)\bin\moc aserverdialog.h -o gen\moc_aserverdialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aserverdialog.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aserverdialog.h..."
+						CommandLine="$(QTDIR)\bin\moc aserverdialog.h -o gen\moc_aserverdialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aserverdialog.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aserverdialog.h..."
+						CommandLine="$(QTDIR)\bin\moc aserverdialog.h -o gen\moc_aserverdialog.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aserverdialog.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\aserverform.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aserverform.h..."
+						CommandLine="$(QTDIR)\bin\moc aserverform.h -o gen\moc_aserverform.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aserverform.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aserverform.h..."
+						CommandLine="$(QTDIR)\bin\moc aserverform.h -o gen\moc_aserverform.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aserverform.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aserverform.h..."
+						CommandLine="$(QTDIR)\bin\moc aserverform.h -o gen\moc_aserverform.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aserverform.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aserverform.h..."
+						CommandLine="$(QTDIR)\bin\moc aserverform.h -o gen\moc_aserverform.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aserverform.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\aservertreemodel.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aservertreemodel.h..."
+						CommandLine="$(QTDIR)\bin\moc aservertreemodel.h -o gen\moc_aservertreemodel.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aservertreemodel.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aservertreemodel.h..."
+						CommandLine="$(QTDIR)\bin\moc aservertreemodel.h -o gen\moc_aservertreemodel.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aservertreemodel.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aservertreemodel.h..."
+						CommandLine="$(QTDIR)\bin\moc aservertreemodel.h -o gen\moc_aservertreemodel.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aservertreemodel.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing aservertreemodel.h..."
+						CommandLine="$(QTDIR)\bin\moc aservertreemodel.h -o gen\moc_aservertreemodel.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_aservertreemodel.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\asessionform.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing asessionform.h..."
+						CommandLine="$(QTDIR)\bin\moc asessionform.h -o gen\moc_asessionform.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_asessionform.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing asessionform.h..."
+						CommandLine="$(QTDIR)\bin\moc asessionform.h -o gen\moc_asessionform.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_asessionform.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing asessionform.h..."
+						CommandLine="$(QTDIR)\bin\moc asessionform.h -o gen\moc_asessionform.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_asessionform.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing asessionform.h..."
+						CommandLine="$(QTDIR)\bin\moc asessionform.h -o gen\moc_asessionform.cpp&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe;"
+						Outputs="gen\moc_asessionform.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\asysresmonpage.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing asysresmonpage.h..."
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  -DWIN32 -D_WIN -D_M32 -D_DEBUG -D_LIB -DUNICODE -DQT_LARGEFILE_SUPPORT -D_CRT_SECURE_NO_WARNINGS -I&quot;$(QTDIR)\include&quot; -I&quot;.\..\include&quot; -I&quot;.\gen&quot; -I&quot;.&quot; &quot;.\asysresmonpage.h&quot; -o &quot;gen\moc_asysresmonpage.cpp&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe"
+						Outputs="gen\moc_asysresmonpage.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing asysresmonpage.h..."
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  -DWIN32 -D_WIN -D_M32 -DNDEBUG -D_LIB -DUNICODE -DQT_LARGEFILE_SUPPORT -D_CRT_SECURE_NO_WARNINGS -I&quot;$(QTDIR)\include&quot; -I&quot;.\..\include&quot; -I&quot;.\gen&quot; -I&quot;.&quot; &quot;.\asysresmonpage.h&quot; -o &quot;gen\moc_asysresmonpage.cpp&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe"
+						Outputs="gen\moc_asysresmonpage.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing asysresmonpage.h..."
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  -D_WIN64 -D_DEBUG -D_LIB -DUNICODE -D_WIN -D_M64 -D_MSVC -DQT_LARGEFILE_SUPPORT -D_CRT_SECURE_NO_WARNINGS -I&quot;$(QTDIR)\include&quot; -I&quot;.\..\include&quot; -I&quot;.\gen&quot; -I&quot;.&quot; -I&quot;.\..\atextedit&quot; -I&quot;.\..\atextedit\gen&quot; &quot;.\asysresmonpage.h&quot; -o &quot;gen\moc_asysresmonpage.cpp&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe"
+						Outputs="gen\moc_asysresmonpage.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing asysresmonpage.h..."
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  -D_WIN64 -DNDEBUG -D_LIB -DUNICODE -D_WIN -D_M64 -D_MSVC -DQT_LARGEFILE_SUPPORT -D_CRT_SECURE_NO_WARNINGS -I&quot;$(QTDIR)\include&quot; -I&quot;.\..\include&quot; -I&quot;.\gen&quot; -I&quot;.&quot; -I&quot;.\..\atextedit&quot; -I&quot;.\..\atextedit\gen&quot; &quot;.\asysresmonpage.h&quot; -o &quot;gen\moc_asysresmonpage.cpp&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe"
+						Outputs="gen\moc_asysresmonpage.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\ausermgmtpage.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing ausermgmtpage.h..."
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  -DWIN32 -D_WIN -D_M32 -D_DEBUG -D_LIB -DUNICODE -DQT_LARGEFILE_SUPPORT -D_CRT_SECURE_NO_WARNINGS -I&quot;$(QTDIR)\include&quot; -I&quot;.\..\include&quot; -I&quot;.\gen&quot; -I&quot;.&quot; &quot;.\ausermgmtpage.h&quot; -o &quot;gen\moc_ausermgmtpage.cpp&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe"
+						Outputs="gen\moc_ausermgmtpage.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing ausermgmtpage.h..."
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  -DWIN32 -D_WIN -D_M32 -DNDEBUG -D_LIB -DUNICODE -DQT_LARGEFILE_SUPPORT -D_CRT_SECURE_NO_WARNINGS -I&quot;$(QTDIR)\include&quot; -I&quot;.\..\include&quot; -I&quot;.\gen&quot; -I&quot;.&quot; &quot;.\ausermgmtpage.h&quot; -o &quot;gen\moc_ausermgmtpage.cpp&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe"
+						Outputs="gen\moc_ausermgmtpage.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing ausermgmtpage.h..."
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  -D_WIN64 -D_DEBUG -D_LIB -DUNICODE -D_WIN -D_M64 -D_MSVC -DQT_LARGEFILE_SUPPORT -D_CRT_SECURE_NO_WARNINGS -I&quot;$(QTDIR)\include&quot; -I&quot;.\..\include&quot; -I&quot;.\gen&quot; -I&quot;.&quot; -I&quot;.\..\atextedit&quot; -I&quot;.\..\atextedit\gen&quot; &quot;.\ausermgmtpage.h&quot; -o &quot;gen\moc_ausermgmtpage.cpp&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe"
+						Outputs="gen\moc_ausermgmtpage.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing ausermgmtpage.h..."
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  -D_WIN64 -DNDEBUG -D_LIB -DUNICODE -D_WIN -D_M64 -D_MSVC -DQT_LARGEFILE_SUPPORT -D_CRT_SECURE_NO_WARNINGS -I&quot;$(QTDIR)\include&quot; -I&quot;.\..\include&quot; -I&quot;.\gen&quot; -I&quot;.&quot; -I&quot;.\..\atextedit&quot; -I&quot;.\..\atextedit\gen&quot; &quot;.\ausermgmtpage.h&quot; -o &quot;gen\moc_ausermgmtpage.cpp&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe"
+						Outputs="gen\moc_ausermgmtpage.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\awatchdialog.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing awatchdialog.h..."
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  -DWIN32 -D_WIN -D_M32 -D_DEBUG -D_LIB -DUNICODE -DQT_LARGEFILE_SUPPORT -D_CRT_SECURE_NO_WARNINGS -I&quot;$(QTDIR)\include&quot; -I&quot;.\..\include&quot; -I&quot;.\gen&quot; -I&quot;.&quot; &quot;.\awatchdialog.h&quot; -o &quot;gen\moc_awatchdialog.cpp&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe"
+						Outputs="gen\moc_awatchdialog.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing awatchdialog.h..."
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  -DWIN32 -D_WIN -D_M32 -DNDEBUG -D_LIB -DUNICODE -DQT_LARGEFILE_SUPPORT -D_CRT_SECURE_NO_WARNINGS -I&quot;$(QTDIR)\include&quot; -I&quot;.\..\include&quot; -I&quot;.\gen&quot; -I&quot;.&quot; &quot;.\awatchdialog.h&quot; -o &quot;gen\moc_awatchdialog.cpp&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe"
+						Outputs="gen\moc_awatchdialog.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing awatchdialog.h..."
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  -D_WIN64 -D_DEBUG -D_LIB -DUNICODE -D_WIN -D_M64 -D_MSVC -DQT_LARGEFILE_SUPPORT -D_CRT_SECURE_NO_WARNINGS -I&quot;$(QTDIR)\include&quot; -I&quot;.\..\include&quot; -I&quot;.\gen&quot; -I&quot;.&quot; -I&quot;.\..\atextedit&quot; -I&quot;.\..\atextedit\gen&quot; &quot;.\awatchdialog.h&quot; -o &quot;gen\moc_awatchdialog.cpp&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe"
+						Outputs="gen\moc_awatchdialog.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing awatchdialog.h..."
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  -D_WIN64 -DNDEBUG -D_LIB -DUNICODE -D_WIN -D_M64 -D_MSVC -DQT_LARGEFILE_SUPPORT -D_CRT_SECURE_NO_WARNINGS -I&quot;$(QTDIR)\include&quot; -I&quot;.\..\include&quot; -I&quot;.\gen&quot; -I&quot;.&quot; -I&quot;.\..\atextedit&quot; -I&quot;.\..\atextedit\gen&quot; &quot;.\awatchdialog.h&quot; -o &quot;gen\moc_awatchdialog.cpp&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe"
+						Outputs="gen\moc_awatchdialog.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\codeeditor.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing codeeditor.h..."
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  -DWIN32 -D_WIN -D_M32 -D_DEBUG -D_LIB -DUNICODE -DQT_LARGEFILE_SUPPORT -D_CRT_SECURE_NO_WARNINGS -I&quot;$(QTDIR)\include&quot; -I&quot;.\..\include&quot; -I&quot;.\gen&quot; -I&quot;.&quot; &quot;.\codeeditor.h&quot; -o &quot;gen\moc_codeeditor.cpp&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe"
+						Outputs="gen\moc_codeeditor.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing codeeditor.h..."
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  -DWIN32 -D_WIN -D_M32 -DNDEBUG -D_LIB -DUNICODE -DQT_LARGEFILE_SUPPORT -D_CRT_SECURE_NO_WARNINGS -I&quot;$(QTDIR)\include&quot; -I&quot;.\..\include&quot; -I&quot;.\gen&quot; -I&quot;.&quot; &quot;.\codeeditor.h&quot; -o &quot;gen\moc_codeeditor.cpp&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe"
+						Outputs="gen\moc_codeeditor.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing codeeditor.h..."
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  -D_WIN64 -D_DEBUG -D_LIB -DUNICODE -D_WIN -D_M64 -D_MSVC -DQT_LARGEFILE_SUPPORT -D_CRT_SECURE_NO_WARNINGS -I&quot;$(QTDIR)\include&quot; -I&quot;.\..\include&quot; -I&quot;.\gen&quot; -I&quot;.&quot; -I&quot;.\..\atextedit&quot; -I&quot;.\..\atextedit\gen&quot; &quot;.\codeeditor.h&quot; -o &quot;gen\moc_codeeditor.cpp&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe"
+						Outputs="gen\moc_codeeditor.cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Moc&apos;ing codeeditor.h..."
+						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  -D_WIN64 -DNDEBUG -D_LIB -DUNICODE -D_WIN -D_M64 -D_MSVC -DQT_LARGEFILE_SUPPORT -D_CRT_SECURE_NO_WARNINGS -I&quot;$(QTDIR)\include&quot; -I&quot;.\..\include&quot; -I&quot;.\gen&quot; -I&quot;.&quot; -I&quot;.\..\atextedit&quot; -I&quot;.\..\atextedit\gen&quot; &quot;.\codeeditor.h&quot; -o &quot;gen\moc_codeeditor.cpp&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\moc.exe"
+						Outputs="gen\moc_codeeditor.cpp"
+					/>
+				</FileConfiguration>
+			</File>
+		</Filter>
+		<Filter
+			Name="Form Files"
+			Filter="ui"
+			UniqueIdentifier="{99349809-55BA-4b9d-BF79-8FDBB0286EB3}"
+			>
+			<File
+				RelativePath=".\aaboutdialog.ui"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing aaboutdialog.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_aaboutdialog.h .\aaboutdialog.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_aaboutdialog.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing aaboutdialog.ui..."
+						CommandLine="&quot;$(QTDIR)\bin\uic.exe&quot; -o gen\ui_aaboutdialog.h .\aaboutdialog.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_aaboutdialog.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing aaboutdialog.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_aaboutdialog.h .\aaboutdialog.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_aaboutdialog.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing aaboutdialog.ui..."
+						CommandLine="&quot;$(QTDIR)\bin\uic.exe&quot; -o gen\ui_aaboutdialog.h .\aaboutdialog.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_aaboutdialog.h"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\aadduserdialog.ui"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing $(InputPath)..."
+						CommandLine="&quot;$(QTDIR)\bin\uic.exe&quot; -o &quot;.\gen\ui_aadduserdialog.h&quot; &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="&quot;.\gen\ui_aadduserdialog.h&quot;"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing $(InputPath)..."
+						CommandLine="&quot;$(QTDIR)\bin\uic.exe&quot; -o &quot;.\gen\ui_aadduserdialog.h&quot; &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="&quot;.\gen\ui_aadduserdialog.h&quot;"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing $(InputPath)..."
+						CommandLine="&quot;$(QTDIR)\bin\uic.exe&quot; -o &quot;.\gen\ui_aadduserdialog.h&quot; &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="&quot;.\gen\ui_aadduserdialog.h&quot;"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing $(InputPath)..."
+						CommandLine="&quot;$(QTDIR)\bin\uic.exe&quot; -o &quot;.\gen\ui_aadduserdialog.h&quot; &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="&quot;.\gen\ui_aadduserdialog.h&quot;"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\acabinetpage.ui"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing acabinetpage.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_acabinetpage.h .\acabinetpage.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_acabinetpage.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing acabinetpage.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_acabinetpage.h .\acabinetpage.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_acabinetpage.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing acabinetpage.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_acabinetpage.h .\acabinetpage.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_acabinetpage.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing acabinetpage.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_acabinetpage.h .\acabinetpage.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_acabinetpage.h"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\acabsettingsdialog.ui"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing acabsettingsdialog.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_acabsettingsdialog.h .\acabsettingsdialog.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_acabsettingsdialog.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing acabsettingsdialog.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_acabsettingsdialog.h .\acabsettingsdialog.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_acabsettingsdialog.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing acabsettingsdialog.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_acabsettingsdialog.h .\acabsettingsdialog.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_acabsettingsdialog.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing acabsettingsdialog.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_acabsettingsdialog.h .\acabsettingsdialog.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_acabsettingsdialog.h"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\aclosedialog.ui"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing aclosedialog.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_aclosedialog.h .\aclosedialog.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_aclosedialog.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing aclosedialog.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_aclosedialog.h .\aclosedialog.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_aclosedialog.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing aclosedialog.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_aclosedialog.h .\aclosedialog.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_aclosedialog.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing aclosedialog.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_aclosedialog.h .\aclosedialog.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_aclosedialog.h"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\aconnectmgr.ui"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing aconnectmgr.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_aconnectmgr.h .\aconnectmgr.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_aconnectmgr.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing aconnectmgr.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_aconnectmgr.h .\aconnectmgr.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_aconnectmgr.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing aconnectmgr.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_aconnectmgr.h .\aconnectmgr.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_aconnectmgr.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing aconnectmgr.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_aconnectmgr.h .\aconnectmgr.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_aconnectmgr.h"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\aconsolepage.ui"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing aconsolepage.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_aconsolepage.h .\aconsolepage.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_aconsolepage.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing aconsolepage.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_aconsolepage.h .\aconsolepage.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_aconsolepage.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing aconsolepage.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_aconsolepage.h .\aconsolepage.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_aconsolepage.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing aconsolepage.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_aconsolepage.h .\aconsolepage.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_aconsolepage.h"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\adebugpage.ui"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing adebugpage.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_adebugpage.h .\adebugpage.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_adebugpage.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing adebugpage.ui..."
+						CommandLine="&quot;$(QTDIR)\bin\uic.exe&quot; -o gen\ui_adebugpage.h .\adebugpage.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_adebugpage.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing adebugpage.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_adebugpage.h .\adebugpage.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_adebugpage.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing adebugpage.ui..."
+						CommandLine="&quot;$(QTDIR)\bin\uic.exe&quot; -o gen\ui_adebugpage.h .\adebugpage.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_adebugpage.h"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\aideprefdialog.ui"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing $(InputPath)..."
+						CommandLine="&quot;$(QTDIR)\bin\uic.exe&quot; -o &quot;.\gen\ui_aideprefdialog.h&quot; &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="&quot;.\gen\ui_aideprefdialog.h&quot;"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing $(InputPath)..."
+						CommandLine="&quot;$(QTDIR)\bin\uic.exe&quot; -o &quot;.\gen\ui_aideprefdialog.h&quot; &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="&quot;.\gen\ui_aideprefdialog.h&quot;"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing $(InputPath)..."
+						CommandLine="&quot;$(QTDIR)\bin\uic.exe&quot; -o &quot;.\gen\ui_aideprefdialog.h&quot; &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="&quot;.\gen\ui_aideprefdialog.h&quot;"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing $(InputPath)..."
+						CommandLine="&quot;$(QTDIR)\bin\uic.exe&quot; -o &quot;.\gen\ui_aideprefdialog.h&quot; &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="&quot;.\gen\ui_aideprefdialog.h&quot;"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\alogondialog.ui"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing alogondialog.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_alogondialog.h .\alogondialog.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_alogondialog.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing alogondialog.ui..."
+						CommandLine="&quot;$(QTDIR)\bin\uic.exe&quot; -o gen\ui_alogondialog.h .\alogondialog.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_alogondialog.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing alogondialog.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_alogondialog.h .\alogondialog.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_alogondialog.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing alogondialog.ui..."
+						CommandLine="&quot;$(QTDIR)\bin\uic.exe&quot; -o gen\ui_alogondialog.h .\alogondialog.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_alogondialog.h"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\alogpage.ui"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing alogpage.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_alogpage.h .\alogpage.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_alogpage.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing alogpage.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_alogpage.h .\alogpage.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_alogpage.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing alogpage.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_alogpage.h .\alogpage.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_alogpage.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing alogpage.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_alogpage.h .\alogpage.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_alogpage.h"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\amanagecabinetsdialog.ui"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing amanagecabinetsdialog.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_amanagecabinetsdialog.h .\amanagecabinetsdialog.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_amanagecabinetsdialog.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing amanagecabinetsdialog.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_amanagecabinetsdialog.h .\amanagecabinetsdialog.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_amanagecabinetsdialog.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing amanagecabinetsdialog.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_amanagecabinetsdialog.h .\amanagecabinetsdialog.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_amanagecabinetsdialog.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing amanagecabinetsdialog.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_amanagecabinetsdialog.h .\amanagecabinetsdialog.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_amanagecabinetsdialog.h"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\anodevaluedialog.ui"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing anodevaluedialog.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_anodevaluedialog.h .\anodevaluedialog.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_anodevaluedialog.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing anodevaluedialog.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_anodevaluedialog.h .\anodevaluedialog.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_anodevaluedialog.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing anodevaluedialog.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_anodevaluedialog.h .\anodevaluedialog.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_anodevaluedialog.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing anodevaluedialog.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_anodevaluedialog.h .\anodevaluedialog.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_anodevaluedialog.h"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\aregisterdirdialog.ui"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing aregisterdirdialog.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_aregisterdirdialog.h .\aregisterdirdialog.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_aregisterdirdialog.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing aregisterdirdialog.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_aregisterdirdialog.h .\aregisterdirdialog.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_aregisterdirdialog.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing aregisterdirdialog.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_aregisterdirdialog.h .\aregisterdirdialog.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_aregisterdirdialog.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing aregisterdirdialog.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_aregisterdirdialog.h .\aregisterdirdialog.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_aregisterdirdialog.h"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\aremotefiledialog.ui"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing aremotefiledialog.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_aremotefiledialog.h .\aremotefiledialog.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_aremotefiledialog.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing aremotefiledialog.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_aremotefiledialog.h .\aremotefiledialog.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_aremotefiledialog.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing aremotefiledialog.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_aremotefiledialog.h .\aremotefiledialog.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_aremotefiledialog.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing aremotefiledialog.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_aremotefiledialog.h .\aremotefiledialog.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_aremotefiledialog.h"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\asaveasagentdialog.ui"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing asaveasagentdialog.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_asaveasagentdialog.h .\asaveasagentdialog.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_asaveasagentdialog.h;"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing asaveasagentdialog.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_asaveasagentdialog.h .\asaveasagentdialog.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_asaveasagentdialog.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing asaveasagentdialog.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_asaveasagentdialog.h .\asaveasagentdialog.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_asaveasagentdialog.h;"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing asaveasagentdialog.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_asaveasagentdialog.h .\asaveasagentdialog.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_asaveasagentdialog.h"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\aserverdialog.ui"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing aserverdialog.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_aserverdialog.h .\aserverdialog.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_aserverdialog.h;"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing aserverdialog.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_aserverdialog.h .\aserverdialog.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_aserverdialog.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing aserverdialog.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_aserverdialog.h .\aserverdialog.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_aserverdialog.h;"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing aserverdialog.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_aserverdialog.h .\aserverdialog.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_aserverdialog.h"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\asysresmonpage.ui"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing $(InputPath)..."
+						CommandLine="&quot;$(QTDIR)\bin\uic.exe&quot; -o &quot;.\gen\ui_asysresmonpage.h&quot; &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="&quot;.\gen\ui_asysresmonpage.h&quot;"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing $(InputPath)..."
+						CommandLine="&quot;$(QTDIR)\bin\uic.exe&quot; -o &quot;.\gen\ui_asysresmonpage.h&quot; &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="&quot;.\gen\ui_asysresmonpage.h&quot;"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing $(InputPath)..."
+						CommandLine="&quot;$(QTDIR)\bin\uic.exe&quot; -o &quot;.\gen\ui_asysresmonpage.h&quot; &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="&quot;.\gen\ui_asysresmonpage.h&quot;"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing $(InputPath)..."
+						CommandLine="&quot;$(QTDIR)\bin\uic.exe&quot; -o &quot;.\gen\ui_asysresmonpage.h&quot; &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="&quot;.\gen\ui_asysresmonpage.h&quot;"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\ausermgmtpage.ui"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing $(InputPath)..."
+						CommandLine="&quot;$(QTDIR)\bin\uic.exe&quot; -o &quot;.\gen\ui_ausermgmtpage.h&quot; &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="&quot;.\gen\ui_ausermgmtpage.h&quot;"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing $(InputPath)..."
+						CommandLine="&quot;$(QTDIR)\bin\uic.exe&quot; -o &quot;.\gen\ui_ausermgmtpage.h&quot; &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="&quot;.\gen\ui_ausermgmtpage.h&quot;"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing $(InputPath)..."
+						CommandLine="&quot;$(QTDIR)\bin\uic.exe&quot; -o &quot;.\gen\ui_ausermgmtpage.h&quot; &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="&quot;.\gen\ui_ausermgmtpage.h&quot;"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing $(InputPath)..."
+						CommandLine="&quot;$(QTDIR)\bin\uic.exe&quot; -o &quot;.\gen\ui_ausermgmtpage.h&quot; &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="&quot;.\gen\ui_ausermgmtpage.h&quot;"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\awatchdialog.ui"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing awatchdialog.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_awatchdialog.h .\awatchdialog.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_awatchdialog.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing awatchdialog.ui..."
+						CommandLine="&quot;$(QTDIR)\bin\uic.exe&quot; -o gen\ui_awatchdialog.h .\awatchdialog.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_awatchdialog.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing awatchdialog.ui..."
+						CommandLine="$(QTDIR)\bin\uic.exe -o gen\ui_awatchdialog.h .\awatchdialog.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_awatchdialog.h"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|x64"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Uic&apos;ing awatchdialog.ui..."
+						CommandLine="&quot;$(QTDIR)\bin\uic.exe&quot; -o gen\ui_awatchdialog.h .\awatchdialog.ui&#x0D;&#x0A;"
+						AdditionalDependencies="$(QTDIR)\bin\uic.exe"
+						Outputs="gen\ui_awatchdialog.h"
+					/>
+				</FileConfiguration>
+			</File>
+		</Filter>
+		<Filter
+			Name="Resource Files"
+			Filter="qrc;*"
+			UniqueIdentifier="{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}"
+			ParseFiles="false"
+			>
+			<File
+				RelativePath=".\images\aisedit.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\cabinetcheckoff.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\cabinetcheckon.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\checkoff.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\checkon.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\codecomment.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\codeindent.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\codeoutdent.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\codeshowagents.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\codeuncomment.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\compileoff.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\compileon.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\connectcontextoff.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\connectcontexton.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\connectserveroff.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\connectserveron.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\connectsessionoff.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\connectsessionon.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\consoleerrortrace.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\consolego.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\consoleinstructiontrace.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\consolejit.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\consolestop.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\consolesyscheck.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\consoletrace.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\debugcurrent.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\debuggo.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\debughelp.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\debugquit.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\debugrunto.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\debugshowvars.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\debugsourceoff.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\debugsourceon.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\debugstepinto.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\debugstepout.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\debugstepover.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\editback.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\editcut.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\editfind.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\editforward.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\editpaste.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\editprint.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\editredo.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\editundo.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\fileclose.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\filecompile.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\filenew.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\fileopen.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\filesave.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\filesaveall.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\folder.png"
+				>
+			</File>
+			<File
+				RelativePath=".\Resources\folderclosed.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\folderclosed.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\folderdocument.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\folderdrive.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\foldernew.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\folderopen.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\folderrefresh.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\folderroot.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\foldertop.png"
+				>
+			</File>
+			<File
+				RelativePath=".\Resources\foldertop.png"
+				>
+			</File>
+			<File
+				RelativePath=".\Resources\folderup.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\folderup.png"
+				>
+			</File>
+			<File
+				RelativePath=".\Resources\image1.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\mainabase.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\mainenginebusy.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\mainengineidle.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\mainenginenotbusy.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\mainhelp.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\mainserver.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\sessionview.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\statusexport.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\statusimport.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\statusmerge.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\statusunknown.png"
+				>
+			</File>
+			<File
+				RelativePath=".\images\statusuptodate.png"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="Generated Files"
+			Filter="moc;h;cpp"
+			UniqueIdentifier="{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}"
+			>
+			<File
+				RelativePath=".\gen\moc_aaboutdialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\gen\moc_aadduserdialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\gen\moc_acabinetpage.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\gen\moc_acabsettingsdialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\gen\moc_aclosedialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\gen\moc_aconnectmgr.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\gen\moc_aconsolepage.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\gen\moc_adebugpage.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\gen\moc_aeditortab.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\gen\moc_aeditpage.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\gen\moc_aform.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\gen\moc_aideprefdialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\gen\moc_alogondialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\gen\moc_alogpage.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\gen\moc_amainwindow.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\gen\moc_amanagecabinetsdialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\gen\moc_anodevaluedialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\gen\moc_aregisterdirdialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\gen\moc_aremotefiledialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\gen\moc_asaveasagentdialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\gen\moc_aserverdialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\gen\moc_aserverform.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\gen\moc_aservertreemodel.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\gen\moc_asessionform.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\gen\moc_asysresmonpage.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\gen\moc_ausermgmtpage.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\gen\moc_awatchdialog.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\gen\moc_codeeditor.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\gen\qrc_aforms.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\gen\ui_aaboutdialog.h"
+				>
+			</File>
+			<File
+				RelativePath=".\gen\ui_aadduserdialog.h"
+				>
+			</File>
+			<File
+				RelativePath=".\gen\ui_acabinetpage.h"
+				>
+			</File>
+			<File
+				RelativePath=".\gen\ui_aclosedialog.h"
+				>
+			</File>
+			<File
+				RelativePath=".\gen\ui_aconnectmgr.h"
+				>
+			</File>
+			<File
+				RelativePath=".\gen\ui_aconsolepage.h"
+				>
+			</File>
+			<File
+				RelativePath=".\gen\ui_adebugpage.h"
+				>
+			</File>
+			<File
+				RelativePath=".\gen\ui_aideprefdialog.h"
+				>
+			</File>
+			<File
+				RelativePath=".\gen\ui_alogondialog.h"
+				>
+			</File>
+			<File
+				RelativePath=".\gen\ui_alogpage.h"
+				>
+			</File>
+			<File
+				RelativePath=".\gen\ui_anodevaluedialog.h"
+				>
+			</File>
+			<File
+				RelativePath=".\gen\ui_aremotefiledialog.h"
+				>
+			</File>
+			<File
+				RelativePath=".\gen\ui_asaveasagentdialog.h"
+				>
+			</File>
+			<File
+				RelativePath=".\gen\ui_aserverdialog.h"
+				>
+			</File>
+			<File
+				RelativePath=".\gen\ui_asysresmonpage.h"
+				>
+			</File>
+			<File
+				RelativePath=".\gen\ui_ausermgmtpage.h"
+				>
+			</File>
+			<File
+				RelativePath=".\gen\ui_awatchdialog.h"
+				>
+			</File>
+		</Filter>
+	</Files>
+	<Globals>
+		<Global
+			Name="MocDir"
+			Value=".\gen"
+		/>
+		<Global
+			Name="QtVersion"
+			Value="4.5.1"
+		/>
+	</Globals>
+</VisualStudioProject>

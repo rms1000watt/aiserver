@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Integer fact 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>fact</FunctionKeywords>
+		<TypeKeywords>Number Integer</TypeKeywords>
+		<RelatedFunctions> (sym)mul sqrt </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>factorial </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[  <p> The <b>fact</b> function returns the factorial of a Number. </p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+(fact 3)   </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[6.0]]></Returns>
+        <Expression><![CDATA[ <sc>(fact 4)   </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[24]]></Returns>
+        <Hints><![CDATA[none
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

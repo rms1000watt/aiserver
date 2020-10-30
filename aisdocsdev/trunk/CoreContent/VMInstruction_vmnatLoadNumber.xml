@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmnatLoadNumber</Title>
+		<InstructionName>vmnatLoadNumber</InstructionName>
+		<InstructionType>Native</InstructionType>
+		<ArgumentTypes>  Number Double </ArgumentTypes>
+		<RelatedVMInstructions>  vmnatLoadCharacter vmnatLoadFloat vmnatLoadNumber   
+		                        vmnatLoadObject vmnatLoadShort </RelatedVMInstructions>
+		<HumanKeywords>  load number </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[                                                  
+		<p>When evaluated, this vm instruction loads the Number <b>source</b> 
+		value into the <b>target</b> word and sets the data type to Number. There 
+		are no conversions made between different types. This instruction may return 
+		an Error value. After the operation, the Instruction Pointer is promoted. 
+		The operation of this vm instruction is expressed in the following C expression:
+         </p>	
+        <ul><li><b> (word:number)target = (double)source;  </b></li></ul>
+    ]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[  (vmnatLoadInteger source target) ]]></Expression>
+		<Argument> 
+		  <Name> source </Name>
+		  <Format>regoffset </Format>
+		  <AISTypes>number</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>target  </Name>
+		  <Format>regoffset  </Format>
+		  <AISTypes>(word:number) </AISTypes>
+		</Argument>
+	</Syntax>
+</VMInstruction>

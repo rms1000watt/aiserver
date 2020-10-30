@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Context evalInSyncLocalContext 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>evalInSyncLocalContext  </FunctionKeywords>
+		<TypeKeywords>Context</TypeKeywords>
+		<RelatedFunctions> eval inspect </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>context string variable path</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[  <p> The <b>evalInSyncLocalContext</b> functions runs the test suite in a 
+            temporary context separate from the current context.</p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+ (evalInSyncLocalContext  32  {(runScript "RunTiny.sl")})     </sc>                                    
+ ]]></Expression>
+        <Note><![CDATA[A test suite is run.]]></Note>
+        <Returns><![CDATA[true ]]></Returns>
+        <Hints><![CDATA[<p>The temporary context is created empty without browseLib or utilityLambda 
+         loaded. The _path variable is not set, and other global variables are left in their 
+         clear state.</p>
+        ]]></Hints>
+   </Syntax>
+</Example>

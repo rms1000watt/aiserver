@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Vector vectorFill 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>vectorFill</FunctionKeywords>
+		<TypeKeywords>Vector Text Integer</TypeKeywords>
+		<RelatedFunctions> stringFill</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>delete remove fill</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ A Vector with preallocated spaces is set. The <b>vectorFill</b> function 
+                  then sets the all the values of the Vector with the user-specified Text or Integer.  
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq Z (new Vector: 5 ) )         </sc>]]></Expression>
+        <Note><![CDATA[Returns a Vector of size 5]]></Note>
+        <Returns><![CDATA[#&#60Vector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(vectorFill Z "a")</sc>]]></Expression>  
+        <Note><![CDATA[Sets the Vector value to the Text "a".]]></Note> 
+        <Returns><![CDATA[#&#60Vector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(display Z)</sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#("a" "a" "a" "a" "a" )]]></Returns>
+        <Expression><![CDATA[ <sc>(vectorFill Z 5)</sc>]]></Expression>  
+        <Note><![CDATA[Sets the Vector value to the Text "a".]]></Note> 
+        <Returns><![CDATA[#&#60Vector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(display Z)</sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#(1 1 1 1 1 )]]></Returns>
+       <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

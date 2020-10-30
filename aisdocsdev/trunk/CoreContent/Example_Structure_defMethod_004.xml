@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure defmethod 004</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>defmethod</FunctionKeywords>
+		<TypeKeywords>Structure Symbol  Dictionary</TypeKeywords>
+		<RelatedFunctions>addMethod send methodsOf</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>method message messageName</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example calls the <b>defMethod</b> function where the method <b>addValues</b>
+                  is implemented for the datatype <b>Structure</b>.  The method <b>insertThe</b> is invoked by  the 
+
+
+                  <b>send</b> function calling the message in the  Methods Dictionary.
+
+
+   	]]></Description>
+	<Syntax>
+	<Expression><![CDATA[
+    <sc> (defmethod  Structure:  addValues (s)  (apply +  s)) </sc>
+    ]]></Expression>
+   <Note><![CDATA[ Add a message name <b>addValues</b>, which calls an Lambda to add the values 
+          of all the fields in a Structure.
+   ]]></Note>
+   <Returns><![CDATA[#&#60Dictionary 12345&#62]]></Returns>
+   <Expression><![CDATA[<sc>(define monthlyBills #{CarPymt: 400 Mortgage: 2100 Utilities: 100 Visa: 600})    </sc> 
+]]></Expression>
+   <Note><![CDATA[ Define a structure that contains the amount of checks written for the month.  ]]></Note>
+   <Returns><![CDATA[#&#60Structure 12345&#62]]></Returns>
+   <Expression><![CDATA[<sc>(send  addValues:  monthlyBills)   </sc> ]]></Expression>
+   <Note><![CDATA[Invoke the method named <b>insertThe</b> to compute the total amount checks written for the month.
+   ]]></Note>
+   <Returns><![CDATA[3200]]></Returns>
+   <Expression><![CDATA[<sc>(addValues:  monthlyBills)       </sc> ]]></Expression>
+   <Note><![CDATA[The method can be invoked simply by name.
+
+   ]]></Note>
+   <Returns><![CDATA[3200]]></Returns>
+  <Hints><![CDATA[none
+]]></Hints>
+   </Syntax>
+</Example>

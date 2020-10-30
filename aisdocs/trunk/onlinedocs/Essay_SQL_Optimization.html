@@ -1,0 +1,1587 @@
+
+<HTML>
+<HEAD>
+<link rel="stylesheet" type="text/css" href="../CoreContent/help.css">
+<TITLE>AIS Essay Template</TITLE></HEAD>
+<!--Page Parameters -->
+<BODY BGCOLOR="#FFFFF0" TEXT="#000000" LINK="#0000ff">
+
+<A NAME="topage"></A>
+<A HREF="TOP"></A>
+
+
+
+<P>&nbsp;</P>
+
+<FONT COLOR="#000080"><H1>SQL Optimization</H1></FONT>
+<P>&nbsp;</P>
+
+<UL>
+<li><a href="#SOverview"><FONT SIZE=2>Overview</font></a></li><li><a href="#SOptimization Overview"><FONT SIZE=2>Optimization Overview</font></a></li><li><a href="#SMySQL Design Limitations and Tradeoffs"><FONT SIZE=2>MySQL Design Limitations and Tradeoffs</font></a></li><li><a href="#SOptimizing SELECT and Other Statements"><FONT SIZE=2>Optimizing SELECT and Other Statements</font></a></li><li><a href="#SOptimizing Queries with EXPLAIN"><FONT SIZE=2>Optimizing Queries with EXPLAIN</font></a></li><li><a href="#SEstimating Query Performance"><FONT SIZE=2>Estimating Query Performance</font></a></li><li><a href="#SSpeed of SELECT Queries"><FONT SIZE=2>Speed of SELECT Queries</font></a></li><li><a href="#SWHERE Clause Optimization"><FONT SIZE=2>WHERE Clause Optimization</font></a></li><li><a href="#SRange Optimization"><FONT SIZE=2>Range Optimization</font></a></li><li><a href="#SIndex Merge Optimization"><FONT SIZE=2>Index Merge Optimization</font></a></li><li><a href="#SIS NULL Optimization"><FONT SIZE=2>IS NULL Optimization</font></a></li><li><a href="#SLEFT JOIN and RIGHT JOIN Optimization"><FONT SIZE=2>LEFT JOIN and RIGHT JOIN Optimization</font></a></li><li><a href="#SNested Join Optimization"><FONT SIZE=2>Nested Join Optimization</font></a></li><li><a href="#SOuter Join Simplification"><FONT SIZE=2>Outer Join Simplification</font></a></li><li><a href="#SORDER BY Optimization"><FONT SIZE=2>ORDER BY Optimization</font></a></li><li><a href="#SGROUP BY Optimization"><FONT SIZE=2>GROUP BY Optimization</font></a></li><li><a href="#SDISTINCT Optimization"><FONT SIZE=2>DISTINCT Optimization</font></a></li><li><a href="#SOptimizing IN/=ANY Subqueries"><FONT SIZE=2>Optimizing IN/=ANY Subqueries</font></a></li><li><a href="#SLIMIT Optimization"><FONT SIZE=2>LIMIT Optimization</font></a></li>
+</UL>
+
+<P><H2><A NAME="SOverview"></A>Overview</H2></P>		
+		<p>Optimization is a complex task because ultimately it requires understanding of the entire system to be optimized.
+			Although it may be possible to perform some local optimizations with little knowledge of your system or application, the more optimal you want your system to become, the more you must know about it.</p>
+		<p>This chapter tries to explain and give some examples of different ways to optimize MySQL.
+			Remember, however, that there are always additional ways to make the system even faster, although they may require increasing effort to achieve.</p>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SOptimization Overview"></A>Optimization Overview</H2></P>
+		<p>The most important factor in making a system fast is its basic design.
+			You must also know what kinds of processing your system is doing, and what its bottlenecks are. In most cases, system bottlenecks arise from these sources:</p>
+		<ul>
+			<li>
+				<p>Disk seeks. It takes time for the disk to find a piece of data. With modern disks, the mean time for this is usually lower than 10ms, so we can in theory do about 100 seeks a second.
+					This time improves slowly with new disks and is very hard to optimize for a single table. The way to optimize seek time is to distribute the data onto more than one disk.</p>
+			</li>
+			<li>
+				<p>Disk reading and writing. When the disk is at the correct position, we need to read the data. With modern disks, one disk delivers at least 10–20MB/s throughput.
+					This is easier to optimize than seeks because you can read in parallel from multiple disks.</p>
+			</li>
+			<li>
+				<p>CPU cycles. When we have the data in main memory, we need to process it to get our result.
+					Having small tables compared to the amount of memory is the most common limiting factor. But with small tables, speed is usually not the problem.</p>
+			</li>
+			<li>
+				<p>Memory bandwidth. When the CPU needs more data than can fit in the CPU cache, main memory bandwidth becomes a bottleneck.
+					This is an uncommon bottleneck for most systems, but one to be aware of.</p>
+			</li>
+		</ul>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SMySQL Design Limitations and Tradeoffs"></A>MySQL Design Limitations and Tradeoffs</H2></P>
+		<p>When using the MyISAM storage engine, MySQL uses extremely fast table locking that allows multiple readers or a single writer.
+			The biggest problem with this storage engine occurs when you have a steady stream of mixed updates and slow selects on a single table.
+			If this is a problem for certain tables, you can use another storage engine for them.</p>
+		<p>MySQL can work with both transactional and non-transactional tables. To make it easier to work smoothly with non-transactional tables (which cannot roll back if something goes wrong),
+			MySQL has the following rules. Note that these rules apply only when not running in strict SQL mode or if you use the IGNORE specifier for INSERT or UPDATE.</p>
+		<ul>
+			<li>
+				<p>All columns have default values.</p>
+			</li>
+			<li>
+				<p>If you insert an inappropriate or out-of-range value into a column, MySQL sets the column to the "best possible value" instead of reporting an error.
+					For numerical values, this is 0, the smallest possible value or the largest possible value.
+					For strings, this is either the empty string or as much of the string as can be stored in the column.</p>
+			</li>
+			<li>
+				<p>All calculated expressions return a value that can be used instead of signaling an error condition. For example, 1/0 returns NULL.</p>
+			</li>
+		</ul>
+		<p>To change the preceding behaviors, you can enable stricter data handling by setting the server SQL mode appropriately.</p>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SOptimizing SELECT and Other Statements"></A>Optimizing SELECT and Other Statements</H2></P>
+		<p>First, one factor affects all statements: The more complex your permissions setup, the more overhead you have.
+			Using simpler permissions when you issue GRANT statements enables MySQL to reduce permission-checking overhead when clients execute statements.
+			For example, if you do not grant any table-level or column-level privileges, the server need not ever check the contents of the tables_priv and columns_priv tables.
+			Similarly, if you place no resource limits on any accounts, the server does not have to perform resource counting.
+			If you have a very high statement-processing load, it may be worth the time to use a simplified grant structure to reduce permission-checking overhead.</p>
+		<p>If your problem is with a specific MySQL expression or function, you can perform a timing test by invoking the BENCHMARK() function using the mysql client program.
+			Its syntax is BENCHMARK(loop_count,expression). The return value is always zero, but mysql prints a line displaying approximately how long the statement took to execute. For example:</p>
+		<pre>(sql sqlHandel {SELECT BENCHMARK(1000000,1+1)}) <b>Returns</b>
++------------------------+
+| BENCHMARK(1000000,1+1) |
++------------------------+
+|                      0 |
++------------------------+</pre>
+		<p>This result was obtained on a Pentium II 400MHz system. It shows that MySQL can execute 1,000,000 simple addition expressions in 0.32 seconds on that system.</p>
+		<p>All MySQL functions should be highly optimized, but there may be some exceptions. BENCHMARK() is an excellent tool for finding out if some function is a problem for your queries.</p>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SOptimizing Queries with EXPLAIN"></A>Optimizing Queries with EXPLAIN</H2></P>
+		<p>The EXPLAIN statement can be used either as a synonym for DESCRIBE or as a way to obtain information about how MySQL executes a SELECT statement:</p>
+		<ul>
+			<li>
+				<p>EXPLAIN tbl_name is synonymous with DESCRIBE tbl_name or SHOW COLUMNS FROM tbl_name:</p>
+				<pre>EXPLAIN tbl_name</pre>
+			</li>
+			<li>
+				<p>When you precede a SELECT statement with the keyword EXPLAIN, MySQL displays information from the optimizer about the query execution plan.
+					That is, MySQL explains how it would process the SELECT, including information about how tables are joined and in which order:</p>
+				<pre>EXPLAIN [EXTENDED | PARTITIONS] SELECT select_options</pre>
+			</li>
+			<li>
+				<p>EXPLAIN PARTITIONS is available beginning with MySQL 5.1.5. It is useful only when examining queries involving partitioned tables.</p>
+			</li>
+		</ul>
+		<p>This section describes the second use of EXPLAIN for obtaining query execution plan information.</p>
+		<p>With the help of EXPLAIN, you can see where you should add indexes to tables to get a faster SELECT that uses indexes to find rows.
+			You can also use EXPLAIN to check whether the optimizer joins the tables in an optimal order.
+			To give a hint to the optimizer to use a join order corresponding to the order in which the tables are named in the SELECT statement,
+			begin the statement with SELECT STRAIGHT_JOIN rather than just SELECT.</p>
+		<p>If you have a problem with indexes not being used when you believe that they should be, you should run ANALYZE TABLE to update table statistics such as cardinality of keys,
+			that can affect the choices the optimizer makes.</p>
+		<p>EXPLAIN returns a row of information for each table used in the SELECT statement.
+			The tables are listed in the output in the order that MySQL would read them while processing the query.
+			MySQL resolves all joins using a single-sweep multi-join method. This means that MySQL reads a row from the first table, and then finds a matching row in the second table, the third table, and so on.
+			When all tables are processed, MySQL outputs the selected columns and backtracks through the table list until a table is found for which there are more matching rows.
+			The next row is read from this table and the process continues with the next table.</p>
+		<p>When the EXTENDED keyword is used, EXPLAIN produces extra information that can be viewed by issuing a SHOW WARNINGS statement following the EXPLAIN statement.
+			This information displays how the optimizer qualifies table and column names in the SELECT statement, what the SELECT looks like after the application of rewriting and optimization rules,
+			and possibly other notes about the optimization process. EXPLAIN EXTENDED also displays the filtered column as of MySQL 5.1.12.</p>
+		<p>Note: You cannot use the EXTENDED and PARTITIONS keywords together in the same EXPLAIN statement.</p>
+		<p>Each output row from EXPLAIN provides information about one table, and each row contains the following columns:</p>
+		<ul>
+			<li>
+				<p>id</p>
+				<p>The SELECT identifier. This is the sequential number of the SELECT within the query.</p>
+			</li>
+			<li>
+				<p>select_type</p>
+				<p>The type of SELECT, which can be any of those shown in the following table:</p>
+				<table border=3">
+					<tr><th>SIMPLE</th><th>Simple SELECT (not using UNION or subqueries)</th></tr>
+					<tr><td>PRIMARY</td><td>Outermost SELECT</td></tr>
+					<tr><td>UNION</td><td>Second or later SELECT statement in a UNION</td></tr>
+					<tr><td>DEPENDENT UNION</td><td>Second or later SELECT statement in a UNION, dependent on outer query</td></tr>
+					<tr><td>UNION RESULT</td><td>Result of a UNION.</td></tr>
+					<tr><td>SUBQUERY</td><td>First SELECT in subquery</td></tr>
+					<tr><td>DEPENDENT SUBQUERY</td><td>First SELECT in subquery, dependent on outer query</td></tr>
+					<tr><td>DERIVED</td><td>Derived table SELECT (subquery in FROM clause)</td></tr>
+					<tr><td>UNCACHEABLE SUBQUERY</td><td>A subquery for which the result cannot be cached and must be re-evaluated for each row of the outer query</td></tr>
+					<tr><td>UNCACHEABLE UNION</td><td>The second or later select in a UNION that belongs to an uncacheable subquery (see UNCACHEABLE SUBQUERY)</td></tr>
+					<tr><td>DEPENDENT</td><td>typically signifies the use of a correlated subquery.</td></tr>
+				</table>
+				<p>"DEPENDENT SUBQUERY" evaluation differs from UNCACHEABLE SUBQUERY evaluation.
+					For "DEPENDENT SUBQUERY", the subquery is re-evaluated only once for each set of different values of the variables from its outer context.
+					For UNCACHEABLE SUBQUERY, the subquery is re-evaluated for each row of the outer context. Cacheability of subqueries is subject to some restrictions.
+					For example, referring to user variables makes a subquery uncacheable.</p>
+			</li>
+			<li>
+				<p>table</p>
+				<p>The table to which the row of output refers.</p>
+			</li>
+			<li>
+				<p>type</p>
+				<p>The join type. The different join types are listed here, ordered from the best type to the worst:</p>
+				<ul>
+					<li>
+						<p>system</p>
+						<p>The table has only one row (= system table). This is a special case of the const join type.</p>
+					</li>
+					<li>
+						<p>const</p>
+						<p>The table has at most one matching row, which is read at the start of the query.
+							Because there is only one row, values from the column in this row can be regarded as constants by the rest of the optimizer.
+							const tables are very fast because they are read only once.</p>
+						<p>const is used when you compare all parts of a PRIMARY KEY or UNIQUE index to constant values.
+							In the following queries, tbl_name can be used as a const table:</p>
+						<pre>SELECT * FROM tbl_name WHERE primary_key=1;</pre>
+						<pre>SELECT * FROM tbl_name WHERE primary_key_part1=1 AND primary_key_part2=2;</pre>
+					</li>
+					<li>
+						<p>eq_ref</p>
+						<p>One row is read from this table for each combination of rows from the previous tables.
+							Other than the system and const types, this is the best possible join type.
+							It is used when all parts of an index are used by the join and the index is a PRIMARY KEY or UNIQUE index.</p>
+						<p>eq_ref can be used for indexed columns that are compared using the = operator.
+							The comparison value can be a constant or an expression that uses columns from tables that are read before this table.
+							In the following examples, MySQL can use an eq_ref join to process ref_table:</p>
+						<pre>SELECT * FROM ref_table,other_table WHERE ref_table.key_column=other_table.column;</pre>
+						<pre>SELECT * FROM ref_table,other_table WHERE ref_table.key_column_part1=other_table.column AND ref_table.key_column_part2=1;</pre>
+					</li>
+					<li>
+						<p>ref</p>
+						<p>All rows with matching index values are read from this table for each combination of rows from the previous tables.
+							ref is used if the join uses only a leftmost prefix of the key or if the key is not a PRIMARY KEY or UNIQUE index (in other words, if the join cannot select a single row based on the key value).
+							If the key that is used matches only a few rows, this is a good join type.</p>
+						<p>ref can be used for indexed columns that are compared using the = or <=> operator. In the following examples, MySQL can use a ref join to process ref_table:</p>
+						<pre>SELECT * FROM ref_table WHERE key_column=expr;</pre>
+						<pre>SELECT * FROM ref_table,other_table WHERE ref_table.key_column=other_table.column;</pre>
+						<pre>SELECT * FROM ref_table,other_table WHERE ref_table.key_column_part1=other_table.column AND ref_table.key_column_part2=1;</pre>
+					</li>
+					<li>
+						<p>fulltext</p>
+						<p>The join is performed using a FULLTEXT index.</p>
+					</li>
+					<li>
+						<p>ref_or_null</p>
+						<p>This join type is like ref, but with the addition that MySQL does an extra search for rows that contain NULL values.
+							This join type optimization is used most often in resolving subqueries. In the following examples, MySQL can use a ref_or_null join to process ref_table:</p>
+						<pre>SELECT * FROM ref_table WHERE key_column=expr OR key_column IS NULL;</pre>
+					</li>
+					<li>
+						<p>index_merge</p>
+						<p>This join type indicates that the Index Merge optimization is used. In this case, the key column in the output row contains a list of indexes used,
+							and key_len contains a list of the longest key parts for the indexes used.</p>
+					</li>
+					<li>
+						<p>unique_subquery</p>
+						<p>This type replaces ref for some IN subqueries of the following form:</p>
+						<pre>value IN (SELECT primary_key FROM single_table WHERE some_expr)</pre>
+						<p>unique_subquery is just an index lookup function that replaces the subquery completely for better efficiency.</p>
+					</li>
+					<li>
+						<p>index_subquery</p>
+						<p>This join type is similar to unique_subquery. It replaces IN subqueries, but it works for non-unique indexes in subqueries of the following form:</p>
+						<pre>value IN (SELECT key_column FROM single_table WHERE some_expr)</pre>
+					</li>
+					<li>
+						<p>range</p>
+						<p>Only rows that are in a given range are retrieved, using an index to select the rows.
+							The key column in the output row indicates which index is used. The key_len contains the longest key part that was used. The ref column is NULL for this type.</p>
+						<p>range can be used when a key column is compared to a constant using any of the =, <>, >, >=, <, <=, IS NULL, <=>, BETWEEN, or IN() operators:</p>
+						<pre>SELECT * FROM tbl_name WHERE key_column = 10;</pre>
+						<pre>SELECT * FROM tbl_name WHERE key_column BETWEEN 10 and 20;</pre>
+						<pre>SELECT * FROM tbl_name WHERE key_column IN (10,20,30);</pre>
+						<pre>SELECT * FROM tbl_name WHERE key_part1= 10 AND key_part2 IN (10,20,30);</pre>
+					</li>
+					<li>
+						<p>index</p>
+						<p>This join type is the same as ALL, except that only the index tree is scanned. This usually is faster than ALL because the index file usually is smaller than the data file.</p>
+						<p>MySQL can use this join type when the query uses only columns that are part of a single index.</p>
+					</li>
+					<li>
+						<p>ALL</p>
+						<p>A full table scan is done for each combination of rows from the previous tables.
+							This is normally not good if the table is the first table not marked const, and usually very bad in all other cases.
+							Normally, you can avoid ALL by adding indexes that allow row retrieval from the table based on constant values or column values from earlier tables.</p>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<p>possible_keys</p>
+				<p>The possible_keys column indicates which indexes MySQL can choose from use to find the rows in this table.
+					Note that this column is totally independent of the order of the tables as displayed in the output from EXPLAIN.
+					That means that some of the keys in possible_keys might not be usable in practice with the generated table order.</p>
+				<p>If this column is NULL, there are no relevant indexes. In this case, you may be able to improve the performance of your query by examining the WHERE clause
+					to check whether it refers to some column or columns that would be suitable for indexing. If so, create an appropriate index and check the query with EXPLAIN again.</p>
+				<p>To see what indexes a table has, use SHOW INDEX FROM tbl_name.</p>
+			</li>
+			<li>
+				<p>key</p>
+				<p>The key column indicates the key (index) that MySQL actually decided to use.
+					If MySQL decides to use one of the possible_keys indexes to look up rows, that index is listed as the key value.</p>
+				<p>It is possible that key will name an index that is not present in the possible_keys value.
+					This can happen if none of the possible_keys indexes are suitable for looking up rows, but all the columns selected by the query are columns of some other index.
+					That is, the named index covers the selected columns, so although it is not used to determine which rows to retrieve, an index scan is more efficient than a data row scan.</p>
+				<p>For InnoDB, a secondary index might cover the selected columns even if the query also selects the primary key because InnoDB stores the primary key value with each secondary index.
+					If key is NULL, MySQL found no index to use for executing the query more efficiently.</p>
+				<p>To force MySQL to use or ignore an index listed in the possible_keys column, use FORCE INDEX, USE INDEX, or IGNORE INDEX in your query.</p>
+				<p>For MyISAM tables, running ANALYZE TABLE helps the optimizer choose better indexes. For MyISAM tables, myisamchk --analyze does the same.</p>
+			</li>
+			<li>
+				<p>key_len</p>
+				<p>The key_len column indicates the length of the key that MySQL decided to use.
+					The length is NULL if the key column says NULL. Note that the value of key_len enables you to determine how many parts of a multiple-part key MySQL actually uses.</p>
+			</li>
+			<li>
+				<p>ref</p>
+				<p>The ref column shows which columns or constants are compared to the index named in the key column to select rows from the table.</p>
+			</li>
+			<li>
+				<p>rows</p>
+				<p>The rows column indicates the number of rows MySQL believes it must examine to execute the query.</p>
+			</li>
+			<li>
+				<p>filtered</p>
+				<p>The filtered column indicates an estimated percentage of table rows that will be filtered by the table condition.
+					That is, rows shows the estimated number of rows examined and rows × filtered / 100 shows the number of rows that will be joined with previous tables. This column is displayed if you use EXPLAIN EXTENDED.</p>
+			</li>
+			<li>
+				<p>Extra</p>
+				<p>This column contains additional information about how MySQL resolves the query. The following list explains the values that can appear in this column.
+					If you want to make your queries as fast as possible, you should look out for Extra values of Using filesort and Using temporary.</p>
+				<ul>
+					<li>
+						<p>Distinct</p>
+						<p>MySQL is looking for distinct values, so it stops searching for more rows for the current row combination after it has found the first matching row.</p>
+					</li>
+					<li>
+						<p>Full scan on NULL key</p>
+						<p>This occurs for subquery optimization as a fallback strategy when the optimizer cannot use an index-lookup access method.</p>
+						<p>Impossible WHERE noticed after reading const tables</p>
+						<p>MySQL has read all const (and system) tables and notice that the WHERE clause is always false.</p>
+					</li>
+					<li>
+						<p>No tables</p>
+						<p>The query has no FROM clause, or has a FROM DUAL clause.</p>
+					</li>
+					<li>
+						<p>Not exists</p>
+						<p>MySQL was able to do a LEFT JOIN optimization on the query and does not examine more rows in this table for the previous row combination after it finds one row that matches the LEFT JOIN criteria.
+							Here is an example of the type of query that can be optimized this way:</p>
+						<pre>SELECT * FROM t1 LEFT JOIN t2 ON t1.id=t2.id WHERE t2.id IS NULL;</pre>
+						<p>Assume that t2.id is defined as NOT NULL. In this case, MySQL scans t1 and looks up the rows in t2 using the values of t1.id.
+							If MySQL finds a matching row in t2, it knows that t2.id can never be NULL, and does not scan through the rest of the rows in t2 that have the same id value.
+							In other words, for each row in t1, MySQL needs to do only a single lookup in t2, regardless of how many rows actually match in t2.</p>
+						<p>Range checked for each record (index map: N)</p>
+						<p>MySQL found no good index to use, but found that some of indexes might be used after column values from preceding tables are known.
+							For each row combination in the preceding tables, MySQL checks whether it is possible to use a range or index_merge access method to retrieve rows.
+							This is not very fast, but is faster than performing a join with no index at all.</p>
+						<p>Indexes are numbered beginning with 1, in the same order as shown by SHOW INDEX for the table. The index map value N is a bitmask value that indicates which indexes are candidates.
+							For example, a value of 0x19 (binary 11001) means that indexes 1, 4, and 5 will be considered.</p>
+					</li>
+					<li>
+						<p>Scanned N databases</p>
+						<p>This indicates how many directory scans the server performs when processing a query for INFORMATION_SCHEMA tables. The value of N can be 0, 1, or all.</p>
+					</li>
+					<li>
+						<p>Select tables optimized away</p>
+						<p>The query contained only aggregate functions (MIN(), MAX()) that were all resolved using an index, or COUNT(*) for MyISAM, and no GROUP BY clause.
+							The optimizer determined that only one row should be returned.</p>
+					</li>
+					<li>
+						<p>Skip_open_table, Open_frm_only, Open_trigger_only, Open_full_table</p>
+						<p>These values indicate file-opening optimizations that apply to queries for INFORMATION_SCHEMA tables.</p>
+						<ul>
+							<li>
+								<p>Skip_open_table: Table files do not need to be opened. The information has already become available within the query by scanning the database directory.</p>
+							</li>
+							<li>
+								<p>Open_frm_only: Only the table's .frm file need be opened.</p>
+							</li>
+							<li>
+								<p>Open_trigger_only: Only the table's .TRG file need be opened.</p>
+							</li>
+							<li>
+								<p>Open_full_table: The unoptimized information lookup. The .frm, .MYD, and .MYI files must be opened.</p>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<p>Using filesort</p>
+						<p>MySQL must do an extra pass to find out how to retrieve the rows in sorted order.
+							The sort is done by going through all rows according to the join type and storing the sort key and pointer to the row for all rows that match the WHERE clause.
+							The keys then are sorted and the rows are retrieved in sorted order.</p>
+					</li>
+					<li>
+						<p>Using index</p>
+						<p>The column information is retrieved from the table using only information in the index tree without having to do an additional seek to read the actual row.
+							This strategy can be used when the query uses only columns that are part of a single index.</p>
+					</li>
+					<li>
+						<p>For InnoDB tables that have a user-defined clustered index, that index can be used even when Using index is absent from the Extra column.
+							This is the case if type is index and key is PRIMARY.</p>
+					</li>
+					<li>
+						<p>Using index for group-by</p>
+						<p>Similar to the Using index table access method, Using index for group-by indicates that MySQL found an index that can be used to retrieve all columns of
+							a GROUP BY or DISTINCT query without any extra disk access to the actual table. Additionally, the index is used in the most efficient way so that for each group,
+							only a few index entries are read.</p>
+					</li>
+					<li>
+						<p>Using join buffer</p>
+						<p>Tables are read in portions into the join buffer, and then their rows are used from the buffer to perform the join.</p>
+					</li>
+					<li>
+						<p>Using sort_union(...), Using union(...), Using intersect(...)</p>
+						<p>These indicate how index scans are merged for the index_merge join type.</p>
+					</li>
+					<li>
+						<p>Using temporary</p>
+						<p>To resolve the query, MySQL needs to create a temporary table to hold the result.
+							This typically happens if the query contains GROUP BY and ORDER BY clauses that list columns differently.</p>
+					</li>
+					<li>
+						<p>Using where</p>
+						<p>A WHERE clause is used to restrict which rows to match against the next table or send to the client.
+							Unless you specifically intend to fetch or examine all rows from the table,
+							you may have something wrong in your query if the Extra value is not Using where and the table join type is ALL or index.</p>
+					</li>
+					<li>
+						<p>Using where with pushed condition</p>
+						<p>This item applies to NDBCLUSTER tables only. It means that MySQL Cluster is using the Condition Pushdown optimization to improve the efficiency of a direct comparison between a non-indexed column and a constant.
+							In such cases, the condition is "pushed down" to the cluster's data nodes and is evaluated on all data nodes simultaneously.
+							This eliminates the need to send non-matching rows over the network, and can speed up such queries by a factor of 5 to 10 times over cases where Condition Pushdown could be but is not used.</p>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<p>You can get a good indication of how good a join is by taking the product of the values in the rows column of the EXPLAIN output.
+			This should tell you roughly how many rows MySQL must examine to execute the query.
+			If you restrict queries with the max_join_size system variable, this row product also is used to determine which multiple-table SELECT statements to execute and which to abort.</p>
+		<p>The following example shows how a multiple-table join can be optimized progressively based on the information provided by EXPLAIN.</p>
+		<p>Suppose that you have the SELECT statement shown here and that you plan to examine it using EXPLAIN:</p>
+		<pre>EXPLAIN SELECT tt.TicketNumber, tt.TimeIn,
+               tt.ProjectReference, tt.EstimatedShipDate,
+               tt.ActualShipDate, tt.ClientID,
+               tt.ServiceCodes, tt.RepetitiveID,
+               tt.CurrentProcess, tt.CurrentDPPerson,
+               tt.RecordVolume, tt.DPPrinted, et.COUNTRY,
+               et_1.COUNTRY, do.CUSTNAME
+        FROM tt, et, et AS et_1, do
+        WHERE tt.SubmitTime IS NULL
+          AND tt.ActualPC = et.EMPLOYID
+          AND tt.AssignedPC = et_1.EMPLOYID
+          AND tt.ClientID = do.CUSTNMBR;</pre>
+		<p>For this example, make the following assumptions:</p>
+		<ul>
+			<li>
+				<p>The columns being compared have been declared as follows:</p>
+				<table border="3">
+					<tr><th>Table</th><th>Column</th><th>Data Type</th></tr>
+					<tr><td>tt</td><td>ActualPC</td><td>CHAR(10)</td></tr>
+					<tr><td>tt</td><td>AssignedPC</td><td>CHAR(10)</td></tr>
+					<tr><td>tt</td><td>ClientID</td><td>CHAR(10)</td></tr>
+					<tr><td>et</td><td>EMPLOYID</td><td>CHAR(15)</td></tr>
+					<tr><td>do</td><td>CUSTNMBR</td><td>CHAR(15)</td></tr>
+				</table>
+			</li>
+			<li>
+				<p>The tables have the following indexes:</p>
+				<table border="3">
+					<tr><th>Table</th><th>Index</th></tr>
+					<tr><td>tt</td><td>ActualPC</td></tr>
+					<tr><td>tt</td><td>AssignedPC</td></tr>
+					<tr><td>tt</td><td>ClientID</td></tr>
+					<tr><td>et</td><td>EMPLOYID (primary key)</td></tr>
+					<tr><td>do</td><td>CUSTNMBR (primary key)</td></tr>
+				</table>
+			</li>
+			<li>
+				<p>The tt.ActualPC values are not evenly distributed.</p>
+			</li>
+		</ul>
+		<p>Initially, before any optimizations have been performed, the EXPLAIN statement produces the following information:</p>
+		<pre>table type possible_keys key  key_len ref  rows  Extra
+et    ALL  PRIMARY       NULL NULL    NULL 74
+do    ALL  PRIMARY       NULL NULL    NULL 2135
+et_1  ALL  PRIMARY       NULL NULL    NULL 74
+tt    ALL  AssignedPC,   NULL NULL    NULL 3872
+           ClientID,
+           ActualPC
+      Range checked for each record (index map: 0x23)</pre>
+		<p>Because type is ALL for each table, this output indicates that MySQL is generating a Cartesian product of all the tables;
+			that is, every combination of rows. This takes quite a long time, because the product of the number of rows in each table must be examined.
+			For the case at hand, this product is 74 × 2135 × 74 × 3872 = 45,268,558,720 rows. If the tables were bigger, you can only imagine how long it would take.</p>
+		<p>One problem here is that MySQL can use indexes on columns more efficiently if they are declared as the same type and size.
+			In this context, VARCHAR and CHAR are considered the same if they are declared as the same size. tt.ActualPC is declared as CHAR(10) and et.EMPLOYID is CHAR(15), so there is a length mismatch.</p>
+		<p>To fix this disparity between column lengths, use ALTER TABLE to lengthen ActualPC from 10 characters to 15 characters:</p>
+		<pre>(sql sqlHandle {ALTER TABLE tt MODIFY ActualPC VARCHAR(15)})</pre>
+		<p>Now tt.ActualPC and et.EMPLOYID are both VARCHAR(15). Executing the EXPLAIN statement again produces this result:</p>
+		<pre>table type   possible_keys key     key_len ref         rows    Extra
+tt    ALL    AssignedPC,   NULL    NULL    NULL        3872    Using
+             ClientID,                                         where
+             ActualPC
+do    ALL    PRIMARY       NULL    NULL    NULL        2135
+      Range checked for each record (index map: 0x1)
+et_1  ALL    PRIMARY       NULL    NULL    NULL        74
+      Range checked for each record (index map: 0x1)
+et    eq_ref PRIMARY       PRIMARY 15      tt.ActualPC 1</pre>
+		<p>This is not perfect, but is much better: The product of the rows values is less by a factor of 74. This version executes in a couple of seconds.</p>
+		<p>A second alteration can be made to eliminate the column length mismatches for the tt.AssignedPC = et_1.EMPLOYID and tt.ClientID = do.CUSTNMBR comparisons:</p>
+		<pre>(sql sqlHandle {ALTER TABLE tt MODIFY AssignedPC VARCHAR(15), MODIFY ClientID   VARCHAR(15)})</pre>
+		<p>After that modification, EXPLAIN produces the output shown here:</p>
+		<pre>table type   possible_keys key      key_len ref           rows Extra
+et    ALL    PRIMARY       NULL     NULL    NULL          74
+tt    ref    AssignedPC,   ActualPC 15      et.EMPLOYID   52   Using
+             ClientID,                                         where
+             ActualPC
+et_1  eq_ref PRIMARY       PRIMARY  15      tt.AssignedPC 1
+do    eq_ref PRIMARY       PRIMARY  15      tt.ClientID   1</pre>
+		<p>At this point, the query is optimized almost as well as possible.
+			The remaining problem is that, by default, MySQL assumes that values in the tt.ActualPC column are evenly distributed, and that is not the case for the tt table.
+			Fortunately, it is easy to tell MySQL to analyze the key distribution:</p>
+		<pre>(sql sqlHandle {ANALYZE TABLE tt})</pre>
+		<p>With the additional index information, the join is perfect and EXPLAIN produces this result:</p>
+		<pre>table type   possible_keys key     key_len ref           rows Extra
+tt    ALL    AssignedPC    NULL    NULL    NULL          3872 Using
+             ClientID,                                        where
+             ActualPC
+et    eq_ref PRIMARY       PRIMARY 15      tt.ActualPC   1
+et_1  eq_ref PRIMARY       PRIMARY 15      tt.AssignedPC 1
+do    eq_ref PRIMARY       PRIMARY 15      tt.ClientID   1</pre>
+		<p>Note that the rows column in the output from EXPLAIN is an educated guess from the MySQL join optimizer.
+			You should check whether the numbers are even close to the truth by comparing the rows product with the actual number of rows that the query returns.
+			If the numbers are quite different, you might get better performance by using STRAIGHT_JOIN in your SELECT statement and trying to list the tables in a different order in the FROM clause.</p>
+		<p>It is possible in some cases to execute statements that modify data when EXPLAIN SELECT is used with a subquery;</p>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SEstimating Query Performance"></A>Estimating Query Performance</H2></P>
+		<p>In most cases, you can estimate query performance by counting disk seeks. For small tables, you can usually find a row in one disk seek (because the index is probably cached).
+			For bigger tables, you can estimate that, using B-tree indexes, you need this many seeks to find a row: log(row_count) / log(index_block_length / 3 × 2 / (index_length + data_pointer_length)) + 1.</p>
+		<p>In MySQL, an index block is usually 1,024 bytes and the data pointer is usually four bytes.
+			For a 500,000-row table with an index length of three bytes (the size of MEDIUMINT), the formula indicates log(500,000)/log(1024/3×2/(3+4)) + 1 = 4 seeks.</p>
+		<p>This index would require storage of about 500,000 × 7 × 3/2 = 5.2MB (assuming a typical index buffer fill ratio of 2/3),
+			so you probably have much of the index in memory and so need only one or two calls to read data to find the row.</p>
+		<p>For writes, however, you need four seek requests to find where to place a new index value and normally two seeks to update the index and write the row.</p>
+		<p>Note that the preceding discussion does not mean that your application performance slowly degenerates by log N.
+			As long as everything is cached by the OS or the MySQL server, things become only marginally slower as the table gets bigger.
+			After the data gets too big to be cached, things start to go much slower until your applications are bound only by disk seeks (which increase by log N).
+			To avoid this, increase the key cache size as the data grows. For MyISAM tables, the key cache size is controlled by the key_buffer_size system variable.</p>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SSpeed of SELECT Queries"></A>Speed of SELECT Queries</H2></P>
+		<p>In general, when you want to make a slow SELECT ... WHERE query faster, the first thing to check is whether you can add an index.
+			All references between different tables should usually be done with indexes. You can use the EXPLAIN statement to determine which indexes are used for a SELECT.</p>
+		<p>Some general tips for speeding up queries on MyISAM tables:</p>
+		<ul>
+			<li>
+				<p>To help MySQL better optimize queries, use ANALYZE TABLE or run myisamchk --analyze on a table after it has been loaded with data.
+					This updates a value for each index part that indicates the average number of rows that have the same value.
+					(For unique indexes, this is always 1.) MySQL uses this to decide which index to choose when you join two tables based on a non-constant expression.
+					You can check the result from the table analysis by using SHOW INDEX FROM tbl_name and examining the Cardinality value.
+					myisamchk --description --verbose shows index distribution information.</p>
+			</li>
+			<li>
+				<p>To sort an index and data according to an index, use myisamchk --sort-index --sort-records=1 (assuming that you want to sort on index 1).
+					This is a good way to make queries faster if you have a unique index from which you want to read all rows in order according to the index.
+					The first time you sort a large table this way, it may take a long time.</p>
+			</li>
+		</ul>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SWHERE Clause Optimization"></A>WHERE Clause Optimization</H2></P>
+		<p>This section discusses optimizations that can be made for processing WHERE clauses.
+			The examples use SELECT statements, but the same optimizations apply for WHERE clauses in DELETE and UPDATE statements.</p>
+		<p>Work on the MySQL optimizer is ongoing, so this section is incomplete. MySQL performs a great many optimizations, not all of which are documented here.</p>
+		<p>Some of the optimizations performed by MySQL follow:</p>
+		<ul>
+			<li>
+				<p>Removal of unnecessary parentheses:</p>
+				<pre>((a AND b) AND c OR (((a AND b) AND (c AND d)))) (a AND b AND c) OR (a AND b AND c AND d)</pre>
+			</li>
+			<li>
+				<p>Constant folding:</p>
+				<pre>(a&lt;b AND b=c) AND a=5 b&gt;5 AND b=c AND a=5</pre>
+			</li>
+			<li>
+				<p>Constant condition removal (needed because of constant folding):</p>
+				<pre>(B>=5 AND B=5) OR (B=6 AND 5=5) OR (B=7 AND 5=6) B=5 OR B=6</pre>
+			</li>
+			<li>
+				<p>Constant expressions used by indexes are evaluated only once.</p>
+			</li>
+			<li>
+				<p>COUNT(*) on a single table without a WHERE is retrieved directly from the table information for MyISAM and MEMORY tables.
+					This is also done for any NOT NULL expression when used with only one table.</p>
+			</li>
+			<li>
+				<p>Early detection of invalid constant expressions. MySQL quickly detects that some SELECT statements are impossible and returns no rows.</p>
+			</li>
+			<li>
+				<p>HAVING is merged with WHERE if you do not use GROUP BY or aggregate functions (COUNT(), MIN(), and so on).</p>
+			</li>
+			<li>
+				<p>For each table in a join, a simpler WHERE is constructed to get a fast WHERE evaluation for the table and also to skip rows as soon as possible.</p>
+			</li>
+			<li>
+				<p>All constant tables are read first before any other tables in the query. A constant table is any of the following:</p>
+				<ul>
+					<li>
+						<p>An empty table or a table with one row.</p>
+					</li>
+					<li>
+						<p>A table that is used with a WHERE clause on a PRIMARY KEY or a UNIQUE index, where all index parts are compared to constant expressions and are defined as NOT NULL.</p>
+					</li>
+				</ul>
+				<p>All of the following tables are used as constant tables:</p>
+				<pre>SELECT * FROM t WHERE primary_key=1;</pre>
+				<pre>SELECT * FROM t1,t2 WHERE t1.primary_key=1 AND t2.primary_key=t1.id;</pre>
+			</li>
+			<li>
+				<p>The best join combination for joining the tables is found by trying all possibilities.
+					If all columns in ORDER BY and GROUP BY clauses come from the same table, that table is preferred first when joining.</p>
+			</li>
+			<li>
+				<p>If there is an ORDER BY clause and a different GROUP BY clause, or if the ORDER BY or GROUP BY contains columns from tables other than the first table in the join queue, a temporary table is created.</p>
+			</li>
+			<li>
+				<p>If you use the SQL_SMALL_RESULT option, MySQL uses an in-memory temporary table.</p>
+			</li>
+			<li>
+				<p>Each table index is queried, and the best index is used unless the optimizer believes that it is more efficient to use a table scan.
+					At one time, a scan was used based on whether the best index spanned more than 30% of the table, but a fixed percentage no longer determines the choice between using an index or a scan.
+					The optimizer now is more complex and bases its estimate on additional factors such as table size, number of rows, and I/O block size.</p>
+			</li>
+			<li>
+				<p>In some cases, MySQL can read rows from the index without even consulting the data file.
+					If all columns used from the index are numeric, only the index tree is used to resolve the query.</p>
+			</li>
+			<li>
+				<p>Before each row is output, those that do not match the HAVING clause are skipped.</p>
+			</li>
+		</ul>
+		<p>Some examples of queries that are very fast:</p>
+		<pre>SELECT COUNT(*) FROM tbl_name;</pre>
+		<pre>SELECT MIN(key_part1),MAX(key_part1) FROM tbl_name;</pre>
+		<pre>SELECT MAX(key_part2) FROM tbl_name WHERE key_part1=constant;</pre>
+		<pre>SELECT ... FROM tbl_name ORDER BY key_part1,key_part2,... LIMIT 10;</pre>
+		<pre>SELECT ... FROM tbl_name ORDER BY key_part1 DESC, key_part2 DESC, ... LIMIT 10;</pre>
+
+		<p>MySQL resolves the following queries using only the index tree, assuming that the indexed columns are numeric:</p>
+		<pre>SELECT key_part1,key_part2 FROM tbl_name WHERE key_part1=val;</pre>
+		<pre>SELECT COUNT(*) FROM tbl_name WHERE key_part1=val1 AND key_part2=val2;</pre>
+		<pre>SELECT key_part2 FROM tbl_name GROUP BY key_part1;</pre>
+
+		<p>The following queries use indexing to retrieve the rows in sorted order without a separate sorting pass:</p>
+		<pre>SELECT ... FROM tbl_name ORDER BY key_part1,key_part2,... ;</pre>
+		<pre>SELECT ... FROM tbl_name ORDER BY key_part1 DESC, key_part2 DESC, ... ;</pre>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SRange Optimization"></A>Range Optimization</H2></P>
+		<p>The range access method uses a single index to retrieve a subset of table rows that are contained within one or several index value intervals.
+			It can be used for a single-part or multiple-part index. The following sections give a detailed description of how intervals are extracted from the WHERE clause.</p>
+		<b>The Range Access Method for Single-Part Indexes</b>
+		<p>For a single-part index, index value intervals can be conveniently represented by corresponding conditions in the WHERE clause, so we speak of range conditions rather than "intervals."</p>
+		<p>The definition of a range condition for a single-part index is as follows:</p>
+		<ul>
+			<li>
+				<p>For both BTREE and HASH indexes, comparison of a key part with a constant value is a range condition when using the =, <=>, IN(), IS NULL, or IS NOT NULL operators.</p>
+			</li>
+			<li>
+				<p>For BTREE indexes, comparison of a key part with a constant value is a range condition when using the >, <, >=, <=, BETWEEN, !=, or <> operators, or LIKE comparisons
+					if the argument to LIKE is a constant string that does not start with a wildcard character.</p>
+			</li>
+			<li>
+				<p>For all types of indexes, multiple range conditions combined with OR or AND form a range condition.</p>
+			</li>
+		</ul>
+		<p>"Constant value" in the preceding descriptions means one of the following:</p>
+		<ul>
+			<li>
+				<p>A constant from the query string</p>
+			</li>
+			<li>
+				<p>A column of a const or system table from the same join</p>
+			</li>
+			<li>
+				<p>The result of an uncorrelated subquery</p>
+			</li>
+			<li>
+				<p>Any expression composed entirely from subexpressions of the preceding types</p>
+			</li>
+		</ul>
+		<p>Here are some examples of queries with range conditions in the WHERE clause:</p>
+		<pre>SELECT * FROM t1 WHERE key_col > 1 AND key_col < 10;</pre>
+		<pre>SELECT * FROM t1 WHERE key_col = 1 OR key_col IN (15,18,20);</pre>
+		<pre>SELECT * FROM t1 WHERE key_col LIKE 'ab%' OR key_col BETWEEN 'bar' AND 'foo';</pre>
+		<p>Note that some non-constant values may be converted to constants during the constant propagation phase.</p>
+		<p>MySQL tries to extract range conditions from the WHERE clause for each of the possible indexes.
+			During the extraction process, conditions that cannot be used for constructing the range condition are dropped,
+			conditions that produce overlapping ranges are combined, and conditions that produce empty ranges are removed.</p>
+		<p>Consider the following statement, where key1 is an indexed column and nonkey is not indexed:</p>
+		<pre>SELECT * FROM t1 WHERE (key1 < 'abc' AND (key1 LIKE 'abcde%' OR key1 LIKE '%b')) OR (key1 < 'bar' AND nonkey = 4) OR (key1 < 'uux' AND key1 > 'z');</pre>
+		<p>The extraction process for key key1 is as follows:</p>
+		<ol>
+			<li>
+				<p>Start with original WHERE clause:</p>
+				<pre>(key1 < 'abc' AND (key1 LIKE 'abcde%' OR key1 LIKE '%b')) OR (key1 < 'bar' AND nonkey = 4) OR (key1 < 'uux' AND key1 > 'z')</pre>
+			</li>
+			<li>
+				<p>Remove nonkey = 4 and key1 LIKE '%b' because they cannot be used for a range scan.
+					The correct way to remove them is to replace them with TRUE, so that we do not miss any matching rows when doing the range scan. Having replaced them with TRUE, we get:</p>
+				<pre>(key1 < 'abc' AND (key1 LIKE 'abcde%' OR TRUE)) OR (key1 < 'bar' AND TRUE) OR (key1 < 'uux' AND key1 > 'z')</pre>
+			</li>
+			<li>
+				<p>Collapse conditions that are always true or false:</p>
+				<pre>(key1 LIKE 'abcde%' OR TRUE) is always true</pre>
+				<pre>(key1 < 'uux' AND key1 > 'z') is always false</pre>
+				<p>Replacing these conditions with constants, we get:</p>
+				<pre>(key1 < 'abc' AND TRUE) OR (key1 < 'bar' AND TRUE) OR (FALSE)</pre>
+				<p>Removing unnecessary TRUE and FALSE constants, we obtain:</p>
+				<pre>(key1 < 'abc') OR (key1 < 'bar')</pre>
+			</li>
+			<li>
+				<p>Combining overlapping intervals into one yields the final condition to be used for the range scan:</p>
+				<pre>(key1 < 'bar')</pre>
+			</li>
+		</ol>
+		<p>In general (and as demonstrated by the preceding example), the condition used for a range scan is less restrictive than the WHERE clause.
+			MySQL performs an additional check to filter out rows that satisfy the range condition but not the full WHERE clause.</p>
+		<p>The range condition extraction algorithm can handle nested AND/OR constructs of arbitrary depth, and its output does not depend on the order in which conditions appear in WHERE clause.</p>
+		<p>Currently, MySQL does not support merging multiple ranges for the range access method for spatial indexes.
+			To work around this limitation, you can use a UNION with identical SELECT statements, except that you put each spatial predicate in a different SELECT.</p>
+		<b>The Range Access Method for Multiple-Part Indexes</b>
+		<p>Range conditions on a multiple-part index are an extension of range conditions for a single-part index.
+			A range condition on a multiple-part index restricts index rows to lie within one or several key tuple intervals.
+			Key tuple intervals are defined over a set of key tuples, using ordering from the index.</p>
+		<p>For example, consider a multiple-part index defined as key1(key_part1, key_part2, key_part3), and the following set of key tuples listed in key order:</p>
+		<pre>
+key_part1  key_part2  key_part3
+  NULL       1          'abc'
+  NULL       1          'xyz'
+  NULL       2          'foo'
+   1         1          'abc'
+   1         1          'xyz'
+   1         2          'abc'
+   2         1          'aaa'</pre>
+		<p>The condition key_part1 = 1 defines this interval:</p>
+		<pre>(1,-inf,-inf) <= (key_part1,key_part2,key_part3) < (1,+inf,+inf)</pre>
+		<p>The interval covers the 4th, 5th, and 6th tuples in the preceding data set and can be used by the range access method.</p>
+		<p>By contrast, the condition key_part3 = 'abc' does not define a single interval and cannot be used by the range access method.</p>
+		<p>The following descriptions indicate how range conditions work for multiple-part indexes in greater detail.</p>
+		<ul>
+			<li>
+				<p>For HASH indexes, each interval containing identical values can be used. This means that the interval can be produced only for conditions in the following form:</p>
+				<pre>
+    key_part1 cmp const1
+AND key_part2 cmp const2
+AND ...
+AND key_partN cmp constN;</pre>
+				<p>Here, const1, const2, … are constants, cmp is one of the =, <=>, or IS NULL comparison operators, and the conditions cover all index parts.
+					(That is, there are N conditions, one for each part of an N-part index.) For example, the following is a range condition for a three-part HASH index:</p>
+				<pre>key_part1 = 1 AND key_part2 IS NULL AND key_part3 = 'foo'</pre>
+			</li>
+			<li>
+				<p>For a BTREE index, an interval might be usable for conditions combined with AND,
+				where each condition compares a key part with a constant value using =, <=>, IS NULL, >, <, >=, <=, !=, <>, BETWEEN, or LIKE 'pattern' (where 'pattern' does not start with a wildcard).
+				An interval can be used as long as it is possible to determine a single key tuple containing all rows that match the condition (or two intervals if <> or != is used).
+				For example, for this condition:</p>
+				<pre>key_part1 = 'foo' AND key_part2 >= 10 AND key_part3 > 10</pre>
+				<p>The single interval is:</p>
+				<pre>('foo',10,10) < (key_part1,key_part2,key_part3) < ('foo',+inf,+inf)</pre>
+				<p>It is possible that the created interval contains more rows than the initial condition.
+					For example, the preceding interval includes the value ('foo', 11, 0), which does not satisfy the original condition.</p>
+			</li>
+			<li>
+				<p>If conditions that cover sets of rows contained within intervals are combined with OR, they form a condition that covers a set of rows contained within the union of their intervals.
+					If the conditions are combined with AND, they form a condition that covers a set of rows contained within the intersection of their intervals.
+					For example, for this condition on a two-part index:</p>
+				<pre>(key_part1 = 1 AND key_part2 < 2) OR (key_part1 > 5)</pre>
+				<p>The intervals are:</p>
+				<pre>(1,-inf) < (key_part1,key_part2) < (1,2)
+(5,-inf) < (key_part1,key_part2)</pre>
+				<p>In this example, the interval on the first line uses one key part for the left bound and two key parts for the right bound.
+					The interval on the second line uses only one key part. The key_len column in the EXPLAIN output indicates the maximum length of the key prefix used.</p>
+				<p>In some cases, key_len may indicate that a key part was used, but that might be not what you would expect.
+					Suppose that key_part1 and key_part2 can be NULL. Then the key_len column displays two key part lengths for the following condition:></p>
+				<pre>key_part1 >= 1 AND key_part2 < 2</pre>
+				<p>But, in fact, the condition is converted to this:</p>
+				<pre>key_part1 >= 1 AND key_part2 IS NOT NULL</pre>
+			</li>
+		</ul>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SIndex Merge Optimization"></A>Index Merge Optimization</H2></P>
+		<p>The Index Merge method is used to retrieve rows with several range scans and to merge their results into one.
+			The merge can produce unions, intersections, or unions-of-intersections of its underlying scans.
+			This access method merges index scans from a single table; it does not merge scans across multiple tables.</p>
+		<p>In EXPLAIN output, the Index Merge method appears as index_merge in the type column.
+			In this case, the key column contains a list of indexes used, and key_len contains a list of the longest key parts for those indexes.</p>
+		<p>Examples:</p>
+		<pre>SELECT * FROM tbl_name WHERE key1 = 10 OR key2 = 20;</pre>
+		<pre>SELECT * FROM tbl_name WHERE (key1 = 10 OR key2 = 20) AND non_key=30;</pre>
+		<pre>SELECT * FROM t1, t2 WHERE (t1.key1 IN (1,2) OR t1.key2 LIKE 'value%') AND t2.key1=t1.some_col;</pre>
+		<pre>SELECT * FROM t1, t2 WHERE t1.key1=1 AND (t2.key1=t1.some_col OR t2.key2=t1.some_col2);</pre>
+		<p>The Index Merge method has several access algorithms (seen in the Extra field of EXPLAIN output):</p>
+		<ul>
+			<li>
+				<p>Using intersect(...)</p>
+			</li>
+			<li>
+				<p>Using union(...)</p>
+			</li>
+			<li>
+				<p>Using sort_union(...)</p>
+			</li>
+		</ul>
+		<p>The following sections describe these methods in greater detail.</p>
+		<p>Note: The Index Merge optimization algorithm has the following known deficiencies:</p>
+		<ul>
+			<li>
+				<p>If a range scan is possible on some key, the optimizer will not consider using Index Merge Union or Index Merge Sort-Union algorithms. For example, consider this query:</p>
+				<pre>SELECT * FROM t1 WHERE (goodkey1 < 10 OR goodkey2 < 20) AND badkey < 30;</pre>
+				<p>For this query, two plans are possible:</p>
+				<ul>
+					<li>
+						<p>An Index Merge scan using the (goodkey1 < 10 OR goodkey2 < 20) condition.</p>
+					</li>
+					<li>
+						<p>A range scan using the badkey < 30 condition.</p>
+					</li>
+				</ul>
+				<p>However, the optimizer considers only the second plan.</p>
+			</li>
+			<li>
+				<p>If your query has a complex WHERE clause with deep AND/OR nesting and MySQL doesn't choose the optimal plan, try distributing terms using the following identity laws:</p>
+				<pre>(x AND y) OR z = (x OR z) AND (y OR z)</pre>
+				<pre>(x OR y) AND z = (x AND z) OR (y AND z)</pre>
+			</li>
+			<li>
+				<p>Index Merge is not applicable to fulltext indexes. We plan to extend it to cover these in a future MySQL release.</p>
+			</li>
+		</ul>
+		<p>The choice between different possible variants of the Index Merge access method and other access methods is based on cost estimates of various available options.</p>
+		
+		<b>The Index Merge Intersection Access Algorithm</b>
+		<p>This access algorithm can be employed when a WHERE clause was converted to several range conditions on different keys combined with AND, and each condition is one of the following:</p>
+		<ul>
+			<li>
+				<p>In this form, where the index has exactly N parts (that is, all index parts are covered):</p>
+				<pre>key_part1=const1 AND key_part2=const2 ... AND key_partN=constN</pre>
+			</li>
+			<li>
+				<p>Any range condition over a primary key of an InnoDB table.</p>
+			</li>
+		</ul>
+		<p>Examples:</p>
+		<pre>SELECT * FROM innodb_table WHERE primary_key < 10 AND key_col1=20;</pre>
+		<pre>SELECT * FROM tbl_name WHERE (key1_part1=1 AND key1_part2=2) AND key2=2;</pre>
+		<p>The Index Merge intersection algorithm performs simultaneous scans on all used indexes and produces the intersection of row sequences that it receives from the merged index scans.</p>
+		<p>If all columns used in the query are covered by the used indexes, full table rows are not retrieved (EXPLAIN output contains Using index in Extra field in this case). Here is an example of such a query:</p>
+		<pre>SELECT COUNT(*) FROM t1 WHERE key1=1 AND key2=1;</pre>
+		<p>If the used indexes don't cover all columns used in the query, full rows are retrieved only when the range conditions for all used keys are satisfied.</p>
+		<p>If one of the merged conditions is a condition over a primary key of an InnoDB table, it is not used for row retrieval, but is used to filter out rows retrieved using other conditions.</p>
+		
+		<b>The Index Merge Union Access Algorithm</b>
+		<p>The applicability criteria for this algorithm are similar to those for the Index Merge method intersection algorithm.
+			The algorithm can be employed when the table's WHERE clause was converted to several range conditions on different keys combined with OR, and each condition is one of the following:</p>
+		<ul>
+			<li>
+				<p>In this form, where the index has exactly N parts (that is, all index parts are covered):</p>
+				<pre>key_part1=const1 AND key_part2=const2 ... AND key_partN=constN</pre>
+			</li>
+			<li>
+				<p>Any range condition over a primary key of an InnoDB table.</p>
+			</li>
+			<li>
+				<p>A condition for which the Index Merge method intersection algorithm is applicable.</p>
+			</li>
+		</ul>
+		<p>Examples:</p>
+		<pre>SELECT * FROM t1 WHERE key1=1 OR key2=2 OR key3=3;</pre>
+		<pre>SELECT * FROM innodb_table WHERE (key1=1 AND key2=2) OR (key3='foo' AND key4='bar') AND key5=5;</pre>
+		
+		<b>The Index Merge Sort-Union Access Algorithm</b>
+		<p>This access algorithm is employed when the WHERE clause was converted to several range conditions combined by OR, but for which the Index Merge method union algorithm is not applicable.</p>
+		<p>Examples:</p>
+		<pre>SELECT * FROM tbl_name WHERE key_col1 < 10 OR key_col2 < 20;</pre>
+		<pre>SELECT * FROM tbl_name WHERE (key_col1 > 10 OR key_col2 = 20) AND nonkey_col=30;</pre>
+		<p>The difference between the sort-union algorithm and the union algorithm is that the sort-union algorithm must first fetch row IDs for all rows and sort them before returning any rows.</p>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SIS NULL Optimization"></A>IS NULL Optimization</H2></P>
+		<p>MySQL can perform the same optimization on col_name IS NULL that it can use for col_name = constant_value. For example, MySQL can use indexes and ranges to search for NULL with IS NULL.</p>
+		<p>Examples:</p>
+		<pre>SELECT * FROM tbl_name WHERE key_col IS NULL;</pre>
+		<pre>SELECT * FROM tbl_name WHERE key_col <=> NULL;</pre>
+		<pre>SELECT * FROM tbl_name WHERE key_col=const1 OR key_col=const2 OR key_col IS NULL;</pre>
+		<p>If a WHERE clause includes a col_name IS NULL condition for a column that is declared as NOT NULL, that expression is optimized away.
+			This optimization does not occur in cases when the column might produce NULL anyway; for example, if it comes from a table on the right side of a LEFT JOIN.</p>
+		<p>MySQL can also optimize the combination col_name = expr OR col_name IS NULL, a form that is common in resolved subqueries. EXPLAIN shows ref_or_null when this optimization is used.</p>
+		<p>This optimization can handle one IS NULL for any key part.</p>
+		<p>Some examples of queries that are optimized, assuming that there is an index on columns a and b of table t2:</p>
+		<pre>SELECT * FROM t1 WHERE t1.a=expr OR t1.a IS NULL;</pre>
+		<pre>SELECT * FROM t1, t2 WHERE t1.a=t2.a OR t2.a IS NULL;</pre>
+		<pre>SELECT * FROM t1, t2 WHERE (t1.a=t2.a OR t2.a IS NULL) AND t2.b=t1.b;</pre>
+		<pre>SELECT * FROM t1, t2 WHERE t1.a=t2.a AND (t2.b=t1.b OR t2.b IS NULL);</pre>
+		<pre>SELECT * FROM t1, t2 WHERE (t1.a=t2.a AND t2.a IS NULL AND ...) OR (t1.a=t2.a AND t2.a IS NULL AND ...);</pre>
+		<p>ref_or_null works by first doing a read on the reference key, and then a separate search for rows with a NULL key value.</p>
+		<p>Note that the optimization can handle only one IS NULL level.
+			In the following query, MySQL uses key lookups only on the expression (t1.a=t2.a AND t2.a IS NULL) and is not able to use the key part on b:</p>
+		<pre>SELECT * FROM t1, t2 WHERE (t1.a=t2.a AND t2.a IS NULL) OR (t1.b=t2.b AND t2.b IS NULL);</pre>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SLEFT JOIN and RIGHT JOIN Optimization"></A>LEFT JOIN and RIGHT JOIN Optimization</H2></P>
+		<p>MySQL implements an A LEFT JOIN B join_condition as follows:</p>
+		<ul>
+			<li>
+				<p>Table B is set to depend on table A and all tables on which A depends.</p>
+			</li>
+			<li>
+				<p>Table A is set to depend on all tables (except B) that are used in the LEFT JOIN condition.</p>
+			</li>
+			<li>
+				<p>The LEFT JOIN condition is used to decide how to retrieve rows from table B. (In other words, any condition in the WHERE clause is not used.)</p>
+			</li>
+			<li>
+				<p>All standard join optimizations are performed, with the exception that a table is always read after all tables on which it depends. If there is a circular dependence, MySQL issues an error.</p>
+			</li>
+			<li>
+				<p>All standard WHERE optimizations are performed.</p>
+			</li>
+			<li>
+				<p>If there is a row in A that matches the WHERE clause, but there is no row in B that matches the ON condition, an extra B row is generated with all columns set to NULL.</p>
+			</li>
+			<li>
+				<p>If you use LEFT JOIN to find rows that do not exist in some table and you have the following test: col_name IS NULL in the WHERE part,
+					where col_name is a column that is declared as NOT NULL, MySQL stops searching for more rows (for a particular key combination) after it has found one row that matches the LEFT JOIN condition.</p>
+			</li>
+		</ul>
+		<p>The implementation of RIGHT JOIN is analogous to that of LEFT JOIN with the roles of the tables reversed.</p>
+		<p>The join optimizer calculates the order in which tables should be joined. The table read order forced by LEFT JOIN or STRAIGHT_JOIN helps the join optimizer do its work much more quickly,
+			because there are fewer table permutations to check. Note that this means that if you do a query of the following type, MySQL does a full scan on b because the LEFT JOIN forces it to be read before d:</p>
+		<pre>SELECT * FROM a JOIN b LEFT JOIN c ON (c.key=a.key) LEFT JOIN d ON (d.key=a.key) WHERE b.key=d.key;</pre>
+		<p>The fix in this case is reverse the order in which a and b are listed in the FROM clause:</p>
+		<pre>SELECT * FROM b JOIN a LEFT JOIN c ON (c.key=a.key) LEFT JOIN d ON (d.key=a.key) WHERE b.key=d.key;</pre>
+		<p>For a LEFT JOIN, if the WHERE condition is always false for the generated NULL row, the LEFT JOIN is changed to a normal join.
+			For example, the WHERE clause would be false in the following query if t2.column1 were NULL:</p>
+		<pre>SELECT * FROM t1 LEFT JOIN t2 ON (column1) WHERE t2.column2=5;</pre>
+		<p>Therefore, it is safe to convert the query to a normal join:</p>
+		<pre>SELECT * FROM t1, t2 WHERE t2.column2=5 AND t1.column1=t2.column1;</pre>
+		<p>This can be made faster because MySQL can use table t2 before table t1 if doing so would result in a better query plan.
+			To provide a hint about the table join order, use STRAIGHT_JOIN.</p>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SNested Join Optimization"></A>Nested Join Optimization</H2></P>
+		<p>The syntax for expressing joins allows nested joins.</p>
+		<p>The syntax of table_factor is extended in comparison with the SQL Standard.
+			The latter accepts only table_reference, not a list of them inside a pair of parentheses.
+			This is a conservative extension if we consider each comma in a list of table_reference items as equivalent to an inner join. For example:</p>
+		<pre>SELECT * FROM t1 LEFT JOIN (t2, t3, t4) ON (t2.a=t1.a AND t3.b=t1.b AND t4.c=t1.c)</pre>
+		<p>is equivalent to:</p>
+		<pre>SELECT * FROM t1 LEFT JOIN (t2 CROSS JOIN t3 CROSS JOIN t4) ON (t2.a=t1.a AND t3.b=t1.b AND t4.c=t1.c)</pre>
+		<p>In MySQL, CROSS JOIN is a syntactic equivalent to INNER JOIN (they can replace each other).
+			In standard SQL, they are not equivalent. INNER JOIN is used with an ON clause; CROSS JOIN is used otherwise.</p>
+		<p>In general, parentheses can be ignored in join expressions containing only inner join operations.
+			After removing parentheses and grouping operations to the left, the join expression:</p>
+		<pre>t1 LEFT JOIN (t2 LEFT JOIN t3 ON t2.b=t3.b OR t2.b IS NULL) ON t1.a=t2.a</pre>
+		<p>transforms into the expression:</p>
+		<pre>(t1 LEFT JOIN t2 ON t1.a=t2.a) LEFT JOIN t3 ON t2.b=t3.b OR t2.b IS NULL</pre>
+		<p>Yet, the two expressions are not equivalent. To see this, suppose that the tables t1, t2, and t3 have the following state:</p>
+		<ul>
+			<li>
+				<p>Table t1 contains rows (1), (2)</p>
+			</li>
+			<li>
+				<p>Table t2 contains row (1,101)</p>
+			</li>
+			<li>
+				<p>Table t3 contains row (101)</p>
+			</li>
+		</ul>
+		<p>In this case, the first expression returns a result set including the rows (1,1,101,101), (2,NULL,NULL,NULL),
+			whereas the second expression returns the rows (1,1,101,101), (2,NULL,NULL,101):</p>
+		<pre>SELECT * FROM t1 LEFT JOIN (t2 LEFT JOIN t3 ON t2.b=t3.b OR t2.b IS NULL) ON t1.a=t2.a <b>Returns</b>
++------+------+------+------+
+| a    | a    | b    | b    |
++------+------+------+------+
+|    1 |    1 |  101 |  101 |
+|    2 | NULL | NULL | NULL |
++------+------+------+------+</pre>
+		<pre>SELECT * FROM (t1 LEFT JOIN t2 ON t1.a=t2.a) LEFT JOIN t3 ON t2.b=t3.b OR t2.b IS NULL <b>Returns</b>
++------+------+------+------+
+| a    | a    | b    | b    |
++------+------+------+------+
+|    1 |    1 |  101 |  101 |
+|    2 | NULL | NULL |  101 |
++------+------+------+------+</pre>
+		<p>In the following example, an outer join operation is used together with an inner join operation:</p>
+		<pre>t1 LEFT JOIN (t2, t3) ON t1.a=t2.a</pre>
+		<p>That expression cannot be transformed into the following expression:</p>
+		<pre>t1 LEFT JOIN t2 ON t1.a=t2.a, t3.</pre>
+		<p>For the given table states, the two expressions return different sets of rows:</p>
+		<pre>SELECT * FROM t1 LEFT JOIN (t2, t3) ON t1.a=t2.a <b>Returns</b>
++------+------+------+------+
+| a    | a    | b    | b    |
++------+------+------+------+
+|    1 |    1 |  101 |  101 |
+|    2 | NULL | NULL | NULL |
++------+------+------+------+</pre>
+		<p>SELECT * FROM t1 LEFT JOIN t2 ON t1.a=t2.a, t3 <b>Returns</b>
++------+------+------+------+
+| a    | a    | b    | b    |
++------+------+------+------+
+|    1 |    1 |  101 |  101 |
+|    2 | NULL | NULL |  101 |
++------+------+------+------+</pre>
+		<p>Therefore, if we omit parentheses in a join expression with outer join operators, we might change the result set for the original expression.</p>
+		<p>More exactly, we cannot ignore parentheses in the right operand of the left outer join operation and in the left operand of a right join operation.
+			In other words, we cannot ignore parentheses for the inner table expressions of outer join operations.
+			Parentheses for the other operand (operand for the outer table) can be ignored.</p>
+		<p>The following expression:</p>
+		<pre>(t1,t2) LEFT JOIN t3 ON P(t2.b,t3.b)</pre>
+		<p>is equivalent to this expression:</p>
+		<pre>t1, t2 LEFT JOIN t3 ON P(t2.b,t3.b)</pre>
+		<p>for any tables t1,t2,t3 and any condition P over attributes t2.b and t3.b.</p>
+		<p>Whenever the order of execution of the join operations in a join expression (join_table) is not from left to right, we talk about nested joins. Consider the following queries:</p>
+		<pre>SELECT * FROM t1 LEFT JOIN (t2 LEFT JOIN t3 ON t2.b=t3.b) ON t1.a=t2.a WHERE t1.a > 1</pre>
+		<pre>SELECT * FROM t1 LEFT JOIN (t2, t3) ON t1.a=t2.a WHERE (t2.b=t3.b OR t2.b IS NULL) AND t1.a > 1</pre>
+		<p>Those queries are considered to contain these nested joins:</p>
+		<pre>t2 LEFT JOIN t3 ON t2.b=t3.b</pre>
+		<pre>t2, t3</pre>
+		<p>The nested join is formed in the first query with a left join operation, whereas in the second query it is formed with an inner join operation.</p>
+		<p>In the first query, the parentheses can be omitted: The grammatical structure of the join expression will dictate the same order of execution for join operations.
+			For the second query, the parentheses cannot be omitted, although the join expression here can be interpreted unambiguously without them.
+			(In our extended syntax the parentheses in (t2, t3) of the second query are required, although theoretically the query could be parsed without them:
+			We still would have unambiguous syntactical structure for the query because LEFT JOIN and ON would play the role of the left and right delimiters for the expression (t2,t3).)</p>
+		<p>The preceding examples demonstrate these points:</p>
+		<ul>
+			<li>
+				<p>For join expressions involving only inner joins (and not outer joins), parentheses can be removed.
+				You can remove parentheses and evaluate left to right (or, in fact, you can evaluate the tables in any order).</p>
+			</li>
+			<li>
+				<p>The same is not true, in general, for outer joins or for outer joins mixed with inner joins. Removal of parentheses may change the result.</p>
+			</li>
+		</ul>
+		<p>Queries with nested outer joins are executed in the same pipeline manner as queries with inner joins.
+			More exactly, a variation of the nested-loop join algorithm is exploited. Recall by what algorithmic schema the nested-loop join executes a query.
+			Suppose that we have a join query over 3 tables T1,T2,T3 of the form:</p>
+		<pre>SELECT * FROM T1 INNER JOIN T2 ON P1(T1,T2) INNER JOIN T3 ON P2(T2,T3) WHERE P(T1,T2,T3).</pre>
+		<p>Here, P1(T1,T2) and P2(T3,T3) are some join conditions (on expressions), whereas P(t1,t2,t3) is a condition over columns of tables T1,T2,T3.</p>
+		<p>The nested-loop join algorithm would execute this query in the following manner:</p>
+		<pre>FOR each row t1 in T1 {
+  FOR each row t2 in T2 such that P1(t1,t2) {
+    FOR each row t3 in T3 such that P2(t2,t3) {
+      IF P(t1,t2,t3) {
+         t:=t1||t2||t3; OUTPUT t;
+      }
+    }
+  }
+}</pre>
+		<p>The notation t1||t2||t3 means "a row constructed by concatenating the columns of rows t1, t2, and t3."
+			In some of the following examples, NULL where a row name appears means that NULL is used for each column of that row.
+			For example, t1||t2||NULL means "a row constructed by concatenating the columns of rows t1 and t2, and NULL for each column of t3."</p>
+		<p>Now let's consider a query with nested outer joins:</p>
+		<pre>SELECT * FROM T1 LEFT JOIN
+              (T2 LEFT JOIN T3 ON P2(T2,T3))
+              ON P1(T1,T2)
+  WHERE P(T1,T2,T3).</pre>
+		<p>For this query, we modify the nested-loop pattern to get:</p>
+		<pre>FOR each row t1 in T1 {
+  BOOL f1:=FALSE;
+  FOR each row t2 in T2 such that P1(t1,t2) {
+    BOOL f2:=FALSE;
+    FOR each row t3 in T3 such that P2(t2,t3) {
+      IF P(t1,t2,t3) {
+        t:=t1||t2||t3; OUTPUT t;
+      }
+      f2=TRUE;
+      f1=TRUE;
+    }
+    IF (!f2) {
+      IF P(t1,t2,NULL) {
+        t:=t1||t2||NULL; OUTPUT t;
+      }
+      f1=TRUE;
+    }
+  }
+  IF (!f1) {
+    IF P(t1,NULL,NULL) {
+      t:=t1||NULL||NULL; OUTPUT t;
+    }
+  }
+}</pre>
+		<p>In general, for any nested loop for the first inner table in an outer join operation, a flag is introduced that is turned off before the loop and is checked after the loop.
+			The flag is turned on when for the current row from the outer table a match from the table representing the inner operand is found.
+			If at the end of the loop cycle the flag is still off, no match has been found for the current row of the outer table.
+			In this case, the row is complemented by NULL values for the columns of the inner tables.
+			The result row is passed to the final check for the output or into the next nested loop, but only if the row satisfies the join condition of all embedded outer joins.</p>
+		<p>In our example, the outer join table expressed by the following expression is embedded:</p>
+		<pre>(T2 LEFT JOIN T3 ON P2(T2,T3))</pre>
+		<p>Note that for the query with inner joins, the optimizer could choose a different order of nested loops, such as this one:</p>
+		<pre>FOR each row t3 in T3 {
+  FOR each row t2 in T2 such that P2(t2,t3) {
+    FOR each row t1 in T1 such that P1(t1,t2) {
+      IF P(t1,t2,t3) {
+         t:=t1||t2||t3; OUTPUT t;
+      }
+    }
+  }
+}</pre>
+		<p>For the queries with outer joins, the optimizer can choose only such an order where loops for outer tables precede loops for inner tables.
+			Thus, for our query with outer joins, only one nesting order is possible. For the following query, the optimizer will evaluate two different nestings:</p>
+		<pre>SELECT * T1 LEFT JOIN (T2,T3) ON P1(T1,T2) AND P2(T1,T3) WHERE P(T1,T2,T3)</pre>
+		<p>The nestings are these:</p>
+		<pre>FOR each row t1 in T1 {
+  BOOL f1:=FALSE;
+  FOR each row t2 in T2 such that P1(t1,t2) {
+    FOR each row t3 in T3 such that P2(t1,t3) {
+      IF P(t1,t2,t3) {
+        t:=t1||t2||t3; OUTPUT t;
+      }
+      f1:=TRUE
+    }
+  }
+  IF (!f1) {
+    IF P(t1,NULL,NULL) {
+      t:=t1||NULL||NULL; OUTPUT t;
+    }
+  }
+}</pre>
+		<p>and:</p>
+		<pre>FOR each row t1 in T1 {
+  BOOL f1:=FALSE;
+  FOR each row t3 in T3 such that P2(t1,t3) {
+    FOR each row t2 in T2 such that P1(t1,t2) {
+      IF P(t1,t2,t3) {
+        t:=t1||t2||t3; OUTPUT t;
+      }
+      f1:=TRUE
+    }
+  }
+  IF (!f1) {
+    IF P(t1,NULL,NULL) {
+      t:=t1||NULL||NULL; OUTPUT t;
+    }
+  }
+}</pre>
+		<p>In both nestings, T1 must be processed in the outer loop because it is used in an outer join.
+			T2 and T3 are used in an inner join, so that join must be processed in the inner loop.
+			However, because the join is an inner join, T2 and T3 can be processed in either order.</p>
+		<p>When discussing the nested-loop algorithm for inner joins, we omitted some details whose impact on the performance of query execution may be huge.
+			We did not mention so-called "pushed-down" conditions. Suppose that our WHERE condition P(T1,T2,T3) can be represented by a conjunctive formula:</p>
+		<pre>P(T1,T2,T2) = C1(T1) AND C2(T2) AND C3(T3).</pre>
+		<p>In this case, MySQL actually uses the following nested-loop schema for the execution of the query with inner joins:</p>
+		<pre>FOR each row t1 in T1 such that C1(t1) {
+  FOR each row t2 in T2 such that P1(t1,t2) AND C2(t2)  {
+    FOR each row t3 in T3 such that P2(t2,t3) AND C3(t3) {
+      IF P(t1,t2,t3) {
+         t:=t1||t2||t3; OUTPUT t;
+      }
+    }
+  }
+}</pre>
+		<p>You see that each of the conjuncts C1(T1), C2(T2), C3(T3) are pushed out of the most inner loop to the most outer loop where it can be evaluated.
+			If C1(T1) is a very restrictive condition, this condition pushdown may greatly reduce the number of rows from table T1 passed to the inner loops.
+			As a result, the execution time for the query may improve immensely.</p>
+		<p>For a query with outer joins, the WHERE condition is to be checked only after it has been found that the current row from the outer table has a match in the inner tables.
+			Thus, the optimization of pushing conditions out of the inner nested loops cannot be applied directly to queries with outer joins.
+			Here we have to introduce conditional pushed-down predicates guarded by the flags that are turned on when a match has been encountered.</p>
+		<p>For our example with outer joins with:</p>
+		<pre>P(T1,T2,T3)=C1(T1) AND C(T2) AND C3(T3)</pre>
+		<p>the nested-loop schema using guarded pushed-down conditions looks like this:</p>
+		<pre>FOR each row t1 in T1 such that C1(t1) {
+  BOOL f1:=FALSE;
+  FOR each row t2 in T2
+      such that P1(t1,t2) AND (f1?C2(t2):TRUE) {
+    BOOL f2:=FALSE;
+    FOR each row t3 in T3
+        such that P2(t2,t3) AND (f1&&f2?C3(t3):TRUE) {
+      IF (f1&&f2?TRUE:(C2(t2) AND C3(t3))) {
+        t:=t1||t2||t3; OUTPUT t;
+      }
+      f2=TRUE;
+      f1=TRUE;
+    }
+    IF (!f2) {
+      IF (f1?TRUE:C2(t2) && P(t1,t2,NULL)) {
+        t:=t1||t2||NULL; OUTPUT t;
+      }
+      f1=TRUE;
+    }
+  }
+  IF (!f1 && P(t1,NULL,NULL)) {
+      t:=t1||NULL||NULL; OUTPUT t;
+  }
+}</pre>
+		<p>In general, pushed-down predicates can be extracted from join conditions such as P1(T1,T2) and P(T2,T3).
+			In this case, a pushed-down predicate is guarded also by a flag that prevents checking the predicate for the NULL-complemented row generated by the corresponding outer join operation.</p>
+		<p>Note that access by key from one inner table to another in the same nested join is prohibited if it is induced by a predicate from the WHERE condition.
+			(We could use conditional key access in this case, but this technique is not employed yet in MySQL 5.1.)</p>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SOuter Join Simplification"></A>Outer Join Simplification</H2></P>
+		<p>Table expressions in the FROM clause of a query are simplified in many cases.</p>
+		<p>At the parser stage, queries with right outer joins operations are converted to equivalent queries containing only left join operations.
+			In the general case, the conversion is performed according to the following rule:</p>
+		<pre>(T1, ...) RIGHT JOIN (T2,...) ON P(T1,...,T2,...) =</pre>
+		<pre>(T2, ...) LEFT JOIN (T1,...) ON P(T1,...,T2,...)</pre>
+		<p>All inner join expressions of the form T1 INNER JOIN T2 ON P(T1,T2) are replaced by the list T1,T2, P(T1,T2)
+			being joined as a conjunct to the WHERE condition (or to the join condition of the embedding join, if there is any).</p>
+		<p>When the optimizer evaluates plans for join queries with outer join operation, it takes into consideration only the plans where,
+			for each such operation, the outer tables are accessed before the inner tables.
+			The optimizer options are limited because only such plans enables us to execute queries with outer joins operations by the nested loop schema.</p>
+		<p>Suppose that we have a query of the form:</p>
+		<pre>SELECT * T1 LEFT JOIN T2 ON P1(T1,T2) WHERE P(T1,T2) AND R(T2)</pre>
+		<p>with R(T2) narrowing greatly the number of matching rows from table T2. If we executed the query as it is,
+			the optimizer would have no other choice besides to access table T1 before table T2 that may lead to a very inefficient execution plan.</p>
+		<p>Fortunately, MySQL converts such a query into a query without an outer join operation if the WHERE condition is null-rejected.
+			A condition is called null-rejected for an outer join operation if it evaluates to FALSE or to UNKNOWN for any NULL-complemented row built for the operation.</p>
+		<p>Thus, for this outer join:</p>
+		<pre>T1 LEFT JOIN T2 ON T1.A=T2.A</pre>
+		<p>Conditions such as these are null-rejected:</p>
+		<pre>T2.B IS NOT NULL,
+T2.B > 3,
+T2.C <= T1.C,
+T2.B < 2 OR T2.C > 1</pre>
+		<p>Conditions such as these are not null-rejected:</p>
+		<pre>T2.B IS NULL,
+T1.B < 3 OR T2.B IS NOT NULL,
+T1.B < 3 OR T2.B > 3</pre>
+		<p>The general rules for checking whether a condition is null-rejected for an outer join operation are simple. A condition is null-rejected in the following cases:</p>
+		<ul>
+			<li>
+				<p>If it is of the form A IS NOT NULL, where A is an attribute of any of the inner tables</p>
+			</li>
+			<li>
+				<p>If it is a predicate containing a reference to an inner table that evaluates to UNKNOWN when one of its arguments is NULL</p>
+			</li>
+			<li>
+				<p>If it is a conjunction containing a null-rejected condition as a conjunct</p>
+			</li>
+			<li>
+				<p>If it is a disjunction of null-rejected conditions</p>
+			</li>
+		</ul>
+		<p>A condition can be null-rejected for one outer join operation in a query and not null-rejected for another. In the query:</p>
+		<pre>SELECT * FROM T1 LEFT JOIN T2 ON T2.A=T1.A LEFT JOIN T3 ON T3.B=T1.B WHERE T3.C > 0</pre>
+		<p>the WHERE condition is null-rejected for the second outer join operation but is not null-rejected for the first one.</p>
+		<p>If the WHERE condition is null-rejected for an outer join operation in a query, the outer join operation is replaced by an inner join operation.</p>
+		<p>For example, the preceding query is replaced with the query:</p>
+		<pre>SELECT * FROM T1 LEFT JOIN T2 ON T2.A=T1.A INNER JOIN T3 ON T3.B=T1.B WHERE T3.C > 0</pre>
+		<p>For the original query, the optimizer would evaluate plans compatible with only one access order T1,T2,T3.
+			For the replacing query, it additionally considers the access sequence T3,T1,T2.</p>
+		<p>A conversion of one outer join operation may trigger a conversion of another. Thus, the query:</p>
+		<pre>SELECT * FROM T1 LEFT JOIN T2 ON T2.A=T1.A LEFT JOIN T3 ON T3.B=T2.B WHERE T3.C > 0</pre>
+		<p>will be first converted to the query:</p>
+		<pre>SELECT * FROM T1 LEFT JOIN T2 ON T2.A=T1.A INNER JOIN T3 ON T3.B=T2.B WHERE T3.C > 0</pre>
+		<p>which is equivalent to the query:</p>
+		<pre>SELECT * FROM (T1 LEFT JOIN T2 ON T2.A=T1.A), T3 WHERE T3.C > 0 AND T3.B=T2.B</pre>
+		<p>Now the remaining outer join operation can be replaced by an inner join, too, because the condition T3.B=T2.B is null-rejected and we get a query without outer joins at all:</p>
+		<pre>SELECT * FROM (T1 INNER JOIN T2 ON T2.A=T1.A), T3 WHERE T3.C > 0 AND T3.B=T2.B</pre>
+		<p>Sometimes we succeed in replacing an embedded outer join operation, but cannot convert the embedding outer join. The following query:</p>
+		<pre>SELECT * FROM T1 LEFT JOIN (T2 LEFT JOIN T3 ON T3.B=T2.B) ON T2.A=T1.A WHERE T3.C > 0</pre>
+		<p>is converted to:</p>
+		<pre>SELECT * FROM T1 LEFT JOIN (T2 INNER JOIN T3 ON T3.B=T2.B) ON T2.A=T1.A WHERE T3.C > 0</pre>
+		<p>That can be rewritten only to the form still containing the embedding outer join operation:</p>
+		<pre>SELECT * FROM T1 LEFT JOIN (T2,T3) ON (T2.A=T1.A AND T3.B=T2.B) WHERE T3.C > 0.</pre>
+		<p>When trying to convert an embedded outer join operation in a query, we must take into account the join condition for the embedding outer join together with the WHERE condition. In the query:</p>
+		<pre>SELECT * FROM T1 LEFT JOIN (T2 LEFT JOIN T3 ON T3.B=T2.B) ON T2.A=T1.A AND T3.C=T1.C WHERE T3.D > 0 OR T1.D > 0</pre>
+		<p>the WHERE condition is not null-rejected for the embedded outer join, but the join condition of the embedding outer join T2.A=T1.A AND T3.C=T1.C is null-rejected. So the query can be converted to:</p>
+		<pre>SELECT * FROM T1 LEFT JOIN (T2, T3) ON T2.A=T1.A AND T3.C=T1.C AND T3.B=T2.B WHERE T3.D > 0 OR T1.D > 0</pre>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SORDER BY Optimization"></A>ORDER BY Optimization</H2></P>
+		<p>In some cases, MySQL can use an index to satisfy an ORDER BY clause without doing any extra sorting.</p>
+		<p>The index can also be used even if the ORDER BY does not match the index exactly,
+			as long as all of the unused portions of the index and all the extra ORDER BY columns are constants in the WHERE clause.
+			The following queries use the index to resolve the ORDER BY part:</p>
+		<pre>SELECT * FROM t1 ORDER BY key_part1,key_part2,... ;</pre>
+		<pre>SELECT * FROM t1 WHERE key_part1=constant ORDER BY key_part2;</pre>
+		<pre>SELECT * FROM t1 ORDER BY key_part1 DESC, key_part2 DESC;</pre>
+		<pre>SELECT * FROM t1 WHERE key_part1=1 ORDER BY key_part1 DESC, key_part2 DESC;</pre>
+		<p>In some cases, MySQL cannot use indexes to resolve the ORDER BY, although it still uses indexes to find the rows that match the WHERE clause. These cases include the following:</p>
+		<ul>
+			<li>
+				<p>You use ORDER BY on different keys:</p>
+				<pre>SELECT * FROM t1 ORDER BY key1, key2;</pre>
+			</li>
+			<li>
+				<p>You use ORDER BY on non-consecutive parts of a key:</p>
+				<pre>SELECT * FROM t1 WHERE key2=constant ORDER BY key_part2;</pre>
+			</li>
+			<li>
+				<p>You mix ASC and DESC:</p>
+				<pre>SELECT * FROM t1 ORDER BY key_part1 DESC, key_part2 ASC;</pre>
+			</li>
+			<li>
+				<p>The key used to fetch the rows is not the same as the one used in the ORDER BY:</p>
+				<pre>SELECT * FROM t1 WHERE key2=constant ORDER BY key1;</pre>
+			</li>
+			<li>
+				<p>You use ORDER BY with an expression that includes terms other than the key column name:</p>
+				<pre>SELECT * FROM t1 ORDER BY ABS(key);</pre>
+				<pre>SELECT * FROM t1 ORDER BY -key;</pre>
+			</li>
+			<li>
+				<p>You are joining many tables, and the columns in the ORDER BY are not all from the first non-constant table that is used to retrieve rows.
+					(This is the first table in the EXPLAIN output that does not have a const join type.)</p>
+			</li>
+			<li>
+				<p>You have different ORDER BY and GROUP BY expressions.</p>
+			</li>
+			<li>
+				<p>The type of table index used does not store rows in order. For example, this is true for a HASH index in a MEMORY table.</p>
+			</li>
+		</ul>
+		<p>Availability of an index for sorting may be affected by the use of column aliases. Suppose that the column t1.a is indexed.
+			In this statement, the name of the column in the select list is a. It refers to t1.a, so for the reference to a in the ORDER BY, the index can be used:</p>
+		<pre>SELECT a FROM t1 ORDER BY a;</pre>
+		<p>In this statement, the name of the column in the select list is also a, but it is the alias name.
+			It refers to ABS(a), so for the reference to a in the ORDER BY, the index cannot be used:</p>
+		<pre>SELECT ABS(a) AS a FROM t1 ORDER BY a;</pre>
+		<p>In the following statement, the ORDER BY refers to a name that is not the name of a column in the select list.
+			But there is a column in t1 named a, so the ORDER BY uses that, and the index can be used.
+			(The resulting sort order may be completely different from the order for ABS(a), of course.)</p>
+		<pre>SELECT ABS(a) AS b FROM t1 ORDER BY a;</pre>
+		<p>By default, MySQL sorts all GROUP BY col1, col2, ... queries as if you specified ORDER BY col1, col2, ... in the query as well.
+			If you include an ORDER BY clause explicitly that contains the same column list, MySQL optimizes it away without any speed penalty, although the sorting still occurs.
+			If a query includes GROUP BY but you want to avoid the overhead of sorting the result, you can suppress sorting by specifying ORDER BY NULL. For example:</p>
+		<pre>INSERT INTO foo SELECT a, COUNT(*) FROM bar GROUP BY a ORDER BY NULL;</pre>
+		<p>With EXPLAIN SELECT ... ORDER BY, you can check whether MySQL can use indexes to resolve the query.
+			It cannot if you see Using filesort in the Extra column.</p>
+		<p>MySQL has two filesort algorithms for sorting and retrieving results. The original method uses only the ORDER BY columns.
+			The modified method uses not just the ORDER BY columns, but all the columns used in the query.</p>
+		<p>The optimizer selects which filesort algorithm to use. It normally uses the modified algorithm except when BLOB or TEXT columns are involved, in which case it uses the original algorithm.</p>
+		<p>The original filesort algorithm works as follows:</p>
+		<ol>
+			<li>Read all rows according to key or by table scanning. Rows that do not match the WHERE clause are skipped.</li>
+			<li>For each row, store a pair of values in a buffer (the sort key and the row pointer). The size of the buffer is the value of the sort_buffer_size system variable.</li>
+			<li>When the buffer gets full, run a qsort (quicksort) on it and store the result in a temporary file. Save a pointer to the sorted block. (If all pairs fit into the sort buffer, no temporary file is created.)</li>
+			<li>Repeat the preceding steps until all rows have been read.</li>
+			<li>Do a multi-merge of up to MERGEBUFF (7) regions to one block in another temporary file. Repeat until all blocks from the first file are in the second file.</li>
+			<li>Repeat the following until there are fewer than MERGEBUFF2 (15) blocks left.</li>
+			<li>On the last multi-merge, only the pointer to the row (the last part of the sort key) is written to a result file.</li>
+			<li>Read the rows in sorted order by using the row pointers in the result file. To optimize this, we read in a big block of row pointers, sort them, and use them to read the rows in sorted order into a row buffer.
+				The size of the buffer is the value of the read_rnd_buffer_size system variable. The code for this step is in the sql/records.cc source file.</li>
+		</ol>
+		<p>One problem with this approach is that it reads rows twice: One time when evaluating the WHERE clause, and again after sorting the pair values.
+			And even if the rows were accessed successively the first time (for example, if a table scan is done), the second time they are accessed randomly.
+			(The sort keys are ordered, but the row positions are not.)</p>
+		<p>The modified filesort algorithm incorporates an optimization such that it records not only the sort key value and row position, but also the columns required for the query.
+			This avoids reading the rows twice. The modified filesort algorithm works like this:</p>
+		<ol>
+			<li>Read the rows that match the WHERE clause.</li>
+			<li>For each row, record a tuple of values consisting of the sort key value and row position, and also the columns required for the query.</li>
+			<li>Sort the tuples by sort key value</li>
+			<li>Retrieve the rows in sorted order, but read the required columns directly from the sorted tuples rather than by accessing the table a second time.</li>
+		</ol>
+		<p>Using the modified filesort algorithm, the tuples are longer than the pairs used in the original method, and fewer of them fit in the sort buffer (the size of which is given by sort_buffer_size).
+			As a result, it is possible for the extra I/O to make the modified approach slower, not faster.
+			To avoid a slowdown, the optimization is used only if the total size of the extra columns in the sort tuple does not exceed the value of the max_length_for_sort_data system variable.
+			(A symptom of setting the value of this variable too high is that you should see high disk activity and low CPU activity.)</p>
+		<p>For slow queries for which filesort is not used, you might try lowering max_length_for_sort_data to a value that is appropriate to trigger a filesort.</p>
+		<p>If you want to increase ORDER BY speed, check whether you can get MySQL to use indexes rather than an extra sorting phase. If this is not possible, you can try the following strategies:</p>
+		<ul>
+			<li>Increase the size of the sort_buffer_size variable.</li>
+			<li>Increase the size of the read_rnd_buffer_size variable.</li>
+			<li>Use less RAM per row by declaring columns only as large as they need to be to hold the values stored in them. For example, CHAR(16) is better than CHAR(200) if values never exceed 16 characters.</li>
+		</ul>
+		<p>Change tmpdir to point to a dedicated filesystem with large amounts of free space.
+			Also, this option accepts several paths that are used in round-robin fashion, so you can use this feature to spread the load across several directories.
+			Paths should be separated by colon characters (":") on Unix and semicolon characters (";") on Windows, NetWare, and OS/2.
+			The paths should be for directories in filesystems that are located on different physical disks, not different partitions on the same disk.</p>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SGROUP BY Optimization"></A>GROUP BY Optimization</H2></P>
+		<p>The most general way to satisfy a GROUP BY clause is to scan the whole table and create a new temporary table where all rows from each group are consecutive,
+			and then use this temporary table to discover groups and apply aggregate functions (if any).
+			In some cases, MySQL is able to do much better than that and to avoid creation of temporary tables by using index access.</p>
+		<p>The most important preconditions for using indexes for GROUP BY are that all GROUP BY columns reference attributes from the same index,
+			and that the index stores its keys in order (for example, this is a BTREE index and not a HASH index).
+			Whether use of temporary tables can be replaced by index access also depends on which parts of an index are used in a query,
+			the conditions specified for these parts, and the selected aggregate functions.</p>
+		<p>In MySQL, GROUP BY is used for sorting, so the server may also apply ORDER BY optimizations to grouping.</p>
+		<p>There are two ways to execute a GROUP BY query via index access, as detailed in the following sections.
+			In the first method, the grouping operation is applied together with all range predicates (if any).
+			The second method first performs a range scan, and then groups the resulting tuples.</p>
+		<b>Loose index scan</b>
+		<p>The most efficient way to process GROUP BY is when the index is used to directly retrieve the group fields.
+			With this access method, MySQL uses the property of some index types that the keys are ordered (for example, BTREE).
+			This property enables use of lookup groups in an index without having to consider all keys in the index that satisfy all WHERE conditions.
+			This access method considers only a fraction of the keys in an index, so it is called a loose index scan.
+			When there is no WHERE clause, a loose index scan reads as many keys as the number of groups, which may be a much smaller number than that of all keys.
+			If the WHERE clause contains range predicates, a loose index scan looks up the first key of each group that satisfies the range conditions,
+			and again reads the least possible number of keys. This is possible under the following conditions:</p>
+		<ul>
+			<li>The query is over a single table.</li>
+			<li>The GROUP BY includes the first consecutive parts of the index. (If, instead of GROUP BY, the query has a DISTINCT clause, all distinct attributes refer to the beginning of the index.)</li>
+			<li>The only aggregate functions used (if any) are MIN() and MAX(), and all of them refer to the same column.</li>
+			<li>Any other parts of the index than those from the GROUP BY referenced in the query must be constants (that is, they must be referenced in equalities with constants), except for the argument of MIN() or MAX() functions.</li>
+		</ul>
+		<p>The EXPLAIN output for such queries shows Using index for group-by in the Extra column.</p>
+		<p>The following queries fall into this category, assuming that there is an index idx(c1,c2,c3) on table t1(c1,c2,c3,c4):</p>
+		<pre>SELECT c1, c2 FROM t1 GROUP BY c1, c2;
+SELECT DISTINCT c1, c2 FROM t1;
+SELECT c1, MIN(c2) FROM t1 GROUP BY c1;
+SELECT c1, c2 FROM t1 WHERE c1 < const GROUP BY c1, c2;
+SELECT MAX(c3), MIN(c3), c1, c2 FROM t1 WHERE c2 > const GROUP BY c1, c2;
+SELECT c2 FROM t1 WHERE c1 < const GROUP BY c1, c2;
+SELECT c1, c2 FROM t1 WHERE c3 = const GROUP BY c1, c2;</pre>
+		<p>The following queries cannot be executed with this quick select method, for the reasons given:</p>
+		<ul>
+			<li>
+				<p>There are aggregate functions other than MIN() or MAX(), for example:</p>
+				<pre>SELECT c1, SUM(c2) FROM t1 GROUP BY c1;</pre>
+			</li>
+			<li>
+				<p>The fields in the GROUP BY clause do not refer to the beginning of the index, as shown here:</p>
+				<pre>SELECT c1,c2 FROM t1 GROUP BY c2, c3;</pre>
+			</li>
+			<li>
+				<p>The query refers to a part of a key that comes after the GROUP BY part, and for which there is no equality with a constant, an example being:</p>
+				<pre>SELECT c1,c3 FROM t1 GROUP BY c1, c2;</pre>
+			</li>
+		</ul>
+		<b>Tight index scan</b>
+		<p>A tight index scan may be either a full index scan or a range index scan, depending on the query conditions.</p>
+		<p>When the conditions for a loose index scan are not met, it is still possible to avoid creation of temporary tables for GROUP BY queries.
+			If there are range conditions in the WHERE clause, this method reads only the keys that satisfy these conditions.
+			Otherwise, it performs an index scan. Because this method reads all keys in each range defined by the WHERE clause,
+			or scans the whole index if there are no range conditions, we term it a tight index scan.
+			Notice that with a tight index scan, the grouping operation is performed only after all keys that satisfy the range conditions have been found.</p>
+		<p>For this method to work, it is sufficient that there is a constant equality condition for all columns in a query referring to parts of the key coming before or in between parts of the GROUP BY key.
+			The constants from the equality conditions fill in any "gaps" in the search keys so that it is possible to form complete prefixes of the index.
+			These index prefixes then can be used for index lookups. If we require sorting of the GROUP BY result, and it is possible to form search keys that are prefixes of the index,
+			MySQL also avoids extra sorting operations because searching with prefixes in an ordered index already retrieves all the keys in order.</p>
+		<p>The following queries do not work with the loose index scan access method described earlier,
+			but still work with the tight index scan access method (assuming that there is an index idx(c1,c2,c3) on table t1(c1,c2,c3,c4)).</p>
+		<ul>
+			<li>
+				<p>There is a gap in the GROUP BY, but it is covered by the condition c2 = 'a':</p>
+				<pre>SELECT c1, c2, c3 FROM t1 WHERE c2 = 'a' GROUP BY c1, c3;</pre>
+			</li>
+			<li>
+				<p>The GROUP BY does not begin with the first part of the key, but there is a condition that provides a constant for that part:</p>
+				<pre>SELECT c1, c2, c3 FROM t1 WHERE c1 = 'a' GROUP BY c2, c3;</pre>
+			</li>
+		</ul>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SDISTINCT Optimization"></A>DISTINCT Optimization</H2></P>
+		<p>DISTINCT combined with ORDER BY needs a temporary table in many cases.</p>
+		<p>Because DISTINCT may use GROUP BY, you should be aware of how MySQL works with columns in ORDER BY or HAVING clauses that are not part of the selected columns.</p>
+		<p>In most cases, a DISTINCT clause can be considered as a special case of GROUP BY. For example, the following two queries are equivalent:</p>
+		<pre>SELECT DISTINCT c1, c2, c3 FROM t1 WHERE c1 > const;</pre>
+		<pre>SELECT c1, c2, c3 FROM t1 WHERE c1 > const GROUP BY c1, c2, c3;</pre>
+		<p>Due to this equivalence, the optimizations applicable to GROUP BY queries can be also applied to queries with a DISTINCT clause.</p>
+		<p>When combining LIMIT row_count with DISTINCT, MySQL stops as soon as it finds row_count unique rows.</p>
+		<p>If you do not use columns from all tables named in a query, MySQL stops scanning any unused tables as soon as it finds the first match.
+			In the following case, assuming that t1 is used before t2 (which you can check with EXPLAIN), MySQL stops reading from t2 (for any particular row in t1) when it finds the first row in t2:</p>
+		<pre>SELECT DISTINCT t1.a FROM t1, t2 where t1.a=t2.a;</pre>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SOptimizing IN/=ANY Subqueries"></A>Optimizing IN/=ANY Subqueries</H2></P>
+		<p>Certain optimizations are applicable to comparisons that use the IN operator to test subquery results (or that use =ANY, which is equivalent).
+			This section discusses these optimizations, particularly with regard to the challenges that NULL values present.
+			Suggestions on what you can do to help the optimizer are given at the end of the discussion.</p>
+		<p>Consider the following subquery comparison:</p>
+		<pre>outer_expr IN (SELECT inner_expr FROM ... WHERE subquery_where)</pre>
+		<p>MySQL evaluates queries "from outside to inside." That is, it first obtains the value of the outer expression outer_expr, and then runs the subquery and captures the rows that it produces.</p>
+		<p>A very useful optimization is to "inform" the subquery that the only rows of interest are those where the inner expression inner_expr is equal to outer_expr.
+			This is done by pushing down an appropriate equality into the subquery's WHERE clause. That is, the comparison is converted to this:</p>
+		<pre>EXISTS (SELECT 1 FROM ... WHERE subquery_where AND outer_expr=inner_expr)</pre>
+		<p>After the conversion, MySQL can use the pushed-down equality to limit the number of rows that it must examine when evaluating the subquery.</p>
+		<p>More generally, a comparison of N values to a subquery that returns N-value rows is subject to the same conversion.
+			If oe_i and ie_i represent corresponding outer and inner expression values, this subquery comparison:</p>
+		<pre>(oe_1, ..., oe_N) IN (SELECT ie_1, ..., ie_N FROM ... WHERE subquery_where)</pre>
+		<p>Becomes:</p>
+		<pre>EXISTS (SELECT 1 FROM ... WHERE subquery_where AND oe_1 = ie_1 AND ... AND oe_N = ie_N)</pre>
+		<p>The following discussion assumes a single pair of outer and inner expression values for simplicity.</p>
+		<p>The conversion just described has its limitations. It is valid only if we ignore possible NULL values.
+			That is, the "pushdown" strategy works as long as both of these two conditions are true:</p>
+		<ul>
+			<li>outer_expr and inner_expr cannot be NULL.</li>
+			<li>You do not need to distinguish NULL from FALSE subquery results. (If the subquery is a part of an OR or AND expression in the WHERE clause, MySQL assumes that you don't care.)</li>
+		</ul>
+		<p>When either or both of those conditions do not hold, optimization is more complex.</p>
+		<p>Suppose that outer_expr is known to be a non-NULL value but the subquery does not produce a row such that outer_expr = inner_expr. Then outer_expr IN (SELECT ...) evaluates as follows:</p>
+		<ul>
+			<li>NULL, if the SELECT produces any row where inner_expr is NULL</li>
+			<li>FALSE, if the SELECT produces only non-NULL values or produces nothing</li>
+		</ul>
+		<p>In this situation, the approach of looking for rows with outer_expr = inner_expr is no longer valid.
+			It is necessary to look for such rows, but if none are found, also look for rows where inner_expr is NULL. Roughly speaking, the subquery can be converted to:</p>
+		<pre>EXISTS (SELECT 1 FROM ... WHERE subquery_where AND (outer_expr=inner_expr OR inner_expr IS NULL))</pre>
+		<p>The need to evaluate the extra IS NULL condition is why MySQL has the ref_or_null access method:</p>
+		<pre>
+mysql> EXPLAIN
+    -> SELECT outer_expr IN (SELECT t2.maybe_null_key
+    ->                       FROM t2, t3 WHERE ...)
+    -> FROM t1;
+*************************** 1. row ***************************
+           id: 1
+  select_type: PRIMARY
+        table: t1
+...
+*************************** 2. row ***************************
+           id: 2
+  select_type: DEPENDENT SUBQUERY
+        table: t2
+         type: ref_or_null
+possible_keys: maybe_null_key
+          key: maybe_null_key
+      key_len: 5
+          ref: func
+         rows: 2
+        Extra: Using where; Using index
+...</pre>
+		<p>The unique_subquery and index_subquery subquery-specific access methods also have or-null variants.
+			However, they are not visible in EXPLAIN output, so you must use EXPLAIN EXTENDED followed by SHOW WARNINGS (note the checking NULL in the warning message):</p>
+		<pre>mysql> EXPLAIN EXTENDED
+    -> SELECT outer_expr IN (SELECT maybe_null_key FROM t2) FROM t1\G
+*************************** 1. row ***************************
+           id: 1
+  select_type: PRIMARY
+        table: t1
+...
+*************************** 2. row ***************************
+           id: 2
+  select_type: DEPENDENT SUBQUERY
+        table: t2
+         type: index_subquery
+possible_keys: maybe_null_key
+          key: maybe_null_key
+      key_len: 5
+          ref: func
+         rows: 2
+        Extra: Using index</pre>
+		
+		<pre>mysql> SHOW WARNINGS\G
+*************************** 1. row ***************************
+  Level: Note
+   Code: 1003
+Message: select (`test`.`t1`.`outer_expr`,
+         (((`test`.`t1`.`outer_expr`) in t2 on
+         maybe_null_key checking NULL))) AS `outer_expr IN (SELECT
+         maybe_null_key FROM t2)` from `test`.`t1`</pre>
+		<p>The additional OR ... IS NULL condition makes query execution slightly more complicated (and some optimizations within the subquery become inapplicable), but generally this is tolerable.</p>
+		<p>The situation is much worse when outer_expr can be NULL. According to the SQL interpretation of NULL as "unknown value," NULL IN (SELECT inner_expr ...) should evaluate to:</p>
+		<ul>
+			<li>NULL, if the SELECT produces any rows</li>
+			<li>FALSE, if the SELECT produces no rows</li>
+		</ul>
+		<p>For proper evaluation, it is necessary to be able to check whether the SELECT has produced any rows at all, so outer_expr = inner_expr cannot be pushed down into the subquery.
+			This is a problem, because many real world subqueries become very slow unless the equality can be pushed down.</p>
+		<p>Essentially, there must be different ways to execute the subquery depending on the value of outer_expr.
+			In MySQL 5.1 before 5.1.16, the optimizer chose speed over distinguishing a NULL from FALSE result, so for some queries, you might get a FALSE result rather than NULL.</p>
+		<p>As of MySQL 5.1.16, the optimizer chooses SQL compliance over speed, so it accounts for the possibility that outer_expr might be NULL.</p>
+		<p>If outer_expr is NULL, to evaluate the following expression, it is necessary to run the SELECT to determine whether it produces any rows:</p>
+		<pre>NULL IN (SELECT inner_expr FROM ... WHERE subquery_where)</pre>
+		<p>It is necessary to run the original SELECT here, without any pushed-down equalities of the kind mentioned earlier.</p>
+		<p>On the other hand, when outer_expr is not NULL, it is absolutely essential that this comparison:</p>
+		<pre>outer_expr IN (SELECT inner_expr FROM ... WHERE subquery_where)</pre>
+		<p>be converted to this expression that uses a pushed-down condition:</p>
+		<pre>EXISTS (SELECT 1 FROM ... WHERE subquery_where AND outer_expr=inner_expr)</pre>
+		<p>Without this conversion, subqueries will be slow. To solve the dilemma of whether to push down or not push down conditions into the subquery,
+			the conditions are wrapped in "trigger" functions. Thus, an expression of the following form:</p>
+		<pre>outer_expr IN (SELECT inner_expr FROM ... WHERE subquery_where)</pre>
+		<p>is converted into:</p>
+		<pre>EXISTS (SELECT 1 FROM ... WHERE subquery_where
+                          AND trigcond(outer_expr=inner_expr))</pre>
+		<p>More generally, if the subquery comparison is based on several pairs of outer and inner expressions, the conversion takes this comparison:</p>
+		<pre>(oe_1, ..., oe_N) IN (SELECT ie_1, ..., ie_N FROM ... WHERE subquery_where)</pre>
+		<p>and converts it to this expression:</p>
+		<pre>EXISTS (SELECT 1 FROM ... WHERE subquery_where
+                          AND trigcond(oe_1=ie_1)
+                          AND ...
+                          AND trigcond(oe_N=ie_N)
+       )</pre>
+		<p>Each trigcond(X) is a special function that evaluates to the following values:</p>
+		<ul>
+			<li>X when the "linked" outer expression oe_i is not NULL</li>
+			<li>TRUE when the "linked" outer expression oe_i is NULL</li>
+		</ul>
+		<p>Note that trigger functions are not triggers of the kind that you create with CREATE TRIGGER.</p>
+		<p>Equalities that are wrapped into trigcond() functions are not first class predicates for the query optimizer.
+			Most optimizations cannot deal with predicates that may be turned on and off at query execution time, so they assume any trigcond(X) to be an unknown function and ignore it.
+			At the moment, triggered equalities can be used by those optimizations:</p>
+		<ul>
+			<li>Reference optimizations: trigcond(X=Y [OR Y IS NULL]) can be used to construct ref, eq_ref, or ref_or_null table accesses.</li>
+			<li>Index lookup-based subquery execution engines: trigcond(X=Y) can be used to construct unique_subquery or index_subquery accesses.</li>
+			<li>Table-condition generator: If the subquery is a join of several tables, the triggered condition will be checked as soon as possible.</li>
+		</ul>
+		<p>When the optimizer uses a triggered condition to create some kind of index lookup-based access (as for the first two items of the preceding list),
+			it must have a fallback strategy for the case when the condition is turned off. This fallback strategy is always the same:
+			Do a full table scan. In EXPLAIN output, the fallback shows up as Full scan on NULL key in the Extra column:</p>
+		<pre>mysql> EXPLAIN SELECT t1.col1,
+    -> t1.col1 IN (SELECT t2.key1 FROM t2 WHERE t2.col2=t1.col2) FROM t1\G
+*************************** 1. row ***************************
+           id: 1
+  select_type: PRIMARY
+        table: t1
+        ...
+*************************** 2. row ***************************
+           id: 2
+  select_type: DEPENDENT SUBQUERY
+        table: t2
+         type: index_subquery
+possible_keys: key1
+          key: key1
+      key_len: 5
+          ref: func
+         rows: 2
+        Extra: Using where; Full scan on NULL key</pre>
+			<p>If you run EXPLAIN EXTENDED followed by SHOW WARNINGS, you can see the triggered condition:</p>
+			<pre>*************************** 1. row ***************************
+  Level: Note
+   Code: 1003
+Message: select `test`.`t1`.`col1` AS `col1`,
+         <in_optimizer>(`test`.`t1`.`col1`,
+         <exists>(<index_lookup>(<cache>(`test`.`t1`.`col1`) in t2
+         on key1 checking NULL
+         where (`test`.`t2`.`col2` = `test`.`t1`.`col2`) having
+         trigcond(<is_not_null_test>(`test`.`t2`.`key1`))))) AS
+         `t1.col1 IN (select t2.key1 from t2 where t2.col2=t1.col2)`
+         from `test`.`t1`</pre>
+		<p>The use of triggered conditions has some performance implications. A NULL IN (SELECT ...) expression now may cause a full table scan (which is slow) when it previously did not.
+			This is the price paid for correct results (the goal of the trigger-condition strategy was to improve compliance and not speed).</p>
+		<p>For multiple-table subqueries, execution of NULL IN (SELECT ...) will be particularly slow because the join optimizer doesn't optimize for the case where the outer expression is NULL.
+			It assumes that subquery evaluations with NULL on the left side are very rare, even if there are statistics that indicate otherwise.
+			On the other hand, if the outer expression might be NULL but never actually is, there is no performance penalty.</p>
+		<p>To help the query optimizer better execute your queries, use these tips:</p>
+		<ul>
+			<li>A column must be declared as NOT NULL if it really is. (This also helps other aspects of the optimizer.)</li>
+			<li>
+				<p>If you don't need to distinguish a NULL from FALSE subquery result, you can easily avoid the slow execution path. Replace a comparison that looks like this:</p>
+				<pre>outer_expr IN (SELECT inner_expr FROM ...)</pre>
+				<p>with this expression:</p>
+				<pre>(outer_expr IS NOT NULL) AND (outer_expr IN (SELECT inner_expr FROM ...))</pre>
+				<p>Then NULL IN (SELECT ...) will never be evaluated because MySQL stops evaluating AND parts as soon as the expression result is clear.</p>
+			</li>
+		</ul>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SLIMIT Optimization"></A>LIMIT Optimization</H2></P>
+		<p>In some cases, MySQL handles a query differently when you are using LIMIT row_count and not using HAVING:</p>
+		<ul>
+			<li>If you are selecting only a few rows with LIMIT, MySQL uses indexes in some cases when normally it would prefer to do a full table scan.</li>
+			<li>If you use LIMIT row_count with ORDER BY, MySQL ends the sorting as soon as it has found the first row_count rows of the sorted result, rather than sorting the entire result.
+				If ordering is done by using an index, this is very fast. If a filesort must be done, all rows that match the query without the LIMIT clause must be selected,
+				and most or all of them must be sorted, before it can be ascertained that the first row_count rows have been found.
+				In either case, after the initial rows have been found, there is no need to sort any remainder of the result set, and MySQL does not do so.</li>
+			<li>When combining LIMIT row_count with DISTINCT, MySQL stops as soon as it finds row_count unique rows.</li>
+			<li>In some cases, a GROUP BY can be resolved by reading the key in order (or doing a sort on the key) and then calculating summaries until the key value changes.
+				In this case, LIMIT row_count does not calculate any unnecessary GROUP BY values.</li>
+			<li>As soon as MySQL has sent the required number of rows to the client, it aborts the query unless you are using SQL_CALC_FOUND_ROWS.</li>
+			<li>LIMIT 0 quickly returns an empty set. This can be useful for checking the validity of a query. When using one of the MySQL APIs,
+				it can also be employed for obtaining the types of the result columns. (This trick does not work in the MySQL Monitor (the mysql program),
+				which merely displays Empty set in such cases; you should instead use SHOW COLUMNS or DESCRIBE for this purpose.)</li>
+			<li>When the server uses temporary tables to resolve the query, it uses the LIMIT row_count clause to calculate how much space is required.</li>
+		</ul>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P>
+
+ 
+
+</BODY>
+</HTML>

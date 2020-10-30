@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Void isEqual 006</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isEqual</FunctionKeywords>
+		<TypeKeywords>Void Boolean</TypeKeywords>
+		<RelatedFunctions>compareEQ isIdentical comparison   </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>Void Equal Analytic Object </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples check if the value of the first Object
+
+
+
+
+
+                   is equal to the corresponding value   of the second
+
+
+
+
+
+                   Object. If they are, the function returns true, otherwise, it returns false.
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(isEqual x  #void)    </sc>]]></Expression>
+        <Note><![CDATA[An uninitialized value is always equal to #void.]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>(isEqual  x  0)         </sc>]]></Expression>
+        <Note><![CDATA[An uninitialized value is #void.  The value #void is always less than any value. ]]></Note>
+        <Returns><![CDATA[ false ]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Date month 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>month</FunctionKeywords>
+		<TypeKeywords>Date String Text Number Integer </TypeKeywords>
+		<RelatedFunctions> date day year</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>convert month julian object </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples return the <b>month</b> component of the  <b>date</b> argument using
+
+                  the different date formats.
+
+
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc> 
+(month #Jan,3,1954)               </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[1]]></Returns>
+	    <Expression><![CDATA[ <sc> (month "7/4/1992")                  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[7]]></Returns>
+	    <Expression><![CDATA[ <sc> (month 713882)                     </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[7]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

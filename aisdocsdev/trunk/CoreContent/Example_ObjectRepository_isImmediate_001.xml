@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example ObjectRepository isImmediate 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isImmediate</FunctionKeywords>
+		<TypeKeywords>ObjectRepository Boolean</TypeKeywords>
+		<RelatedFunctions> isTransaction saveImmediate</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>save repository index immediate boolean</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example show the an Immediate value save in a REpository using the
+                  <b>saveImmediateFunction</b>.  Then the <b>isImmediate</b> function is used to
+                  check the data type of the value saved.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+(setq number (new ObjectRepository: "myfile1.odb"))     </sc>   ]]></Expression>
+        <Note><![CDATA[Specify the name of the first ObjectRepository.  ]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc>(saveImmediate gor one "Hello world")     </sc>   ]]></Expression>
+        <Note><![CDATA[Create an immediate value in the Repository Index ]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc>(gor ["one"])     </sc>   ]]></Expression>
+        <Note><![CDATA[Retrieves the value of the index "one". ]]></Note>
+        <Returns><![CDATA[Hello World]]></Returns>
+  	    <Expression><![CDATA[ <sc>(isImmediate gor one)     </sc>   ]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[none
+
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

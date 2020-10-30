@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example String isType 003</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isType</FunctionKeywords>
+		<TypeKeywords>Character String Symbol Vector BitVector ByteVector IntVector
+
+
+
+
+
+                       FltVector ObjVector Structure Dictionary Directory
+
+
+
+
+
+                       Matrix NumMatrix Integer Float Number Complex</TypeKeywords>
+		<RelatedFunctions>isText isObject isString </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>Type Analytic Object</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example illustrates that the <b>isType</b> function is
+
+
+                  equivalent to the <b>=</b> comparison function.
+ 
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(= Character: (type #\a) ) </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>(isType Character: #\a) </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ true ]]></Returns>
+        <Expression><![CDATA[ <sc>(= String: (type "ABCDEFGHIJ") )  </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ true ]]></Returns>  
+        <Expression><![CDATA[ <sc>(isType String: "ABCDEFGHIJ")  </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[ true ]]></Returns>
+        <Hints><![CDATA[<p> The syntax: <b> (isType String: obj)</b>  <br>
+            is also equivalent to: <b>(isString obj)</b> </p>]]></Hints>
+   </Syntax>
+</Example>

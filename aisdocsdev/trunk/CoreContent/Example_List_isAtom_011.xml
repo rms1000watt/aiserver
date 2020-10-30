@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example List isAtom 011</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isAtom</FunctionKeywords>
+		<TypeKeywords>Pair List</TypeKeywords>
+		<RelatedFunctions>isPair</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>atom pair list non-list </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example uses the <b>isAtom</b> function to determine
+            
+
+
+
+   if the argument is not a List.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc> (isAtom  1)         </sc>]]></Expression>
+        <Note><![CDATA[ none]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc> (isAtom  '(1  ('2 3) 4) )      </sc>]]></Expression>
+        <Note><![CDATA[ none]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Hints><![CDATA[
+none
+
+]]></Hints>
+   </Syntax>
+</Example>

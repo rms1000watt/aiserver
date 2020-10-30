@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Symbol methodsOf 004</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>methodsOf</FunctionKeywords>
+		<TypeKeywords>Symbol Dictionary</TypeKeywords>
+		<RelatedFunctions>defmethod send addMethod</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>method message messageName</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example first defines a method in the Symbol 
+                 Dictionary using the <b> addMethod</b> function.  It then displays the 
+                  Lambdas for each method defined  in
+
+	              the Symbol Method Dictionary.  
+	]]></Description>
+	<Syntax>
+	<Expression><![CDATA[ <sc> (addMethod  Symbol: addThe:  (lambda  (s)  (append The: s)))  </sc>
+    ]]></Expression>
+   <Note><![CDATA[ <p>Add a method named <b>addThe</b> which will appends "s" to defined Symbol The:)
+   </p>
+   ]]></Note>
+   <Returns><![CDATA[ #&#60Dictionary 188364&#62 ]]></Returns>
+   <Expression><![CDATA[<sc>(length (methodsOf  Symbol: ))   </sc>
+   ]]></Expression>
+   <Note><![CDATA[Query the methods Dictionary for the Symbol Object Type:
+   ]]></Note>
+   <Returns><![CDATA[1]]></Returns>
+   <Expression><![CDATA[<sc>(ref  (methodsOf Symbol: )  0 0)     </sc> 
+   ]]></Expression>
+   <Note><![CDATA[Get the names of  the methods  in the methods Dictionary for the Symbol Object Type:
+   ]]></Note>
+   <Returns><![CDATA[<b>addThe</b>]]></Returns>
+   <Expression><![CDATA[<sc>(ref  (methodsOf Symbol: )  0 1)    </sc> 
+   ]]></Expression>
+   <Note><![CDATA[Get the Lambdas  in the Dictionary  for the Symbol Object Type:
+   ]]></Note>
+   <Returns><![CDATA[ #&#60Lambda 188382#&62]]></Returns>
+   <Hints><![CDATA[none]]></Hints>
+</Syntax>
+</Example>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>sign</Title>
+		<FunctionName>sign</FunctionName>
+		<FunctionType>Builtin(Trig)</FunctionType>
+		<ArgumentTypes> Number  </ArgumentTypes>
+		<DataType>Number  </DataType>
+		<RelatedFunctions> isPositive isNegative </RelatedFunctions>
+        <RelatedVMInstructions>none</RelatedVMInstructions>
+		<HumanKeywords> positive negative sign</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>sign</b> function converts a value specified in degrees to radians.</p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+	       <p> The <b>sign</b> function determines whether the argument is positive or negative.</p>
+        ]]></Overview>
+        <Usage><![CDATA[
+     	      <p> The <b>sign</b> function is used to determine if a number is positive or 
+            negative.</p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p><b> (sign num)</b></p>]]></Expression>
+		<Argument>
+		  <Name>num</Name>
+		  <Note><![CDATA[
+		  <p>A Number</p>
+          ]]></Note>
+		  <AISTypes>Number</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>Returns 1 if the argument is positive and -1 if the argument is negative.</p>
+	    ]]></Return>
+	</Syntax>
+</Function>

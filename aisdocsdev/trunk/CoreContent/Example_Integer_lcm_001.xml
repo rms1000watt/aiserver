@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Integer lcm 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>lcm</FunctionKeywords>
+		<TypeKeywords>  Integer </TypeKeywords>
+		<RelatedFunctions>  (sym)mul  </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>least common multiple  </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[   The  <b>lcm</b> function returns the least common multiple of a set 
+             of integers in the argument list.</p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(lcm 32 -36) </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[-288.0 ]]></Returns>
+        <Expression><![CDATA[ <sc>(lcm 4 5) </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[20.0]]></Returns>
+        <Hints><![CDATA[none
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Document SYSTEM "../DTD/Document.dtd">
+<Document>
+	<KnowledgeBase>
+	    <Title>rulesLib</Title>
+		<Topic>Lisp</Topic>
+		<SubTopic>Machine Learning</SubTopic>
+		<HumanKeywords>Lambda Rule  Machine Learning Programming</HumanKeywords>
+	</KnowledgeBase>
+	<Essay>Essay_rulesLib_Overview</Essay>
+    <Essay>Essay_rulesLib_Child_Lambdas</Essay>
+</Document>

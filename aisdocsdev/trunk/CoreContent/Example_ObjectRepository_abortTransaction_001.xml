@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example ObjectRepository abortTransaction 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>abortTransaction</FunctionKeywords>
+		<TypeKeywords>ObjectRepository</TypeKeywords>
+		<RelatedFunctions>beginTransaction commitTransaction</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>abort end transaction </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[<p> The <b>abortTransaction</b> function closes the previously opened transaction.
+                     The value in the Object REpository is the value that was set before the transaction started.</p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq gor (new ObjectRepository: "myarchive.odb")) </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(setq gor["one"] "Hello world")</sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[#&#60ObjectRepository 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc>gor["one"]  </sc>]]></Expression>
+        <Note><![CDATA[The value before the transaction was opened. ]]></Note>
+        <Returns><![CDATA[Hello World]]></Returns>
+        <Expression><![CDATA[ <sc>(beginTransaction gor)</sc>]]></Expression>
+        <Note><![CDATA[A transaction is opened. ]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq gor["one"] "Goodbye world")  </sc>]]></Expression>
+        <Note><![CDATA[The new value after the transaction was opened. ]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>gor["one"]</sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[Goodbye world]]></Returns>
+  	    <Expression><![CDATA[ <sc>(abortTransaction gor)  </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>gor["one"]</sc>]]></Expression>
+        <Note><![CDATA[The original value of the Repository before the transaction is returned. ]]></Note>
+        <Returns><![CDATA[Hello World]]></Returns>
+        <Hints><![CDATA[<p>After the <b>abortTransaction</b>, the assignment of the index (key) "one" 
+           to "Goodbye world" is rolled back and we see the ObjectRepository as it was just prior 
+           to the beginTransaction. </p>]]></Hints>
+   </Syntax>
+</Example>

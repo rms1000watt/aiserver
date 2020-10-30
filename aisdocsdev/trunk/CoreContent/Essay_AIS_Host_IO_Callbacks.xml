@@ -1,0 +1,1121 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Essay SYSTEM "../DTD/Essay.dtd">
+<Essay>
+	<KnowledgeBase>
+	    <Title>AIS Host IO Callbacks</Title>
+		<Topic>AIS Internals</Topic>
+		<SubTopic>Overview</SubTopic>
+		<HumanKeywords>Development AIS C C++ API</HumanKeywords>
+	</KnowledgeBase>
+	<Section>
+	    <Heading>Overview</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="Overview">
+		   <p class="MsoBodyText">The Lambda
+		    Information Server C API is divided into halves. The first half consists of
+		    all the <b style="mso-bidi-font-weight: normal">C Programmer's API</b>
+		    functions (which are provided through the fsmtbase.h include file). The
+		    second half consists of all the <b>AIS
+		    Host<b style="mso-bidi-font-weight: normal"> IO </b>Callback</b>
+		    <b style="mso-bidi-font-weight: normal">Functions</b> (which are provided to
+		    the Analytic Information Server engine by the hosting client application at
+		    initialization). There are a small number of C functions which provide the
+		    interface between the Analytic Information Server database engine and the
+		    hosting client application program, and they are listed in this section.</p>
+		    <p class="MsoBodyText">&nbsp;</p>
+		    <p class="Note"><b style="mso-bidi-font-weight: normal">Note</b>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </p>
+		    <p class="Note">These
+		    functions are always implemented by the hosting client application. As
+		    specified herein, they return error codes to signify error conditions.
+		    Optionally, the client application may throw, out of Analytic Information
+		    Server, back to its error handler.</p> 
+		  </div>
+	    ]]></Description>
+	</Section>              
+	<Section>
+	    <Heading>Host_Closef</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="Host_Closef">
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Host_Closef(CONTEXT*
+		    gCP,THREAD* gTP,NUM&nbsp; fileID,NUM
+		    opcode);</b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">C
+		    Function</b></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">Host_Closef</b>
+		    function closes a host file.&nbsp;</p>
+		    <p class="MsoBodyText">&nbsp;
+		 
+		    </p>
+		    <table style="BORDER-COLLAPSE: collapse; mso-padding-alt: 0in 5.4pt 0in 5.4pt" cellspacing="0" cellpadding="0" border="0">
+		      <tbody>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 113.4pt; PADDING-TOP: 0in" valign="top" width="189">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">Arguments
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 365.4pt; PADDING-TOP: 0in" valign="top" width="609">
+		            <p class="TableText" style="MARGIN: 2pt 0in">&nbsp;
+		 
+		            </p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 113.4pt; PADDING-TOP: 0in" valign="top" width="189">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">CONTEXT*
+		            gCP
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 365.4pt; PADDING-TOP: 0in" valign="top" width="609">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The<b style="mso-bidi-font-weight: normal">
+		            </b>context pointer.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 113.4pt; PADDING-TOP: 0in" valign="top" width="189">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">THREAD*
+		            gTP
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 365.4pt; PADDING-TOP: 0in" valign="top" width="609">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The<b style="mso-bidi-font-weight: normal">
+		            </b>thread pointer.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 113.4pt; PADDING-TOP: 0in" valign="top" width="189">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">NUM&nbsp;
+		            fileID
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 365.4pt; PADDING-TOP: 0in" valign="top" width="609">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            host file identifier which must have been previously returned from a
+		            call to Host_Openf().</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 113.4pt; PADDING-TOP: 0in" valign="top" width="189">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">NUM&nbsp;
+		            opcode
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 365.4pt; PADDING-TOP: 0in" valign="top" width="609">
+		            <p class="TableText">The
+		            opcode switch. A value of:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+		            <p class="TableText">(0)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		            requests that the file be erased after close and removed from
+		            the disk.</p>
+		            <p class="TableText">(1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		            requests that the file be closed and placed permanently on
+		            disk.</p>
+		            <p class="TableText" style="MARGIN: 2pt 0in">&nbsp;
+		 
+		            </p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 113.4pt; PADDING-TOP: 0in" valign="top" width="189">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">Result
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 365.4pt; PADDING-TOP: 0in" valign="top" width="609">
+		            <p class="TableText" style="MARGIN: 2pt 0in">&nbsp;
+		 
+		            </p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 113.4pt; PADDING-TOP: 0in" valign="top" width="189">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">return(NUM)
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 365.4pt; PADDING-TOP: 0in" valign="top" width="609">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            error code resulting from the display operation. A value of zero (0)
+		            indicates no error occurred.</p>
+		          </td>
+		        </tr>
+		      </tbody>
+		    </table>
+		    <p class="MsoBodyText">&nbsp;
+		 
+		    </p>
+		    <p class="Note"><b style="mso-bidi-font-weight: normal">Note:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </b>If the fileID argument is
+		    negative, all of the currently open files are closed with an assumed opcode
+		    of 1.
+		 
+		    </p>		   
+		  </div>
+	    ]]></Description>
+	</Section>         
+	<Section>
+	    <Heading>Host_Display</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="Host_Display">
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Host_Display(char*&nbsp;
+		    string,NUM&nbsp; newline);</b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">C
+		    Function</b></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">Host_Display</b>
+		    function displays an ASCII C string on the host application console.</p>
+		    <p class="MsoBodyText">&nbsp;
+		 
+		    </p>
+		    <table style="BORDER-COLLAPSE: collapse; mso-padding-alt: 0in 5.4pt 0in 5.4pt" cellspacing="0" cellpadding="0" border="0">
+		      <tbody>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">Arguments
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617">
+		            <p class="TableText" style="MARGIN: 2pt 0in">&nbsp;
+		 
+		            </p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">CONTEXT*
+		            gCP
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The<b style="mso-bidi-font-weight: normal">
+		            </b>context pointer.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">THREAD*
+		            gTP
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The<b style="mso-bidi-font-weight: normal">
+		            </b>thread pointer.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">char*&nbsp;
+		            string
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            ASCII C string to be displayed.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">NUM&nbsp;
+		            newline
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            newline switch. A value of one (1) requests that a newline be
+		            displayed after the string. Otherwise, do no advance to the next
+		            line.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">Result
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617">
+		            <p class="TableText" style="MARGIN: 2pt 0in">&nbsp;
+		 
+		            </p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">return(NUM)
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            error code resulting from the display operation. A value of zero (0)
+		            indicates no error occurred.</p>
+		          </td>
+		        </tr>
+		      </tbody>
+		    </table>		   
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>Host_Escape</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="Host_Escape">
+	    <p class="MsoNormal"><b style="mso-bidi-font-weight: normal">Host_Escape(void);</b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">C
+		    Function</b></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">Host_Escape</b>
+		    function returns an integer zero (0) if the engine is to continue normal
+		    operation; otherwise, returns an integer one (1) if the engine is to halt
+		    normal operations and escape. Sometimes the engine may respond by calling
+		    Host_error() with an ASCII C string of: &quot;Escape Requested&quot;.</p>
+		    <p class="MsoBodyText">&nbsp;</p>
+		    <table style="BORDER-COLLAPSE: collapse; mso-padding-alt: 0in 5.4pt 0in 5.4pt" cellspacing="0" cellpadding="0" border="0">
+		      <tbody>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">Arguments
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617" colspan="2">
+		            <p class="TableText" style="MARGIN: 2pt 0in">&nbsp;
+		 
+		            </p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 113.4pt; PADDING-TOP: 0in" valign="top" width="189" colspan="2">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">CONTEXT*
+		            gCP
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 365.4pt; PADDING-TOP: 0in" valign="top" width="609">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The<b style="mso-bidi-font-weight: normal">
+		            </b>context pointer.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 113.4pt; PADDING-TOP: 0in" valign="top" width="189" colspan="2">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">THREAD*
+		            gTP
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 365.4pt; PADDING-TOP: 0in" valign="top" width="609">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The<b style="mso-bidi-font-weight: normal">
+		            </b>thread pointer.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">Result
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617" colspan="2">
+		            <p class="TableText" style="MARGIN: 2pt 0in">&nbsp;
+		 
+		            </p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">return(NUM)
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617" colspan="2">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            escape code. A value of zero (0) indicates no escape requested. A
+		            value of one (1) indicates escape requested.</p>
+		          </td>
+		        </tr>
+		      </tbody>
+		    </table>	   
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>Host_Openf</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="Host_Openf">
+	    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Host_Openf(char*&nbsp;
+	    filename, NUM mode, NUM&nbsp; type);</b></p>
+	    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">C
+	    Function</b></p>
+	    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">Host_Openf</b>
+	    function opens an existing host application file. Returns an integer as a
+	    file identifier. The integer file identifier will be used, by the engine, in
+	    all subsequent references to the file.&nbsp;</p>
+	    <p class="MsoBodyText">&nbsp;</p>
+	    <table style="BORDER-COLLAPSE: collapse; mso-padding-alt: 0in 5.4pt 0in 5.4pt" cellspacing="0" cellpadding="0" border="0">
+	      <tbody>
+	        <tr>
+	          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+	            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">Arguments
+	 
+	            </b></p>
+	          </td>
+	          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617">
+	            <p class="TableText" style="MARGIN: 2pt 0in">&nbsp;
+	 
+	            </p>
+	          </td>
+	        </tr>
+	        <tr>
+	          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+	            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">CONTEXT*
+	            gCP
+	 
+	            </b></p>
+	          </td>
+	          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617">
+	            <p class="TableText" style="MARGIN: 2pt 0in">The<b style="mso-bidi-font-weight: normal">
+	            </b>context pointer.</p>
+	          </td>
+	        </tr>
+	        <tr>
+	          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+	            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">THREAD*
+	            gTP
+	 
+	            </b></p>
+	          </td>
+	          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617">
+	            <p class="TableText" style="MARGIN: 2pt 0in">The<b style="mso-bidi-font-weight: normal">
+	            </b>thread pointer.</p>
+	          </td>
+	        </tr>
+	        <tr>
+	          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+	            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">char*&nbsp;
+	            filename
+	 
+	            </b></p>
+	          </td>
+	          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617">
+	            <p class="TableText" style="MARGIN: 2pt 0in">The
+	            name of the file to be opened. This name may include a full path
+	            specification.</p>
+	          </td>
+	        </tr>
+	        <tr>
+	          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+	            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">NUM&nbsp;
+	            mode</b></p>
+	          </td>
+	          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617">
+	            <p class="TableText" style="MARGIN: 2pt 0in">The
+	            mode switch. A value of zero (0) requests that only an existing file
+	            be opened. A value of one (1) indicates that a new file will be
+	            created. If a file already exists with this name, it will be
+	            destroyed and a new virgin file will be created. A value of two (2),
+	            valid for database files only, indicates that an existing database
+	            file be opened for read only transactions shared with other users.&nbsp;
+	            A value of three (3) requests that an inserted repository
+	            file be opened.</p>
+	          </td>
+	        </tr>
+	        <tr>
+	          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+	            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">NUM&nbsp;
+	            type
+	 
+	            </b></p>
+	          </td>
+	          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617">
+	            <p class="TableText" style="MARGIN: 2pt 0in">The
+	            file type switch which determines the type of host data file which
+	            is opened:</p>
+	          </td>
+	        </tr>
+	        <tr>
+	          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+	            <p class="TableText" style="MARGIN: 2pt 0in">&nbsp;
+	 
+	            </p>
+	          </td>
+	          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617">
+	            <p class="TableText" style="MARGIN: 2pt 0in">(0)&nbsp;
+	            requests a Smartscript text file.</p>
+	          </td>
+	        </tr>
+	        <tr>
+	          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+	            <p class="TableText" style="MARGIN: 2pt 0in">&nbsp;
+	 
+	            </p>
+	          </td>
+	          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617">
+	            <p class="TableText" style="MARGIN: 2pt 0in">(1)&nbsp;
+	            requests a Spreadsheet binary file</p>
+	          </td>
+	        </tr>
+	        <tr>
+	          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+	            <p class="TableText" style="MARGIN: 2pt 0in">&nbsp;
+	 
+	            </p>
+	          </td>
+	          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617">
+	            <p class="TableText" style="MARGIN: 2pt 0in">(2)
+	            requests a Smarttable binary file.</p>
+	          </td>
+	        </tr>
+	        <tr>
+	          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+	            <p class="TableText" style="MARGIN: 2pt 0in">&nbsp;
+	 
+	            </p>
+	          </td>
+	          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617">
+	            <p class="TableText" style="MARGIN: 2pt 0in">(3)
+	            requests a Workspace binary file.</p>
+	          </td>
+	        </tr>
+	        <tr>
+	          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+	            <p class="TableText" style="MARGIN: 2pt 0in">&nbsp;
+	 
+	            </p>
+	          </td>
+	          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617">
+	            <p class="TableText" style="MARGIN: 2pt 0in">(4)
+	            requests an Object binary file.</p>
+	          </td>
+	        </tr>
+	        <tr>
+	          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+	            <p class="TableText" style="MARGIN: 2pt 0in">&nbsp;
+	 
+	            </p>
+	          </td>
+	          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617">
+	            <p class="TableText" style="MARGIN: 2pt 0in">r(5)
+	            equests an Object database file.</p>
+	          </td>
+	        </tr>
+	        <tr>
+	          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+	            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">Result
+	 
+	            </b></p>
+	          </td>
+	          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617">
+	            <p class="TableText" style="MARGIN: 2pt 0in">&nbsp;
+	 
+	            </p>
+	          </td>
+	        </tr>
+	        <tr>
+	          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+	            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">return(NUM)
+	 
+	            </b></p>
+	          </td>
+	          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617">
+	            <p class="TableText" style="MARGIN: 2pt 0in">The
+	            non-zero integer file identifier or zero to indicate an&nbsp;
+	            error condition.</p>
+	          </td>
+	        </tr>
+	      </tbody>
+	    </table>	   
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>Host_Readf</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="Host_Readf">
+		   <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Host_Readf(NUM&nbsp;
+		    fileID,NUM length,char*&nbsp; bufptr);</b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">C
+		    Function</b></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">Host_Readf</b>
+		    function reads the specified number of bytes from a host file into a memory
+		    buffer supplied by the engine.&nbsp;</p>
+		    <p class="MsoBodyText">&nbsp;
+		 
+		    </p>
+		    <table style="BORDER-COLLAPSE: collapse; mso-padding-alt: 0in 5.4pt 0in 5.4pt" cellspacing="0" cellpadding="0" border="0">
+		      <tbody>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">Arguments
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617">
+		            <p class="TableText" style="MARGIN: 2pt 0in">&nbsp;
+		 
+		            </p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">CONTEXT*
+		            gCP
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The<b style="mso-bidi-font-weight: normal">
+		            </b>context pointer.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">THREAD*
+		            gTP
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The<b style="mso-bidi-font-weight: normal">
+		            </b>thread pointer.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">NUM&nbsp;
+		            fileID
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            host file identifier which must have been previously returned from a
+		            call to Host_Openf().</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">NUM&nbsp;
+		            length
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            number of bytes to read.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">char*&nbsp;
+		            bufptr
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            pointer to the memory buffer into which the data is to be read.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">Result
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617">
+		            <p class="TableText" style="MARGIN: 2pt 0in">&nbsp;
+		 
+		            </p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">return(NUM)
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            error code resulting from the display operation. A value of zero (0)
+		            indicates no error occurred.</p>
+		          </td>
+		        </tr>
+		      </tbody>
+		    </table>		   
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>Host_ReadW</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="Host_ReadW">
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Host_ReadW(NUM&nbsp;
+		    winID,NUM length,char*&nbsp; bufptr);</b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">C
+		    Function</b></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">Host_ReadW</b>
+		    function reads the specified number of text bytes from a host Smartscript
+		    window into a memory buffer supplied by the engine.&nbsp;</p>
+		    <p class="MsoBodyText">&nbsp;
+		 
+		    </p>
+		    <table style="BORDER-COLLAPSE: collapse; mso-padding-alt: 0in 5.4pt 0in 5.4pt" cellspacing="0" cellpadding="0" border="0">
+		      <tbody>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 95.4pt; PADDING-TOP: 0in" valign="top" width="159">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">Arguments
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 383.4pt; PADDING-TOP: 0in" valign="top" width="639">
+		            <p class="TableText" style="MARGIN: 2pt 0in">&nbsp;
+		 
+		            </p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 95.4pt; PADDING-TOP: 0in" valign="top" width="159">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">CONTEXT*
+		            gCP
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 383.4pt; PADDING-TOP: 0in" valign="top" width="639">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The<b style="mso-bidi-font-weight: normal">
+		            </b>context pointer.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 95.4pt; PADDING-TOP: 0in" valign="top" width="159">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">THREAD*
+		            gTP
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 383.4pt; PADDING-TOP: 0in" valign="top" width="639">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The<b style="mso-bidi-font-weight: normal">
+		            </b>thread pointer.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 95.4pt; PADDING-TOP: 0in" valign="top" width="159">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">NUM&nbsp;
+		            winID
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 383.4pt; PADDING-TOP: 0in" valign="top" width="639">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            host window identifier which must have been previously returned from
+		            a call to Host_OpenW(). The window must be a Smartscript text window
+		            or an error will result.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 95.4pt; PADDING-TOP: 0in" valign="top" width="159">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">NUM&nbsp;
+		            length
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 383.4pt; PADDING-TOP: 0in" valign="top" width="639">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            number of bytes to read.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 95.4pt; PADDING-TOP: 0in" valign="top" width="159">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">char*&nbsp;
+		            bufptr
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 383.4pt; PADDING-TOP: 0in" valign="top" width="639">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            pointer to the memory buffer into which the text data is to be read.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 95.4pt; PADDING-TOP: 0in" valign="top" width="159">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">Result
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 383.4pt; PADDING-TOP: 0in" valign="top" width="639">
+		            <p class="TableText" style="MARGIN: 2pt 0in">&nbsp;
+		 
+		            </p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 95.4pt; PADDING-TOP: 0in" valign="top" width="159">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">return(NUM)
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 383.4pt; PADDING-TOP: 0in" valign="top" width="639">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            error code resulting from the display operation. A value of zero (0)
+		            indicates no error occurred.</p>
+		          </td>
+		        </tr>
+		      </tbody>
+		    </table>		   
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>Host_Resizef</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="Host_Resizef">
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Host_Resizef(NUM&nbsp;
+		    fileID,NUM newsize);</b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">C
+		    Function</b></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">Host_Releasef</b>
+		    function sets the size of a host file to the specified number of bytes.</p>
+		    <p class="MsoBodyText">&nbsp;</p>
+		    <table style="BORDER-COLLAPSE: collapse; mso-padding-alt: 0in 5.4pt 0in 5.4pt" cellspacing="0" cellpadding="0" border="0">
+		      <tbody>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 95.4pt; PADDING-TOP: 0in" valign="top" width="159">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">Arguments
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 383.4pt; PADDING-TOP: 0in" valign="top" width="639">
+		            <p class="TableText" style="MARGIN: 2pt 0in">&nbsp;
+		 
+		            </p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 95.4pt; PADDING-TOP: 0in" valign="top" width="159">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">CONTEXT*
+		            gCP
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 383.4pt; PADDING-TOP: 0in" valign="top" width="639">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The<b style="mso-bidi-font-weight: normal">
+		            </b>context pointer.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 95.4pt; PADDING-TOP: 0in" valign="top" width="159">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">THREAD*
+		            gTP
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 383.4pt; PADDING-TOP: 0in" valign="top" width="639">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The<b style="mso-bidi-font-weight: normal">
+		            </b>thread pointer.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 95.4pt; PADDING-TOP: 0in" valign="top" width="159">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">NUM&nbsp;
+		            fileID
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 383.4pt; PADDING-TOP: 0in" valign="top" width="639">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            host file identifier which must have been previously returned from a
+		            call to Host_Openf().</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 95.4pt; PADDING-TOP: 0in" valign="top" width="159">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">NUM&nbsp;
+		            newsize
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 383.4pt; PADDING-TOP: 0in" valign="top" width="639">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            new size of the file.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 95.4pt; PADDING-TOP: 0in" valign="top" width="159">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">Result
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 383.4pt; PADDING-TOP: 0in" valign="top" width="639">
+		            <p class="TableText" style="MARGIN: 2pt 0in">&nbsp;
+		 
+		            </p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 95.4pt; PADDING-TOP: 0in" valign="top" width="159">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">return(NUM)
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 383.4pt; PADDING-TOP: 0in" valign="top" width="639">
+		            <p class="TableText" style="MARGIN: 2pt 0in">A
+		            value of zero or greater, indicates no error occurred and returns
+		            the new size of the host file. A negative return code indicates an
+		            error has occurred.</p>
+		          </td>
+		        </tr>
+		      </tbody>
+		    </table>		   
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>Host_Seekf</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="Host_Seekf">
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Host_Seekf(NUM&nbsp;
+		    fileID,NUM adjustment,NUM&nbsp; opcode);</b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">C
+		    Function</b></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">Host_Seekf</b>
+		    function relocates the read/write pointer of a host file to a new location.</p>
+		    <p class="MsoBodyText">&nbsp;</p>
+		    <table style="BORDER-COLLAPSE: collapse; mso-padding-alt: 0in 5.4pt 0in 5.4pt" cellspacing="0" cellpadding="0" border="0">
+		      <tbody>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">Arguments
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617">
+		            <p class="TableText" style="MARGIN: 2pt 0in">&nbsp;
+		 
+		            </p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">CONTEXT*
+		            gCP
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The<b style="mso-bidi-font-weight: normal">
+		            </b>context pointer.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">THREAD*
+		            gTP
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The<b style="mso-bidi-font-weight: normal">
+		            </b>thread pointer.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">NUM&nbsp;
+		            fileID
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            host file identifier which must have been previously returned from a
+		            call to Host_Openf().</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">NUM&nbsp;
+		            adjustment
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            adjustment in bytes of the new file read/write pointer.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">NUM&nbsp;
+		            opcode
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            opcode switch. A value of</p>
+		            <p class="TableText">(0)
+		            requests that the file read/write pointer be adjusted from the
+		            current location (the adjustment is added to the current location).</p>
+		            <p class="TableText">(1)
+		            requests that the file read/write pointer be adjusted from the start
+		            of the file (the adjustment is the new location).</p>
+		            <p class="TableText" style="MARGIN: 2pt 0in">(2)
+		            requests that the file read/write pointer be adjusted from the end
+		            of the file (the adjustment is added to the end of the file).</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">Result
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617">
+		            <p class="TableText" style="MARGIN: 2pt 0in">&nbsp;
+		 
+		            </p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">return(NUM)
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            error code resulting from the display operation. A value of zero or
+		            greater (0) indicates no error occurred and returns the current
+		            location of the host file read/write pointer starting from the
+		            beginning of the file. A negative return code indicates an error has
+		            occurred.</p>
+		          </td>
+		        </tr>
+		      </tbody>
+		    </table>		   
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>Host_Writef</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="Host_Writef">
+		   <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Host_Writef(NUM&nbsp;
+		    fileID,NUM length,char*&nbsp; bufptr);</b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">C
+		    Function</b></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">Host_Writef</b>
+		    function writes the specified number of bytes from a memory buffer supplied
+		    by the engine into a host file.&nbsp;</p>
+		    <p class="MsoBodyText">&nbsp;
+		 
+		    </p>
+		    <table style="BORDER-COLLAPSE: collapse; mso-padding-alt: 0in 5.4pt 0in 5.4pt" cellspacing="0" cellpadding="0" border="0">
+		      <tbody>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">Arguments
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617">
+		            <p class="TableText" style="MARGIN: 2pt 0in">&nbsp;
+		 
+		            </p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">CONTEXT*
+		            gCP
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The<b style="mso-bidi-font-weight: normal">
+		            </b>context pointer.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">THREAD*
+		            gTP
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The<b style="mso-bidi-font-weight: normal">
+		            </b>thread pointer.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">NUM&nbsp;
+		            fileID
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            host file identifier which must have been previously returned from a
+		            call to Host_Openf().</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">NUM&nbsp;
+		            length
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            number of bytes to write.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">char*&nbsp;
+		            bufptr
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            pointer to the memory buffer from which the data is to be written.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">Result
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617">
+		            <p class="TableText" style="MARGIN: 2pt 0in">&nbsp;
+		 
+		            </p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 108.9pt; PADDING-TOP: 0in" valign="top" width="182">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">return(NUM)
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 369.9pt; PADDING-TOP: 0in" valign="top" width="617">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            error code resulting from the display operation. A value of zero (0)
+		            indicates no error occurred.</p>
+		          </td>
+		        </tr>
+		      </tbody>
+		    </table>		   
+		  </div>
+	    ]]></Description>
+	</Section>
+</Essay>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmregRunInHardware </Title> 
+		<InstructionName>vmregRunInHardware   </InstructionName>
+		<InstructionType>Register</InstructionType>
+		<ArgumentTypes>    Integer</ArgumentTypes>
+		<RelatedVMInstructions> none  </RelatedVMInstructions>
+		<HumanKeywords> reffloat refinteger refnumber refshort  </HumanKeywords>
+	</KnowledgeBase>                   
+	<Description><![CDATA[
+		<p>When evaluated, this vm instruction either starts or stops the AIS Lisp Just-In-Time 
+		compiler from generating all Assembler register instructions in hardware mode.
+    	</p>      
+		<p>Issuing a (vmregRunInHardware start:) instruction causes as many register variables as possible,
+		 between this (vmregRunInHardware start:) instruction, and the next (vmregRunInHardware stop:) instruction,
+		 to be loaded into actual host hardware registers from their memory placeholder locations. 
+		Issuing a (vmregRunInHardware stop:) instruction causes all registers, previously loaded into actual host
+		 hardware registers to be saved back into their memory placeholder locations. In between the 
+		(vmregRunInHardware start:) and (vmregRunInHardware stop:) instructions, the AIS Lisp compiler allows only a 
+		very restricted set of register instructions. The Just-In-Time compiler generates all code for these register 
+		instructions to use the actual host hardware registers. There are no conversions made between different types. 
+		This instruction may return an Error value. After the operation, the Instruction Pointer is promoted. 
+		The operation of this vm instruction is expressed in the following pseudo code:
+       		<ul><li><b>  start: {0} (As many declared registers as possible, are loaded into hardware registers.)  </b></li></ul>
+			<ul><li><b> stop: {1} (Any declared registers, previously loaded into hardware, are saved back into memory.)   </b></li></ul>
+
+
+    ]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[(vmregRunInHardware command)]]></Expression>
+		<Argument> 
+		  <Name>command</Name>
+		  <Format>immediate</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>	
+		
+	</Syntax>
+</VMInstruction>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure inside 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>inside</FunctionKeywords>
+		<TypeKeywords>Structure Symbol Integer</TypeKeywords>
+		<RelatedFunctions>member isMember member isInside isIdentical</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>inside key value index</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples searches the Structure for the specified key.               
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(inside SSN:  #{Name: "John Doe" SSN: "555 12 1324"}) </sc>]]></Expression>
+        <Note><![CDATA[The key SSN: is searched  in the Structure. ]]></Note>
+        <Returns><![CDATA[1]]></Returns>
+        <Expression><![CDATA[ <sc> (inside Address:  #{Name: "John Doe" SSN "555 12 1324"})      </sc>]]></Expression>
+        <Note><![CDATA[The key Address: is searched  in the Structure. ]]></Note>
+        <Returns><![CDATA[false  ]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

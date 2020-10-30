@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Boolean send 010</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>addMethod</FunctionKeywords>
+		<TypeKeywords>   Symbol Dictionary </TypeKeywords>
+		<RelatedFunctions>addMethod defmethod methodsOf</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>method message messageName</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[<p> This example defines a method and a message named <b>toEnglish</b>
+                  that converts the Boolean Value, true,  to the English word "Yes" and 
+
+                 converts the Boolean value, false,  to the English word  "No".   </p>
+	]]></Description>
+	<Syntax>
+	<Expression><![CDATA[<sc>(defmethod  Boolean:  toEnglish (b) (if b "Yes" "No"))         </sc>]]></Expression>
+    <Note><![CDATA[Add a message named toEnglish to the Boolean Methods Dictionary.
+
+]]></Note>
+    <Returns><![CDATA[ #&#60Dictionary 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(send toEnglish: true)      </sc> ]]></Expression>
+    <Note><![CDATA[To invoke the Lambda that responds to the toEnglish message, issue the following statement:]]></Note>
+    <Returns><![CDATA[Yes]]></Returns>
+    <Expression><![CDATA[<sc>(send toEnglish: false)       </sc> ]]></Expression>
+    <Note><![CDATA[To invoke the Lambda that responds to the toEnglish message, issue the following statement:]]></Note>
+    <Returns><![CDATA[No]]></Returns>
+    <Expression><![CDATA[<sc>(toEnglish: true)     </sc> ]]></Expression>
+    <Note><![CDATA[Alternatively, the Lambda may be invoked using the following syntax:]]></Note>
+    <Returns><![CDATA[Yes]]></Returns>
+    <Expression><![CDATA[<sc>(toEnglish: false)     </sc> ]]></Expression>
+    <Note><![CDATA[none]]></Note>
+    <Returns><![CDATA[Yes]]></Returns>
+ <Hints><![CDATA[<p>Dissecting the <b>send</b> command involves understanding the methods dictionary 
+          of any Analytic Information Server type. In general the <b>send</b> command is translated 
+          as a reference into the methods dictionary:</p>
+          <p><b>((ref (methodsOf (type object)) methodName  object))</b></p>
+          <p> The statement : </p>
+          <p><b>(send toEnglish: true) </b> </p>
+          <p>is translated into </p>
+          <p><b>((ref (methodsOf (type true)) toEnglish: )true) </b></p>
+          <p> Each statement segment results in: </p>
+          <table>
+             <tr><td width=60%><b> (type true)        </b></td>
+                  <td width=40%>Returns: <b> Boolean  </b></td></tr>
+             <tr><td width=60%><b>  (methodsOf (Boolean:))    </b></td>
+                  <td width=40%>Returns: <b> #&#60Dictionary 123456&#62  </b></td></tr>
+             <tr><td width=60%><b> (ref (#&#60Dictionary 123456&#62) toEnglish: )    </b></td>
+                  <td width=40%>Returns: <b> #&#60Lambda 123456&#62  </b></td></tr>
+             <tr><td width=60%><b> ( #&#60Lambda 123456&#62  true)       </b></td>
+                  <td width=40%>Yes</td></tr>
+          </table>
+ ]]></Hints>
+</Syntax>
+</Example>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Dictionary copy 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>copy</FunctionKeywords>
+		<TypeKeywords>Dictionary</TypeKeywords>
+		<RelatedFunctions>setq</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>copy   dictionary memcopy pointer</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows how a Vector may be modified destructively or
+                   non-destructively  using the  
+                   the <b>copy</b> and <b>setq</b> function.  
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define x #{dic|a: "The " b: "Rain " c: "in " d: "Spain "}) </sc>]]></Expression>
+        <Note><![CDATA[The original Dictionary.  ]]></Note>
+        <Returns><![CDATA[#&#60Dictionary 123456&#62 ]]></Returns>
+ <Expression><![CDATA[ <sc>(setq clone (copy x))  </sc>]]></Expression>
+        <Note><![CDATA[The copied Dictionary using the copy function.  ]]></Note>
+        <Returns><![CDATA[#&#60Dictionary 234567&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq twin x)   </sc>]]></Expression>
+        <Note><![CDATA[The copied Dictionary using the setq function.  ]]></Note>
+        <Returns><![CDATA[#&#60Dictionary 345678&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(display clone)   </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#{dic|a: "The " b: "Rain " c: "in " d: "Spain "}  ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq clone.b "Hail" )  </sc>]]></Expression>  
+        <Note><![CDATA[The second element of the original Dictionary is modified.  ]]></Note> 
+        <Returns><![CDATA[#&#60Dictionary 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display clone)   </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[#{dic|a: "The " b: "Hail " c: "in " d: "Spain "}  ]]></Returns>
+        <Expression><![CDATA[ <sc>(display twin)   </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#{dic|a: "The " b: "Rain " c: "in " d: "Spain "}  ]]></Returns>
+        <Expression><![CDATA[ <sc>(display x)   </sc>]]></Expression>
+        <Note><![CDATA[The original Dictionary does not contain the modified value.   ]]></Note>
+        <Returns><![CDATA[#{a: "The " b: "Rain " c: "in " d: "Spain "}  ]]></Returns>
+        <Hints><![CDATA[Using the setq function results in objects having the same object id.
+               But the object that is being assigned the copied object has a
+              different object id than original object.  In this example twin and 
+              x have the same object id while clone has a different object id. ]]></Hints>
+   </Syntax>
+</Example>

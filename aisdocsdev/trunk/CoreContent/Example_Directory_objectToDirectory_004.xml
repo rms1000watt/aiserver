@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Directory objectToDirectory 004</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>objectToDirectory  </FunctionKeywords>
+		<TypeKeywords>Directory Vector Object ObjVector</TypeKeywords>
+		<RelatedFunctions>new copy </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>vector separates token key substrings</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows how the <b>objectToDirectory</b> updates the  
+
+
+                  values of the <b>{directory1}</b> object with the values of the
+                 <b>{directory2}</b> object only if the key matches.  If the key does not match
+                  the new key and its value are added to the {directory1} object.  
+                 
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq a (new Directory: A: 4 B: 6))      </sc>]]></Expression>
+        <Note><![CDATA[Defines the first directory object. ]]></Note>
+        <Returns><![CDATA[#&#60Directory 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(setq b (new Directory: B: 7 C: 8))        </sc>]]></Expression>
+        <Note><![CDATA[Defines the second directory object.]]></Note>
+        <Returns><![CDATA[#&#60Directory 234567&#62]]></Returns>
+        <Expression><![CDATA[ <sc> (objectToDirectory a b)    </sc>]]></Expression>
+        <Note><![CDATA[Updates the first directory object with the values of the second directory object. ]]></Note>
+        <Returns><![CDATA[#&#60Directory 345678&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display #<Directory 345678>)  </sc>]]></Expression>
+        <Note><![CDATA[Display the contents of the updated Directory object.]]></Note>
+        <Returns><![CDATA[#{ dir| A: 1 B: 7 C: 8}                    ]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

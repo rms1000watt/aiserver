@@ -1,0 +1,10 @@
+Column1	Column2	Column3	Column4	Column5	Column6	Column7	Column8	Column9	Column10	Column11	Column12	Column13	Column14	Column15	Column16	Column17	Column18	Column19	Column20	Column21	Column22	Column23	Column24
+G	G	G	G	G	G	G	G	G	G	G	G	G	G	G	G	G	G	G	G	G	G	G	G
+p	n	n	n	n	n	n	n	n	n	n	n	n	n	n	n	n	n	n	n	n	n	n	n
+""	""	""	""	""	""	""	""	""	""	""	""	""	""	""	""	""	""	""	""	""	""	""	""	
+The Previous	Row	Contains	All	NULL strings
+This	Row	Contains	A	Blank		Column	In	The Middle	Of	It
+This	Row	Contains	A	Column	Containing	a	Null	String	""	In	The Middle	Of	It
+This	Row Contains	Fewer Columns	Than	The	Rest	Of	The	Smarttable	Rows
+The	Following	Row Contains	More Columns	Than	The	Rest	Of	The	Smarttable	Rows
+DATA1	DATA2	DATA3	DATA4	DATA5	DATA6	DATA7	DATA8	DATA9	DATA10	DATA11	DATA12	DATA13	DATA14	DATA15	DATA16	DATA17	DATA18	DATA19	DATA20	DATA21	DATA22	DATA23	DATA24	DATA25	DATA26

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example ShortVector setq 021</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>setq</FunctionKeywords>
+		<TypeKeywords>ShortVector   Number </TypeKeywords>
+		<RelatedFunctions>new   define   </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>set setq replace global value  </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[
+                 If the <b>setq</b> function specifies a value that does not exist in the 
+
+                  specified Vector, the value will be dynamically installed.   
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc> (define X  #(short| 11 12 ) )     </sc>]]></Expression>
+        <Note><![CDATA[Sets the Vector. ]]></Note>
+        <Returns><![CDATA[ #&#60ShortVector 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(setq X  4 2)    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[ #&#60ShortVector 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc>(display X)   </sc>]]></Expression>
+        <Note><![CDATA[Displays the contents of the modified Vector. ]]></Note>
+        <Returns><![CDATA[#(short| 11 12 0 0 2 )]]></Returns>
+        <Hints><![CDATA[The <b>set</b> function keyword may be used instead of <b>setq</b>.]]></Hints>
+   </Syntax>
+</Example>

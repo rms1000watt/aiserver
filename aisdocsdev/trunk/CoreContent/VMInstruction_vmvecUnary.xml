@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmvecUnary</Title>
+		<InstructionName>vmvecUnary</InstructionName>
+		<InstructionType>Vector</InstructionType>
+		<ArgumentTypes>Integer</ArgumentTypes>
+		<RelatedVMInstructions>vmvecBinary</RelatedVMInstructions>
+		<HumanKeywords>vector operator binary unary</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[
+		<p>When evaluated, this vm instruction performs the unary operation, 
+		specified by the immediate <b>operator</b> argument, against the data 
+		in the vector processing stack. There are no conversions made between 
+		different types. The initial values in the three pointer registers, 
+		the three increment registers, and the counter register are NOT altered 
+		by this instruction. This instruction may return an Error value. 
+		After the operation, the Instruction Pointer is promoted.
+		The valid operator arguments are <u>any immediate integer value</u>, 
+		indicating the operation to be performed, or any one of the following 
+		symbolic operators. For each operator, the operation of this vm 
+		instruction is expressed in the following C expression:
+	    </p>
+        <ul><li>abs: {0} <b> (ST[top] = abs(ST[top]);)    </b></li>  
+         <li>cos: {1} <b> (ST[top] = cos(ST[top]);)    </b></li> 
+         <li>dbl: {2} <b> (ST[top] += ST[top];)    </b></li> 
+         <li>dec: {3} <b> (--ST[top];)   </b></li>  
+         <li>inc: {4} <b> (++ST[top];)   </b></li> 
+         <li>sin: {5} <b> (ST[top] = sin(ST[top]);)    </b></li> 
+         <li>sqr: {6} <b> (ST[top] *= ST[top];)   </b></li>  
+         <li>sqrt:{7} <b> (ST[top] = sqrt(ST[top]);)    </b></li> 
+         <li>tan: {8} <b> (ST[top] = tan(ST[top]);)    </b></li></ul>
+    ]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[(vmvecUnary operator)]]></Expression>   
+	    <Argument> 
+		  <Name>operator</Name>
+		  <Format>immediate</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+	</Syntax>
+</VMInstruction>

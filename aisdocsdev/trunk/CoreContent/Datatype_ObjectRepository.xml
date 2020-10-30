@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Datatype SYSTEM "../DTD/Datatype.dtd">
+<Datatype>
+	<KnowledgeBase>
+        <Title>ObjectRepository</Title>
+		<Type>Object</Type>
+		<RelatedTypes>Vector Dictionary Directory Structure Symbol</RelatedTypes>
+		<HumanKeywords>Object Heap Repository</HumanKeywords>
+	</KnowledgeBase>
+	<Section>                
+	    <Heading>Object Repository Overview</Heading>
+		<Description><![CDATA[
+		 <p class=MsoBodyText>An <b>Object Repository</b> is a Heap object containing zero or more bindings. Each binding is composed of an AIS 
+		  Word data value and followed by an object reference key, allowing ObjectRepository values to be 
+		  referenced and modified by object key. The <b>ObjectRepository</b> values are NOT stored in memory; instead, 
+		  they are stored on disk. (Note: ObjectRepository key values are NOT restricted to Symbol objects, and may be 
+		  references to any AIS heap object). </p>  	
+		  <p> An Object Repository may be created with the following syntax:</p>
+		  <p>	(setq gor (new ObjectRepository: "myarchive.odb"))</p>   
+        ]]></Description>
+    </Section>
+	<Section>                
+	    <Heading>When to Use</Heading>
+		<Description><![CDATA[
+          <p>The <b>ObjectRepository</b> data type is used to save any object closure of any size and complexity. </p>          
+        ]]></Description>
+    </Section>
+    <Section>                
+	    <Heading>Constant Form</Heading>
+		<Description><![CDATA[
+          <p>The <b>Object Repository</b>  Native data type is a container that holds
+            a Word data value and an object reference key. It has no constanct form, but its contents may be
+            modified or deleted using <i>Object Repository Transactions</i>.</p>
+        ]]></Description>
+    </Section>
+	<Section>                
+	    <Heading>Object Data Types</Heading>
+		<Description><![CDATA[
+          <p>The <b>ObjectRepository</b> is a Heap Object or an Object Data Type. The Analytic Information Server Object Types 
+            are stored in the Heap and are managed by the Heap manager.  The Analytic Information 
+            Server Heap manager supports object resizing, garbage collection, and anti-fragmentation algorithms 
+            so that the user may concentrate on the analysis and modeling of data rather than on
+            memory management. Without exception, all of the Object types are identified by an 
+            object id.  The object id identifies a block of memory, managed by the Lambda 
+             Information Server memory manager, in which the Object's data is stored.</p>
+         <p>The Analytic Information Server Heap Object and Native Data types can be saved and loaded to and from persistent
+            (disk file) storage at any time. Containers with immediate data are saved on disk 
+            in fixed length records equal to the size of the container. Containers with Heap 
+            object references are saved in fixed length records, which are automatically expanded 
+            to include the contents of the Heap object, and any objects referenced by the Heap 
+            object, etc. This feature is called Object Closure Management and is automatic with 
+            every Analytic Information Server container database save.</p>
+         <p>Analytic Information Server containers may be loaded from any database repository record 
+            at any time. If the data in the record is immediate, the database load fills the 
+            container with the immediate data. If the data in the record is an object closure, 
+            the database load fills the container with a Heap object reference, and all of the 
+            objects in the record are loaded back into the Heap with the same referential 
+            relationships they had when they were saved in the repository.</p>    
+        ]]></Description>
+    </Section>
+</Datatype>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Boolean boolean 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>boolean</FunctionKeywords>
+		<TypeKeywords>Boolean Text Integer </TypeKeywords>
+		<RelatedFunctions>isBoolean isType</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>convert boolean object</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ The <b>boolean</b> function converts an Integer, Text or
+                 Character argument into a Boolean object.
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc> 
+(boolean  0) </sc>]]></Expression>
+        <Note><![CDATA[A zero state is converted to the Boolean value, false ]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+	    <Expression><![CDATA[ <sc> (boolean  "false" )    </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc> (boolean  5)         </sc>]]></Expression>
+        <Note><![CDATA[Any other state is converted to true.]]></Note>
+        <Returns><![CDATA[ true]]></Returns>
+        <Expression><![CDATA[ <sc> (boolean  "true")         </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[ true]]></Returns>
+        <Expression><![CDATA[ <sc> (boolean  #\c)         </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[ true]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Dictionary compareLT 004</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compareLT</FunctionKeywords>
+		<TypeKeywords>Dictionary Boolean</TypeKeywords>
+		<RelatedFunctions>compare compareEQ compareNE compareGE compareGT  compareLE </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare symbol equal lesser </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>compareLT</b> function to compare two Dictionaries and return
+
+
+
+
+
+                  the Boolean value, true or false.  The corresponding keys and values of each Dictionary are compared
+
+
+                  to determine whether one Dictionary is lesser than the other.
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(compareLT #{dic|X: 1 Y: 2} #{dic|X: 1 Y: 2})  </sc>]]></Expression>
+        <Note><![CDATA[Both Dictionaries are equal.]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(compareLT #{dic|X: 1 Y: 2} #{dic|A: 1 B: 2})  </sc>]]></Expression>
+        <Note><![CDATA[The first Dictionary is greater than the second Dictionary.]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

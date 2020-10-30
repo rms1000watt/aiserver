@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example ShortVector new 011</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>new</FunctionKeywords>
+		<TypeKeywords> ShortVector</TypeKeywords>
+		<RelatedFunctions> setq  define </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>new pointer create initialize</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples show how to construct a typed Vector.
+
+
+                  A Short Vector is constructed using the
+
+
+                  <b>new</b> function.
+
+
+	]]></Description>
+	<Syntax>
+        <Expression><![CDATA[ <sc>(setq X (new Vector:  short: 5  4  5 6 3 4)  )                   </sc>]]></Expression>
+        <Note><![CDATA[  Returns a Short Vector containing 5 integers. ]]></Note>
+        <Returns><![CDATA[&#60ShortVector 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display X)    </sc>]]></Expression>
+        <Note><![CDATA[ Displays the contents of the Short Vector.]]></Note>
+        <Returns><![CDATA[#(short| 4 5 6 3 4 )]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

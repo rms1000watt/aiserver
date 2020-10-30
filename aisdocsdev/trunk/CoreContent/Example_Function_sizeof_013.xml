@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Function sizeof 013</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>sizeof</FunctionKeywords>
+		<TypeKeywords>Number Integer</TypeKeywords>
+		<RelatedFunctions>new length </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>sizeof closure bytes length disk memory</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example return the closure size of the Function objects.  
+
+
+
+
+
+
+
+
+
+
+
+     
+
+
+
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+        <Expression><![CDATA[ <sc>(sizeof  muli)                      </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[72]]></Returns>
+        <Expression><![CDATA[ <sc>(sizeof  today)              </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[72]]></Returns>
+        <Expression><![CDATA[ <sc>(sizeof  binarySearch)                     </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[80]]></Returns>
+        <Hints><![CDATA[<p>The closure size may be different values for the same object on different
+
+
+             hardware platforms due to word alignment issues. The values returned from the 
+
+
+             <b>sizeof</b> function in the examples above are the values returned on a Intel 
+
+
+              Pentium-based platform.</p>
+        ]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example ObjVector new 012</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>new</FunctionKeywords>
+		<TypeKeywords> ObjVectoror</TypeKeywords>
+		<RelatedFunctions> setq  define </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>new pointer create initialize</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples show how to construct a typed Vector.
+
+                  An Object Vector is constructed using the
+
+                  <b>new</b> function.
+
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(new Vector:  Object: 2 #{A: 1 B: 2} #(1 2 ))                </sc>]]></Expression>
+        <Note><![CDATA[Returns an Object Vector of 2 Objects.]]></Note>
+        <Returns><![CDATA[#&#60ObjVector 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display &#60ObjVector 123456&#62)    </sc>]]></Expression>
+        <Note><![CDATA[ Displays the contents of the Object Vector.]]></Note>
+        <Returns><![CDATA[#(obj| #{A: 1 B: 2} #(1 2 ) )]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

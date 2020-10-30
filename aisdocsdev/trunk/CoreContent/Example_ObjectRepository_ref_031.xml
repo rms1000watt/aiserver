@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example ObjectRepository ref 031</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>ref</FunctionKeywords>
+		<TypeKeywords>ObjectRepository</TypeKeywords>
+		<RelatedFunctions> setq   </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>ref reference set position</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows the <b>ref</b> function retrieve
+                the <b>POSITION OF THE OBJECT KEY.</b>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq gor (new ObjectRepository: "mice.db"))      </sc>]]></Expression>
+        <Note><![CDATA[Create a new ObjectRepository.]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 197815&#62 ]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq gor 1 "mickey")      </sc>]]></Expression>
+        <Note><![CDATA[Install a key and value pair.]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 197815&#62 ]]></Returns>
+ 	    <Expression><![CDATA[ <sc>(setq gor "one" "minnie")      </sc>]]></Expression>  
+        <Note><![CDATA[Install a key and value pair.]]></Note> 
+        <Returns><![CDATA[#&#60ObjectRepository 197815&#62 ]]></Returns>
+ 	    <Expression><![CDATA[ <sc>(setq gor "two" "mighty")      </sc>]]></Expression>  
+        <Note><![CDATA[Install a key and value pair.]]></Note> 
+        <Returns><![CDATA[#&#60ObjectRepository 197815&#62 ]]></Returns>
+ 	    <Expression><![CDATA[ <sc>(setq gor "three" "speedy gonzales")      </sc>]]></Expression>  
+        <Note><![CDATA[Install a key and value pair.]]></Note> 
+        <Returns><![CDATA[#&#60ObjectRepository 197815&#62 ]]></Returns>
+  	    <Expression><![CDATA[ <sc>(ref gor position: "one")      </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[1]]></Returns>
+        <Expression><![CDATA[ <sc>(ref gor position: "two")  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[3]]></Returns>
+        <Expression><![CDATA[ <sc>(ref gor position: "three")   </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[2]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

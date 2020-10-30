@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>text</Title>
+		<FunctionName>text</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>Integer Text String</ArgumentTypes>
+		<DataType>String  </DataType>
+		<RelatedFunctions>isText char code string</RelatedFunctions>
+        <RelatedVMInstructions> vmregLoadDeclType vmregSaveDeclType </RelatedVMInstructions>
+		<HumanKeywords>convert text   format</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>text</b> function converts a numeric value into a Text or String in a 
+                 specified numeric format. </p>
+          ]]></Description>
+	<Brief>
+	    <Overview><![CDATA[
+	      <p> The <b>text</b> function converts a numeric value into a Text or String in a 
+          specified numeric format. </p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>text</b> function is used to coerce a value into a String or Text using a 
+         specified numeric format.  </p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p>(text value format)</p>]]></Expression>
+		<Argument>
+		  <Name>value</Name>
+		  <Note><![CDATA[
+		  <p>Any number that evaluates to a number</p>
+          ]]></Note>
+		  <AISTypes>Integer Complex</AISTypes>
+		</Argument>
+        <Argument> 
+		  <Name>format</Name>
+		  <Note><![CDATA[
+		  <p>A format code for representing a number as a String; 
+             for example: "##.#0" or "$#,###.#0".</p>
+          ]]></Note>
+		  <AISTypes>String or Text</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>The result string after conversion
+        </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

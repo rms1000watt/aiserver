@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example PcodeVector setq 023</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>setq</FunctionKeywords>
+		<TypeKeywords>PcodeVector   Number </TypeKeywords>
+		<RelatedFunctions>new   define   </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>set setq replace global value  </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ 
+                 This example shows the <b>setq</b> function replacing a new value
+                  in the Vector with the specified index.
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc> (setq X (new Vector:  pcode: 3 3 2 1 ))      </sc>]]></Expression>
+        <Note><![CDATA[Sets the Vector. ]]></Note>
+        <Returns><![CDATA[ #&#60PcodeVector 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(setq X 1 10)    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[ #&#60PcodeVector 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc>(display X)   </sc>]]></Expression>
+        <Note><![CDATA[Displays the contents of the modified Vector. ]]></Note>
+        <Returns><![CDATA[#(pcd| 3 10 1 )]]></Returns>
+        <Hints><![CDATA[The <b>set</b> function keyword may be used instead of <b>setq</b>.]]></Hints>
+   </Syntax>
+</Example>

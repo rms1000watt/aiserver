@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Essay SYSTEM "../DTD/Essay.dtd">
+<Essay>
+	<KnowledgeBase>
+	    <Title>Bitwise Functions</Title>
+		<Topic>Function Libraries</Topic>
+		<SubTopic>Overview</SubTopic>
+		<HumanKeywords>Bitwise Binary Functions Computations Programming</HumanKeywords>
+	</KnowledgeBase>
+	<Section>
+	    <Heading>Overview</Heading>
+		<Description><![CDATA[
+		    <div class="h2section" id="Overview">
+			<P>
+		 The Analytic Information Server engine supplies a number of built-in bit manipulation
+        functions for operating on integers.
+		    </P>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>Bitwise Functions</Heading>
+		<Description><![CDATA[
+		    <div class="h2section" id="Trig Functions">
+		    <P> Here is a list of the links to the AIS built-in Bitwise Functions with their corresponding examples.</P>
+             <P>
+			<!--docscript>(aisRefGuide.bitwiseLinkTable)</docscript-->
+			</P>  
+		  </div>
+	    ]]></Description>
+	</Section>
+</Essay>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example NumVector new 011</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>new</FunctionKeywords>
+		<TypeKeywords> NumVector</TypeKeywords>
+		<RelatedFunctions> setq  define </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>new pointer create initialize</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples show how to construct a typed Vector.
+
+                  A  Number Vectors is constructed using the
+
+                  <b>new</b> function.
+
+	]]></Description>
+	<Syntax>
+        <Expression><![CDATA[ <sc>(new Vector:  Number: 5  4  5)                     </sc>]]></Expression>
+        <Note><![CDATA[  Returns a Number Vector of repeating 4's and 5's.]]></Note>
+        <Returns><![CDATA[#&#60NumVector 234567&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60NumVector 234567&#62)    </sc>]]></Expression>
+        <Note><![CDATA[ Displays the contents of the Number Vector.]]></Note>
+        <Returns><![CDATA[#(num| 4.0 5.0 4.0 5.0 4.0 )]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

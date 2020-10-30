@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example BitVector compareNE 014</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compareNE</FunctionKeywords>
+		<TypeKeywords>BitVector Boolean</TypeKeywords>
+		<RelatedFunctions>compare compareEQ compareLE compareGE compareLT  compareGT </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare symbol equal lesser </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>compareNE</b> function to compare two Vectors and return
+
+
+
+
+
+
+
+
+
+                  the Boolean value, true or false.  The corresponding keys and values of each Vector are compared
+
+
+
+
+
+
+                  to determine whether one Vector is  equal to the other.
+
+
+
+
+
+
+	]]></Description>
+	<Syntax> 
+        <Expression><![CDATA[ <sc>(compareNE #(bit| 1 1 1 1 1 ) #(bit| 0 1 1 1 1 ))  </sc>]]></Expression>  
+        <Note><![CDATA[The first BitVector is greater than the second BitVector.]]></Note> 
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number isOdd 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isOdd</FunctionKeywords>
+		<TypeKeywords>  Number</TypeKeywords>
+		<RelatedFunctions>isInteger isZero integer isInexact isEven isNegative isPositive isNull isExact  </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>  fraction integer even odd fraction </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples check if the Number argument is an odd Integer.
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(isOdd  1)         </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>(isOdd  1.0)                </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[ true ]]></Returns>
+        <Expression><![CDATA[ <sc>(isOdd  -4)                 </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ false ]]></Returns>
+        <Expression><![CDATA[ <sc>(isOdd  -4.1)                </sc>]]></Expression>
+        <Note><![CDATA[The argument is not an Integer.]]></Note>
+        <Returns><![CDATA[ false ]]></Returns>
+        <Expression><![CDATA[ <sc>(isOdd  $4.15)                  </sc>]]></Expression>  
+        <Note><![CDATA[Money data type is not evaluated as an Integer.]]></Note> 
+        <Returns><![CDATA[ false ]]></Returns>
+        <Expression><![CDATA[ <sc>(isOdd 9.00)                  </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[ true ]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

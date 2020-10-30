@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Directory ref 010</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>ref</FunctionKeywords>
+		<TypeKeywords> Directory Symbol String</TypeKeywords>
+		<RelatedFunctions>setq  ref fieldsOf   refValues  </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>ref reference set position</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows the <b>ref</b> function returns the
+
+
+
+                  value of the Directory through the <b>key</b> reference.
+
+
+                  This example uses the <b> (ref dir key)</b> function syntax.
+
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(setq aDir  #{dir| #Jan,1,1996  "New Year's Day"  #Feb,14,1996  "Valentine's Day" ) )   </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60Directory 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(ref aDir #Jan,1,1996)    </sc>]]></Expression>
+        <Note><![CDATA[The ref function returns the value with the key #Jan,1,1996 in the Directory. ]]></Note>
+        <Returns><![CDATA[New Year's Day]]></Returns>
+        <Expression><![CDATA[ <sc>(ref  aDir #Feb,14,1996)  </sc>]]></Expression>
+        <Note><![CDATA[The ref function returns the value with the key #Feb,14,1996 in the Directory. ]]></Note>
+        <Returns><![CDATA[Valentine's Day]]></Returns>
+        <Hints><![CDATA[none
+
+
+]]></Hints>
+   </Syntax>
+</Example>

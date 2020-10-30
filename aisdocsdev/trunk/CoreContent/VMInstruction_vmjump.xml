@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmjump</Title>
+		<InstructionName>vmjump</InstructionName>
+		<InstructionType>Generic</InstructionType>
+		<ArgumentTypes> Integer </ArgumentTypes>
+		<RelatedVMInstructions>vmjumpcc</RelatedVMInstructions>
+		<HumanKeywords>  jump cc label</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[                                                  
+		<p>When evaluated, this vm instruction resets the instruction pointer 
+		register, <b>Ip</b>, to the argument <b>label</b>. This results in an 
+		immediate unconditional jump to location label. The operation of this 
+		vm instruction is expressed in the following C expression:
+        </p>	
+        <ul><li><b>     Ip = label;    </b></li></ul>
+    ]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[  (vmjump label)]]></Expression>
+		<Argument> 
+		  <Name>label</Name>
+		  <Format>immediate</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>		 
+	</Syntax>
+</VMInstruction>

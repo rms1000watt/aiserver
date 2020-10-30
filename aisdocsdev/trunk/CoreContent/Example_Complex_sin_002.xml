@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Complex sin 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>sin</FunctionKeywords>
+		<TypeKeywords>Complex Integer</TypeKeywords>
+		<RelatedFunctions> cos tan cosh</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>   sine radians angle </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ <p>The <b>sine</b> of a   complex value is shown in this examples. 
+                 The first double shown is the real part of the result. The second number shown 
+                 is the imaginary part of the result.</p>
+	]]></Description>
+	<Syntax> 
+  	    <Expression><![CDATA[ <sc>(setq X (new Complex: (pi))) </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[#&#60Complex 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(sin X)</sc>]]></Expression>  
+        <Note><![CDATA[The result of the sine function is: ]]></Note> 
+        <Returns><![CDATA[#c0.0]]></Returns>
+        <Hints><![CDATA[<p>Be sure that the argument is an angle expressed in radians. </p>]]></Hints>
+   </Syntax>
+</Example>

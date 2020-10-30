@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Essay SYSTEM "../DTD/Essay.dtd">
+<Essay>
+	<KnowledgeBase>
+	    <Title>XML Compiler</Title>
+		<Topic>XML</Topic>
+		<SubTopic>Overview</SubTopic>
+		<HumanKeywords>XML Programming Artificial-Intelligence</HumanKeywords>
+	</KnowledgeBase>
+	<Section>
+	    <Heading>XML Compiler Overview</Heading>
+		<Description><![CDATA[
+            <div class="h2section" id="XML CompilerOverview">		
+		    <P>The XML compiler is a low-level C function designed as a high-speed base processor 
+               for future SAX and DOM compliant XML implementations. The xml function is not, 
+               itself, a SAX and DOM compliant XML compiler; but, is designed to form the 
+               substrate for future standards compliant XML compilers.</P>
+		   <P>The xml Function implements an XML compiler via the method of recursive descent. 
+             	The xml function is a complete XML compiler and not a parser such as the lisp or 
+          	 	javaScript functions. The result of running the xml function on an XML input string 
+            	is a completed XML document tree model.</P>
+            </div>	  
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>Document Tree Models</Heading>
+		<Description><![CDATA[
+            <div class="h2section" id="Document Tree Models">
+		  <p>The XML document tree model is a recursive Structure with the data inside 
+		  the XML document addressable by attribute as well as by numeric index. For
+		  example the following XML input string:</p>				  
+		<PRE>&lt;?xml version = '1.0' standalone='yes' encoding = 'hello' ?&gt;
+		&lt;!-- This is a dynamic name and address example --&gt;
+		&lt;Address FirstName = "yes" LastName = 'yes'&gt; 
+		This is just general content for the Address element.
+		&lt;FirstName&gt;Michael&lt;/FirstName&gt;
+		&lt;LastName&gt;Korns&lt;/LastName&gt;
+		&lt;Street&gt;214 Shorebreaker&lt;/Street&gt;
+		&lt;City&gt;Laguna Niguel&lt;/City&gt;
+		&lt;State&gt;California&lt;/State&gt;
+		This is more content for the Address element.
+		&lt;/Address&gt;
+		Returns the following XML document tree model:
+		#{
+		 __attlist: #{version: '1.0' standalone: 'yes' encoding: 'hello'}
+			Address: #{
+			    __attlist: #{FirstName: "yes" LastName: 'yes'}
+				__content: "This is just general content for the Address element."
+			    FirstName: "Michael"
+			    LastName:  "Korns"
+			    Street:    "214 Shorebreaker"
+			    City:      "Laguna Niguel"
+				State:     "California"
+			   __content: "This is more content for the Address element."
+			  }
+		}			
+		</PRE>
+			    ]]></Description>
+			</Section>
+			<Section>
+			    <Heading>Compiling a String</Heading>
+				<Description><![CDATA[
+         <div class="h2section" id="Compiling a String">
+			<P>The xml function supports the compilation of a single source string and returning an XML document tree model.<BR>
+		Syntax: (xml  [document] inputString)</P>
+		<TABLE CELLSPACING=0 BORDER=0 cellpadding=2 >
+		<TR VALIGN="TOP"><TD>
+		<B>document</B></TD>
+		<TD>
+		<P>(optional) A Structure to be extended as an XML document in tree model form. After being extended, this structure is then returned as the result of  XML compilation.</TD>
+		</TR>
+		<TR VALIGN="TOP"><TD>
+		<B>inputString</B></TD>
+		<TD>
+		<P>A string containing the XML source to be compiled</TD>
+		</TR>
+		<TR VALIGN="TOP"><TD>
+		<B>Returns</B></TD>
+		<TD>
+		<P>An XML document in tree model form</TD>
+		</TR>
+		</TABLE>
+		<P>Syntax: (xml  [document] inputLambda)</P>
+		<TABLE CELLSPACING=0 BORDER=0 cellpadding=2 >
+		<TR VALIGN="TOP"><TD>
+		<B>document</B></TD>
+		<TD>
+		<P>(optional) A Structure to be extended as an XML document in tree model form. After being extended, this structure is then returned as the result of  XML compilation.</TD>
+		</TR>
+		<TR VALIGN="TOP"><TD>
+		<B>inputLambda</B></TD>
+		<TD>
+		<P>An Lambda which provides the input string, containing the XML source, to the xml function on demand (see the Input Source Providers chapter)</TD>
+		</TR>
+		<TR VALIGN="TOP"><TD>
+		<B>Returns</B></TD>
+		<TD>
+		<P>An XML document in tree model form</TD>
+		</TR>
+		</TABLE>
+		<H3>Example1</H3>
+		<pre>(xml &quot;&lt;?xml version=?1??&gt;&lt;Name&gt;John Doe&lt;/Name&gt;&quot;)<BR>
+		;; Returns    <BR>
+		#{xml: true __attlist: #{version: 1}  Name:  &quot;John Doe&quot; }</pre>
+		<H3>Example2</H3>
+		<PRE>(setq xmlDoc (new Structure:))
+		(xml xmlDoc &quot;&lt;?xml version=?1??&gt;&lt;Name&gt;John Doe&lt;/Name&gt;&lt;*%&gt;&lt;City&gt;San Francisco&lt;/City&gt;&quot;)</PRE><DIR>
+		<DIR>
+		<DIR>
+		<P>Returns the following error message:</P></DIR>
+		</DIR>
+		</DIR>
+		<PRE>!Invalid element start tag:
+		&lt;Name&gt;John Doe&lt;/Name&gt;&lt;*%&gt;
+		            ^ error
+		&lt;City&gt;San Francisco&lt;/City&gt;
+		!</PRE>
+		<P>However xmlDoc contains the XML document-in-progress at the time of the error:</P>
+		<PRE>''xmlDoc is
+		#{xml: true __attlist: #{version: 1} Name: &quot;John Doe&quot;}</PRE><DIR>
+		<DIR>
+		<P>Note: <B> </B>Passing the optional, (<B>xmlDoc</B>) argument allows the <B>xml</B> compiler to return an error message and still allow the caller access to the XML document-in-progress as it was at the time of the error.</P></DIR>
+		</DIR>
+		</div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>Compiling A String with PI</Heading>
+		<Description><![CDATA[
+         <div class="h2section" id="Compiling A String with PI">
+				<P>The xml function supports the compilation of a single source string with active process instruction handling and returning an XML document tree model. The second argument must be a Structure of active process instruction bindings (<B>piStructure</B>). If the xml compiler should encounter a process instruction, the pi target name is looked up in the piStructure. If found, the xml function invokes the specified processing Lambda to process the character data. If not found, the xml function saves the process instruction source, but attempts no processing.<BR>
+			Syntax: (xml [document] inputString piStructure)</P>
+			<TABLE CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN="TOP"><TD>
+			<B>document</B></TD>
+			<TD>
+			<P>(optional) A Structure to be extended as an XML document in tree model form. After being extended, this structure is then returned as the result of  XML compilation.</TD>
+			</TR>
+			<TR VALIGN="TOP"><TD>
+			<B>inputString</B></TD>
+			<TD>
+			<P>A string containing the XML source to be compiled</TD>
+			</TR>
+			<TR VALIGN="TOP"><TD>
+			<B>piStructure</B></TD>
+			<TD>
+			<P>A Structure containing the process instruction Lambdas bound to the active pi target names</TD>
+			</TR>
+			<TR VALIGN="TOP"><TD>
+			<B>Returns</B></TD>
+			<TD>
+			<P>An XML document in tree model form</TD>
+			</TR>
+			</TABLE>
+			<P>Syntax: (xml  [document] inputLambda piStructure)</P>
+			<TABLE CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN="TOP"><TD>
+			<B>document</B></TD>
+			<TD>
+			<P>(optional) A Structure to be extended as an XML document in tree model form. After being extended, this structure is then returned as the result of  XML compilation.</TD>
+			</TR>
+			<TR VALIGN="TOP"><TD>
+			<B>inputLambda</B></TD>
+			<TD>
+			<P>An Lambda which provides the input string, containing the XML source, to the xml function on demand (see the Input Source Providers chapter)</TD>
+			</TR>
+			<TR VALIGN="TOP"><TD>
+			<B>inputLambda</B></TD>
+			<TD>
+			<P>A string containing the XML source to be compiled</TD>
+			</TR>
+			<TR VALIGN="TOP"><TD>
+			<B>piStructure</B></TD>
+			<TD>
+			<P>A Structure containing the process instruction Lambdas bound to the active pi target names</TD>
+			</TR>
+			<TR VALIGN="TOP"><TD>
+			<B>Returns</B></TD>
+			<TD>
+			<P>An XML document in tree model form</TD>
+			</TR>
+			</TABLE>
+			<H3>Example1</H3>
+			<PRE>(xml &quot;&lt;?xml version=?1??&gt;&lt;?noScript Hello there?&gt;&quot; 
+			#{javaScript: (lambda(piStructure document this source) 
+			          (eval (compile 
+			                         (morph (javaScript source)) 
+			                         (new Lambda: Pv: (new Structure: document: document this: this))
+			                         ))})
+			Returns #{xml: true
+			        __attlist: #{version: 1}
+			   noScript:  &quot;Hello there&quot;
+			  }</PRE>
+			<H3>Example2</H3>
+			<PRE>(xml &quot;&lt;?xml version=?1??&gt;&lt;?javaScript writeln(?Hello world?); ?&gt;&quot; 
+			#{javaScript: (lambda(piStructure document this source) 
+			      (eval (compile 
+			            (morph (javaScript source)) 
+			            (new Lambda: Pv: (new Structure: document: document this: this))
+			       ))})
+			;;Returns the structure
+			#{xml: true __attlist: #{version: 1} javaScript:  &quot;writeln(?Hello world?);&quot;}
+			;;and Displays
+			&quot;Hello World&quot;</PRE>
+			<P>Note: Each processing instruction target name, in the <B>piStructure</B>, must be
+              bound to a lambda value expecting four arguments: (<B>piStructure</B>) the 
+              piStructure itself so that scripts can add to the available processing instruction 
+             targets, (<B>document</B>) the xml document in progress, (<B>this</B>) the current 
+             xml element, and (<B>source</B>) the processing instruction content.</P>
+			</div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>Compiling A String with event handling</Heading>
+		<Description><![CDATA[
+           <div class="h2section" id="Compiling A String with event handling">
+				<P>The xml function supports the compilation of a single source string with event handling. No XML document tree model is returned. The second argument must be an Lambda or a Host Object which will handle document events (<B>eventHandler</B>). The eventHandler must support the methods exposed in the Chapter on Document Event Handlers.<BR>
+		Syntax: (xml  inputString eventHandler)</P>
+		<TABLE CELLSPACING=0 BORDER=0 cellpadding=2 >
+		<TR VALIGN="TOP"><TD>
+		<B>inputString</B></TD>
+		<TD>
+		<P>A string containing the XML source to be compiled</TD>
+		</TR>
+		<TR VALIGN="TOP"><TD>
+		<B>eventHandler</B></TD>
+		<TD>
+		<P>An Lambda or Host Object which will handle document events as described in the Chapter on Document Event Handlers.</TD>
+		</TR>
+		<TR VALIGN="TOP"><TD>
+		<B>Returns</B></TD>
+		<TD>
+		<P>An XML document in tree model form</TD>
+		</TR>
+		</TABLE>
+		<P>Syntax: (xml  inputLambda eventHandler)</P>
+		<TABLE CELLSPACING=0 BORDER=0 cellpadding=2 >
+		<TR VALIGN="TOP"><TD>
+		<B>inputLambda</B></TD>
+		<TD>
+		<P>An Lambda which provides the input string, containing the XML source, to the xml function on demand (see the Input Source Providers chapter)</TD>
+		</TR>
+		<TR VALIGN="TOP"><TD>
+		<B>inputString</B></TD>
+		<TD>
+		<P>A string containing the XML source to be compiled</TD>
+		</TR>
+		<TR VALIGN="TOP"><TD>
+		<B>eventHandler</B></TD>
+		<TD>
+		<P>An Lambda or Host Object which will handle document events as described in the Chapter on Document Event Handlers.</TD>
+		</TR>
+		<TR VALIGN="TOP"><TD>
+		<B>Returns</B></TD>
+		<TD>
+		<P>An XML document in tree model form</TD>
+		</TR>
+		</TABLE>
+		<H3>Example1</H3>
+		<PRE>(xml &quot;&lt;?xml version=?1??&gt;&lt;?javaScript writeln(?Hello world?);?&gt;&quot;  eventHandler)
+		;;Sends the following events to eventHandler
+		;;(eventHandler.startDocument)
+		;;(eventHandler.startElement &quot;xml&quot; #{version: 1})
+		;;(eventHandler.processingInstruction &quot;javaScript&quot;  &quot;writeln(?Hello world?);&quot;)
+		;;(eventHandler.endElement &quot;xml&quot;)
+		;;(eventHandler.endDocument)</PRE>
+		</div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>Input Lambda</Heading>
+		<Description><![CDATA[
+            <div class="h2section" id="Input Lambda">
+		<P>The xml function supports the compilation of a multiple input strings served from an input Lambda. This allows compilation of include files and other instances where multiple XML source strings must be compiled as a single XML document. The first argument must be an Lambda or a Host Object which will provide strings of complete XML source in response to the (<B>moreSource</B>) message. The inputLambda must support the <B>moreSource</B> method by returning either <B>#void</B> (if there is no more source) or the next input string in sequence.</P>
+		<B>Note</B>:Each input string must be a complete XML fragment.<BR>
+		Syntax:<B>(inputLambda.moreSource)</P></B>
+		<TABLE CELLSPACING=0 BORDER=0 cellpadding=2 >
+		<TR VALIGN="TOP"><TD>
+		<B>Returns</B></TD>
+		<TD>
+		<P>An complete XML input string or #void</TD>
+		</TR>
+		</TABLE>
+		<H3>Example1</H3>
+		<PRE>(inputLambda.moreSource)
+		;;Returns the string
+		&quot;&lt;?xml version=?1??&gt;&lt;Name&gt;John&lt;/Name&gt;&quot;</PRE>
+		<P>Note:<B> </B>Each input string must be a complete XML fragment. This means that each input string must end at an end tag boundary.</P>
+		</div>
+	    ]]></Description>
+	</Section>
+</Essay>

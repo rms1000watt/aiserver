@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example List quote 003</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>quote</FunctionKeywords>
+		<TypeKeywords> Pair List Function</TypeKeywords>
+		<RelatedFunctions>isFunction</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>evaluate lexical expression</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ For single symbols, trailing the symbol with the <b>&#58</b>special character will also act as an implied quote. 
+	]]></Description>
+	<Syntax>
+	<Expression><![CDATA[<sc>Here:    </sc>]]></Expression>
+    <Note><![CDATA[ none]]></Note>
+    <Returns><![CDATA[Here]]></Returns>
+    <Expression><![CDATA[<sc>A:      </sc> ]]></Expression>
+    <Note><![CDATA[none]]></Note>
+    <Returns><![CDATA[A]]></Returns>
+   <Hints><![CDATA[none]]></Hints>
+</Syntax>
+</Example>

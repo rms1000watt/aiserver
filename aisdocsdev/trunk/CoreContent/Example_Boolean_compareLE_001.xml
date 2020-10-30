@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Boolean compareLE 009</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compareLE</FunctionKeywords>
+		<TypeKeywords> Boolean</TypeKeywords>
+		<RelatedFunctions>compare compareEQ compareNE compareGE compareGT  compareLT</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare void lesser </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>compareLE</b> function to determine whether 
+
+
+                  the first object has a lesser or equal value than the second object. The 
+
+
+                  <b>compareLE</b> function returns
+the Boolean value, true or false. 
+
+
+	]]></Description>
+	<Syntax>
+        <Expression><![CDATA[ <sc>(compareLE false 0 )         </sc>]]></Expression>
+        <Note><![CDATA[The Boolean value false has a state value of 1.]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(compareLE true (&#62 2 3))           </sc>]]></Expression>
+        <Note><![CDATA[ The result from the &#62 operation is also the value 1.]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

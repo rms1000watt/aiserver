@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>skew</Title>
+		<FunctionName>skew</FunctionName>
+		<FunctionType>Builtin(Math)</FunctionType>
+		<ArgumentTypes>Number Integer </ArgumentTypes>
+		<DataType>Number</DataType>
+		<RelatedFunctions>range kurtosis stdev stdevp var</RelatedFunctions>
+        <RelatedVMInstructions> none  </RelatedVMInstructions>
+		<HumanKeywords>skew distribution curve displacement mean </HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>skew</b> function computes the skewness which is the displacement left or right of 
+            the mean of the distribution curve defined by a set of data points. </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		 <p> The <b>skew</b> function computes the skewness which is the displacement left or right of 
+            the mean of the distribution curve defined by a set of data points. A normal distribution is symmetrical
+            and thus has a skewness of 0. A negative skewness indicates a distribution that is 
+            skewed to the left of the mean value (negatively); a positive skewness indicates a 
+            distribution that is skewed to the right of the mean value (positively). </p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>skew</b> function is used to determine if a distribution of data points is
+             more to the left of the mean, or more to the right of the mean.
+         </p>
+         ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[   (skew num1 num2 ...)]]></Expression>
+		<Argument>
+		  <Name>num1 num2... </Name>
+		  <Note><![CDATA[
+		  <p>Any number of values</p>
+          ]]></Note>
+		  <AISTypes>Number</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>Returns a number corresponding to the the skewness of the distribution 
+
+         curve defined by a set of data points. Any arguments that cannot be evaluated as numbers 
+
+         are ignored in the calculation of the skew function. 
+
+         value.
+
+	    </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

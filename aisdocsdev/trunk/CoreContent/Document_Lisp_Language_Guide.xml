@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Document SYSTEM "../DTD/Document.dtd">
+<Document>
+	<KnowledgeBase>
+	    <Title>Lisp Language Guide</Title>
+		<Topic>Lisp</Topic>
+		<SubTopic>Language Guide</SubTopic>
+		<HumanKeywords>Lisp Assembler Virtual Machine</HumanKeywords>
+	</KnowledgeBase>
+	<Essay>Essay_Lisp_Introduction</Essay>
+	<Essay>Essay_Lisp_Basics</Essay>
+	<Essay>Essay_Lisp_Language_Elements</Essay>
+	<Essay>Essay_Lisp_Assembler</Essay>
+	<Essay>Essay_Lisp_FAQ</Essay>
+</Document>

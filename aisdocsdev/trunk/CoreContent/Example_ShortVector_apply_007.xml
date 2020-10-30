@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example ShortVector apply 007</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>apply</FunctionKeywords>
+		<TypeKeywords>ShortVector</TypeKeywords>
+		<RelatedFunctions>   defmethod addMethod</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>apply functions   method</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines a Vector containing Integer values.  Then it
+
+
+
+                  uses the <b>apply</b> function to add all the values in the Vector.
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq X (new Vector:  short:  3 1 2 3))   </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60ShortVector 197815&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(apply  +  X)</sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[6 ]]></Returns>
+        <Hints><![CDATA[Equivalent expression not using <b>apply</b>:
+
+
+               <p><b>(+ (+  X[0]  X[1]) X[2] ) </b> <blockquote>Returns: 6</blockquote></p>
+               <p><b>(+  X[0] X[1] X[2]  )</b> <blockquote>Returns:  6</blockquote></p>
+        ]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure sort 003</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>sort</FunctionKeywords>
+		<TypeKeywords>Structure</TypeKeywords>
+		<RelatedFunctions>binarySearch ref setq binarySearch</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>sort arrange  ascending descending</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples show how the <b>sort</b> function sorts the 
+                  elements of the Structure and returns an integer vector 
+                  containing the sorted indices of either the Stucture key or value.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(sort  #{A: 2  B: 3  C: 1} &#62  byValue:  true)     </sc>]]></Expression>
+        <Note><![CDATA[Sort a Structure by values  in descending order and returns a Vector.]]></Note>
+        <Returns><![CDATA[#&#60IntVector 123456&#62 ]]></Returns>
+ <Expression><![CDATA[ <sc>(display #&#60IntVector 123456&#62 )  </sc>]]></Expression>
+        <Note><![CDATA[ The integer vector contains the indices of the Structure elements sorted by values.  ]]></Note>
+        <Returns><![CDATA[#(int| 1 0 2 )]]></Returns>
+        <Expression><![CDATA[ <sc>(sort  #{C: 2 B: 1 A: 3} &#60  true)    </sc>]]></Expression>  
+        <Note><![CDATA[Sort a Structure by keys in ascending order and returns a Vector. ]]></Note> 
+        <Returns><![CDATA[#&#60IntVector 234567&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60IntVector 234567&#62)   </sc>]]></Expression>
+        <Note><![CDATA[ The integer vector contains the indices of the Structure elements sorted by keys.  ]]></Note>
+        <Returns><![CDATA[#(int| 2 1 0 )]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

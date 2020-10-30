@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure methodsOf 005</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>methodsOf</FunctionKeywords>
+		<TypeKeywords>Structure Dictionary Symbol</TypeKeywords>
+		<RelatedFunctions>defmethod send addMethod defineStructure</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>method message messageName</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ The <b>methodsOf</b> function works also for user defined types.
+                  Define a user specific Structure that contains information about a 
+                  single stock transaction.  Then the method <b>ComputeProfit</b> is 
+                  defined and added in the Dictionary   using the <b> addMethod</b> function.    
+	]]></Description>
+   <Syntax>
+   <Expression><![CDATA[ <sc> (defineStructure  StockTransaction:  Symbol:  Bought:  Sold:  Profit:)    </sc>
+   ]]></Expression>
+   <Note><![CDATA[ <p>The Structure <b>StockTransaction</b> contains fields for the stock symbol,
+           the purchase price of the stock, the selling price and a profit field. </p>
+   ]]></Note>
+   <Returns><![CDATA[ StockTransaction ]]></Returns>
+   <Expression><![CDATA[<sc>(defmethod StockTransaction: ComputeProfit( e) (setq e.Profit (- e.Sold e.Bought )))     </sc>
+   ]]></Expression>
+   <Note><![CDATA[The method <b>ComputeProfit</b> is defined for the user-defined type <b>StockTransaction</b>.
+   ]]></Note>
+   <Returns><![CDATA[&#60Dictionary 123456&#62]]></Returns>
+   <Expression><![CDATA[<sc>(display (methodsOf StockTransaction:))     </sc> 
+   ]]></Expression>
+   <Note><![CDATA[Check the Methods Dictionary for the Structure type.]]></Note>
+   <Returns><![CDATA[#{dic|| ComputeProfit #&#60Lambda 123456&#62}true]]></Returns>
+   <Expression><![CDATA[<sc>(ref (methodsOf StockTransaction:)[0 0])   </sc> 
+   ]]></Expression>
+   <Note><![CDATA[Reference the message name .
+   ]]></Note>
+   <Returns><![CDATA[<b>ComputeProfit </b>]]></Returns>
+   <Expression><![CDATA[<sc>(ref (methodsOf Structure:)[0 1])      </sc>
+   ]]></Expression>
+   <Note><![CDATA[Reference the Lambda assigned to the message named <b>ComputeProfit</b>: 
+   ]]></Note>
+   <Returns><![CDATA[ #&#60Lambda 123456#&62]]></Returns>
+   <Hints><![CDATA[none]]></Hints>
+</Syntax>
+</Example>

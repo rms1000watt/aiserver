@@ -1,0 +1,21 @@
+subversion/servernotes.txt
+
+INSTALL
+To install subversion as a service on a Windows server, open a web browser and go to www.open.collab.net/.
+Under News & Events, select Download CollabNet Subversion 1.5.4. Download the Server and Client
+for Windows, CollabNetSubversion-server-1.5.4-1.win32.exe.  Copy this file to your install folder on the
+Windows server and run it to install.  Click the link on the opening screen to view the latest post-install
+instructions (an example is shown below).
+Select a path for the repository such as D:\svn_repository.  Just select svnsvc so that the repository runs
+as a service.  
+
+POST-INSTALL
+1. In a command window, navigate to D:\svn_repository. Create a repository with the command:
+	svnadmin create AisRepos
+2. Edit AisRepos\conf\svnserve.conf.  Uncomment the line password-db = passwd
+3.  Edit conf\passwd.  Add yourself as a user. For example:
+	Ted = mypassword
+4. In the command window, start the svn service:
+	net start svnserve
+
+

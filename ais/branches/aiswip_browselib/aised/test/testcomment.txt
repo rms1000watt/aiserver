@@ -1,0 +1,37 @@
+# aised/test/testcomment.txt
+
+
+#							AISED - TEST COMMENT
+# Test comment operations.  
+
+# CHANGE HISTORY
+# Version	Date		Who		Change
+# 1.0109	10/3/2006	tlw		Modify to new syntax for commands
+# 1.0039	4/20/2004	tlw		Original
+
+# NOTES
+#	 1. When making changes to this file, be sure to note them in the change history above.
+#		Put the latest entry at the top of the history.
+#	 2. See testsuite.txt for lots of details.
+#	*************************************************************************************************
+# COMMENT - comment(Insert)
+clear
+setParameter(MaximumRowWidth, 20)
+insert("a", Backward)
+move(eot, Select)
+comment(Insert)
+comment(Remove)
+delete(nextchar)
+insert("123456789 123456789", Backward)
+append("0")
+append("123456789 123456789 0")
+move(prevchar, Select)
+comment(Insert)
+comment(Insert)
+comment(Remove)
+move(eol, NoSelect)
+insert("\n", Backward)
+move(nextbow, Select)
+comment(Insert)
+setParameter(MaximumRowWidth, 1024)
+# end

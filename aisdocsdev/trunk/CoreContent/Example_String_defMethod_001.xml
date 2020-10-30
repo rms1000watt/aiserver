@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>  
+		<Title>Example String defMethod 001</Title>  
+		<Template>Example</Template> 
+		<FunctionKeywords>defMethod</FunctionKeywords>
+		<TypeKeywords>String Text Dictionary</TypeKeywords>
+		<RelatedFunctions>addMethod send methodsOf</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>method message messageName</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example calls the <b>defMethod</b> function where the method <b>makePlural</b>
+                  is implemented for the datatype <b>String</b>.  The method <b>makePlural</b> is invoked by  the 
+                  <b>send</b> function calling the message in the <b>String</b> Methods Dictionary.
+   	]]></Description>
+	<Syntax> 
+	<Expression><![CDATA[
+    <sc> (defmethod  String:makePlural(str)   (setq str (length str) #\s)) </sc>  
+     ]]></Expression>  
+   <Note><![CDATA[ Define a method named <b>makePlural</b> which which adds an "s" to a String.
+          Make sure that there is no whitespace between the keyword String: and the message name or else
+          the compiler will flag an error. 
+   ]]></Note> 
+   <Returns><![CDATA[#&#60Dictionary 12345&#62]]></Returns>
+   <Expression><![CDATA[<sc>(setq X (new String: "apple")) <br>
+                  (setq Y  (send  makePlural:  X)) </sc> 
+    ]]></Expression>
+   <Note><![CDATA[ Invoke the method named <b>makePlural</b> to convert a string to a plural.
+   ]]></Note>
+   <Returns><![CDATA[apples]]></Returns>
+   <Expression><![CDATA[<sc>(setq Y (makePlural:  X))   </sc> ]]></Expression>
+   <Note><![CDATA[The method can be invoked simply by name:
+   ]]></Note>
+   <Returns><![CDATA[apples]]></Returns>
+  <Hints><![CDATA[<p>It is important to remember that String constants that are 7 characters or 
+                less are by default assigned a type of Text unless explicitly assigned to a 
+                String Symbol variable.  All functions that are applicable to Strings 
+                <b>(append, mid, right, etc.)</b> are applicable Text constants as well.  
+                The fact that a constant is a Text or String is normally transparent to the user.</b>
+                <p>The Methods Dictionary exists for both the String type and the Text type. 
+                The constant "Hello" would, by default, be assigned as a Text constant if 
+                the following Lisp statement were used: </p>
+                <p><b> (setq SText "Hello") </b></p>
+                <p>The method <b>makePlural:</b> which was installed as a method for the 
+                 String type by the <b>defmethod</b> function would not be able to the understand 
+                 the following Lisp instruction: </p>
+                <p><b> (makePlural SText:) </b></p>
+                <p> Since the argument to the <b>makePlural</b> message, <b>Stext</b>, is a 
+                Text String, the Lisp compiler will go the Methods Dictionary for the Text data 
+                type.  However there is no <b>makePlural</b> method for the data type Text.  
+                Recall that the <b>makePlural</b> method was installed in the String data type
+   ]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>stringCiEQ</Title>
+		<FunctionName>stringCiEQ</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>String Boolean</ArgumentTypes>
+		<DataType>String  </DataType>
+		<RelatedFunctions>stringCiNE stringCiGT stringCiLT stringCiGE stringCiLE</RelatedFunctions>
+        <RelatedVMInstructions> vmregStringCompare vmregStringiCompare </RelatedVMInstructions>
+		<HumanKeywords>compare string equal boolean case-insensitive </HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>stringCiEQ</b> function performs a case-insensitive comparison
+between
+                two Strings and determines
+whether both Strings are equal or not.  A Boolean value is returned. </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>stringCiEQ</b> function performs a case-insensitive comparison between the 
+           two strings <b>{string1}</b> and <b>{string2}</b>.  If the comparison is true, 
+           <b>true</b> is returned; otherwise, <b>false</b> is returned.
+        </p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>Use the <b>stringCiEQ</b> function to compare if two Strings are equal 
+           without considering the case the of the Strings (case-insensitive).  
+           Therefore the Strings "Hello" and "HELLO" would compare equal.
+        </p>
+         ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p><b>(stringCiEQ string1 string2)</b></p>
+                    <p><b>(stringCiEQ text1 text2)</b></p>]]></Expression>
+		<Argument>
+		  <Name>string1</Name>
+		  <Note><![CDATA[
+		  <p> The first String or Text to be compared </p>
+          ]]></Note>
+		  <AISTypes>String or Text</AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>string2</Name>
+		  <Note><![CDATA[
+		  <p>The second String or Text to be compared</p>
+          ]]></Note>
+		  <AISTypes>String or Text</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>Returns true if the comparison is true, false if the comparison is false
+	    </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

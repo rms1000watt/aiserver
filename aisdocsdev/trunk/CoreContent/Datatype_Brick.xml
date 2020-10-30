@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Datatype SYSTEM "../DTD/Datatype.dtd">
+<Datatype>
+	<KnowledgeBase>
+        <Title>Brick</Title>
+		<Type>Heap</Type>
+		<RelatedTypes>Structure Vector Dictionary Directory</RelatedTypes>
+		<HumanKeywords>Row field columns</HumanKeywords>
+	</KnowledgeBase>
+	<Section>                
+	    <Heading>Brick Overview</Heading>
+		<Description><![CDATA[
+        <p> A Brick is a vector of rows and each row is a collection of fields. Each row is identical
+        to all other rows in the fields it contains.</p>
+
+        <p><b>(new Brick: rowCount FieldDeclaration ... FieldDeclaration)</b><p>
+
+        <p>Each brick field may store data of a different type and each field may repeat more than once
+        (the field repetition is separate and distinct from the repetition of rows in the Brick). 
+         A brick field declaration contains three important elements:</p>
+        <p><b>Name:Type:Repeats</b></p>       
+        <p> An example of a brick field declaration is as follows:</p>
+        <p><b>Distance:Number:20</b></p>  
+        <p> A Brick is a collection of fields as in the following example:</p>
+        <p><b>(new Brick: 1</b></p> 
+        <p><b>Address:Character:40</b></p> 
+        <p><b>State:Character:20</b></p>
+        <p><b>Name:Character:40</b></p>
+        <p><b>City:Character:40</b></p>
+        <p><b>Salary:Number:1)</b></p> 
+        <p> A picture of this Brick might appear as in the following example:</p>    
+          <table align="center" border=4 cellspacing=5 cellpadding=5>
+               <tr><td>Address</td> <td>184 Anywhere St.</td> </tr>
+               <tr><td>State</td> <td>California</td>  </tr>
+               <tr><td>Name</td> <td>John Doe</td> </tr>
+               <tr><td>City</td> <td> Los Angeles</td>  </tr>   
+               <tr><td>Salary</td> <td> $55000</td>  </tr>                                 
+           </table>        
+        <p> The valid brick field type names are as follows:</p>   
+         <p><b>Boolean</b></p> 
+         <p><b>Character</b></p>   
+         <p><b>CharPointer</b></p>
+         <p><b>Float</b></p>
+         <p><b>FloatPointer</b></p>
+         <p><b>Integer</b></p>
+         <p><b>IntPointer</b></p> 
+         <p><b>JumpPointer</b></p>
+         <p><b>Long</b></p>
+         <p><b>LongPointer</b></p>
+         <p><b>Number </b></p>
+         <p><b>NumPointer</b></p>  
+         <p><b>Object</b></p>
+         <p><b>Short</b></p>
+         <p><b>ShortPointer</b></p>
+         <p><b>Word</b></p> 
+         <p><b>WordPointer </b></p>     
+         <p> In Analytic Information Server, a single brick may grow up to 
+         65564 characters in length, and there may be up to two billion rows.</p>   
+        ]]></Description>
+    </Section>
+	<Section>                
+	    <Heading>When to Use</Heading>
+		<Description><![CDATA[
+          <p>The Brick object is very useful for storing heterogeneous values to be accessed 
+          by symbolic keys. Although Records can be used for many purposes, a common use is 
+          the creation of user defined data structures of complex design.</p> 
+         <p>While the alternate data types exist (Structures, Dictionaries and object Dictionaries) 
+         that support access by key, the Brick data type, does not have the overhead of storing 
+         all data fields in the same format. Since Records have the property of being fast and 
+         having keyed access, a Brick may be more preferable than a Structure, Dictionary or 
+         Directory if it is vital if the data be maintained in different formats.</p>
+        ]]></Description>
+    </Section>
+	<Section>                
+	    <Heading>Constant Form</Heading>
+		<Description><![CDATA[
+          <p>The Brick object type supports a constant template form. The whole Brick constant is enclosed 
+          in parentheses and preceded by the sharp symbol (#). The constant form of the example Brick 
+          is as follows: </p>
+          <p><b>#(brk| Address:Character:40 State:Character:20 Name:Character:40 City:Character:40  Salary:Number:1)</b></p>
+          <p><b>#(brk[2]| Address:Character:40 State:Character:20 Name:Character:40 City:Character:40  Salary:Number:1)</b></p>
+        ]]></Description>
+    </Section>
+	<Section>                
+	    <Heading>Creating Records</Heading>
+		<Description><![CDATA[
+          <p>The Brick object can be created via the new function as follows: </p>
+          <p><b>(new Brick: Address:Character:40 State:Character:20 Name:Character:40 City:Character:40  Salary:Number:1)</b></p>
+          <p><b>(new Brick: 2 Address:Character:40 State:Character:20 Name:Character:40 City:Character:40  Salary:Number:1)</b></p>
+        ]]></Description>
+    </Section>
+	<Section>                
+	    <Heading>Brick References</Heading>
+		<Description><![CDATA[
+          <p>The Brick object can be referenced via the ref function, the dot operator, and the bracket [] operator, as follows:</p>
+          <p><b>(setq x (new Brick: 2 Address:Character:40 State:Character:20 Name:Character:40 City:Character:40  Salary:Number:10))</b></p>
+          <p><b>x.Salary</b></p>
+          <p><b>x[Salary:]</b></p>
+          <p><b>(ref x Salary:)</b></p>
+          <p><b>(ref x Salary:)</b></p>
+          <p><b>(ref x Salary: 6)</b></p>
+          <p><b>(ref x Salary: 6 0)</b></p>
+          <p><b>x[1]</b></p>
+          <p><b>x[1].Salary</b></p>
+          <p><b>x[1].Salary[3]</b></p>
+          <p><b>x[Salary: 6 1]</b></p>
+          <p><b>x[Salary: 6 1]</b></p>
+          <p><b>x[4 6 1]</b></p>
+        ]]></Description>
+    </Section>
+	<Section>                
+	    <Heading>Object Data Types</Heading>
+		<Description><![CDATA[
+          <p>The <b>Brick</b> is a Heap Object or an Object Data Type. The Analytic Information Server Object Types 
+            are stored in the Heap and are managed by the Heap manager.  The Analytic Information 
+            Server Heap manager supports object resizing, garbage collection, and anti-fragmentation algorithms 
+            so that the user may concentrate on the analysis and modeling of data rather than on
+            memory management. Without exception, all of the Object types are identified by an 
+            object id.  The object id identifies a block of memory, managed by the Lambda 
+             Information Server memory manager, in which the Object's data is stored.</p>
+         <p>The Analytic Information Server Heap Object and Native Data types can be saved and loaded to and from persistent
+            (disk file) storage at any time. Containers with immediate data are saved on disk 
+            in fixed length records equal to the size of the container. Containers with Heap 
+            object references are saved in fixed length records, which are automatically expanded 
+            to include the contents of the Heap object, and any objects referenced by the Heap 
+            object, etc. This feature is called Object Closure Management and is automatic with 
+            every Analytic Information Server container database save.</p>
+         <p>Analytic Information Server containers may be loaded from any database repository record 
+            at any time. If the data in the record is immediate, the database load fills the 
+            container with the immediate data. If the data in the record is an object closure, 
+            the database load fills the container with a Heap object reference, and all of the 
+            objects in the record are loaded back into the Heap with the same referential 
+            relationships they had when they were saved in the repository.</p>    
+        ]]></Description>
+    </Section>
+</Datatype>

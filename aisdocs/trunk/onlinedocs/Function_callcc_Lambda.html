@@ -1,0 +1,780 @@
+
+<HTML>
+<HEAD><TITLE>AIS Function Template</TITLE></HEAD>
+<!--Page Parameters -->
+<BODY BGCOLOR="#FFFFF0" TEXT="#000000" LINK="#0000ff">
+
+<A NAME="topage"></A>
+<TABLE CELLSPACING=0 CELLPADDING=6 BORDER=0 WIDTH=600>
+<TR>
+<TD  BGCOLOR="#406000" WIDTH="22%" VALIGN="TOP">
+<IMG SRC="Image_Math002.gif" WIDTH=128 HEIGHT=203>
+<!--- Button which links to Home page --->
+<P ALIGN="CENTER">
+<INPUT TYPE='button' VALUE='Home' onClick='location = "Page_Help_Home.html"'>
+</P>
+
+<TD WIDTH="78%" VALIGN="TOP">
+<P>&nbsp;</P>
+
+<FONT COLOR="#000080"><H1>callcc</H1></FONT>
+<P>&nbsp;</P>
+
+<UL>
+<LI><A HREF="#INTRO"><FONT SIZE=2>Description</FONT></A></LI>
+<LI><A HREF="#SYNTAX"><FONT SIZE=2>Syntax</FONT></A></LI>
+<LI><A HREF="#EXAMPLES"><FONT SIZE=2>Examples</FONT></A></LI>
+<LI><A HREF="#ARGTYPE"><FONT SIZE=2>Argument Types</FONT></A></LI>
+<LI><A HREF="#CKA"><FONT SIZE=2>How do I contact the AIS team?</FONT></A></LI>
+</UL>
+</TD>
+</TR>
+</TABLE> 
+
+<P>&nbsp;</P>
+<FONT COLOR="#0000ff"><H4><A NAME="INTRO"></A>Description</H4></FONT>
+<P>
+<font color=black>
+<Overview>
+	     <p> The  <b>call_cc</b>  function provides a mechanism for terminating a called function 
+          prematurely. No matter where the called function is, in terms of recursion depth, 
+          <b>call_cc</b> allows the called function to terminate prematurely and return to the 
+          spot just after the <b>call_cc</b> invocation.</p>
+          <p>In order to do this, <b>call_cc</b> creates an artifice called a "current continuation", 
+           which is passed to the called function as an argument. The called function must have 
+           one and only one argument, which is to be the current continuation created by <b>call_cc</b>.
+          <p>The  <b>call_cc</b>  function passes the current continuation as an argument to 
+          function.  The current continuation is also a function with one argument which, when 
+          invoked, resumes execution from the spot just after the <b>call_cc</b> invocation.</p>
+        </Overview>
+<p><FONT COLOR="#0000ff"><u><b> When to use </b></u></FONT></p><Usage>
+        <p>Use whenever you may need a call back function to a higher recursion level in a 
+         program. Multiple <b>call_cc</b> functions can be invoked in the same program. Each 
+          continuation will always call back to the <b>call_cc</b> which created it.</p>
+        </Usage>
+
+</font>
+ 
+</P>
+ 
+<!--- Button which links to top of page --->
+<P ALIGN="CENTER">
+<INPUT TYPE='button' VALUE='Top of Page' onClick='scroll(0,0)'>
+</P>
+
+<P>&nbsp;</P>
+<FONT COLOR="#0000ff"><H4><A NAME="SYNTAX"></A>Syntax</H4></FONT>
+<P>
+<font color=black><table border=0 cellspacing=5 cellpadding=5>
+<tr><td><b><Expression><p>      (call_cc  aFunction) </p>
+ </Expression>
+</b></td></tr>
+</table><br><hr align=left color="#000000" width=80% size="1">
+<tr><td align=center><table border=0 cellspacing=5 cellpadding=5>
+<tr><td width=20%><FONT COLOR="#0000FF"><b>Name</b></FONT></td>
+                                           <td width=40%><FONT COLOR="#0000FF"><b>Description</b></FONT></td>
+                                           <td><FONT COLOR="#0000FF"><b>AIS Types</b></FONT></td></tr> 
+<tr><td align=top ><b>aFunction</b></td><td>A function, expecting a current continuation argument, which may terminate 
+              prematurely by invoking the current continuation.</td><td>aFunction</td></tr>
+</td></tr></table><br> 
+<hr align=left color="#000000" width=80% size="1">
+<FONT COLOR="#0000ff"><u><b>Returns:</b></u></FONT>
+<FONT COLOR=black><Return>
+	    <p>The value returned by the aFunction argument.</p>
+	    </Return></FONT></font>
+</P>
+ 
+<!--- Button which links to top of page --->
+<P ALIGN="CENTER">
+<INPUT TYPE='button' VALUE='Top of Page' onClick='scroll(0,0)'>
+</P>
+
+
+<P>&nbsp;</P>
+<FONT COLOR="#0000ff"><H4><A NAME="EXAMPLES"></A>Examples</H4></FONT>
+<P>
+Here are a number of links to Lambda coding examples which contain this instruction in various use cases.
+</P>
+<P>
+ 
+</P>
+ 
+<!--- Button which links to top of page --->
+<P ALIGN="CENTER">
+<INPUT TYPE='button' VALUE='Top of Page' onClick='scroll(0,0)'>
+</P>
+
+ 
+<P>&nbsp;</P>
+<FONT COLOR="#0000ff"><H4><A NAME="ARGTYPE"></A>Argument Types</H4></FONT>
+ 
+<P>
+<p>Here are the links to the data types of the function arguments.  </p>
+<table width="100%"><tr>
+<td><A HREF="Datatype_Lambda.html">Lambda</A></td>
+<td><A HREF="Datatype_Function.html">Function</A></td>
+</tr>
+</table>
+<p>Here are also a number of links to functions having arguments with any of these data types. 
+             </p>
+<table width="100%"><tr>
+<td><A HREF="Function_addMethod_BitVector.html">addMethod(BitVector)</A></td>
+<td><A HREF="Function_addMethod_Boolean.html">addMethod(Boolean)</A></td>
+<td><A HREF="Function_addMethod_Brick.html">addMethod(Brick)</A></td>
+<td><A HREF="Function_addMethod_Character.html">addMethod(Character)</A></td>
+</tr><tr>
+<td><A HREF="Function_addMethod_CpxVector.html">addMethod(CpxVector)</A></td>
+<td><A HREF="Function_addMethod_Date.html">addMethod(Date)</A></td>
+<td><A HREF="Function_addMethod_Dictionary.html">addMethod(Dictionary)</A></td>
+<td><A HREF="Function_addMethod_Directory.html">addMethod(Directory)</A></td>
+</tr><tr>
+<td><A HREF="Function_addMethod_FltVector.html">addMethod(FltVector)</A></td>
+<td><A HREF="Function_addMethod_Function.html">addMethod(Function)</A></td>
+<td><A HREF="Function_addMethod_IntVector.html">addMethod(IntVector)</A></td>
+<td><A HREF="Function_addMethod_List.html">addMethod(List)</A></td>
+</tr><tr>
+<td><A HREF="Function_addMethod_Matrix.html">addMethod(Matrix)</A></td>
+<td><A HREF="Function_addMethod_NumMatrix.html">addMethod(NumMatrix)</A></td>
+<td><A HREF="Function_addMethod_NumVector.html">addMethod(NumVector)</A></td>
+<td><A HREF="Function_addMethod_Number.html">addMethod(Number)</A></td>
+</tr><tr>
+<td><A HREF="Function_addMethod_ObjVector.html">addMethod(ObjVector)</A></td>
+<td><A HREF="Function_addMethod_ObjectRepository.html">addMethod(ObjectRepository)</A></td>
+<td><A HREF="Function_addMethod_Pair.html">addMethod(Pair)</A></td>
+<td><A HREF="Function_addMethod_PcodeVector.html">addMethod(PcodeVector)</A></td>
+</tr><tr>
+<td><A HREF="Function_addMethod_ShortVector.html">addMethod(ShortVector)</A></td>
+<td><A HREF="Function_addMethod_String.html">addMethod(String)</A></td>
+<td><A HREF="Function_addMethod_Structure.html">addMethod(Structure)</A></td>
+<td><A HREF="Function_addMethod_Symbol.html">addMethod(Symbol)</A></td>
+</tr><tr>
+<td><A HREF="Function_addMethod_Vector.html">addMethod(Vector)</A></td>
+<td><A HREF="Function_addMethod_Void.html">addMethod(Void)</A></td>
+<td><A HREF="Function_argCount_Lambda.html">argCount(Lambda)</A></td>
+<td><A HREF="Function_argFetch_Lambda.html">argFetch(Lambda)</A></td>
+</tr><tr>
+<td><A HREF="Function_attachLibrarian_ObjectRepository.html">attachLibrarian(ObjectRepository)</A></td>
+<td><A HREF="Function_balance_Lambda.html">balance(Lambda)</A></td>
+<td><A HREF="Function_callcc_Lambda.html">callcc(Lambda)</A></td>
+<td><A HREF="Function_compareEQ_BitVector.html">compareEQ(BitVector)</A></td>
+</tr><tr>
+<td><A HREF="Function_compareEQ_Boolean.html">compareEQ(Boolean)</A></td>
+<td><A HREF="Function_compareEQ_Brick.html">compareEQ(Brick)</A></td>
+<td><A HREF="Function_compareEQ_Character.html">compareEQ(Character)</A></td>
+<td><A HREF="Function_compareEQ_Complex.html">compareEQ(Complex)</A></td>
+</tr><tr>
+<td><A HREF="Function_compareEQ_CpxVector.html">compareEQ(CpxVector)</A></td>
+<td><A HREF="Function_compareEQ_Date.html">compareEQ(Date)</A></td>
+<td><A HREF="Function_compareEQ_Dictionary.html">compareEQ(Dictionary)</A></td>
+<td><A HREF="Function_compareEQ_Directory.html">compareEQ(Directory)</A></td>
+</tr><tr>
+<td><A HREF="Function_compareEQ_FltVector.html">compareEQ(FltVector)</A></td>
+<td><A HREF="Function_compareEQ_Function.html">compareEQ(Function)</A></td>
+<td><A HREF="Function_compareEQ_IntVector.html">compareEQ(IntVector)</A></td>
+<td><A HREF="Function_compareEQ_Lambda.html">compareEQ(Lambda)</A></td>
+</tr><tr>
+<td><A HREF="Function_compareEQ_List.html">compareEQ(List)</A></td>
+<td><A HREF="Function_compareEQ_Matrix.html">compareEQ(Matrix)</A></td>
+<td><A HREF="Function_compareEQ_NumMatrix.html">compareEQ(NumMatrix)</A></td>
+<td><A HREF="Function_compareEQ_NumVector.html">compareEQ(NumVector)</A></td>
+</tr><tr>
+<td><A HREF="Function_compareEQ_Number.html">compareEQ(Number)</A></td>
+<td><A HREF="Function_compareEQ_ObjVector.html">compareEQ(ObjVector)</A></td>
+<td><A HREF="Function_compareEQ_ObjectRepository.html">compareEQ(ObjectRepository)</A></td>
+<td><A HREF="Function_compareEQ_Pair.html">compareEQ(Pair)</A></td>
+</tr><tr>
+<td><A HREF="Function_compareEQ_ShortVector.html">compareEQ(ShortVector)</A></td>
+<td><A HREF="Function_compareEQ_String.html">compareEQ(String)</A></td>
+<td><A HREF="Function_compareEQ_Structure.html">compareEQ(Structure)</A></td>
+<td><A HREF="Function_compareEQ_Symbol.html">compareEQ(Symbol)</A></td>
+</tr><tr>
+<td><A HREF="Function_compareEQ_Vector.html">compareEQ(Vector)</A></td>
+<td><A HREF="Function_compareEQ_Void.html">compareEQ(Void)</A></td>
+<td><A HREF="Function_compareGE_BitVector.html">compareGE(BitVector)</A></td>
+<td><A HREF="Function_compareGE_Boolean.html">compareGE(Boolean)</A></td>
+</tr><tr>
+<td><A HREF="Function_compareGE_Brick.html">compareGE(Brick)</A></td>
+<td><A HREF="Function_compareGE_Character.html">compareGE(Character)</A></td>
+<td><A HREF="Function_compareGE_Complex.html">compareGE(Complex)</A></td>
+<td><A HREF="Function_compareGE_CpxVector.html">compareGE(CpxVector)</A></td>
+</tr><tr>
+<td><A HREF="Function_compareGE_Date.html">compareGE(Date)</A></td>
+<td><A HREF="Function_compareGE_Dictionary.html">compareGE(Dictionary)</A></td>
+<td><A HREF="Function_compareGE_Directory.html">compareGE(Directory)</A></td>
+<td><A HREF="Function_compareGE_Function.html">compareGE(Function)</A></td>
+</tr><tr>
+<td><A HREF="Function_compareGE_IntVector.html">compareGE(IntVector)</A></td>
+<td><A HREF="Function_compareGE_Lambda.html">compareGE(Lambda)</A></td>
+<td><A HREF="Function_compareGE_List.html">compareGE(List)</A></td>
+<td><A HREF="Function_compareGE_Matrix.html">compareGE(Matrix)</A></td>
+</tr><tr>
+<td><A HREF="Function_compareGE_NumMatrix.html">compareGE(NumMatrix)</A></td>
+<td><A HREF="Function_compareGE_Number.html">compareGE(Number)</A></td>
+<td><A HREF="Function_compareGE_ObjVector.html">compareGE(ObjVector)</A></td>
+<td><A HREF="Function_compareGE_ObjectRepository.html">compareGE(ObjectRepository)</A></td>
+</tr><tr>
+<td><A HREF="Function_compareGE_Pair.html">compareGE(Pair)</A></td>
+<td><A HREF="Function_compareGE_ShortVector.html">compareGE(ShortVector)</A></td>
+<td><A HREF="Function_compareGE_String.html">compareGE(String)</A></td>
+<td><A HREF="Function_compareGE_Structure.html">compareGE(Structure)</A></td>
+</tr><tr>
+<td><A HREF="Function_compareGE_Symbol.html">compareGE(Symbol)</A></td>
+<td><A HREF="Function_compareGE_Vector.html">compareGE(Vector)</A></td>
+<td><A HREF="Function_compareGE_Void.html">compareGE(Void)</A></td>
+<td><A HREF="Function_compareGT_BitVector.html">compareGT(BitVector)</A></td>
+</tr><tr>
+<td><A HREF="Function_compareGT_Boolean.html">compareGT(Boolean)</A></td>
+<td><A HREF="Function_compareGT_Brick.html">compareGT(Brick)</A></td>
+<td><A HREF="Function_compareGT_Character.html">compareGT(Character)</A></td>
+<td><A HREF="Function_compareGT_Complex.html">compareGT(Complex)</A></td>
+</tr><tr>
+<td><A HREF="Function_compareGT_CpxVector.html">compareGT(CpxVector)</A></td>
+<td><A HREF="Function_compareGT_Date.html">compareGT(Date)</A></td>
+<td><A HREF="Function_compareGT_Dictionary.html">compareGT(Dictionary)</A></td>
+<td><A HREF="Function_compareGT_Directory.html">compareGT(Directory)</A></td>
+</tr><tr>
+<td><A HREF="Function_compareGT_Function.html">compareGT(Function)</A></td>
+<td><A HREF="Function_compareGT_IntVector.html">compareGT(IntVector)</A></td>
+<td><A HREF="Function_compareGT_Lambda.html">compareGT(Lambda)</A></td>
+<td><A HREF="Function_compareGT_List.html">compareGT(List)</A></td>
+</tr><tr>
+<td><A HREF="Function_compareGT_Matrix.html">compareGT(Matrix)</A></td>
+<td><A HREF="Function_compareGT_NumMatrix.html">compareGT(NumMatrix)</A></td>
+<td><A HREF="Function_compareGT_NumVector.html">compareGT(NumVector)</A></td>
+<td><A HREF="Function_compareGT_Number.html">compareGT(Number)</A></td>
+</tr><tr>
+<td><A HREF="Function_compareGT_ObjVector.html">compareGT(ObjVector)</A></td>
+<td><A HREF="Function_compareGT_ObjectRepository.html">compareGT(ObjectRepository)</A></td>
+<td><A HREF="Function_compareGT_Pair.html">compareGT(Pair)</A></td>
+<td><A HREF="Function_compareGT_ShortVector.html">compareGT(ShortVector)</A></td>
+</tr><tr>
+<td><A HREF="Function_compareGT_String.html">compareGT(String)</A></td>
+<td><A HREF="Function_compareGT_Structure.html">compareGT(Structure)</A></td>
+<td><A HREF="Function_compareGT_Symbol.html">compareGT(Symbol)</A></td>
+<td><A HREF="Function_compareGT_Vector.html">compareGT(Vector)</A></td>
+</tr><tr>
+<td><A HREF="Function_compareGT_Void.html">compareGT(Void)</A></td>
+<td><A HREF="Function_compareLE_BitVector.html">compareLE(BitVector)</A></td>
+<td><A HREF="Function_compareLE_Boolean.html">compareLE(Boolean)</A></td>
+<td><A HREF="Function_compareLE_Brick.html">compareLE(Brick)</A></td>
+</tr><tr>
+<td><A HREF="Function_compareLE_Character.html">compareLE(Character)</A></td>
+<td><A HREF="Function_compareLE_Complex.html">compareLE(Complex)</A></td>
+<td><A HREF="Function_compareLE_CpxVector.html">compareLE(CpxVector)</A></td>
+<td><A HREF="Function_compareLE_Date.html">compareLE(Date)</A></td>
+</tr><tr>
+<td><A HREF="Function_compareLE_Dictionary.html">compareLE(Dictionary)</A></td>
+<td><A HREF="Function_compareLE_Directory.html">compareLE(Directory)</A></td>
+<td><A HREF="Function_compareLE_FltVector.html">compareLE(FltVector)</A></td>
+<td><A HREF="Function_compareLE_Function.html">compareLE(Function)</A></td>
+</tr><tr>
+<td><A HREF="Function_compareLE_IntVector.html">compareLE(IntVector)</A></td>
+<td><A HREF="Function_compareLE_Lambda.html">compareLE(Lambda)</A></td>
+<td><A HREF="Function_compareLE_List.html">compareLE(List)</A></td>
+<td><A HREF="Function_compareLE_Matrix.html">compareLE(Matrix)</A></td>
+</tr><tr>
+<td><A HREF="Function_compareLE_NumMatrix.html">compareLE(NumMatrix)</A></td>
+<td><A HREF="Function_compareLE_NumVector.html">compareLE(NumVector)</A></td>
+<td><A HREF="Function_compareLE_Number.html">compareLE(Number)</A></td>
+<td><A HREF="Function_compareLE_ObjVector.html">compareLE(ObjVector)</A></td>
+</tr><tr>
+<td><A HREF="Function_compareLE_ObjectRepository.html">compareLE(ObjectRepository)</A></td>
+<td><A HREF="Function_compareLE_Pair.html">compareLE(Pair)</A></td>
+<td><A HREF="Function_compareLE_ShortVector.html">compareLE(ShortVector)</A></td>
+<td><A HREF="Function_compareLE_String.html">compareLE(String)</A></td>
+</tr><tr>
+<td><A HREF="Function_compareLE_Structure.html">compareLE(Structure)</A></td>
+<td><A HREF="Function_compareLE_Symbol.html">compareLE(Symbol)</A></td>
+<td><A HREF="Function_compareLE_Vector.html">compareLE(Vector)</A></td>
+<td><A HREF="Function_compareLE_Void.html">compareLE(Void)</A></td>
+</tr><tr>
+<td><A HREF="Function_compareLT_BitVector.html">compareLT(BitVector)</A></td>
+<td><A HREF="Function_compareLT_Boolean.html">compareLT(Boolean)</A></td>
+<td><A HREF="Function_compareLT_Brick.html">compareLT(Brick)</A></td>
+<td><A HREF="Function_compareLT_Character.html">compareLT(Character)</A></td>
+</tr><tr>
+<td><A HREF="Function_compareLT_Complex.html">compareLT(Complex)</A></td>
+<td><A HREF="Function_compareLT_CpxVector.html">compareLT(CpxVector)</A></td>
+<td><A HREF="Function_compareLT_Date.html">compareLT(Date)</A></td>
+<td><A HREF="Function_compareLT_Dictionary.html">compareLT(Dictionary)</A></td>
+</tr><tr>
+<td><A HREF="Function_compareLT_Directory.html">compareLT(Directory)</A></td>
+<td><A HREF="Function_compareLT_FltVector.html">compareLT(FltVector)</A></td>
+<td><A HREF="Function_compareLT_Function.html">compareLT(Function)</A></td>
+<td><A HREF="Function_compareLT_IntVector.html">compareLT(IntVector)</A></td>
+</tr><tr>
+<td><A HREF="Function_compareLT_Lambda.html">compareLT(Lambda)</A></td>
+<td><A HREF="Function_compareLT_List.html">compareLT(List)</A></td>
+<td><A HREF="Function_compareLT_Matrix.html">compareLT(Matrix)</A></td>
+<td><A HREF="Function_compareLT_NumMatrix.html">compareLT(NumMatrix)</A></td>
+</tr><tr>
+<td><A HREF="Function_compareLT_NumVector.html">compareLT(NumVector)</A></td>
+<td><A HREF="Function_compareLT_Number.html">compareLT(Number)</A></td>
+<td><A HREF="Function_compareLT_ObjVector.html">compareLT(ObjVector)</A></td>
+<td><A HREF="Function_compareLT_ObjectRepository.html">compareLT(ObjectRepository)</A></td>
+</tr><tr>
+<td><A HREF="Function_compareLT_Pair.html">compareLT(Pair)</A></td>
+<td><A HREF="Function_compareLT_ShortVector.html">compareLT(ShortVector)</A></td>
+<td><A HREF="Function_compareLT_String.html">compareLT(String)</A></td>
+<td><A HREF="Function_compareLT_Structure.html">compareLT(Structure)</A></td>
+</tr><tr>
+<td><A HREF="Function_compareLT_Symbol.html">compareLT(Symbol)</A></td>
+<td><A HREF="Function_compareLT_Vector.html">compareLT(Vector)</A></td>
+<td><A HREF="Function_compareLT_Void.html">compareLT(Void)</A></td>
+<td><A HREF="Function_compareNE_BitVector.html">compareNE(BitVector)</A></td>
+</tr><tr>
+<td><A HREF="Function_compareNE_Boolean.html">compareNE(Boolean)</A></td>
+<td><A HREF="Function_compareNE_Brick.html">compareNE(Brick)</A></td>
+<td><A HREF="Function_compareNE_Character.html">compareNE(Character)</A></td>
+<td><A HREF="Function_compareNE_Complex.html">compareNE(Complex)</A></td>
+</tr><tr>
+<td><A HREF="Function_compareNE_CpxVector.html">compareNE(CpxVector)</A></td>
+<td><A HREF="Function_compareNE_Date.html">compareNE(Date)</A></td>
+<td><A HREF="Function_compareNE_Dictionary.html">compareNE(Dictionary)</A></td>
+<td><A HREF="Function_compareNE_Directory.html">compareNE(Directory)</A></td>
+</tr><tr>
+<td><A HREF="Function_compareNE_FltVector.html">compareNE(FltVector)</A></td>
+<td><A HREF="Function_compareNE_Function.html">compareNE(Function)</A></td>
+<td><A HREF="Function_compareNE_IntVector.html">compareNE(IntVector)</A></td>
+<td><A HREF="Function_compareNE_Lambda.html">compareNE(Lambda)</A></td>
+</tr><tr>
+<td><A HREF="Function_compareNE_List.html">compareNE(List)</A></td>
+<td><A HREF="Function_compareNE_Matrix.html">compareNE(Matrix)</A></td>
+<td><A HREF="Function_compareNE_NumMatrix.html">compareNE(NumMatrix)</A></td>
+<td><A HREF="Function_compareNE_NumVector.html">compareNE(NumVector)</A></td>
+</tr><tr>
+<td><A HREF="Function_compareNE_Number.html">compareNE(Number)</A></td>
+<td><A HREF="Function_compareNE_ObjVector.html">compareNE(ObjVector)</A></td>
+<td><A HREF="Function_compareNE_ObjectRepository.html">compareNE(ObjectRepository)</A></td>
+<td><A HREF="Function_compareNE_Pair.html">compareNE(Pair)</A></td>
+</tr><tr>
+<td><A HREF="Function_compareNE_ShortVector.html">compareNE(ShortVector)</A></td>
+<td><A HREF="Function_compareNE_String.html">compareNE(String)</A></td>
+<td><A HREF="Function_compareNE_Structure.html">compareNE(Structure)</A></td>
+<td><A HREF="Function_compareNE_Symbol.html">compareNE(Symbol)</A></td>
+</tr><tr>
+<td><A HREF="Function_compareNE_Vector.html">compareNE(Vector)</A></td>
+<td><A HREF="Function_compareNE_Void.html">compareNE(Void)</A></td>
+<td><A HREF="Function_compare_BitVector.html">compare(BitVector)</A></td>
+<td><A HREF="Function_compare_Boolean.html">compare(Boolean)</A></td>
+</tr><tr>
+<td><A HREF="Function_compare_Brick.html">compare(Brick)</A></td>
+<td><A HREF="Function_compare_Character.html">compare(Character)</A></td>
+<td><A HREF="Function_compare_Complex.html">compare(Complex)</A></td>
+<td><A HREF="Function_compare_CpxVector.html">compare(CpxVector)</A></td>
+</tr><tr>
+<td><A HREF="Function_compare_Date.html">compare(Date)</A></td>
+<td><A HREF="Function_compare_Dictionary.html">compare(Dictionary)</A></td>
+<td><A HREF="Function_compare_Directory.html">compare(Directory)</A></td>
+<td><A HREF="Function_compare_FltVector.html">compare(FltVector)</A></td>
+</tr><tr>
+<td><A HREF="Function_compare_Function.html">compare(Function)</A></td>
+<td><A HREF="Function_compare_IntVector.html">compare(IntVector)</A></td>
+<td><A HREF="Function_compare_Lambda.html">compare(Lambda)</A></td>
+<td><A HREF="Function_compare_List.html">compare(List)</A></td>
+</tr><tr>
+<td><A HREF="Function_compare_Matrix.html">compare(Matrix)</A></td>
+<td><A HREF="Function_compare_NumMatrix.html">compare(NumMatrix)</A></td>
+<td><A HREF="Function_compare_NumVector.html">compare(NumVector)</A></td>
+<td><A HREF="Function_compare_Number.html">compare(Number)</A></td>
+</tr><tr>
+<td><A HREF="Function_compare_ObjVector.html">compare(ObjVector)</A></td>
+<td><A HREF="Function_compare_ObjectRepository.html">compare(ObjectRepository)</A></td>
+<td><A HREF="Function_compare_Pair.html">compare(Pair)</A></td>
+<td><A HREF="Function_compare_ShortVector.html">compare(ShortVector)</A></td>
+</tr><tr>
+<td><A HREF="Function_compare_String.html">compare(String)</A></td>
+<td><A HREF="Function_compare_Structure.html">compare(Structure)</A></td>
+<td><A HREF="Function_compare_Symbol.html">compare(Symbol)</A></td>
+<td><A HREF="Function_compare_Vector.html">compare(Vector)</A></td>
+</tr><tr>
+<td><A HREF="Function_compare_Void.html">compare(Void)</A></td>
+<td><A HREF="Function_compile_Lambda.html">compile(Lambda)</A></td>
+<td><A HREF="Function_compile_List.html">compile(List)</A></td>
+<td><A HREF="Function_copy_BitVector.html">copy(BitVector)</A></td>
+</tr><tr>
+<td><A HREF="Function_copy_Brick.html">copy(Brick)</A></td>
+<td><A HREF="Function_copy_CpxVector.html">copy(CpxVector)</A></td>
+<td><A HREF="Function_copy_Dictionary.html">copy(Dictionary)</A></td>
+<td><A HREF="Function_copy_Directory.html">copy(Directory)</A></td>
+</tr><tr>
+<td><A HREF="Function_copy_FltVector.html">copy(FltVector)</A></td>
+<td><A HREF="Function_copy_IntVector.html">copy(IntVector)</A></td>
+<td><A HREF="Function_copy_Lambda.html">copy(Lambda)</A></td>
+<td><A HREF="Function_copy_List.html">copy(List)</A></td>
+</tr><tr>
+<td><A HREF="Function_copy_Matrix.html">copy(Matrix)</A></td>
+<td><A HREF="Function_copy_NumMatrix.html">copy(NumMatrix)</A></td>
+<td><A HREF="Function_copy_NumVector.html">copy(NumVector)</A></td>
+<td><A HREF="Function_copy_ObjVector.html">copy(ObjVector)</A></td>
+</tr><tr>
+<td><A HREF="Function_copy_Pair.html">copy(Pair)</A></td>
+<td><A HREF="Function_copy_PcodeVector.html">copy(PcodeVector)</A></td>
+<td><A HREF="Function_copy_ShortVector.html">copy(ShortVector)</A></td>
+<td><A HREF="Function_copy_Structure.html">copy(Structure)</A></td>
+</tr><tr>
+<td><A HREF="Function_copy_Vector.html">copy(Vector)</A></td>
+<td><A HREF="Function_debugBrowsableProcs_Context.html">debugBrowsableProcs(Context)</A></td>
+<td><A HREF="Function_debugBrowsableProcs_Lambda.html">debugBrowsableProcs(Lambda)</A></td>
+<td><A HREF="Function_debug_Context.html">debug(Context)</A></td>
+</tr><tr>
+<td><A HREF="Function_debug_Lambda.html">debug(Lambda)</A></td>
+<td><A HREF="Function_defchild_Lambda.html">defchild(Lambda)</A></td>
+<td><A HREF="Function_define(macro)_Lambda.html">define(macro)(Lambda)</A></td>
+<td><A HREF="Function_define_Lambda.html">define(Lambda)</A></td>
+</tr><tr>
+<td><A HREF="Function_defmacro_Lambda.html">defmacro(Lambda)</A></td>
+<td><A HREF="Function_deforphan_Lambda.html">deforphan(Lambda)</A></td>
+<td><A HREF="Function_defriend_Lambda.html">defriend(Lambda)</A></td>
+<td><A HREF="Function_defun_Lambda.html">defun(Lambda)</A></td>
+</tr><tr>
+<td><A HREF="Function_detachLibrarian_ObjectRepository.html">detachLibrarian(ObjectRepository)</A></td>
+<td><A HREF="Function_disassemble_Context.html">disassemble(Context)</A></td>
+<td><A HREF="Function_disassemble_Lambda.html">disassemble(Lambda)</A></td>
+<td><A HREF="Function_display_ByteVector.html">display(ByteVector)</A></td>
+</tr><tr>
+<td><A HREF="Function_display_FileIO.html">display(FileIO)</A></td>
+<td><A HREF="Function_evalInSyncLocalContext_Context.html">evalInSyncLocalContext(Context)</A></td>
+<td><A HREF="Function_eval_Lambda.html">eval(Lambda)</A></td>
+<td><A HREF="Function_eval_List.html">eval(List)</A></td>
+</tr><tr>
+<td><A HREF="Function_exportTab_Lambda.html">exportTab(Lambda)</A></td>
+<td><A HREF="Function_exportTab_ObjectRepository.html">exportTab(ObjectRepository)</A></td>
+<td><A HREF="Function_globalBinding_Context.html">globalBinding(Context)</A></td>
+<td><A HREF="Function_globalBinding_Lambda.html">globalBinding(Lambda)</A></td>
+</tr><tr>
+<td><A HREF="Function_importTab_Lambda.html">importTab(Lambda)</A></td>
+<td><A HREF="Function_importTab_ObjectRepository.html">importTab(ObjectRepository)</A></td>
+<td><A HREF="Function_inspect_Context.html">inspect(Context)</A></td>
+<td><A HREF="Function_inspect_Lambda.html">inspect(Lambda)</A></td>
+</tr><tr>
+<td><A HREF="Function_inspect_ObjectRepository.html">inspect(ObjectRepository)</A></td>
+<td><A HREF="Function_isComplex_Complex.html">isComplex(Complex)</A></td>
+<td><A HREF="Function_isEqual_BitVector.html">isEqual(BitVector)</A></td>
+<td><A HREF="Function_isEqual_Boolean.html">isEqual(Boolean)</A></td>
+</tr><tr>
+<td><A HREF="Function_isEqual_Brick.html">isEqual(Brick)</A></td>
+<td><A HREF="Function_isEqual_Character.html">isEqual(Character)</A></td>
+<td><A HREF="Function_isEqual_Complex.html">isEqual(Complex)</A></td>
+<td><A HREF="Function_isEqual_Date.html">isEqual(Date)</A></td>
+</tr><tr>
+<td><A HREF="Function_isEqual_Dictionary.html">isEqual(Dictionary)</A></td>
+<td><A HREF="Function_isEqual_Directory.html">isEqual(Directory)</A></td>
+<td><A HREF="Function_isEqual_FltVector.html">isEqual(FltVector)</A></td>
+<td><A HREF="Function_isEqual_Function.html">isEqual(Function)</A></td>
+</tr><tr>
+<td><A HREF="Function_isEqual_IntVector.html">isEqual(IntVector)</A></td>
+<td><A HREF="Function_isEqual_List.html">isEqual(List)</A></td>
+<td><A HREF="Function_isEqual_Matrix.html">isEqual(Matrix)</A></td>
+<td><A HREF="Function_isEqual_NumMatrix.html">isEqual(NumMatrix)</A></td>
+</tr><tr>
+<td><A HREF="Function_isEqual_NumVector.html">isEqual(NumVector)</A></td>
+<td><A HREF="Function_isEqual_Number.html">isEqual(Number)</A></td>
+<td><A HREF="Function_isEqual_ObjVector.html">isEqual(ObjVector)</A></td>
+<td><A HREF="Function_isEqual_Pair.html">isEqual(Pair)</A></td>
+</tr><tr>
+<td><A HREF="Function_isEqual_ShortVector.html">isEqual(ShortVector)</A></td>
+<td><A HREF="Function_isEqual_String.html">isEqual(String)</A></td>
+<td><A HREF="Function_isEqual_Structure.html">isEqual(Structure)</A></td>
+<td><A HREF="Function_isEqual_Vector.html">isEqual(Vector)</A></td>
+</tr><tr>
+<td><A HREF="Function_isEqual_Void.html">isEqual(Void)</A></td>
+<td><A HREF="Function_isIdentical_BitVector.html">isIdentical(BitVector)</A></td>
+<td><A HREF="Function_isIdentical_Boolean.html">isIdentical(Boolean)</A></td>
+<td><A HREF="Function_isIdentical_Brick.html">isIdentical(Brick)</A></td>
+</tr><tr>
+<td><A HREF="Function_isIdentical_Character.html">isIdentical(Character)</A></td>
+<td><A HREF="Function_isIdentical_Complex.html">isIdentical(Complex)</A></td>
+<td><A HREF="Function_isIdentical_Date.html">isIdentical(Date)</A></td>
+<td><A HREF="Function_isIdentical_Dictionary.html">isIdentical(Dictionary)</A></td>
+</tr><tr>
+<td><A HREF="Function_isIdentical_Directory.html">isIdentical(Directory)</A></td>
+<td><A HREF="Function_isIdentical_Error.html">isIdentical(Error)</A></td>
+<td><A HREF="Function_isIdentical_FltVector.html">isIdentical(FltVector)</A></td>
+<td><A HREF="Function_isIdentical_Function.html">isIdentical(Function)</A></td>
+</tr><tr>
+<td><A HREF="Function_isIdentical_IntVector.html">isIdentical(IntVector)</A></td>
+<td><A HREF="Function_isIdentical_List.html">isIdentical(List)</A></td>
+<td><A HREF="Function_isIdentical_Matrix.html">isIdentical(Matrix)</A></td>
+<td><A HREF="Function_isIdentical_NumMatrix.html">isIdentical(NumMatrix)</A></td>
+</tr><tr>
+<td><A HREF="Function_isIdentical_NumVector.html">isIdentical(NumVector)</A></td>
+<td><A HREF="Function_isIdentical_Number.html">isIdentical(Number)</A></td>
+<td><A HREF="Function_isIdentical_ObjVector.html">isIdentical(ObjVector)</A></td>
+<td><A HREF="Function_isIdentical_ObjectRepository.html">isIdentical(ObjectRepository)</A></td>
+</tr><tr>
+<td><A HREF="Function_isIdentical_Pair.html">isIdentical(Pair)</A></td>
+<td><A HREF="Function_isIdentical_PcodeVector.html">isIdentical(PcodeVector)</A></td>
+<td><A HREF="Function_isIdentical_ShortVector.html">isIdentical(ShortVector)</A></td>
+<td><A HREF="Function_isIdentical_Structure.html">isIdentical(Structure)</A></td>
+</tr><tr>
+<td><A HREF="Function_isIdentical_Vector.html">isIdentical(Vector)</A></td>
+<td><A HREF="Function_isIdentical_Void.html">isIdentical(Void)</A></td>
+<td><A HREF="Function_isType_BitVector.html">isType(BitVector)</A></td>
+<td><A HREF="Function_isType_Boolean.html">isType(Boolean)</A></td>
+</tr><tr>
+<td><A HREF="Function_isType_Brick.html">isType(Brick)</A></td>
+<td><A HREF="Function_isType_Character.html">isType(Character)</A></td>
+<td><A HREF="Function_isType_Complex.html">isType(Complex)</A></td>
+<td><A HREF="Function_isType_Date.html">isType(Date)</A></td>
+</tr><tr>
+<td><A HREF="Function_isType_Dictionary.html">isType(Dictionary)</A></td>
+<td><A HREF="Function_isType_Directory.html">isType(Directory)</A></td>
+<td><A HREF="Function_isType_FltVector.html">isType(FltVector)</A></td>
+<td><A HREF="Function_isType_Function.html">isType(Function)</A></td>
+</tr><tr>
+<td><A HREF="Function_isType_IntVector.html">isType(IntVector)</A></td>
+<td><A HREF="Function_isType_Matrix.html">isType(Matrix)</A></td>
+<td><A HREF="Function_isType_NumMatrix.html">isType(NumMatrix)</A></td>
+<td><A HREF="Function_isType_NumVector.html">isType(NumVector)</A></td>
+</tr><tr>
+<td><A HREF="Function_isType_Number.html">isType(Number)</A></td>
+<td><A HREF="Function_isType_ObjVector.html">isType(ObjVector)</A></td>
+<td><A HREF="Function_isType_ObjectRepository.html">isType(ObjectRepository)</A></td>
+<td><A HREF="Function_isType_Pair.html">isType(Pair)</A></td>
+</tr><tr>
+<td><A HREF="Function_isType_ShortVector.html">isType(ShortVector)</A></td>
+<td><A HREF="Function_isType_String.html">isType(String)</A></td>
+<td><A HREF="Function_isType_Structure.html">isType(Structure)</A></td>
+<td><A HREF="Function_isType_Symbol.html">isType(Symbol)</A></td>
+</tr><tr>
+<td><A HREF="Function_isType_Vector.html">isType(Vector)</A></td>
+<td><A HREF="Function_isType_Void.html">isType(Void)</A></td>
+<td><A HREF="Function_lambda_Lambda.html">lambda(Lambda)</A></td>
+<td><A HREF="Function_lisp_Lambda.html">lisp(Lambda)</A></td>
+</tr><tr>
+<td><A HREF="Function_lisp_List.html">lisp(List)</A></td>
+<td><A HREF="Function_macroReplace_String.html">macroReplace(String)</A></td>
+<td><A HREF="Function_makeLambda_Lambda.html">makeLambda(Lambda)</A></td>
+<td><A HREF="Function_myself_Lambda.html">myself(Lambda)</A></td>
+</tr><tr>
+<td><A HREF="Function_new_BitVector.html">new(BitVector)</A></td>
+<td><A HREF="Function_new_Brick.html">new(Brick)</A></td>
+<td><A HREF="Function_new_ByteVector.html">new(ByteVector)</A></td>
+<td><A HREF="Function_new_CpxVector.html">new(CpxVector)</A></td>
+</tr><tr>
+<td><A HREF="Function_new_Dictionary.html">new(Dictionary)</A></td>
+<td><A HREF="Function_new_Directory.html">new(Directory)</A></td>
+<td><A HREF="Function_new_FltVector.html">new(FltVector)</A></td>
+<td><A HREF="Function_new_IntVector.html">new(IntVector)</A></td>
+</tr><tr>
+<td><A HREF="Function_new_Lambda.html">new(Lambda)</A></td>
+<td><A HREF="Function_new_Matrix.html">new(Matrix)</A></td>
+<td><A HREF="Function_new_NumMatrix.html">new(NumMatrix)</A></td>
+<td><A HREF="Function_new_NumVector.html">new(NumVector)</A></td>
+</tr><tr>
+<td><A HREF="Function_new_ObjVector.html">new(ObjVector)</A></td>
+<td><A HREF="Function_new_ObjectRepository.html">new(ObjectRepository)</A></td>
+<td><A HREF="Function_new_PcodeVector.html">new(PcodeVector)</A></td>
+<td><A HREF="Function_new_ShortVector.html">new(ShortVector)</A></td>
+</tr><tr>
+<td><A HREF="Function_new_String.html">new(String)</A></td>
+<td><A HREF="Function_new_Structure.html">new(Structure)</A></td>
+<td><A HREF="Function_new_Symbol.html">new(Symbol)</A></td>
+<td><A HREF="Function_new_Vector.html">new(Vector)</A></td>
+</tr><tr>
+<td><A HREF="Function_onError_Error.html">onError(Error)</A></td>
+<td><A HREF="Function_onError_Lambda.html">onError(Lambda)</A></td>
+<td><A HREF="Function_refLibrarian_ObjectRepository.html">refLibrarian(ObjectRepository)</A></td>
+<td><A HREF="Function_ref_BitVector.html">ref(BitVector)</A></td>
+</tr><tr>
+<td><A HREF="Function_ref_Boolean.html">ref(Boolean)</A></td>
+<td><A HREF="Function_ref_Brick.html">ref(Brick)</A></td>
+<td><A HREF="Function_ref_Character.html">ref(Character)</A></td>
+<td><A HREF="Function_ref_Complex.html">ref(Complex)</A></td>
+</tr><tr>
+<td><A HREF="Function_ref_Date.html">ref(Date)</A></td>
+<td><A HREF="Function_ref_Dictionary.html">ref(Dictionary)</A></td>
+<td><A HREF="Function_ref_Directory.html">ref(Directory)</A></td>
+<td><A HREF="Function_ref_FltVector.html">ref(FltVector)</A></td>
+</tr><tr>
+<td><A HREF="Function_ref_Function.html">ref(Function)</A></td>
+<td><A HREF="Function_ref_IntVector.html">ref(IntVector)</A></td>
+<td><A HREF="Function_ref_Lambda.html">ref(Lambda)</A></td>
+<td><A HREF="Function_ref_List.html">ref(List)</A></td>
+</tr><tr>
+<td><A HREF="Function_ref_Matrix.html">ref(Matrix)</A></td>
+<td><A HREF="Function_ref_NumMatrix.html">ref(NumMatrix)</A></td>
+<td><A HREF="Function_ref_NumVector.html">ref(NumVector)</A></td>
+<td><A HREF="Function_ref_Number.html">ref(Number)</A></td>
+</tr><tr>
+<td><A HREF="Function_ref_ObjVector.html">ref(ObjVector)</A></td>
+<td><A HREF="Function_ref_ObjectRepository.html">ref(ObjectRepository)</A></td>
+<td><A HREF="Function_ref_PcodeVector.html">ref(PcodeVector)</A></td>
+<td><A HREF="Function_ref_ShortVector.html">ref(ShortVector)</A></td>
+</tr><tr>
+<td><A HREF="Function_ref_String.html">ref(String)</A></td>
+<td><A HREF="Function_ref_Structure.html">ref(Structure)</A></td>
+<td><A HREF="Function_ref_Symbol.html">ref(Symbol)</A></td>
+<td><A HREF="Function_ref_Vector.html">ref(Vector)</A></td>
+</tr><tr>
+<td><A HREF="Function_ref_Void.html">ref(Void)</A></td>
+<td><A HREF="Function_saveObject_ByteVector.html">saveObject(ByteVector)</A></td>
+<td><A HREF="Function_saveObject_Integer.html">saveObject(Integer)</A></td>
+<td><A HREF="Function_send_BitVector.html">send(BitVector)</A></td>
+</tr><tr>
+<td><A HREF="Function_send_Boolean.html">send(Boolean)</A></td>
+<td><A HREF="Function_send_Brick.html">send(Brick)</A></td>
+<td><A HREF="Function_send_Character.html">send(Character)</A></td>
+<td><A HREF="Function_send_CpxVector.html">send(CpxVector)</A></td>
+</tr><tr>
+<td><A HREF="Function_send_Date.html">send(Date)</A></td>
+<td><A HREF="Function_send_Dictionary.html">send(Dictionary)</A></td>
+<td><A HREF="Function_send_Directory.html">send(Directory)</A></td>
+<td><A HREF="Function_send_FltVector.html">send(FltVector)</A></td>
+</tr><tr>
+<td><A HREF="Function_send_Function.html">send(Function)</A></td>
+<td><A HREF="Function_send_IntVector.html">send(IntVector)</A></td>
+<td><A HREF="Function_send_Lambda.html">send(Lambda)</A></td>
+<td><A HREF="Function_send_List.html">send(List)</A></td>
+</tr><tr>
+<td><A HREF="Function_send_Matrix.html">send(Matrix)</A></td>
+<td><A HREF="Function_send_NumMatrix.html">send(NumMatrix)</A></td>
+<td><A HREF="Function_send_NumVector.html">send(NumVector)</A></td>
+<td><A HREF="Function_send_Number.html">send(Number)</A></td>
+</tr><tr>
+<td><A HREF="Function_send_ObjectRepository.html">send(ObjectRepository)</A></td>
+<td><A HREF="Function_send_Pair.html">send(Pair)</A></td>
+<td><A HREF="Function_send_ShortVector.html">send(ShortVector)</A></td>
+<td><A HREF="Function_send_String.html">send(String)</A></td>
+</tr><tr>
+<td><A HREF="Function_send_Structure.html">send(Structure)</A></td>
+<td><A HREF="Function_send_Symbol.html">send(Symbol)</A></td>
+<td><A HREF="Function_send_Vector.html">send(Vector)</A></td>
+<td><A HREF="Function_send_Void.html">send(Void)</A></td>
+</tr><tr>
+<td><A HREF="Function_setq_BitVector.html">setq(BitVector)</A></td>
+<td><A HREF="Function_setq_Boolean.html">setq(Boolean)</A></td>
+<td><A HREF="Function_setq_Brick.html">setq(Brick)</A></td>
+<td><A HREF="Function_setq_Character.html">setq(Character)</A></td>
+</tr><tr>
+<td><A HREF="Function_setq_Date.html">setq(Date)</A></td>
+<td><A HREF="Function_setq_Dictionary.html">setq(Dictionary)</A></td>
+<td><A HREF="Function_setq_Directory.html">setq(Directory)</A></td>
+<td><A HREF="Function_setq_FltVector.html">setq(FltVector)</A></td>
+</tr><tr>
+<td><A HREF="Function_setq_IntVector.html">setq(IntVector)</A></td>
+<td><A HREF="Function_setq_Lambda.html">setq(Lambda)</A></td>
+<td><A HREF="Function_setq_List.html">setq(List)</A></td>
+<td><A HREF="Function_setq_Matrix.html">setq(Matrix)</A></td>
+</tr><tr>
+<td><A HREF="Function_setq_NumVector.html">setq(NumVector)</A></td>
+<td><A HREF="Function_setq_Number.html">setq(Number)</A></td>
+<td><A HREF="Function_setq_ObjVector.html">setq(ObjVector)</A></td>
+<td><A HREF="Function_setq_ObjectRepository.html">setq(ObjectRepository)</A></td>
+</tr><tr>
+<td><A HREF="Function_setq_PcodeVector.html">setq(PcodeVector)</A></td>
+<td><A HREF="Function_setq_ShortVector.html">setq(ShortVector)</A></td>
+<td><A HREF="Function_setq_String.html">setq(String)</A></td>
+<td><A HREF="Function_setq_Structure.html">setq(Structure)</A></td>
+</tr><tr>
+<td><A HREF="Function_setq_Symbol.html">setq(Symbol)</A></td>
+<td><A HREF="Function_setq_Vector.html">setq(Vector)</A></td>
+<td><A HREF="Function_setq_Void.html">setq(Void)</A></td>
+<td><A HREF="Function_sizeof_BitVector.html">sizeof(BitVector)</A></td>
+</tr><tr>
+<td><A HREF="Function_sizeof_Boolean.html">sizeof(Boolean)</A></td>
+<td><A HREF="Function_sizeof_Brick.html">sizeof(Brick)</A></td>
+<td><A HREF="Function_sizeof_ByteVector.html">sizeof(ByteVector)</A></td>
+<td><A HREF="Function_sizeof_Character.html">sizeof(Character)</A></td>
+</tr><tr>
+<td><A HREF="Function_sizeof_Complex.html">sizeof(Complex)</A></td>
+<td><A HREF="Function_sizeof_Date.html">sizeof(Date)</A></td>
+<td><A HREF="Function_sizeof_Dictionary.html">sizeof(Dictionary)</A></td>
+<td><A HREF="Function_sizeof_Directory.html">sizeof(Directory)</A></td>
+</tr><tr>
+<td><A HREF="Function_sizeof_FltVector.html">sizeof(FltVector)</A></td>
+<td><A HREF="Function_sizeof_Function.html">sizeof(Function)</A></td>
+<td><A HREF="Function_sizeof_IntVector.html">sizeof(IntVector)</A></td>
+<td><A HREF="Function_sizeof_List.html">sizeof(List)</A></td>
+</tr><tr>
+<td><A HREF="Function_sizeof_Matrix.html">sizeof(Matrix)</A></td>
+<td><A HREF="Function_sizeof_NumMatrix.html">sizeof(NumMatrix)</A></td>
+<td><A HREF="Function_sizeof_NumVector.html">sizeof(NumVector)</A></td>
+<td><A HREF="Function_sizeof_Number.html">sizeof(Number)</A></td>
+</tr><tr>
+<td><A HREF="Function_sizeof_ObjVector.html">sizeof(ObjVector)</A></td>
+<td><A HREF="Function_sizeof_ObjectRepository.html">sizeof(ObjectRepository)</A></td>
+<td><A HREF="Function_sizeof_Pair.html">sizeof(Pair)</A></td>
+<td><A HREF="Function_sizeof_PcodeVector.html">sizeof(PcodeVector)</A></td>
+</tr><tr>
+<td><A HREF="Function_sizeof_ShortVector.html">sizeof(ShortVector)</A></td>
+<td><A HREF="Function_sizeof_String.html">sizeof(String)</A></td>
+<td><A HREF="Function_sizeof_Structure.html">sizeof(Structure)</A></td>
+<td><A HREF="Function_sizeof_Symbol.html">sizeof(Symbol)</A></td>
+</tr><tr>
+<td><A HREF="Function_sizeof_Vector.html">sizeof(Vector)</A></td>
+<td><A HREF="Function_sizeof_Void.html">sizeof(Void)</A></td>
+<td><A HREF="Function_type_BitVector.html">type(BitVector)</A></td>
+<td><A HREF="Function_type_Boolean.html">type(Boolean)</A></td>
+</tr><tr>
+<td><A HREF="Function_type_Brick.html">type(Brick)</A></td>
+<td><A HREF="Function_type_ByteVector.html">type(ByteVector)</A></td>
+<td><A HREF="Function_type_Character.html">type(Character)</A></td>
+<td><A HREF="Function_type_Complex.html">type(Complex)</A></td>
+</tr><tr>
+<td><A HREF="Function_type_Date.html">type(Date)</A></td>
+<td><A HREF="Function_type_Dictionary.html">type(Dictionary)</A></td>
+<td><A HREF="Function_type_Directory.html">type(Directory)</A></td>
+<td><A HREF="Function_type_FltVector.html">type(FltVector)</A></td>
+</tr><tr>
+<td><A HREF="Function_type_Function.html">type(Function)</A></td>
+<td><A HREF="Function_type_IntVector.html">type(IntVector)</A></td>
+<td><A HREF="Function_type_Lambda.html">type(Lambda)</A></td>
+<td><A HREF="Function_type_Matrix.html">type(Matrix)</A></td>
+</tr><tr>
+<td><A HREF="Function_type_NumMatrix.html">type(NumMatrix)</A></td>
+<td><A HREF="Function_type_NumVector.html">type(NumVector)</A></td>
+<td><A HREF="Function_type_Number.html">type(Number)</A></td>
+<td><A HREF="Function_type_ObjVector.html">type(ObjVector)</A></td>
+</tr><tr>
+<td><A HREF="Function_type_ObjectRepository.html">type(ObjectRepository)</A></td>
+<td><A HREF="Function_type_Pair.html">type(Pair)</A></td>
+<td><A HREF="Function_type_PcodeVector.html">type(PcodeVector)</A></td>
+<td><A HREF="Function_type_ShortVector.html">type(ShortVector)</A></td>
+</tr><tr>
+<td><A HREF="Function_type_String.html">type(String)</A></td>
+<td><A HREF="Function_type_Structure.html">type(Structure)</A></td>
+<td><A HREF="Function_type_Symbol.html">type(Symbol)</A></td>
+<td><A HREF="Function_type_Vector.html">type(Vector)</A></td>
+</tr><tr>
+<td><A HREF="Function_type_Void.html">type(Void)</A></td>
+<td><A HREF="Function_writeln_ByteVector.html">writeln(ByteVector)</A></td>
+<td><A HREF="Function_writeln_String.html">writeln(String)</A></td>
+<td><A HREF="Function_writeln_Text.html">writeln(Text)</A></td>
+</tr>
+</table>
+
+</P> 
+
+ 
+<!--- Button which links to top of page --->
+<P ALIGN="CENTER">
+<INPUT TYPE='button' VALUE='Top of Page' onClick='scroll(0,0)'>
+</P>
+
+
+ 
+
+<TABLE CELLSPACING=0 CELLPADDING=6 BORDER=0 WIDTH=600>
+<TR>
+<TD BGCOLOR="#406000" WIDTH="22%" VALIGN="TOP">
+<IMG SRC="Image_Math002.gif" WIDTH=128 HEIGHT=203>
+<!--- Button which links to Home page --->
+<P ALIGN="CENTER">
+<INPUT TYPE='button' VALUE='Home' onClick='location = "NewHelpHome.html"'>
+</P>
+
+<TD WIDTH="78%" VALIGN="TOP">
+<FONT COLOR="#0000ff"><H4><A NAME="CKA"></A>How do I contact the AIS team?</H4></FONT>
+<P>
+You can always talk with the AIS at <A HREF="http:://aiserver.sourceforge.net">aiserver.sourceforge.net</A>.
+</P>
+
+</TD>
+</TR>
+</TABLE>
+
+
+</BODY>
+</HTML>

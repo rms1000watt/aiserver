@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Document SYSTEM "../DTD/Document.dtd">
+<Document>
+	<KnowledgeBase>
+	    <Title>AIS C and C++ API</Title>
+		<Topic>Lisp</Topic>
+		<SubTopic>AIS Internals</SubTopic>
+		<HumanKeywords>Development AIS C C++ API</HumanKeywords>
+	</KnowledgeBase>
+	<Essay>Essay_AIS_Engine_API</Essay>
+    <Essay>Essay_AIS_Host_IO_Callbacks</Essay>
+    <Essay>Essay_AIS_Middleware_API</Essay>
+</Document>

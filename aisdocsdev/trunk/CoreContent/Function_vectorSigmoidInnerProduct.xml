@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>vectorSigmoidInnerProduct</Title>
+		<FunctionName>vectorSigmoidInnerProduct</FunctionName>
+		<FunctionType>Builtin (Vector Machine Learning)</FunctionType>
+		<ArgumentTypes>Integer Number Vector NumVector</ArgumentTypes>
+		<DataType> NumVector</DataType>
+		<RelatedFunctions> vectorBipolarInnerProduct vectorCosineInnerProduct
+
+                           vectorCubeInnerProduct vectorExpInnerProduct svmRegression
+                           vectorInnerProduct vectorBinaryInnerProduct vectorLogInnerProduct
+                           vectorQuintInnerProduct vectorSineInnerProduct vectorQuartInnerProduct
+                           vectorSquareInnerProduct vectorTanInnerProduct vectorTanhInnerProduct </RelatedFunctions>
+        <RelatedVMInstructions> vmvecNumVector vmvecPushNumber vmvecPopNumber  </RelatedVMInstructions>
+		<HumanKeywords>sigmoid exponential product math 
+
+                       support vector functions kernel</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>vectorSigmoidInnerProduct</b> function returns the sigmoid exponential inner product 
+
+                of the two Number Vector arguments x1 and x2.  </p>
+          ]]></Description>
+	<Brief>
+        <Overview><![CDATA[
+		<p>The <b>vectorSigmoidInnerProduct</b> function returns the sigmoid exponential inner product 
+
+                of the two Number Vector arguments x1 and x2. The C formula used is as follows: </p>
+        <p><b><blockquote>   (/  1.0  (+  1.0  (exp (-  (vectorInnerProduct x1 x2)))))</p></b></blockquote>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>vectorSigmoidInnerProduct </b> function may be used as a kernel for support 
+
+            vector machine regression (see the <b>svmRegression</b> function).</p>
+        ]]></Usage>
+    </Brief>
+    <Syntax>
+	    <Expression><![CDATA[<p>    (vectorSigmoidInnerProduct x1  x2)</p>]]></Expression>
+		<Argument>
+		  <Name>x1</Name>
+		  <Note><![CDATA[
+		  <p>The first Number Vector to be multiplied</p>
+          ]]></Note>
+		  <AISTypes>NumVector </AISTypes>
+		</Argument>
+	    <Argument>
+		  <Name>x2</Name>
+		  <Note><![CDATA[
+		  <p>The second Number Vector to be multiplied</p>
+          ]]></Note>
+		  <AISTypes>NumVector </AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>The sigmoid exponential  inner or dot product of the two vectors.
+
+        </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>compress</Title>
+		<FunctionName>compress</FunctionName>
+		<FunctionType>Builtin(FileIO)</FunctionType>
+		<ArgumentTypes>ByteVector String Symbol</ArgumentTypes>
+		<DataType>ByteVector</DataType>
+		<RelatedFunctions>uncompress</RelatedFunctions>
+        <RelatedVMInstructions> none   </RelatedVMInstructions>
+		<HumanKeywords> LZRW1 compression </HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>compress</b> function converts a Byte Vector, String, or Symbol 
+              into a much smaller Byte Vector.</p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>compress</b> function uses the extremely fast LZRW1 compression algorithm, 
+         by Ross Williams, to convert a Byte Vector, String, or Symbol into a much smaller Byte Vector.</p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>Use the <b>compress</b> function to reduce the size of the iput Byte Vector, String or symbol argument. </p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p>(compress input)</p>]]></Expression>
+		<Argument>
+		  <Name>input</Name>
+		  <Note><![CDATA[
+		  <p>Byte Vector, String, or Symbol to be compressed.</p>
+          ]]></Note>
+		  <AISTypes>ByteVector String Symbol </AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>A Byte Vector that contains compressed version of the input.
+
+        </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- This is a dynamic name and address example -->
+<Address FirstName = "yes" LastName = "yes"> 
+This is just general content for the Address element.
+<FirstName>Michael</FirstName>
+<LastName>Korns</LastName>
+<Street>214 Shorebreaker</Street>
+<City>Laguna Niguel</City>
+<State>California</State>
+This is more content for the Address element.
+</Address>

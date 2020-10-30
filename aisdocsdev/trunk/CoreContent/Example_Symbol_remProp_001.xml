@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Symbol remProp 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>remProp</FunctionKeywords>
+		<TypeKeywords>Symbol</TypeKeywords>
+		<RelatedFunctions>remProp</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>symbol remove property  bindings name descriptor attribute</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example assigns a property binding to a Symbol. Then it
+
+                  displays the contents of the property list of the Symbol using the
+
+                  <b>proplist</b> function. The <b>remProp</b> function removes the specified
+                  contents in the property list.  
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(putprop  BLUE-WHALE:  OCEAN:  MAMMAL:)  </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[OCEAN]]></Returns>
+        <Expression><![CDATA[ <sc>(putprop  BLUE-WHALE:  GRAY:  COLOR:)    </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[GRAY]]></Returns>
+        <Expression><![CDATA[ <sc>(proplist BLUE-WHALE:)  </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60Pair 175610&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60Pair 175610&#62)  </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[(COLOR GRAY MAMMAL OCEAN)true]]></Returns>
+        <Expression><![CDATA[ <sc>(remProp  BLUE-WHALE:  MAMMAL:)   </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>(proplist BLUE-WHALE:)  </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[#&#60Pair 175463&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60Pair 175463&#62)  </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[(COLOR GRAY)true]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Pair type 023</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>type</FunctionKeywords>
+		<TypeKeywords>Pair List</TypeKeywords>
+		<RelatedFunctions>isType isPair</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>Type Analytic Object  </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example uses the <b>type</b> function to determine
+
+
+            
+
+
+
+   if the argument is a Pair.
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc> (type  1)         </sc>]]></Expression>
+        <Note><![CDATA[ none]]></Note>
+        <Returns><![CDATA[Integer]]></Returns>
+        <Expression><![CDATA[ <sc> (type  '(A  .  B) )      </sc>]]></Expression>
+        <Note><![CDATA[ none]]></Note>
+        <Returns><![CDATA[Pair]]></Returns>
+        <Hints><![CDATA[
+none
+
+]]></Hints>
+   </Syntax>
+</Example>

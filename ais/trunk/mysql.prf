@@ -1,0 +1,33 @@
+#/**********************************************************************************
+#    Copyright (C) 2008 Investment Science Corp.
+#
+#    This program is free software: you can redistribute it and/or modify
+#
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+#***********************************************************************************/
+
+win32 {
+    INCLUDEPATH += $(MYSQLDIR)\include
+    CONFIG(debug, debug|release) {
+    QMAKE_LIBDIR += $(MYSQLDIR)\lib32\debug
+    } else {
+    QMAKE_LIBDIR += $(MYSQLDIR)\lib32\release
+    }
+    MYSQL_LIBS += -lmysqld
+}
+unix {
+MYSQL_LIBS += $$system("mysql_config --libmysqld-libs")
+QMAKE_CXXFLAGS += $$system("mysql_config --include")
+QMAKE_CFLAGS += $$system("mysql_config --include")
+}

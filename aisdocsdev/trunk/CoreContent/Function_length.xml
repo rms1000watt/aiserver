@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>length</Title>
+		<FunctionName>length</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>Character String Symbol Vector BitVector ByteVector IntVector ShortVector
+                       FltVector ObjVector Structure Dictionary Directory Brick
+                       Matrix NumMatrix Integer Float Number Complex Boolean Pair List ObjecRepository</ArgumentTypes>
+		<DataType>String Symbol Structure Dictionary Directory Vector Pair List Brick Matrix NumMatrix FltVector IntVector ShortVector NumVector ObjVector BitVector PcodeVector ObjectRepository</DataType>
+        <RelatedFunctions>count</RelatedFunctions>
+        <RelatedVMInstructions>vmregObjLength </RelatedVMInstructions>
+		<HumanKeywords>length equal</HumanKeywords>
+	</KnowledgeBase>
+          <Description><![CDATA[ 
+             <p> The <b>length</b> function returns
+the number of characters of a Text or String.  </p>
+             <p> The <b>length</b> function returns the number of characters in the global value of a Symbol. </p>
+             <p> The <b>length</b> function returns the number of bindings in the Structure. </p>
+             <p> The <b>length</b> function returns the number of bindings in the Dictionary. </p>
+             <p> The <b>length</b> function returns the number of bindings in the Directory. </p>
+             <p> The <b>length</b> function returns the number of elements  in a Vector or any of its subtypes..</p>
+             <p> The <b>length</b> function returns the number of rows  in a Brick.</p>
+             <p> The <b>length</b> function returns the number of elements  in a Matrix.</p>
+             <p> The <b>length</b> function returns the number of elements  in a NumMatrix.</p>
+             <p> The <b>length</b> function returns the number of elements  in a Pair.</p>
+             <p> The <b>length</b> function returns the number of elements  in a List.</p>
+             <p> The <b>length</b> function returns the number of objects currently stored in the specified Object Repository database archive file .</p>
+	]]></Description>
+	<Brief>
+	   <Overview-String><![CDATA[
+		<p>The <b>length</b> function returns the number of characters in a String or Text 
+           argument.
+        </p>
+        ]]></Overview-String>
+        <Overview-Symbol><![CDATA[
+		<p>The <b>length</b> function takes a Symbol argument and returns the number of 
+           characters in the global value  of a Symbol .
+        </p>
+        ]]></Overview-Symbol>
+        <Overview-Structure><![CDATA[
+		<p>The <b>length</b> function returns the number of bindings in the Structure.
+        </p>
+        ]]></Overview-Structure>
+        <Overview-Dictionary><![CDATA[
+		<p>The <b>length</b> function returns the number of bindings in the Dictionary.
+        </p>
+        ]]></Overview-Dictionary>
+        <Overview-Directory><![CDATA[
+		<p>The <b>length</b> function returns the number of bindings in the Directory.
+        </p>
+        ]]></Overview-Directory>
+        <Overview><![CDATA[
+		<p>The <b>length</b> function returns the number of elements in a Vector.
+        </p>
+        ]]></Overview>
+       <Overview-Brick><![CDATA[
+		<p>The <b>length</b> function returns the number of rows in a Brick.
+        </p>
+        ]]></Overview-Brick>
+        <Overview-Matrix><![CDATA[
+		<p>The <b>length</b> function returns the number of elements in a Matrix.
+        </p>
+        ]]></Overview-Matrix>
+       <Overview-NumMatrix><![CDATA[
+		<p>The <b>length</b> function returns the number of elements in a NumMatrix.
+        </p>
+        ]]></Overview-NumMatrix>
+        <Overview-Pair><![CDATA[
+		<p>The <b>length</b> function returns the number of elements in a Pair.
+        </p>
+        ]]></Overview-Pair>
+       <Overview-List><![CDATA[
+		<p>The <b>length</b> function returns the number of elements in a List.
+        </p>
+        ]]></Overview-List>
+        <Overview-ObjectRepository><![CDATA[
+		<p>The <b>length</b> function returns the number of objects currently stored in the 
+       specified Object Repository database archive file <b>{aGor}</b>. 
+        </p>
+        ]]></Overview-ObjectRepository>
+        <Usage-String><![CDATA[
+        <p>The <b>length</b> function should be used when you need to determine the number of 
+           characters in a Text or String.</p>
+        ]]></Usage-String>
+        <Usage-Symbol><![CDATA[
+        <p>The <b>length</b> function should be used when you need to determine the number of 
+           characters in a Symbol's global value.</p>
+        ]]></Usage-Symbol> 
+        <Usage-Brick><![CDATA[
+        <p>The <b>length</b> function should be used when you need to determine the number of 
+           fields in a Brick. </p>
+        ]]></Usage-Brick> 
+       <Usage-ObjectRepository><![CDATA[
+        <p>The <b>length</b> function is used to query the Object Repository for the number of 
+         objects in the Object Repository. If the physical size of the Object Repository is the 
+         information needed, see the sizeof function.  </p>
+        ]]></Usage-ObjectRepository>
+        <Usage><![CDATA[ 
+        <p> The <b>length</b> function should be used when you need to determine the 
+            number of elements in a Structure, Dictionary, Directory, Matrix, Vector, Pair or List.  This type of counting is called a <i>shallow</i> 
+            count in which embedded collection objects are counted as one.  An alternate function, 
+            the <b>count</b> function, performs a <i>deep</i> count, which is used to determine 
+            the total number of items in an object, including the items in embedded collection 
+            objects.</p>
+        ]]></Usage>
+    </Brief>
+	<Syntax-String>
+	    <Expression><![CDATA[<p>     (length  string) </p>]]></Expression>
+		<Argument>
+		  <Name>string</Name>
+		  <Note><![CDATA[
+		  <p> The Text or String that needs to be measured </p>
+          ]]></Note>
+		 <AISTypes> Text or String</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>Returns the number of characters in the Text or String
+
+        </p>
+	    ]]></Return>
+	</Syntax-String>
+    <Syntax-Symbol>
+	    <Expression><![CDATA[<p>     (length  symbol) </p>]]></Expression>
+		<Argument> 
+		  <Name>symbol</Name>
+		  <Note><![CDATA[
+		  <p> The Symbol that needs to be measured </p>
+          ]]></Note>
+		 <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns the number of characters in the Symbol's global value
+        </p>
+	    ]]></Return>   
+	</Syntax-Symbol>
+    <Syntax-Structure>
+	    <Expression><![CDATA[<p>(length  struct) </p>]]></Expression>
+		<Argument> 
+		  <Name>struct</Name>
+		  <Note><![CDATA[
+		  <p> The structure which you want to determine the length. </p>
+          ]]></Note>
+		 <AISTypes>Structure</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns the number of bindings in the Structure.
+        </p>
+	    ]]></Return>   
+	</Syntax-Structure>
+    <Syntax-Dictionary>
+	    <Expression><![CDATA[<p>(length  dictionary) </p>]]></Expression>
+		<Argument> 
+		  <Name>dictionary</Name>
+		  <Note><![CDATA[
+		  <p> The Dictionary which you want to determine the length. </p>
+          ]]></Note>
+		 <AISTypes>Dictionary</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns the number of bindings in the Dictionary.
+        </p>
+	    ]]></Return>   
+	</Syntax-Dictionary>
+    <Syntax-Directory>
+	    <Expression><![CDATA[<p>(length  directory) </p>]]></Expression>
+		<Argument> 
+		  <Name>directory</Name>
+		  <Note><![CDATA[
+		  <p> The Directory which you want to determine the length. </p>
+          ]]></Note>
+		 <AISTypes>Directory</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns the number of bindings in the Directory.
+        </p>
+	    ]]></Return>   
+	</Syntax-Directory>
+    <Syntax>
+	    <Expression><![CDATA[<p>(length  vector) </p>]]></Expression>
+		<Argument> 
+		  <Name>vector</Name>
+		  <Note><![CDATA[
+		  <p> The Vector which you want to determine the length. </p>
+          ]]></Note>
+		 <AISTypes>Vector FltVector IntVector ShortVector NumVector ObjVector BitVector PcodeVector</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns the number of bindings in the Vector.
+        </p>
+	    ]]></Return>   
+	</Syntax>
+   <Syntax-Brick>
+	    <Expression><![CDATA[<p>(length  Brick) </p>]]></Expression>
+		<Argument> 
+		  <Name>Brick</Name>
+		  <Note><![CDATA[
+		  <p> The Brick which you want to determine the length. </p>
+          ]]></Note>
+		 <AISTypes>Brick</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns the number of rows in the Brick.
+        </p>
+	    ]]></Return>   
+	</Syntax-Brick>
+   <Syntax-Matrix>
+	    <Expression><![CDATA[<p>(length  matrix) </p>]]></Expression>
+		<Argument> 
+		  <Name>matrix</Name>
+		  <Note><![CDATA[
+		  <p> The Matrix which you want to determine the length. </p>
+          ]]></Note>
+		 <AISTypes>Matrix</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns the number of values in the Matrix.
+        </p>
+	    ]]></Return>   
+	</Syntax-Matrix>
+   <Syntax-NumMatrix>
+	    <Expression><![CDATA[<p>(length  nummatrix) </p>]]></Expression>
+		<Argument> 
+		  <Name>nummatrix</Name>
+		  <Note><![CDATA[
+		  <p> The NumMatrix which you want to determine the length. </p>
+          ]]></Note>
+		 <AISTypes>NumMatrix</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns the number of values in the NumMatrix.
+        </p>
+	    ]]></Return>   
+	</Syntax-NumMatrix>
+   <Syntax-Pair>
+	    <Expression><![CDATA[<p>(length  pair) </p>]]></Expression>
+		<Argument> 
+		  <Name>pair</Name>
+		  <Note><![CDATA[
+		  <p> The Pair that needs to be counted </p>
+          ]]></Note>
+		 <AISTypes>Pair</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns the number of values in the input Pair.
+        </p>
+	    ]]></Return>   
+	</Syntax-Pair>
+   <Syntax-List>
+	    <Expression><![CDATA[<p>(length  list) </p>]]></Expression>
+		<Argument> 
+		  <Name>list</Name>
+		  <Note><![CDATA[
+		  <p> The List that needs to be counted </p>
+          ]]></Note>
+		 <AISTypes> List</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns the number of values in the input List.
+        </p>
+	    ]]></Return>   
+	</Syntax-List>
+   <Syntax-ObjectRepository >
+	    <Expression><![CDATA[<p>(length  aGor) </p>]]></Expression>
+		<Argument> 
+		  <Name>aGor</Name>
+		  <Note><![CDATA[
+		  <p> The ObjectRepository which will be tested. </p>
+          ]]></Note>
+		 <AISTypes>ObjectRepository</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns the Number of objects in the Object Repository 
+        </p>
+	    ]]></Return>   
+	</Syntax-ObjectRepository >
+</Function>

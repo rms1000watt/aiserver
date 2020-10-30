@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example List morph 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>morph</FunctionKeywords>
+		<TypeKeywords>Pair List</TypeKeywords>
+		<RelatedFunctions>compile eval lisp</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compile evaluation morph parse Lambda</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows macro substitution using  an alternative rule function 
+               <b>{altRule}</b> and alternative failure  <b>{altFailure}</b> options.             
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+        (defun  foo(x)
+              (cond     ((and  (=  (length  x)  2)  (=  x[0]  add1:)  (isNumber  x[1])) (+  x[1]  1))
+                        ((and  (=  (length  x)  3)  (=  x[0]  +:)  (isNumber  x[1]) (isNumber  x[2])) (+  x[1]  x[2]))
+                        (else _failure:)))
+              (morph  '(divi  (+  (add1  34)  5) n)  foo  _failure:)    </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60Pair 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc>(display #&#60Pair 123456&#62)     </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[(divi  40  n)]]></Returns>
+        <Hints><![CDATA[<p> First morph sends the innermost proper sublist to  <b>foo</b> => (foo '(add1  34))</b></p>
+               <p> The result of <b>(foo '(add1  34)) => 35</b>, is not the altFailure value _failure, so morph substitutes.  </p>
+               <p> After substitution, the list appears as follows:  <b> '(divi  (+  35  5) n) </b></p>
+               <p> Next morph sends the next innermost proper sublist to <b> foo => (foo '(+  35  5))</b></p>
+               <p> The result of <b>(foo '(+  35  5) => 40</b>, is not the altFailure value _failure, so morph substitutes.</p>
+               <p> After substitution, the list appears as follows:   <b>'(divi  40  n)</b> </p>
+               <p> Next morph sends the next innermost proper sublist to <b>foo => (foo '(divi  40  n))</b></p>
+               <p> The result of <b>(foo '(divi  40  n) => _failure:</b>, is the altFailure value _failure.</p>
+               <p> There are no more proper sublists, so the final morphed list appears as follows:   <b>'(divi  40  n)</b></p>
+        ]]></Hints>
+   </Syntax>
+</Example>

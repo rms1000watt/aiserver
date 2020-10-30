@@ -1,0 +1,118 @@
+# aised/test/testmove.txt
+
+#							AISED - TEST Move
+# Test move operations.  
+
+# CHANGE HISTORY
+# Version	Date		Who		Change
+# 1.0109	10/4/2006	tlw		Original
+
+# SYNTAX
+# MOVE - move(MoveTo, Select)
+
+# NOTES
+#	 1. When making changes to this file, be sure to note them in the change history above.
+#		Put the latest entry at the top of the history.
+#	 2. See testsuite.txt for lots of details.
+#	 3.	Command format: move(MoveTo, Select)
+#	 4.	Select defaults to false
+#	*************************************************************************************************
+# SHORT MOVES:	nomove,bol,bot,eol,eot,nextbow,nextchar,nexteow,nextline
+#				nextsow,prevbow,prevchar,prevline,,prevsow,prevtab,same"
+clear
+# MOVE - move(MoveTo, Select)
+move(nomove)
+move(same)
+append("a\n", Backward)
+move(eol)
+move(bol)
+move(eot)
+move(bot)
+delete(eot)
+insert("a b", Backward)
+move(nextbow)
+move(prevbow)
+move(nextsow)
+move(nextchar)
+move(nextsow)
+move(prevsow)
+move(prevchar)
+move(prevsow)
+move(nexteow)
+move(nexteow)
+append("\nc", Backward)
+move(nextline)
+move(prevline)
+clear
+append("12345", Forward)
+move(prevtab)
+move(prevtab)
+
+# SELECT MOVES
+clear
+move(nomove, Select)
+move(same, Select)
+append("a\n", Backward)
+move(eol, Select);
+move(bol, Select)
+move(eot, Select)
+move(bot, Select)
+delete(nextchar)
+insert("a b", Backward)
+move(nextbow, Select)
+move(prevbow, Select)
+move(nextsow, Select)
+move(nextchar, Select)
+move(nextsow, Select)
+move(prevsow, Select)
+move(prevchar, Select)
+move(prevsow, Select)
+move(nexteow, Select)
+move(nexteow, Select)
+append("\nc", Backward)
+move(nextline, Select)
+move(prevline, Select)
+clear
+append("12345", Forward)
+move(prevtab, Select)
+move(prevtab, Select)
+
+# MULTI-ROW MOVES:
+setParameter(MaximumRowWidth, 20)
+append("56789 1234567890123456789 12345678901\n\tA")
+move(nomove)
+move(same)
+append("a\n", Backward)
+move(eol)
+move(bol)
+move(eot)
+move(bot)
+move(nextbow)
+move(nextbow)
+move(prevbow)
+move(nextsow)
+move(nextchar)
+move(nextsow)
+move(prevsow)
+move(prevchar)
+move(prevsow)
+move(nexteow)
+move(nexteow)
+move(nextline)
+move(prevline)
+move(prevtab)
+move(prevtab)
+setParameter(MaximumRowWidth, 1024)
+
+# LONG MOVES - nextcur,nexthalf,nextpage,prevcur,prevhalf,prevpage
+appendFile(testsuite.txt)
+move(bot)
+move(nextbow)
+move(nextpage)
+move(nexthalf)
+move(nextpage)
+move(prevcur)
+move(prevcur)
+move(nextcur)
+move(prevhalf)
+#end

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>isText</Title>
+		<FunctionName>isText</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory
+                       Matrix NumMatrix Integer Float Number Complex</ArgumentTypes>
+        <DataType>String  </DataType>
+		<RelatedFunctions>isType isObject isString</RelatedFunctions>
+        <RelatedVMInstructions>vmregObjPointer  </RelatedVMInstructions>
+		<HumanKeywords>Type Analytic Object </HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>isText</b> function returns
+                 true is the argument is a Text type. Otherwise,
+it returns false.  </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>isText</b> Function returns true if the argument <b>{obj}</b> is a  Text type; 
+           otherwise, false is returned.
+        </p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>isText</b> function is used to query an object to see if it is of type
+         Text.  Alternate methods would be to use the <b>isType</b> function using the Type 
+         argument as type Text or one may use the <b>isString</b> function .
+        </p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p>  (isText obj) </p>]]></Expression>
+		<Argument>
+		  <Name>obj</Name>
+		  <Note><![CDATA[
+		  <p> An Analytic Information Server object</p>
+          ]]></Note>
+		  <AISTypes>Character, String, Symbol, Vector, BitVector, ByteVector, IntVector,
+                       FltVector, ObjVector, Structure, Dictionary, Directory,
+                       Matrix, NumMatrix, Integer, Float, Number, Complex </AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>If the object is of type Text, true is returned. 
+           Otherwise false is returned
+        </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

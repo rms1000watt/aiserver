@@ -1,0 +1,312 @@
+
+<HTML>
+<HEAD><TITLE>AIS Datatype Template</TITLE></HEAD>
+<!--Page Parameters -->
+<BODY BGCOLOR="#FFFFF0" TEXT="#000000" LINK="#0000ff">
+
+<A NAME="topage"></A>
+<TABLE CELLSPACING=0 CELLPADDING=6 BORDER=0 WIDTH=600>
+<TR>
+<TD  BGCOLOR="#406000" WIDTH="22%" VALIGN="TOP">
+<IMG SRC="Image_Math002.gif" WIDTH=128 HEIGHT=203>
+<!--- Button which links to Home page --->
+<P ALIGN="CENTER">
+<INPUT TYPE='button' VALUE='Home' onClick='location = "Page_Help_Home.html"'>
+</P>
+
+<TD WIDTH="78%" VALIGN="TOP">
+<P>&nbsp;</P>
+
+<FONT COLOR="#000080"><H1>Character</H1></FONT>
+<P>&nbsp;</P>
+
+<UL>
+<li><a href="#S1"><FONT SIZE=2>Character Overview</font></a></li><li><a href="#S2"><FONT SIZE=2>When to Use</font></a></li><li><a href="#S3"><FONT SIZE=2>Character Constants</font></a></li><li><a href="#S4"><FONT SIZE=2>Native Data Type</font></a></li> 
+<LI><A HREF="#FUNCTIONS"><FONT SIZE=2>Functions</FONT></A></LI>
+<LI><A HREF="#EXAMPLES"><FONT SIZE=2>Examples</FONT></A></LI> 
+</UL>
+</TD>
+</TR>
+</TABLE> 
+
+<P><FONT COLOR="#0000ff"><H4><A NAME="S1"></A>Character Overview</H4></FONT></P>
+		 <p class=MsoBodyText>Analytic Information Server supports the Character Native data type.  
+		 The Character type can contain the 256 valid ASCII character values. </p>
+        <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><FONT COLOR="#0000ff"><H4><A NAME="S2"></A>When to Use</H4></FONT></P>
+          <p>The Character Native data type is suitable for situations in which one is operating on the 
+          elements of Text, String, or Symbol objects.   Example situations may include the lower case letters: 
+          "a" through "z", the upper case letters: "A" through "Z", the decimal digits: "0" through "1", or 
+          the special characters #\tab, #\newline.</p>          
+        <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><FONT COLOR="#0000ff"><H4><A NAME="S3"></A>Character Constants</H4></FONT></P>
+		<p class=MsoBodyText style='line-height:117%;page-break-after:avoid'>Lambda
+		Information Server supports character constants.  The sharp character followed by the backslash (#\) precedes each
+		character constant.  </p>
+		<p class=MsoBodyText style='line-height:117%;page-break-after:avoid'>For
+		example:</p>
+		<p class=MsoBodyText style='line-height:117%;page-break-after:avoid'>&nbsp;</p>
+		<table border=0 cellspacing=0 cellpadding=0 style='border-collapse:collapse;
+		 mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+		 <tr>
+		  <td width=129 valign=top style='width:77.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>#\a</p>
+		  </td>
+		  <td width=669 valign=top style='width:401.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>The character |a|</p>
+		  </td>
+		 </tr>
+		 <tr>
+		  <td width=129 valign=top style='width:77.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>#\A</p>
+		  </td>
+		  <td width=669 valign=top style='width:401.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>The character |A|</p>
+		  </td>
+		 </tr>
+		 <tr>
+		  <td width=129 valign=top style='width:77.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>#\(</p>
+		  </td>
+		  <td width=669 valign=top style='width:401.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>The character |(|</p>
+		  </td>
+		 </tr>
+		 <tr>
+		  <td width=129 valign=top style='width:77.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>#\\</p>
+		  </td>
+		  <td width=669 valign=top style='width:401.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>The character |\|</p>
+		  </td>
+		 </tr>
+		 <tr>
+		  <td width=129 valign=top style='width:77.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>#\backspace</p>
+		  </td>
+		  <td width=669 valign=top style='width:401.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>The ASCII backspace character</p>
+		  </td>
+		 </tr>
+		 <tr>
+		  <td width=129 valign=top style='width:77.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>#\escape</p>
+		  </td>
+		  <td width=669 valign=top style='width:401.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>The ASCII escape character</p>
+		  </td>
+		 </tr>
+		 <tr>
+		  <td width=129 valign=top style='width:77.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>#\newline</p>
+		  </td>
+		  <td width=669 valign=top style='width:401.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>The ASCII newline character sequence</p>
+		  </td>
+		 </tr>
+		 <tr>
+		  <td width=129 valign=top style='width:77.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>#\page</p>
+		  </td>
+		  <td width=669 valign=top style='width:401.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>The ASCII form-feed character</p>
+		  </td>
+		 </tr>
+		 <tr>
+		  <td width=129 valign=top style='width:77.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>#\return</p>
+		  </td>
+		  <td width=669 valign=top style='width:401.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>The ASCII carriage-return character</p>
+		  </td>
+		 </tr>
+		 <tr>
+		  <td width=129 valign=top style='width:77.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>#\rubout</p>
+		  </td>
+		  <td width=669 valign=top style='width:401.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>The ASCII delete character</p>
+		  </td>
+		 </tr>
+		 <tr>
+		  <td width=129 valign=top style='width:77.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>#\space</p>
+		  </td>
+		  <td width=669 valign=top style='width:401.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>The ASCII blank character</p>
+		  </td>
+		 </tr>
+		 <tr>
+		  <td width=129 valign=top style='width:77.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>#\tab</p>
+		  </td>
+		  <span  style='mso-bookmark:_Toc316272496'>
+		  <td width=669 valign=top style='width:401.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>The ASCII tab character<b  style='mso-bidi-font-weight:normal'><u></u></b></p>
+		  </td>
+		 </tr>
+		</table>                  
+        <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><FONT COLOR="#0000ff"><H4><A NAME="S4"></A>Native Data Type</H4></FONT></P>
+          <p>The <b>Character</b> Data Type is an example of an AIS Native Data Type. </p>
+          <p> Analytic Information Server stores all of its Native Data Types in Virtual Machine Containers.  
+          All containers are stored in memory. Containers provide the basic storage mechanism for modeling 
+          data of all types. Containers provide these fundamental characteristics:      </p>
+          <p>  Ability to hold any type of data (including code) at any time.</p>     
+          <p>  Ability to know what type of data is contained.</p>  
+          <p>  Ability to be stored, retrieved and evaluated by the system.</p>  
+          <p>   Ability to handle type conversion, and memory management automatically.</p>   
+          <p> Containers come in two sizes, Large and Small. Small containers are six bytes in length, 
+          and large containers are ten bytes in length. Large containers can store larger amounts of data 
+          immediately and place less of a burden on the Heap manager. Small containers require less immediate space, 
+          but place more of a burden on the Heap manager.    </p>        
+          <p>  Large containers can store the following data types immediately and does not require the services of the Heap manager:</p>  
+         <ul>
+          <li> #void</li>  
+          <li> error</li>
+          <li> Boolean</li>
+          <li> Character</li>
+          <li> Integer</li>
+          <li> Number</li>
+          <li> Money</li>
+          <li> Percent</li>
+          <li> String</li>
+          <li> Text</li>
+          <li> Character</li>
+          <li> ...heap object references...</li> 
+          </ul>                                      
+          <p>  Small containers can store the following data types immediately without placing additional burden on the Heap manager:</p>
+          <ul>
+          <li> #void</li>  
+          <li> error</li>
+          <li> Boolean</li>
+          <li> Character</li>
+          <li> Integer</li>
+          <li> Number</li>
+          <li> Money</li>
+          <li> Percent</li>
+          <li> String</li>
+          <li> Text</li>
+          <li> Character</li>
+          <li> ...heap object references...</li> 
+          </ul>
+          <p>  Analytic Information Server containers can be saved and loaded to and from persistent (database) 
+          storage at any time. Containers with immediate data are saved on disk in fixed length records equal 
+          to the size of the container. Containers with Heap object references are saved in fixed length records, 
+          which are automatically expanded to include the contents of the Heap object, and any objects referenced 
+          by the Heap object, etc. This feature is called Object Closure Management and is automatic with every 
+          Analytic Information Server container database save. Analytic Information Server containers may be loaded 
+          from any database repository record at any time. If the data in the record is immediate, the database 
+          load fills the container with the immediate data. If the data in the record is an object closure, the 
+          database load fills the container with a Heap object reference, and all of the objects in the record 
+          are loaded back into the Heap with the same referential relationships they had when they were saved.</p>   
+        <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P> 
+
+<P>&nbsp;</P>
+<FONT COLOR="#0000ff"><H4><A NAME="FUNCTIONS"></A>Data Type Functions</H4></FONT>
+<P>
+<P>The Character object can be demonstrated by the following functions.</p><table width="100%"><tr>
+<td><A HREF="Function_addMethod_Character.html">addMethod</A></td>
+<td><A HREF="Function_cadd_Character.html">cadd</A></td>
+<td><A HREF="Function_ccompareEQ_Character.html">ccompareEQ</A></td>
+<td><A HREF="Function_ccompareGE_Character.html">ccompareGE</A></td>
+</tr><tr>
+<td><A HREF="Function_ccompareGT_Character.html">ccompareGT</A></td>
+<td><A HREF="Function_ccompareLE_Character.html">ccompareLE</A></td>
+<td><A HREF="Function_ccompareLT_Character.html">ccompareLT</A></td>
+<td><A HREF="Function_ccompareNE_Character.html">ccompareNE</A></td>
+</tr><tr>
+<td><A HREF="Function_cdiv_Character.html">cdiv</A></td>
+<td><A HREF="Function_character_Character.html">character</A></td>
+<td><A HREF="Function_cmod_Character.html">cmod</A></td>
+<td><A HREF="Function_cmul_Character.html">cmul</A></td>
+</tr><tr>
+<td><A HREF="Function_compareEQ_Character.html">compareEQ</A></td>
+<td><A HREF="Function_compareGE_Character.html">compareGE</A></td>
+<td><A HREF="Function_compareGT_Character.html">compareGT</A></td>
+<td><A HREF="Function_compareLE_Character.html">compareLE</A></td>
+</tr><tr>
+<td><A HREF="Function_compareLT_Character.html">compareLT</A></td>
+<td><A HREF="Function_compareNE_Character.html">compareNE</A></td>
+<td><A HREF="Function_compare_Character.html">compare</A></td>
+<td><A HREF="Function_comparison_Character.html">comparison</A></td>
+</tr><tr>
+<td><A HREF="Function_csub_Character.html">csub</A></td>
+<td><A HREF="Function_defmethod_Character.html">defmethod</A></td>
+<td><A HREF="Function_isCharacter_Character.html">isCharacter</A></td>
+<td><A HREF="Function_isEqual_Character.html">isEqual</A></td>
+</tr><tr>
+<td><A HREF="Function_isIdentical_Character.html">isIdentical</A></td>
+<td><A HREF="Function_isType_Character.html">isType</A></td>
+<td><A HREF="Function_methodsOf_Character.html">methodsOf</A></td>
+<td><A HREF="Function_ref_Character.html">ref</A></td>
+</tr><tr>
+<td><A HREF="Function_send_Character.html">send</A></td>
+<td><A HREF="Function_setq_Character.html">setq</A></td>
+<td><A HREF="Function_sizeof_Character.html">sizeof</A></td>
+<td><A HREF="Function_type_Character.html">type</A></td>
+</tr>
+</table>
+ 
+</P>
+</P>
+ 
+<!--- Button which links to top of page --->
+<P ALIGN="CENTER">
+<INPUT TYPE='button' VALUE='Top of Page' onClick='scroll(0,0)'>
+</P>
+
+
+<P>&nbsp;</P>
+<FONT COLOR="#0000ff"><H4><A NAME="EXAMPLES"></A>Data Type Examples</H4></FONT>
+
+<P>
+<P>The Character object can be demonstrated by the following examples.</p><table width="100%"><tr>
+<td><A HREF="Example_Character_addMethod_013.html">Example_Character_addMethod_013</A></td>
+<td><A HREF="Example_Character_cadd_001.html">Example_Character_cadd_001</A></td>
+<td><A HREF="Example_Character_ccompareEQ_001.html">Example_Character_ccompareEQ_001</A></td>
+<td><A HREF="Example_Character_ccompareGE_001.html">Example_Character_ccompareGE_001</A></td>
+</tr><tr>
+<td><A HREF="Example_Character_ccompareGT_001.html">Example_Character_ccompareGT_001</A></td>
+<td><A HREF="Example_Character_ccompareLE_001.html">Example_Character_ccompareLE_001</A></td>
+<td><A HREF="Example_Character_ccompareLT_001.html">Example_Character_ccompareLT_001</A></td>
+<td><A HREF="Example_Character_ccompareNE_001.html">Example_Character_ccompareNE_001</A></td>
+</tr><tr>
+<td><A HREF="Example_Character_cdiv_001.html">Example_Character_cdiv_001</A></td>
+<td><A HREF="Example_Character_character_001.html">Example_Character_character_001</A></td>
+<td><A HREF="Example_Character_cmod_001.html">Example_Character_cmod_001</A></td>
+<td><A HREF="Example_Character_cmul_001.html">Example_Character_cmul_001</A></td>
+</tr><tr>
+<td><A HREF="Example_Character_compareEQ_010.html">Example_Character_compareEQ_010</A></td>
+<td><A HREF="Example_Character_compareGE_010.html">Example_Character_compareGE_010</A></td>
+<td><A HREF="Example_Character_compareGT_010.html">Example_Character_compareGT_010</A></td>
+<td><A HREF="Example_Character_compareLE_010.html">Example_Character_compareLE_010</A></td>
+</tr><tr>
+<td><A HREF="Example_Character_compareLT_010.html">Example_Character_compareLT_010</A></td>
+<td><A HREF="Example_Character_compareNE_010.html">Example_Character_compareNE_010</A></td>
+<td><A HREF="Example_Character_compare_010.html">Example_Character_compare_010</A></td>
+<td><A HREF="Example_Character_comparison_010.html">Example_Character_comparison_010</A></td>
+</tr><tr>
+<td><A HREF="Example_Character_csub_001.html">Example_Character_csub_001</A></td>
+<td><A HREF="Example_Character_defmethod_013.html">Example_Character_defmethod_013</A></td>
+<td><A HREF="Example_Character_isCharacter_001.html">Example_Character_isCharacter_001</A></td>
+<td><A HREF="Example_Character_isEqual_008.html">Example_Character_isEqual_008</A></td>
+</tr><tr>
+<td><A HREF="Example_Character_isIdentical_008.html">Example_Character_isIdentical_008</A></td>
+<td><A HREF="Example_Character_isType_012.html">Example_Character_isType_012</A></td>
+<td><A HREF="Example_Character_methodsOf_013.html">Example_Character_methodsOf_013</A></td>
+<td><A HREF="Example_Character_send_011.html">Example_Character_send_011</A></td>
+</tr><tr>
+<td><A HREF="Example_Character_setq_017.html">Example_Character_setq_017</A></td>
+<td><A HREF="Example_Character_sizeof_010.html">Example_Character_sizeof_010</A></td>
+<td><A HREF="Example_Character_type_012.html">Example_Character_type_012</A></td>
+</tr>
+</table>
+ 
+</P> 
+ 
+<!--- Button which links to top of page --->
+<P ALIGN="CENTER">
+<INPUT TYPE='button' VALUE='Top of Page' onClick='scroll(0,0)'>
+</P>
+
+ 
+</BODY>
+</HTML>

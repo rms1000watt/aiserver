@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>member</Title>
+		<FunctionName>member</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+    	<ArgumentTypes> Structure Dictionary
+		Directory 
+	   Boolean Integer
+	   Structure Dictionary Directory 
+	   Boolean Integer
+		Structure Dictionary Directory 
+	   Boolean Integer
+	   Character String Symbol Vector BitVector ByteVector IntVector ShortVector
+	   FltVector ObjVector Structure Dictionary Directory Pair List NumMatrix
+	   Matrix NumMatrix Integer Float Number Complex Boolean </ArgumentTypes>
+        <DataType>  Structure Dictionary Directory Vector Matrix  List NumMatrix IntVector ShortVector  NumVector ObjVector  BitVector </DataType>
+		<RelatedFunctions> inside isInside isMember </RelatedFunctions>
+        <RelatedVMInstructions>vmregObjPointer  </RelatedVMInstructions>
+		<HumanKeywords>  Equal Analytic Object member</HumanKeywords>
+	</KnowledgeBase>
+          <Description><![CDATA[
+             <p> The <b>member</b> function takes a key as an argument and a Structure, Dictionary,
+                 Directory, Vector, Matrix,   List as a second argument and returns the index where the key or object was found.    </p>
+          ]]></Description>
+	<Brief>
+       <Overview-Structure><![CDATA[
+		<p> The <b>member</b> function takes a key as an argument and a Structure as a second argument and returns the index where the key was found.  If the key was not found, 
+            the <b>member</b> function returns false. The <b>member</b>
+            function uses the <b>isEqual</b> predicate.      </p>
+        ]]></Overview-Structure>
+       <Overview-Dictionary><![CDATA[
+		<p> The <b>member</b> function takes a key as an argument and a Dictionary   as a second argument and returns the index where the key was found.  If the key was not found, 
+            the <b>member</b> function returns false. The <b>member</b> 
+            function uses the <b>isEqual</b> predicate.      </p>
+        ]]></Overview-Dictionary>
+      <Overview-Directory><![CDATA[
+		<p> The <b>member</b> function takes a key as an argument and a  
+            Directory  as a second argument and returns the index where the key was found.  If the key was not found, 
+            the <b>member</b> function returns false. The <b>member</b> 
+            function uses the <b>isEqual</b> predicate.      </p>
+        ]]></Overview-Directory>
+       <Overview><![CDATA[
+		<p>The <b>member</b> function searches the Vector argument <b>{vector}</b>  for the match of 
+           the search object argument <b>{obj}</b> and returns  the index  where <b>{obj}</b> 
+           was found. If the <b>{obj}</b> was not found, false is returned. The <b>member</b> 
+           function uses the <b>isEqual</b> predicate.   </p>
+        ]]></Overview>
+        <Overview-Matrix><![CDATA[
+		<p> The <b>member</b> function searches the Matrix argument <b>{Matrix}</b>  for the match of 
+           the search object argument <b>{obj}</b> and returns  the index  where <b>{obj}</b> 
+           was found. If the <b>{obj}</b> was not found, false is returned. The <b>member</b> 
+           function uses the <b>isEqual</b> predicate.
+        </p>
+        ]]></Overview-Matrix>
+        <Overview-NumMatrix><![CDATA[
+		<p> The <b>member</b> function searches the NumMatrix argument <b>{NumMatrix}</b>  for the match of 
+           the search object argument <b>{obj}</b> and returns  the index  where <b>{obj}</b> 
+           was found. If the <b>{obj}</b> was not found, false is returned. The <b>member</b> 
+           function uses the <b>isEqual</b> predicate.
+        </p>
+        ]]></Overview-NumMatrix>
+        <Overview-List><![CDATA[
+		<p> The <b>member</b> function searches the List argument <b>{list}</b>  for the match of 
+           the search object argument <b>{obj}</b> and returns  the index  where <b>{obj}</b> 
+           was found. If the <b>{obj}</b> was not found, false is returned. The <b>member</b> 
+           function uses the <b>isEqual</b> predicate.
+        </p>
+        ]]></Overview-List>
+        <Usage-Structure><![CDATA[
+        <p>Use the <b>member</b> function if you want to locate the position of a certain member 
+           (key) in a Structure object.  If you just want to know if a member is 
+             in the Structure but 
+           do not care where it is located if it is found, use the <b>isMember</b> function, 
+            which returns a Boolean true or false.
+        </p>
+        ]]></Usage-Structure>
+       <Usage-Dictionary><![CDATA[
+        <p>Use the <b>member</b> function if you want to locate the position of a certain member 
+           (key) in a Dictionary object.  If you just want to know if a member is 
+             in the Dictionary but 
+           do not care where it is located if it is found, use the <b>isMember</b> function, 
+            which returns a Boolean true or false.
+        </p>
+        ]]></Usage-Dictionary>
+       <Usage-Directory><![CDATA[
+        <p>Use the <b>member</b> function if you want to locate the position of a certain member 
+           (key) in a Directory object.  If you just want to know if a member is 
+             in the Directory but 
+           do not care where it is located if it is found, use the <b>isMember</b> function, 
+            which returns a Boolean true or false.
+        </p>
+        ]]></Usage-Directory>
+       <Usage><![CDATA[
+        <p>Use the <b>member</b> function if you want to locate the position of a certain member 
+           (object) in a Vector.  If you just want to know if a member is in the Vector but 
+           do not care where it is located if it is found, use the <b>isMember</b> function, 
+            which returns a Boolean true or false.
+        </p>
+        ]]></Usage>
+        <Usage-Matrix><![CDATA[
+        <p>Use the <b>member</b> function if you want to locate the position of a certain member 
+           (object) in a Matrix.  If you just want to know if a member is in the Matrix but 
+           do not care where it is located if it is found, use the <b>isMember</b> function, 
+            which returns a Boolean true or false.
+        </p>
+        ]]></Usage-Matrix>
+        <Usage-NumMatrix><![CDATA[
+        <p>Use the <b>member</b> function if you want to locate the position of a certain member 
+           (object) in a NumMatrix.  If you just want to know if a member is in the NumMatrix but 
+           do not care where it is located if it is found, use the <b>isMember</b> function, 
+            which returns a Boolean true or false.
+        </p>
+        ]]></Usage-NumMatrix>
+        <Usage-List><![CDATA[
+        <p>The <b>member</b> function is used to find an object <b>{obj}</b> in a List <b>{list}</b>. 
+           Since the <b>member</b> function returns the location of the <b>{obj}</b>, 
+           the <b>member</b> function makes it convenient to perform some operation on the <b>{obj}</b> .  
+           An alternate function, the <b>isMember</b> function, is used when a Boolean value of 
+           either true or false is sufficient.
+        </p>
+        ]]></Usage-List>
+    </Brief>
+	<Syntax-Structure>
+	    <Expression><![CDATA[<p>    (member key  struct) </p>]]></Expression>
+		<Argument>
+		  <Name>key</Name>
+		  <Note><![CDATA[
+		  <p>The key(member) you wish to locate.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+    	<Argument>
+		  <Name>struct</Name>
+		  <Note><![CDATA[
+		  <p>The target structure. </p>
+          ]]></Note>
+		  <AISTypes>Structure </AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>Returns the index of the member if it is found, otherwise it returns false.
+
+        </p>
+	    ]]></Return>
+	</Syntax-Structure>
+	<Syntax-Dictionary>
+	    <Expression><![CDATA[<p>    (member key  dictionary) </p>]]></Expression>
+		<Argument> 
+		  <Name>key</Name>
+		  <Note><![CDATA[
+		  <p>The key(member) you wish to locate.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+    	<Argument> 
+		  <Name>dictionary</Name>
+		  <Note><![CDATA[
+		  <p>The target dictionary. </p>
+          ]]></Note>
+		  <AISTypes>Dictionary </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns the index of the member if it is found, otherwise it returns false.
+        </p>
+	    ]]></Return>   
+	</Syntax-Dictionary>
+	<Syntax-Directory>
+	    <Expression><![CDATA[<p>    (member key  directory) </p>]]></Expression>
+		<Argument> 
+		  <Name>key</Name>
+		  <Note><![CDATA[
+		  <p>The key(member) you wish to locate.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+    	<Argument> 
+		  <Name>directory</Name>
+		  <Note><![CDATA[
+		  <p>The target directory. </p>
+          ]]></Note>
+		  <AISTypes>Directory </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns the index of the member if it is found, otherwise it returns false.
+        </p>
+	    ]]></Return>   
+	</Syntax-Directory>
+	<Syntax>
+	    <Expression><![CDATA[<p>    (member obj vector) </p>]]></Expression>
+		<Argument> 
+		  <Name>obj</Name>
+		  <Note><![CDATA[
+		  <p>The object you wish to locate.</p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory
+                       Matrix NumMatrix Integer Float Number Complex Boolean</AISTypes>
+		</Argument>
+    	<Argument> 
+		  <Name>vector</Name>
+		  <Note><![CDATA[
+		  <p>The vector to be searched</p>
+          ]]></Note>
+		  <AISTypes>Vector ShortVector  NumVector ObjVector  BitVector</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns the index of the member if it is found, otherwise it returns false.
+        </p>
+	    ]]></Return>   
+	</Syntax>
+	<Syntax-Matrix>
+	    <Expression><![CDATA[<p>    (member obj matrix) </p>]]></Expression>
+		<Argument> 
+		  <Name>obj</Name>
+		  <Note><![CDATA[
+		  <p>The object you wish to locate.</p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory
+                       Matrix NumMatrix Integer Float Number Complex Boolean</AISTypes>
+		</Argument>
+    	<Argument> 
+		  <Name>matrix</Name>
+		  <Note><![CDATA[
+		  <p>The matrix to be searched</p>
+          ]]></Note>
+		  <AISTypes>Matrix </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns false if the object is not present. Returns an integer representing the index 
+           into the Matrix where the object was found.
+        </p>
+	    ]]></Return>   
+	</Syntax-Matrix>
+	<Syntax-NumMatrix>
+	    <Expression><![CDATA[<p>    (member obj nummatrix) </p>]]></Expression>
+		<Argument> 
+		  <Name>obj</Name>
+		  <Note><![CDATA[
+		  <p>The object you wish to locate.</p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory
+                       Matrix NumMatrix Integer Float Number Complex Boolean</AISTypes>
+		</Argument>
+    	<Argument> 
+		  <Name>nummatrix</Name>
+		  <Note><![CDATA[
+		  <p>The nummatrix to be searched</p>
+          ]]></Note>
+		  <AISTypes>NumMatrix </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns false if the object is not present. Returns an integer representing the index 
+           into the NumMatrix where the object was found.
+        </p>
+	    ]]></Return>   
+	</Syntax-NumMatrix>
+	<Syntax-List>
+	    <Expression><![CDATA[<p>    (member obj list) </p>]]></Expression>
+		<Argument> 
+		  <Name>obj</Name>
+		  <Note><![CDATA[
+		  <p>The object you wish to locate.</p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory
+                       Matrix NumMatrix Integer Float Number Complex Boolean</AISTypes>
+		</Argument>
+    	<Argument> 
+		  <Name>list</Name>
+		  <Note><![CDATA[
+		  <p>The List to be searched</p>
+          ]]></Note>
+		  <AISTypes>List </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns false if the object is not present. Returns an integer representing the index 
+           into the List where the object was found.
+        </p>
+	    ]]></Return>   
+	</Syntax-List>
+</Function>

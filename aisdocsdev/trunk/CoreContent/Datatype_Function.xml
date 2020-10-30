@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Datatype SYSTEM "../DTD/Datatype.dtd">
+<Datatype>
+	<KnowledgeBase>
+        <Title>Function</Title>
+		<Type>Object</Type>
+		<RelatedTypes>Void Error Character Integer Number Money Percent String 
+		             Text Character</RelatedTypes>
+		<HumanKeywords>Native Function </HumanKeywords>
+	</KnowledgeBase>
+	<Section>                
+	    <Heading>Function Overview</Heading>
+		<Description><![CDATA[
+		<p class=MsoBodyText>The Analytic Information Server engine supports many built-in functions. 
+		These Function Data Types are AIS Object Data Types.  Built-in functions are much simpler than Lambdas, and usually perform a specific repetitive 
+		operation on some type or types of data. There are built-in functions for performing arithmetic 
+		operations, logarithmic operations, string manipulations, and more.</p>	
+        ]]></Description>
+    </Section>
+	<Section>                
+	    <Heading>When to Use</Heading>
+		<Description><![CDATA[
+          <p class=MsoBodyText>Use the built-in functions to accomplish low level operation on data in the engine.</p>         
+        ]]></Description>
+    </Section>
+    <Section>                
+	    <Heading>Constant Form</Heading>
+		<Description><![CDATA[
+			  <p class=MsoBodyText>There is no constant form for a Function.</p>
+        ]]></Description>
+    </Section>
+	<Section>                
+	    <Heading>Object Data Types</Heading>
+		<Description><![CDATA[
+          <p>The <b>Function</b> is a Heap Object or an Object Data Type. The Analytic Information Server Object Types 
+            are stored in the Heap and are managed by the Heap manager.  The Analytic Information 
+            Server Heap manager supports object resizing, garbage collection, and anti-fragmentation algorithms 
+            so that the user may concentrate on the analysis and modeling of data rather than on
+            memory management. Without exception, all of the Object types are identified by an 
+            object id.  The object id identifies a block of memory, managed by the Lambda 
+             Information Server memory manager, in which the Object's data is stored.</p>
+         <p>The Analytic Information Server Heap Object and Native Data types can be saved and loaded to and from persistent
+            (disk file) storage at any time. Containers with immediate data are saved on disk 
+            in fixed length records equal to the size of the container. Containers with Heap 
+            object references are saved in fixed length records, which are automatically expanded 
+            to include the contents of the Heap object, and any objects referenced by the Heap 
+            object, etc. This feature is called Object Closure Management and is automatic with 
+            every Analytic Information Server container database save.</p>
+         <p>Analytic Information Server containers may be loaded from any database repository record 
+            at any time. If the data in the record is immediate, the database load fills the 
+            container with the immediate data. If the data in the record is an object closure, 
+            the database load fills the container with a Heap object reference, and all of the 
+            objects in the record are loaded back into the Heap with the same referential 
+            relationships they had when they were saved in the repository.</p>    
+        ]]></Description>
+    </Section>
+</Datatype>

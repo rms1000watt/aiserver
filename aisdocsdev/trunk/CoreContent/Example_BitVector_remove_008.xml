@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example BitVector remove 008</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>remove</FunctionKeywords>
+		<TypeKeywords>BitVector</TypeKeywords>
+		<RelatedFunctions>delete insert</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>delete remove key binding </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines a Vector and uses the <b>remove</b> function to 
+
+
+
+
+
+
+                  non-destructively delete a value.
+
+
+
+
+
+                  If the value does not exist in the Vector then the same Vector is returned unchanged.
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq Z #(bit| 0 1 1 1 1 1 ) )  </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60BitVector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq A (remove 0 Z))    </sc>]]></Expression>
+        <Note><![CDATA[Removes the specified value and copies the result
+
+
+
+
+
+              to a new Vector.]]></Note>
+        <Returns><![CDATA[#&#60BitVector 234567&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc> (display A)     </sc>]]></Expression>
+        <Note><![CDATA[Displays the modified Vector.]]></Note>
+        <Returns><![CDATA[#(bit| 1 1 1 1 1 )]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

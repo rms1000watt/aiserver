@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>freeBlock</Title>
+		<FunctionName>freeBlock</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+        <ArgumentTypes> Vector BitVector Integer  </ArgumentTypes>
+        <DataType> BitVector</DataType>
+	    <RelatedFunctions>findBlock setBlock cdr</RelatedFunctions>
+        <RelatedVMInstructions> vmsetnumvector vmsetintvector vmsetvector  </RelatedVMInstructions>
+		<HumanKeywords>bits available free block locate space deallocate
+                       disk space memory management </HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>freeBlock</b> function sets the specified blocks to vacant in the Bit Vector.</p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The  <b>freeBlock</b> function sets the specified blocks to vacant in the Bit Vector. 
+           Vacant blocks are represented by 0 bits, while occupied blocks are represented by 1 
+           bits. </p>
+        <p>For example: </p>
+        <p><b><blockquote>  (freeBlock bitVector i 3)   </blockquote></b></p>
+        <p>The above <b>freeBlock<b> invocation sets the 3 blocks (starting at bit index i) 
+           to be vacant. After this invocation:</p>
+        <p><b>   bitVector[i] = 0   </p></b> 
+        <p><b>   bitVector[(+ i 1)] = 0   </p></b> 
+        <p><b>   bitVector[(+ i 2)] = 0  </p></b> 
+        ]]></Overview>
+       <Usage><![CDATA[
+        <p>The <b>freeBlock</b> function is used to deallocate block space in a BitVector 
+           used to manage a memory space or disk space.
+		</p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p>      (freeBlock  BitVector  blockIndex blockCount) </p>
+]]></Expression>
+		<Argument>
+		  <Name>BitVector</Name>
+		  <Note><![CDATA[
+		  <p>The BitVector in which a consecutive string of blocks to be set vacant.</p>
+          ]]></Note>
+		  <AISTypes>BitVector </AISTypes>
+		</Argument>
+     	<Argument> 
+		  <Name>blockIndex</Name>
+		  <Note><![CDATA[
+		  <p>The starting bit index of the consecutive string of blocks to be set vacant.</p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>
+     	<Argument>
+		  <Name>blockCount</Name>
+		  <Note><![CDATA[
+		  <p>The number of consecutive vacant blocks to be set vacant</p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>The block index after the last freed block.
+        </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

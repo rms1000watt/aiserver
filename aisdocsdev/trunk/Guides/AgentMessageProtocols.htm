@@ -1,0 +1,1705 @@
+<html>
+<head>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<title>Agent Message Protocol (AMP)</title>
+</head>
+<body>
+
+<h1>1 Agent Message Protocol (AMP)</h1>
+<h4>Overview</h4><p>
+Agent Message Protocol (AMP) is an API (Applications Programming Interface) that TCP/IP
+(Transport Internet Protocol/Internet Protocol) client applications can use to execute
+agents in AIS (Agent Information Server). AIS supports both an HTTP (HyperText Transport
+Protocol) interface and an XML (eXtensible Markup Language) Socket interface for AMP
+communication with an internet client.</p>
+<p>
+AMP is a message-oriented protocol allowing clients to request the execution of agents in
+AIS and receive a response from that execution.<p> 
+<p>
+Except for the HTTP interface, AIS may also send messages back to the application client
+without waiting for the client to make a request.</p>
+<p>
+This document discusses the format and general content of AMP messages. A more general
+understanding of user authentication, authorization and context selection is required to
+build an AIS application. See the document entitled "User Manager Guide.doc" for this aspect
+of AIS operation.</p>
+
+<h2>1.1 AMP Messages</h2><p>
+An AMP message may be submitted via several different supported protocols, including HTTP, XML
+sockets layer (used by Macromedia's Flash player), an call from an in-process application running
+on the AIS or a remote application connected over the internet via a socket to AIS.  The AIS
+architecture funnels all commands, no matter where they come from, thru the same pipe.
+So all of these options result in exactly the same command being submitted to the Smartbase
+engine.  The AMP message format varies depending on the protocol; however, every representation
+of the AMP message consists of a targetAgent-speechAct pair followed by zero or more name-value
+pairs. Note that all names are case-sensitive.</p>
+
+<h3>1.1.1 targetAgent</h3><p>
+A string specifying the target agent of the message. This may be the built-in AMP message or an
+application agent provided by the application programmer. A target agent is much like an object.
+Provided the user has sufficient authorization, built-in meassages are available to all clients.
+All other application-specific target agent, provided by application programmers, are only
+available to a client connected to that application.
+</p>
+<h3>1.1.2 speechAct</h3><p>
+A speech act provided by the target agent. Speech acts are much like methods in object-oriented
+languages in that they specify a function.  Also, they may have zero or more parameters.</p>
+
+<h4>ParamNname</h4><p>
+Speech acts may have one or more named parameter pairs with the ParamNname coming first in
+each pair.</p>
+<h4>ParamNname</h4><p>
+ParamNvalue	Speech acts may have one or more named parameter pairs with the ParamNvalue coming
+after the ParamNname.</p>
+
+<h3>1.1.2 Naming Conventions and Restrictions</h3><p>
+The targetAgent, speechAct, and ParamNname follow the naming conventions of a SmartLisp symbol.
+That is, they must begin with a letter (built-in targetAgents will begin with an underscore).
+The remaining characters are restricted to letters, underscores, and numbers. AIS treats these names
+in a case-sensitive manner.</p>
+<p>
+Agent names and parameter names, other than built-in target agents, cannot begin with an underscore.
+The underscore is used by AIS to identify "private" agents and parameters. 
+</p>
+<p>
+The ParamNvalue may contain any 8-bit character including spaces and tabs, except a null (0).
+The DEL character (127) is only allowed in special cases (see discussion below).  The ParamNvalue
+is encoded according to the conventions prescribed by the format of the transmission.  For example,
+AMP messages using HTTP are URL-encoded.  For AMP messages using XML, encode predefined entities
+according the XML standard.</p>
+<p>
+<b>HTTP Example:</b> _amp=login&amp;username=12Bill+H&amp;password=!@%3E-/</p>
+
+<h3>1.1.3 AMP Processing</h3><p>
+AIS receives the AMP message, converts it to the appropriate internal form required by the
+specified target agent, finds the specified target agent in the current AIS context and then
+submits the message to the agent in a structure for processing. Note that the target agent is
+responsible for validating that the specified speech is supported.</p>
+
+<h3>1.1.4 Del-Delimited Strings</h3><p>
+The incoming AMP message from any protocol server is converted to a DEL-delimited string where
+the delete character (127) is used to separate each token in the list of name-value pairs.
+Because the DEL is used as a delimiter, it cannot appear in either a name or a value except in
+one special case.  Some built-in speech acts, such as filterTable, have a fixed number of arguments.
+In the case of filterTable, it has two arguments, the name of the table and a filter expression.
+When an incoming AMP message has a built-in target agent with a built-in speech act that has a
+fixed number of arguments, the last value in the list may contain DEL characters.  In this
+special case, the last value is not parsed.  Rather, the last value is taken to be everything
+after the DEL following the last name. In the filterTable example, the filter expression may
+(and often does) contain DEL characters.</p>
+<p>
+The form of an internal AMP message is:<br>
+targetAgent<b>[]</b>speechAct<b>[]</b>paramName<b>[]</b>paramValue…<br>
+where <b>[]</b> represents a DEL character.  Because the AMP message format for each of the
+various protocol servers varies as noted below, the internal AMP message format is used in this
+document when referring to a general AMP message.</p>
+
+<h2>1.2 Built-in AMP Messages</h2><p>
+AMP messages come in two flavors.  The first are built-in messages whose targetAgent is _ais and
+the second are application-specific messages that are implemented by the AIS application.  This
+section describes the built-in AMP message and the next section describes the application-specific  
+AMP messages.  The built-in AMP messages are documented in this section where %s refers to
+the string passed as the value of the name-value pair, %d refers to the integer value passed
+as a string and so on.  For example, %s refers to the cabname &quot;Main&quot; in the following
+AMP message:<br>
+_ais<b>[]</b>closecabinet<b>[]</b>cabname<b>[]</b>Main</p>
+<p>
+Refer to the documentation on the associated SmartLisp functions for more details on the
+SmartLisp function used by these speech acts.</p>
+
+<h3>1.2.1 closecabinet</h3>
+<p>
+The <b>closecabinet</b> speechAct closes the specified cabinet.  The closure of the cabinet
+is saved to disk.<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>closecabinet<b>[]</b>cabname<b>[]</b>%s</td>
+	</tr>
+	<tr valign=top><td><b>cabname</b></td>
+		<td>The name of the cabinet.</td>
+	</tr>
+	<tr valign=top><td><b>Returns:</b></td>
+		<td>true</td>
+	</tr>
+</table>
+
+<h3>1.2.2 closecontext</h3>
+<p>
+The <b>closecontext</b> speechAct closes an open context and frees the resources allocated to
+that context.  No sessions can be opened on this context after it is closed.<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>closecontext<b>[]</b>context<b>[]</b>%s</td>
+	</tr>
+	<tr valign=top><td><b>context</b></td>
+		<td>The name of the context.</td>
+	</tr>
+	<tr valign=top><td><b>Returns:</b></td>
+		<td>true</td>
+	</tr>
+</table>
+
+
+<h3>1.2.3 closesession</h3>
+<p>
+The <b>closesession</b> speechAct closes the session that issues this message.  The
+user is logged off, the connection is closed and no further messages can be sent.
+<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>closesession</td>
+	</tr>
+	<tr valign=top><td><b>Returns:</b></td>
+		<td>true</td>
+	</tr>
+</table>
+
+<h3>1.2.4 closetable</h3>
+<p>
+The <b>closetable</b> speechAct closes an open table and frees the resources allocated to
+that table.<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>closetable<b>[]</b>tabname<b>[]</b>%s</td>
+	</tr>
+	<tr valign=top><td><b>tabname</b></td>
+		<td>The name of the table.</td>
+	</tr>
+	<tr valign=top><td><b>Returns:</b></td>
+		<td>true</td>
+	</tr>
+</table>
+
+<h3>1.2.5 compileagent</h3>
+<p>
+The <b>compileagent</b> speechAct compiles the named agents into VM code.  The extent_agents
+argument are a list of tab-delimited extent name-agent name pairs.
+<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>compileagent<b>[]</b>extent_agents<b>[]</b>%s\t%s...</td>
+	</tr>
+	<tr valign=top><td><b>extent_agents</b></td>
+		<td>Tab-delimited list of extent, agent pairs.</td>
+	</tr>
+	<tr valign=top><td><b>Returns:</b></td>
+		<td>true</td>
+	</tr>
+</table>
+
+<h3>1.2.6 compilecabinet</h3>
+<p>
+The <b>compilecabinet</b> speechAct compiles the agents in the specified cabinets.
+Extents is a tab-delimited list of cabinets.
+<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>compilecabinet<b>[]</b>extents<b>[]</b>%s\t%s...</td>
+	</tr>
+	<tr valign=top><td><b>extents</b></td>
+		<td>Tab-delimited list of extents.</td>
+	</tr>
+	<tr valign=top><td><b>Returns:</b></td>
+		<td>true</td>
+	</tr>
+</table>
+
+<h3>1.2.7 createtable</h3>
+<p>
+The <b>createtable</b> speechAct compiles the agents in the specified cabinets.
+Extents is a tab-delimited list of cabinets.
+<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>createtable<b>[]</b>repository<b>[]</b>%s<b>[]</b>
+		database<b>[]</b>%s<b>[]</b>table<b>[]</b>%s<b>[]</b>file<b>%s</b></td>
+	</tr>
+	<tr valign=top><td><b>repository</b></td>
+		<td>The name of the repository to hold the table.</td>
+	</tr>
+	<tr valign=top><td><b>database</b></td>
+		<td>The name of the database to be attached to the table.</td>
+	</tr>
+	<tr valign=top><td><b>table</b></td>
+		<td>The name of the new table.</td>
+	</tr>
+	<tr valign=top><td><b>file</b></td>
+		<td>The name of the file holding the new data.</td>
+	</tr>
+	<tr valign=top><td><b>Returns:</b></td>
+		<td>true</td>
+	</tr>
+</table>
+<h3>1.2.8 debug</h3>
+<p>
+For internal use only.
+<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>debug<b>[]</b>exp<b>[]</b>%s</td>
+	</tr>
+	<tr valign=top><td><b>exp</b></td>
+		<td>Debug expression.</td>
+	</tr>
+	<tr valign=top><td><b>Returns:</b></td>
+		<td>true</td>
+	</tr>
+</table>
+
+<h3>1.2.9 deleteagent</h3>
+<p>
+The <b>deleteagent</b> speechAct removes the specified agents from the named extent.
+<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>deleteagent<b>[]</b>extent<b>[]</b>%s</b>agents<b>[]</b>%s</td>
+	</tr>
+	<tr valign=top><td><b>extent</b></td>
+		<td>The name of the extent containing the agents to be removed.</td>
+	</tr>
+	<tr valign=top><td><b>agents</b></td>
+		<td>Tab-delimited list of agents to be removed.</td>
+	</tr>
+	<tr valign=top><td><b>Returns:</b></td>
+		<td>true</td>
+	</tr>
+</table>
+<h3>1.2.10 deletetable</h3>
+<p>
+The <b>deletetable</b> speechAct removes the specified table.
+<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>deletetable<b>[]</b>cursor<b>[]</b>%s
+		<b>[]</b>table<b>[]</b>%s</td>
+	</tr>
+	<tr valign=top><td><b>cursor</b></td>
+		<td>The cursor (an agent) for the table.</td>
+	</tr>
+	<tr valign=top><td><b>table</b></td>
+		<td>The name of the table to be deleted.</td>
+	</tr>
+	<tr valign=top><td><b>Returns:</b></td>
+		<td>true</td>
+	</tr>
+</table>
+
+<h3>1.2.11 errortrace</h3>
+<p>
+For internal use only.
+<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>errortrace<b>[]</b>onoff<b>[]</b>%d
+		<b>[]</b>table<b>[]</b>%s</td>
+	</tr>
+	<tr valign=top><td><b>onoff</b></td>
+		<td>Zero to turn off, one to turn on.</td>
+	</tr>
+	<tr valign=top><td><b>Returns:</b></td>
+		<td>true</td>
+	</tr>
+</table>
+<h3>1.2.12 eval</h3>
+<p>
+The <b>eval</b> speechAct evaluates a SmartLisp expression.
+<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>eval<b>[]</b>exp<b>[]</b>%s
+		<b>[]</b>table<b>[]</b>%s</td>
+	</tr>
+	<tr valign=top><td><b>exp</b></td>
+		<td>A SmartLisp expression.</td>
+	</tr>
+	<tr valign=top><td><b>Returns:</b></td>
+		<td>Expression result</td>
+	</tr>
+</table>
+<h3>1.2.13 exportagent</h3>
+<p>
+The <b>exportagent</b> speechAct creates a file containing the agent (in source).
+The file specification is relative to the application's home directory on the server.
+<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>exportagent<b>[]</b>agent<b>[]</b>%s
+		<b>[]</b>file<b>[]</b>%s<b>[]</b>cabinet<b>[]</b>%s</td>
+	</tr>
+	<tr valign=top><td><b>agent</b></td>
+		<td>The name of the agent to be exported.</td>
+	</tr>
+	<tr valign=top><td><b>file</b></td>
+		<td>The name of the file to created on the server to contain the agent source.</td>
+	</tr>	<tr valign=top><td><b>cabinet</b></td>
+		<td>The name of the cabinet holding the agent.</td>
+	</tr>	<tr valign=top><td><b>Returns:</b></td>
+		<td>true</td>
+	</tr>
+</table>
+<h3>1.2.14 exportcabinet</h3>
+<p>
+The <b>exportcabinet</b> speechAct exports all the agents (in source) to the specified
+file.<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>exportcabinet<b>[]</b>cabinet<b>[]</b>%s
+		<b>[]</b>file<b>[]</b>%s</td>
+	</tr>
+	<tr valign=top><td><b>cabinet</b></td>
+		<td>The name of the cabinet to be exported.</td>
+	</tr>
+	<tr valign=top><td><b>file</b></td>
+		<td>The name of the file to be created on the server to contain the agents in
+		the cabinet.</td>
+	</tr>	<tr valign=top><td><b>Returns:</b></td>
+		<td>true</td>
+	</tr>
+</table>
+<h3>1.2.14 exportcabinet</h3>
+<p>
+The <b>exportcabinet</b> speechAct exports all the agents (in source) to the specified
+file.<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>exportcabinet<b>[]</b>cabinet<b>[]</b>%s
+		<b>[]</b>file<b>[]</b>%s</td>
+	</tr>
+	<tr valign=top><td><b>cabinet</b></td>
+		<td>The name of the cabinet to be exported.</td>
+	</tr>
+	<tr valign=top><td><b>file</b></td>
+		<td>The name of the file to be created on the server to contain the agents in
+		the cabinet.</td>
+	</tr>	<tr valign=top><td><b>Returns:</b></td>
+		<td>true</td>
+	</tr>
+</table>
+<h3>1.2.15 exporttable</h3>
+<p>
+The <b>exporttable</b> speechAct exports a table to a file on the server using
+the specified cursor.<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>exporttable<b>[]</b>cursor<b>[]</b>%s
+		<b>[]</b>file<b>[]</b>%s</td>
+	</tr>
+	<tr valign=top><td><b>cursor</b></td>
+		<td>The cursor to be used in exporting the file.</td>
+	</tr>
+	<tr valign=top><td><b>file</b></td>
+		<td>The name of the file to be created on the server to contain the
+		exported table.</td>
+	</tr>	<tr valign=top><td><b>Returns:</b></td>
+		<td>true</td>
+	</tr>
+</table>
+<h3>1.2.16 filtertable</h3>
+<p>
+The <b>filtertable</b> speechAct exports a table to a file on the server using
+the specified cursor.<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>filtertable<b>[]</b>cursor<b>[]</b>%s
+		<b>[]</b>exp<b>[]</b>%s</td>
+	</tr>
+	<tr valign=top><td><b>cursor</b></td>
+		<td>The cursor to be used in constructing the filter.</td>
+	</tr>
+	<tr valign=top><td><b>exp</b></td>
+		<td>The expression (e.g. Sales > 50) to be used to select rows from the table.</td>
+	</tr>
+	<tr valign=top><td><b>Returns:</b></td>
+		<td>true</td>
+	</tr>
+</table>
+<h3>1.2.17 getagentmemory</h3>
+<p>
+The <b>getagentmemory</b> speechAct returns the contents of the agent's memory.<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>getagentmemory</td>
+	</tr>
+	<tr valign=top><td><b>Returns:</b></td>
+		<td>agent's memory values</td>
+	</tr>
+</table>
+<h3>1.2.18 getagentnames</h3>
+<p>
+The <b>getagentnames</b> speechAct returns the names of the agents in an extent
+(cabinet).<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>getagentnames<b>[]</b>extent<b>[]</b>%s</td>
+	</tr>
+	<tr valign=top><td><b>extent</b></td>
+		<td>The name of the cabinet holding the agents.</td>
+	</tr>
+	<tr valign=top><td><b>Returns:</b></td>
+		<td>tab-delimited list of agent names.</td>
+	</tr>
+</table>
+
+<h3>1.2.19 getcontextmemory</h3>
+<p>
+The <b>getcontextmemory</b> speechAct returns the variables and their values associated with
+the named context.<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>getcontextmemory<b>[]</b>context<b>[]</b>%s</td>
+	</tr>
+	<tr valign=top><td><b>context</b></td>
+		<td>The name of the context.</td>
+	</tr>
+	<tr valign=top><td><b>Returns:</b></td>
+		<td>tab-delimited list of variables and their values.</td>
+	</tr>
+</table>
+
+<h3>1.2.20 getcurrentcontexts</h3>
+<p>
+The <b>getcurrentcontexts</b> speechAct returns the names of the contexts supported by
+the currently selected AIS.<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>getcurrentcontexts</td>
+	</tr>
+	<tr valign=top><td><b>Returns:</b></td>
+		<td>tab-delimited list of context names.</td>
+	</tr>
+</table>
+
+<h3>1.2.21 getcurrentsessions</h3>
+<p>
+The <b>getcurrentsessions</b> speechAct returns the IDs of the sessions opened on
+a context.  A context is one instance of an application running on AIS.<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>getcurrentsessions<b>[]</b>context<b>[]</b>%s</td>
+	</tr>
+	<tr valign=top><td><b>context</b></td>
+		<td>The name of the context with zero or more open sessions.</td>
+	</tr>
+	<tr valign=top><td><b>Returns:</b></td>
+		<td>tab-delimited list of session IDs.</td>
+	</tr>
+</table>
+
+<h3>1.2.22 getdatabasenames</h3>
+<p>
+The <b>getdatabasenames</b> speechAct returns the names of the databases associated
+with the current context.<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>getdatabasenames</td>
+	</tr>
+	<tr valign=top><td><b>extent</b></td>
+		<td>The name of the cabinet holding the agents.</td>
+	</tr>
+	<tr valign=top><td><b>Returns:</b></td>
+		<td>tab-delimited list of database names.</td>
+	</tr>
+</table>
+
+_ais|getdirinfo|dir|%s
+<h3>1.2.23 getdirinfo</h3>
+<p>
+The <b>getdirinfo</b> speechAct returns the names of the agents in an extent
+(cabinet).<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>getagentnames<b>[]</b>dir<b>[]</b>%s</td>
+	</tr>
+	<tr valign=top><td><b>dir</b></td>
+		<td>The directory path.</td>
+	</tr>
+	<tr valign=top><td><b>Returns:</b></td>
+		<td>The list of files and directories in the named directory.</td>
+	</tr>
+</table>
+
+<h3>1.2.24 getexesession</h3>
+<p>
+The <b>getexesession</b> speechAct returns the session ID of the currently executing
+session.  Note that AIS supports multiple simultaneous contexts, each running zero or
+one session at a time.<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>getexesession<b>[]</b>context<b>[]</b>%s</td>
+	</tr>
+	<tr valign=top><td><b>context</b></td>
+		<td>The name of the context.</td>
+	</tr>
+	<tr valign=top><td><b>Returns:</b></td>
+		<td>The session ID of the currently executing session or -1 if none.</td>
+	</tr>
+</table>
+
+<h3>1.2.25 getextentnames</h3>
+<p>
+The <b>getextentnames</b> speechAct returns the names of the extents of the
+currently selected context.<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>getextentnames</td>
+	</tr>
+	<tr valign=top><td><b>Returns:</b></td>
+		<td>tab-delimited list of extent names.</td>
+	</tr>
+</table>
+
+<h3>1.2.26 getglobalmemory</h3>
+<p>
+The <b>getglobalmemory</b> speechAct returns the global memory values.<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>getglobalmemory</td>
+	</tr>
+	<tr valign=top><td><b>Returns:</b></td>
+		<td>The global memory values for the current context.</td>
+	</tr>
+</table>
+
+<h3>1.2.27 getglobalvars</h3>
+<p>
+The <b>getglobalvars</b> speechAct returns the session ID of the currently executing
+session.  Note that AIS supports multiple simultaneous contexts, each running zero or
+one session at a time.<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>getglobalvars<b>[]</b>object<b>[]</b>%s</td>
+	</tr>
+	<tr valign=top><td><b>object</b></td>
+		<td>The name of the SmartLisp structure.</td>
+	</tr>
+	<tr valign=top><td><b>Returns:</b></td>
+		<td>The variable names and their values of the object.</td>
+	</tr>
+</table>
+
+<h3>1.2.28 getrepositorynames</h3>
+<p>
+The <b>getrepositorynames</b> speechAct returns the names of the repositories
+of the currently selected context.<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>getrepositorynames</td>
+	</tr>
+	<tr valign=top><td><b>Returns:</b></td>
+		<td>List of repository names</td>
+	</tr>
+</table>
+
+<h3>1.2.29 getsessionuser</h3>
+<p>
+The <b>getsessionuser</b> speechAct returns the user ID of the current session.<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>getsessionuser</td>
+	</tr>
+	<tr valign=top><td><b>Returns:</b></td>
+		<td>The user ID of the current session.</td>
+	</tr>
+</table>
+<h3>1.2.30 gettablenames</h3>
+<p>
+The <b>gettablenames</b> speechAct returns the table names of the specified database.
+Every table belongs to a database.  The names of the tables with the specified
+database name<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>gettablenames<b>[]</b>database<b>[]</b>%s</td>
+	</tr>
+	<tr valign=top><td><b>database</b></td>
+		<td>The name of the database.</td>
+	</tr>
+	<tr valign=top><td><b>Returns:</b></td>
+		<td>List of the names of the tables for a database.</td>
+	</tr>
+</table>
+<h3>1.2.31 gettablesize</h3>
+<p>
+The <b>gettablesize</b> speechAct returns the session ID of the currently executing
+session.  Note that AIS supports multiple simultaneous contexts, each running zero or
+one session at a time. Not currently implemented.<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>gettablesize<b>[]</b>table<b>[]</b>%s</td>
+	</tr>
+	<tr valign=top><td><b>table</b></td>
+		<td>The name of the table.</td>
+	</tr>
+	<tr valign=top><td><b>Returns:</b></td>
+		<td>The size of the table in bytes.</td>
+	</tr>
+</table>
+<h3>1.2.32 getworkspacestatistics</h3>
+<p>
+The <b>getworkspacestatistics</b> speechAct returns a set of statistics for the currently
+selected context.<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>getworkspacestatistics</td>
+	</tr>
+	<tr valign=top><td><b>Returns:</b></td>
+		<td>The statistics associated with the currently selected context.</td>
+	</tr>
+</table>
+
+<h3>1.2.33 importcabinet</h3>
+<p>
+The <b>importcabinet</b> speechAct populates the named cabinet with the SmartLisp code
+extracted from the specified file.<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>importcabinet<b>[]</b>cabinet<b>[]</b>%s
+		<b>[]</b>file<b>[]</b>%s</td>
+	</tr>
+	<tr valign=top><td><b>cabinet</b></td>
+		<td>The name of cabinet to be populated.</td>
+	</tr>
+	<tr valign=top><td><b>file</b></td>
+		<td>The name of the file on the server that contains the SmartLisp code
+		to be imported.</td>
+	</tr>
+	<tr valign=top><td><b>Returns:</b></td>
+		<td>true</td>
+	</tr>
+</table>
+
+<h3>1.2.34 importtable</h3>
+<p>
+The <b>importtable</b> speechAct populates the named cabinet with the SmartLisp code
+extracted from the specified file.<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>importtable<b>[]</b>cabinet<b>[]</b>%s
+		<b>[]</b>file<b>[]</b>%s</td>
+	</tr>
+	<tr valign=top><td><b>cursor</b></td>
+		<td>The name of agent cursor used to populate the table.</td>
+	</tr>
+	<tr valign=top><td><b>file</b></td>
+		<td>The name of the file on the server that contains the records
+		to be imported.</td>
+	</tr>
+	<tr valign=top><td><b>Returns:</b></td>
+		<td>true</td>
+	</tr>
+</table>
+
+<h3>1.2.35 instructiontrace</h3>
+<p>
+The <b>instructiontrace</b> speechAct is for internal use only.<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>instructiontrace<b>[]</b>onoff<b>[]</b>%d</td>
+	</tr>
+	<tr valign=top><td><b>onoff</b></td>
+		<td>Zero to turn off debugging, one to turn on debugging.</td>
+	</tr>
+	<tr valign=top><td><b>Returns:</b></td>
+		<td>true</td>
+	</tr>
+</table>
+<h3>1.2.36 iscontextbusy</h3>
+<p>
+The <b>iscontextbusy</b> speechAct returns the session ID of the currently executing
+session.  Note that AIS supports multiple simultaneous contexts, each running zero or
+one session at a time.<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>iscontextbusy<b>[]</b>context<b>[]</b>%s</td>
+	</tr>
+	<tr valign=top><td><b>context</b></td>
+		<td>An optional parameter. If omitted iscontextbusy uses the current context.</td>
+	</tr>
+	<tr valign=top><td><b>Returns:</b></td>
+		<td>The session ID of the current context or -1 if none.</td>
+	</tr>
+</table>
+
+<h3>1.2.37 iscontextopen</h3>
+<p>
+The <b>iscontextopen</b> speechAct returns one if the named context is available on the
+currently selected AIS.<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>iscontextopen<b>[]</b>context<b>[]</b>%s</td>
+	</tr>
+	<tr valign=top><td><b>context</b></td>
+		<td>The name of the context.</td>
+	</tr>
+	<tr valign=top><td><b>Returns:</b></td>
+		<td>One if the context is open, else, zero.</td>
+	</tr>
+</table>
+
+<h3>1.2.38 logoff</h3>
+<p>
+The <b>logoff</b> speechAct closes the current connection to the server and
+terminates the session associated with the current user.<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>logoff</td>
+	</tr>
+	<tr valign=top><td><b>Returns:</b></td>
+		<td>true</td>
+	</tr>
+</table>
+
+<h3>1.2.39 logon</h3>
+<p>
+The <b>logon</b> speechAct allows a user to logon to AIS.  This logon may, or may not, be
+required by an application.  Also, an application can maintain its own authentication facility.
+Note that this is one of the few built-in commands that does not require user authentication.
+<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>logon<b>[]</b>user<b>[]</b>%s
+		<b>[]</b>passwd<b>[]</b>%s</td>
+	</tr>
+	<tr valign=top><td><b>user</b></td>
+		<td>The logon name of the user (e.g. jsmith).</td>
+	</tr>
+	<tr valign=top><td><b>passwd</b></td>
+		<td>The user's password.</td>
+	</tr>	<tr valign=top><td><b>Returns:</b></td>
+		<td>usrid<b>[]</b>%d<b>[]</b>level<b>[]</b>%d<b>[]</b>days<b>[]</b>%d<b>[]</b>
+			comment<b>[]</b>%s</td>
+	</tr>
+	<tr valign=top><td><b>usrid</b></td>
+		<td>A unique number for each authenticated user.  Note that a user (such as guest)
+			may be logged on more than once.</td>
+	</tr>
+	<tr valign=top><td><b>level</b></td>
+		<td>A number from 0-7.  Zero for no access, seven for superuser access.</td>
+	</tr>
+	<tr valign=top><td><b>days</b></td>
+		<td>Number of days until the account expires.</td>
+	</tr>
+	<tr valign=top><td><b>comment</b></td>
+		<td>A comment about this user that is inserted by the system admin when the account
+			is created.</td>
+	</tr>
+</table>
+
+<h3>1.2.40 newcabinet</h3>
+<p>
+The <b>newcabinet</b> speechAct creates a new cabinet.  The cabinet is saved to disk at path.<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>newcabinet<b>[]</b>cabinet<b>[]</b>%s
+		<b>[]</b>path<b>[]</b>%s</td>
+	</tr>
+	<tr valign=top><td><b>cabinet</b></td>
+		<td>The name of the new cabinet.  The name must not be identical to existing
+		cabinets.</td>
+	</tr>
+	<tr valign=top><td><b>path</b></td>
+		<td>The place on the server's disk where the cabinet is stored.  The extension is
+		always .db.</td>
+	</tr>	<tr valign=top><td><b>Returns:</b></td>
+		<td>true</td>
+	</tr>
+</table>
+
+<h3>1.2.41 noop</h3>
+<p>
+The <b>noop</b> speechAct returns its own args and the current session ID.  Zero or more
+args may appended to the noop command.<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>noop<b>[]</b>%s<b>[]</b>%s...</td>
+	</tr>
+	<tr valign=top><td><b>file</b></td>
+		<td>The name of the file to be created on the server to contain the
+		exported table.</td>
+	</tr>	<tr valign=top><td><b>Returns (%s are the input args):</b></td>
+		<td>%s<b>[]</b>%s<b>[]</b>sessionid<b>[]</b>%d</td>
+	</tr>
+</table>
+
+_ais|openagent|extent|%s|agent|%s
+<h3>1.2.42 openagent</h3>
+<p>
+The <b>openagent</b> speechAct opens the specified agent for editing.<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>openagent<b>[]</b>extent<b>[]</b>%s
+		<b>[]</b>agent<b>[]</b>%s</td>
+	</tr>
+	<tr valign=top><td><b>extent</b></td>
+		<td>The name of the extent containing the agent.</td>
+	</tr>
+	<tr valign=top><td><b>agent</b></td>
+		<td>The name of the agent to be opened.</td>
+	</tr>	<tr valign=top><td><b>Returns:</b></td>
+		<td>????</td>
+	</tr>
+</table>
+_ais|opencabinet|cabinet|%s|path|%s
+
+<h3>1.2.43 opencabinet</h3>
+<p>
+The <b>opencabinet</b> speechAct retrieves the agents in a cabinet.<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>opencabinet<b>[]</b>cabinet<b>[]</b>%s
+		<b>[]</b>path<b>[]</b>%s</td>
+	</tr>
+	<tr valign=top><td><b>cabinet</b></td>
+		<td>The name of the cabinet to be opened.</td>
+	</tr>
+	<tr valign=top><td><b>path</b></td>
+		<td>The path on the server where the cabinet is stored.</td>
+	</tr>	<tr valign=top><td><b>Returns:</b></td>
+		<td>????</td>
+	</tr>
+</table>
+
+<h3>1.2.44 opencontext</h3>
+<p>
+The <b>opencontext</b> speechAct opens a context.  An application must be opened before it can
+be used.<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>opencontext<b>[]</b>context<b>[]</b>%s
+		<b>[]</b>sizeMb<b>[]</b>%s</td>
+	</tr>
+	<tr valign=top><td><b>context</b></td>
+		<td>The name of the context to be opened.</td>
+	</tr>
+	<tr valign=top><td><b>sizeMb</b></td>
+		<td>The size in Mb of the memory area reserved for this application. Most applications
+		require from 32Mb to over 500Mb.</td>
+	</tr>	<tr valign=top><td><b>Returns:</b></td>
+		<td>????</td>
+	</tr>
+</table>
+
+<h3>1.2.45 opensession</h3>
+<p>
+The <b>opensession</b> speechAct opens a session so that a user can submit AMP messages
+to a previously opened context.  The user must be logged in order to open a session.<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>opensession<b>[]</b>context<b>[]</b>%s
+		<b>[]</b>userid<b>[]</b>%d<b>[]</b>level<b>[]</b>%d</td>
+	</tr>
+	<tr valign=top><td><b>context</b></td>
+		<td>The name of the context to be used.</td>
+	</tr>
+	<tr valign=top><td><b>userid</b></td>
+		<td>The userid returned by logon.</td>
+	</tr>
+	<tr valign=top><td><b>level</b></td>
+		<td>The access level for this user returned by logon.</td>
+	</tr>
+	<tr valign=top><td><b>Returns:</b></td>
+		<td>???</td>
+	</tr>
+</table>
+
+ _ais|opentable|table|%s|curtype|%s
+
+<h3>1.2.46 opentable</h3>
+<p>
+The <b>opentable</b> speechAct opens a table for viewing and/or modification.<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>opentable<b>[]</b>table<b>[]</b>%s
+		<b>[]</b>curtype<b>[]</b>%s</td>
+	</tr>
+	<tr valign=top><td><b>table</b></td>
+		<td>The name of the table to be opened.</td>
+	</tr>
+	<tr valign=top><td><b>curtype</b></td>
+		<td>The cursor type may be static, disk, or memory.</td>
+	</tr>	<tr valign=top><td><b>Returns:</b></td>
+		<td>true</td>
+	</tr>
+</table>
+
+<h3>1.2.47 readtablecell</h3>
+<p>
+The <b>readtablecell</b> speechAct returns the contents of a cell in a table that has
+been opened.<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>readtablecell<b>[]</b>rowcol<b>[]</b>%d\t%d
+		<b>[]</b>cursor<b>[]</b>%s</td>
+	</tr>
+	<tr valign=top><td><b>rowcol</b></td>
+		<td>The row position and column position separated by tabs.  Both positions
+		start from 0.</td>
+	</tr>
+	<tr valign=top><td><b>cusor</b></td>
+		<td>The name of the agent to be used to fetch the contents of the cell.</td>
+	</tr>	<tr valign=top><td><b>Returns:</b></td>
+		<td>cell value (can be a SmartLisp object)</td>
+	</tr>
+</table>
+_ais|readtablerange|range|%d\t%d\t%d\t%d|cursor|%s
+		QStringList aItems(QStringList::split('\t', arArg3));
+
+<h3>1.2.48 readtablerange</h3>
+<p>
+The <b>readtablerange</b> speechAct returns the contents of the cells within the
+specified range in a table that has been previously opened.<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>readtablerange<b>[]</b>range<b>[]</b>%d\t%d\t%d\t%d
+		<b>[]</b>cursor<b>[]</b>%s</td>
+	</tr>
+	<tr valign=top><td><b>range</b></td>
+		<td>The startRow, endRow, startCol, endCol separated by tabs. Range includes both
+		the start and end items.  Rows and columns are numbered from zero.</td>
+	</tr>
+	<tr valign=top><td><b>cursor</b></td>
+		<td>The name of the agent to be used to fetch the contents of the cells.</td>
+	</tr>	<tr valign=top><td><b>Returns:</b></td>
+		<td>cell values (can be a SmartLisp object). Cell values in a row are separated by tabs.
+		Rows are separated by newline characters.</td>
+	</tr>
+</table>
+<h3>1.2.49 restoretable</h3>
+<p>
+The <b>restoretable</b> speechAct fetches the contents of a previously opened table
+using the specified cursor to fetch the data.<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>restoretable<b>[]</b>cursor<b>[]</b>%s</td>
+	</tr>
+	<tr valign=top><td><b>cursor</b></td>
+		<td>The cursor to be used in fetching the table values from the repository.</td>
+	</tr>
+	</tr>	<tr valign=top><td><b>Returns:</b></td>
+		<td>cell values (can be a SmartLisp object). Cell values in a row are separated by tabs.
+		Rows are separated by newline characters.</td>
+	</tr>
+</table>
+<h3>1.2.50 runscriptfile</h3>
+<p>
+The <b>runscriptfile</b> speechAct reads SmartLisp source code from a file, compiles the source,
+and then executes the compiled code.<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>runscriptfile<b>[]</b>file<b>[]</b>%s</td>
+	</tr>
+	<tr valign=top><td><b>file</b></td>
+		<td>The name of the file containing the SmartLisp source code.</td>
+	</tr>	<tr valign=top><td><b>Returns:</b></td>
+		<td>true</td>
+	</tr>
+</table>
+_ais|saveagent|extent|%s|agent|%s|text|%s
+
+<h3>1.2.51 saveagent</h3>
+<p>
+The <b>saveagent</b> speechAct saves an agent that has been modified by the user.<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>saveagent<b>[]</b>extent<b>[]</b>%s
+		<b>[]</b>agent<b>[]</b>%s<b>[]</b>text<b>[]</b>%s</td>
+	</tr>
+	<tr valign=top><td><b>extent</b></td>
+		<td>The name of the extent that holds the agent.</td>
+	</tr>
+	<tr valign=top><td><b>agent</b></td>
+		<td>The name of the agent to be overwritten by the modified version.</td>
+	</tr>
+	<tr valign=top><td><b>text</b></td>
+		<td>The modified source text to be written.</td>
+	</tr>
+	<tr valign=top><td><b>Returns:</b></td>
+		<td>????</td>
+	</tr>
+</table>
+<h3>1.2.52 savetable</h3>
+<p>
+The <b>savetable</b> speechAct writes a previously opened table to a repository using the
+specified cursor.<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>savetable<b>[]</b>cursor<b>[]</b>%s</td>
+	</tr>
+	<tr valign=top><td><b>cursor</b></td>
+		<td>The cursor agent to be used to write the table to the repository.</td>
+	</tr>
+	<tr valign=top><td><b>Returns:</b></td>
+		<td>????</td>
+	</tr>
+</table>
+
+<h3>1.2.53 scoretable</h3>
+<p>
+The <b>scoretable</b> speechAct applies the score expression to a previously opened table
+using the specified cursor to fetch the table cells.<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>scoretable<b>[]</b>cursor<b>[]</b>%s
+		<b>[]</b>score<b>[]</b>%s</td>
+	</tr>
+	<tr valign=top><td><b>cursor</b></td>
+		<td>The cursor to be used in fetching the cells from the table to be scored.</td>
+	</tr>
+	<tr valign=top><td><b>score</b></td>
+		<td>The score expression to be applied (e.g. score total Salary returns the
+		sum of the values for the column named &quot;Salary&quot;).</td>
+	</tr>	<tr valign=top><td><b>Returns:</b></td>
+		<td>score value</td>
+	</tr>
+</table>
+_ais|setbreakpoint|agent|%s
+
+<h3>1.2.54 setbreakpoint</h3>
+<p>
+The <b>setbreakpoint</b> speechAct is for internal use only.<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>setbreakpoint<b>[]</b>agent<b>[]</b>%s</td>
+	</tr>
+	<tr valign=top><td><b>agent</b></td>
+		<td>The name of the agent where execution will stop.</td>
+	</tr>
+	<tr valign=top><td><b>Returns:</b></td>
+		<td>????</td>
+	</tr>
+</table>
+
+_ais|setescape|sessionid|%d
+
+<h3>1.2.55 setescape</h3>
+<p>
+The <b>setescape</b> speechAct sets a flag to cause execution of the specified session
+to stop.  Setescape should only be applied to sessions that are currently executing a task.<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>setescape<b>[]</b>sessionid<b>[]</b>%d</td>
+	</tr>
+	<tr valign=top><td><b>sessionid</b></td>
+		<td>The session ID returned by opensession.</td>
+	</tr>
+	<tr valign=top><td><b>Returns:</b></td>
+		<td>true</td>
+	</tr>
+</table>
+<h3>1.2.56 setloglvl</h3>
+<p>
+The <b>setloglvl</b> speechAct sets the minimum level of a generated message will be sent
+to the client.  Primarily for improving performance by reducing superflous message traffic
+to the client from the server.  For internal use.<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>setloglvl<b>[]</b>logtype<b>[]</b>%d
+		<b>[]</b>newlvl<b>[]</b>%d</td>
+	</tr>
+	<tr valign=top><td><b>logtype</b></td>
+		<td>Logs are divided into types such as console, amp, ncsa, reqhdrs and system.
+		Each log type is assigned a number starting from one.</td>
+	</tr>
+	<tr valign=top><td><b>newlvl</b></td>
+		<td>Messages are assigned a level from one to five with five being the most
+		critical.  Only messages with a level exceeding the value set by newlvl are
+		sent to the client.</td>
+	</tr>	<tr valign=top><td><b>Returns:</b></td>
+		<td>true</td>
+	</tr>
+</table>
+<h3>1.2.57 showconsole</h3>
+<p>
+The <b>showconsole</b> speechAct evaluates the SmartLisp expression and then writes the
+result of the expression to the console using a writeln.<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>showconsole<b>[]</b>exp<b>[]</b>%s</td>
+	</tr>
+	<tr valign=top><td><b>exp</b></td>
+		<td>SmartLisp expression to be evaluated.</td>
+	</tr>
+	<tr valign=top><td><b>Returns:</b></td>
+		<td>true</td>
+	</tr>
+</table>
+
+<!--
+ _ais|closecabinet|cabname|%s
+ _ais|closecontext|context|%s
+ _ais|closesession
+ _ais|closetable|tabname|%s
+ _ais|compileagent|extent_agents|%s
+_ais|compilecabinet|extents|%s
+_ais|createtable|repository|%s|database|%s|table|%s|file|%s
+_ais|debug|exp|%s
+_ais|deleteagent|extent|%s|agents|%s
+_ais|deletetable|cursor|%s|table|%s
+_ais|errortrace|onoff|%d
+_ais|eval|exp|%s
+_ais|exportagent|agent|%s|file|%s|cabinet|%s
+_ais|exportcabinet|cabinet|%s|file|%s
+_ais|exporttablelocal|cursor|%s|file|%s
+_ais|exporttable|cursor|%s|file|%s
+_ais|filtertable|cursor|%s|exp|%s
+_ais|getagentmemory
+_ais|getagentnames|extent|%s
+_ais|getcontextmemory|context|%s
+_ais|getcurrentcontexts
+_ais|getcurrentsessions|context|%s
+_ais|getdatabasenames
+_ais|getdirinfo|dir|%s
+_ais|getexesession|context|%s
+_ais|getextentnames
+_ais|getglobalmemory
+_ais|getglobalvars|object|%s
+_ais|getrepositorynames
+_ais|getsessionuser
+_ais|gettablenames|database|%s
+_ais|gettablesize|table|%s
+_ais|getworkspacestatistics
+_ais|importcabinet|cabinet|%s|file|%s
+_ais|importtable|cursor|%s|file|%s
+_ais|instructiontrace|onoff|%d
+_ais|iscontextbusy|context|%s
+_ais|iscontextopen|context|%s
+_ais|logoff
+_ais|logon|...
+_ais|newcabinet|cabinet|%s|path|%s
+_ais|noop|args...
+_ais|openagent|extent|%s|agent|%s
+_ais|opencabinet|cabinet|%s|path|%s
+_ais|opencontext|context|%s|sizeMb|%s
+_ais|opensession|context|%s|userid|%d|level|%d
+_ais|opentable|table|%s|curtype|%s
+_ais|readtablecell|rowcol|%d\t%d|cursor|%s
+_ais|readtablerange|range|%d\t%d\5%d\t%d|cursor|%s
+_ais|restoretable|cursor|%s
+_ais|runscriptfile|file|%s
+_ais|saveagent|extent|%s|agent|%s|text|%s
+_ais|savetable|cursor|%s
+_ais|scoretable|cursor|%s|score|%s
+_ais|setbreakpoint|agent|%s
+_ais|setescape|sessionid|%d
+_ais|setloglvl|logtype|%d|newlvl|%d
+_ais|showconsole|exp|%s -->
+
+<h2>1.3 Application-specific
+Target Agents</h2><p>
+Besides the built-in _ais target agent, an AIS application may supply its own target agents.
+Application-specific target agents are agents compiled to run in an AIS context. AMP
+application target agents are "global" agents and cannot have names that begin with an
+underscore. The name of each name/value pair supplied to an application agent should not
+begin with an underscore. </p>
+<p>
+There are no mandatory speech acts required of target agents. Behavior when an unsupported
+speech act is requested of an application target agent is application dependent. For
+instance, in a true messaging environment it may not be an error to deliver a AMP message to
+a target agent that the target agent does not know how to process.</p>
+<p>
+The target agent or speech act receives, as its only argument, a structure with the
+following contents:</p>
+<ul>
+	<li>targetagent: speechact</li>
+	<li>_sessionid: sessionid</li>
+	<li>_userid: userid</li>
+	<li>_level: securitylevel(0-7)</li>
+	<li>name-value pairs provided as arguments</li>
+</ul>
+<p>
+The _sessionid, _userid and _level values are connection and context specific values
+that are added to the structure by AIS. They are not supplied by the client application.
+</p>
+<h2>2.1 Submitting AMP Messages
+</h2><p>
+Every application, regardless of the protocol used, submits requests to AIS using AMP
+and only AMP.  Provided that the user has sufficient authorization, both built-in (_ais)
+and application-specific messages may be submitted.  Before launching into a detailed
+discussion of each protocol, a few examples are shown in this section.</p>
+<p>
+Important Note!  Except for the domain name, AMP message names are case-sensitive.  Param1
+will not be recognized if param1 is expected.</p>
+<p>
+<b>Assumptions.</b>  In the discussion below, a representative built-in message of the
+form:<br>
+ _ais<b>[]</b>noop<b>[]</b>arg0<b>[]</b>hello<br>
+ and a sample application-specific message of the form:<br>
+ testAgent<b>[]</b>ampAct<b>[]</b>param1<b>[]</b>Some value<br>
+are included in the examples.  These sample AMP messages can be replaced by any valid AMP
+message supported by the application.  Also, the domain name, www.byagent.com can be
+replaced by the specific Agent Information Server that you are using; however, amp.dll
+should not be modified.</p>
+
+<h3>2.1.1 HTTP HyperText Transfer Protocol</h3>
+The HTTP is utilized by several types of clients.  Some examples:
+<ul>
+	<li>Browser, such as Internet Explorer 5.5 or above</li>
+	<li>Client-side JavaScript embedded in a web page</li>
+	<li>Macromedia Flash player using HTTP</li>
+</ul>
+<p>
+<b>Examples.</b> A wide variety of formats are supported by the HTTP interface.  A
+URL-encoded query string may be appended to the URL, a URL-encoded string may be
+included in the body of a POST request, or an XML document may be included in the
+body of a POST request.<br>
+
+<b>Query String Examples:</b></p>
+<ul>
+http://www.byagent.com/amp.dll?_ais=noop&amp;arg0=hello<br>
+http://www.byagent.com/amp.dll?testAgent=ampAct&amp;param1=Some&nbsp;Value
+</ul>
+<p>
+<b>POST body (from a form or javascript) Examples:</b></p>
+<ul>
+	_ais=noop&amp;arg0=hello
+	testAgent=ampAct&amp;param1=Some Value
+</ul>
+<b>XML POST (Flash player using HTTP) Examples</b>:
+<ul>
+	&lt;amp target&quot;_ais&quot; act=&quot;noop&quot;/&gt;<br>
+	&lt;amp target&quot;targetAgent&quot; act=&quot;ampAct&quot;&gt;&lt;param1&gt;Some Value
+	&lt;/param1&gt;&lt;/amp&gt;
+</ul>
+
+<h3>2.1.2 XML Socket Protocol</h3><p>
+Unlike HTTP, all requests use a single format, XML (eXtensible Markup Language).  The XML
+socket is utilized by several clients.  Also unlike HTTP, this protocol just sends a
+XML document terminated by a null or ctrl-A.  Some example clients using this protocol:</p>
+<ul>
+	<li>Macromedia Flash player connecting to an XML socket.</li>
+	<li>JavaScript with embedded ActiveXControl that supports a socket connection.</li>
+</ul>
+<b>Sample XML Documents:</b>
+<ul>
+	&lt;amp target=&quot;_ais&quot; act=&quot;noop&quot;&gt;&lt;arg0&gt;Hello&lt;
+	/arg0&gt;&lt;/amp&gt;<br>
+	&lt;amp target=&quot;targetAgent&quot; act=&quot;ampAct&quot;&gt;&lt;param1&gt;
+	Some Value&lt;/param1&gt;&lt;/amp&gt;<br>
+</ul>
+
+<h3>2.1.3 APP Protocol</h3><p>
+Requests to the engine can be submitted from the console-edit combo box at the top of the
+Console tab.  A DEL character may be entered into the command-line by pressing Ctrl-|.
+Under the covers, SmartLisp expressions are converted into AMP messages.  Also, an
+application-specific AMP request start with a percent sign.  The request is converted into
+an AMP message.   In either case the AMP message is processed in the same way as for any
+other protocol server.</p>
+<b>Sample APP Requests (entered on the console-edit line)</b>
+<ul>
+SmartLisp Expression:<br>
+	(setq x {hello})<br>
+Built-in AMP message:<br>
+	_ais<b>[]</b>noop<b>[]</b>arg0<b>[]</b>Hello<br>
+Application-specific AMP message:<br>
+	%testAgent<b>[]</b>ampAct<b>[]</b>param1<b>[]</b>Some Value<br>
+</ul>
+<p>
+Be sure to use a DEL character as a separator. It appears as a <em>dark</em> vertical bar
+in the console's command-line window.  Also, keep in mind that case matters.</p>
+
+<h2>2.2 HTTP Server</h2><p>
+An HTTP client may send AMP messages to AIS using the HTTP GET method. For instance,
+using a web browser, specify a URL in which the &quot;file&quote; is amp.dll with
+a query string appended.  The AMP message is URL-encoded in the query portion of the
+request.  Notice that the target agent and the speech act must be placed at the front
+of the query string.</p> 
+
+<b>Example:</b>
+<ul>
+<b>General Form:</b> http://www.byagent.com/amp.dll?testAgent=ampAct&amp;amp;param1=value1<br>
+<b>Built-in:</b> http://www.byagent.com/amp.dll?_ais=login&amp;amp;username=tmay&amp;amp;
+password=&amp;lt;!@&amp;gt;-/
+</ul>
+<p>
+<b>HTTP POST Example.</b> On a web page, use a form similar the following HTML form
+to send an HTTP POST request to AIS:</p>
+<ul>
+&lt;FORM action=&quot;/amp.dll&quot; method=&quot;post&quot;&gt;<br>
+&lt;INPUT type=&quot;hidden&quot; name=&quot;testAgent&quot; value=&quot;ampAct&quot;&gt;<br>
+&lt;INPUT type=&quot;text&quot; name=&quot;param1&quot;&gt;<br>
+&lt;INPUT type=&quot;submit&quot; value=&quot;Submit&quot;&gt;<br>
+&lt;/FORM&gt;
+</ul>
+
+<h3>2.2.1 HTTP Encoding</h3><p>
+AMP Messages sent to AIS using the HTTP protocol is URL-encoded (except a POST body
+using XML). AIS will URL-decode the incoming query string or POST body and convert the
+result into a DEL-delimited AMP message into a form appropriate for submission
+to the specified target agent. Encoding is typically performed automatically by the
+browser or other HTTP client.</p>
+
+<h3>2.2.2 HTTP Limitations</h3><p>
+HTTP has severe limitations as an application protocol. Keep the following aspects of HTTP
+in mind when using HTTP to talk to AIS:</p>
+<ul>
+	<li>HTTP is a request/response protocol. This means that the client must make a
+	 request and then wait for a response from AIS. There must always be one and only one
+	 response to each client HTTP request.  Although multiple requests may be submitted,
+	 no request is processed until a response to the previous request from that web
+	 client is received (or cancelled by the user). A server can never initiate a message
+	 to a HTTP client.</li>
+	<li>HTTP clients must support cookies for AIS to keep track of important client
+	connection information.</li>
+</ul>
+
+<h2>2.3 XML Socket Server</h2><p>
+AIS supports an XML Socket server interface. This interface allows TCP/IP clients to
+establish a permanent connection and then exchange AMP messages packaged in an XML format.
+Unlike HTTP, the XML Socket interface is bi-directional and allows AIS to push AMP messages
+to the client at anytime. XML Socket clients must be event-driven to take full advantage
+of the AIS XML server.  The XML client is not required to suspend operation and wait for
+an immediate return to a request.  Rather, all requests, even those that can be computed
+quickly by AIS, are treated as asynchronous calls by the XML client.  A typical XML request
+is of the form:</p>
+<ul>
+ &lt;amp xtype=&quot;msg&quot; target=&quot;_ais&quot; act=&quot;login&quot;&gt;<br>
+ &lt;username&gt;tmay&lt;/username&gt;<br>
+&lt;password&gt;!@&amp;gt;-/&lt;/password&gt;<br>
+&lt;/amp&gt;
+</ul>
+where the following attributes of the root element, amp, are required:
+<ul>
+	<li>xtype - "msg", "return", "error".  Indicates the type of document.  Xtype is
+	 always "msg" for AMP requests.  This attribute is optional.</li>
+	<li>target - target agent. The target agent is the name of a target agent supported by
+	the application or _ais for built-in functions.</li>
+	<li>act - speech act. Any child agent provided by the named target agent.</li>
+</ul>
+<p>
+The contents of the root element may include zero or more child elements that specify
+a set of name-value pairs appropriate for the speech act named.</p>
+
+<h3>2.3.1 XML Encoding</h3>
+<p>
+AMP Messages sent to AIS using the XML protocol must encoded according to XML specifications.
+There are five, and only five, special characters that should be encoded as specified
+by the XML standard.  All other HTML encodings are neither necessary nor desirable.
+The predefined entities are shown on the right  for the following symbols (shown on the
+left):</p>
+<ul>
+	<li>&amp;   &amp;amp;</li>
+	<li>&lt;   &amp;lt;</li>
+	<li>&gt;   &amp;gt;</li>
+	<li>'   &amp;apos;</li>
+	<li>&quot;   &amp;quot;</li>
+</ul>
+<p>
+The standard requires that these characters (except the less-than sign (&lt;)) embedded
+in the content of an XML doc be encoded as predefined entities.</p>
+
+<h2>2.4 APP Server</h2><p>
+A target agent can be called directly using an AMP message of the form:<br>
+targetAgent<b>[]</b> * <b>[]</b>paramName<b>[]</b>paramValue…
+<p>
+A speech act can be called directly using an AMP message of the form:<br>
+targetAgent<b>[]</b>speechAct<b>[]</b>paramName<b>[]</b>paramValue…</p>
+<p>
+In the first case, the faces statement in the definition of the target agent determines
+the type of access that is allowed.  In the second case, the faces statement in the
+definition of the speech act determines the type of access.  In either case, the faces
+statement is of the form:</p>
+<pre>
+(defun someAgent (arg)
+    faces: (
+        (public type)     ; the type of access as noted below
+        (security level)  ; level is a value from 0 to 7 (7 is highest)
+)
+...
+)
+</pre>
+<p>
+Type is one of the following:</p>
+<ul>
+	<li><b>Amp:</b>   arg is a message structure described above.  The agent is
+	 expected to return a message structure.</li>
+
+	<li><b>true</b>   arg represents zero or more parameters passed as the parameter
+	 values in the incoming AMP message.  The target agent, speech act, and parameter
+	 names are not passed to the agent.  The return value does not have to be a structure.
+	 The return value is converted to a string and returned to the client.</li>
+	<li><b>false</b>    access is denied.  The agent can only be invoked internally.</li>
+</ul>
+<p>
+If the security value is omitted, it is set to zero.  If the public value is omitted,
+it is set to false.  Note that the target agent can have no access, but its speech acts
+can be accessible or vice versa.  Typically, the target agent is called for performing
+the initialization of an agent.</p>
+
+<h2>2.5 AIS Return Messages</h2><p>
+AMP agents return a structure. This structure is called the AIS Return Message
+Structure or just the AIS Return Structure.  The AIS Return Structure is processed, by
+AIS, into an AIS Output Message or just Aisout.  Aisout is a DEL-delimited
+string returned directly to the APP client.   HTTP and XML protocols transform Aisout
+into the appropriate format as described below.</p>
+<p>
+The structure returned by an AMP agent will often contain the same elements that were
+contained in the structure passed to the AMP agent when it was first called. It is
+expected that the AMP agent may modify and/or add elements to the structure during
+its processing. Of particular interest to AIS is the element named "_returntype".
+The value of this structure element instructs AIS on how to package the AIS return
+structure for return to the client application.</p>
+<p>
+The processing, performed by AIS, on the AIS Return Structure is driven by the value of
+the "_returntype" element. Valid _returntype values include:</p>
+<ol>
+	<li>AMP Message Processing</li>
+	<li>URL Message Processing</li>
+	<li>File Message Processing</li>
+	<li>Text Message Processing</li>
+</ol>
+<p>
+If no _returntype element is provided by the AMP agent, AMP Message Processing will be
+performed.  Besides AMP requests, other requests, such as built-in requests, can be
+submitted which do not involve a _returntype.  In these cases, the returned response
+is described for each protocol below.</p>
+
+<h3>2.5.1 Return Message Structure Processing</h3>
+<p> 
+When AMP Messages are returned from an AMP agent, they are processed in two phases. The
+first phase handles all transformations required regardless of the type of client
+connection protocol in use.  The second phase is performed by the connection protocol
+server communicating with the client.  AIS currently supports HTTP and XML Sockets
+connection protocols as well as an APP in-process protocol.</p>
+<p>
+In the first processing phase, the following steps are taken:</p>
+<ol>
+	<li>The _returntype element is found and a note of the requested processing made.
+	 AMP message processing is assumed if no _returntype element is found.</li>
+	<li>The _error element is searched for and if it exists a note is made of the _error
+	element value is returned separately.  This error message is logged using the system
+	message log.</li>
+	<li>Elements that begin with an underscore in the AIS Return Structure are not
+	returned.</li>
+</ol>
+<p>
+In the second processing phase, the message is packaged according to the type of client
+communication protocol in use.</p>
+<p>
+<b>_error Elements</b><br>
+The _error element allows an AMP agent to record an error in the system log. The _error
+element is never returned to the client.   Include error messages intended for the client
+in application-defined elements of the AMP message.</p>
+
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b>_returntyp</b></td>
+		<td><b>Message Processing</b></td></tr>
+	<tr valign=top><td>0 - AMP processing</td>
+		<td>The AIS Return Structure is transformed into a DEL-separated list of
+		name-value pairs with all private elements removed.  Private elements are those
+		whose name begins with an underscore.  This string is referred to as the retmsg. The
+		initiating targetAgent and speechAct are automatically prepended to the retmsg.</td>
+	</tr>
+	<tr valign=top><td>1 - URL processing</td>
+		<td>The AIS Return Structure is searched for an element having the name _url. The
+		client is sent a redirect message to the resource specified by the value of the
+		_url element. The returned URL may contain a query string.  In this case, the AMP
+		agent itself is responsible for URL encoding the value of the _url element.</td>
+	</tr>
+	<tr valign=top><td>2 - FILE processing</td>
+		<td>The AIS Return Structure is searched for an element having the name _file.
+		The value of the _file element is a file specification relative to the AIS root
+		directory (a root directory in AIS is defined for each protocol ). The client is
+		sent the contents of the named file.  Due to the caching performed by some web
+		clients and proxies, redirection using a return type of &quot;1 - URL processing&quot;
+		may be a safer option than returning the contents of a file. </td>
+	</tr>
+		<tr valign=top><td>3- TEXT</td>
+		<td>The AIS Return Structure is searched for an element having the name _mimetext
+		and an element having the name _enctype. The client is sent the contents of the
+		_mimetext element encoded according to the encoding type specified by the value
+		of _enctype. In general, a _enctype of "text/html" or "text/plain" should be used
+		for returning text to the client.</td>
+	</tr>
+</table>
+<p>
+Binary can be returned to the client by placing the binary in a local file in a
+subdirectory reserved for temporary files and then using the URL element to redirect
+the client to fetch the local file. Binary can also be returned using FILE processing.
+AIS will delete old temporary files from the temporary file directory from time-to-time.
+The file extension provides the web client with important information regarding the nature
+of the binary file.  For example, foo.bmp is interpreted by most HTTP clients as a
+bit-mapped image file.</p>
+<h4>Supported Enctypes</h4>
+<p>
+If the returntype is set to 3 (TEXT) the following enctypes are supported:</p>
+<ul>
+	<li><b>text/plain</b> The _mimetext is returned to the client without any modification.</li>
+	<li><b>text/html</b>  The _mimetext is returned to the client without any modification.
+	The web client expects this text to conform to the HTML standard.</li>
+	<li><b>application/x-ampmsg</b>   The _mimetext should be a url-encoded query string that
+	consists of a set of name-value pairs.  Typically, the first pair should be the calling
+	target agent and its speech act.  The query string is url-decoded and converted into
+	an AMP message string.   HTTP processing and XML processing proceeds in the same
+	fashion as for a retmsg as described below for return type 0.</li>
+</ul>
+
+<h4>Application/x-ampmsg Example</h4>
+<p>
+Suppose _returntype is set to 3, _enctype is set to application/x-ampmsg and _mimetext
+is set to:</p>
+<ul>
+	someAgent=someSpeechAct&amp;name=Bill%20House&mp;zip=92866
+</ul>
+<p>
+Then, the query string is url-decoded and converted to an aisout message:</p>
+<ul>
+	someAgent<b>[]</b>someSpeechAct<b>[]</b>name<b>[]</b>Bill House<b>[]</b>zip<b>[]</b>92866
+</ul>
+<p>
+This aisout message is further processed as noted below for each protocol as described
+below.</p>
+
+<h3>2.5.2 Returned AIS Messages</h3>
+<p>
+If the request is submitted to the engine for processing, the RequestID is returned to APP
+clients immediately (HTTP and XML clients do not get back a RequestID).  Later, the response
+to the client's request is returned.  In the case of a request from an APP server, the RequestID
+is prepended to the response.</p>
+<p>
+<b>Pushed Output. </b> Pushed output includes display output and other output
+(e.g. send-to-client).  The target agent and the speech act are not prepended to display
+output but they are prepended to other unsolicited output.</p>
+<p>
+<b>Buffered Output.</b>  Console output generated by writeln, display, etc is buffered
+at the server and then sent out after a timeout occurs or when the return result is sent
+back to the client.  Output buffering enhances the performance of the server considerably.</p>
+
+<h3>2.5.3 Returned XML Messages</h3>
+<p>
+AMP Return Message Structures are packaged and returned to XML Socket clients based upon the
+type of processing specified by the _returntype element in that structure. The following
+table enumerates the types of processing performed in phase two for XML message responses.</p>
+<p>
+The XML server includes four attributes to the root element of the returned XML document.</p>
+<ul>
+	<li><b>xid</b> If an xid attribute with an integer value is supplied in the original
+	request, the xid is returned unmodified in the response.</li>
+	<li><b>xtype</b> The xtype is set to &quot;return&quot; to distinguish it from other
+	message types.</li>
+	<li><b>target</b> The target attribute is set to the original targetAgent that made
+	the request.</li>
+	<li><b>act</b> The act attribute is set to the speech act of the originating request.</li>
+</ul>
+<h4>Example</h4>
+Given a logon request as guest with an xid of 123, the returned XML document would be:
+<pre>
+&lt;amp xid=&quot;123&quot; xtype=&quot;return&quot; target=&quot;_ais&quot; act=&quot;logon&quot&gt;
+&lt;userid&gt;5&lt;/userid&gt;&lt;level&gt;1&lt;/level&gt;&lt;days&gt;512&lt;/days&gt;
+&lt;comment&gt;Guest logon&lt;/comment&gt;&lt;/amp&gt;
+</pre>
+<h2>2.6 SendToClient</h2><p>
+AMP agents may send messages to selected clients using the sendToClient SmartLisp function.
+SendToClient takes two arguments. The first the sessionID of the client to whom the information
+should be sent. The second argument is a structure that will be converted to an Aisout message
+by AIS and then sent to the client associated with the specified sessionID. 
+<p>
+Consider the following example:</p>
+<pre>
+(defun sendToClientAct(iMsgStruct)
+	faces:((public Amp:))
+	vars:(aResult aSessionId aMsg)
+	;; Send a message
+	(setq aSessionId iMsgStruct[_sessionid:])
+	(setq aMsg #{
+			testAgent: &quot;sendToClient&quot;})
+msg: &quot;Message from sendToClientAct&quot;
+})
+	(sendToClient aSessionId aMsg)
+	;; Set the result
+	(setq aResult &quot;message was sent&quot;)
+
+	;; Put the result into the returned structure.
+	(setq iMsgStruct[_mimetext:] aResult)
+	(setq iMsgStruct[_enctype:] &quot;text/plain&quot;)
+	(setq iMsgStruct[_returntype:] 3)	; Return text to client
+	;; Check result
+	(writeln iMsgStruct)
+	(return iMsgStruct)
+ )
+</pre>
+Three returns will be made:
+<ul>
+	<li>The structure aMsg returned by call to sendToClient</li>
+	<li>Contents of writeln showing the internal AMP message structure (sent to Server
+	 Status Window)</li>
+	<li>Text returned by the AMP call (return type 3)</li>
+</ul>
+<p>
+An example of these three returns (shown here as DEL-delimited strings) is:</p>
+<ul>
+testAgent<b></b>sendToClientAct<b></b>msg<b></b>Message from sendToClientAct<br><br>
+#{testAgent: &quot;sendToClientAct&quot; _sessionid: 0 _userid: 1 _level: 7 _mimetext:
+&quot;message was sent&quot; _enctype: &quot;text/plain&quot; _returntype: 3}<br><br>
+testAgen<b></b>sendToClientAct<b></b>message was sent<br>
+</ul>
+<p>
+Http clients only receive the final return result (the last message) since HTTP requires
+one response per request.  XML clients receive the first and last messages formatted as XML
+documents.  App clients receive the messages as shown above where <b>[]</b> indicates a DEL
+character.</p>
+<p>
+For XML-oriented applications, the choice of the first element in the sendToClient return is
+returned as a pair of attributes in the root element.  The &quot;target&quot; attribute is set
+to the name of the first element.  The &quot;act&quot; attribute is set to the value of the
+first element.  This allows the client to process sendToclient messages with the same logic as
+for all other responses from AIS.  Typically, applications make the first element the name of a
+target agent with its value set to an associated speech act, but this choice is not required.</p>
+</body>
+</html>

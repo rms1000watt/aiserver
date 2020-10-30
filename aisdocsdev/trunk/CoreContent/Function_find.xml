@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>find</Title>
+		<FunctionName>find</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>String Vector Integer</ArgumentTypes>   
+		<DataType>String  </DataType>
+		<RelatedFunctions>mid left right</RelatedFunctions>
+        <RelatedVMInstructions> vmregStringCompare vmregStringiCompare  </RelatedVMInstructions>
+		<HumanKeywords>find  string member</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[ 
+             <p> The <b>find</b> function returns the location of a match string in a target.                  string or text. </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The find function returns the location of a match string found 
+		in a target string. The <b>find</b> function is case sensitive 
+		(upper and lower case letters do not match). If the match string is 
+		not found, the Boolean value false is returned. The <b>find</b> 
+		function may also be supplied with a vector of match strings instead 
+		of just a single match string (up to 256 match strings are supported).
+		If a vector of match strings is supplied, then the <b>find</b> 
+		function returns the location of the first match string found, and 
+		sets the cdr of the match vector to the index of the match string 
+		found.
+        </p>
+        <ul><li>(find matchstr targetstr startpos)</li></ul>
+        <ul><li>(find matchVector targetstr startpos)</li></ul> 
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>find</b> function is used to locate a match string in a target 
+        String or Text.</p>
+         ]]></Usage>
+    </Brief>
+	<Syntax-String>
+	    <Expression><![CDATA[(find matchstr targetstr startpos)]]></Expression>
+		<Argument> 
+		  <Name>matchstr</Name>
+		  <Note><![CDATA[
+		  <p> The match string </p>
+          ]]></Note>
+		  <AISTypes>string</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>targetstr</Name>
+		  <Note><![CDATA[
+		  <p> The target string </p>
+          ]]></Note>
+		  <AISTypes>string</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>startpos</Name>
+		  <Note><![CDATA[
+		  <p> (optional) The position in the targetstr where the 
+		  search is to begin</p>
+          ]]></Note>
+		  <AISTypes>integer</AISTypes>   
+		</Argument>     
+		<Return><![CDATA[ 
+	    <p>The position where the match string  was found. If the match 
+	    string was not found,  the  find function returns false. The match 
+	    string cannot contain wildcard characters.  If it contains empty text<br>  
+	    (i.e. ""), find returns the character position specified by startpos.
+	    </p>
+	    ]]></Return>
+	</Syntax-String>
+	<Syntax-String>
+		<Expression><![CDATA[(find matchVector targetstr startpos)]]></Expression> 
+		<Argument> 
+		  <Name>matchVector</Name>
+		  <Note><![CDATA[
+		  <p> A vector of match strings (up to a maximum of 256 
+		  match strings)</p>
+          ]]></Note>
+		  <AISTypes>vector</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>targetstr</Name>
+		  <Note><![CDATA[
+		  <p> The target string </p>
+          ]]></Note>
+		  <AISTypes>string</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>startpos</Name>
+		  <Note><![CDATA[
+		  <p> (optional) The position in the targetstr where the 
+		  search is to begin</p>
+          ]]></Note>
+		  <AISTypes>integer</AISTypes>   
+		</Argument>   
+		<Return><![CDATA[ 
+	    <p>The position where the first match string  was found. If no match 
+	    strings were found, the find function returns false. No match string 
+	    may contain wildcard characters. The index of the found match string 
+	    (in the vector of match strings) is set into the cdr of the vector of 
+	    match strings.
+	    </p>
+	    ]]></Return>   
+	</Syntax-String>
+</Function>

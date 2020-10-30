@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Void defmethod 010</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>addMethod</FunctionKeywords>
+		<TypeKeywords>Void Dictionary Symbol</TypeKeywords>
+		<RelatedFunctions>addMethod send methodsOf</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>method message messageName</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[<p> This example defines a method named <b>AddError</b> that is invoked when 
+                 the Void type receives an <b>Add</b> message.  The <b>AddError</b> method simply 
+                 displays an error message. The logic behind the error message is that the Void 
+                 type, or the  #void constant cannot  be used as an operand in a binary add.</p>
+	]]></Description>
+	<Syntax> 
+	<Expression><![CDATA[<sc>(defun AddError (a b) writeln "Error: Adding to Void is Invalid")     </sc>]]></Expression>  
+    <Note><![CDATA[ Define the AddError method:]]></Note> 
+    <Returns><![CDATA[ #&#60Lambda 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(defmethod  Void: Add(a b) (AddError a b))      </sc> ]]></Expression>
+    <Note><![CDATA[Install the AddError method and the message named Add in the Void Methods Dictionary .]]></Note>
+    <Returns><![CDATA[#&#60Dictionary 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(send Add: X 1)       </sc> ]]></Expression>
+    <Note><![CDATA[To invoke the Lambda that responds to the Add message, issue the following statement:]]></Note>
+    <Returns><![CDATA[Error: Adding to Void is Invalid]]></Returns>
+    <Expression><![CDATA[<sc>(Add: X 1)   </sc> ]]></Expression>
+    <Note><![CDATA[Alternatively, the Lambda may be invoked using the following syntax:]]></Note>
+    <Returns><![CDATA[Error: Adding to Void is Invalid]]></Returns>
+    <Hints><![CDATA[ 
+        <p>To view the entry in the methods Dictionary created by the defmethod function, 
+           you can use the method name to access the directory entry by </p>
+        <p><b> #&#60Dictionary 123456&#62[methodName:] or </b></p>
+        <p> To determine the number of assigned methods:</p>
+        <p><b>(length  (methodsOf Void: ))</b></p>        
+        <p>To access the nth method name:</p>
+        <p><b>(methodsOf Void: )[n  0]</b></p>
+]]></Hints>
+</Syntax>
+</Example>

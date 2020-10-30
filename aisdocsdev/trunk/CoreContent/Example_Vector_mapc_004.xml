@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Vector mapc 004</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>mapc</FunctionKeywords>
+		<TypeKeywords>Vector</TypeKeywords>
+		<RelatedFunctions>map </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>map mapc copy process</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ The following example will define a user function, <b>makePlural</b>, 
+
+
+
+                  that will take an argument (which is a Vector value).
+                  The <b>mapc</b> function then applies each Vector value
+
+
+                  as argument to the function <b>makePlural</b>.            
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define Fruits #("apple" "orange" "lemon")    )</sc>]]></Expression>
+        <Note><![CDATA[Define a Vector containing various fruit names:]]></Note>
+        <Returns><![CDATA[#&#60Vector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(defun makePlural (V) (append V "s"))  </sc>]]></Expression>
+        <Note><![CDATA[Define a function that takes a single Vector argument and converts each vector member to plural.]]></Note>
+        <Returns><![CDATA[#&#60Lambda 123456&#62]]></Returns>
+  <Expression><![CDATA[ <sc>(setq many (mapc makePlural Fruits) )    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[lemons]]></Returns>
+        <Hints><![CDATA[
+               <p>The <b>mapc</b> function does not produce a duplicate Directory as in 
+               the <b>map</b> function.</p>
+      ]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,642 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>compare</Title>
+		<FunctionName>compare</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>String Symbol Structure Dictionary Directory Boolean Number Date Complex Lambda
+                        Vector Brick Integer Matrix Pair List Void Character Function 
+NumMatrix CpxVector
+                       FltVector ShortVector IntVector NumVector ObjVector BitVector ObjectRepository</ArgumentTypes>         
+		<DataType>String Symbol Structure Dictionary ShortVector Directory Vector Number Lambda NumMatrix Pair List Matrix Brick Void Boolean Character Date Function Complex CpxVector FltVector IntVector NumVector ObjVector BitVector ObjectRepository</DataType>
+		<RelatedFunctions>compareEQ compareNE compareGT compareGE compareLT  compareLE </RelatedFunctions>
+        <RelatedVMInstructions> vmregStringCompare vmregStringiCompare  </RelatedVMInstructions>
+		<HumanKeywords>compare</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[ 
+             <p> The <b>compare</b> function compares two arguments of the same type and returns a numerical
+                result depending on whether both arguments are equivalent or not. </p>
+          ]]></Description>
+	<Brief>
+	   <Overview-String><![CDATA[
+		<p>The <b>compare</b> Function returns 0 if both Strings are equivalent. 
+           If string1 is less than string2, then -1 is returned. If string1 is greater than 
+           string2, then +1 is returned. 
+        </p>
+        ]]></Overview-String>
+        <Overview-Symbol><![CDATA[
+		<p>The <b>compare</b> Function returns 0 if both Symbols are equivalent. 
+           If <b>{sym1}</b>  is less than  <b>{sym2}</b> , then -1 is returned. If  <b>{sym1}</b> 
+           is greater than  <b>{sym2}</b> , then +1 is returned. 
+        </p>
+        ]]></Overview-Symbol>
+        <Overview-Structure><![CDATA[
+		<p>The <b>compare</b> Function returns 0 if its arguments are equivalent. 
+           If <b>{struct1}</b>  is less than  <b>{struct2}</b> , then -1 is returned. If  <b>{struct1}</b> 
+           is greater than  <b>{struct2}</b> , then +1 is returned. Two Structures are equal if the keys and 
+           values from both are equal.
+        </p>
+        ]]></Overview-Structure>
+        <Overview-Dictionary><![CDATA[
+		<p>The <b>compare</b> Function returns 0 if its arguments are equivalent. 
+           If <b>{dict1}</b>  is less than  <b>{dict2}</b> , then -1 is returned. If  <b>{dict1}</b> 
+           is greater than  <b>{dict2}</b> , then +1 is returned. Two Dictionaries are equal if the keys and 
+           values from both are equal.
+        </p>
+        ]]></Overview-Dictionary>
+        <Overview-Directory><![CDATA[
+		<p>The <b>compare</b> Function returns 0 if its arguments are equivalent. 
+           If <b>{dir1}</b>  is less than  <b>{dir2}</b> , then -1 is returned. If  <b>{dir1}</b> 
+           is greater than  <b>{dir2}</b> , then +1 is returned. Two Directories are equal if the keys and 
+           values from both are equal.
+        </p>
+        ]]></Overview-Directory>
+        <Overview-Brick><![CDATA[
+		<p>The <b>compare</b> function returns 0 if its field data elements are identical. 
+           If <b>{brick1}</b> is less than <b>{brick2}</b>, then -1 is returned. 
+           If <b>{brick1}</b> is greater than <b>{brick2}</b> , then +1 is returned.  
+           Two Bricks are equal if their field data elements are identical.
+        </p>
+        ]]></Overview-Brick>
+        <Overview-Matrix><![CDATA[
+		<p>The <b>compare</b> Function returns 0 if  both Matrix arguments  are equivalent. 
+           If Matrix1  is less than Matrix2, then -1 is returned. If Matrix1  is greater than 
+           Matrix2, then +1 is returned.  Two Matrices are equal if all of the  values from both 
+           are equal.
+        </p>
+        ]]></Overview-Matrix>
+        <Overview-NumMatrix><![CDATA[
+		<p>The <b>compare</b> Function returns 0 if  both NumMatrix arguments  are equivalent. 
+           If NumMatrix1  is less than NumMatrix2, then -1 is returned. If NumMatrix1  is greater than 
+           NumMatrix2, then +1 is returned.  Two NumMatrices are equal if all of the  values from both 
+           are equal.
+        </p>
+        ]]></Overview-NumMatrix>
+       <Overview-Pair><![CDATA[
+		<p>The <b>compare</b> function returns 0 if  both Pair (or List)  arguments  are 
+            equivalent. If pair1   is less than pair2, then -1 is returned. If pair1 is greater 
+            than pair2, then +1 is returned.  Two Pairs are equal if all of the values from both 
+            are equal.
+        </p>
+        ]]></Overview-Pair>
+       <Overview-Number><![CDATA[
+		<p>The <b>compare</b> function returns 0 if  two numbers <b>{num1}</b> and <b>{num2}</b>  are 
+            equivalent. If {num1} is less than {num2}, then -1 is returned. If {num1} is greater 
+            than {num2}, then +1 is returned.  
+        </p>
+        ]]></Overview-Number>
+       <Overview-Date><![CDATA[
+		<p>Comparison of  Date values is a valid operation since Dates are internally represented 
+           as numbers.  The <b>compare</b> function returns 0 if two dates:  <b>{date1}</b> and 
+           <b>{date2}</b> are equivalent. If the value of the first object <b>{date1}</b>  is 
+           less than the value of the second object  <b>{date2}</b>,  then -1 is returned. If 
+           <b>{date1}</b> is greater than <b>{date2}</b>,  then +1 is returned. 
+        </p>
+        ]]></Overview-Date>
+       <Overview-Function><![CDATA[
+		<p>Comparison of Function values is a valid operation.
+          A function's object id is simply the function name itself. The <b>compare</b> function 
+          returns 0 if two function arguments have the same object id:  <b>{func1}</b> and <b>{func2}</b>. 
+          If the object id of the first function <b>{func1}</b> is less than the object id of the 
+          second function  <b>{func2}</b>, then -1 is returned. If the object id of the <b>{func1}</b> 
+          is greater than <b>{func2}</b>, then +1 is returned. 
+        </p>
+        ]]></Overview-Function>
+       <Overview-Complex><![CDATA[
+		<p>Comparison of complex values is supported. The <b>compare</b> function returns
+           0 if two  arguments have the same real and imaginary parts.  If the first real 
+           value <b>{cpx 1}</b> is less than the the second real value  <b>{cpx2}</b>, or, 
+           if the real parts are equal and the first imaginary value is less than the 
+           second imaginary value, then -1 is returned.  Similarly, if the first real value 
+           of <b>{cpx1}</b> is greater than the real value of {cpx2}, or, if the real parts 
+           are equal and the first imaginary part is greater than the second, then +1 is 
+           returned. 
+        </p>
+        ]]></Overview-Complex>
+       <Overview-Lambda><![CDATA[
+		<p>The <b>compare</b> function tests if two Lambdas equal, greater than, or less than. Two Lambdas 
+          are equal, if they have the same variables, constants, and identical PcodeVectors. 
+          The <b>compare</b> function returns an Integer value: <b>0</b> if the Lambdas are equal,
+          <b>+1</b> if <b>{Lambda1}</b> is greater than <b>{Lambda2}</b>, and <b>-1</b> if <b>{Lambda1}</b> 
+           is less than <b>{Lambda2}</b>.
+        </p>
+        ]]></Overview-Lambda>
+       <Overview-ObjectRepository><![CDATA[
+		<p>The <b>compare</b> function returns 0 if both Object Repository arguments are equivalent.
+         Two Object Repositories are equal if they are the same file. If Object Repository1's filename 
+         <b>{aGor1}</b> is less than Object Repository2's filename <b>{aGor2}</b>, then -1 is returned. 
+         If Object Repository1's filename <b>{aGor1}</b> is greater than Object Repository2's filename 
+        <b>{aGor2}</b>, then +1 is returned. 
+        </p>
+        ]]></Overview-ObjectRepository>
+       <Overview><![CDATA[
+		<p>The <b>compare</b> function returns 0 if two objects: {obj1} and {obj2} are equivalent.  
+           If the value of the first object <b>{obj1}</b> is less than the value of the second 
+           object  <b>{obj1}</b>,  then -1 is returned. If <b>{obj1}</b> is greater than <b>{obj2}</b>,  
+           then +1 is returned. 
+        </p>
+        ]]></Overview>
+        <Usage-Lambda><![CDATA[
+        <p>The <b>compare</b> performs a deep compare and will determine if two Lambdas have the same 
+           variables, constants and pcode vectors.  Usually if an Lambda is cloned (copied) from 
+           another Lambda and the cloned Lambda is assigned a new name, the <b>compare</b> will see 
+           that the newly cloned Lambda and original Lambda are equivalent and will return 0 (equal).
+         </p>
+         ]]></Usage-Lambda>
+        <Usage><![CDATA[
+        <p>Use the <b>compare</b> function when you wish to compare two arguments of the
+           same Data Type and the  result value needs to be  represented as a numeric (0, 1 or -1). 
+           If a Boolean result is desired, then the Comparison Functions (=, &#60&#62, &#60, 
+           &#60=, &#62, &#62=) or the compareEQ, compareNE, compareGT, compareGE, 
+           compareLT, compareLE should be used instead. </p>
+         ]]></Usage>
+    </Brief>
+	<Syntax-String>
+	    <Expression><![CDATA[ (compare string1  string2 )]]></Expression>
+		<Argument> 
+		  <Name>string1</Name>
+		  <Note><![CDATA[
+		  <p> The first String to be compared </p>
+          ]]></Note>
+		  <AISTypes>String</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>string2</Name>
+		  <Note><![CDATA[
+		  <p>The second String to be compared</p>
+          ]]></Note>
+		  <AISTypes>String</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns 0 if the two Strings  are equal, Returns -1 if the string1 is less 
+           than string2, returns +1 if string1 is greater than string2.
+	    </p>
+	    ]]></Return>
+	</Syntax-String>
+	<Syntax-Symbol>
+	    <Expression><![CDATA[ (compare sym1  sym2 )]]></Expression>
+		<Argument> 
+		  <Name>sym1</Name>
+		  <Note><![CDATA[
+		  <p> The first Symbol to be compared </p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>sym2</Name>
+		  <Note><![CDATA[
+		  <p>The second Symbol to be compared</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns 0 if the two Symbols  are equal, Returns -1 if the sym1 is less 
+           than sym2, returns +1 if sym1 is greater than sym2.
+	    </p>
+	    ]]></Return>   
+	</Syntax-Symbol>
+	<Syntax-Structure>
+	    <Expression><![CDATA[ (compare struct1  struct2 )]]></Expression>
+		<Argument> 
+		  <Name>struct1</Name>
+		  <Note><![CDATA[
+		  <p> The first Structure to be compared </p>
+          ]]></Note>
+		  <AISTypes>Structure</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>struct2</Name>
+		  <Note><![CDATA[
+		  <p>The second Structure to be compared</p>
+          ]]></Note>
+		  <AISTypes>Structure</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns 0 if the two Structures  are equal, Returns -1 if the struct1 is less 
+           than struct2, returns +1 if struct1 is greater than struct2.
+	    </p>
+	    ]]></Return>   
+	</Syntax-Structure>
+   <Syntax-Dictionary>
+	    <Expression><![CDATA[ (compare dict1  dict2 )]]></Expression>
+		<Argument> 
+		  <Name>dict1</Name>
+		  <Note><![CDATA[
+		  <p> The first Dictionary to be compared </p>
+          ]]></Note>
+		  <AISTypes>Dictionary</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>dict2</Name>
+		  <Note><![CDATA[
+		  <p>The second Dictionary to be compared</p>
+          ]]></Note>
+		  <AISTypes>Dictionary</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns 0 if the two Dictionaries  are equal, Returns -1 if the dict1 is less 
+           than dict2, returns +1 if dict1 is greater than dict2.
+	    </p>
+	    ]]></Return>   
+	</Syntax-Dictionary>
+    <Syntax-Directory>
+	    <Expression><![CDATA[ (compare dir1  dir2 )]]></Expression>
+		<Argument> 
+		  <Name>dir1</Name>
+		  <Note><![CDATA[
+		  <p> The first Directory to be compared </p>
+          ]]></Note>
+		  <AISTypes>Directory</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>dir2</Name>
+		  <Note><![CDATA[
+		  <p>The second Directory to be compared</p>
+          ]]></Note>
+		  <AISTypes>Directory</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns 0 if the two Directories  are equal, Returns -1 if   dir1 is less 
+           than dir2, returns +1 if dir1 is greater than dir2.
+	    </p>
+	    ]]></Return>   
+	</Syntax-Directory>
+   <Syntax-Vector>
+	    <Expression><![CDATA[ (compare vector1  vector2 )]]></Expression>
+		<Argument> 
+		  <Name>vector1</Name>
+		  <Note><![CDATA[
+		  <p> The first Vector to be compared </p>
+          ]]></Note>
+		  <AISTypes>Vector</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>vector2</Name>
+		  <Note><![CDATA[
+		  <p>The second Vector to be compared</p>
+          ]]></Note>
+		  <AISTypes>Vector</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns 0 if the two Vectors  are equal, Returns -1 if vector1 is less 
+           than vector2, returns +1 if vector1 is greater than vector2.
+	    </p>
+	    ]]></Return>   
+	</Syntax-Vector>
+   <Syntax-FltVector>
+	    <Expression><![CDATA[ (compare vector1  vector2 )]]></Expression>
+		<Argument> 
+		  <Name>vector1</Name>
+		  <Note><![CDATA[
+		  <p> The first Vector to be compared </p>
+          ]]></Note>
+		  <AISTypes>Vector</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>vector2</Name>
+		  <Note><![CDATA[
+		  <p>The second Vector to be compared</p>
+          ]]></Note>
+		  <AISTypes>Vector</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns 0 if the two Vectors  are equal, Returns -1 if vector1 is less 
+           than vector2, returns +1 if vector1 is greater than vector2.
+	    </p>
+	    ]]></Return>   
+	</Syntax-FltVector>
+   <Syntax-IntVector>
+	    <Expression><![CDATA[ (compare vector1  vector2 )]]></Expression>
+		<Argument> 
+		  <Name>vector1</Name>
+		  <Note><![CDATA[
+		  <p> The first Vector to be compared </p>
+          ]]></Note>
+		  <AISTypes>Vector</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>vector2</Name>
+		  <Note><![CDATA[
+		  <p>The second Vector to be compared</p>
+          ]]></Note>
+		  <AISTypes>Vector</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns 0 if the two Vectors  are equal, Returns -1 if vector1 is less 
+           than vector2, returns +1 if vector1 is greater than vector2.
+	    </p>
+	    ]]></Return>   
+	</Syntax-IntVector>
+   <Syntax-NumVector>
+	    <Expression><![CDATA[ (compare vector1  vector2 )]]></Expression>
+		<Argument> 
+		  <Name>vector1</Name>
+		  <Note><![CDATA[
+		  <p> The first Vector to be compared </p>
+          ]]></Note>
+		  <AISTypes>Vector</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>vector2</Name>
+		  <Note><![CDATA[
+		  <p>The second Vector to be compared</p>
+          ]]></Note>
+		  <AISTypes>Vector</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns 0 if the two Vectors  are equal, Returns -1 if vector1 is less 
+           than vector2, returns +1 if vector1 is greater than vector2.
+	    </p>
+	    ]]></Return>   
+	</Syntax-NumVector>
+   <Syntax-ObjVector>
+	    <Expression><![CDATA[ (compare vector1  vector2 )]]></Expression>
+		<Argument> 
+		  <Name>vector1</Name>
+		  <Note><![CDATA[
+		  <p> The first Vector to be compared </p>
+          ]]></Note>
+		  <AISTypes>Vector</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>vector2</Name>
+		  <Note><![CDATA[
+		  <p>The second Vector to be compared</p>
+          ]]></Note>
+		  <AISTypes>Vector</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns 0 if the two Vectors  are equal, Returns -1 if vector1 is less 
+           than vector2, returns +1 if vector1 is greater than vector2.
+	    </p>
+	    ]]></Return>   
+	</Syntax-ObjVector>
+   <Syntax-BitVector>
+	    <Expression><![CDATA[ (compare vector1  vector2 )]]></Expression>
+		<Argument> 
+		  <Name>vector1</Name>
+		  <Note><![CDATA[
+		  <p> The first Vector to be compared </p>
+          ]]></Note>
+		  <AISTypes>Vector</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>vector2</Name>
+		  <Note><![CDATA[
+		  <p>The second Vector to be compared</p>
+          ]]></Note>
+		  <AISTypes>Vector</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns 0 if the two Vectors  are equal, Returns -1 if vector1 is less 
+           than vector2, returns +1 if vector1 is greater than vector2.
+	    </p>
+	    ]]></Return>   
+	</Syntax-BitVector>
+   <Syntax-CpxVector>
+	    <Expression><![CDATA[ (compare vector1  vector2 )]]></Expression>
+		<Argument> 
+		  <Name>vector1</Name>
+		  <Note><![CDATA[
+		  <p> The first CpxVector to be compared </p>
+          ]]></Note>
+		  <AISTypes>CpxVector</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>vector2</Name>
+		  <Note><![CDATA[
+		  <p>The second CpxVector to be compared</p>
+          ]]></Note>
+		  <AISTypes>CpxVector</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns 0 if the two CpxVector  are equal, Returns -1 if vector1 is less 
+           than vector2, returns +1 if vector1 is greater than vector2.
+	    </p>
+	    ]]></Return>   
+	</Syntax-CpxVector>
+   <Syntax-ShortVector>
+	    <Expression><![CDATA[ (compare vector1  vector2 )]]></Expression>
+		<Argument> 
+		  <Name>vector1</Name>
+		  <Note><![CDATA[
+		  <p> The first ShortVector to be compared </p>
+          ]]></Note>
+		  <AISTypes>ShortVector</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>vector2</Name>
+		  <Note><![CDATA[
+		  <p>The second ShortVector to be compared</p>
+          ]]></Note>
+		  <AISTypes>ShortVector</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns 0 if the two ShortVectors  are equal, Returns -1 if vector1 is less 
+           than vector2, returns +1 if vector1 is greater than vector2.
+	    </p>
+	    ]]></Return>   
+	</Syntax-ShortVector>
+    <Syntax-Brick>
+	    <Expression><![CDATA[ (compare brick1  brick2 )]]></Expression>
+		<Argument> 
+		  <Name>brick1</Name>
+		  <Note><![CDATA[
+		  <p> The first brick to be compared </p>
+          ]]></Note>
+		  <AISTypes>Brick</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>brick2</Name>
+		  <Note><![CDATA[
+		  <p>The second Brick to be compared</p>
+          ]]></Note>
+		  <AISTypes>Brick</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns 0 if the two Bricks  are equal, Returns -1 if brick1 is less 
+           than brick2, returns +1 if brick1 is greater than brick2.
+	    </p>
+	    ]]></Return>   
+	</Syntax-Brick>
+    <Syntax-Matrix>
+	    <Expression><![CDATA[ (compare matrix1  matrix2 )]]></Expression>
+		<Argument> 
+		  <Name>matrix1</Name>
+		  <Note><![CDATA[
+		  <p> The first Matrix to be compared </p>
+          ]]></Note>
+		  <AISTypes>Matrix</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>matrix2</Name>
+		  <Note><![CDATA[
+		  <p>The second Matrix to be compared</p>
+          ]]></Note>
+		  <AISTypes>Matrix</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns 0 if Matrices are equal, Returns -1 if Matrix1 is less than Matrix2, 
+           returns +1 if Matrix1 is greater than Matrix2.
+	    </p>
+	    ]]></Return>   
+	</Syntax-Matrix>
+    <Syntax-NumMatrix>
+	    <Expression><![CDATA[ (compare nummatrix1  nummatrix2 )]]></Expression>
+		<Argument> 
+		  <Name>nummatrix1</Name>
+		  <Note><![CDATA[
+		  <p> The first NumMatrix to be compared </p>
+          ]]></Note>
+		  <AISTypes>NumMatrix</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>nummatrix2</Name>
+		  <Note><![CDATA[
+		  <p>The second NumMatrix to be compared</p>
+          ]]></Note>
+		  <AISTypes>NumMatrix</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns 0 if NumMatrices are equal, Returns -1 if NumMatrix1 is less than NumMatrix2, 
+           returns +1 if NumMatrix1 is greater than NumMatrix2.
+	    </p>
+	    ]]></Return>   
+	</Syntax-NumMatrix>
+   <Syntax-Pair>
+	    <Expression><![CDATA[ (compare pair1  pair2 )]]></Expression>
+		<Argument> 
+		  <Name>pair1</Name>
+		  <Note><![CDATA[
+		  <p> The first Pair to be compared </p>
+          ]]></Note>
+		  <AISTypes>Pair</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>pair2</Name>
+		  <Note><![CDATA[
+		  <p>The second Pair to be compared</p>
+          ]]></Note>
+		  <AISTypes>Pair</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns 0 if  Pairs  are equal, Returns -1 if pair1   is less than 
+           pair2, returns +1 if pair1 is greater than pair2 .
+	    </p>
+	    ]]></Return>   
+	</Syntax-Pair>
+  <Syntax-List>
+	    <Expression><![CDATA[ (compare list1  list2 )]]></Expression>
+		<Argument> 
+		  <Name>list1</Name>
+		  <Note><![CDATA[
+		  <p> The first List to be compared </p>
+          ]]></Note>
+		  <AISTypes>List</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>list2</Name>
+		  <Note><![CDATA[
+		  <p>The second List to be compared</p>
+          ]]></Note>
+		  <AISTypes>List</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns 0 if Lists are equal, Returns -1 if  list1  is less than 
+          list2, returns +1 if list1 is greater than list2.
+	    </p>
+	    ]]></Return>   
+	</Syntax-List>
+   <Syntax-Function>
+	    <Expression><![CDATA[ (compare func1  func2 )]]></Expression>
+		<Argument> 
+		  <Name>func1</Name>
+		  <Note><![CDATA[
+		  <p> The first Function to be compared. </p>
+          ]]></Note>
+		  <AISTypes>Function</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>func2</Name>
+		  <Note><![CDATA[
+		  <p>The second Function to be compared</p>
+          ]]></Note>
+		  <AISTypes>Function</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns 0 if the two Function object ids  are equal. 
+           Returns -1 if the func1 object id  is less than func2 object id. 
+           Returns +1 if func1 object id  is greater than func2 object id.
+	    </p>
+	    ]]></Return>   
+	</Syntax-Function>
+   <Syntax-Lambda>
+	    <Expression><![CDATA[ (compare Lambda1  Lambda2 )]]></Expression>
+		<Argument> 
+		  <Name>Lambda1</Name>
+		  <Note><![CDATA[
+		  <p> The first Lambda to be compared. </p>
+          ]]></Note>
+		  <AISTypes>Lambda</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>Lambda2</Name>
+		  <Note><![CDATA[
+		  <p>The second Lambda to be compared</p>
+          ]]></Note>
+		  <AISTypes>Lambda</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns 0 if the two Lambdas are equal. 
+           Returns -1 if the Lambda1  is less than Lambda2.
+           Returns +1 if Lambda1 is greater than Lambda2.
+	    </p>
+	    ]]></Return>   
+	</Syntax-Lambda>
+  <Syntax-ObjectRepository>
+	    <Expression><![CDATA[ (compare aGor1   aGor2 )]]></Expression>
+		<Argument> 
+		  <Name>aGor1</Name>
+		  <Note><![CDATA[
+		  <p> The first Object Repository to be compared. </p>
+          ]]></Note>
+		  <AISTypes>ObjectRepository</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>aGor2</Name>
+		  <Note><![CDATA[
+		  <p>The first Object Repository to be compared.</p>
+          ]]></Note>
+		  <AISTypes>ObjectRepository</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns 0 if the two Object Repositories  are equal. 
+           Returns -1 if the aGor1  is less than aGor2.
+           Returns +1 if aGor1 is greater than aGor2.
+	    </p>
+	    ]]></Return>   
+	</Syntax-ObjectRepository>
+   <Syntax>
+	    <Expression><![CDATA[ (compare obj1  obj2 )]]></Expression>
+		<Argument> 
+		  <Name>obj1</Name>
+		  <Note><![CDATA[
+		  <p> The first object to be compared. Must be a native data type (or complex). </p>
+          ]]></Note>
+		  <AISTypes>Void Boolean Character Number Date   Complex</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>obj2</Name>
+		  <Note><![CDATA[
+		  <p>The second object  to be compared. Must be a native data type (or complex).</p>
+          ]]></Note>
+		  <AISTypes>Void Boolean Character Number Date  Complex</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns 0 if the two objects  are equal. Returns -1 if the obj1 is less than obj2. 
+           Returns +1 if obj1 is greater than obj2.
+	    </p>
+	    ]]></Return>   
+	</Syntax>
+</Function>

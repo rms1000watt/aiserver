@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>second</Title>
+		<FunctionName>second</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>Number Date String Text Integer</ArgumentTypes>
+		<DataType>Date</DataType>
+		<RelatedFunctions> hour minute time </RelatedFunctions>
+        <RelatedVMInstructions> none  </RelatedVMInstructions>
+		<HumanKeywords>24-hour second clock </HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>second</b> function returns the second portion of a Date or Time argument.</p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+	    <p> The <b>second</b> function returns the second portion of a date or time argument. 
+            The second value ranges from 0 through 59.
+        </p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>second</b> function is used to extract the second component from a 
+
+           Date/Time object.  
+
+        </p>
+         ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p><b>  (second dateObj  ) </b></p>
+                    <p><b>  (second dateStr  ) </b></p>
+                    <p><b>  (second Julian-date ) </b></p>]]></Expression>
+		<Argument>
+		  <Name>dateObj</Name>
+		  <Note><![CDATA[
+		  <p>An Analytic Information Server Date object</p>
+          ]]></Note>
+		  <AISTypes>Date</AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>dateStr</Name>
+		  <Note><![CDATA[
+		  <p>A time string in the form "hh:mm:ss AM/PM" where hh is the number of hours (0-24), 
+
+             mm in the number of minutes (0-60), ss is the optional number of seconds (0-60) 
+
+             and AM/PM optionally specifies morning or afternoon. If you use 12 hour time, 
+
+             you must include AM or PM; if you use 24 hour time, do not include AM or PM.</p>
+          ]]></Note>
+		  <AISTypes>String Text</AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>Julian-date</Name>
+		  <Note><![CDATA[
+		  <p>A Julian date with a fraction extension representing the time for that date. 
+
+           The first two digits after the decimal point in the serial number correspond to a 
+
+           fraction of a 24 hour day. For example 0.00 corresponds to 12:00 AM; 0.25 corresponds 
+
+           to 6:00 AM; 0.50 corresponds to 12:00 Noon and so on.</p>
+          ]]></Note>
+		  <AISTypes>Date</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>An Integer that represents the second component of the argument
+
+	    </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

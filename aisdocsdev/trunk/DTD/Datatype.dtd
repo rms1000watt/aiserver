@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT Datatype (KnowledgeBase,  Section+)>
+	<!ELEMENT KnowledgeBase (Title, Type, RelatedTypes,  HumanKeywords)>
+		<!ELEMENT Title (#PCDATA)>
+		<!ELEMENT Type (#PCDATA)>
+		<!ELEMENT RelatedTypes (#PCDATA)>
+		<!ELEMENT HumanKeywords (#PCDATA)>
+	<!ELEMENT Section (Heading,  Description)>
+		<!ELEMENT Heading (#PCDATA)>
+		<!ELEMENT Description ANY>  
+<!-- end -->

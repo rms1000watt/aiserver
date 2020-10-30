@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Vector ref 014</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>ref</FunctionKeywords>
+		<TypeKeywords> Vector Text String Integer</TypeKeywords>
+		<RelatedFunctions>setq  ref fieldsOf   refValues  </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>ref reference set position</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This examples show the shorthand form of Vector reference through
+                  the bracket [] operators. In this example, the Vector value is referenced 
+                  by using its index. The <b>ref</b> function is used either with the Vector Name or the 
+                  Vector's Object ID.
+  
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc> (define Fruits  #("apple" "orange" "lemon"))          </sc>]]></Expression>
+        <Note><![CDATA[Define a Vector containing various fruit names ]]></Note> 
+        <Returns><![CDATA[#&#60Vector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>Fruits [0] </sc>]]></Expression>
+        <Note><![CDATA[Accesses the Vector value with index 0.]]></Note>
+        <Returns><![CDATA[apple]]></Returns>
+       <Expression><![CDATA[ <sc>Fruits [1] </sc>]]></Expression>  
+        <Note><![CDATA[Accesses the Vector value with index 1.]]></Note> 
+        <Returns><![CDATA[orange]]></Returns>
+        <Expression><![CDATA[ <sc>Fruits [2] </sc>]]></Expression>  
+        <Note><![CDATA[Accesses the Vector value with index 2.]]></Note> 
+        <Returns><![CDATA[lemon]]></Returns>
+        <Expression><![CDATA[ <sc>#&#60Vector 123456&#62[0]        </sc>]]></Expression>  
+        <Note><![CDATA[Instead of the Vector name, the object ID may be used to 
+              access the Vector values]]></Note> 
+        <Returns><![CDATA[apple]]></Returns>
+        <Expression><![CDATA[ <sc>#&#60Vector 123456&#62[1]      </sc>]]></Expression>  
+        <Note><![CDATA[Accesses the Vector value with index 1.]]></Note> 
+        <Returns><![CDATA[orange]]></Returns>
+        <Expression><![CDATA[ <sc>#&#60Vector 123456&#62[2]       </sc>]]></Expression>  
+        <Note><![CDATA[Accesses the Vector value with index 2.]]></Note> 
+        <Returns><![CDATA[lemon]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

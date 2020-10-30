@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Complex &#47; 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>&#47;</FunctionKeywords>
+		<TypeKeywords>Number</TypeKeywords>
+		<RelatedFunctions> &#42; &#43; &#45;</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>>multiplication addition subtraction division</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[  <p> The ratio of a variety of data types with a complex number is shown here.
+               The result of the operation is shown in the comment. The first double shown is the 
+               real part of the result. The second number shown is the imaginary part of the 
+               result.</p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq X #c2.0-2.0i)   </sc>   ]]></Expression>  
+        <Note><![CDATA[The first Complex Number is defined.]]></Note> 
+        <Returns><![CDATA[#&#60Complex 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq Y #c1.0+1.0i)   </sc>   ]]></Expression>  
+        <Note><![CDATA[The second Complex Number is defined.]]></Note> 
+        <Returns><![CDATA[#&#60Complex 234567&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(&#47 X Y)   </sc>   ]]></Expression>  
+        <Note><![CDATA[The result after the division of  2 Complex Numbers.]]></Note> 
+        <Returns><![CDATA[#c-2.0i]]></Returns>
+        <Expression><![CDATA[ <sc>(&#47 X #void )   </sc>   ]]></Expression>  
+        <Note><![CDATA[The result after the division of a Complex Number and a Void data type
+              is an error. ]]></Note> 
+        <Returns><![CDATA[!drmVM: div/0!]]></Returns>
+        <Expression><![CDATA[ <sc>(&#47 X 2 )   </sc>   ]]></Expression>  
+        <Note><![CDATA[The result after the division of a Complex Number and a Number data type.]]></Note> 
+        <Returns><![CDATA[#c1.0-1.0i]]></Returns>
+        <Expression><![CDATA[ <sc>(&#47 X 2.0 )   </sc>   ]]></Expression>  
+        <Note><![CDATA[The result after the division of a Complex Number anda Real Number data type.]]></Note> 
+        <Returns><![CDATA[#c1.0-1.0i]]></Returns>
+        <Expression><![CDATA[ <sc>(&#47 X #\A )   </sc>   ]]></Expression>  
+        <Note><![CDATA[The result after the division of a Complex Number and a Character data type.]]></Note> 
+        <Returns><![CDATA[#c0.03076923076923-0.03076923076923i]]></Returns>
+        <Expression><![CDATA[ <sc>(&#47 X true)	   </sc>   ]]></Expression>  
+        <Note><![CDATA[The result after the division of a Complex Number and a Boolean data type.]]></Note> 
+        <Returns><![CDATA[#c2.0-2.0i]]></Returns>
+        <Expression><![CDATA[ <sc>(&#47 X #Jan,1,2000)	   </sc>   ]]></Expression>  
+        <Note><![CDATA[The result after the division of a Complex Number and a Date data type. 
+             Dates are stored as the number of days lapsed since day 0.]]></Note> 
+        <Returns><![CDATA[#c1.0-2.0i]]></Returns>
+        <Expression><![CDATA[ <sc>(&#47 X $-.25)	   </sc>   ]]></Expression>  
+        <Note><![CDATA[The result after the division of a Complex Number and a Money data type.]]></Note> 
+        <Returns><![CDATA[#c-4.0-8.0i]]></Returns>
+        <Expression><![CDATA[ <sc>(&#47 X -.25)	   </sc>   ]]></Expression>  
+        <Note><![CDATA[The result after the division of a Complex Number and a Fraction numeric data type.]]></Note> 
+        <Returns><![CDATA[#c-4.0-8.0i]]></Returns>
+        <Hints><![CDATA[<p>Immediate numeric types are converted to a pure real part with a zero 
+          imaginary part prior to forming the quotient. </p>
+       ]]></Hints>
+   </Syntax>
+</Example>

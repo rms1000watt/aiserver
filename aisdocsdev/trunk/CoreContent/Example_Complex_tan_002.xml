@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Complex tan 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>tan</FunctionKeywords>
+		<TypeKeywords>Number Integer</TypeKeywords>
+		<RelatedFunctions> cos sin tanh</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>   tan radians angle </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ The tangent of a complex value is shown here. The result of the operation is 
+         shown in the comment. The first double shown is the real part of the result. The second
+         number shown is the imaginary part of the result.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq X (new Complex: p))  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60Complex 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc>(tan X)   </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#c0.0]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

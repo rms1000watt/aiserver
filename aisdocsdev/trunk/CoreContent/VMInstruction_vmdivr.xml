@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmdivr</Title>
+		<InstructionName>vmdivr</InstructionName>
+		<InstructionType>Generic</InstructionType>
+		<ArgumentTypes> Integer Number Float Complex </ArgumentTypes>
+		<RelatedVMInstructions>vmadd vmsub vmmul vmdiv   </RelatedVMInstructions>
+		<HumanKeywords> addition subtraction multiplication division remainder mod </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[                                                  
+		<p> When evaluated, this vm instruction divides the <b>argument</b> word
+		 numeric value into the <b>source</b> word numeric value. The word 
+		 numeric remainder result is placed in the <b>target</b> word as a numeric 
+		 data type. Both words must be of numeric types. Conversion between 
+		 different numeric types is automatic. The result will be returned as 
+		 a numeric data type. This instruction may return an Error value. 
+		 After the operation, the Instruction Pointer is promoted. The operation 
+		 of this vm instruction is expressed in the following C expression:
+        </p>
+        <ul><li><b> (word:numeric)target = 
+        (word:numeric)source % (word:numeric)argument;</b></li></ul>
+    ]]></Description>
+    <Example>
+        <![CDATA[  <sc><pre>
+			(defun vmdivr_test(arg1 arg2)
+    			vars: (Number:c)
+    			(vmdivr arg1 arg2 c)
+    			(vmreturn c)
+			)
+			(writeln(vmdivr_test 5 -19))
+        </pre>     </sc>
+        ]]>
+    </Example>
+	<Syntax>
+	    <Expression><![CDATA[  (vmdivr argument source target)]]></Expression>
+		<Argument> 
+		  <Name>argument</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>(word:numeric)</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>source </Name>
+		  <Format>regoffset </Format>
+		  <AISTypes>(word:numeric) </AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>target </Name>
+		  <Format>regoffset </Format>
+		  <AISTypes>(word:numeric) </AISTypes>
+		</Argument>
+	</Syntax>
+</VMInstruction>

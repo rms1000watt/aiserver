@@ -1,0 +1,26 @@
+// engineidle.XPM
+static const char *gpEngineIdle[]={
+"16 16 6 1",
+"b c #000000",	// Black
+"# c #808080",	// Gray
+"a c #c0c0c0",	// Lt Gray
+". c #00ff00",	// Green
+"d c #00ff00",	// Green
+"c c #ffffff",	// White
+//234567890123456  
+"................",
+"....##########..",
+"...#aaaaaaaa#bb.",
+"...#cccccccc##b.",
+"...#aaaaaaaa##b.",
+"...#aaaaaaaa##b.",
+"...###########b.",
+"...#cccccccc##b.",
+"...#aaaaaaaa##b.",
+"...#aaaaaaaa##b.",
+"...#aaaaaaaa##b.",
+"...#aaaaaaaa#bb.",
+"...#aaaaaaaa#bb.",
+"....#aaaaaa#bb..",
+".....#aaaa#bbb..",
+".....bbbbbbb...."};

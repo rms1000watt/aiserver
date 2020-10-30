@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Symbol &#42;&#60; 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>&#42;&#60; </FunctionKeywords>
+		<TypeKeywords>Symbol String</TypeKeywords>
+		<RelatedFunctions>(sym)addValue (sym)subValue (sym)divValue</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>multiplication addition subtraction division</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows how the <b>&#42;&#60;</b> macro  sets the
+                 value of the target object with the product of the source and target arguments.
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(setq x 100)  </sc>]]></Expression>
+        <Note><![CDATA[Sets the value of the target argument.]]></Note>
+        <Returns><![CDATA[100]]></Returns>
+	    <Expression><![CDATA[ <sc>(*= x 3)  </sc>]]></Expression>  
+        <Note><![CDATA[Multiplies 100 with 3.]]></Note> 
+        <Returns><![CDATA[300]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example NumMatrix setLastCdr 012</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>setLastCdr</FunctionKeywords>
+		<TypeKeywords>NumMatrix</TypeKeywords>
+		<RelatedFunctions>ref refValues refAttributes cdr setCdr</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>tail ref index cdr setLastCdr</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines a NumMatrix with already a cdr value. 
+
+
+
+                  The cdr value is changed using the <b>setLastCdr</b> function.  
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq M #(nummat| 1 2 . 3))    </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60NumMatrix 188141&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc> (display M)      </sc>]]></Expression>
+        <Note><![CDATA[The Matrix will contain:]]></Note>
+        <Returns><![CDATA[#(nummat| 1 2  . 3)]]></Returns>
+ 		<Expression><![CDATA[ <sc>(setLastCdr  M  22)        </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60NumMatrix 188141&#62 ]]></Returns>
+		<Expression><![CDATA[ <sc>(display M)     </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#(mat| 1 2  . 22)]]></Returns>
+        <Expression><![CDATA[ <sc> (cdr M)    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[22]]></Returns>
+        <Hints><![CDATA[The only technique of accessing the cdr or tail of a NumMatrix is via the 
+
+
+
+               <b>cdr</b> function. ]]></Hints>
+   </Syntax>
+</Example>

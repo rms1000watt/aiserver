@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>  
+		<Title>Example String new 001</Title>  
+		<Template>Example</Template> 
+		<FunctionKeywords>new</FunctionKeywords>
+		<TypeKeywords>String Text Integer</TypeKeywords>	
+		<RelatedFunctions>string</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>new pointer create initialize</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows the <b>new</b> function initializing the
+	              String S with the value "John". Then it checks the type of 
+	              S with the <b>type</b> function. Although S defaults to Text 
+	              since it has less than 9 characters, the <b>new</b> function
+	              forces the data type of S into a String.
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(setq S   "John")  </sc>]]></Expression>  
+        <Note><![CDATA[If the new function had not been used, the constant "John Doe" defaults to Text: ]]></Note> 
+        <Returns><![CDATA[ John]]></Returns>
+        <Expression><![CDATA[ <sc>(type S)  </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[ Text]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq S  (new String:  "John"))</sc>]]></Expression>  
+        <Note><![CDATA[Here, the new function sets S as a String data type.]]></Note> 
+        <Returns><![CDATA[John]]></Returns>
+        <Expression><![CDATA[ <sc>(type S )</sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[ String ]]></Returns>
+        <Hints><![CDATA[Since Text is not a heap object, there is no function for 
+               creating an instance of  a Text. ]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example String mid 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>mid</FunctionKeywords>
+		<TypeKeywords>String Text Integer</TypeKeywords>
+		<RelatedFunctions>right left find substring </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>substring position left right mid length</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples return a substring of a specified length and
+	              with a given starting position in the source String or Text object.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(mid "Small World" 6 5 )  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[World]]></Returns>
+        <Expression><![CDATA[ <sc>(mid "Small World" 2 3 )    </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ all ]]></Returns>
+        <Expression><![CDATA[ <sc>(mid ?Small World? 0 5 )    </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ Small]]></Returns>
+        <Expression><![CDATA[ <sc>(mid ?Small World? 6 10)    </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[ World]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

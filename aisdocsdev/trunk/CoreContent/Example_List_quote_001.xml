@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example List quote 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>quote</FunctionKeywords>
+		<TypeKeywords> Pair List Function</TypeKeywords>
+		<RelatedFunctions>isFunction</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>evaluate lexical expression</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>quote</b> function to evaluate the expressions
+                   as Lists and not as Functions.
+
+	]]></Description>
+	<Syntax>
+	<Expression><![CDATA[<sc>(quote (A  (+  1  2)  (x  y)))   </sc>]]></Expression>
+    <Note><![CDATA[ none]]></Note>
+    <Returns><![CDATA[ #&#60Pair 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(display  #&#60Pair 123456&#62)         <sc> ]]></Expression>
+    <Note><![CDATA[none]]></Note>
+    <Returns><![CDATA[(A (+ 1 2) (x y))]]></Returns>
+    <Expression><![CDATA[<sc>(quote (A))       <sc> ]]></Expression>
+    <Note><![CDATA[none]]></Note>
+    <Returns><![CDATA[ #&#60Pair 234567&#62]]></Returns>
+    <Expression><![CDATA[<sc>(display  #&#60Pair 234567&#62)         <sc> ]]></Expression>
+    <Note><![CDATA[none]]></Note>
+    <Returns><![CDATA[(A)]]></Returns>
+   <Hints><![CDATA[none]]></Hints>
+</Syntax>
+</Example>

@@ -1,0 +1,109 @@
+<ui version="4.0" >
+ <class>ARegisterDirClass</class>
+ <widget class="QDialog" name="ARegisterDirClass" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>559</width>
+    <height>187</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Register Directory</string>
+  </property>
+  <widget class="QLineEdit" name="cDatabaseDirectory" >
+   <property name="geometry" >
+    <rect>
+     <x>170</x>
+     <y>20</y>
+     <width>371</width>
+     <height>27</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="cSourceDirectory" >
+   <property name="geometry" >
+    <rect>
+     <x>170</x>
+     <y>100</y>
+     <width>371</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="toolTip" >
+    <string>BrowseAgent will register .sl files in this directory.  It will also store the source files in this directory.</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="cSameSourceFlag" >
+   <property name="geometry" >
+    <rect>
+     <x>170</x>
+     <y>60</y>
+     <width>211</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Use same source location</string>
+   </property>
+   <property name="checked" >
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label" >
+   <property name="geometry" >
+    <rect>
+     <x>20</x>
+     <y>20</y>
+     <width>136</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Database Directory</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="cRegisterButton" >
+   <property name="geometry" >
+    <rect>
+     <x>300</x>
+     <y>140</y>
+     <width>89</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Register</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="cCancelButton" >
+   <property name="geometry" >
+    <rect>
+     <x>410</x>
+     <y>140</y>
+     <width>89</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Cancel</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2" >
+   <property name="geometry" >
+    <rect>
+     <x>20</x>
+     <y>100</y>
+     <width>117</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Source Directory</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

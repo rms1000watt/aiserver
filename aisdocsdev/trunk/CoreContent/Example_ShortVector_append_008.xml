@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example ShortVector append 008</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>append</FunctionKeywords>
+		<TypeKeywords>ShortVector</TypeKeywords>
+		<RelatedFunctions>new replace rept</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>append concatenate vector </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[  This example takes 2 existing Short Vectors and appends 
+                  the values of each Short Vector.  The result is placed in a new Short Vector.
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq X (new Vector:  short:  2 9 2))         </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60ShortVector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Y (new Vector:  short:  4 4 3 1 5))          </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60ShortVector 234567&#62   ]]></Returns>
+        <Expression><![CDATA[ <sc> (append X Y )    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60ShortVector 456789&#62   ]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60ShortVector 456789&#62 )       </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#(short| 9 2 4 3 1 5 )]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

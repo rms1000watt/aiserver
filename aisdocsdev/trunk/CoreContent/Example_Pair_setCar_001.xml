@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Pair setCar 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>setCar</FunctionKeywords>
+		<TypeKeywords>Pair List</TypeKeywords>
+		<RelatedFunctions> car cdr setCdr</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords> car cdr component pair</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples show how the car of the Pair is changed into
+                  the new pair argument of the <b>setCar</b> function.
+
+	              
+
+	]]></Description>
+	<Syntax>
+ 	    <Expression><![CDATA[ <sc>(define  Y  '(5 .  6))    </sc>]]></Expression>  
+        <Note><![CDATA[The original car value is 5.]]></Note> 
+        <Returns><![CDATA[#&#60Pair 234567&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(setCar  Y 10)        </sc>]]></Expression>  
+        <Note><![CDATA[The modified car value is 10.]]></Note> 
+        <Returns><![CDATA[#&#60Pair 234567&#62]]></Returns>
+       <Expression><![CDATA[ <sc>(car Y)       </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[10]]></Returns>
+        <Hints><![CDATA[none
+
+        ]]></Hints>
+   </Syntax>
+</Example>

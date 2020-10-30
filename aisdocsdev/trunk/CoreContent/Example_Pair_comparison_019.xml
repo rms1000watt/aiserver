@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Pair comparison 019</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>comparison</FunctionKeywords>
+		<TypeKeywords>Pair Integer</TypeKeywords>
+		<RelatedFunctions>compare compareEQ compareGT compareNE compareLT  compareLE</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare symbol equal lesser </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>compare</b> functions to do a 
+
+
+
+
+
+
+                  case-sensitive comparison of two objects of the same type.  A Boolean
+                  value is returned.
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc> (=  '(A  .  B)  '(A  .  B) )      </sc>]]></Expression>
+        <Note><![CDATA[ none]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc> (&#60  '(A  .  B)   '(A  B  C) )      </sc>]]></Expression>
+        <Note><![CDATA[ The first Pair is greater than the second Pair.]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+          <Hints><![CDATA[<p>If you prefer an integer resulting from the comparison
+       (0 for equal, -1 for less than, and 1 for greater than), use the <b>compare</b> function.</p>
+        ]]></Hints>
+   </Syntax>
+</Example>

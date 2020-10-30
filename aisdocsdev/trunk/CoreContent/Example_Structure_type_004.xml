@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure type 004</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>type</FunctionKeywords>
+		<TypeKeywords>Structure</TypeKeywords>
+		<RelatedFunctions>isText isSymbol isObject isString isType isStructure</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>Type Analytic Object</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[   The user-defined type <b>manager</b> inherits fields from the
+                    parent-type <b>employee</b>.
+                    The <b>type</b> function returns the object type and not the parent-type.
+                     
+	]]></Description>
+	<Syntax>
+        <Expression><![CDATA[ <sc> (defineStructure  employee:  'name  'job  'salary) </sc>]]></Expression>  
+        <Note><![CDATA[Define a type named employee.]]></Note> 
+        <Returns><![CDATA[employee  ]]></Returns>
+  	    <Expression><![CDATA[ <sc> (defineStructure  manager:  include:  'employee  'perks)       </sc>]]></Expression>  
+        <Note><![CDATA[Define a type named manager that inherits fields from the employee type.]]></Note> 
+        <Returns><![CDATA[manager   ]]></Returns>
+        <Expression><![CDATA[ <sc>(define  Y  (new  manager:  perks:  "parking")) </sc>]]></Expression>  
+        <Note><![CDATA[Creates an instance of the manager type.]]></Note> 
+        <Returns><![CDATA[ manager ]]></Returns>
+        <Expression><![CDATA[ <sc>(type Y)   </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[ manager ]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

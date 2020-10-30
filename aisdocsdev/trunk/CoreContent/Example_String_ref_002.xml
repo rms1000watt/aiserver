@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example String ref 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>ref</FunctionKeywords>
+		<TypeKeywords> String Text Integer</TypeKeywords>
+		<RelatedFunctions>setq right left mid find</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>ref reference set position</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows the shorthand form of the String
+                  <b>ref</b> function using the <b> [ ] </b> operators.
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(setq S  (new String:  "Hello") )  </sc>]]></Expression>  
+        <Note><![CDATA[none  ]]></Note> 
+        <Returns><![CDATA[Hello]]></Returns>
+        <Expression><![CDATA[ <sc>S [0]</sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[H]]></Returns>
+  	    <Expression><![CDATA[ <sc>S [4]   </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[o]]></Returns>
+        <Hints><![CDATA[none
+]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=AIS RIDE
+Comment=AIS Remote Integrated Development Environment
+Type=Application
+Exec=ridedevexe
+Icon=aiserver
+Categories=Development;IDE;Qt
+

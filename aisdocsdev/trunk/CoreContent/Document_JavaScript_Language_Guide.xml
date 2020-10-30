@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Document SYSTEM "../DTD/Document.dtd">
+<Document>
+	<KnowledgeBase>
+	    <Title>JavaScript Language Guide</Title>
+		<Topic>JavaScript</Topic>
+		<SubTopic>Language Guide</SubTopic>
+		<HumanKeywords>JavaScript Lambdas Runtime</HumanKeywords>
+	</KnowledgeBase>
+	<Essay>Essay_JavaScript_Introduction</Essay>
+	<Essay>Essay_Runtime_Environment</Essay>
+	<Essay>Essay_JavaScript_Statements</Essay>
+</Document>

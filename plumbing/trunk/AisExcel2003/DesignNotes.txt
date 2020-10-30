@@ -1,0 +1,59 @@
+AisExcel2003/DesignNotes.txt
+
+OVERVIEW
+A few notes on constructing this project follow.  Please make additions and corrections
+as you work on this project.
+
+ENVIRONMENT
+Visual Studio 2008. Install Visual Studio 2008 on a machine running Windows XP Professional.  Note
+that Visual Studio 2008 and later includes Visual Studio Tools for Office.  It makes it possible to
+create an Excel 2003 add-in without any additional packages.
+
+Excel 2003.  Install Excel 2003 on this same OS.  Some of our customers are still running Excel 2003
+rather than Excel 2007 or later.  Excel 2007 is supposed to be backward compatible with Excel 2003, so
+we may be able to run this code in either version of Excel.
+
+CREATE EXCEL ADD-IN
+To create a C# Excel add-in in a blank Visual Studio 2008:
+	Select File -> New -> Project -> Visual C# -> Office -> Excel 2003 Add-in
+		Name: AisExcel2003  (uncheck "Create directory for solution")
+
+CREATE CUSTOM TOOLBAR OR CUSTOM MENU
+For a custom tool bar, visit:
+http://invertedindex.wordpress.com/2009/06/10/vsto-how-to-create-a-toolbar-for-an-excel-add-in/
+For a custom menu, visit:
+http://invertedindex.wordpress.com/2009/06/11/vsto-how-to-create-a-menu-for-an-excel-add-in/
+
+NEXT STEPS
+ 1. Create a dialog that will connect to a running version of an AIS server (either webide or aissvc).
+The user will enter server IP address (or maybe local if a local server???).
+
+*************** All this is yet to be implemented ***************************************************
+
+ADD EXCEL DIALOG
+To add a dialog, select:
+	Project -> Add Windows Form. Name: MyDialog.
+	In MyDialog.cs [designer], drag two buttons onto the form.
+		Names: uOkButton, uCancelButton. Text: OK, Cancel
+	In the MyDialog Form, set the following properties:
+		Form Border Style: Fixed Dialog
+		Minimize Box:	False
+		Maximize Box:	False
+		Accept Button: 	uOkButton
+		Cancel Button:	uCancelButton
+Double click on the OkButton on the form to install the click handler. Add code to capture
+results from dialog. No need to call close as the form does that for you.
+Double click on the CancelButton on the form to install the click handler. No need to call close
+as the form does that for you.
+Just add MyCancel.showDialog() to the code to bring up an instance of this modal dialog.
+
+If you change the name of a form or a widget on the form, the code is only partially updated.
+It is best to avoid renaming widgets or forms.
+
+ADD ASOCKET CLASS
+To add a class, rt-click on FundView in the Solution Explorer.  Select Add -> New Item -> Class.
+Set the class template name to ASocket.cs. This adds ASocket.cs file and entry to the solution
+explorer.
+
+************************************************************************************************
+

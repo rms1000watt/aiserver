@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Vector compareNE 006</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compareNE</FunctionKeywords>
+		<TypeKeywords>Vector Boolean</TypeKeywords>
+		<RelatedFunctions>compare compareEQ compareLE compareGE compareLT  compareGT </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare symbol equal lesser </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>compareNE</b> function to compare two Vectors and return
+
+
+
+
+
+
+
+
+                  the Boolean value, true or false.  The corresponding keys and values of each Vector are compared
+
+
+
+
+
+                  to determine whether one Vector is  equal to the other.
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+        <Expression><![CDATA[ <sc>(compareNE #("Hello" "World" ) #("Hello" "World" ))     </sc>]]></Expression>  
+        <Note><![CDATA[Both Vectors are equal.]]></Note> 
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(compareNE #("Hello" "Worlds" ) #("Hello" "World" ))     </sc>]]></Expression>  
+        <Note><![CDATA[ The value of the first Vector is not equal to the value
+               of the second Vector.]]></Note> 
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>(compareNE #("Hello" "Earth" ) #("Hello" "World" ))    </sc>]]></Expression>  
+        <Note><![CDATA[The value of the first Vector is not equal to the value
+               of the second Vector.]]></Note> 
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

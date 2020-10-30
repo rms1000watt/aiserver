@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>sizeof</Title>
+		<FunctionName>sizeof</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>Character String Symbol Vector BitVector ByteVector IntVector Void
+ShortVector
+                       FltVector ObjVector Structure Dictionary Directory Brick Pair List ObjectRepository
+                       Matrix NumMatrix Integer Float Number Complex Boolean Date Function</ArgumentTypes>
+        <DataType>String Symbol Structure Dictionary Directory Vector Date Complex Boolean Brick ShortVector Matrix Pair List Void Character Number Function  FltVector IntVector NumVector ObjVector  BitVector PcodeVector ByteVector ObjectRepository NumMatrix</DataType>
+		<RelatedFunctions>new length saveObject loadObject</RelatedFunctions>
+        <RelatedVMInstructions>none</RelatedVMInstructions>
+		<HumanKeywords>sizeof closure bytes length disk memory</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>sizeof</b> function returns the closure size of the argument. </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>sizeof</b> function returns the closure size of the argument. 
+           The closure size is defined as the number of bytes of uncompressed disk memory 
+           required to store the original argument and any objects recursively referenced 
+           (reachable) from the argument plus a record header.
+        </p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>sizeof</b> function returns the disk file closure size of an object or immediate type. 
+           Often it is necessary to know how much disk memory an object, together with all 
+           of the objects reachable from it, will require. An example would be a Vector of 10 
+           elements, where each item holds a different 100 byte long string object. The 
+           <b>length</b> of this Vector will, of course, be 100; but, the sizeof the Vector 
+           will exceed 1000 bytes. This is because, to store the Vector on disk, all of the 
+           10 different string objects, reachable from the Vector, must be stored, and each 
+           of these string objects is 100 bytes long. The closure size of the Vector would 
+           grow if any of its elements were themselves Vectors containing other objects, etc.
+        ]]></Usage>
+        <Usage-Matrix><![CDATA[
+        <p>The <b>sizeof</b> function returns the disk file closure size of an object. 
+           Often it is necessary to know how much disk memory an object, together with all 
+           of the objects reachable from it, will require. An example would be a Matrix of 10 
+           elements, where each item holds a different 100-byte long string object. The 
+           <b>length</b> of this Matrix will, of course, be 100; but, the sizeof the Matrix will 
+           exceed 1000 bytes. (There are 10 different String objects, each of which is 100 bytes 
+           long).  The closure size of the Matrix would grow if any of its elements were 
+           themselves Matrices containing other objects, etc.
+        ]]></Usage-Matrix>
+        <Usage-NumMatrix><![CDATA[
+        <p>The <b>sizeof</b> function returns the disk file closure size of an object. 
+           Often it is necessary to know how much disk memory an object, together with all 
+           of the objects reachable from it, will require. An example would be a Matrix of 10 
+           elements, where each item holds a different 100-byte long string object. The 
+           <b>length</b> of this Matrix will, of course, be 100; but, the sizeof the Matrix will 
+           exceed 1000 bytes. (There are 10 different String objects, each of which is 100 bytes 
+           long).  The closure size of the Matrix would grow if any of its elements were 
+           themselves Matrices containing other objects, etc.
+        ]]></Usage-NumMatrix>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p><b> (sizeof  obj )</b></p>
+]]></Expression>
+		<Argument>
+		  <Name>obj</Name>
+		  <Note><![CDATA[
+		  <p>none</p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector Brick ByteVector IntVector Boolean
+                       ShortVector FltVector ObjVector Structure Dictionary Directory Pair List Void Date
+ObjectRepository
+                       Matrix NumMatrix Integer Float Number Complex Function</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>Returns the closure size of an object</p>
+	    ]]></Return>
+	</Syntax>
+</Function>

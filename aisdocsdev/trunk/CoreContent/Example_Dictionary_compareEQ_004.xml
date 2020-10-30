@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Dictionary compareEQ 004</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compareEQ</FunctionKeywords>
+		<TypeKeywords>Dictionary Boolean</TypeKeywords>
+		<RelatedFunctions>compare compareNE compareGT compareGE compareLT  compareLE</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare structure equal </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>compareEQ</b> function to compare two Dictionaries and return
+
+
+
+
+                  the Boolean value, true or false. The keys and values of each Dictionary are compared
+
+                  to determine whether the Dictionaries are equal or not.
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(compareEQ  #{dic|X: 1 Y: 2} #{dic|X: 1 Y: 2})     </sc>]]></Expression>
+        <Note><![CDATA[The keys and values of the two Dictionaries are equal.]]></Note>
+        <Returns><![CDATA[true ]]></Returns>
+        <Expression><![CDATA[ <sc>(compareEQ  #{dic|X: 1 Y: 2} #{dic|Y: 2 X: 1 })  </sc>]]></Expression>
+        <Note><![CDATA[Each key-value pair is compared with its corresponding key-value pair
+
+              in the order given in Dictionary. In this example,  the first value in dict1
+
+              is not equal to the first value in dict2, and so on.]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(compareEQ  #{dic|A: 1 B: 2} #{dic|X: 1 Y: 2})     </sc>]]></Expression>
+        <Note><![CDATA[The keys and values of the two Dictionaries are not equal.]]></Note>
+        <Returns><![CDATA[false ]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

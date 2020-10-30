@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Date year 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>year</FunctionKeywords>
+		<TypeKeywords>Number Date String Text Integer</TypeKeywords>
+		<RelatedFunctions>date month day</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>convert day julian object</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples return the <b>year</b> component of the  <b>date</b> argument using
+
+
+                  the different date formats.
+
+
+
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc> 
+(year #Jul,4,1992)               </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[1992]]></Returns>
+	    <Expression><![CDATA[ <sc> (year  (julian #Jul,4,1992) )                      </sc>]]></Expression>
+        <Note><![CDATA[These examples use the Julian date format.]]></Note>
+        <Returns><![CDATA[1992]]></Returns>
+	    <Expression><![CDATA[ <sc> (year  727747.0)                      </sc>]]></Expression>
+        <Note><![CDATA[Or, getting the julian value of #Jul,4,1992: ]]></Note>
+        <Returns><![CDATA[1992]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

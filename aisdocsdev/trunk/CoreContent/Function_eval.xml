@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>eval</Title>
+		<FunctionName>eval</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>Pair List Lambda String</ArgumentTypes>
+        <DataType>  List Lambda</DataType>
+		<RelatedFunctions>compile morph lisp evalInSyncLocalContext</RelatedFunctions>
+        <RelatedVMInstructions>    </RelatedVMInstructions>
+		<HumanKeywords>compile evaluation morph parse Lambda</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>eval</b> function evaluates the argument and returns the resulting value.  </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>eval</b> function evaluates the argument <b>{exp}</b> and returns the resulting 
+           value. When the input to <b>eval</b> is a List, invoking <b>eval</b> is equivalent to 
+           invoking <b>morph, compile,</b> and <b>eval</b>.   If the <b>eval</b> function is 
+           passed a List as an argument, it is assumed that lexing has already taken place. 
+        </p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>eval</b> function is used whenever an expression needs to be evaluated.
+        </p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p>  (eval string)</p>]]></Expression>
+		<Argument>
+		  <Name>string</Name>
+		  <Note><![CDATA[
+		  <p> A string containing a Lisp language expression to be compiled and evaluated.</p>
+          ]]></Note>
+		  <AISTypes>String</AISTypes>
+		</Argument>
+	    <Return><![CDATA[ 
+	    <p>Always returns the result of (eval (compile (lisp string))).</p>
+	    ]]></Return>
+	</Syntax>
+	<Syntax>
+	    <Expression><![CDATA[<p>  (eval list)</p>]]></Expression>                  
+		<Argument> 
+		  <Name>list</Name>
+		  <Note><![CDATA[
+		  <p> A string containing a Lisp language expression to be compiled and evaluated.</p>
+          ]]></Note>
+		  <AISTypes>List</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>Always returns the result of (eval (compile (lisp string))).</p>
+	    ]]></Return>
+	</Syntax>
+	<Syntax>
+	    <Expression><![CDATA[<p>  (eval Lambda)</p>]]></Expression>                  
+		<Argument> 
+		  <Name>Lambda</Name>
+		  <Note><![CDATA[
+		  <p>An Lambda to be invoked with no arguments.</p>
+          ]]></Note>
+		  <AISTypes>Lambda</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Always returns the result of (Lambda).</p>
+	    ]]></Return>   
+	</Syntax>
+</Function>

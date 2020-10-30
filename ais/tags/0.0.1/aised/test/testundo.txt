@@ -1,0 +1,37 @@
+# aised/test/testundo.txt
+
+#							AISED - TEST UNDO
+
+# CHANGE HISTORY
+# Version	Date		Who		Change
+# 1.0109	10/7/2006	tlw		Original
+
+# SYNTAX
+# REDO - redo(ToMark)
+# UNDO - undo(ToMark)
+
+#	*************************************************************************************************
+# REDO - redo(ToMark)
+# UNDO - undo(ToMark)
+clear
+append("D \n", Backward)
+# Undo/redo nothing:
+undo(ToMark)
+redo(ToMark)
+
+# Undo/redo one at a time.
+insert("a", Forward)
+insert("b", Forward)
+insert("\n", Forward)
+undo(One)
+undo(One)
+undo(One)
+redo(One)
+redo(One)
+redo(One)
+
+# Undo/redo to mark
+undo(ToMark)
+redo(ToMark)
+#end
+

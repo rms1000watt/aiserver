@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmcallarg</Title>
+		<InstructionName>vmcallarg</InstructionName>
+		<InstructionType>Generic</InstructionType>
+		<ArgumentTypes> Word</ArgumentTypes>
+		<RelatedVMInstructions>vmcall vmargcount vmargfetch vmapply</RelatedVMInstructions>
+		<HumanKeywords>apply callarg  call stack  compiler</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[
+		<p>When evaluated, this vm instruction invokes the <b>source</b> function, passing the 
+           specified <b>argument</b>. The <b>source</b> word must be one of the function types 
+           (either a built-in C function or an AIS Lambda object). The <b>argument</b> may be any 
+           valid word to be passed to the function source. The result word is placed at the target 
+           location.</p>
+         <p>The <b>vmcallarg</b> instruction is a compiler directive only and is never generated 
+            in the Lambda pcode vector.</p>
+         <p>The pseudo-operation of this vm instruction is expressed in the following C expression:</p>
+          <ul><li><b> (word)target = (word)source(argument);</b></li></ul>
+    ]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ (vmcallarg argument source target)]]></Expression>
+		<Argument> 
+		  <Name>argument</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>word</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>word</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>target</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>word</AISTypes>
+		</Argument>
+	</Syntax>
+</VMInstruction>

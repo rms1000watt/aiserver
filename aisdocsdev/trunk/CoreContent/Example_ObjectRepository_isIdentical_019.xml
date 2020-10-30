@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example ObjectRepository isIdentical 019</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isIdentical</FunctionKeywords>
+		<TypeKeywords>ObjectRepository Boolean</TypeKeywords>
+		<RelatedFunctions>compareEQ comparison isEqual </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>Equal Analytic Object Identical</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example uses the <b>setq</b> function to create two identical Object Repositories.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+(setq gor1 (new ObjectRepository: "myfile1.odb"))     </sc>   ]]></Expression>
+        <Note><![CDATA[Specify the name of the first ObjectRepository.  ]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 123456&#62]]></Returns>
+ 	    <Expression><![CDATA[ <sc>(setq gor2 (new ObjectRepository: "myfile2.odb"))     </sc>   ]]></Expression>
+        <Note><![CDATA[Specify the name of the second ObjectRepository.  ]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 234567&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc>(isIdentical gor1 gor2)     </sc>   ]]></Expression>
+        <Note><![CDATA[The two Repositories do not have identical Object IDs.]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq gor3 gor1)     </sc>   ]]></Expression>
+        <Note><![CDATA[Use the setq function to copy the existing Repository. ]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 123456&#62]]></Returns>
+	    <Expression><![CDATA[ <sc>(isIdentical gor1 gor2)     </sc>   ]]></Expression>  
+        <Note><![CDATA[The two Repositories have identical Object IDs.]]></Note> 
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[none
+
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

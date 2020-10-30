@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example NumMatrix matrixGaussianSubstitute 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>matrixGaussianSubstitute</FunctionKeywords>
+		<TypeKeywords>Matrix Vector Integer</TypeKeywords>
+		<RelatedFunctions> makeGramMatrix makeGaussianMatrix matrixGaussianEliminate    </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>Matrix NumMatrix Boolean Gaussian dual
+                        least squares regression substitution triangulation</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example triangulates a Number Matrix to its Gaussian Matrix and 
+                   returns number Vector containing the M coefficients of the solution.   
+
+
+	]]></Description>
+	<Syntax>
+  	     <Expression><![CDATA[ <sc> (define X  #(nummat[3 4]| 12 2 3 17 <br>
+															   1 5 -3 3 <br>
+																9 5 -3 11))                         
+                          </sc>]]></Expression>
+        <Note><![CDATA[Solve a triangulated number Matrix for its M coefficient solution values:]]></Note>
+        <Returns><![CDATA[#&#60NumMatrix 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(setq T (matrixGaussianEliminate X)  )      </sc>]]></Expression>
+        <Note><![CDATA[Triangulate the observation matrix to its Gaussian matrix and solve: ]]></Note>
+        <Returns><![CDATA[ #&#60NumMatrix 234567&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq C (matrixGaussianSubstitute T))       </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[ #&#60NumVector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(display  #&#60NumVector 123456&#62 )     </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#(num| 1.0 1.0 1.0 )]]></Returns>
+        <Hints><![CDATA[Note1, See Sedgewick[2] chap 37, assumes input matrix is triangulated. 
+       ]]></Hints>
+   </Syntax>
+</Example>

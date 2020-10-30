@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure defmethod 005</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>defmethod</FunctionKeywords>
+		<TypeKeywords>Structure Symbol  Dictionary</TypeKeywords>
+		<RelatedFunctions>addMethod send methodsOf</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>method message messageName</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example calls the <b>defMethod</b> function where the method <b>ComputeProfit</b>
+                  is implemented for a user-defined type <b>StockTransaction</b>.  The method <b>ComputeProfit</b> 
+                  is invoked by  calling the method name  in the  Methods Dictionary.
+
+
+   	]]></Description>
+	<Syntax>
+	<Expression><![CDATA[
+    <sc> (defineStructure  StockTransaction:  Symbol:  Bought:  Sold:  Profit:) </sc>
+    ]]></Expression>
+   <Note><![CDATA[ The structure StockTransaction is defined. It contains information about 
+          a single stock transaction.  The structure contains fields for the stock symbol, 
+           the purchase price of the stock, the selling price and a profit field. 
+   ]]></Note>
+   <Returns><![CDATA[StockTransaction]]></Returns>
+   <Expression><![CDATA[<sc>(defmethod StockTransaction: ComputeProfit( e) (setq e.Profit (- e.Sold e.Bought )))    </sc> 
+]]></Expression>
+   <Note><![CDATA[ none ]]></Note>
+   <Returns><![CDATA[#&#60Dictionary 12345&#62]]></Returns>
+   <Expression><![CDATA[<sc>(define IBM (new  StockTransaction: Symbol: "IBM" Bought: 100   Sold: 120))   </sc> ]]></Expression>
+   <Note><![CDATA[ none ]]></Note>
+   <Returns><![CDATA[StockTransaction]]></Returns>
+   <Expression><![CDATA[<sc>(ComputeProfit: IBM)       </sc> ]]></Expression>
+   <Note><![CDATA[none
+   ]]></Note>
+   <Returns><![CDATA[20]]></Returns>
+  <Hints><![CDATA[ <p>To view the entry in the methods Dictionary created by the defMethod function, 
+           you can use the message name to access the dictionary entry by </p>
+        <p><b> #&#60Dictionary 123456&#62[msgName:] or </b></p>
+        <p> To determine the number of assigned methods:</p>
+        <p><b>(length  (methodsOf  Structure: ))</b></p>
+        <p><b>(length  (methodsOf  StockTransaction: ))</b></p>
+        <p>To access the nth method name:</p>
+        <p><b>(methodsOf Structure: )[n  0]</b></p>
+        <p><b>(methodsOf StockTransaction: )[n  0]</b></p>
+        <p>To view the Methods Dictionary:</p>
+        <table>
+            <tr><td width=60%><b>(display (methodsOf Structure: )) </b></td>
+                <td width=40%> Returns: <b> #{dic| addValues #&#60Lambda 123456&#62}   </b></td></tr>
+            <tr><td width=60%><b> (display (methodsOf StockTransaction: )) </b>    </td>
+                <td width=40%>  Returns: <b>  #{dic| ComputeProfit #&#60Lambda 123456&#62}   </b>   </td></tr>
+        </table>
+]]></Hints>
+  </Syntax>
+</Example>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmopt</Title>
+		<InstructionName>vmopt </InstructionName>
+		<InstructionType>Generic</InstructionType>
+		<ArgumentTypes>  Integer </ArgumentTypes>
+		<RelatedVMInstructions> vmregRunInHardware </RelatedVMInstructions>
+		<HumanKeywords>assembler optimize RunInHardware</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[
+		<p>When evaluated, this vm instruction either starts or stops the AIS Lisp compiler 
+           from optimizing all Assembler instructions.</p>
+		<p>Issuing a  (vmopt start:)  instruction causes the AIS Lisp compiler to optimize all 
+           Assembler instructions issued, between this (vmopt start:) instruction, and the next 
+           (vmopt stop:) instruction. Issuing a (vmopt stop:) instruction causes the AIS Lisp 
+           compiler to compile "as is" all Assembler instructions issued, between this 
+           (vmopt stop:) instruction, and the next (vmopt start:) instruction
+
+        </p>
+        <p>The default state of the AIS Lisp compiler when entering any Lambda 
+           (lambda expression) is optimization <b>ON</b>.
+		</p>
+        <p>The vmopt instruction is a compiler directive only and is never generated in the 
+           Lambda pcode vector.
+		</p>
+		<p> The valid commands for this instruction are as follows. 		     
+
+        <ul><li><b>    start: {0} </b><i> (Causes the AIS Lisp compiler to optimize all 
+                                Assembler instructions issued.) </i></li></ul>
+        <ul><li><b>  stop: {1}</b> <i> (Causes the AIS Lisp compiler to compile "as is" all 
+                              Assembler instructions issued.) </i></li></ul>
+    ]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ (vmopt command)]]></Expression>
+		<Argument>
+		  <Name>command</Name>
+		  <Format>immediate</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+	</Syntax>
+</VMInstruction>

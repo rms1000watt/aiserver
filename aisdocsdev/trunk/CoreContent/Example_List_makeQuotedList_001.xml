@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example List makeQuotedList 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>makeQuotedList</FunctionKeywords>
+		<TypeKeywords>Pair List</TypeKeywords>
+		<RelatedFunctions> last list objectToList</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>create list arguments quoted</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These example creates quoted lists from Symbols and Integers.
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc> (makeQuotedList  1  2  3  4)          </sc>]]></Expression>
+        <Note><![CDATA[ none]]></Note>
+        <Returns><![CDATA[#&#60QuotedPair 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc> (display #&#60QuotedPair 123456&#62 )          </sc>]]></Expression>
+        <Note><![CDATA[ none]]></Note>
+        <Returns><![CDATA[(1 2 3 4)]]></Returns>
+        <Expression><![CDATA[ <sc> (makeQuotedList  'A)      </sc>]]></Expression>
+        <Note><![CDATA[ none]]></Note>
+        <Returns><![CDATA[#&#60QuotedPair 234567&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc> (display #&#60QuotedPair 234567&#62 )          </sc>]]></Expression>
+        <Note><![CDATA[ none]]></Note>
+        <Returns><![CDATA[(A)]]></Returns>
+     <Expression><![CDATA[ <sc> (makeQuotedList  'A . 2)     </sc>]]></Expression>
+        <Note><![CDATA[ none]]></Note>
+        <Returns><![CDATA[#&#60QuotedPair 234567&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc> (display #&#60QuotedPair 345678&#62 )          </sc>]]></Expression>
+        <Note><![CDATA[ none]]></Note>
+        <Returns><![CDATA[(A . 2)]]></Returns>
+        <Expression><![CDATA[ <sc> (makeQuotedList)     </sc>]]></Expression>
+        <Note><![CDATA[ none]]></Note>
+        <Returns><![CDATA[#void]]></Returns>
+        <Hints><![CDATA[
+none
+
+]]></Hints>
+   </Syntax>
+</Example>

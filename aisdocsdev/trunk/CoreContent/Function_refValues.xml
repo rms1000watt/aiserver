@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>refValues</Title>
+		<FunctionName>refValues</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+        <ArgumentTypes> Structure Dictionary Directory Vector Integer</ArgumentTypes>
+		<DataType> Structure Dictionary Directory Vector</DataType>
+		<RelatedFunctions>setq ref fieldsOf refAttributes</RelatedFunctions>
+        <RelatedVMInstructions>   vmregObjPointer</RelatedVMInstructions>
+		<HumanKeywords>ref reference attributes set position</HumanKeywords>
+	</KnowledgeBase>
+          <Description><![CDATA[
+             <p> The <b>refValues </b> function returns the values of the 
+
+                 Structure, Dictionary, Directory or Vector argument into a Vector. </p>
+          ]]></Description>
+	<Brief>
+       <Overview><![CDATA[
+		<p>The <b>refValues</b> function returns the values of the Structure,
+           Directory or Dictionary argument into a Vector.
+
+        </p>
+        ]]></Overview>
+       <Overview-Vector><![CDATA[
+		<p>The <b>refValues</b> function returns the values of the argument as a vector. 
+           The argument <b>{source}</b> may be a Vector, a Structure, a Dictionary, or a 
+           Directory. If there are no values, #void is returned.
+        </p>
+        ]]></Overview-Vector>
+      <Usage><![CDATA[
+        <p>The <b>refValues</b> function is used to return the values  
+             of a Structure, Dictionary or Directory Object.  For retrieving the keys see
+            <b> refAttributes</b> function.
+
+          </p>
+        ]]></Usage>
+       <Usage-Vector><![CDATA[
+        <p>The <b>refValues</b> function is used to return the values of an argument.</p>
+        ]]></Usage-Vector>
+    </Brief>
+	<Syntax-Structure>
+	    <Expression><![CDATA[  <p><b>  (refValues  struct)</b></p>]]></Expression>
+		<Argument>
+		  <Name>struct</Name>
+		  <Note><![CDATA[
+		  <p>The Structure to be referenced. </p>
+          ]]></Note>
+		  <AISTypes>Structure</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>A Vector containing the values in the Structure Object. </p>
+	    ]]></Return>
+  </Syntax-Structure>
+	<Syntax-Dictionary>
+	    <Expression><![CDATA[  <p><b>  (refValues  dict)</b></p>]]></Expression>
+		<Argument> 
+		  <Name>dict</Name>
+		  <Note><![CDATA[
+		  <p>The Dictionary to be referenced. </p>
+          ]]></Note>
+		  <AISTypes>Dictionary</AISTypes>
+		</Argument>  
+		<Return><![CDATA[ 
+	    <p>A Vector containing the values in the Dictionary Object. </p>
+	    ]]></Return>  	  
+  </Syntax-Dictionary>
+	<Syntax-Directory>
+	    <Expression><![CDATA[  <p><b>  (refValues  dir)</b></p>]]></Expression>
+		<Argument> 
+		  <Name>dir</Name>
+		  <Note><![CDATA[
+		  <p>The Directory to be referenced. </p>
+          ]]></Note>
+		  <AISTypes>Directory</AISTypes>
+		</Argument>  
+		<Return><![CDATA[ 
+	    <p>A Vector containing the values in the Directory Object. </p>
+	    ]]></Return>  	  
+  </Syntax-Directory>
+  <Syntax-Vector>
+	    <Expression><![CDATA[  <p><b>  (refValues  source)</b></p>]]></Expression>
+		<Argument> 
+		  <Name>source</Name>
+		  <Note><![CDATA[
+		  <p>The source argument.</p>
+          ]]></Note>
+		  <AISTypes>Vector Structure Dictionary Directory.</AISTypes>
+		</Argument>  
+		<Return><![CDATA[ 
+	    <p>The vector of values.</p>
+	    ]]></Return>  	  
+  </Syntax-Vector>
+</Function>

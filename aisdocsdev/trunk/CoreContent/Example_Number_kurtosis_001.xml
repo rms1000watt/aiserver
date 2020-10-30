@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number kurtosis 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>kurtosis</FunctionKeywords>
+		<TypeKeywords>Number Integer </TypeKeywords>
+		<RelatedFunctions>  range skew stdev stdevp var  </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>kurtosis distribution curve peak flat </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[  <p> This example defines the data points in the argument list. The
+                  <b>kurtosis</b> function returns the peakedness or flatness of the distribution curve 
+                  as defined by the data points.</p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(kurtosis 10 20 40 45)</sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[-3.869005302721 ]]></Returns>
+        <Expression><![CDATA[ <sc>(kurtosis 20 50 55 60) </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[3.014360041623]]></Returns>
+        <Hints><![CDATA[none
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

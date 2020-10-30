@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmargfetch</Title>
+		<InstructionName>vmargfetch</InstructionName>
+		<InstructionType>Generic</InstructionType>
+		<ArgumentTypes> Integer Word </ArgumentTypes>
+		<RelatedVMInstructions> vmapply vmargcount vmcall </RelatedVMInstructions>
+		<HumanKeywords> index arguments fetch apply count call send </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[
+		<p> When evaluated, this vm instruction moves the Nth argument, 
+		specified by the integer <b>index</b> value into the <b>target</b> 
+		word. The <b>index</b> argument must be an Integer. No data 
+		conversions are made. No attempt is made to determine if the 
+		index is in the proper range. This instruction will never return 
+		an Error value. After the operation, the Instruction Pointer is 
+		promoted. The operation of this vm instruction is expressed in the 
+		following C expression:
+        </p>
+        <ul><li><b>(word)target = Av[(int)index];</b></li></ul>
+    ]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[(vmargfetch index target)]]></Expression>
+		<Argument> 
+		  <Name> index </Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>target</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>word</AISTypes>
+		</Argument>
+	</Syntax>
+</VMInstruction>

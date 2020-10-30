@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number varp 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>var</FunctionKeywords>
+		<TypeKeywords>  Number Integer   </TypeKeywords>
+		<RelatedFunctions> range kurtosis skew stdev stdevp   var </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>standard deviation variance distribution population curve displacement mean </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[     <p> This example defines the values of an entire population in the argument list. The
+                  <b>stdev</b> function computes the variance of the population values. </p>
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(varp 8 35 51 52 72 92) </sc>   ]]></Expression>  
+        <Note><![CDATA[Computes the variance of 6  popluation values.]]></Note> 
+        <Returns><![CDATA[704.2222222222]]></Returns>
+  	    <Expression><![CDATA[ <sc>(varp 5 9 8 82 72 92) </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[1428.555555556]]></Returns>
+        <Hints><![CDATA[none
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

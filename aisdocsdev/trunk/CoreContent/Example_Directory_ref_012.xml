@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Directory ref 012</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>ref</FunctionKeywords>
+		<TypeKeywords> Directory Symbol String Integer</TypeKeywords>
+		<RelatedFunctions>setq  ref fieldsOf   refValues  </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>ref reference set position</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ The . (period) operator  or the [ ]  (brackets) operator are often used 
+                  as shorthand to reference a Directory value or key.  
+
+ 
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(setq dir  #{dir|#Jan,1,1996  "New Year's Day"  #Feb,14,1996  "Valentine's Day" } )          </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60Directory 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>dir[#Jan,1,1996 ]         </sc>]]></Expression>
+        <Note><![CDATA[The bracket operator accesses the values of the Directory using the keys.  ]]></Note>
+        <Returns><![CDATA[New Year's Day]]></Returns>
+       <Expression><![CDATA[ <sc>dir[#Feb,14,1996 ]         </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[Valentine's Day]]></Returns>
+  	    <Expression><![CDATA[ <sc>dir[0 0]        </sc>]]></Expression>
+        <Note><![CDATA[The bracket function accesses the keys or values of the Directory using its indices.]]></Note>
+        <Returns><![CDATA[#Jan,1,1996]]></Returns>
+  	    <Expression><![CDATA[ <sc>dir[0 1]        </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[New Year's Day]]></Returns>
+       <Expression><![CDATA[ <sc>dir[1 0]        </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#Feb,14,1996]]></Returns>
+       <Expression><![CDATA[ <sc>dir[1 1]        </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[Valentine's Day]]></Returns>
+        <Hints><![CDATA[  
+               <p> When a single index is used, the value portion of the specified binding is 
+
+                   returned. However two indices offer the flexibility of referencing either the 
+
+                   key or value. Here are additional examples using indices.</p>
+                <p><b>(define aDir   #{dir| Name: "Bill"  SSN: "616 55 1209" Age: 45}  )   </b></p>
+              <table>
+                 <tr><td width=60%><b> aDir[0 0]</b></td>
+                     <td width=40%>Returns:<b>Age</b></td></tr>
+                 <tr><td width=60%><b>  aDir[0 1]</b></td>
+                     <td width=40%>Returns:<b>45</b></td></tr>
+                 <tr><td width=60%><b> aDir[1 0]</b></td>
+                     <td width=40%>Returns:<b>Name</b></td></tr>
+                 <tr><td width=60%><b>  aDir[1 1]</b></td>
+                     <td width=40%>Returns:<b>Bill</b></td></tr>
+                 <tr><td width=60%><b>  aDir[2 0]</b></td>
+                     <td width=40%>Returns:<b>SSN</b></td></tr>
+                 <tr><td width=60%><b> aDir[2 1]</b></td>
+                     <td width=40%>Returns:<b>616 55 1209</b></td></tr>
+               </table>
+]]></Hints>
+   </Syntax>
+</Example>

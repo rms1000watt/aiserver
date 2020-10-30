@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>makeLambda</Title>
+		<FunctionName>makeLambda</FunctionName>
+		<FunctionType>Function</FunctionType>
+		<ArgumentTypes>Lambda</ArgumentTypes>
+		<DataType>Lambda</DataType>
+		<RelatedFunctions>setq defun new lambda</RelatedFunctions>
+        <RelatedVMInstructions>  none  </RelatedVMInstructions>
+		<HumanKeywords>make evaluated compile variable</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>makeLambda</b> function creates a new Lambda object.  </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>makeLambda </b> function creates a new Lambda object.  The newly created Lambda is 
+          a <i>First Class Object</i> Structure, but it is empty. A First Class object in Lambda 
+          Information Server is any object that is fully exposed, i.e., all of the Structures are 
+           visible and modifiable by the programmer.  In the case of Lambdas, any of the source code tokens, 
+          <b>Sc</b>, pcode tokens <b>Pc</b>, as well as any of the data structures that make up the Lambda: 
+           Argument variables, <b>Av</b>, persistent variables <b>Pv</b>, persistent class variables <b>Cv</b>, 
+           and Temporary variables, <b>Tv</b>, can viewed and modified by the programmer:</p>
+        <p>
+The <b>makeLambda</b> function has the following optional arguments:  <b>{Av:}, {Tv:}, {Pv:}, {Cv:}, {rv:},</b>
+         and <b>{Sc:} </b> to allow Lambda properties to  be supplied by the programmer. The only mandatory argument is the 
+         Pcode Vector argument <b>{Pc:}</b>.  Refer to the Virtual Machine Chapter for assistance in creating the Pcode Vector.</p>
+  ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>makeLambda</b> and the <b>new</b> functions allow the programmer to create an Lambda object.</p>
+         ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[ <b>  (makeLambda  Av: args  Tv: vars  Pv: pvars Cv: cvars Rv: regs Pc: PcodeVector  Sc: tokens)</b>]]></Expression>
+		<Argument>
+		  <Name>Av:</Name>
+		  <Note><![CDATA[
+		  <p> (Optional) The Arguments Structure object .</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>args</Name>
+		  <Note><![CDATA[
+		  <p> Must follow the Av: keyword and must be a structure containing argument name symbol and value pairs. (name: value) </p>
+          ]]></Note>
+		  <AISTypes>Structure</AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>Tv:</Name>
+		  <Note><![CDATA[
+		  <p> (Optional).The Temporary Variable Structure object.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>vars </Name>
+		  <Note><![CDATA[
+		  <p> Must follow the Tv: keyword and must be a structure containing temporary variable name symbol and value pairs. (name: value)</p>
+          ]]></Note>
+		  <AISTypes>Structure</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>Pv:</Name>
+		  <Note><![CDATA[
+		  <p> (Optional).The Persistent Variable Structure object.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>  
+		<Argument> 
+		  <Name>pvars </Name>
+		  <Note><![CDATA[
+		  <p>Must follow the Pv: keyword and must be a structure containing persistent variable name symbol and value pairs. (name: value)</p>
+          ]]></Note>
+		  <AISTypes>Structure</AISTypes>
+		</Argument>  
+		<Argument> 
+		  <Name>Cv:</Name>
+		  <Note><![CDATA[
+		  <p> (Optional).The Persistent Class Variable Structure object.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>  
+		<Argument> 
+		  <Name>cvars </Name>
+		  <Note><![CDATA[
+		  <p>Must follow the Cv: keyword and must be a structure containing persistent class variable name symbol and value pairs. (name: value)</p>
+          ]]></Note>
+		  <AISTypes>Structure</AISTypes>
+		</Argument>  
+		<Argument> 
+		  <Name>Rv:</Name>
+		  <Note><![CDATA[
+		  <p> Optional).The Register Variable Structure object</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>  
+		<Argument> 
+		  <Name>regs </Name>
+		  <Note><![CDATA[
+		  <p>Must follow the Rv: keyword and must be a structure containing register variable name symbol and data type pairs. (name: type)</p>
+          ]]></Note>
+		  <AISTypes>Structure</AISTypes>
+		</Argument>  
+		<Argument> 
+		  <Name>Pc </Name>
+		  <Note><![CDATA[
+		  <p>(Mandatory).The Pcode Vector object.</p>
+          ]]></Note>
+		  <AISTypes>PcodeVector</AISTypes>
+		</Argument>  
+		<Argument> 
+		  <Name>Sc </Name>
+		  <Note><![CDATA[
+		  <p>(Optional) The source Token Vector for formula redisplay. If present must be a vector containing source line tokens.</p>
+          ]]></Note>
+		  <AISTypes>Vector</AISTypes>
+		</Argument>  
+		<Return><![CDATA[
+	    <p>Returns the evaluating Lambda.</p>
+	    ]]></Return>
+	</Syntax>
+</Function>

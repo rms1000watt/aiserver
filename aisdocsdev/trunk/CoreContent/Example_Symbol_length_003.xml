@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Symbol length 003</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>length</FunctionKeywords>
+		<TypeKeywords>String Text Integer</TypeKeywords>
+		<RelatedFunctions>comparison compareEQ compareNE compareLT
+
+                                     compareGT compareLE compareGE </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>length equal</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows the <b>length</b> function at work on a  <b>Symbol  </b> object.
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define Mouse "Mickey")</sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[Mickey]]></Returns>
+        <Expression><![CDATA[ <sc>(length Mouse:)</sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ 5 ]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

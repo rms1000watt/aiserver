@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Datatype SYSTEM "../DTD/Datatype.dtd">
+<Datatype>
+	<KnowledgeBase>
+        <Title>Directory</Title>
+		<Type>Heap</Type>
+		<RelatedTypes>Structure Vector Dictionary</RelatedTypes>
+		<HumanKeywords>Heap Key Value Element Array</HumanKeywords>
+	</KnowledgeBase>
+	<Section>                
+	    <Heading>Directory Overview</Heading>
+		<Description><![CDATA[
+        <p> A Directory is an object that is very similar to a Dictionary.  Analytic Information Server 
+        Dictionary Objects and Directory objects share common properties: they both contain an arbitrary 
+        number of bindings, values can be referenced by key, or a single index, or two, and keys are 
+        always maintained in ascending sort order.</p>
+        <p>The only difference between a Directory and a Dictionary is they type of keys a Directory 
+        can have.  A Directory key can be <b>ANY</b> Analytic Information Server type: native types as well 
+        as Object Types such as Symbol (Unquoted or Quoted), List, Pair (Unquoted or Quoted), all Vector 
+        types, Structure, Dictionary, Repository, or Lambda. </p>
+        ]]></Description>
+    </Section>
+	<Section>                
+	    <Heading>Directory Illustration</Heading>
+		<Description><![CDATA[
+        <p> A Directory Object is analogous to a table containing exactly two columns and an 
+        arbitrary number of rows.  The left column contains a key (must be any Analytic Information 
+        Server Native or Object type: Symbol, List, Pair, any Vector type, Structure, Dictionary, 
+        Repository, or Lambda), and the right column contains the value associated with its key. 
+        Any given row in a table is analogous to a Dictionary binding: Key/Value pair.</p>
+               <table align="center" border=4 cellspacing=5 cellpadding=5>
+               <tr><td>#Jan,1,1996</td> <td>"Meeting with J.R. Mummy"</td> </tr>
+               <tr><td>#Jan,12,1996</td> <td>"Budget Deadline"</td>  </tr>
+               <tr><td>#Jan,19,1996</td> <td>"Demo Product X"</td> </tr>
+               <tr><td>#Jan,23,1996</td> <td> "Leave for Boston"</td>  </tr>
+           </table>
+        ]]></Description>
+    </Section>
+	<Section>                
+	    <Heading>When to Use</Heading>
+		<Description><![CDATA[
+          <p>Directories are like Dictionaries, in that they are convenient for storing Key/ Value pairs. 
+           However, they have a maintenance overhead required for saving a richer universe of keys. 
+            An application that requires sorted Object keys would be more efficient by using a Dictionary. </p>
+        ]]></Description>
+    </Section>
+	<Section>                
+	    <Heading>Constant Form</Heading>
+		<Description><![CDATA[
+          <p>The Directory native data type supports a constant form. The whole Directory 
+            constant is enclosed in braces and preceded by the sharp symbol, brace, and the 
+           dir| symbol (<b>#{dir|</b>). Some Directory constant examples: </p>
+          <p><b>#{dir| Name:  "John Doe"  Address: "184 Anywhere Street" City: "Los Angeles" State: "California"}</b></p>
+    <p>The constant form for Directories allows using the constant prefix,  <b>#{dir||</b> with two bars, to specify 
+             creating "as is" in unsorted order as follows:</p>
+          <p><b>#{dir|| Z:  5  Y:  #{Mike: "father"  Sally: "mother"}  X:  "Hello"}</b></p>
+        ]]></Description>
+    </Section>
+	<Section>                
+	    <Heading>Object Data Types</Heading>
+		<Description><![CDATA[
+          <p>The <b>Directory</b> is a Heap Object or an Object Data Type. The Analytic Information Server Object Types 
+            are stored in the Heap and are managed by the Heap manager.  The Analytic Information 
+            Server Heap manager supports object resizing, garbage collection, and anti-fragmentation algorithms 
+            so that the user may concentrate on the analysis and modeling of data rather than on
+            memory management. Without exception, all of the Object types are identified by an 
+            object id.  The object id identifies a block of memory, managed by the Lambda 
+             Information Server memory manager, in which the Object's data is stored.</p>
+         <p>The Analytic Information Server Heap Object and Native Data types can be saved and loaded to and from persistent
+            (disk file) storage at any time. Containers with immediate data are saved on disk 
+            in fixed length records equal to the size of the container. Containers with Heap 
+            object references are saved in fixed length records, which are automatically expanded 
+            to include the contents of the Heap object, and any objects referenced by the Heap 
+            object, etc. This feature is called Object Closure Management and is automatic with 
+            every Analytic Information Server container database save.</p>
+         <p>Analytic Information Server containers may be loaded from any database repository record 
+            at any time. If the data in the record is immediate, the database load fills the 
+            container with the immediate data. If the data in the record is an object closure, 
+            the database load fills the container with a Heap object reference, and all of the 
+            objects in the record are loaded back into the Heap with the same referential 
+            relationships they had when they were saved in the repository.</p>    
+        ]]></Description>
+    </Section>
+</Datatype>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example List eval 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>eval</FunctionKeywords>
+		<TypeKeywords>Pair List</TypeKeywords>
+		<RelatedFunctions>compile morph lisp</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compile evaluation morph parse Lambda</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example show how  the <b>eval</b>  function
+                 evaluate an expression contained in a List.
+	              
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define X 100)     </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[100]]></Returns>
+  	    <Expression><![CDATA[ <sc>(define Y 99)     </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[99]]></Returns>
+  	    <Expression><![CDATA[ <sc>(eval  '(+  X  Y))         </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[199]]></Returns>
+        <Hints><![CDATA[<p>
+The <b>(eval  '(+  X  Y))  </b> is equivalent to the expression:</p>
+               <p><b>(eval (compile (morph '(+  X  Y))))    </b></p>
+        ]]></Hints>
+   </Syntax>
+</Example>

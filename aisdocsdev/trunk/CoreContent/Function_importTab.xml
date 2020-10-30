@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>importTab</Title>
+		<FunctionName>importTab </FunctionName>
+		<FunctionType>Builtin</FunctionType>
+        <ArgumentTypes>ObjectRepository Text Lambda String Vector Structure Dictionary Boolean Integer</ArgumentTypes>        
+        <DataType> Lambda ObjectRepository</DataType>
+	    <RelatedFunctions>exportTab</RelatedFunctions>
+        <RelatedVMInstructions> none </RelatedVMInstructions>
+		<HumanKeywords>file text import format</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[ 
+             <p> The <b>importTab</b> function import or converts data from non-Analytic Information Server applications.  </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>importTab</b> function with its Lambda argument provides powerful programmable export functionality. The 
+		Lambda performs any necessary editing of the imported records, and may be programmed to process any header or 
+		trailer records that an incoming file may have. The <b>importTab</b> function natively parses tab-delimited fields,
+		 but again, can be programmed to parse any record with no fields or any record with fields that are delimited by 
+		 any character. The only assumption made by the importTab function, is that the file is a text file and that each 
+		 record is separated by a line terminator eol (end-of line) character that applicable to the operating system. </p>
+		<p> The Lambda is responsible for supplying a container to accept the imported fields. The container must be 
+		appropriate to handle the type of data it is to receive. By specifying the <b>{recordsOnly:}</b> argument, the 
+		Lambda of <b>importTab</b> function makes the assumption the data to be imported as a single record that is 
+		terminated by the eol character. By specifying the <b>{recordVectors:}</b> option, the Lambda will make the 
+		assumption that the data it is receiving from the <b>importTab</b> function is a collection of fields, therefore 
+		the container must be an aggregate container such as a Vector, Structure or Dictionary to accept multiple fields. </p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>importTab</b> function is typically used to import or convert data from non-Analytic Information 
+        Server applications. The native <b>importTab</b> makes no assumptions of the format of the foreign data (it may 
+        have header records or not, it may have trailer records or not, the output fields may be tab-delimited, or comma-delimited, 
+        or have no fields at all)where the data should go nor does it have any built-in editing algorithms for the imported data. 
+        The Lambda handles the container and editing issues. In order for the <b>importTab</b> function to work properly, 
+        the Lambda argument must be supplied and must have the <b>refImport(row)</b> and the <b>setImport(row)</b> child Lambdas.
+
+		</p>  
+		<h2>refExport ChildLambda</h2>   
+		<table> 
+		<tr> 
+		  <td> <b>refExport(row)</b> </td> 
+		  <td>  Called by importTab function to receive an empty container from the Lambda. The refImport method receives 
+		  a row argument and must return an empty container. The empty container will be used to store the next imported 
+		  record.   </td>		
+		</tr>        
+		<tr>
+		   <td> setImport(row container)</td>
+		   <td> Called when importTab is finished filling the record with data. The setImport function receives a row 
+		   index argument and a record argument. The record argument is the filled container record. The Lambda may 
+		   process the filled container in any manner.   </td>	
+		</tr>
+		</table>          
+		<p> The only requirement of the <b>importTab</b> function is that the imported file must be text. The optional 
+		argument, <b>recordVectors:</b>, is useful when it is known by the Lambda that the records consists of tab-delimited 
+		fields. When <b>recordVectors:</b> is specified, the record is automatically parsed and the individual fields 
+		are stored as items in an aggregate container, such as a Vector, Structure, or Dictionary. The Lambda establishes 
+		the container type and it is passed from the Lambda to the <b>importTab</b> function via the <b>refImport</b> method. 
+		When the <b>importTab</b> function is finished filling the container it passes the filled-in container to the 
+		Lambda, <b>setImport</b> method then receives the container and performs the desired formatting or editing. </p>		
+        ]]></Usage>
+    </Brief>
+    <Syntax>
+	    <Expression><![CDATA[<p>(importTab fileid anLambda) </p>
+	                <p>(importTab fileid anLambda recordsOnly:) </p>
+	                <p> (importTab fileid anLambda recordVectors:) </p>]]></Expression>
+		<Argument> 
+		  <Name>fileid</Name>
+		  <Note><![CDATA[
+		  <p>A file identifier previously obtained from a call to fileopen for an Lambda tab delimited file. </p>
+          ]]></Note>
+		  <AISTypes>Text</AISTypes>
+		</Argument>  
+		<Argument> 
+		  <Name>anLambda</Name>
+		  <Note><![CDATA[
+		  <p>Mandatory Lambda. An Lambda which is to be imported in tab delimited format. If an object Repository may be passed, 
+		  the Object repository's Librarian will be used as the import Lambda.  </p>
+          ]]></Note>
+		  <AISTypes>Lambda</AISTypes>
+		</Argument>                 
+		<Argument> 
+		  <Name>recordsOnly:</Name>
+		  <Note><![CDATA[
+		  <p>Optional argument.. If present, the importTab function sends the Lambda a record that is delimited by the 
+		  system end-of-line (eol) character. Note: In the Intel-base platforms, the standard record terminator is 
+		  carriage-return, line-feed (CR)(LF). 68000-based platforms (such as the Mac OS) use a single eol character: 
+		  (CR).</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>   
+		<Argument> 
+		  <Name>recordVectors:</Name>
+		  <Note><![CDATA[
+		  <p>Optional argument. If present, the importTab function sends the Lambda a Vector or other aggregate container. 
+		  The individual elements of the vector are converted to text and each text fields is separated by the #\tab (tab) 
+		   character. </p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>    
+		<Return><![CDATA[ 
+	    <p>The number of rows imported.
+        </p>
+	    ]]></Return>   
+	</Syntax>
+</Function>

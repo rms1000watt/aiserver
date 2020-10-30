@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Directory delete 006</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>delete</FunctionKeywords>
+		<TypeKeywords>Directory Integer Symbol</TypeKeywords>
+		<RelatedFunctions>remove insert</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>count length </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines a Directory and uses the <b>delete</b> function to 
+
+
+                  delete a key-value binding by specified the <b>key</b> of the value in the Directory.
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq X #{dir| a: "alpha" b: "beta"  })          </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60Directory 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(delete  X  a:)        </sc>]]></Expression>
+        <Note><![CDATA[Deletes the key-value binding with the key symbol a:]]></Note>
+        <Returns><![CDATA[#&#60Directory 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc> (display X)     </sc>]]></Expression>
+        <Note><![CDATA[Displays the modified Directory]]></Note>
+        <Returns><![CDATA[#{dir|b: "beta"} true]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

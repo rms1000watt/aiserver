@@ -1,0 +1,195 @@
+<ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>ATabifyDialogClass</class>
+ <widget class="QDialog" name="ATabifyDialogClass" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>240</width>
+    <height>137</height>
+   </rect>
+  </property>
+  <property name="sizePolicy" >
+   <sizepolicy>
+    <hsizetype>0</hsizetype>
+    <vsizetype>0</vsizetype>
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="maximumSize" >
+   <size>
+    <width>404</width>
+    <height>192</height>
+   </size>
+  </property>
+  <property name="windowTitle" >
+   <string>Dialog</string>
+  </property>
+  <widget class="QGroupBox" name="upExtraSpacesGroup" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>101</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="sizePolicy" >
+    <sizepolicy>
+     <hsizetype>0</hsizetype>
+     <vsizetype>0</vsizetype>
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="title" >
+    <string>ExtraSpaces</string>
+   </property>
+   <widget class="QRadioButton" name="upTabRadioButton" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>40</y>
+      <width>84</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>&amp;Tab</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="upDeleteRadioButton" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>60</y>
+      <width>84</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>&amp;Delete</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="upKeepRadioButton" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>84</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>&amp;Keep</string>
+    </property>
+    <property name="checked" >
+     <bool>true</bool>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="upTabifyButton" >
+   <property name="geometry" >
+    <rect>
+     <x>160</x>
+     <y>10</y>
+     <width>77</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="sizePolicy" >
+    <sizepolicy>
+     <hsizetype>0</hsizetype>
+     <vsizetype>0</vsizetype>
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="text" >
+    <string>Tabify</string>
+   </property>
+   <property name="default" >
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="upDetabButton" >
+   <property name="geometry" >
+    <rect>
+     <x>160</x>
+     <y>40</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Detab</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="upCloseButton" >
+   <property name="geometry" >
+    <rect>
+     <x>160</x>
+     <y>70</y>
+     <width>77</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="sizePolicy" >
+    <sizepolicy>
+     <hsizetype>0</hsizetype>
+     <vsizetype>0</vsizetype>
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="text" >
+    <string>Close</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="upStatusLabel" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>100</y>
+     <width>221</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="sizePolicy" >
+    <sizepolicy>
+     <hsizetype>7</hsizetype>
+     <vsizetype>0</vsizetype>
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="text" >
+    <string>Status</string>
+   </property>
+   <property name="textFormat" >
+    <enum>Qt::PlainText</enum>
+   </property>
+   <property name="alignment" >
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+   </property>
+   <property name="wordWrap" >
+    <bool>true</bool>
+   </property>
+  </widget>
+ </widget>
+ <pixmapfunction></pixmapfunction>
+ <tabstops>
+  <tabstop>upTabifyButton</tabstop>
+  <tabstop>upDetabButton</tabstop>
+  <tabstop>upCloseButton</tabstop>
+  <tabstop>upKeepRadioButton</tabstop>
+  <tabstop>upTabRadioButton</tabstop>
+  <tabstop>upDeleteRadioButton</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

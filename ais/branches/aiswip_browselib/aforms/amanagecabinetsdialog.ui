@@ -1,0 +1,64 @@
+<ui version="4.0" >
+ <class>AManageCabinetsClass</class>
+ <widget class="QDialog" name="AManageCabinetsClass" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>455</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Manage Cabinets</string>
+  </property>
+  <widget class="QTreeWidget" name="cCabinetTree" >
+   <property name="geometry" >
+    <rect>
+     <x>15</x>
+     <y>20</y>
+     <width>371</width>
+     <height>381</height>
+    </rect>
+   </property>
+   <column>
+    <property name="text" >
+     <string>Cabinets</string>
+    </property>
+   </column>
+   <column>
+    <property name="text" >
+     <string/>
+    </property>
+   </column>
+  </widget>
+  <widget class="QPushButton" name="cUpdateButton" >
+   <property name="geometry" >
+    <rect>
+     <x>220</x>
+     <y>420</y>
+     <width>75</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Update</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="cCloseButton" >
+   <property name="geometry" >
+    <rect>
+     <x>310</x>
+     <y>420</y>
+     <width>75</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Close</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

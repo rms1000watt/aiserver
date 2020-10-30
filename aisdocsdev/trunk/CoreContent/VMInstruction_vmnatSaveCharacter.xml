@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmnatSaveCharacter</Title>
+		<InstructionName>vmnatSaveCharacter </InstructionName>
+		<InstructionType>Native</InstructionType>
+		<ArgumentTypes> Word Character  </ArgumentTypes>
+		<RelatedVMInstructions>  vmnatSaveFloat vmnatSaveInteger vmnatSaveNumber 
+								vmnatSaveObject vmnatSaveShort     </RelatedVMInstructions>
+		<HumanKeywords>  native save Float Integer Number Object Short </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[                                                  
+		<p>When evaluated, this vm instruction saves the <b>source</b> word into the 
+		<b>target</b> as a type Character. There are no conversions made between different 
+		types. This instruction may return an Error value. After the operation, the 
+		Instruction Pointer is promoted. The operation of this vm instruction is expressed 
+		in the following C expression:
+        </p>	
+        <ul><li><b>   (char)target = (word:char)source;   </b></li></ul>
+    ]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[  (vmnatSaveCharacter  source target) ]]></Expression>
+		<Argument> 
+		  <Name> source </Name>
+		  <Format>regoffset </Format>
+		  <AISTypes> (word:character) </AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>target  </Name>
+		  <Format>regoffset  </Format>
+		  <AISTypes>character</AISTypes>
+		</Argument>
+	</Syntax>
+</VMInstruction>

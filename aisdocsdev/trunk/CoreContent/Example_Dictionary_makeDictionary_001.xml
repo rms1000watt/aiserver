@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Dictionary makeDictionary 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>makeDictionary</FunctionKeywords>
+		<TypeKeywords>Dictionary</TypeKeywords>
+		<RelatedFunctions> objectToDictionary</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>define set make object structure inherit 
+
+
+
+                       parent object-oriented classes</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ The following code sample shows how to use <b>makeDictionary</b> function 
+
+                  to construct a dictionary from Vector data.
+
+     
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(makeDictionary  Student: Ann  Grade: 2)        </sc>]]></Expression>
+        <Note><![CDATA[A Dictionary is defined. ]]></Note>
+        <Returns><![CDATA[#&#60Dictionary 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60Dictionary 123456&#62)     </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[#{dic|  Grade 2 Student: Ann}]]></Returns>
+ <Expression><![CDATA[ <sc>(makeDictionary  Anniversary:  "#May,12,1984")         </sc>]]></Expression>  
+        <Note><![CDATA[A Dictionary with a Date field is defined. ]]></Note> 
+        <Returns><![CDATA[#&#60Dictionary 234567&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60Dictionary 234567&#62)     </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[#{dic| Anniversary "#May,12,1984"}]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

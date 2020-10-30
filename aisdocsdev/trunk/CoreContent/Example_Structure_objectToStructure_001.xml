@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure objectToStructure 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>objectToStructure  </FunctionKeywords>
+		<TypeKeywords>Structure Vector Object ObjVector</TypeKeywords>
+		<RelatedFunctions>new copy </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>vector separates token key substrings</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows how the <b>objectToStructure</b> transforms the  
+                  <b>{source}</b> Vector, Dictionary and Structure arguments into
+                  a Structure object.
+                 
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define aVector #(a 1 b 2 c 3))   </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60Vector 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display (objectToStructure  aVector) )   </sc>]]></Expression>  
+        <Note><![CDATA[Transforms the source Vector argument into a Structure. ]]></Note> 
+        <Returns><![CDATA[ #{a: 1 b: 2 c: 3}]]></Returns>
+        <Expression><![CDATA[ <sc> (objectToStructure  (new Dictionary: A: 4 B: 6))       </sc>]]></Expression>
+        <Note><![CDATA[Transforms the Dictionary object into a Structure.]]></Note>
+        <Returns><![CDATA[#{A: 4 B: 6}]]></Returns>
+       <Expression><![CDATA[ <sc>(display (objectToStructure  #{A:  4  B:  6}) )       </sc>]]></Expression>  
+        <Note><![CDATA[Returns the Structure argument unchanged.]]></Note> 
+        <Returns><![CDATA[#{A: 4 B: 6} ]]></Returns>     
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>debugDialog</Title>
+		<FunctionName>debugDialog</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>Integer String Vector</ArgumentTypes>
+		<DataType>String</DataType>
+		<RelatedFunctions>disassemble debugBrowsableProcs debug onError</RelatedFunctions>
+        <RelatedVMInstructions> vmdebugger </RelatedVMInstructions>
+		<HumanKeywords> DRM virtual machine debugger </HumanKeywords>
+	</KnowledgeBase>
+    <Description><![CDATA[
+       <p> The <b>debugDialog</b> function receives synchronous calls from the 
+       <b>DRM</b> (<b>D</b>ynamic typed <b>R</b>egister <b>M</b>achine) Virtual Machine whenever a debugger event occurs.
+       </p>
+       ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+         <p>The <b>debugDialog</b> function receives synchronous handshake-coversation calls from the 
+         <b>DRM</b> (<b>D</b>ynamic typed <b>R</b>egister <b>M</b>achine) whenever a debugger event occurs.
+         There are a variety of DRM debugger events and each call to the <b>debugDialog</b> function
+         notifies the debugDialog function which type of debugger event has occurred and requests instructions as to how to proceed.</p>
+
+         <p>Currently the engine context calls the debugDialog function with an ItemList composed of all current Lambda DRM assembler instructions, 
+         and all current Lambda variables (this can become very large). 
+         The debigDialog function responds with one of the return-handshake-expressions listed below.</p>
+       
+         <p>AIS DebugDialog Return-Handshake-Expressions</p>
+
+         <ul>
+           <li><b>?</b> Returns a string of all the valid AIS debugger query expressions.</li>
+           <li><b>b,instr</b> Set break point at the specified instruction (displacement).</li>
+           <li><b>b,Lambda</b> Set break point at the specified Lambda.</li>
+           <li><b>b,Lambda,instr</b> Set break point at the specified instruction (displacement).</li>
+           <li><b>c</b> Clear all break points in the current Lambda.</li>
+           <li><b>cc</b> Clear all break points in any Lambda anywhere in the system.</li>
+           <li><b>c,instr</b> Clear the break point at the specified instruction in the current Lambda.</li>
+           <li><b>c,Lambda</b> Clear all break points in the specified Lambda.</li>
+           <li><b>c,Lambda,instr</b> Clear the break point in the specified Lambda at the specified instruction (displacement).</li>
+           <li><b>d</b> Display only source instructions (if available otherwise DRM assembler instructions).</li>
+           <li><b>d,a</b> Display DRM assembler instructions.</li>
+           <li><b>d,m</b> Display mixed source and DRM assembler instructions.</li>
+           <li><b>d,s</b> Display only source instructions.</li>
+           <li><b>g</b> Turn debugger instruction-trace-mode off and resume execution.</li>
+           <li><b>p</b> Display the globally bound currently active Lambdas in memory.</li>
+           <li><b>t</b> Trace one instruction (step into).</li>
+           <li><b>t,instr</b> Trace to the specified instruction (displacement).</li>
+           <li><b>t,Lambda</b> Trace until the reaching the specified Lambda.</li>
+           <li><b>t,Lambda,instr</b> Trace until the reaching the specified instruction (displacement).</li>
+           <li><b>t,Lambda,instr,count</b> Trace until the reaching the specified instruction (displacement) the specified number of times (count).</li>
+           <li><b>t=expr</b> Trace instructions until the expression is true (only global variables references are allowed).</li>
+           <li><b>v</b> Return string containing all current variables.</li>
+           <li><b>v,a</b> Return string containing only argument variables.</li>
+           <li><b>v,t</b> Return string containing only temporary variables.</li>
+           <li><b>v,p</b> Return string containing only persistant variables.</li>
+           <li><b>v,c</b> Return string containing only constant variables.</li>
+           <li><b>v,v</b> Return string containing all current variables.</li>
+           <li><b>x</b> Trace one instruction (step over).</li>
+           <li><b>=expr</b> Return the evaluated Lisp expression as a string (only global variables references are allowed).</li>
+           <li><b>q</b> Quit the debugger.</li>
+         </ul>
+
+	     <p>The <b>debugDialog</b> function manages the synchronous debugger event handshake-coversations 
+         for Lambdas running on the <b>DRM</b> (<b>D</b>ynamic typed <b>R</b>egister <b>M</b>achine) Virtual Machine. 
+         Lambdas running on native code or on other virtual machines CANNOT be debugged 
+         with this function.  More information on the <b>DRM Virtual Machine</b> can be found in the Virtual Machine Chapter.</p>
+
+         <p>The current Smartbase engine incorporates a debugger API along with a practice and methodology for debugging Lambdas during execution. 
+         The current Smartbase debugger is integrated into the currently executing context. 
+         The debugger API supports only synchronous calls both from and to the executing Smartbase engine context. 
+         The client may or may not be executing on the same thread as the Smartbase engine. 
+         In either case, all current debugger API calls are defacto synchronous</P>
+
+
+         <P>Synchronous Calls from the Engine to the Client are accomplished via the <b>debugDialog</b> function.
+         Synchronous Calls from the Client to the Engine are accomplished via the <b>debug</b> function.
+         Currently the debugger state management is handled on the client side through the <b>debug</b> function.</P>
+
+        ]]></Overview>
+       <Usage><![CDATA[
+        <p>The <b>debug</b> function also operates in cooperation with the <b>disassemble</b> function and the <b>debugDialog</B> function. 
+        For correct operation, the target Analytic Information Server Lambda must have been 
+        compiled with <b>(debug true)</b> on. The <b>disassemble</b> command will display the 
+        source and generated <b>DRM</b> virtual machine instructions for any Lambda compiled with 
+        <b>(debug true)</b> on. The displacement <b>nn</b> arguments, shown in these debug commands, 
+        are those generated from the <b>disassemble</b> command.</p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[ 
+                    <p>(debugDialog title prompt itemList selection)</p> 
+                    ]]>
+        </Expression>
+		<Argument>
+		  <Name>title</Name>
+		  <Note><![CDATA[
+          <p>The event title string.</p>
+           ]]></Note>
+		  <AISTypes>String</AISTypes>
+    	</Argument>
+		<Argument>
+		  <Name>prompt</Name>
+		  <Note><![CDATA[
+             <p>The event prompt string.</p>
+             ]]></Note>
+		  <AISTypes>String</AISTypes>
+    	</Argument>
+		<Argument>
+		  <Name>itemList</Name>
+		  <Note><![CDATA[
+              <p>The Vector of Strings containing comprehensive information related to this debugger event.</p>
+          ]]></Note>
+		  <AISTypes>Vector</AISTypes>
+    	</Argument>
+		<Argument>
+		  <Name>selection</Name>
+		  <Note><![CDATA[
+           <p>The specific item (from the itemList) which is selected for this debugger event.</p>
+           ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+    	</Argument>
+    	<Return><![CDATA[
+          <p>Error message.</p>
+          ]]></Return>
+	</Syntax>
+</Function>

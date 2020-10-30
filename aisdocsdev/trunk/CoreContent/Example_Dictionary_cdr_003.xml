@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Dictionary cdr 003</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>cdr</FunctionKeywords>
+		<TypeKeywords>Dictionary</TypeKeywords>
+		<RelatedFunctions>ref refValues refAttributes setCdr</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>tail ref index</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows that the tail key-binding value of a Dictionary
+
+                  must first be defined before it can be accessed by the <b>cdr</b>
+                  function.  If no tail value is defined, then the <b>cdr</b> function
+
+                  returns #void.
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define ClassRec  #{dic|Bldg: 200 Room: 34 Period: 1 } )</sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60Dictionary 188141&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(setCdr ClassRec #{dic| Teacher: "Smith"  Subject: "Math" }) </sc>]]></Expression>
+        <Note><![CDATA[The tail value of the ClassRec Dictionary is defined.]]></Note>
+        <Returns><![CDATA[none]]></Returns>
+        <Expression><![CDATA[ <sc> (display ClassRec)    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[(#{dic| Bldg: 200 Room: 34 Period: 1 }  . #{dic| Teacher: "Smith"  Subject: "Math" }) ]]></Returns>
+        <Expression><![CDATA[ <sc>(display (cdr ClassRec))</sc>]]></Expression>  
+        <Note><![CDATA[Displays only the tail value of the ClassRec Dictionary. ]]></Note> 
+        <Returns><![CDATA[#{dic| Teacher: "Smith"  Subject: "Math" }]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>deg</Title>
+		<FunctionName>deg</FunctionName>
+		<FunctionType>Builtin(Trig)</FunctionType>
+		<ArgumentTypes> Number  </ArgumentTypes>
+		<DataType>Number  </DataType>
+		<RelatedFunctions> rad</RelatedFunctions>
+        <RelatedVMInstructions>none</RelatedVMInstructions>
+		<HumanKeywords>    radians angle   </HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>deg</b> function converts a value specified in radians to degrees. </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+	   <p> The <b>deg</b> function converts a value specified in radians to degrees.</p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>deg</b> function is used to convert a value expressed in radians to degrees.
+         </p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p><b> (deg num)</b></p>]]></Expression>
+		<Argument>
+		  <Name>num</Name>
+		  <Note><![CDATA[
+		  <p>Any value specified in radians or a formula, cell or cell reference that
+          evaluates to a value in radians which you want to convert to degrees.</p>
+          ]]></Note>
+		  <AISTypes>Number</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>The value of num is converted to degrees.</p>
+	    ]]></Return>
+	</Syntax>
+</Function>

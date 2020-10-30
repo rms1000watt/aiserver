@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Complex comparison 021</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>comparison</FunctionKeywords>
+		<TypeKeywords>Complex</TypeKeywords>
+		<RelatedFunctions>compare compareEQ compareGT compareNE compareLT  compareLE</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare number equal   </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ <p>The result of the comparison operators on the <b>jmple</b>, <b>jmplt</b>
+                  <b>jmpeq</b>, <b>jmpne<b>, <b>jmpge</b> and <b>jmpgt</b> functions.
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[<sc>
+         	(setq X #c65.0)
+			(setq Y #c65.0+1.0i)
+			(setq Z #c65.0-1.0i)
+			(if (&#62 Y X)    true)
+			(if (&#62 Y 65.0) true)
+			(if (&#62 Y 65)   true)
+			(if (&#62 Y #\A)  true)
+			(if (&#62 65.0 X) false true)
+			(if (&#62 65   X) false true)
+			(if (&#62 #\A  X) false true)</sc>
+         ]]></Expression>
+        <Note><![CDATA[On the jmple function:]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+   	    <Expression><![CDATA[<sc>
+         	(if (&#62= Y X)    true)
+			(if (&#62= Y 65.0) true)
+			(if (&#62= Y 65)   true)
+			(if (&#62= Y #\A)  true)
+			(if (&#62= 65.0 Y) false true)
+			(if (&#62= 65   Y) false true)
+			(if (&#62= #\A  Y) false true)
+			</sc>
+         ]]></Expression>  
+        <Note><![CDATA[On the jmplt function:]]></Note> 
+        <Returns><![CDATA[true]]></Returns>
+   	    <Expression><![CDATA[<sc>
+			(if (&#60&#62 Y X)    true)
+			(if (&#60&#62 Y 65.0) true)
+			(if (&#60&#62 Y 65)   true)
+			(if (&#60&#62 Y #\A)  true)
+			(if (&#60&#62 65.0 X) false true)
+			(if (&#60&#62 65   X) false true)
+			(if (&#60&#62 #\A  X) false true)
+			</sc>
+         ]]></Expression>  
+        <Note><![CDATA[On the jmpeq function:]]></Note> 
+        <Returns><![CDATA[true]]></Returns>
+   	    <Expression><![CDATA[<sc>
+			(if (= X X)    true)
+			(if (= X 65.0) true)
+			(if (= X 65)   true)
+			(if (= X #\A)  true)
+			(if (= 65.0 Z) false true)
+			(if (= 65   Z) false true)
+			(if (= #\A  Z) false true)
+			</sc>
+         ]]></Expression>  
+        <Note><![CDATA[On the jmpne function:]]></Note> 
+        <Returns><![CDATA[true]]></Returns>
+   	    <Expression><![CDATA[<sc>
+			(if (&#60 X Y)    true)
+			(if (&#60 65.0 Y) true)
+			(if (&#60 65 Y)   true)
+			(if (&#60 #\A Y)  true)
+			(if (&#60 X 65.0) false true)
+			(if (&#60 X 65  ) false true)
+			(if (&#60 X #\A ) false true)
+			</sc>
+         ]]></Expression>  
+        <Note><![CDATA[On the jmpge function:]]></Note> 
+        <Returns><![CDATA[true]]></Returns>
+   	    <Expression><![CDATA[<sc>
+			(if (&#60= X Y)    true)
+			(if (&#60= 65.0 X) true)
+			(if (&#60= 65 Y)   true)
+			(if (&#60= #\A Z)  true)
+			(if (&#60= Y 65.0) false true)
+			(if (&#60= Y 65  ) false true)
+			(if (&#60= Y #\A ) false true)
+			</sc>
+         ]]></Expression>  
+        <Note><![CDATA[On the jmpgt function:]]></Note> 
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[
+           <p>The comparison operators are instrumental in 
+           implementing comparison tests as shown in the above examples.  </p>
+           <p>
+Only if the real parts of the two arguments are equal, the imaginary parts
+           are compared. If one argument has only a real part, the imaginary part is taken 
+           to be zero. </p>
+        ]]></Hints>
+   </Syntax>
+</Example>

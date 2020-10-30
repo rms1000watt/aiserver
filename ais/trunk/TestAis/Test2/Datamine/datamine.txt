@@ -1,0 +1,4 @@
+datamine/datamine.txt
+
+A testRepository.db is automatically created when astartup.sl is first run.
+This file forces the datamine folder to be created when checking out ais from StarTeam.

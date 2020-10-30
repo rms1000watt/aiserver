@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number tanh 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>tanh</FunctionKeywords>
+		<TypeKeywords>Number Integer</TypeKeywords>
+		<RelatedFunctions>cosh sinh</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>    tangent radians angle hyperbolic  </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>tanh</b> function to  compute the hyperbolic tangent of a number.
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(tanh 1.5)   </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[ 0.9051482536449]]></Returns>
+  	    <Expression><![CDATA[ <sc>(tanh 4.59)   </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[0.9997938601827]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmmovei</Title>
+		<InstructionName>vmmovei</InstructionName>
+		<InstructionType>Generic</InstructionType>
+		<ArgumentTypes> Word</ArgumentTypes>
+		<RelatedVMInstructions>  vmref vmset vmmove vmmoven </RelatedVMInstructions>
+		<HumanKeywords>  move ref set </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[
+		<p>When evaluated, this vm instruction moves the <b>source</b> word numeric value 
+
+		to the <b>target</b> locationas an Integer value. The source word must be one of the 
+        valid numeric data types. Conversion between different numeric types is automatic. 
+        This instruction may return an error. After the operation, the Instruction Pointer 
+        is promoted.<br>
+        The operation of this vm instruction is expressed in the following C expression: 
+
+        </p>
+        <ul><li><b>   (word:int)target = (word:numeric)source;</b></li></ul>
+    ]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[  (vmmove source target) ]]></Expression>
+		<Argument>
+		  <Name>source</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>(word:numeric)</AISTypes>
+		</Argument>
+		<Argument>
+		  <Name> target </Name>
+		  <Format>regoffset </Format>
+		  <AISTypes> (word:int)</AISTypes>
+		</Argument>
+	</Syntax>
+</VMInstruction>

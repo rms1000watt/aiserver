@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number number 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>number</FunctionKeywords>
+		<TypeKeywords>Number Integer </TypeKeywords>
+		<RelatedFunctions>isNumber isType</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>convert number object</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples convert Character and Text data types into
+                 the Number data type using the <b>number</b> function.
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc> 
+(number  #void )      </sc>]]></Expression>
+        <Note><![CDATA[Character values are converted to Numeric values. ]]></Note>
+        <Returns><![CDATA[0.0]]></Returns>
+	    <Expression><![CDATA[ <sc> (number  #\a)           </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[97.0]]></Returns>
+	    <Expression><![CDATA[ <sc> (number  #\backspace)                   </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[8.0]]></Returns>
+        <Expression><![CDATA[ <sc> (number  "-23.45")               </sc>]]></Expression>
+        <Note><![CDATA[Text containing numbers is converted into its corresponding numeric value.]]></Note>
+        <Returns><![CDATA[ -23.45]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

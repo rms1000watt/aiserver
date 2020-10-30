@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Character ccompareLT 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>ccompareGE</FunctionKeywords>
+		<TypeKeywords>Integer Boolean Character</TypeKeywords>
+		<RelatedFunctions> ccompareEQ ccompareNE ccompareGT ccompareGE  ccompareLE</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare Lambda lesser character</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>ccompareLT</b> function to compare two objects and return
+
+
+
+
+
+
+
+                  the Boolean value, true if the first argument is lesser than  the second argument
+                 or false if otherwise.  
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+(ccompareLT #\c #\d)         </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+ 	    <Expression><![CDATA[ <sc>
+(ccompareLT #\f #\d)</sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(ccompareLT #\c #\c)  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

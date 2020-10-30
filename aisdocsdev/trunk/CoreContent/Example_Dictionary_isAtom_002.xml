@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Dictionary isAtom 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isAtom</FunctionKeywords>
+		<TypeKeywords>Dictionary Boolean Pair List</TypeKeywords>
+		<RelatedFunctions>isPair</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>atom pair list non-list</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples check whether the object evaluated is
+
+                  a Pair or not.  
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(isAtom  #{dic|Name: "John" SSN:  "454-12-1412"})  </sc>]]></Expression>
+        <Note><![CDATA[The evaluated object is a Dictionary, not a Pair, so true is returned. ]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>(isAtom  '(1  2))   </sc>]]></Expression>
+        <Note><![CDATA[The evaluated object is a  Pair, so false is returned. ]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

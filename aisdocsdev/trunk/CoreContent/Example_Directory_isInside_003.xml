@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Directory isInside 003</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isInside</FunctionKeywords>
+		<TypeKeywords>   Directory
+
+Boolean Symbol
+</TypeKeywords>
+		<RelatedFunctions>compareEQ comparison isEqual isIdentical member isMember inside </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>Directory Equal Analytic Object </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples check if the key is a member of the Directories using the
+
+
+
+                  <b>isInside</b> function.
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(isInside  Address:  #{dir| Name: "John Doe"  SSN: 556-12-5151})                 </sc>]]></Expression>
+        <Note><![CDATA[Address: is not a key contained the Directory.]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(isInside  Name:  #{dir| Name: "John Doe"  SSN: 556-12-5151})         </sc>]]></Expression>
+        <Note><![CDATA[Name: is a key contained in the Directory. ]]></Note>
+        <Returns><![CDATA[true ]]></Returns>
+        <Hints><![CDATA[none  ]]></Hints>
+   </Syntax>
+</Example>

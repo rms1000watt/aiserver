@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Symbol symbol 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>symbol</FunctionKeywords>
+		<TypeKeywords>Symbol String</TypeKeywords>
+		<RelatedFunctions>string new setq isSymbol</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>converts  value coerce</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These example show how a Text argument is converted into a Symbol Data Type
+                  using the function <b>symbol</b>.
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(type "MySymbol")  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[String]]></Returns>
+        <Expression><![CDATA[<sc>(type (symbol  "MySymbol")) </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[Symbol]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,24 @@
+aisdev/testais/contextusersinfo.txt
+
+User Ids from 0 to 3 are reserved. Do not use.
+		Null - Not normally used.
+		_default - Default account. Default settings for new users
+		Guest - Guest logon.
+		System - Root logon.
+NOTES:
+ 1.	Contextusers file may be overwritten by AIS.
+ 2. Put contextusers.ini file in startup directory (same as for context.ini)
+ 2. First 4 userIds are reserved. Do not use for regular users
+ 3. If _default entry is not included, users' settings are not changed
+ 4. If _default entry is included, the default settings are used for
+	users not included in aisappusers file.
+ 5. UserId must match the userId in the password file, passwd.txt
+ 6. SecLevel must be from 0 (no access) to 7 (superuser)
+ 7. EndDate is of the form mm/dd/yyyy e.g, 04/25/1962
+    Account is disabled on or after this date. If 0, account is disabled.
+ 8. 1/1/2003 is day 1097 (days since 1/1/2000)
+ 9. UserName is just for reference, it is not used
+
+ENTRY FORMAT
+ UserId : SecLevel : EndDate : UserName
+

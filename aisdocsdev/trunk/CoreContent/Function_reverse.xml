@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>reverse</Title>
+		<FunctionName>reverse</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>List Vector Matrix NumMatrix FltVector ShortVector IntVector NumVector ObjVector  BitVector</ArgumentTypes>
+		<DataType> Vector Matrix List NumMatrix FltVector ShortVector IntVector NumVector ObjVector  BitVector</DataType>
+		<RelatedFunctions>delete insert remove</RelatedFunctions>
+        <RelatedVMInstructions> vmregObjLength  </RelatedVMInstructions>
+		<HumanKeywords>delete remove key binding </HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>reverse</b> function creates and returns a new Vector, List or Matrix, which contains the
+                 elements of the argument  in reverse order.   </p>
+          ]]></Description>
+	<Brief>
+        <Overview><![CDATA[
+		<p>The <b>reverse</b> function creates and returns a new Vector, which contains the 
+           elements of the argument <b>{obj}</b> in reverse order.  The argument <b>{obj}</b> 
+           may be a proper List or a Vector.</p>
+        ]]></Overview>
+        <Overview-Matrix><![CDATA[
+		<p>The <b>reverse</b> function creates and returns a new Matrix, which contains the 
+           elements of the argument <b>{obj}</b> in reverse order.  The argument <b>{obj}</b> 
+           may be a proper List or a Matrix.</p>
+        ]]></Overview-Matrix>
+        <Overview-NumMatrix><![CDATA[
+		<p>The <b>reverse</b> function creates and returns a new NumMatrix, which contains the 
+           elements of the argument <b>{obj}</b> in reverse order.  The argument <b>{obj}</b> 
+           may be a proper List or a NumMatrix.</p>
+        ]]></Overview-NumMatrix>
+        <Overview-List><![CDATA[
+		<p>The <b>reverse</b> function creates and returns a new List, which contains the 
+           elements of the argument <b>{obj}</b> in reverse order.  The argument <b>{obj}</b> 
+           may be a proper List or a Vector.</p>
+        ]]></Overview-List>
+        <Usage><![CDATA[
+        <p>Use the <b>reverse</b> function reorganizes the elements in a Vector, Matrix or List  
+           in reverse order.</p>
+        ]]></Usage>
+        <Usage-Matrix><![CDATA[
+        <p><FONT COLOR="#0000ff"> Note: </FONT> <b>Returns an error message if the Matrix is not of rank one. </b></p>
+        <p>Use the <b>reverse</b> function reorganizes the elements in a Matrix  
+           in reverse order.</p>
+        ]]></Usage-Matrix>
+       <Usage-NumMatrix><![CDATA[
+        <p><FONT COLOR="#0000ff"> Note: </FONT> <b>Returns an error message if the NumMatrix is not of rank one. </b></p>
+        <p>Use the <b>reverse</b> function reorganizes the elements in a NumMatrix  
+           in reverse order.</p>
+        ]]></Usage-NumMatrix>
+    </Brief>
+    <Syntax>
+	    <Expression><![CDATA[<p>  (reverse obj)</p>]]></Expression>
+		<Argument> 
+		  <Name>obj</Name>
+		  <Note><![CDATA[
+		  <p>Must be a Vector or List.</p>
+          ]]></Note>
+		  <AISTypes>Vector FltVector ShortVector IntVector NumVector ObjVector  BitVector List </AISTypes>
+		</Argument>	  
+		<Return><![CDATA[ 
+	    <p>Returns a Vector containing the  elements in reverse order
+        </p>
+	    ]]></Return>       
+	</Syntax>
+    <Syntax-Matrix>
+	    <Expression><![CDATA[<p>  (reverse obj)</p>]]></Expression>
+		<Argument> 
+		  <Name>obj</Name>
+		  <Note><![CDATA[
+		  <p>Must be a Matrix </p>
+          ]]></Note>
+		  <AISTypes>Matrix   </AISTypes>
+		</Argument>	  
+		<Return><![CDATA[ 
+	    <p>Returns a Matrix containing the  elements in reverse order
+        </p>
+	    ]]></Return>       
+	</Syntax-Matrix>
+    <Syntax-NumMatrix>
+	    <Expression><![CDATA[<p>  (reverse obj)</p>]]></Expression>
+		<Argument> 
+		  <Name>obj</Name>
+		  <Note><![CDATA[
+		  <p>Must be a  NumMatrix</p>
+          ]]></Note>
+		  <AISTypes> NumMatrix </AISTypes>
+		</Argument>	  
+		<Return><![CDATA[ 
+	    <p>Returns a  NumMatrix ontaining the  elements in reverse order
+        </p>
+	    ]]></Return>       
+	</Syntax-NumMatrix>
+    <Syntax-List>
+	    <Expression><![CDATA[<p>  (reverse obj)</p>]]></Expression>
+		<Argument> 
+		  <Name>obj</Name>
+		  <Note><![CDATA[
+		  <p>Must be a Vector or List.</p>
+          ]]></Note>
+		  <AISTypes>Vector List </AISTypes>
+		</Argument>	  
+		<Return><![CDATA[ 
+	    <p>Returns a List containing the arguments reorganized in reverse order
+        </p>
+	    ]]></Return>       
+	</Syntax-List>
+</Function>

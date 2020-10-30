@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Dictionary refValues 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>refValues</FunctionKeywords>
+		<TypeKeywords> Dictionary Symbol Vector Integer Text</TypeKeywords>
+		<RelatedFunctions>setq  ref fieldsOf   refAttributes </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>ref reference value set attributes position</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ The <b>refValues</b> function returns the
+
+
+
+
+                  values of the Dictionary and saves it in a Vector.
+
+
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(setq aDict  #{dic| Make: "Ford" Model: "Mustang" Year: 1998} )      </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60Dictionary 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(setq theValues (refValues aDict ))        </sc>]]></Expression>
+        <Note><![CDATA[Saves the values of the Dictionary in a  Vector]]></Note>
+        <Returns><![CDATA[#&#60Vector 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display  theValues[0] )  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[Ford]]></Returns>
+  	    <Expression><![CDATA[ <sc>(display  theValues[1] )  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[Mustang]]></Returns>
+         <Expression><![CDATA[ <sc>(display  theValues[2] )  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[1998]]></Returns>
+        <Hints><![CDATA[none
+
+
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

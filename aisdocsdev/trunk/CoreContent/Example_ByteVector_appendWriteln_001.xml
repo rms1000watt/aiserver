@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Vector appendWriteln 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>appendWriteln</FunctionKeywords>
+		<TypeKeywords>Vector</TypeKeywords>
+		<RelatedFunctions>new replace rept append</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>append concatenate vector </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines a new ByteVector and appends additional Vectors to it.
+	]]></Description>
+	<Syntax>
+        <Expression><![CDATA[ <sc>(define V (new Vector: byte: 10000 ) )         </sc>]]></Expression>  
+        <Note><![CDATA[A new ByteVector with  preallocated space is defined. ]]></Note> 
+        <Returns><![CDATA[none]]></Returns>
+  	    <Expression><![CDATA[ <sc>(define X #("The " "rain "  "In " "Spain" ) )      </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60Vector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(define Y #("falls " "mainly " "on" ) )       </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60Vector 234567&#62   ]]></Returns>
+        <Expression><![CDATA[ <sc>(define Z #("the " "plain") )         </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#&#60Vector 345678&#62   ]]></Returns>
+        <Expression><![CDATA[ <sc>(appendWriteln V  X Y Z)          </sc>]]></Expression>  
+        <Note><![CDATA[The Vectors X, Y and Z are appended to the ByteVector, V.]]></Note> 
+        <Returns><![CDATA[#("The " "rain " "In " "Spain" )#("falls " "mainly " "on" )#("the " "plain" )  ]]></Returns>         
+        <Hints><![CDATA[An alternative to <b>appendWriteln</b> is:
+               <p><b> (setq W (append X Y Z )) </p></b>
+               <p><b>W</b> has the Value <b>"The rain In Spain falls mainly on the plain."</b></p>
+               <p>The <b>appendWriteln</b> function will be much faster than the <b>append</b> 
+                  function in cases where a large number of items need to be appended. The <b>append</b> 
+                  function requests space before every <b>append</b> action. When large, 
+                  frequent requests are made, garbage collection can slow the system. 
+                  The <b>appendWriteln</b> function uses the preallocated space in the 
+                  Byte Vector, so it is faster.  </p>]]></Hints>
+   </Syntax>
+</Example>

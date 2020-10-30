@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>clear</Title>
+		<FunctionName>clear</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+        <ArgumentTypes> Boolean</ArgumentTypes>
+        <DataType> Context ObjectRepository</DataType>
+	    <RelatedFunctions>lock</RelatedFunctions>
+        <RelatedVMInstructions> none  </RelatedVMInstructions>
+		<HumanKeywords>context workspace RAM lock</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p>The <b>clear</b> function clears the current contents of RAM memory also
+              known as the Workspace.     </p>
+             <p>The <b>clear</b> function erases the specified ObjectRepository database archive file 
+           and forgets all objects saved in the ObjectRepository. </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+	    <p>The <b>clear</b> function clears the current contents of RAM memory also known as 
+          the Workspace. The <b>clear</b> function will not clear global variables whose Lock 
+         Flag is set (see the <b>lock</b> function).</p>
+        ]]></Overview>
+	   <Overview-ObjectRepository><![CDATA[
+	    <p>The <b>clear</b> function erases the specified ObjectRepository database archive file <b>{aGor}</b>
+        and forgets all objects saved in the ObjectRepository. An ObjectRepository, which has been cleared, 
+        is now empty, and may immediately be used to store new objects if desired. </p>   
+        ]]></Overview-ObjectRepository>
+       <Usage><![CDATA[
+       <p>The <b>clear</b> function is used to clear all of the data in the current workspace. </p>
+        ]]></Usage>
+       <Usage-ObjectRepository><![CDATA[
+       <p>The <b>clear</b> function is used to erase all of the data in the current object repository. </p>
+        ]]></Usage-ObjectRepository>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p><b>     (clear)</b></p>
+]]></Expression>
+		<Argument>
+		  <Name>none</Name>
+		  <Note><![CDATA[
+		  <p> none </p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>Always returns the Boolean value, true</p>
+	    ]]></Return>
+	</Syntax>
+	<Syntax-ObjectRepository>
+	    <Expression><![CDATA[<p><b>   (clear aGor) </b></p>]]></Expression>  
+		<Argument> 
+		  <Name>aGor</Name>
+		  <Note><![CDATA[
+		  <p> The ObjectRepository whose database archive file is to be erased. </p>
+          ]]></Note>
+		  <AISTypes>ObjectRepository</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>This function returns the Boolean value true, or an error value if an error occurred. </p>
+	    ]]></Return>         
+	</Syntax-ObjectRepository>
+</Function>

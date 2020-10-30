@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example ObjectRepository rename 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>rename</FunctionKeywords>
+		<TypeKeywords>ObjectRepository </TypeKeywords>
+		<RelatedFunctions>new</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>open transaction boolean</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows the <b>rename</b> function change the key in
+                  a key-value pair in an Object Repository.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+(setq number (new ObjectRepository: "myfile1.odb"))     </sc>   ]]></Expression>
+        <Note><![CDATA[Specify the name of the first ObjectRepository.  ]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq gor.greeting "Goodbye")     </sc>   ]]></Expression>
+        <Note><![CDATA[The original name of the key is "greeting". ]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc>(ref gor.greeting)     </sc>   ]]></Expression>
+        <Note><![CDATA[Retrieves the value of the key "greeting". ]]></Note>
+        <Returns><![CDATA[Goodbye]]></Returns>
+  	    <Expression><![CDATA[ <sc>(rename gor greeting: farewell:)     </sc>   ]]></Expression>
+        <Note><![CDATA[The name of the key is changed from "greeting" to "farewell". ]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+  	    <Expression><![CDATA[ <sc>(ref gor.greeting)     </sc>   ]]></Expression>  
+        <Note><![CDATA[The old key "greeting" is deleted.]]></Note> 
+        <Returns><![CDATA[#void]]></Returns>
+  	<Expression><![CDATA[ <sc>(ref gor.farewell)     </sc>   ]]></Expression>  
+        <Note><![CDATA[The new key retains the value of the old key.]]></Note> 
+        <Returns><![CDATA[Goodbye]]></Returns>
+        <Hints><![CDATA[none
+
+
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

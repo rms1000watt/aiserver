@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example NumMatrix member 009</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>member</FunctionKeywords>
+		<TypeKeywords>   NumMatrix Boolean Integer
+
+
+</TypeKeywords>
+		<RelatedFunctions> inside isInside isMember</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>NumMatrix Equal Analytic Object </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples check if the Number object is a member of the Matrix using the
+
+
+
+
+
+
+
+
+                  <b>member</b> function.
+If the Number object is a member of the Matrix, its
+
+
+
+
+
+                  index value will be returned, if not the Boolean, false will be returned.
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define Fruits  #(nummat| 51 52 53 54)   )     </sc>]]></Expression>
+        <Note><![CDATA[A NumMatrix is defined. ]]></Note>
+        <Returns><![CDATA[#&#60NUmMatrix 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(member 10 Fruits)              </sc>]]></Expression>
+        <Note><![CDATA[The number, 10 is a not a member contained in the Matrix. ]]></Note>
+        <Returns><![CDATA[false ]]></Returns>
+        <Expression><![CDATA[ <sc>(member 51  Fruits)                  </sc>]]></Expression>
+        <Note><![CDATA[The number, 51 is a member contained in the Matrix. Its index is returned. ]]></Note>
+        <Returns><![CDATA[0 ]]></Returns>
+        <Hints><![CDATA[none  ]]></Hints>
+   </Syntax>
+</Example>

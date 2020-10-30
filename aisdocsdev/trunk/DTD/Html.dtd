@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ENTITY % HTML "( #PCDATA | B | BR | HR | P | PRE | UL | LI )*">
+<!ELEMENT B %HTML;>
+<!ELEMENT BR (EMPTY)>
+<!ELEMENT HR (EMPTY)>
+<!ELEMENT P %HTML; >
+<!ELEMENT PRE %HTML; >
+<!ELEMENT UL %HTML; >
+<!ELEMENT LI %HTML;>
+
+<!ENTITY % html "(#PCDATA | b | br | hr | p | pre | ul | li)*">
+<!ELEMENT b %html;>
+<!ELEMENT br (EMPTY)>
+<!ELEMENT hr (EMPTY)>
+<!ELEMENT p %html; >
+<!ELEMENT pre (#PCDATA)>
+<!ELEMENT ul %html; >
+<!ELEMENT li  %html; >
+<!-- end -->

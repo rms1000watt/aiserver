@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Character csub 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>csub</FunctionKeywords>
+		<TypeKeywords>Character Integer </TypeKeywords>
+		<RelatedFunctions>cadd cmul cmod cdiv</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>addition subtraction multiplication division character   </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ The <b>csub</b> function subtracts Character operands and returns the result as a Character.
+
+	]]></Description>
+	<Syntax>
+ 	    <Expression><![CDATA[ <sc>  (csub  #\d  1)                  </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#\c]]></Returns>
+	    <Expression><![CDATA[ <sc> 
+(csub  #\d  2)           </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#\b]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

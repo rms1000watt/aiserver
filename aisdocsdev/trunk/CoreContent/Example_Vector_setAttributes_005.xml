@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Vector setAttributes 005</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>setAttributes</FunctionKeywords>
+		<TypeKeywords>   Symbol Vector ObjVector Structure</TypeKeywords>
+		<RelatedFunctions>setq  ref fieldsOf refAttributes  refValues </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>ref reference set position</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ The <b>setAttributes</b> function returns the
+
+
+
+
+
+
+                  values of the Vector and saves it in another Object Vector.
+
+
+
+
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(setq X #void)       </sc>]]></Expression>
+        <Note><![CDATA[Reset Attributes and Values ]]></Note>
+        <Returns><![CDATA[none]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Y #void)          </sc>]]></Expression>
+        <Note><![CDATA[Reset Attributes and Values ]]></Note>
+        <Returns><![CDATA[none]]></Returns>
+        <Expression><![CDATA[ <sc>(setq X #("Camaro"  $22590  #Feb,1,1996)  )    </sc>]]></Expression>
+        <Note><![CDATA[Create an unattributed Vector.]]></Note>
+        <Returns><![CDATA[#&#60Vector 123456 &#62]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Y #("Mustang"  $26990  #Mar,1,1996)  )       </sc>]]></Expression>
+        <Note><![CDATA[Create an unattributed Vector.]]></Note>
+        <Returns><![CDATA[#&#60Vector 234567&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(setq attb (new  Vector:  object:  3  Product:  Amount:  Date:)  )          </sc>]]></Expression>
+        <Note><![CDATA[Create an attribute Vector.]]></Note>
+        <Returns><![CDATA[#&#60ObjVector 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(setq block (new  Vector:  object:  2  X  Y)  )         </sc>]]></Expression>
+        <Note><![CDATA[ Create a block of Vectors.]]></Note>
+        <Returns><![CDATA[#&#60ObjVector 234567&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc>(display  block[0] )  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#("Camaro"  $22,590  #Feb,1,1996)]]></Returns>
+        <Expression><![CDATA[ <sc>(display  block[1] )  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#("Mustang"  $26,990  #Mar,1,1996)]]></Returns>
+        <Expression><![CDATA[ <sc>(display (refAttributes block[0]))</sc>]]></Expression>
+        <Note><![CDATA[The Vector contents has no attribute values. ]]></Note>
+        <Returns><![CDATA[#void]]></Returns>
+        <Expression><![CDATA[ <sc>(display (refAttributes block[1]))</sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#void]]></Returns>
+        <Expression><![CDATA[ <sc>(setAttributes block  attb)     </sc>]]></Expression>
+        <Note><![CDATA[Attribute all Vectors in block.]]></Note>
+        <Returns><![CDATA[#&#60ObjVector 234567&#62]]></Returns>
+         <Expression><![CDATA[ <sc>(display (refAttributes block[0]))</sc>]]></Expression>
+        <Note><![CDATA[The attribute of each  element. ]]></Note>
+        <Returns><![CDATA[#{objvector | Product:  Amount:  Date:} true]]></Returns>
+        <Expression><![CDATA[ <sc>(display (refAttributes block[1]))</sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#(objvector | Product:  Amount:  Date:) ]]></Returns>
+        <Hints><![CDATA[none
+
+
+
+
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

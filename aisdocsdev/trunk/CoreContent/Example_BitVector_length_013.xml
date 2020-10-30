@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example BitVector length 013</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>length</FunctionKeywords>
+		<TypeKeywords> Integer BitVector</TypeKeywords>
+		<RelatedFunctions>count </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>length equal</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows the <b>length</b> function performing a 
+
+
+
+                  shallow count on a  <b>Vector  </b> object.
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(length #(bit| 1 1 1 1 1 )   )     </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[5]]></Returns>
+  	    <Expression><![CDATA[ <sc>(length #(bit| 1 1 1 1 1 #void )   )     </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[6]]></Returns>
+        <Hints><![CDATA[See the <b>count</b> function to illustrate <i>deep</i> counting of vector values.]]></Hints>
+   </Syntax>
+</Example>

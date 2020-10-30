@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Brick setq 029</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>setq</FunctionKeywords>
+		<TypeKeywords>Brick</TypeKeywords>
+		<RelatedFunctions>ref</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>set setq replace global value </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples show the <b>setq</b> function set the values of a Brick
+                  using the field name and the field index.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq X (new Brick: 3 name:Object:2 age:Integer:2 address:Object:2))</sc>]]></Expression>
+        <Note><![CDATA[<p>Create a new Brick, named X, and give it 5 rows each containing three fields. 
+               The name field contains 2 repeats, the age field contains 2 repeats, the address field contains 2 repeats.</p>
+               <p>The brick X will look like this table: </p>
+               <table> <tr> <td>row1name1</td> <td>row1name2</td> <td>row1age1</td><td>row1age2</td><td>row1address1</td><td>row1address2</td>  </tr>  
+               <tr> <td>row2name1</td> <td>row2name2</td> <td>row2age1</td><td>row2age2</td><td>row2address1</td><td>row2address2</td>  </tr>
+               <tr> <td>row3name1</td> <td>row3name2</td> <td>row3age1</td><td>row3age2</td><td>row3address1</td><td>row3address2</td>  </tr>
+               </table>               
+        ]]></Note>
+        <Returns><![CDATA[#&#60Record 123456&#62  ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq X[name: 0 0]  #("Anna") )          </sc>]]></Expression>
+        <Note><![CDATA[You can set values using indices. The first index is the field or field index, the second index is the
+                 rowNumber, and the third index is the repeatNumber of the specific field. ]]></Note>
+        <Returns><![CDATA[#&#60Record 123456&#62  ]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq X[2 0 0]   #("California") )  </sc>]]></Expression>  
+        <Note><![CDATA[The field index 2 refers to the address field.]]></Note> 
+        <Returns><![CDATA[#&#60Record 123456&#62 ]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq X[name: 1 0] #("Beth"))   </sc>]]></Expression>  
+        <Note><![CDATA[We are writing on the second row.]]></Note> 
+        <Returns><![CDATA[#&#60Record 123456&#62 ]]></Returns>  
+         <Expression><![CDATA[ <sc>(setq X[1 1 0] 18)  </sc>]]></Expression>  
+        <Note><![CDATA[We are writing on the second row.]]></Note> 
+        <Returns><![CDATA[#&#60Record 123456&#62 ]]></Returns>
+        <Hints><![CDATA[<p>The brick X will now look like this table: </p>
+               <table> <tr> <td>Anna</td> <td>row1name1</td> <td>row1age1</td><td>row1age2</td><td>California</td><td>row1address2</td>  </tr>  
+               <tr> <td>Beth</td> <td>row2name2</td> <td>18</td><td>row2age2</td><td>row2address1</td><td>row2address2</td>  </tr>
+               <tr> <td>row3name1</td> <td>row3name2</td> <td>row3age1</td><td>row3age2</td><td>row3address1</td><td>row3address2</td>  </tr>
+               </table>   ]]></Hints>
+   </Syntax>
+</Example>

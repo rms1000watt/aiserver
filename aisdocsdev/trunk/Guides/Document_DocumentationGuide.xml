@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Document SYSTEM "../DTD/Document.dtd">
+<Document>
+	<KnowledgeBase>
+	    <Title>Documentation Guide</Title>
+		<Topic>Help Documentation Guide</Topic>
+		<SubTopic>Help Documentation Sub-Topic</SubTopic>
+		<HumanKeywords>Documentation Programming Style Conventions</HumanKeywords>
+	</KnowledgeBase>
+	<Essay>Essay_Doc_Embedded</Essay>
+ </Document>

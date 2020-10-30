@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example BitVector new 013</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>new</FunctionKeywords>
+		<TypeKeywords> BitVector</TypeKeywords>
+		<RelatedFunctions> setq  define </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>new pointer create initialize</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples show how to construct a typed Vector.
+
+                  A Bit Vector is constructed using the
+
+                  <b>new</b> function.
+
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(new Vector:  Bit: 5  1)                </sc>]]></Expression>
+        <Note><![CDATA[Returns a Bit Vector of all 1's.]]></Note>
+        <Returns><![CDATA[#&#60BitVector 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60BitVector 123456&#62)    </sc>]]></Expression>
+        <Note><![CDATA[ Displays the contents of the Bit Vector.]]></Note>
+        <Returns><![CDATA[#(bit| 1 1 1 1 1 )]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

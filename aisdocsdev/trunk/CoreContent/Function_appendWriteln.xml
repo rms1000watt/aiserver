@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>appendWriteln</Title>
+		<FunctionName>appendWriteln</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+        <ArgumentTypes>Vector String ByteVector </ArgumentTypes>
+        <DataType> ByteVector</DataType>
+	    <RelatedFunctions>new rept replace append</RelatedFunctions>
+        <RelatedVMInstructions> vmregAddPointer vmrefVector vmrefString  </RelatedVMInstructions>
+		<HumanKeywords>append concatenate  </HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>appendWriteln</b> function converts one or more arguments to strings 
+                 and appends them to the end of a target Byte Vector and returns the result.   </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>appendWriteln</b> Function converts one or more arguments to strings and 
+           appends them to the end of a target Byte Vector and returns the result.  
+           The <b>appendWriteln</b> operation is destructive, that is the result of appending 
+           changes the contents of the target Byte Vector. The arguments are converted into 
+           strings and concatenated from left to right, returning the final appended Byte Vector. 
+           If only the Byte Vector is specified, it is returned.</p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>Use the  <b>appendWriteln </b> function to concatenate large strings into a 
+           preallocated space. This will be faster than multiple appends, which may involve 
+           multiple garbage collections, as the required space grows in size.
+		</p>
+        ]]></Usage>
+    </Brief>
+    <Syntax>
+	    <Expression><![CDATA[<p>(appendWriteln ByteVector...)</p>]]></Expression>
+		<Argument> 
+		  <Name>ByteVector</Name>
+		  <Note><![CDATA[
+		  <p> A preallocated Byte Vector argument, with enough size to contain the final 
+             appended string, is mandatory.  It can be followed by a list of arguments, 
+             each of which will be converted to a string and concatenated into the specified 
+             Byte Vector.</p>
+          ]]></Note>
+		  <AISTypes>ByteVector</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The Byte Vector, after the append, is returned.
+        </p>
+	    ]]></Return>   
+	</Syntax>
+</Function>

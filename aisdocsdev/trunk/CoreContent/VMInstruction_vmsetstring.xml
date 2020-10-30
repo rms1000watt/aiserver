@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmsetstring</Title>
+		<InstructionName>vmsetstring</InstructionName>
+		<InstructionType>Generic</InstructionType>
+		<ArgumentTypes> Word Integer String</ArgumentTypes>
+		<RelatedVMInstructions>  vmset vmsettext vmsetsymbol   </RelatedVMInstructions>
+		<HumanKeywords>   set ref string text symbol</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[                                                  
+		<p>When evaluated, this vm instruction assigns the <b>source</b> 
+		word into the <b>target</b> word. The target word must contain a 
+		String Object. The source, index, and target arguments are 
+		mandatory. The source argument word must contain an indexable value. 
+		After the operation, both the Stack Pointer and the Instruction 
+		Pointer are promoted. The operation of this vm instruction is 
+		expressed in the following C expression:
+        </p>	
+        <ul><li><b>  (word:String)target[(int)index] = (word)source;</b></li></ul>
+    ]]></Description>
+    <Example>
+        <![CDATA[  <sc><pre>
+			(defun vmsetstring_test( v )
+    			(vmsetstring 3 #\L v)
+			)
+			(setq v (new String: "Hello"))
+			(writeln (vmsetstring_test v))
+        </pre>  </sc>
+        ]]>
+    </Example>
+	<Syntax>
+	    <Expression><![CDATA[  (vmsetstring index source target) ]]></Expression>
+		<Argument> 
+		  <Name>index</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>   
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>word</AISTypes>
+		</Argument>     
+		<Argument> 
+		  <Name>target</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>(word:String)</AISTypes>
+		</Argument>
+	</Syntax>
+</VMInstruction>

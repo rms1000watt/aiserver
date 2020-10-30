@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure isBound 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isBound</FunctionKeywords>
+		<TypeKeywords>Structure Integer Boolean Symbol</TypeKeywords>
+		<RelatedFunctions>inside member isMember</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>bound isBound inside member</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples check whether the key is a member
+                  of the Structure using the <b>isBound</b> function.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(isBound  #{A: 23  B: 34  C:  45}  B:)   </sc>]]></Expression>
+        <Note><![CDATA[B: is a member of the Structure.  The index of B: is returned. ]]></Note>
+        <Returns><![CDATA[1]]></Returns>
+        <Expression><![CDATA[ <sc>(isBound  #{A: 23  B: 34  C:  45}  D:)     </sc>]]></Expression>
+        <Note><![CDATA[B: is not a member of the Structure.  The Boolean false is returned. ]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>setf</Title>
+		<FunctionName>setf</FunctionName>
+		<FunctionType>Special Form</FunctionType>
+        <ArgumentTypes>ObjectRepository Symbol Boolean String</ArgumentTypes>
+        <DataType> ObjectRepository</DataType>
+	    <RelatedFunctions>setq saveImmediate set</RelatedFunctions>
+        <RelatedVMInstructions> none </RelatedVMInstructions>
+		<HumanKeywords>immediate save repository index</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+            <p>The <b>setf</b> Special Form compiles a call to the <b>saveImmediate</b> function, which allows values
+			to be stored in the specified ObjectRepository <b>{aGor}</b> as immediate values in the Repository Index. 
+		    </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+			<p>
+			The <b>setf</b> Special Form compiles a call to the <b>saveImmediate</b> function, which allows values
+			to be stored in the specified ObjectRepository <b>{aGor}</b> as immediate values in the Repository Index. 
+		    </p>
+		    <p></p>
+		    <p> 
+		    The <b>saveImmediate</b>  function replaces the pointer value with the immediate value from retrieved 
+		    from the disk. Thus,  if the Object Repository file is closed, the Repository Index is saved in its 
+		    modified state.  If another Object Repository references causes the Object Repository to be opened 
+		    and the Repository Index to be loaded into virtual memory, the result of the saveImmediate from the 
+		    last reference is persists in the Repository Index.
+		    </p>
+		    <p></p>  
+		    <p></p>
+			<img src="Image_setf_001.gif">
+		 	<p></p>    
+		 	<p>After the statement <b>(setf  gor "three" "mighty")</b></p>
+		    <p></p>
+			<img src="Image_setf_002.gif">
+		 	<p></p>
+		 	<p>    
+			Any value may be stored in the ObjectRepository and associated with key. Both the key and the stored 
+			value may be of arbitrary complexity. An object may be removed from the ObjectRepository by storing 
+			the value <b>#void</b> in association with its previous key.
+		    </p>
+       ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>setf</b> function should be used on values that are referenced many times during an 
+         execution of an Lambda or function as it eliminates a disk access and will result in optimized 
+         access times. The Repository Index will be dynamically resized to accommodate immediate values 
+         and can grow to any size limited only by available virtual memory
+		</p>
+        ]]></Usage>
+    </Brief>
+    <Syntax>
+	    <Expression><![CDATA[<p>(setf aGor key newValue)     </p>]]></Expression>
+		<Argument>
+		  <Name>aGor</Name>
+		  <Note><![CDATA[
+		  <p>An Object Repository</p>
+          ]]></Note>
+		  <AISTypes>ObjectRepository</AISTypes>
+		</Argument>  
+		<Argument> 
+		  <Name>key</Name>
+		  <Note><![CDATA[
+		  <p>The key to be associated with the new value.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>   
+		<Argument> 
+		  <Name>newValue</Name>
+		  <Note><![CDATA[
+		  <p>The new value to be associated with the key.</p>
+          ]]></Note>
+		  <AISTypes>String</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>Returns the ObjectRepository 
+        </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

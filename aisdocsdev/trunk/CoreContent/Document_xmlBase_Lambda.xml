@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Document SYSTEM "../DTD/Document.dtd">
+<Document>
+	<KnowledgeBase>
+	    <Title>xmlBase Lambda</Title>
+		<Topic>Lisp</Topic>
+		<SubTopic>Data Management</SubTopic>
+		<HumanKeywords>Database Data Management Lambda Programming</HumanKeywords>
+	</KnowledgeBase>
+	<Essay>Essay_xmlBase_Introduction</Essay>
+	<Essay>Essay_XQuery_Overview</Essay>
+</Document>

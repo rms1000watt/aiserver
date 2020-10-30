@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure objectToStructure 003</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>objectToStructure  </FunctionKeywords>
+		<TypeKeywords>Structure Vector Object ObjVector</TypeKeywords>
+		<RelatedFunctions>new copy </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>vector separates token key substrings</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows how the <b>objectToStructure</b> performs a
+
+                  destructive update of the <b>target</b> Structure by changing the
+                  value of the first <b>Structure</b> argument with the value of the
+                  value of the second <b>Structure</b> argument if their key matches. 
+              
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq a #{A: 1 B: 2})   </sc>]]></Expression>
+        <Note><![CDATA[Defines the first Structure. ]]></Note>
+        <Returns><![CDATA[#&#60Structure 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(setq b #{B: 7 C: 8))         </sc>]]></Expression>
+        <Note><![CDATA[Defines the second Structure. ]]></Note>
+        <Returns><![CDATA[#&#60Structure 234567&#62]]></Returns>
+        <Expression><![CDATA[ <sc> (objectToStructure a b)      </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[ #&#60Structure 345678&#62 ]]></Returns>
+       <Expression><![CDATA[ <sc>(display   #&#60Structure 345678&#62  )     </sc>]]></Expression>
+        <Note><![CDATA[The value of A: is retained since there are no similar keys in 
+              the first Structure for A: while the value of B: is changed to 
+              the corresponding value of the B: key in the second Structure.]]></Note>
+        <Returns><![CDATA[#{A: 1 B: 7}true]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

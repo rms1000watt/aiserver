@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Context debugBrowsableProcs 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>debugBrowsableProcs</FunctionKeywords>
+		<TypeKeywords>Lambda Context String </TypeKeywords>
+		<RelatedFunctions> debug disassemble onError</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>debug browse process</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[   The <b>debugBrowsableProcs </b> function returns a string of 
+
+           the currently active Analytic Information Server Lambdas in the context.
+
+
+
+  ]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[<sc> (define (foo n)  (*  n  n))       </sc>]]></Expression>
+        <Note><![CDATA[An Lambda is defined.]]></Note>
+        <Returns><![CDATA[#&#60Lambda 123456 &#62 ]]></Returns>
+        <Expression><![CDATA[<sc> (debugBrowsableProcs)        </sc>]]></Expression>
+        <Note><![CDATA[A list of currently active Lambdas is returned.]]></Note>
+        <Returns><![CDATA[foo = #&#60Lambda 123456 &#62  ]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

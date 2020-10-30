@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example String substring 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>substring</FunctionKeywords>
+		<TypeKeywords>String Text Integer</TypeKeywords>
+		<RelatedFunctions>right left find  mid </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>substring position left right mid length</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples return a substring with  given starting  and ending positions in the 
+                  source String or Text object.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq S  (new String:  "Small World"))  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[Small World]]></Returns>
+        <Expression><![CDATA[ <sc>(substring S 1  4)     </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ mall ]]></Returns>
+        <Expression><![CDATA[ <sc>(substring S 0  4)   </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ Small]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

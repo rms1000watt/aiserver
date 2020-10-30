@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example ObjectRepository setf 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>setf</FunctionKeywords>
+		<TypeKeywords>ObjectRepository</TypeKeywords>
+		<RelatedFunctions> setq ref set </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>ref reference set position</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows the <b>setf</b> function use the . (period) operator 
+           to specify the ObjectRepository and the key. 
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq gor (new ObjectRepository: "mice.db"))      </sc>]]></Expression>
+        <Note><![CDATA[Create a new ObjectRepository.]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 197815&#62 ]]></Returns>
+ 	    <Expression><![CDATA[ <sc>(setf gor.one "minnie")      </sc>]]></Expression>
+        <Note><![CDATA[Install a key and value pair; Install the value as an immediate in the Repository index.]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 197815&#62 ]]></Returns>
+ 	    <Expression><![CDATA[ <sc>(setf gor.three "mighty")       </sc>]]></Expression>
+        <Note><![CDATA[Install a key and value pair; Install the value as an immediate in the Repository index.]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 197815&#62 ]]></Returns>
+ 	    <Expression><![CDATA[ <sc>(setq gor.two "Speedy Gonzales")      </sc>]]></Expression>
+        <Note><![CDATA[Install a key and value pair; Install the value on the disk.]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 197815&#62 ]]></Returns>
+        <Hints><![CDATA[<p>The ObjectRepository stores all saved objects in ascending order by their key values. 
+          The special form of the <b>ref</b> function can obtain the sorted order of the keys: </p>
+           <p><b>(ref gor position: "two")           <blockquote> ;; Returns 3</blockquote></b></p>
+           <p><b>(ref gor position: "three")           <blockquote> ;; Returns 2</blockquote></b></p>
+           <p><b>(ref gor position: "one")           <blockquote> ;; Returns 2</blockquote></b></p>
+        ]]></Hints>
+   </Syntax>
+</Example>

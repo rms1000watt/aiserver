@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Complex imaginary 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>imaginary</FunctionKeywords>
+		<TypeKeywords>Complex</TypeKeywords>
+		<RelatedFunctions>complex real </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>complex real imaginary </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[  <p> Extracting the imaginary part of a complex value using the
+                  <b>imaginary</b> function is shown in the example below. </p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+(setq X #c1.0+2.0i)   </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60Complex 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc>(imaginary X)   </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[2.0]]></Returns>
+        <Hints><![CDATA[none
+
+        ]]></Hints>
+   </Syntax>
+</Example>

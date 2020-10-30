@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>remove</Title>
+		<FunctionName>remove</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>Structure Dictionary Directory Symbol Integer Matrix
+		Structure Dictionary Directory Symbol Integer Matrix
+		Structure Dictionary Directory Symbol Integer Matrix
+      Character String Symbol Vector BitVector ByteVector IntVector ShortVector
+                       FltVector ObjVector Structure Dictionary Directory NumMatrix
+                       Matrix NumMatrix Integer Float Number Complex Boolean</ArgumentTypes>
+		<DataType>Structure Dictionary Directory Vector Matrix  IntVector NumVector ShortVector ObjVector  BitVector NumMatrix</DataType>
+		<RelatedFunctions>delete insert</RelatedFunctions>
+        <RelatedVMInstructions> vmregObjLength  </RelatedVMInstructions>
+		<HumanKeywords>delete remove key binding </HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>remove</b> function removes the instance of the specified  
+                  key or object from the specified  Structure, Dictionary, Directory, Matrix or Vector.  </p>
+          ]]></Description>
+	<Brief>
+	   <Overview-Structure><![CDATA[
+		<p>The <b>remove</b> function removes the instance of the specified object <b>{key}</b>
+           from the specified source Structure <b>{struct}</b>.  The <b>remove</b> function 
+           is non-destructive, i.e., it returns a new Structure that has the specified binding 
+           removed from it.  </p>
+        ]]></Overview-Structure>
+        <Overview-Dictionary><![CDATA[
+		<p>The <b>remove</b> function removes the instance of the specified object <b>{key}</b>
+           from the specified source Dictionary <b>{struct}</b>.  The <b>remove</b> function 
+           is non-destructive, i.e., it returns a new Dictionary that has the specified binding 
+           removed from it.  </p>
+        ]]></Overview-Dictionary>
+        <Overview-Directory><![CDATA[
+		<p>The <b>remove</b> function removes the instance of the specified object <b>{key}</b>
+           from the specified source Directory <b>{struct}</b>.  The <b>remove</b> function 
+           is non-destructive, i.e., it returns a new Directory that has the specified binding 
+           removed from it.  </p>
+        ]]></Overview-Directory>
+        <Overview><![CDATA[
+		<p>The <b>remove</b> function removes the instance of the specified object <b>{obj}</b> 
+           from the specified source Vector <b>{vector}</b>.  The <b>remove</b> function is 
+           non-destructive, i.e., it returns a new vector that has the specified item 
+           removed from it. </p>
+        ]]></Overview>
+        <Overview-Matrix><![CDATA[
+		<p>The <b>remove</b> function removes the instance of the specified object <b>{obj}</b>
+           from the specified source Matrix <b>{matrix}</b>.  The <b>remove</b> function is 
+           non-destructive, i.e., it returns a new Matrix that has the specified item removed 
+           from it. </p>
+        ]]></Overview-Matrix>
+        <Overview-NumMatrix><![CDATA[
+		<p>The <b>remove</b> function removes the instance of the specified object <b>{obj}</b>
+           from the specified source NumMatrix <b>{nummatrix}</b>.  The <b>remove</b> function is 
+           non-destructive, i.e., it returns a new NumMatrix that has the specified item removed 
+           from it. </p>
+        ]]></Overview-NumMatrix>
+        <Usage><![CDATA[
+        <p>Use the <b>remove</b> function to whenever you wish to non-destructively remove a
+           binding or object from a  Structure, Dictiionary, Directory, Vector or Matrix.  An alternate function for removing an object from a 
+           Structure, Dictionary, Directory, Vector or Matrix is the <b>delete</b> function (see the delete function). </p>
+        ]]></Usage>
+        <Usage-Matrix><![CDATA[
+        <p><FONT COLOR="#0000ff"> Note: </FONT> <b>Returns an error message if the Matrix is not of rank one. </b></p>
+        <p>Use the <b>remove</b> function to whenever you wish to non-destructively remove an
+           object from a Matrix.  An alternate function for removing an object from a 
+           Matrix is the <b>delete</b> function (see the delete function). </p>
+        ]]></Usage-Matrix>
+        <Usage-NumMatrix><![CDATA[
+        <p><FONT COLOR="#0000ff"> Note: </FONT> <b>Returns an error message if the NumMatrix is not of rank one. </b></p>
+        <p>Use the <b>remove</b> function to whenever you wish to non-destructively remove an
+           object from a NumMatrix.  An alternate function for removing an object from a 
+           NumMatrix is the <b>delete</b> function (see the delete function). </p>
+        ]]></Usage-NumMatrix>
+    </Brief>
+	<Syntax-Structure>
+	    <Expression><![CDATA[<p>(remove key struct)</p>]]></Expression>
+		<Argument>
+		  <Name>key</Name>
+		  <Note><![CDATA[
+		  <p>The key of the binding  to delete.</p>
+          ]]></Note>
+		  <AISTypes>Symbol  </AISTypes>
+		</Argument>
+	    <Argument>
+		  <Name>struct</Name>
+		  <Note><![CDATA[
+		  <p>The source Structure</p>
+          ]]></Note>
+		  <AISTypes>Structure </AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>Returns a new Structure. The source Structure is not changed. If the 
+           key is not found, a new Structure is returned that is identical to the original
+        </p>
+	    ]]></Return>
+	</Syntax-Structure>
+    <Syntax-Dictionary>
+	    <Expression><![CDATA[<p>(remove key dictionary)</p>]]></Expression>
+		<Argument> 
+		  <Name>key</Name>
+		  <Note><![CDATA[
+		  <p>The key of the binding  to delete.</p>
+          ]]></Note>
+		  <AISTypes>Symbol  </AISTypes>
+		</Argument>
+	    <Argument> 
+		  <Name>dictionary</Name>
+		  <Note><![CDATA[
+		  <p>The source Dictionary</p>
+          ]]></Note>
+		  <AISTypes>Dictionary </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns a new Dictionary. The source Dictionary is not changed. If the 
+           key is not found, a new Dictionary is returned that is identical to the original
+        </p>
+	    ]]></Return>       
+	</Syntax-Dictionary>
+    <Syntax-Directory>
+	    <Expression><![CDATA[<p>(remove key directory)</p>]]></Expression>
+		<Argument> 
+		  <Name>key</Name>
+		  <Note><![CDATA[
+		  <p>The key of the binding  to delete.</p>
+          ]]></Note>
+		  <AISTypes>Symbol  </AISTypes>
+		</Argument>
+	    <Argument> 
+		  <Name>directory</Name>
+		  <Note><![CDATA[
+		  <p>The source Directory</p>
+          ]]></Note>
+		  <AISTypes>Directory </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns a new Directory. The source Directory is not changed. If the 
+           key is not found, a new Directory is returned that is identical to the original
+        </p>
+	    ]]></Return>       
+	</Syntax-Directory>
+    <Syntax>
+	    <Expression><![CDATA[<p> (remove obj  vector)</p>]]></Expression>
+		<Argument> 
+		  <Name>obj</Name>
+		  <Note><![CDATA[
+		  <p>The object  to delete.</p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory
+                       Matrix NumMatrix Integer Float Number Complex Boolean  </AISTypes>
+		</Argument>
+	    <Argument> 
+		  <Name>vector</Name>
+		  <Note><![CDATA[
+		  <p>The source Vector.</p>
+          ]]></Note>
+		  <AISTypes>Vector IntVector NumVector ShortVector ObjVector  BitVector </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns a new vector (The source vector is not changed).
+        </p>
+	    ]]></Return>       
+	</Syntax>
+    <Syntax-Matrix>
+	    <Expression><![CDATA[<p> (remove obj  matrix)</p>]]></Expression>
+		<Argument> 
+		  <Name>obj</Name>
+		  <Note><![CDATA[
+		  <p>The object  to delete.</p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory
+                       Matrix NumMatrix Integer Float Number Complex Boolean  </AISTypes>
+		</Argument>
+	    <Argument> 
+		  <Name>matrix</Name>
+		  <Note><![CDATA[
+		  <p>The source Matrix.</p>
+          ]]></Note>
+		  <AISTypes>Matrix </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns a new Matrix (The source Matrix is not changed).
+        </p>
+	    ]]></Return>       
+	</Syntax-Matrix>
+    <Syntax-NumMatrix>
+	    <Expression><![CDATA[<p> (remove obj  nummatrix)</p>]]></Expression>
+		<Argument> 
+		  <Name>obj</Name>
+		  <Note><![CDATA[
+		  <p>The object  to delete.</p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory
+                       Matrix NumMatrix Integer Float Number Complex Boolean  </AISTypes>
+		</Argument>
+	    <Argument> 
+		  <Name>nummatrix</Name>
+		  <Note><![CDATA[
+		  <p>The source NumMatrix.</p>
+          ]]></Note>
+		  <AISTypes>NumMatrix </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns a new NumMatrix (The source NumMatrix is not changed).
+        </p>
+	    ]]></Return>       
+	</Syntax-NumMatrix>
+</Function>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example ByteVector isCharNumeric  003</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isCharNumeric </FunctionKeywords>
+		<TypeKeywords>Text Character String Symbol ByteVector </TypeKeywords>
+		<RelatedFunctions>isType isChar isCharAlphabetic isCharAlphanumeric
+
+
+
+                          isCharLowercase isCharName isCharUppercase isCharWhitespace
+
+
+
+                          isString isText </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>Character Alphabetic Object Uppercase Lowercase Name
+
+
+
+                       Underscore Numeric Alphanumeric Name Whitespace</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples check if the object is is made up numeric
+
+
+
+                  characters. If it is,  the function returns true, otherwise, it returns false.
+
+
+
+ 
+
+
+
+	]]></Description>
+	<Syntax>
+        <Expression><![CDATA[ <sc>(isCharNumeric  |1234|:)</sc>]]></Expression>
+        <Note><![CDATA[The characters of the global value of the Symbol is made up of numbers. ]]></Note>
+        <Returns><![CDATA[ true ]]></Returns>
+        <Expression><![CDATA[ <sc>(isCharNumeric "4884") </sc>]]></Expression>
+        <Note><![CDATA[The String is made up of numbers. ]]></Note>
+        <Returns><![CDATA[ true ]]></Returns>
+  	    <Expression><![CDATA[ <sc>(isCharNumeric   #\p)  </sc>]]></Expression>
+        <Note><![CDATA[A Text object is evaluated.]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(isCharNumeric  p3b4:) </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ false ]]></Returns>
+        <Expression><![CDATA[ <sc>(isCharNumeric  #&#60Dictionary 47917&#62) </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ false ]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

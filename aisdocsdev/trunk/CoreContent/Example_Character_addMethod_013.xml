@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Character addMethod 013</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>addMethod</FunctionKeywords>
+		<TypeKeywords> Character Symbol Dictionary </TypeKeywords>
+		<RelatedFunctions>defmethod send methodsOf</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>method message messageName</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[<p> This example defines a method named <b>Vowel</b> that is invoked when 
+
+
+                 the Character type receives an <b>isVowel</b> message.  The <b>Vowel</b> method
+
+                 method converts the Character Value, to the English word "Yes" or to the 
+                 English word "No" depending upon whether or not the character is a vowel.
+</p>
+	]]></Description>
+	<Syntax>
+	<Expression><![CDATA[<sc>(defun Vowel(c) (if (isMember c #(#\a #\e #\i #\o #\u #\A #\E #\I #\O #\U)) then "Yes" else "No") )     </sc>]]></Expression>
+    <Note><![CDATA[ First Define the Vowel method:
+
+]]></Note>
+    <Returns><![CDATA[ #&#60Lambda 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(addMethod  Character: isVowel: Vowel)            </sc> ]]></Expression>
+    <Note><![CDATA[Install the Vowel method and the message named isVowel in the Character Methods Dictionary.]]></Note>
+    <Returns><![CDATA[#&#60Dictionary 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(send isVowel: #\c)       </sc> ]]></Expression>
+    <Note><![CDATA[To invoke the Lambda that responds to the isVowel message, issue the following statement:]]></Note>
+    <Returns><![CDATA[No]]></Returns>
+    <Expression><![CDATA[<sc>(isVowel: #\c)   </sc> ]]></Expression>
+    <Note><![CDATA[Alternatively, the Lambda may be invoked using the following syntax:]]></Note>
+    <Returns><![CDATA[No]]></Returns>
+    <Hints><![CDATA[
+        <p>To view the entry in the methods Dictionary created by the addMethod function, 
+
+
+
+
+
+
+
+           you can use the method name to access the directory entry by </p>
+        <p><b> #&#60Dictionary 123456&#62[methodName:] or </b></p>
+        <p> To determine the number of assigned methods:</p>
+        <p><b>(length  (methodsOf Boolean: ))</b></p>
+        <p>To access the nth method name:</p>
+        <p><b>(methodsOf Boolean: )[n  0]</b></p>
+]]></Hints>
+</Syntax>
+</Example>

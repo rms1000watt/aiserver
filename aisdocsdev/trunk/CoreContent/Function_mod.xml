@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>mod</Title>
+		<FunctionName>mod</FunctionName>
+		<FunctionType>Builtin(Math)</FunctionType>
+		<ArgumentTypes>Number Integer</ArgumentTypes>
+		<DataType>Number Complex</DataType>
+		<RelatedFunctions>  imod div  modi (sym)div</RelatedFunctions>
+        <RelatedVMInstructions> vmiadd vmidiv vmidivr vmimul   </RelatedVMInstructions>
+		<HumanKeywords> number arithmetic division mod remainder number operators </HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>mod</b> function divides two numbers and returns the remainder. 
+</p>
+             <p> The <b>mod</b> function computes the remainder from the 
+             ratio of the real parts of the arguments. </p>                
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>mod</b> function divides two numbers and returns the remainder. The <b>mod</b> 
+          function performs an integer divide, but the result is type Number (See Native Types).
+        </p>
+        ]]></Overview>
+	   <Overview-Complex><![CDATA[
+		<p>The <b>mod</b> function computes the remainder from the ratio of the real parts of 
+          the arguments. The modulo of two complex numbers is:</p>
+        <p>(xr &#43 i xi) mod (yr &#43 i yi) = xr &#37 yr
+        </p>
+        ]]></Overview-Complex>
+        <Usage><![CDATA[
+        <p>The <b>mod</b> function is analogous to the remainder function in other systems.
+           It is useful for determining if a number will divide evenly into another number 
+           (the remainder will be zero in this case).
+        </p>
+        <p>If either argument is complex, only the real part is used in the computation.
+        </p>
+         ]]></Usage>
+        <Usage-Complex><![CDATA[
+        <p>The <b>mod</b> function is used to find the remainder of the ratio of two numeric 
+         data types where at least one of the arguments is complex. The modulo function is not 
+         widely used in any of the statistical or numerical analysis routines.
+        </p>
+       ]]></Usage-Complex>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p><b>(mod dividend divisor)    </b></p>
+]]></Expression>
+		<Argument>
+		  <Name>dividend</Name>
+		  <Note><![CDATA[
+		  <p>The number to be divided (will be converted to an integer before divide)</p>
+          ]]></Note>
+		  <AISTypes>Number</AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>divisor</Name>
+		  <Note><![CDATA[
+		  <p>Divide by this number (will be converted to an integer before divide)</p>
+          ]]></Note>
+		  <AISTypes>Number</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>The remainder after computing an integer divide. The result is expressed as a number.
+
+	    </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

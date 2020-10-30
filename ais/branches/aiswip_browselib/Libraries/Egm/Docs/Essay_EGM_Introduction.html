@@ -1,0 +1,225 @@
+
+<HTML>
+<HEAD>
+<link rel="stylesheet" type="text/css" href="../CoreContent/help.css">
+<TITLE>AIS Essay Template</TITLE></HEAD>
+<!--Page Parameters -->
+<BODY BGCOLOR="#FFFFF0" TEXT="#000000" LINK="#0000ff">
+
+<A NAME="topage"></A>
+<A HREF="TOP"></A>
+
+
+
+<P>&nbsp;</P>
+
+<FONT COLOR="#000080"><H1>Introduction</H1></FONT>
+<P>&nbsp;</P>
+
+<UL>
+<li><a href="#S1"><FONT SIZE=2>Overview</font></a></li><li><a href="#S2"><FONT SIZE=2>Summary</font></a></li><li><a href="#S3"><FONT SIZE=2>Description</font></a></li><li><a href="#S4"><FONT SIZE=2>Example</font></a></li><li><a href="#S5"><FONT SIZE=2>FAQ</font></a></li><li><a href="#S6"><FONT SIZE=2>References</font></a></li>
+</UL>
+
+<P><H2><A NAME="S1"></A>Overview</H2></P>	
+             <p>The Evolutionary Grid Machine Lambda (EGM) is a learning machine which learns to
+             select and score the best individuals from a universe of individuals over time. Over  
+             a series of discrete time steps, a universe of individuals is collected for each time
+             step. The individuals are things such as Stocks, People, Cities, etc. The discrete time
+             steps are weeks, days, seconds, years, microseconds, etc.</p>
+         
+             <p>Each individual followed by the system is given a unique identifier which remains
+             unique across all time periods studied (no two individuals ever have the same identifier).
+             Furthermore, each time period studied is given a unique ascending integer index (i.e. week 1,
+             week 2, etc.). So, for a series of time periods, historical information about groups of
+             individuals is collected for each time period. The historical information collected for each
+             individual for each time period is stored in a Number Vector and includes: the time period index;
+             the unique identifier of the individual; and other numeric information about the individual
+             pertinent to the current investigation. Finally, each individual in each time period is given
+             a numeric "score" which determines the value of the individual in that time period. The "best"
+             individuals have the highest "score" values.</p>
+
+             <p>During training, the EGM is given historical information for time periods 0 through T for
+             all individuals. The EGM is also given the "score" values for each individual in each training
+             time period from 0 through T. During training the EGM attempts to "learn" any patterns in 
+             the available historical data. The machine (EGM) is free to discover static as well as time
+             varying patterns.</p>
+
+             <p>During forward prediction, the EGM is given new information for time period T+1 for
+             all individuals. The EGM is <b>NOT</b> given the "score" values for each individual in the new
+             time period T+1. During prediction the EGM attempts to use any patterns it has learned to 
+             select and score the best individuals from the universe of individuals seen in time period T+1. The 
+             machine (EGM) is free to select no individuals in time period T+1 (an "I am uncertain" response). 
+             Once the machine selects and scores a set of individuals, the accuracy of the machine is determined by
+             least squares error on the selected individuals, averaging the actual "score" values for the selected
+             individuals (<i>which the machine has never seen</i>) with the average "score" for all individuals 
+             in time period T+1, or by other appropriate methods.</p>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="S2"></A>Summary</H2></P>	
+             <p>A time series set of vectors, X, together with a set, Y, of scores for the vectors
+             in X are used to train a learning machine. There is also a testing set, TX and TY, of 
+             of vectors similar to those in X and Y but for the testing time period (a time period
+             not present in X or Y). After training, the machine is presented with the testing set,
+             TX and attempts to estimate TY. The learning machine returns a Vector EY, of estimates
+             for TY. Each element in EY is an estimate for the corresponding value in TY which is 
+             either void (an "I am uncertain" response) or contains a numeric estimate for the
+             corresponding value in TY. All non-void elements in TY are said to be "selected". The 
+             learning machine attempts to select the "best" individuals (with above average "scores" 
+             in the testing time period).</p>
+
+             <p>The <i>selection</i> mission of the Evolutionary Grid Machine is an important
+             distinguishing feature between these learning machines and regressions learning
+             machines. The EGM is <b>NOT</b> trying to fit a function to the testing data.
+             Instead the EGM is trying to <i>select</i> out the "best" individuals from the 
+             testing data, scoring only within the selected "best" individuals.</p>
+
+             <p>In many instances the Evolutionary Grid Machine may not have an exact estimate
+             for the scores of the <i>best</i> individuals in the testing data. However, if the
+             learning machine is able to select the <i>best</i> individuals out of the testing
+             data, then the machine has been successful even if its estimated score is incorrect.
+             Furthermore, if the machine's estimated score is incorrect; but, preserves the ordering
+             of the corresponding actual scores, then the machine has achieved an added layer of success.</p>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="S3"></A>Description</H2></P>	
+             <p>Let X be a set of vectors such as the vector x = {e[0] e[1] e[2] ... e[M]},
+             where each e[m] is an independent element and let Y be a vector of dependent
+             "score" values. Let both X and Y be of length N.</p>
+
+             <p>Furthermore, let the zeroth element, e[0], of every vector, in X, contain a 
+             non-negative integer value indicating some time span of integral length, for
+             example, if the time span were weeks, a value of 1 would indicate week one, 
+             and a value of 10 would indicate week ten, etc. (i.e. the vectors contained
+             in X are time sequenced).</p>
+
+             <p>Furthermore, let the first element, e[1], of every vector, in X, contain an 
+             integer entity identifier value indicating some unique entity. Thus two vectors
+             x[i] and x[j] having the same entity identifier (x[i].e[1] = x[j].e[1]), are
+             said to refer to the same abstract entity in some unspecified manner.</p>
+
+             <p>Furthermore, for any two distinct vectors, in X, the following condition
+                ((x[i].e[0] == x[j].e[0]) && (x[i].e[1] == x[j].e[1])) 
+             is an error may never be true (i.e. two vectors cannot exist for the same entity
+             and the same time span).</p>
+
+             <p>Finally, any unique entity value may be missing entirely from all vectors in X,
+             or present for some integral time values but missing for other integral time values.</p>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="S4"></A>Example</H2></P>	
+             <p>An example, but by no means the only example, of X and Y would be a set of vectors
+             of stock market data taken from the Open High Low Close and Volume numbers for all
+             NASDQ traded stocks over a 52 week period. In this example we have the following:</p>
+
+		    <table border="3" cellpadding="2" width="100%" bgcolor="#99CCCC">
+		      <tr align="top"><th>e[0]</th> <td>The sequential index of the current week (from 1 through 52).</td><tr>
+		      <tr align="top"><th>e[1]</th> <td>The unique integer identifier of the stock (stocks not traded would not appear).</td></tr>
+		      <tr align="top"><th>e[2]</th> <td>The current week opening price.</td></tr>
+		      <tr align="top"><th>e[3]</th> <td>The current week high price.</td></tr>
+		      <tr align="top"><th>e[4]</th> <td>The current week low price.</td></tr>
+		      <tr align="top"><th>e[5]</th> <td>The current week closing price.</td></tr>
+		      <tr align="top"><th>e[6]</th> <td>The current week share volume traded.</td></tr>
+		      <tr align="top"><th>Y</th> <td>The "score" vector of next week profits (next_week_closing_price - the_current_week_closing_price).</td></tr>
+            </table>
+
+            <p>Similar examples can be constructed for oil exploration data over time, for
+            the height and weight of individuals over time, etc. However, continuing with our
+            securities example, we train our machine on the market data for four stocks
+            over a four week period as follows:</p>
+
+            <p><b>Training Data</b></p>
+
+		    <table border="3" cellpadding="2" width="100%" bgcolor="#99CCCC">
+		      <tr align="top"><th><i>Time</i></th><th><i>ID</i></th><th><i>Open</i></th><th><i>High</i></th><th><i>Low</i></th><th><i>Close</i></th><th><i>Vol</i></th><th><i>Score</i></th><tr>
+		      <tr align="top"><th>x.e[0]</th><th>x.e[1]</th><th>x.e[2]</th><th>x.e[3]</th><th>x.e[4]</th><th>x.e[5]</th><th>x.e[6]</th><th>y</th><tr>
+		      <tr align="top"><th></th><th></th><th></th><th><i>(first week)</i></th><th></th><th></th><th></th><th>Note: (<i>next week's profit</i>)</th><tr>
+		      <tr align="top"><td align="center">0</td><td align="center">1 <i>(Apple)</i></td><td align="center">$23.45</td><td align="center">$25.67</td><td align="center">$23.35</td><td align="center">$24.56</td><td align="center">19367</td><td align="center">3.4%</td><tr>
+		      <tr align="top"><td align="center">0</td><td align="center">2 <i>(IBM)</i></td><td align="center">$143.45</td><td align="center">$145.27</td><td align="center">$143.15</td><td align="center">$144.96</td><td align="center">894676</td><td align="center">-1.2%</td><tr>
+		      <tr align="top"><td align="center">0</td><td align="center">3 <i>(Xerox)</i></td><td align="center">$13.95</td><td align="center">$15.27</td><td align="center">$13.35</td><td align="center">$14.72</td><td align="center">56832</td><td align="center">4.8%</td><tr>
+		      <tr align="top"><td align="center">0</td><td align="center">4 <i>(GM)</i></td><td align="center">$57.15</td><td align="center">$62.17</td><td align="center">$53.65</td><td align="center">$62.05</td><td align="center">3419647</td><td align="center">9.1%</td><tr>
+		      <tr align="top"><th></th><th></th><th></th><th><i>(second week)</i></th><th></th><th></th><th></th><th>Note: (<i>next week's profit</i>)</th><tr>
+		      <tr align="top"><td align="center">1</td><td align="center">1 <i>(Apple)</i></td><td align="center">$24.56</td><td align="center">$25.38</td><td align="center">$22.75</td><td align="center">$25.40</td><td align="center">12046</td><td align="center">1.2%</td><tr>
+		      <tr align="top"><td align="center">1</td><td align="center">2 <i>(IBM)</i></td><td align="center">$144.96</td><td align="center">$144.96</td><td align="center">$143.15</td><td align="center">$143.23</td><td align="center">864023</td><td align="center">-3.2%</td><tr>
+		      <tr align="top"><td align="center">1</td><td align="center">3 <i>(Xerox)</i></td><td align="center">$14.72</td><td align="center">$16.12</td><td align="center">$14.39</td><td align="center">$15.43</td><td align="center">59204</td><td align="center">3.4%</td><tr>
+		      <tr align="top"><td align="center">1</td><td align="center">4 <i>(GM)</i></td><td align="center">$62.05</td><td align="center">$62.05</td><td align="center">$68.00</td><td align="center">$67.70</td><td align="center">3219382</td><td align="center">6.5%</td><tr>
+		      <tr align="top"><th></th><th></th><th></th><th><i>(third week)</i></th><th></th><th></th><th></th><th>Note: (<i>next week's profit</i>)</th><tr>
+		      <tr align="top"><td align="center">2</td><td align="center">1 <i>(Apple)</i></td><td align="center">$25.40</td><td align="center">$26.98</td><td align="center">$24.75</td><td align="center">$25.71</td><td align="center">22056</td><td align="center">0.8%</td><tr>
+		      <tr align="top"><td align="center">2</td><td align="center">2 <i>(IBM)</i></td><td align="center">$143.23</td><td align="center">$143.23</td><td align="center">$136.75</td><td align="center">$138.64</td><td align="center">824093</td><td align="center">-4.3%</td><tr>
+		      <tr align="top"><td align="center">2</td><td align="center">3 <i>(Xerox)</i></td><td align="center">$15.43</td><td align="center">$16.45</td><td align="center">$15.09</td><td align="center">$15.96</td><td align="center">61205</td><td align="center">-1.4%</td><tr>
+		      <tr align="top"><td align="center">2</td><td align="center">4 <i>(GM)</i></td><td align="center">$67.70</td><td align="center">$75.35</td><td align="center">$66.39</td><td align="center">$72.10</td><td align="center">3619582</td><td align="center">7.8%</td><tr>
+            </table>
+
+            <p>We train the EGM on the training data shown above. After training, we
+            show the machine the following testing data, TX, and ask it to return an estimate
+            of the next week's profit, TY, for each of the four individuals. <u>We do not show the machine the scores, TY.</u></p>
+
+            <p><b>Testing Data</b></p>
+
+		    <table border="3" cellpadding="2" width="100%" bgcolor="#99CCCC">
+		      <tr align="top"><th><i>Time</i></th><th><i>ID</i></th><th><i>Open</i></th><th><i>High</i></th><th><i>Low</i></th><th><i>Close</i></th><th><i>Vol</i></th><th><i>Score</i></th><tr>
+		      <tr align="top"><th>tx.e[0]</th><th>tx.e[1]</th><th>tx.e[2]</th><th>tx.e[3]</th><th>tx.e[4]</th><th>tx.e[5]</th><th>tx.e[6]</th><th>ty</th><tr>
+		      <tr align="top"><th></th><th></th><th></th><th><i>(fourth week)</i></th><th></th><th></th><th></th><th>Note: (<i>next week's profit</i>)</th><tr>
+		      <tr align="top"><td align="center">3</td><td align="center">1 <i>(Apple)</i></td><td align="center">$25.71</td><td align="center">$26.18</td><td align="center">$25.55</td><td align="center">$25.92</td><td align="center">25046</td><td align="center">-1.2%</td><tr>
+		      <tr align="top"><td align="center">3</td><td align="center">2 <i>(IBM)</i></td><td align="center">$138.64</td><td align="center">$139.23</td><td align="center">$131.15</td><td align="center">$132.67</td><td align="center">774593</td><td align="center">-6.1%</td><tr>
+		      <tr align="top"><td align="center">3</td><td align="center">3 <i>(Xerox)</i></td><td align="center">$15.96</td><td align="center">$16.13</td><td align="center">$15.00</td><td align="center">$15.73</td><td align="center">59205</td><td align="center">2.4%</td><tr>
+		      <tr align="top"><td align="center">3</td><td align="center">4 <i>(GM)</i></td><td align="center">$72.10</td><td align="center">$77.87</td><td align="center">$71.39</td><td align="center">$77.73</td><td align="center">3710582</td><td align="center">5.8%</td><tr>
+            </table>
+
+            <p><b>Resulting Estimates</b></p>
+
+            <p>After testing, the learning machine returns the following estimated scores, EY.</u></p>
+
+		    <table border="3" cellpadding="2" width="100%" bgcolor="#99CCCC">
+		      <tr align="top"><th><i>Estimate</i></th><th><i>Score</i></th><tr>
+		      <tr align="top"><th>ey</th><th>ty</th><tr>
+		      <tr align="top"><td align="center">void</td><td align="center">-1.2%</td><tr>
+		      <tr align="top"><td align="center">-7.6%</td><td align="center">-6.1%</td><tr>
+		      <tr align="top"><td align="center">1.9%</td><td align="center">2.4%</td><tr>
+		      <tr align="top"><td align="center">4.9%</td><td align="center">5.8%</td><tr>
+            </table>
+
+            <p>Ignoring the <b>void</b> element, we calculate the least squares error on the three "selected" individuals as 1.10% 
+           and we can also score these estimates in an alternate manner. We can sort these estimates, EY, and show that a sorting
+           of the EY estimates also preserves the sort order of their corresponding TY values.</p>
+
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="S5"></A>FAQ</H2></P>	
+             <p><font color=blue><b>Question 1:</b></font> Why must we train the learning machine on collections of individuals in each time period? 
+             Why not simply train the machine on each individual separately and perform a normal regression estimate for each individual?</p>
+
+             <p><font color=blue><b>Answer:</b></font> Many <i>real world</i> estimates cannot be made unless one is aware of the competitive land scape.</p>
+             <p>For instance, suppose one is estimating the <i>social popularity</i> of students in the senior high school class. We can perform any
+             number of individual regressions correlating high scores for <i>intelligence</i>, <i>appearance</i>, and <i>social skills</i>
+             with <i>social popularity</i>. However, all of these individual regression models are greatly skewed in the case where all
+             students in the senior high school class are male except one student who is female.</p>
+
+             <p>Also, suppose one is estimating the <i>financial popularity</i> of our Bank's Certificates of Deposit. We perform any
+             number of individual regressions correlating our Bank's previous Certificates of Deposit with their <i>financial popularity</i>.
+             However, all of these individual regression models are greatly skewed in the case where one of our competitors is advertising
+             an aggressive interest rate two percentage points higher than ours.</p>
+
+             <p><font color=blue><b>Question 2:</b></font> Why must we allow the learning machine to select individuals in the testing time period? 
+             Why not simply have the machine provide normal regression estimates for each individual in the testing time period?</p>
+
+             <p><font color=blue><b>Answer:</b></font> Many <i>real world</i> estimates cannot be made for all individuals; but, only for a few individuals.</p>
+             <p>For instance, suppose one is estimating currency <i>conversion rates</i>. Normally these rates have very small random daily changes.
+             However, every so often, a central bank will pre-announce its intention to buy or sell its own currency. In those special cases the 
+             learning machine will want to have "no opinion" on most currencies; yet, make an estimate for the currency whose central bank has pre-announced.</p>
+
+             <p>Many <i>real world</i> situations do not allow us to accurately estimate the score of the best individuals; but, only to guess which might be the best individuals.</p>
+
+             <p>For instance, if ten monkeys and one five year old human child are taking a simple IQ test (this being all the information we have). 
+             We cannot, with the meager information provided, accurately estimate the IQ scores of the contestants after they take the IQ test.
+             However, we can reasonably make the guess that the human child will have the best IQ score (whatever that score may be).</p>
+
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="S6"></A>References</H2></P>	
+             <ol>
+             <li><b>Genetic Programming: On the Programming of Computers by Means of Natural Selection</b>; John R. Koza; The MIT Press, Cambridge Massachusetts; 1992.</li>
+             <li><b>Genetic Programming II: Automatic Discovery of Reusable Programs</b>; John R Koza; The MIT Press, Cambridge Massachusetts; 1994.</li>
+             <li><b>Genetic Programming III: Darwinian Invention and Problem Solving</b>; John R Koza, Forrest H Bennett III, David Andre, Martin A Keane; Morgan Kaufmann Publishers, San Francisco, California; 1999.</li>
+             <li><b>Genetic Programming IV: Routine Human-Competitive Machine Intelligence</b>; John R Koza, Martin A Keane, Mathew J Streeter, William Mydlowec, Jessen Yu, Guido Lanza; Kluwer Academic Publishers, Dordrecht Netherlands; 2003.</li>
+             <li><b>Grammatical Evolution</b>; Michael O'Neill, Conor Ryan; Kluwer Academic Publishers, Dordrecht Netherlands; 2003.</li>
+             <li><b>An Introduction to Genetic Algorithms</b>; Melanie Mitchell; The MIT Press, Cambridge Massachusetts; 1996.</li>
+             <li><b>Datamining using Grammar based Genetic Programming and Applications</b>; Man Leung Wong, Kwong Sak Leung; Kluwer Academic Publishers, Dordrecht Netherlands; 2000.</li>
+             <li><b>Genetic Algorithms and Genetic Programming in Computational Finance</b>; edited by Shu-Heng Chen; Kluwer Academic Publishers, Dordrecht Netherlands; 2002.</li>
+             </ol>
+
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P>
+
+ 
+
+</BODY>
+</HTML>

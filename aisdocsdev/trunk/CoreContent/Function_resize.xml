@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>resize</Title>
+		<FunctionName>resize</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>Structure Dictionary Directory Vector Integer NumMatrix Matrix ShortVector FltVector IntVector NumVector ObjVector  BitVector</ArgumentTypes>
+        <DataType>Structure Dictionary Directory Vector Matrix NumMatrix FltVector IntVector NumVector ObjVector  BitVector ShortVector </DataType>
+		<RelatedFunctions>sizeof remove insert delete</RelatedFunctions>
+        <RelatedVMInstructions>none</RelatedVMInstructions>
+		<HumanKeywords>sizeof size   length   memory</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>resize</b> function changes  a Structure, Dictionary,
+                  Directory, Matrix or Vector object   size  to the  specified size. </p>
+          ]]></Description>
+	<Brief>
+	   <Overview-Structure><![CDATA[
+		<p>The <b>resize</b> function changes  a Structure object <b>{struct}</b>  size  to 
+           the specified size <b>{size}</b>. If the Structure is expanded, the new spaces are 
+           filled with  #void.  If the object is downsized, the trailing values are dropped.
+        </p>
+        ]]></Overview-Structure>
+        <Overview-Dictionary><![CDATA[
+		<p>The <b>resize</b> function changes  a Dictionary object <b>{dict}</b>  size  to 
+           the specified size <b>{size}</b>. If the Dictionary is expanded, the new spaces are 
+           filled with  #void.  If the object is downsized, the trailing values are dropped.
+        </p>
+        ]]></Overview-Dictionary>
+        <Overview-Directory><![CDATA[
+		<p>The <b>resize</b> function changes  a Directory object <b>{dir}</b>  size  to 
+           the specified size <b>{size}</b>. If the Directory is expanded, the new spaces are 
+           filled with  #void.  If the object is downsized, the trailing values are dropped.
+        </p>
+        ]]></Overview-Directory>
+        <Overview><![CDATA[
+		<p>The <b>resize</b> function changes a Vector object <b>{vector}</b>  size  to the 
+           specified size <b>{size}</b>. If the Vector is enlarged the new spaces are filled 
+           with  #void.  If the Vector is downsized, the trailing values are dropped.
+        </p>
+        ]]></Overview>
+        <Overview-Matrix><![CDATA[
+		<p>The <b>resize</b> function changes a Matrix object <b>{matrix}</b>  size  to the 
+           specified size <b>{size}</b>. If the Matrix is enlarged the new spaces are filled 
+           with  #void.  If the Matrix is downsized, the trailing values are dropped.
+        </p>
+        ]]></Overview-Matrix>
+       <Overview-NumMatrix><![CDATA[
+		<p>The <b>resize</b> function changes a NumMatrix object <b>{matrix}</b>  size  to the 
+           specified size <b>{size}</b>. If the NumMatrix is enlarged the new spaces are filled 
+           with  #void.  If the NumMatrix is downsized, the trailing values are dropped.
+        </p>
+        ]]></Overview-NumMatrix>
+        <Usage><![CDATA[
+        <p>The <b>resize</b> function can be used to downsize or enlarge a dictionary, directory
+           structure, vector or matrix in one 
+step.  It is more time efficient if the target size is known from the start, than 
+           expanding or contracting the dictionary, directory
+           structure, vector or matrix one binding at a time.
+        ]]></Usage>
+    </Brief>
+	<Syntax-Structure>
+	    <Expression><![CDATA[<p><b>  (resize struct size)</b></p>
+]]></Expression>
+		<Argument>
+		  <Name>struct</Name>
+		  <Note><![CDATA[
+		  <p>The Structure to be resized</p>
+          ]]></Note>
+		  <AISTypes>Structure</AISTypes>
+		</Argument> 
+     	<Argument> 
+		  <Name>size</Name>
+		  <Note><![CDATA[
+		  <p>The target size (i.e. the number of bindings).</p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>Returns the updated structure</p>
+	    ]]></Return>
+	</Syntax-Structure>
+	<Syntax-Dictionary>
+	    <Expression><![CDATA[<p><b>  (resize dict size)</b></p>]]></Expression>
+		<Argument> 
+		  <Name>dict</Name>
+		  <Note><![CDATA[
+		  <p>The Dictionary to be resized</p>
+          ]]></Note>
+		  <AISTypes>Dictionary</AISTypes>
+		</Argument> 
+     	<Argument> 
+		  <Name>size</Name>
+		  <Note><![CDATA[
+		  <p>The target size (i.e. the number of bindings).</p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>  
+		<Return><![CDATA[ 
+	    <p>Returns the updated dictionary</p>
+	    ]]></Return>     
+	</Syntax-Dictionary>
+	<Syntax-Directory>
+	    <Expression><![CDATA[<p><b>  (resize dir size)</b></p>]]></Expression>
+		<Argument> 
+		  <Name>dir</Name>
+		  <Note><![CDATA[
+		  <p>The Directory to be resized</p>
+          ]]></Note>
+		  <AISTypes>Directory</AISTypes>
+		</Argument> 
+     	<Argument> 
+		  <Name>size</Name>
+		  <Note><![CDATA[
+		  <p>The target size (i.e. the number of bindings).</p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>  
+		<Return><![CDATA[ 
+	    <p>Returns the updated directory</p>
+	    ]]></Return>     
+	</Syntax-Directory>
+	<Syntax>
+	    <Expression><![CDATA[<p><b>  (resize vector size)</b></p>]]></Expression>
+		<Argument> 
+		  <Name>vector</Name>
+		  <Note><![CDATA[
+		  <p>The Vector to be resized</p>
+          ]]></Note>
+		  <AISTypes>Vector FltVector IntVector NumVector ObjVector  BitVector ShortVector</AISTypes>
+		</Argument> 
+     	<Argument> 
+		  <Name>size</Name>
+		  <Note><![CDATA[
+		  <p>The target size (i.e. the number of bindings).</p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>  
+		<Return><![CDATA[ 
+	    <p>Returns the updated vector.</p>
+	    ]]></Return>     
+	</Syntax>
+	<Syntax-Matrix>
+	    <Expression><![CDATA[<p><b>  (resize matrix size)</b></p>]]></Expression>
+		<Argument> 
+		  <Name>matrix</Name>
+		  <Note><![CDATA[
+		  <p>The Matrix to be resized</p>
+          ]]></Note>
+		  <AISTypes>Matrix</AISTypes>
+		</Argument> 
+     	<Argument> 
+		  <Name>size</Name>
+		  <Note><![CDATA[
+		  <p>The target size (the Matrix is assumed to be of rank one) .</p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>  
+		<Return><![CDATA[ 
+	    <p>Returns the updated matrix.</p>
+	    ]]></Return>   
+	</Syntax-Matrix>
+	<Syntax-Matrix>
+        <Expression><![CDATA[<p><b>  (resize matrix rank dimensions)</b></p>]]></Expression>
+		<Argument> 
+		  <Name>matrix</Name>
+		  <Note><![CDATA[
+		  <p>The Matrix to be resized</p>
+          ]]></Note>
+		  <AISTypes>Matrix</AISTypes>
+		</Argument> 
+     	<Argument> 
+		  <Name>rank</Name>
+		  <Note><![CDATA[
+		  <p>The target rank.</p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>
+	    <Argument> 
+		  <Name>dimensions</Name>
+		  <Note><![CDATA[
+		  <p>The target dimension list.</p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>  
+		<Return><![CDATA[ 
+	    <p>Returns the updated matrix.</p>
+	    ]]></Return>     
+	</Syntax-Matrix>
+	<Syntax-NumMatrix>
+	    <Expression><![CDATA[<p><b>  (resize nummatrix size)</b></p>]]></Expression>
+		<Argument> 
+		  <Name>nummatrix</Name>
+		  <Note><![CDATA[
+		  <p>The NumMatrix to be resized</p>
+          ]]></Note>
+		  <AISTypes>NumMatrix</AISTypes>
+		</Argument> 
+     	<Argument> 
+		  <Name>size</Name>
+		  <Note><![CDATA[
+		  <p>The target size (the NumMatrix is assumed to be of rank one) .</p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>  
+		<Return><![CDATA[ 
+	    <p>Returns the updated matrix.</p>
+	    ]]></Return>     
+	</Syntax-NumMatrix>
+	<Syntax-NumMatrix>
+        <Expression><![CDATA[<p><b>  (resize nummatrix rank dimensions)</b></p>]]></Expression>
+		<Argument> 
+		  <Name>nummatrix</Name>
+		  <Note><![CDATA[
+		  <p>The NumMatrix to be resized</p>
+          ]]></Note>
+		  <AISTypes>NumMatrix</AISTypes>
+		</Argument> 
+     	<Argument> 
+		  <Name>rank</Name>
+		  <Note><![CDATA[
+		  <p>The target rank.</p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>
+	    <Argument> 
+		  <Name>dimensions</Name>
+		  <Note><![CDATA[
+		  <p>The target dimension list.</p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>  
+		<Return><![CDATA[ 
+	    <p>Returns the updated nummatrix.</p>
+	    ]]></Return>     
+	</Syntax-NumMatrix>
+</Function>

@@ -1,0 +1,10 @@
+subversion/tortoisesvnnotes.txt
+
+INSTALL
+To install tortoise svn on a Windows client, open a web browser and go to http://tortoisesvn.net/downloads/.
+Download the latest binary for windows onto your laptop. For example, the latest version is
+TortoiseSVN-1.6.6.14908-win32-svn-1.5.5.msi.
+
+POST-INSTALL
+1. I
+

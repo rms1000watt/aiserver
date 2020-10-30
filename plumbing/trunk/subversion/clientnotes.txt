@@ -1,0 +1,149 @@
+subversion/clientnotes.txt
+
+INSTALL
+To install subversion as a command-line client on your laptop, open a web browser and go to www.open.collab.net/.
+Under News & Events, select Download CollabNet Subversion 1.5.4. Download the Client
+for Windows, CollabNetSubversion-client-1.5.4-1.win32.exe.  Copy this file to your install folder on the
+and run it to install the command-line client on your laptop.
+
+HELP
+To access help documentation, select Start -> AllPrograms -> CollabNet Subversion Client -> svn-book
+To print a handy reference chart, visit
+   http://www.digilife.be/quickreferences/QRC/Subversion%20Quick%20Reference%20Card.pdf
+To find out more about locking, visit
+   http://www.open.collab.net/community/subversion/svnbook/svn.advanced.locking.html
+To download a subversion GUI interface, TortiseSVN 1.5.6, visit  tortisesvn.tigris.org/
+   Read the release notes and then download it from the "download page" link.
+To get command help open a command-line window and enter one of the following commands:
+	svn --help
+	svn --help <subcommand>
+To view the discussion on Wikipedia, visit
+	http://en.wikipedia.org/wiki/Subversion_(software)
+
+GETTING STARTED
+The following commands are entered into a command-line window on the client machine.
+0. Editor. Set your EDITOR environment variable to the editor you wish to enter comments when you modify
+	the repository.
+1. Import. Create a local folder named C:\SvnDocs with subdirectories trunk, branches, and tags (this is
+	the subversion way).  Copy the files from plumbing/subversion into SvnDocs\trunk.
+	folder.  Change your current working directory to C:.  Import the AIS tree into the repository using:
+		svn import SvnDocs svn://Prod151/AisRepos/SvnDocs
+	and enter a message into the editor, SvnDocs specifies the directory subtree to import,
+	and svn://Prod151/AisRepos/SvnDocs specifies the URL of the repository on the server (our server only
+	recognizes the svn protocol).  Note that the C:\SvnDocs folder is not a working directory that is under
+	version control.  It can be deleted.
+2. List. To verify that the import worked as expected, use:
+		svn list -vR svn://Prod151/AisRepos
+3. Checkout.  Create a folder named D:\work and then cd to that folder.  To create a working directory
+	under version control in D:\work, enter
+	svn co svn://Prod151/AisRepos/SvnDocs SvnDocs
+	where co is shorthand for checkout, svn://Prod151/AisRepos/SvnDocs is the URL of the server repository,
+	and SvnDocs is the folder where the files are placed on your laptop.  This folder is under version
+	control.
+3. Status.  To check the status of the files in your working
+	directory, enter
+		svn status -v SvnDocs
+	For more info on common usage, see Appendix A in svn-book.pdf
+
+STARTEAM STATUS
+This is a list of the possible status associated with a file.  The corresponding status provided in the
+first column of the output for the "svn status -u AIS" is noted for each case.
+Current. The file in the working directory is the same as the one in the repository. Svn status is a
+single space.
+Modified.  A file in your working directory has been modified.  You can "commit' or "revert" to sync up
+your changes with the repository.  Svn status is "M".
+Out-of-date.  A file in the repository has been modified by someone else since your last checkout.  You
+can "update" to check out the latest changes.  Svn status is "*" in the seventh column.
+Merge.  The file is both modified and out-of-date. You can use update to update your working-file with the
+changes in the repository.  Svn status is both "M" and "*".
+Missing.  A file in the repository is missing from your working directory. You can use update to restore
+this file to your local working directory.  Svn status is "!".  If the file status may also be "*" if it
+was checked out before it was deleted from your working directory.
+Not In View.  A file in your working directory is not in the repository.  You can "add" to add this file to
+the repository.  Svn status is "?".
+
+STARTEAM OPERATIONS
+The most common StarTeam operations are listed here.  The corresponding subversion operation is noted.  Read
+chapter 2 of the svn-book.pdf on Basic Usage for more information on subversion subcommands and their options.
+The term "working-file" refers to a file in the working directory on your laptop (eg. C:\Work\SvnDocs).
+
+Check-In.  To copy the the changes in a working-file into the repository, use commit.
+Force Check-In. To overwrite changes that have been made to the files in the repository with the working-file,
+	you use commit --force.  If that is not permitted, rename the working-file, run update, rename the
+	working-file back to its original name and then commit. Warning! The file in the repository will be
+	overwritten with the working-file.
+Check-Out.  To update the working-file with the changes made to the latest version in the repository, run update.
+Force Check-out.  To overwrite local changes to the working-file with the latest version in the repository,
+	use revert.  Warning! The working-file will be overwritten with the latest version in the repository.
+Delete. To delete files in the repository, use delete, then commit.  Files in the repository are never
+	deleted.  They are just removed from the current view.
+Labels. Subversion does not implement "labels" attached to a collection of files. Instead subversion can
+	efficiently make a copy of a subtree in the repository at any point in time.  If no commits are made, the
+	copy is a "tag". If anyone commits to that copy, it becomes a "branch".  It is easy to copy files back and
+	forth between branches.  See Chapter 4 of svn-book.pdf Branching & Merging for more information.
+ 
+SUBVERSION CONCEPTS
+Subversion is based upon a few fundamental concepts that guide the way that subversion works.  It helps to keep
+the following concepts in mind.
+Atomic Commits.  Most commands do not make changes to the repository, they are merely scheduled to be done at
+	the next commit.  The commit operation is atomic, so that a bunch of changes don't trickle in to confuse
+	others who might be checking out in the middle of a sequence of operations.
+Properties.  It is possible to attach extra information to each file.  For example, a set of images might
+	have a description of each image attached as a property.
+Commit.  Commit only uploads changes from the working-file to the repository.  The working-files are not changed.
+Update.  Update only downloads changes from the repository to the working-files.  The repository is not changed.
+Copy, delete, mkdir, move. Use the svn commands to fiddle with the working-files and folders under version
+	control to avoid confusing subversion.
+Rename. Do not rename and then move a file or folder before a commit.  Commit after the rename and then move
+	to work around a known bug in subversion that causes it to get confused.
+
+MERGING
+Keep in mind that the "svn merge" subcommand arguments specify two input respository subtrees that are compared
+and a local working directory that is modified.  The two inputs are an initial subtree in the repository and a
+final subtree in the repository (a subtree is specified by a path and a revision number).  Merge applies the
+changes made to the final subtree from the initial subtree to the specified working directory.  For example,
+suppose that the final subtree contains a fix to a spelling error in a text file.  Merge applies that spelling
+fix to your working copy.  Merging is simplified if the working copy is "clean".  That is, it is current with
+the contents of the initial subtree.  Mixing changes together without any intervening commits will lead to
+confusion.  It defeats the purpose of having a documented version control history.
+
+BRANCHING
+Branching & Merging are covered in Chapter 4 of svn-book.pdf.  Here are a couple scenarios that pertain to our
+situation.
+BigJob.  One developer embarks on BigJob that will take several weeks. He makes a copy of the trunk into
+the branches/BigJob folder.   As others make changes to the trunk, he may choose to incorporate some of these
+changes by using "svn merge" to fold changes from the trunk into his working copy of BigJob.  Then, he uses
+commit to transfer the changes into his branch.  Likewise, he can do the opposite to merge selective changes
+from the BigJob branch back into the trunk. Once the BigJob is completed, the changes are merged back into
+the main trunk and the BigJob branch may be deleted.
+Beta.  A tag is applied at the current revision (the HEAD) to note a new release candidate ready for customer
+review.   Code fixes are committed to the beta branch in response to customer comments.  Selected changes
+are also merged into the trunk to capture these fixes.  When a stable release of the beta is made, no further
+changes are made to the beta branch.  The beta branch is never deleted from the repository until the release
+is no longer provided to users and no longer supported.
+Tag. To set a tag/branch at the current rev., use a command-line window to enter:
+	svn copy svn://Prod151/AisRepos/SvnDocs/trunk svn://Prod151/AisRepos/SvnDocs/branches/Ver1.0
+	-m "Creating beta release ver 1.0 at rev 7 of main trunk"
+Checkout. To checkout the beta version, from D:\work, run update:
+	svn update SvnDocs
+Patch. To make a fix to Ver1.0, use a text editor to add the line "PATCHED VER1.0" to the top of the file:
+	D:\work\SvnDocs\branches\Ver1.0\clientnotes.txt
+Commit. Commit this change to the repository, using a command-line to enter:
+	svn commit -m "Committing patch to Ver1.0/clientnotes.txt" SvnDocs
+Log. To see a description of changes, enter:
+	svn log -v SvnDocs
+Diff. To view differences in clientnotes.txt, enter:
+	svn diff svn://Prod151/AisRepos/SvnDocs/trunk svn://Prod151/AisRepos/SvnDocs/branches/Ver1.0
+Merge. To add the Ver1.0 patch to your working copy of clientnotes.txt in the trunk, use a command-line window, enter
+	svn merge svn://Prod151/AisRepos/SvnDocs/trunk svn://Prod151/AisRepos/SvnDocs/branches/Ver1.0 SvnDocs/trunk
+Commit. Merge just changes your local working folder. To modify the repository as well, use
+	svn commit -m "Add patch from branches/Ver1.0 into trunk as well" SvnDocs
+
+BEYOND COMPARE
+Suppose that a developer had checked in some changes to SvnDocs/trunk/ClientNotes.txt in the repository prior
+to the above merge.  The merge command restores the working copy of trunk/clientnotes.txt to the final
+version, svn://Prod151/AisRepos/SvnDocs/branches/Ver1.0.  The changes made by the developer would be lost!
+Besides, svn diff and svn merge are very primitive when compared to BeyondCompare. Better to just check out
+the versions to be merged and then merge them using BeyondCompare.
+
+The end.

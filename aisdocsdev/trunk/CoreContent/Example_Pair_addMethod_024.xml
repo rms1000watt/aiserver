@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Pair addMethod 024</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>addMethod</FunctionKeywords>
+		<TypeKeywords> Dictionary Symbol</TypeKeywords>
+		<RelatedFunctions>defmethod send methodsOf</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>method message messageName</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example uses the added method <b>IncAll </b> which will increment 
+                each value in a Pair.
+	]]></Description>
+	<Syntax>
+	<Expression><![CDATA[<sc>(addMethod  Pair: IncAll:  (lambda  (s)  (map add1  s)))     </sc>]]></Expression>
+    <Note><![CDATA[ Add a method named IncAll which will increments each value in a Pair.
+    ]]></Note>
+    <Returns><![CDATA[ #&#60Dictionary 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(define P '(100 200 250 150 )  )          </sc> ]]></Expression>
+    <Note><![CDATA[Define a List that contains Pairs of numbers]]></Note>
+    <Returns><![CDATA[#&#60Pair 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(setq Y  (send IncAll: P))     </sc> ]]></Expression>
+    <Note><![CDATA[ Invoke the method named IncAll to increment all the Pair values in the List by 1. The last
+           value in the List is displayed.]]></Note>
+    <Returns><![CDATA[151]]></Returns>
+    <Expression><![CDATA[<sc>Y[0]    </sc> ]]></Expression>
+    <Note><![CDATA[The contents of the List can be viewed using the index.]]></Note>
+    <Returns><![CDATA[101]]></Returns>
+    <Expression><![CDATA[<sc>Y[1]    </sc> ]]></Expression>
+    <Note><![CDATA[none]]></Note>
+    <Returns><![CDATA[201]]></Returns>      
+    <Expression><![CDATA[<sc>Y[2]    </sc> ]]></Expression>
+    <Note><![CDATA[none]]></Note>
+    <Returns><![CDATA[251]]></Returns>   
+    <Expression><![CDATA[<sc>Y[3]    </sc> ]]></Expression>
+    <Note><![CDATA[none]]></Note>
+    <Returns><![CDATA[151]]></Returns>
+    <Hints><![CDATA[
+        <p>To view the entry in the methods Dictionary created by the addMethod function, 
+           you can use the method name to access the dictionary entry by </p>
+        <p><b> #&#60Dictionary 123456&#62[methodName:] or </b></p>
+        <p> To determine the number of assigned methods:</p>
+        <p><b>(length  (methodsOf Pair: ))</b></p>
+        <p>To access the nth method name:</p>
+        <p><b>(methodsOf Pair: )[n  0]</b></p>
+        <p>To view the Methods Dictionary:</p>
+        <table>
+           <tr><td width=60%> <p><b>(display (methodsOf Pair: ))  </td>
+               <td width=40%>  Returns <b> #{dic| IncAll #&#60Lambda 5315&#62}</b> </td></tr>
+        </table>
+]]></Hints>
+</Syntax>
+</Example>

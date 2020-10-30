@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>isEven</Title>
+		<FunctionName>isEven</FunctionName>
+		<FunctionType>Builtin(Math)</FunctionType>
+		<ArgumentTypes> Number Integer Boolean</ArgumentTypes>
+		<DataType> Number</DataType>
+		<RelatedFunctions>isInteger isZero integer isInexact isOdd isNegative isPositive isNull isExact</RelatedFunctions>
+        <RelatedVMInstructions> none  </RelatedVMInstructions>
+		<HumanKeywords>fraction integer even odd fraction</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>isEven</b> function returns true if its argument is an even Integer 
+                 with no fraction; otherwise false is returned. </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>isEven</b> function returns true if its argument that can be expressed 
+           as an Integer with no fraction with losing significance, otherwise false is returned.  
+        </p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>isExact</b> function returns true if its argument is an even Integer with 
+           fraction; otherwise false is returned. 
+        </p>
+         ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[  (isEven obj)]]></Expression>
+		<Argument>
+		  <Name>obj</Name>
+		  <Note><![CDATA[
+		  <p>Must be a numeric object.</p>
+          ]]></Note>
+		  <AISTypes>Number</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>Returns true if  the number is an Even Integer, false is returned otherwise
+	    </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

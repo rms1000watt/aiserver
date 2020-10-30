@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure uniqueInsert 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>uniqueInsert</FunctionKeywords>
+		<TypeKeywords>Structure Symbol Integer</TypeKeywords>
+		<RelatedFunctions>insert binarySearch binaryInsert sort</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>binary insert structure sort</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example initializes a Structure. Then it
+
+                  uses the <b>uniqueInsert</b> function to try to add a new key
+
+                  that already exists.
+
+	]]></Description>
+	<Syntax>
+  	   <Expression><![CDATA[ <sc>(define aStruct #{A: 1  C: 3  D:5})     </sc>]]></Expression>
+        <Note><![CDATA[Defines aStruct. ]]></Note>
+        <Returns><![CDATA[#&#60Structure 199917&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(uniqueInsert aStruct D' )       </sc>]]></Expression>
+        <Note><![CDATA[Inserts the key D' in aStruct. But the key already exists, so the 
+              index of the already existing key in the Structure is returned.]]></Note>
+        <Returns><![CDATA[2]]></Returns>
+        <Hints><![CDATA[none  ]]></Hints>
+   </Syntax>
+</Example>

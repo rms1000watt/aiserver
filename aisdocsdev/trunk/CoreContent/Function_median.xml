@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>median</Title>
+		<FunctionName>median</FunctionName>
+		<FunctionType>Builtin(Math)</FunctionType>
+		<ArgumentTypes> Number Integer</ArgumentTypes>
+		<DataType>Number  </DataType>
+		<RelatedFunctions> max min</RelatedFunctions>
+        <RelatedVMInstructions>none</RelatedVMInstructions>
+		<HumanKeywords>median estimate round</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>median </b> function computes the median value (or middle value) from a set of values in the argument list. </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+	  <p> The <b>median</b> function computes the median value (or middle value) from a set of 
+        values in the argument list. The median value is that value which is greater than half of
+        the argument list and less than the other half.</p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>median</b>function is used to produce the median value from a set of values.
+         </p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p><b> (median num1 num2 ...)</b></p>]]></Expression>
+		<Argument>
+		  <Name>num1 num2 ...</Name>
+		  <Note><![CDATA[
+		  <p>One or more Numbers</p>
+          ]]></Note>
+		  <AISTypes>Number</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>The median function computes the median value from the arguments and returns it. 
+          If an array or reference argument contains text, logical values, or empty cells, those 
+          values are ignored if they cannot be evaluated as real numbers. If no numeric values 
+          are found in the argument list, then an error code is generated.</p>
+	    ]]></Return>
+	</Syntax>
+</Function>

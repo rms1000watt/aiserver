@@ -1,0 +1,64 @@
+{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\froman\fcharset0 Times New Roman;}}
+\viewkind4\uc1\pard\f0\fs24 Hi Mike,\par
+\par
+Here is the result of the first, second and third level dictionaries.\par
+\par
+For the input String: \par
+\b I am Alice.  I am an intelligent chatbot.\par
+\b0\par
+\ul\b The result of the first level dictionary:\par
+\ulnone\b0 Command: \par
+(xml.dictionaryOne \{I am Alice.  I am an intelligent chatbot.\})\par
+(setq dictLevel1 (xml.prettyPrint dictLevel1 xml.myDictionaryOne 2))\par
+\par
+Result: \par
+#\{dic|| \par
+    Alice: 1\par
+    I: 2\par
+    am: 2\par
+    an: 1\par
+    chatbot: 1\par
+    intelligent: 1\par
+    \} ; end Dictionary\par
+\par
+\ul\b The result of the Second Level Dictionary:\par
+\ulnone\b0 Command:\par
+(xml.dictionaryOne \{I am Alice.  I am an intelligent chatbot.\})\par
+(xml.dictionaryTwo \{I am Alice.  I am an intelligent chatbot.\})\par
+(setq dictLevel2 (xml.prettyPrint dictLevel2 xml.myDictionaryTwo 2))\par
+\par
+Result:\par
+  #\{dic|| \par
+    Alice.: #\{dic|| \}\par
+    I: #\{dic|| am 2\}\par
+    am: #\{dic|| |Alice.| 1 an 1\}\par
+    an: #\{dic|| intelligent 1\}\par
+    chatbot.: #\{dic|| \}\par
+    intelligent: #\{dic|| |chatbot.| 1\}\par
+    \} ; end Dictionary\par
+\par
+\ul\b The result of the Third Level Dictionary:\par
+\ulnone\b0 Command:\par
+(xml.dictionaryOne \{I am Alice.  I am an intelligent chatbot.\})\par
+(xml.dictionaryTwo \{I am Alice.  I am an intelligent chatbot.\})\par
+(xml.dictionaryThree \{I am Alice.  I am an intelligent chatbot.\})\par
+(setq dictLevel3 (xml.prettyPrint dictLevel3 xml.myDictionaryThree 2))\par
+\par
+Result:\par
+  #\{dic|| \par
+    Alice: #\{dic|| \}\par
+    I: #\{dic|| am: #\{dic|| |Alice.| 1 an 1\}\}\par
+    am: #\{dic|| Alice: #\{dic|| \}an: #\{dic|| intelligent 1\}\}\par
+    an: #\{dic|| intelligent: #\{dic|| |chatbot.| 1\}\}\par
+    chatbot.: #\{dic|| \}\par
+    intelligent: #\{dic|| chatbot: #\{dic|| \}\par
+    \} ; end Dictionary\par
+\par
+\b Note:\par
+\b0 This program recognizes only the period character as a special character.\par
+Included is the prettyPrint function for Dictionaries.  The output variables: dicLevel1, dictLevel2 and\par
+dictLevel3 for the prettyPrint function must be first set to #void.\par
+\par
+\par
+\par
+}

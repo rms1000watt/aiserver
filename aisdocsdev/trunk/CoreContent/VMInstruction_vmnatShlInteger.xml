@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmnatShlInteger </Title>
+		<InstructionName>vmnatShlInteger </InstructionName>
+		<InstructionType>Native</InstructionType>
+		<ArgumentTypes>  Integer    </ArgumentTypes>
+		<RelatedVMInstructions>  vmnatShrInteger     </RelatedVMInstructions>
+		<HumanKeywords>  native  shift left right Integer   </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[                                                  
+		<p> When evaluated, this vm instruction shifts left the Integer <b>source</b>
+		 value by the Integer <b>count</b> value and places the result in the Integer 
+		 <b>target</b>. There are no conversions made between different types. 
+		 The result will be returned as an Integer data type. This instruction may 
+		 return an Error value. After the operation, the Instruction Pointer is 
+		 promoted. The operation of this vm instruction is expressed in the following 
+		 C expression:
+        </p>	
+        <ul><li><b>       (int)target = ((int)source &#171 (int)count);   </b></li></ul>
+    ]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[  (vmnatShlInteger count source target) ]]></Expression>
+		<Argument> 
+		  <Name> count  </Name>
+		  <Format>regoffset  </Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name> source </Name>
+		  <Format>regoffset </Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>target  </Name>
+		  <Format>regoffset  </Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+	</Syntax>
+</VMInstruction>

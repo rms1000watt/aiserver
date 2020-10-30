@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>copy</Title>
+		<FunctionName>copy</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>Structure Dictionary Directory Pair List Vector Brick Matrix Lambda NumMatrix CpxVector ShortVector</ArgumentTypes>
+		<DataType>Structure Dictionary Directory Vector ShortVector PcodeVector FltVector Brick NumVector Matrix IntVector Pair List Lambda NumMatrix CpxVector ObjVector BitVector</DataType>
+		<RelatedFunctions>setq</RelatedFunctions>
+        <RelatedVMInstructions>vmregObjPointer </RelatedVMInstructions> 
+		<HumanKeywords>copy  memcopy pointer container</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>copy</b> function returns an  exact copy of a structure, brick, dictionary, directory, matrix, pair or list object.   </p>
+          ]]></Description>
+	<Brief>
+	   <Overview-Structure><![CDATA[
+		<p>The <b>copy</b> function may appear similar to the <b>setq</b> function but its 
+            behavior is different if the target object is a collection object such as a 
+           Structure (Structures, vectors, lists and dictionaries are collection objects 
+           stored in the heap. See the Analytic Information Server Introduction Book).   
+           When you use the <b>setq</b> function to assign a native data type such as 
+           Number, Void, Boolean, Text, the immediate data is copied to the target container.  
+           When you use the <b>setq</b> function on a collection data type such as a Structure 
+          <b>(source)</b>, a pointer to the data location (the object id) is copied to the 
+          target container <b>(target)</b>.  Therefore, if the new container <b>(target)</b>
+          changes a value in the structure, the <b>(source)</b> container will show the 
+          change since <b>(source)</b> and <b>(target)</b> are pointing to the same data.  
+          (From a C-programmer's perspective, the source and target are pointer 
+          dereferencing the same memory location). However if the <b>copy</b> function was used, 
+          it produces a copy of the structure <b>(target)</b> in a different memory location. 
+          Changes to the copy are only visible to the <b>(target)</b> container. 
+          (From a C-programmer's perspective, the copy function behaves like the memcpy standard function).</p>
+        ]]></Overview-Structure>
+        <Overview-Vector><![CDATA[
+        <p> The <b>copy</b> function returns an exact copy of a Vector object.  </p>
+        ]]></Overview-Vector>
+        <Overview-Brick><![CDATA[
+        <p> The <b>copy</b> function returns an exact copy of a Brick object.  </p>
+        ]]></Overview-Brick>
+        <Overview-Pair><![CDATA[
+        <p> The <b>copy</b> function returns an exact copy of a Pair.  </p>
+        ]]></Overview-Pair>
+        <Overview-List><![CDATA[
+        <p> The <b>copy</b> function returns an exact copy of a List.  </p>
+        ]]></Overview-List>
+        <Overview-Lambda><![CDATA[
+        <p> The <b>copy</b> function creates an exact copy of the specified Lambda object. 
+          The newly cloned Lambda has the same behavior and structure as the original Lambda 
+           with the exception that the cloned Lambda has a similar but distinct <b>Pv</b> structure. 
+          This allows cloning of Lambda objects, which have the same behavior but may have 
+          different values in their persistent variables.</p>
+        ]]></Overview-Lambda>
+        <Overview><![CDATA[
+        <p> The <b>copy</b> function creates new copy of the object on the heap with its own 
+            unique object id.  The new object id is returned by the copy function. </p>
+        ]]></Overview>
+       <Usage-Brick><![CDATA[
+		<p>The <b>copy</b> function may appear similar to the <b>setq</b> function but its 
+            behavior is different if the target object is a collection object such as a 
+           Brick (Structures, vectors, lists and dictionaries are collection objects 
+           stored in the heap. See the Analytic Information Server Introduction Book).   
+           When you use the <b>setq</b> function to assign a native data type such as 
+           Number, Void, Boolean, Text, the immediate data is copied to the target container.  
+           When you use the <b>setq</b> function on a collection data type such as a Brick 
+          <b>(source)</b>, a pointer to the data location (the object id) is copied to the 
+          target container <b>(target)</b>.  Therefore, if the new container <b>(target)</b>
+          changes a value in the brick, the <b>(source)</b> container will show the 
+          change since <b>(source)</b> and <b>(target)</b> are pointing to the same data.  
+          (From a C-programmer's perspective, the source and target are pointer 
+          dereferencing the same memory location). However if the <b>copy</b> function was used, 
+          it produces a copy of the brick <b>(target)</b> in a different memory location. 
+          Changes to the copy are only visible to the <b>(target)</b> container. 
+          (From a C-programmer's perspective, the copy function behaves like the memcpy standard function).</p>
+        ]]></Usage-Brick>
+        <Usage-Structure><![CDATA[
+        <p>The <b>copy</b> function returns an  exact copy of a structure object. </p>
+        ]]></Usage-Structure>
+        <Usage-Dictionary><![CDATA[
+        <p>The <b>copy</b> function produces a copy of the Dictionary <b>(target)</b> 
+            in a different memory location (From a C-programmer's perspective, the 
+            <b>copy</b> function behaves like the </b>memcpy</b> standard function).</p>
+        ]]></Usage-Dictionary>
+        <Usage-Directory><![CDATA[
+        <p>The <b>copy</b> function produces a copy of the Directory <b>(target)</b> 
+            in a different memory location (From a C-programmer's perspective, the 
+            <b>copy</b> function behaves like the </b>memcpy</b> standard function).</p>
+        ]]></Usage-Directory>
+        <Usage><![CDATA[
+		<p>The <b>copy</b> function may appear similar to the <b>setq</b> function but its 
+            behavior is different if the target object is a collection object such as a 
+           Vector (Structures, vectors, lists and dictionaries are collection objects 
+           stored in the heap). See the Analytic Information Server Introduction Book). </p>  
+        <p>When you use the <b>setq</b> function to assign a native data type such as 
+           Number, Void, Boolean, Text, the immediate data is copied to the target container.  
+           When you use the <b>setq</b> function on a collection data type such as a Vector 
+          <b>(source)</b>, a pointer to the data location (the object id) is copied to the 
+          target container <b>(target)</b>.  Therefore, if the new container <b>(target)</b>
+          changes a value in the vector, the <b>(source)</b> container will show the 
+          change since <b>(source)</b> and <b>(target)</b> are pointing to the same data.  
+          (From a C-programmer's perspective, the source and target are pointer 
+          dereferencing the same memory location). However if the <b>copy</b> function was used, 
+          it produces a copy of the vector <b>(target)</b> in a different memory location. 
+          Changes to the copy are only visible to the <b>(target)</b> container. 
+          (From a C-programmer's perspective, the copy function behaves like the memcpy 
+          standard function).</p>
+        ]]></Usage>
+      <Usage-Matrix><![CDATA[
+		<p>The <b>copy</b> function may appear similar to the <b>setq</b> function but its 
+            behavior is different if the target object is a collection object such as a 
+           Matrix (Structures, vectors, lists and dictionaries are collection objects 
+           stored in the heap). See the Analytic Information Server Introduction Book). </p>  
+        <p>When you use the <b>setq</b> function to assign a native data type such as 
+           Number, Void, Boolean, Text, the immediate data is copied to the target container.  
+           When you use the <b>setq</b> function on a collection data type such as a Matrix 
+          <b>(source)</b>, a pointer to the data location (the object id) is copied to the 
+          target container <b>(target)</b>.  Therefore, if the new container <b>(target)</b>
+          changes a value in the Matrix, the <b>(source)</b> container will show the 
+          change since <b>(source)</b> and <b>(target)</b> are pointing to the same data.  
+          (From a C-programmer's perspective, the source and target are pointer 
+          dereferencing the same memory location). However if the <b>copy</b> function was used, 
+          it produces a copy of the matrix <b>(target)</b> in a different memory location. 
+          Changes to the copy are only visible to the <b>(target)</b> container. 
+          (From a C-programmer's perspective, the copy function behaves like the memcpy 
+          standard function).</p>
+        ]]></Usage-Matrix>
+      <Usage-NumMatrix><![CDATA[
+		<p>The <b>copy</b> function may appear similar to the <b>setq</b> function but its 
+            behavior is different if the target object is a collection object such as a 
+           Matrix (Structures, vectors, lists and dictionaries are collection objects 
+           stored in the heap). See the Analytic Information Server Introduction Book). </p>  
+        <p>When you use the <b>setq</b> function to assign a native data type such as 
+           Number, Void, Boolean, Text, the immediate data is copied to the target container.  
+           When you use the <b>setq</b> function on a collection data type such as a Matrix 
+          <b>(source)</b>, a pointer to the data location (the object id) is copied to the 
+          target container <b>(target)</b>.  Therefore, if the new container <b>(target)</b>
+          changes a value in the Matrix, the <b>(source)</b> container will show the 
+          change since <b>(source)</b> and <b>(target)</b> are pointing to the same data.  
+          (From a C-programmer's perspective, the source and target are pointer 
+          dereferencing the same memory location). However if the <b>copy</b> function was used, 
+          it produces a copy of the matrix <b>(target)</b> in a different memory location. 
+          Changes to the copy are only visible to the <b>(target)</b> container. 
+          (From a C-programmer's perspective, the copy function behaves like the memcpy 
+          standard function).</p>
+        ]]></Usage-NumMatrix>
+     <Usage-Pair><![CDATA[
+		<p>The <b>copy</b> function may appear similar to the <b>setq</b> function but its 
+            behavior is different if the target object is a collection object such as a 
+           Pair or List  (Structures, vectors, lists and dictionaries are collection objects 
+           stored in the heap). See the Analytic Information Server Introduction Book). </p>  
+        <p>When you use the <b>setq</b> function to assign a native data type such as 
+           Number, Void, Boolean, Text, the immediate data is copied to the target container.  
+           When you use the <b>setq</b> function on a collection data type such as a Pair 
+          <b>(source)</b>, a pointer to the data location (the object id) is copied to the 
+          target container <b>(target)</b>.  Therefore, if the new container <b>(target)</b>
+          changes a value in the Pair, the <b>(source)</b> container will show the 
+          change since <b>(source)</b> and <b>(target)</b> are pointing to the same data.  
+          (From a C-programmer's perspective, the source and target are pointer 
+          dereferencing the same memory location). However if the <b>copy</b> function was used, 
+          it produces a copy of the Pair <b>(target)</b> in a different memory location. 
+          Changes to the copy are only visible to the <b>(target)</b> container. 
+          (From a C-programmer's perspective, the copy function behaves like the memcpy 
+          standard function).</p>
+        ]]></Usage-Pair>
+     <Usage-List><![CDATA[
+		<p>The <b>copy</b> function may appear similar to the <b>setq</b> function but its 
+            behavior is different if the target object is a collection object such as a 
+           Pair or List  (Structures, vectors, lists and dictionaries are collection objects 
+           stored in the heap). See the Analytic Information Server Introduction Book). </p>  
+        <p>When you use the <b>setq</b> function to assign a native data type such as 
+           Number, Void, Boolean, Text, the immediate data is copied to the target container.  
+           When you use the <b>setq</b> function on a collection data type such as a Pair 
+          <b>(source)</b>, a pointer to the data location (the object id) is copied to the 
+          target container <b>(target)</b>.  Therefore, if the new container <b>(target)</b>
+          changes a value in the Pair, the <b>(source)</b> container will show the 
+          change since <b>(source)</b> and <b>(target)</b> are pointing to the same data.  
+          (From a C-programmer's perspective, the source and target are pointer 
+          dereferencing the same memory location). However if the <b>copy</b> function was used, 
+          it produces a copy of the Pair <b>(target)</b> in a different memory location. 
+          Changes to the copy are only visible to the <b>(target)</b> container. 
+          (From a C-programmer's perspective, the copy function behaves like the memcpy 
+          standard function).</p>
+        ]]></Usage-List>
+     <Usage-Lambda><![CDATA[
+		<p>Use this function when a multiple copies of the Lambda are required. For instance, 
+          if one has a blank expert Lambda, and one needs expert help on two separate subjects.
+          Make two copies of the blank expert Lambda. Teach the first expert Lambda about subject 
+          one, and teach the second expert Lambda about subject two.</p>  
+        ]]></Usage-Lambda>
+    </Brief>
+	<Syntax-Structure>
+	    <Expression><![CDATA[<p>(copy struct)</p>]]></Expression>
+		<Argument>
+		  <Name>struct</Name>
+		  <Note><![CDATA[
+		  <p>The structure to be copied.</p>
+          ]]></Note>
+		  <AISTypes>Structure</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>An exact copy of the specified Structure.
+        </p>
+	    ]]></Return>
+	</Syntax-Structure>
+	<Syntax-Dictionary>
+	    <Expression><![CDATA[<p>(copy dictionary)</p>]]></Expression>
+		<Argument> 
+		  <Name>dictionary</Name>
+		  <Note><![CDATA[
+		  <p>The Dictionary to be copied.</p>
+          ]]></Note>
+		  <AISTypes>Dictionary</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>An exact copy of the specified Dictionary.
+        </p>
+	    ]]></Return>   
+	</Syntax-Dictionary>
+	<Syntax-Directory>
+	    <Expression><![CDATA[<p>(copy directory)</p>]]></Expression>
+		<Argument> 
+		  <Name>directory</Name>
+		  <Note><![CDATA[
+		  <p>The Directory to be copied.</p>
+          ]]></Note>
+		  <AISTypes>Directory</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>An exact copy of the specified Directory.
+        </p>
+	    ]]></Return>   
+	</Syntax-Directory>
+	<Syntax>
+	    <Expression><![CDATA[<p>(copy vector)</p>]]></Expression>
+		<Argument> 
+		  <Name>vector</Name>
+		  <Note><![CDATA[
+		  <p>The Vector to be copied.</p>
+          ]]></Note>
+		  <AISTypes>Vector ShortVector PcodeVector FltVector NumVector IntVector CpxVector ObjVector BitVector</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>An exact copy of the specified Vector.
+        </p>
+	    ]]></Return>   
+	</Syntax>
+	<Syntax-Brick>
+	    <Expression><![CDATA[<p>(copy brick)</p>]]></Expression>
+		<Argument> 
+		  <Name>brick</Name>
+		  <Note><![CDATA[
+		  <p>The Brick to be copied.</p>
+          ]]></Note>
+		  <AISTypes>Brick</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>An exact copy of the specified Brick.
+        </p>
+	    ]]></Return>   
+	</Syntax-Brick>
+	<Syntax-Matrix>
+	    <Expression><![CDATA[<p>(copy matrix)</p>]]></Expression>
+		<Argument> 
+		  <Name>matrix</Name>
+		  <Note><![CDATA[
+		  <p>The Matrix to be copied.</p>
+          ]]></Note>
+		  <AISTypes>Matrix</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>An exact copy of the specified Matrix.
+        </p>
+	    ]]></Return>   
+	</Syntax-Matrix>
+	<Syntax-NumMatrix>
+	    <Expression><![CDATA[<p>(copy nummatrix)</p>]]></Expression>
+		<Argument> 
+		  <Name>nummatrix</Name>
+		  <Note><![CDATA[
+		  <p>The NumMatrix to be copied.</p>
+          ]]></Note>
+		  <AISTypes>NumMatrix</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>An exact copy of the specified NumMatrix.
+        </p>
+	    ]]></Return>   
+	</Syntax-NumMatrix>
+	<Syntax-Pair>
+	    <Expression><![CDATA[<p>(copy pair)</p>
+                    <p>(copy list)</p>]]></Expression>
+		<Argument> 
+		  <Name>pair</Name>
+		  <Note><![CDATA[
+		  <p>The Pair to be copied.</p>
+          ]]></Note>
+		  <AISTypes>Pair</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>list</Name>
+		  <Note><![CDATA[
+		  <p>The List to be copied.</p>
+          ]]></Note>
+		  <AISTypes>List</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>An exact copy of the specified Pair.
+        </p>
+	    ]]></Return>   
+	</Syntax-Pair>
+	<Syntax-List>
+	    <Expression><![CDATA[  <p>(copy list)</p>]]></Expression>
+		<Argument> 
+		  <Name>list</Name>
+		  <Note><![CDATA[
+		  <p>The List to be copied.</p>
+          ]]></Note>
+		  <AISTypes>List</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>An exact copy of the specified  List.
+        </p>
+	    ]]></Return>   
+	</Syntax-List>
+	<Syntax-Lambda>
+	    <Expression><![CDATA[<p>(copy  anLambda)</p>]]></Expression>
+		<Argument> 
+		  <Name>anLambda</Name>
+		  <Note><![CDATA[
+		  <p>The Lambda to be copied</p>
+          ]]></Note>
+		  <AISTypes>Lambda</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>A new copy of the {anLambda} argument.
+        </p>
+	    ]]></Return>   
+	</Syntax-Lambda>
+</Function>

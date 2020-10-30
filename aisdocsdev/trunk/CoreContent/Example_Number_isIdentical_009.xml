@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number isIdentical 009</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isIdentical</FunctionKeywords>
+		<TypeKeywords>  Number</TypeKeywords>
+		<RelatedFunctions>compareEQ isIdentical comparison isEqual     </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>   Equal Analytic Object Boolean Number</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example  shows how an Integer and a Number Data type may be evaluated as identical by the
+
+
+
+                  <b>isIdentical</b> function.
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq A 1)                   </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[1]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq B 1.0)                   </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[1.0]]></Returns>
+        <Expression><![CDATA[ <sc>(isIdentical A B)              </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[ none  ]]></Hints>
+   </Syntax>
+</Example>

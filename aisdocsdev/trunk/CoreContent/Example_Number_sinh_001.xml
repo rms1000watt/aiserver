@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number sinh 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>sinh</FunctionKeywords>
+		<TypeKeywords>Number Integer</TypeKeywords>
+		<RelatedFunctions>cosh tanh</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>    sine radians angle hyperbolic  </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>sinh</b> function to  compute the hyperbolic sine of a number.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(sinh 1.5)  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[2.129279455095]]></Returns>
+  	    <Expression><![CDATA[ <sc>(sinh 4.59)   </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[49.24213865179]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

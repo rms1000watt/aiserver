@@ -1,0 +1,131 @@
+aissvr/aissvrnotes.txt		tlwms				8/27/02
+
+							AIS Server
+
+Aissvr is a small helper class inherited by all the protocol servers
+(appsvr, httpsvr, xmlsvr, ...).  It unwraps incoming messages and
+routes them to the correct aismgr function.
+PENDING....
+
+DOCUMENTATION GUIDE
+-------------------
+*	aismgr/aismgrnotes.txt - this project setup and configuration.
+*	include/aismgr.h - aismgr class specifications.
+*	include/
+*	webide/main.cpp - example of the use of aismgr.
+*	Docs/InternalDocumentation/Qt - Documents on building Qt
+	projects.
+*	Docs/InternalDocumentation/VisualStudio - Importing Qt projects,
+	general project settings, and compiler options.
+
+GENERAL NOTES
+-------------
+1.	Warning! aismgr.lib may not run on the same thread as the event
+	loop (i.e. the GUI).   It may not include Q_OBJECT in any class
+	definition and may not contain any slots or signals.
+
+
+						AIS MANAGER CONFIGURATION
+CONFIGURATION
+-------------
+1.	Edit AmpMgr.ini file.  Modify values to fit your installation.
+	This file must be in the same directory as the AmpMgr.lib.
+	For now, just add the configuration parameters to WebSvr.ini. 
+2.	See notes below if testing with IIS.
+
+						AMP MANAGER PROJECT
+PROJECT SETUP
+-------------
+This project was created as follows:
+1.	Compose AmpMgr.pro by hand.  See comments in this file and Qt
+	Qmake.doc for more details.  One can also generate a .pro
+	file using QtDesigner.
+2.	Start Visual Studio. Select "Open Qt Project" icon in Qt
+	add-in toolbar and select WebSvr.pro to create a WebSvr.dsp.
+3.	Select File->OpenWorkspace->FileType->*.dsp. Select
+	WebSvr.dsp to create WebSvr Project.
+4.	Modify project settings as noted below.  Build debug and
+	release configurations.
+							
+PROJECT SETTINGS
+----------------
+Project->Settings
+	C/C++ tab
+		General
+			WarningLevel: 3
+		C++ Language
+			Enable Exceptions
+		CodeGeneration:
+			Blend,DebugMultithreadedDLL,cdecl,8 bytes
+		PreProcessor
+			IncludeDirs: $(QTDIR)/Include, $(QTDIR)/mkspecs/win32-msvc,
+				../Include
+			Definitions: WIN32,_DEBUG,_LIB,_MCBS,UNICODE,QT_DLL,
+				QT_THREAD_SUPPORT
+	Library tab
+		General
+			OutputFile: ../Bin/Debug/AmpMgr.lib
+
+	C/C++ tab
+		General
+			(not currently done) Add to Options: /def:"AmpMgr.def" ???
+
+
+Static Library Debug Project Options:
+/nologo /MDd /W3 /Gm /GX /Zi /Od /I "../include" /I "$(QTDIR)/include"
+/I "$(QTDIR)/mkspecs/win32-msvc" /D "WIN32" /D "_DEBUG" /D "_MBCS"
+/D "_LIB" /D "UNICODE" /D "QT_DLL" /D "QT_THREAD_SUPPORT"
+/Fo"Debug/" /Fd"Debug/" /FD /GZ /c
+ 
+Static Library Release Project Options:
+...
+
+See Docs/InternalDocumentation/VisualStudio/VsProcedures.doc
+for list of above compiler options.
+
+BUILD
+-----
+Moc'ing ..\Include\AmpMgr.h...
+etc...
+ 
+					IIS TIPS 'N TRICKS
+INSTALL & RUN ON IIS
+-------------------- 
+Stop the WorldWideWeb Publishing Service on IIS machine
+Copy AmpMgr.dll to Isapi directory on IIS machine
+Start the W3svc
+Copy AmpMgr.ini to Winnt\System32 directory on IIS machine
+Enter the following url on a browser:
+	http://www.byLambda.com/isapi/AmpMgr.dll?Name=John+Doe
+Look at the log file:  \Temp\AmpMgr.log
+
+
+
+DEBUGGING
+---------
+1.  Best to move this project in its entirety to the IIS machine.
+2.  Start VC++, open the ByLambdaIsapi project, build debug version
+	of dll.
+3.  Start IIS Mgr, create virtual directory with execute permissions
+	that is mapped to above debug directory that contains the dll.
+	Select New->VirtualDirectory
+4.	Start w3svc from ControlPanel->Services or use:
+		"net start w3svc"
+5.  Make sure website is running (check in IIS Mgr)
+6.  Start blank VC++, Build->StartDebug->Attach->ShowSystemProcs
+	Select Inetinfo from the list.
+7.	Project->Settings->Debug->Category=AdditionalDlls.  Add this
+	dll to the list.
+8.	File->Open->Select ByLambdaIsapi.cpp
+	Set breakpoints.
+9.	Start browser.  Enter url as noted above in the address bar
+10.	The thread for this request should stop at the breakpoint
+11.	Be sure to look at the log file as well.
+12.	If you are running VisualStudio to debug, stopping the
+	debugger also stops the W3Svc.  W3Svc must be stopped in order
+	to make changes to the dll. After revising the dll, restart
+	W3Svc.  Make sure that the iba WebSite is running.
+13.	If W3Svc hangs and you cannot stop it, you must reboot and try
+	again.  You may have to set the startup mode in W3Svc in the
+	ControlPanel to manual to get the system going.
+

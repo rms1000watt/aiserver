@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Context clear 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>clear</FunctionKeywords>
+		<TypeKeywords>Context Boolean</TypeKeywords>
+		<RelatedFunctions>  </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>context workspace RAM locke</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[  <p> The <b>clear</b> function clears all global symbols whose 
+       Lock flags have not been set, effectively clearing the contents of the current Workspace.</p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+(clear)     </sc>   ]]></Expression>
+        <Note><![CDATA[This call clears the contents of the current Workspace.]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[none
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

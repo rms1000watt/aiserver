@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure comparison functions 003</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>comparison</FunctionKeywords>
+		<TypeKeywords>Structure Boolean</TypeKeywords>
+		<RelatedFunctions>compare compareEQ compareGT compareNE compareLT  compareLE</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare symbol equal lesser </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>comparison</b> functions to do a 
+
+
+                  case-sensitive comparison of two objects of the same type.  A Boolean value is returned.
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <b>(= #{X: 1 Y: 2} #{X: 1 Y: 2}) </b>]]></Expression>
+        <Note><![CDATA[Both Structures are equal.]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <b>(&#62  #{A: 1 B: 2} #{X: 1 Y: 2}) </b>]]></Expression>
+        <Note><![CDATA[ The key-value pair of the second Structure is greater than the key-value pair 
+               of the first Structure.]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <b>(&#60  #{A: 1 B: 2} #{X: 1 Y: 2}) </b>]]></Expression>
+        <Note><![CDATA[The key-value pair of the first Structure is lesser than the key-value pair 
+               of the second Structure.]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[
+           <p>If you prefer an integer resulting from the comparison (0 for equal, -1 for less than, 
+
+              and 1 for greater than), </p>
+        ]]></Hints>
+   </Syntax>
+</Example>

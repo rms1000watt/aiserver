@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Brick new 015</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>new</FunctionKeywords>
+		<TypeKeywords>Brick</TypeKeywords>
+		<RelatedFunctions>defmethod addMethod copy </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>new pointer create initialize</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ The first example shows the <b>new</b> function create a Brick with specified number of
+                  rows and fields. The second example shows the <b>new</b> function create a new instance of the
+                  brick object by making a copy of the original Brick.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq Contestant  (new Brick:  10 Name:Object:1 Score:Number:20))</sc>]]></Expression>
+        <Note><![CDATA[Create a new Brick, named Contestant, and give it ten rows each containing two fields. 
+               The second field repeats 20 times (in each row).]]></Note>
+        <Returns><![CDATA[#&#60Record 123456&#62  ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Employee  (new Brick:  Name:Character:40 Salary:Number:1))      </sc>]]></Expression>
+        <Note><![CDATA[Create a new Brick, named Employee, and give it one row containing two fields.]]></Note>
+        <Returns><![CDATA[#&#60Record 234567&#62  ]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq Manager (new Brick:  Employee))</sc>]]></Expression>  
+        <Note><![CDATA[Create a new Brick, which is a copy of the Employee brick.]]></Note> 
+        <Returns><![CDATA[#&#60Record 345678&#62  ]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

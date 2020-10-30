@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>openLog</Title>
+		<FunctionName>openLog</FunctionName>
+		<FunctionType>Builtin(FileIO)</FunctionType>
+        <ArgumentTypes>String Symbol</ArgumentTypes>        
+        <DataType>String FileIO</DataType>
+	    <RelatedFunctions>closeLog</RelatedFunctions>
+        <RelatedVMInstructions>none</RelatedVMInstructions>
+		<HumanKeywords>console open log</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[ 
+             <p> The <b>openLog</b> function writes to a file the displayed strings on the console. </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>openLog</b> function writes the displayed string on the console to a new or an existing file.
+		    If the file is existing, it maybe cleared of its contents by having an argument <b>clear:</b>.  If the file is existing
+			by default it will append the displayed strings.  Timestamps may or may not be written for each displayed line 
+			by having <b>timing:</b> or <b>notiming:</b> as an argument.  Only one log may be opened for each context.
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>Use the <b>openLog</b> function to write the displayed console lines to a log file. 
+		</p>
+        ]]></Usage>
+    </Brief>
+    <Syntax>
+	    <Expression><![CDATA[<p>(openLog aFilename [options] [aNote]) </p>]]></Expression>
+		<Argument> 
+		  <Name>aFilename</Name>
+		  <Note><![CDATA[
+		  <p> The name of the log file.</p>
+          ]]></Note>
+		  <AISTypes>String</AISTypes>
+		</Argument> 
+		<Argument> 
+		  <Name>clear:</Name>
+		  <Note><![CDATA[
+		  <p> Symbollic argument to clear an existing file before writing the log.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument> 
+		<Argument> 
+		  <Name>timing:</Name>
+		  <Note><![CDATA[
+		  <p> Symbollic argument to include the timestamp on each line for the log.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument> 
+		<Argument> 
+		  <Name>notiming:</Name>
+		  <Note><![CDATA[
+		  <p> Symbollic argument to not include the timestamp on each line for the log.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument> 
+		<Argument> 
+		  <Name>aNote</Name>
+		  <Note><![CDATA[
+		  <p> Optional information to be written to the log.</p>
+          ]]></Note>
+		  <AISTypes>String</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns the Boolean value true, or false if an error occurred.  This function will also return false if
+		a log file is already open.
+        </p>
+	    ]]></Return>   
+	</Syntax>
+</Function>

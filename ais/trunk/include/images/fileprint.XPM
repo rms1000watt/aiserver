@@ -1,0 +1,23 @@
+/* XPM */
+static char *fileprint[]={
+"16 14 6 1",
+". c None",
+"# c #000000",
+"c c #848284",
+"b c #c6c3c6",
+"d c #ffff00",
+"a c #ffffff",
+".....#########..",
+"....#aaaaaaaa#..",
+"....#a#####a#...",
+"...#aaaaaaaa#...",
+"...#a#####a####.",
+"..#aaaaaaaa#b#b#",
+".##########b#b##",
+"#bbbbbbbbbb#b#b#",
+"#############bb#",
+"#bbbbbbcccbb#b#.",
+"#bbbbbbdddbb###.",
+"#############b#.",
+".#bbbbbbbbb#b#..",
+"..###########..."};

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number setq 018</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>setq</FunctionKeywords>
+		<TypeKeywords>Number   Text </TypeKeywords>
+		<RelatedFunctions>new  ref define   </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>set setq replace global value  </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ The <b>setq</b> function assigns a Number value to a previously uninitialized variable.
+            
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc> (setq x 9.99)      </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[9.99]]></Returns>
+        <Expression><![CDATA[ <sc> x       </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[9.99]]></Returns>
+        <Hints><![CDATA[The <b>set</b> function keyword may be used instead of <b>setq</b>.]]></Hints>
+   </Syntax>
+</Example>

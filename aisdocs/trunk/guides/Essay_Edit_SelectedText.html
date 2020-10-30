@@ -1,0 +1,62 @@
+<html><head>
+<link rel="stylesheet" type="text/css" href="../CoreContent/help.css">
+<title>AIS Essay Template</title></head>
+<!--Page Parameters -->
+<body bgcolor="#FFFFF0" text="#000000" LINK="#0000ff">
+<a name="topage"></a>
+<a href="top"></a>
+<p>&nbsp;</p>
+<font color="#000080"><h1>Selected Text</h1></font>
+<p>&nbsp;</p>
+<ul>
+<li><a href="#S1"><FONT SIZE=2>4.1 Selecting Text</font></a></li><li><a href="#S2"><FONT SIZE=2>4.2 Operations on Selected Text</font></a></li><li><a href="#S3"><FONT SIZE=2>4.3 Preserving Selected Text</font></a></li>
+</ul>
+<P><H2><A NAME="S1"></A>4.1 Selecting Text</H2></P>		
+		    <div class="h2section" id="4.1 Selecting Text">
+			<p>
+			Anchor. Note that when text is first selected, an anchor is set at the current cursor position and then the cursor
+			is moved to the new position.  The selected text from the anchor to the new cursor position is displayed with
+			a dark blue background.  When extending a selected region, the cursor is moved to a new position. The selected text
+			extends from the current anchor to the new cursor position.  The cursor may be in front of or after the anchor.</p>
+			<p>
+			Move. Text can be selected by clicking the mouse with the Shift key pressed or by dragging the cursor across a
+			section of text.  Text can also be selected by almost any keyboard move operation by depressing the Shift key
+			while carrying out a move operation.   The selected text can also be extended by repeating a move operation
+			with the shift key depressed.  If text is currently selected, it is deselected by moving the cursor.</p>
+			<p>
+			Matching Parentheses.  If any pair of brackets are matched, the intervening text can be selected using
+			Ctrl-S (for Select), including the brackets at both ends.  Paren matching must be enabled to use this mode
+			of selection</p>
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="S2"></A>4.2 Operations on Selected Text</H2></P>		
+		    <div class="h2section" id="4.2 Operations on Selected Text">
+			<p>
+			View edit operations involving selected text as a single operation that is carried out in two steps.  First
+			some text is selected and then an operation is performed on the selected text.</p>
+			<p>
+			Insert. If text is currently selected, an insert operation will replace the selected text with the inserted
+			characters.</p>
+			<p>
+			Delete. If text is currently selected, a delete operation will delete the selected text.  In the special case
+			of Delete-Prev-Char and Delete-Next-Char, the selected text is deleted but no other characters are deleted.</p>
+			<p>
+			Clipboard. Selected text can be copied to the clipboard, appended to the clipboard, or moved to the clipboard.
+			See the command summary in section 2.5 for more details.</p>
+			<p>
+			Indent and Comment.  Indent, unindent, comment and uncomment operations all require one or more rows of text
+			to be selected.</p>
+			<p>
+			Dialogs.  The Find Dialog, Replace Dialog, and Set Tab Dialog utilize selected text to set the region to be
+			operated on.  In addition, the Find Dialog and the Replace Dialog use selected text to mark the last text that
+			has been matched or replaced.</p>		 
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="S3"></A>4.3 Preserving Selected Text</H2></P>		
+		    <div class="h2section" id="4.3 Preserving Selected Text">
+			<p>
+			Several edit operation preserve selected text.  They are Copy, Comment, Uncomment, Indent, Unindent, Tabify in
+			the Tab Set Dialog,and Replace All in the Replace Dialog.  Except for the Copy operation, all of these
+			operations modify the selected text.  So, the amount of selected text is always adjusted to extend from
+			the beginning of the first row to the end of the last row after the modification to the text has been made.</p>		 
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P>
+</body></html>

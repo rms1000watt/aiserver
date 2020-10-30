@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Character type 012</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>type</FunctionKeywords>
+		<TypeKeywords>Character</TypeKeywords>
+		<RelatedFunctions>isType    isIdentical
+</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>Type Analytic Object</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows how the <b>type</b> function return the
+
+
+
+
+
+
+
+
+                     data type  of the AIS Objects evaluated.
+
+
+
+
+
+
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc> (setq X  "Hello")     </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[true  ]]></Returns>
+        <Expression><![CDATA[ <sc>(type X)   </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ Text ]]></Returns> 
+        <Expression><![CDATA[ <sc>(type (ref X 1))      </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[ Character ]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

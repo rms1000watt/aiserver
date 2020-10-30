@@ -1,0 +1,126 @@
+# ais/edittest.txt
+
+
+#							AISED - TEST SUITE
+# Test suite for AIS editor.  Place this testsuite in the same directory as the executable
+# aised.exe.  The test suite dialog is started by pressing F5.  The following sequence of edit
+# operations are conducted on the editor.  By placing a breakpoint at the beep function,
+# ATextEdit::beep(), the editor will stop on an error.  By inspecting the stack, the
+# circumstances leading up to this error are shown in some detail.  If the worst should
+# happen and an uncaught exception occurs, determine which test instigated the exception
+# and then single step through the test.  A synopsis of the edit commands is shown below.
+
+# CHANGE HISTORY
+# Version	Date	 Who	Change
+# 1.0035	3/8/04	 tlw	Original
+
+# NOTES
+#	 1. When making changes to this file, be sure to note them in the change history below.
+#		Put the latest entry at the top of the history.
+#	 2.	Comments beginning with # or blank lines are ignored.
+#	 3. Command names and move operations are not case sensitive.
+#	 4. It is recommended to start the tests with the clear command so that the tests start
+#		from a known state.
+#	 5. In the command synopis below, FileName, Text, Pattern, and Replace are quoted strings.
+#		Enclose them in quotes, but don't place quotes around other items (move operations,
+#		boolean values)
+#	 6. Move is one of the move operations listed below.
+#	 7. All, Append, Forward, Insert, MatchCase, MatchWord, RegExp, Select, Wrap represent
+#		boolean values (either 0, 1, false, true)
+#	 8. Warning! The original contents of the current edit will be overwritten!  If the
+#		Write command is included in this test suite, the named file will be overwritten!
+#	 9. Every token in the syntax diagrams below that begins with a capital letter is a
+#		meta-symbol representing a number, move name, or a quoted string.
+#	10. Enclose 
+#	10. These commands invoke the same functions as invoked by key presses, mouse events.
+#	11. #stop causes all succeeding commands to be ignored
+#		stop causes the execution of a test sequence to be suspended
+#	12. #include FileName  inserts the commands found in FileName into the test suite.
+#	13. If an operation is ill-formed, check debugger output window for details.
+
+# MOVE OPERATIONS
+# nomove - don't move
+# bol - beginning-of-line
+# bot - beginning-of-text
+# eol - end-of-line
+# eot - end-of-text
+# nextbow - next beginning-of-word
+# nextchar - next char
+# nexteow - next end-of-word
+# nextline - next line
+# nextpage - next page
+# prevbow - previous beginning-of-word
+# prevchar - previous char
+# prevline - previous line
+# prevpage - previous page
+# prevtab - previous tab stop
+# word - nearby word
+
+# EDIT COMMANDS
+# append("Text")
+# clear
+# comment(Insert)
+# copy(Append)
+# cut
+# delete(Move)
+# find("Pattern", MatchCase, MatchWord, RegExp, Wrap, Forward)
+# indent(Insert)
+# insert(Text, Forward)
+# move(Move, Select)
+# paste
+# print
+# read("FileName")
+# replace("Pattern", "Replace", MatchCase, MatchWord, RegExp, All, Select)
+# redo
+# stop
+# undo
+# write("FileName")
+
+# DEFAULT BOOLEAN VALUES
+#  All = false		Replace all matches
+#  Append = false	Append text to clipboard
+#  Forward = true	Move to end of inserted region. Search forward/backward.
+#  Insert = true	Insert/remove indent or comment
+#  MatchCase=false	Case-sensitive search 
+#  MatchWord=false	Matched text must be on word boundaries
+#  RegExp = false	Treat pattern as a regular expression
+#  Select = false	Just search selected text
+#  Wrap = false		Continue search at end of text.
+
+#	*************************************************************************************************
+clear
+# Unquoted spaces don't matter. Case of command/move does not matter.
+Insert ( "first\t\\\"two\"\nlines",  1 )
+# Quotes are not essential if just one argument
+insert (add to second line\n)
+# Parens not essential
+insert "add a third line\n", false
+append("Add a fourth line")
+find("lines",true,true,true,true,true)
+stop
+move(PrevChar)
+delete( eol )
+move(prevBow,true)
+cut
+move(bot)
+move(eot,true)
+comment
+comment(false)
+indent
+indent(false)
+stop
+find("two",true,true,true,true,true)
+move(nextchar)
+paste
+replace("line", "LINES", true, true, false)
+undo
+undo
+redo
+write("testresult.txt")
+
+#stop
+all lines ignored after stop
+#end
+
+
+

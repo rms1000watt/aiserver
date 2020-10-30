@@ -1,0 +1,1073 @@
+
+<HTML>
+<HEAD>
+<link rel="stylesheet" type="text/css" href="../CoreContent/help.css">
+<TITLE>AIS Essay Template</TITLE></HEAD>
+<!--Page Parameters -->
+<BODY BGCOLOR="#FFFFF0" TEXT="#000000" LINK="#0000ff">
+
+<A NAME="topage"></A>
+<A HREF="TOP"></A>
+
+
+
+<P>&nbsp;</P>
+
+<FONT COLOR="#000080"><H1>browseLib Functions</H1></FONT>
+<P>&nbsp;</P>
+
+<UL>
+<li><a href="#SbrowseLib Overview"><FONT SIZE=2>browseLib Overview</font></a></li><li><a href="#SbrowseLib"><FONT SIZE=2>browseLib</font></a></li><li><a href="#SaddExtent"><FONT SIZE=2>addExtent</font></a></li><li><a href="#Sbind"><FONT SIZE=2>bind</font></a></li><li><a href="#Scheckin"><FONT SIZE=2>checkin</font></a></li><li><a href="#Scheckout"><FONT SIZE=2>checkout</font></a></li><li><a href="#ScheckoutParent"><FONT SIZE=2>checkoutParent</font></a></li><li><a href="#ScheckStatus"><FONT SIZE=2>checkStatus</font></a></li><li><a href="#SchildCreate"><FONT SIZE=2>childCreate</font></a></li><li><a href="#SchildFocus"><FONT SIZE=2>childFocus</font></a></li><li><a href="#ScompileAll"><FONT SIZE=2>compileAll</font></a></li><li><a href="#ScompileSource"><FONT SIZE=2>compileSource</font></a></li><li><a href="#SdelimitedGlobals"><FONT SIZE=2>delimitedGlobals</font></a></li><li><a href="#SdelimitedString"><FONT SIZE=2>delimitedString</font></a></li><li><a href="#SdisplayWatchList"><FONT SIZE=2>displayWatchList</font></a></li><li><a href="#SdropExtent"><FONT SIZE=2>dropExtent</font></a></li><li><a href="#SeraseChildren"><FONT SIZE=2>eraseChildren</font></a></li><li><a href="#SeraseSource"><FONT SIZE=2>eraseSource</font></a></li><li><a href="#SexportDirectory"><FONT SIZE=2>exportDirectory</font></a></li><li><a href="#SexportSource"><FONT SIZE=2>exportSource</font></a></li><li><a href="#SgetChildNames"><FONT SIZE=2>getChildNames</font></a></li><li><a href="#SgetExtentCount"><FONT SIZE=2>getExtentCount</font></a></li><li><a href="#SgetExtentNames"><FONT SIZE=2>getExtentNames</font></a></li><li><a href="#SgetFocus"><FONT SIZE=2>getFocus</font></a></li><li><a href="#SgetFocusIndex"><FONT SIZE=2>getFocusIndex</font></a></li><li><a href="#SgetNextLevel"><FONT SIZE=2>getNextLevel</font></a></li><li><a href="#SgetParentNames"><FONT SIZE=2>getParentNames</font></a></li><li><a href="#SgetTypes"><FONT SIZE=2>getTypes</font></a></li><li><a href="#ShtmlPageRegistry"><FONT SIZE=2>htmlPageRegistry</font></a></li><li><a href="#ShtmlPageServer"><FONT SIZE=2>htmlPageServer</font></a></li><li><a href="#ShtmlParmToStructure"><FONT SIZE=2>htmlParmToStructure</font></a></li><li><a href="#SimportDirectory"><FONT SIZE=2>importDirectory</font></a></li><li><a href="#SimportSource"><FONT SIZE=2>importSource</font></a></li><li><a href="#Sinspect"><FONT SIZE=2>inspect</font></a></li><li><a href="#Sprecompiler"><FONT SIZE=2>precompiler</font></a></li><li><a href="#SreadSourceFile"><FONT SIZE=2>readSourceFile</font></a></li><li><a href="#SregisterDirectory"><FONT SIZE=2>registerDirectory</font></a></li><li><a href="#SremoveDelimiters"><FONT SIZE=2>removeDelimiters</font></a></li><li><a href="#SshowGlobals"><FONT SIZE=2>showGlobals</font></a></li><li><a href="#SsetFocus"><FONT SIZE=2>setFocus</font></a></li><li><a href="#SstripAll"><FONT SIZE=2>stripAll</font></a></li><li><a href="#StabbedNameList"><FONT SIZE=2>tabbedNameList</font></a></li><li><a href="#Stakeout"><FONT SIZE=2>takeout</font></a></li><li><a href="#SupdateMetaData"><FONT SIZE=2>updateMetaData</font></a></li><li><a href="#SvalidateMetadata"><FONT SIZE=2>validateMetadata</font></a></li><li><a href="#SwriteSourceFile"><FONT SIZE=2>writeSourceFile</font></a></li>
+</UL>
+
+<P><H2><A NAME="SbrowseLib Overview"></A>browseLib Overview</H2></P>		
+		    <div class="h2section" id="browseLib Overview">
+			<P>The <b>browseLib</b> creates, maintains, and services multiple Analytic Information Server
+			   Lambda repositories (also known as the File Cabinets).
+			   The browseLib manages all Lambda source code stored in the file cabinets. 
+			   This includes checking source in and out of the file cabinest, importing, exporting, and deleting source from each file cabinet.
+			   Each Lambda file cabinet contains either the actual compiled Lambdas (binary) or a script (source) for the Lambdas. 
+			   Once compiled, each Lambda is stored in its compiled Lambda form so that compilation need not occur twice.</P>
+			<P>Multiple file cabinet extents are supported. 
+			   These are known as file cabinet extents or just file cabinets when the meaning is clear from the context. 
+			   The browseLib also supports multiple non-Lambda file cabinet extents, registered to the browseLib, 
+			   but managed by a foreign extent manager Lambda (see Extent Manager Lambda Templates).</P>
+			<P>The browseLib also contains an extent manager which allows one to browse the contents
+			   of the Analytic Information Server's working context memory</P>
+			<P><U>BrowseLib Special Features</U></P>
+			<P><B>Text Directive:</B></P>
+			<P>For File Cabinets managed by the browseLib (file cabinets managed by foreign 
+			   extent managers may or may not provide this feature). The text directive  <B>;#text#</B>  
+			   as the first seven characters of any Lambda script informs the <B>browseLib</B> 
+			   never to compile this source code. Source code with text directives are always stored 
+			   in the Lambda file cabinet as source code. They are never compiled into Lambdas.</P>
+			<P><B>Language Directive:</B></P>
+			<P>For File Cabinets managed by the browseLib (file cabinets managed by foreign 
+			   extent managers may or may not provide this feature). The language directive  <B><I>#javaScript#</I></B>,  
+			   as the first few characters of any Lambda script informs the <B>browseLib</B> 
+			   to use the specified language to compile this source code. The absence of a language
+			   directive causes the browseLib to use the <B>lisp</B> compiler.</P>
+			<P><B>Cabinet Search:</B></P>
+			<P>For all File Cabinets, during checkout operations, the browseLib will not search 
+			   file cabinet extents whose names begin with the "~" character. This prevents the  
+			   needless automatic searching of unwarrented file cabinets during checkout.</P>
+			<P><B>Lambda Clusters:</B></P>
+			<P>For all File Cabinets, during checkout/checkin operations, the browseLib will treat all 
+			   Lambdas, with compound names, whose component names are separated by the ":" character,
+			   as members of the same Lambda cluster. This supports the  
+			   storing of Lambda clusters in file cabinets.</P> 
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SbrowseLib"></A>browseLib</H2></P>		
+		    <div class="h2section" id="browseLib">
+			<P>The <B>browseLib</B> function registers a new file cabinet extent to the browseLib, 
+			   and then compiles and loads each and every Lambda in the newly 
+			   registered file cabinet extent.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib  extentName  extentFileName)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>extentName</B></TD>
+			<TD>The name of the file cabinet extent.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>extentFileName</B></TD>
+			<TD>The path and file name of the file cabinet extent.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>true</TD>
+			</TR>
+			</TABLE>
+			<BR>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib  extentName  extentMgrLambda)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>extentName</B></TD>
+			<TD>The name of the file cabinet extent.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>extentMgrLambda</B></TD>
+			<TD>The Lambda which will manage the file cabinet extent. 
+			    It must support the API documented in Extent Manager Templates.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>true</TD>
+			</TR>
+			</TABLE> 
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SaddExtent"></A>addExtent</H2></P>		
+		    <div class="h2section" id="addExtent">
+			<P>The <B>addExtent</B> function registers a new file cabinet extent to the browseLib.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.addExtent databaseDirectory)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>databaseDirectory</B></TD>
+			<TD>Directory with cabinet/source files to be registered.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>true</TD>
+			</TR>
+			</TABLE>
+			<BR>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.addExtent extentName extentFileName sourceFileName storageScope importSynch exportSync autoCompileFlag)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>extentName</B></TD>
+			<TD>The name of the file cabinet extent.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>extentFileName</B></TD>
+			<TD>The path and file name of the file cabinet extent.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>sourceFileName</B></TD>
+			<TD>The path and file name of the source file.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>storageScope</B></TD>
+			<TD>Storage scope either "file" or "folder".</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>importSync</B></TD>
+			<TD>Valid values for import synchronization are: auto, ask, none, notify.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>exportSync</B></TD>
+			<TD>Valid values for export synchronization are: auto, ask, none, notify.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>autoCompileFlag</B></TD>
+			<TD>Automatically compiles the source after an import, valid values are "true" or "false".</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>true</TD>
+			</TR>
+			</TABLE>
+			<BR>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.addExtent extentName extentFileName sourceFileName storageScope)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>extentName</B></TD>
+			<TD>The name of the file cabinet extent.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>extentFileName</B></TD>
+			<TD>The path and file name of the file cabinet extent.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>sourceFileName</B></TD>
+			<TD>The path and file name of the source file.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>storageScope</B></TD>
+			<TD>Storage scope either "file" or "folder".</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>true</TD>
+			</TR>
+			</TABLE>
+			<BR>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.addExtent  extentName  extentMgrLambda)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>extentName</B></TD>
+			<TD>The name of the file cabinet extent.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>extentMgrLambda</B></TD>
+			<TD>The Lambda which will manage the file cabinet extent. 
+			    It must support the API documented in Extent Manager Templates.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>true</TD>
+			</TR>
+			</TABLE> 
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="Sbind"></A>bind</H2></P>		
+		    <div class="h2section" id="bind">
+			 <P>The <B>bind</B> function binds all of the <i>unbound</i> Lambdas <i>assigned to global symbols</i>
+			with the global symbol name in the Lambda.In.Bindings element of the Lambda. All unbound child Lambdas
+			are also bound in their childLambda.In.Bindings elements.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.bind)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>true</TD>
+			</TR>
+			</TABLE>
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="Scheckin"></A>checkin</H2></P>		
+		    <div class="h2section" id="checkin">
+			<P>The <B>checkin</B> function stores the specified Lambda source into the file cabinet 
+			   under the specified Lambda name.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.checkin  LambdaName  LambdaSource)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>LambdaName</B></TD>
+			<TD>The name of the Lambda in the file cabinet currently in focus.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>LambdaScript</B></TD>
+			<TD>The source string for the Lambda.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>true</TD>
+			</TR>
+			</TABLE>
+			<BR>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.checkin  cabinetName  LambdaName  LambdaSource)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>cabinetName</B></TD>
+			<TD>The name of the file cabinet the Lambda is to be checked into.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>LambdaName</B></TD>
+			<TD>The name of the Lambda in the specified file cabinet.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>LambdaScript</B></TD>
+			<TD>The source string for the Lambda.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>true</TD>
+			</TR>
+			</TABLE> 
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="Scheckout"></A>checkout</H2></P>		
+		    <div class="h2section" id="checkout">
+			<P>The <B>checkout</B> function returns the Lambda source stored, in the file cabinet, under the specified Lambda name.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.checkout  LambdaName)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>LambdaName</B></TD>
+			<TD>The name of the Lambda in the file cabinet.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>The source string for the Lambda.</TD>
+			</TR>
+			</TABLE>
+			<BR>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.checkout  cabinetName LambdaName)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>cabinetName</B></TD>
+			<TD>The name of the extent in the file cabinet.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>LambdaName</B></TD>
+			<TD>The name of the Lambda in the file cabinet.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>The source string for the Lambda.</TD>
+			</TR>
+			</TABLE>
+			<P><B>Cabinet Search:</B></P>
+			<P>For all File Cabinets, during checkout operations without a cabinet name argument, the browseLib will not search 
+			   file cabinet extents whose names begin with the "~" character. This prevents the  
+			   needless automatic searching of unwarrented file cabinets during checkout.</P> 
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="ScheckoutParent"></A>checkoutParent</H2></P>		
+		    <div class="h2section" id="checkoutParent">
+			<P>The <B>checkoutParent</B> function returns the Lambda source, for the specified name and all its children, stored in the file cabinet, under the specified Lambda name.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.checkoutParent  LambdaName)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>LambdaName</B></TD>
+			<TD>The name of the Lambda in the file cabinet.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>The source string for the Lambda.</TD>
+			</TR>
+			</TABLE>
+			<BR>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.checkoutParent  cabinetName LambdaName)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>cabinetName</B></TD>
+			<TD>The name of the extent in the file cabinet.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>LambdaName</B></TD>
+			<TD>The name of the Lambda in the file cabinet.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>The source string for the Lambda.</TD>
+			</TR>
+			</TABLE>
+			<P><B>Cabinet Search:</B></P>
+			<P>For all File Cabinets, during checkoutParent operations without a cabinet name argument, the browseLib will not search 
+			   file cabinet extents whose names begin with the "~" character. This prevents the  
+			   needless automatic searching of unwarrented file cabinets during checkout.</P> 
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="ScheckStatus"></A>checkStatus</H2></P>		
+		    <div class="h2section" id="checkStatus">
+			<P>The <B>checkStatus</B> function returns the current import/export synchronization status for a cabinet.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.checkStatus cabinetName)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>cabinetName</B></TD>
+			<TD>The name of the cabinet.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>Tab delimited string of the cabinet's current import/export synchronization status.</TD>
+			</TR>
+			</TABLE>
+			<BR>
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SchildCreate"></A>childCreate</H2></P>		
+		    <div class="h2section" id="childCreate">
+			<P>The <B>childCreate</B> function creates the specified child repository within the currently focused file cabinet.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.childCreate  childName  size)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>childName</B></TD>
+			<TD>The name of the child repository to create within the current focused file cabinet.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>size</B></TD>
+			<TD>The size of the child repository (in bytes).</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>The child repository now in focus.</TD>
+			</TR>
+			</TABLE> 
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SchildFocus"></A>childFocus</H2></P>		
+		    <div class="h2section" id="childFocus">
+			<P>The <B>childFocus</B> function sets the specified child repository to be the current file cabinet.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.childFocus childName)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>childName</B></TD>
+			<TD>The name of the child repository within the current focused file cabinet.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>The child repository now in focus.</TD>
+			</TR>
+			</TABLE> 
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="ScompileAll"></A>compileAll</H2></P>		
+		    <div class="h2section" id="compileAll">
+			<P>The <B>compileAll</B> function compiles and loads every Lambda in the currently focused file cabinet. The compiled Lambdas are loaded into RAM memory.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.compileAll loadSwitch)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>loadSwitchs</B></TD>
+			<TD>Always recompile (<B>true</B>), load only do not recompile (<B>false</B>)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>true</TD>
+			</TR>
+			</TABLE> 
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="ScompileSource"></A>compileSource</H2></P>		
+		    <div class="h2section" id="compileSource">
+			 <P>The <B>compileSource</B> function compiles the specified Lambda and loads the compiled Lambda into RAM memory.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.compileSource  LambdaName)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>LambdaName</B></TD>
+			<TD>The name of the Lambda in the file cabinet.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>true (if there is no error)</TD>
+			</TR>
+			</TABLE>
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SdelimitedGlobals"></A>delimitedGlobals</H2></P>		
+		    <div class="h2section" id="delimitedGlobals">
+			<P>The <B>delimitedGlobals</B> function returns a tab delimited string containing global variables and their current contents. The <B>delimitedGlobals</B> function allows the client to browse the current workspace using the browseLib.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.delimitedGlobals  showCFuncs showLocked)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>showCFuncs</B></TD>
+			<TD>A value of 1 if C functions are to be displayed, 0 if they are not.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>showLocked</B></TD>
+			<TD>A value of 1 if locked globals are to be displayed, 0 if they are not.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>A tab delimited string of global variable names along with their current contents. Each entry has the following format:  globalName = value</TD>
+			</TR>
+			</TABLE> 
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SdelimitedString"></A>delimitedString</H2></P>		
+		    <div class="h2section" id="delimitedString">
+			<P>The <B>delimitedString</B> converts the specified object into a delimited string using the specified delimiters.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.delimitedString  anObj midDel endDel <i>lineNoSW</i>)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>anObj</B></TD>
+			<TD>An object to be converted into a delimited string.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>midDel</B></TD>
+			<TD>The delimited to place between the key and the value when converting a Structure or Dictionary object.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>endDel</B></TD>
+			<TD>The delimited to place at the end of every entry (usually carriage return line feed).</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>lineNoSw</B></TD>
+			<TD>(Optional) If the line number switch is present and true then line numbers will prefix each vector element.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>A delimited string representing the contents of the input object.</TD>
+			</TR>
+			</TABLE> 
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SdisplayWatchList"></A>displayWatchList</H2></P>		
+		    <div class="h2section" id="displayWatchList">
+			<P>The <B>displayWatchList</B> function displays to the console the list of files being watched by the file system watcher class.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.displayWatchList)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>true</TD>
+			</TR>
+			</TABLE> 
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SdropExtent"></A>dropExtent</H2></P>		
+		    <div class="h2section" id="dropExtent">
+			<P>The <B>dropExtent</B> function unregisters a file cabinet extent from the browseLib.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.dropExtent  extentName)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>extentName</B></TD>
+			<TD>The name of the file cabinet extent.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>true</TD>
+			</TR>
+			</TABLE> 
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SeraseChildren"></A>eraseChildren</H2></P>		
+		    <div class="h2section" id="eraseChildren">
+			<P>The <B>eraseChildren</B> function deletes the specified Lambda, and all its related children,
+			 from the file cabinet.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.eraseChildren  LambdaName)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>LambdaName</B></TD>
+			<TD>The name of the Lambda to be erased from the file cabinet.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>The source code for the last Lambda which has been erased.</TD>
+			</TR>
+			</TABLE> 
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SeraseSource"></A>eraseSource</H2></P>		
+		    <div class="h2section" id="eraseSource">
+			<P>The <B>eraseSource</B> function deletes the specified Lambda from the file cabinet.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.eraseSource  LambdaName)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>LambdaName</B></TD>
+			<TD>The name of the Lambda to be erased from the file cabinet.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>The source code for the Lambda which has been erased.</TD>
+			</TR>
+			</TABLE> 
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SexportDirectory"></A>exportDirectory</H2></P>		
+		    <div class="h2section" id="exportDirectory">
+			  <P>The <B>exportDirectory</B> function exports all cabinet Lambdas into the specified directory.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.exportDirectory directory LambdaName <L>saveInfoFlag</L>)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>directory</B></TD>
+			<TD>The new directory that would contain all source files for the exported cabinet.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>LambdaName</B></TD>
+			<TD>Specific Lambda to be exported as a source file on the given directory(currently not used).</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>saveInfoFlag</B></TD>
+			<TD>(Optional) If set to "true", it will save the exported cabinet information to the object repository.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>true</TD>
+			</TR>
+			</TABLE>
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SexportSource"></A>exportSource</H2></P>		
+		    <div class="h2section" id="exportSource">
+			 <P>The <B>exportSource</B> function exports the specified Lambda from the file cabinet to the specified ASCII text file. If the Lambda name is "..all Lambdas..", then the entire contents of the file cabinet are exported.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.exportSource  fileName LambdaName)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>LambdaName</B></TD>
+			<TD>The name of the Lambda whose source code is to be exported. An Lambda name of "..all Lambdas.." will cause all Lambdas in the file cabinet to be exported.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>true</TD>
+			</TR>
+			</TABLE>
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SgetChildNames"></A>getChildNames</H2></P>		
+		    <div class="h2section" id="getChildNames">
+			<P>The <B>getChildNames</B> function returns a vector of all Lambda's names stored in the file cabinet.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.getChildNames)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>A tab delimited string of all the Lambda's names stored in the file cabinet</TD>
+			</TR>
+			</TABLE> 
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SgetExtentCount"></A>getExtentCount</H2></P>		
+		    <div class="h2section" id="getExtentCount">
+			<P>The <B>getExtentCount</B> function returns the number of file cabinet extents currently registered to the Lambda.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.getExtentCount)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>The number of file cabinet extents currently registered to the Lambda.</TD>
+			</TR>
+			</TABLE> 
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SgetExtentNames"></A>getExtentNames</H2></P>		
+		    <div class="h2section" id="getExtentNames">
+			<P>The <B>getExtentNames</B> function returns a vector containing file cabinet extent.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.getExtentNames)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>A vector containing file cabinet extent names.</TD>
+			</TR>
+			</TABLE> 
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SgetFocus"></A>getFocus</H2></P>		
+		    <div class="h2section" id="getFocus">
+			<P>The <B>getFocus</B> function returns the name of the file cabinet extent which is currently in focus.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.getFocus)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>The name of the extent now in focus.</TD>
+			</TR>
+			</TABLE> 
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SgetFocusIndex"></A>getFocusIndex</H2></P>		
+		    <div class="h2section" id="getFocusIndex">
+			<P>The <B>getFocusIndex</B> function returns the index of the file cabinet extent which is currently in focus.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.getFocusIndex)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>The index of the extent now in focus.</TD>
+			</TR>
+			</TABLE> 
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SgetNextLevel"></A>getNextLevel</H2></P>		
+		    <div class="h2section" id="getNextLevel">
+			<P>The <B>getNextLevel</B> function returns an XPath directory
+			   string for all hierarchical descendents of the specified key.
+			   The returned directory string will be composed of newline 
+			   delimited rows and tab delimited columns. There will be one
+			   row for each directory entry.
+			   <br><br>
+			   The first row of the directory string will always contain three columns:
+			   <br>
+			   &nbsp;&nbsp;&nbsp;<b>startingLine numLines totalLines</b>
+			   <br> 
+			   <br>
+			   Additional new type rows (see the getTypes function) will contain three columns:
+			   <br>
+			   &nbsp;&nbsp;&nbsp;<b>NewType type action</b>
+			   <br> 
+			   <br>
+			   Thereafter, each row will contain eight columns:
+			   <br>
+			   &nbsp;&nbsp;&nbsp;<b>type value size date time version symbolicKey uniqueKey</b>
+			   <br>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.getNextLevel cabinetName key startLine lineCount options)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>cabinetName</B></TD>
+			<TD>The name of the file cabinet extent whose descendents are to be returned.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>key</B></TD>
+			<TD>The symbolic name of the Lambda in the file cabinet extent whose descendents are to be returned.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>startLine</B></TD>
+			<TD>The starting line, of the descendents list, to be returned.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>lineCount</B></TD>
+			<TD>The number of lines, of the descendents list, to be returned.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>options</B></TD>
+			<TD>(Optional) Any additional arguments required by the extent manager.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>an XPath directory
+			   string for all hierarchical descendents of the specified key.</TD>
+			</TR>
+			</TABLE> 
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SgetParentNames"></A>getParentNames</H2></P>		
+		    <div class="h2section" id="getParentNames">
+			<P>The <B>getParentNames</B> function returns a vector of all parent Lambda's names stored in the file cabinet.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.getParentNames)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>A tab delimited string of all the parent Lambda's names stored in the file cabinet</TD>
+			</TR>
+			</TABLE> 
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SgetTypes"></A>getTypes</H2></P>		
+		    <div class="h2section" id="getTypes">
+		 <P>The <B>getTypes</B> function returns an XPath directory type list
+		   string for all possible types in a hierarchical descendents list (see the getNextLevel function).
+		   The returned directory directory type list string will be composed of newline 
+		   delimited rows and tab delimited columns. There will be one
+		   row for each type list entry.
+		   <br> 
+		   <br>
+		   Each row of the type list will contain two columns: &nbsp;<b>Type&nbsp;Features</b>
+		   <br>
+		   <br>
+		   There will be eight feature options. Features not present will have a value of off. 
+		   All features present will have a value of on. The first feature listed will be the default feature.
+		   The default type will have a name of <b>.default.</b>. The eight valid features are as follows:                   
+		   <br>
+		   &nbsp;&nbsp;&nbsp;<b>descend</b> Allow descent into node.
+		   <br>
+		   &nbsp;&nbsp;&nbsp;<b>edit</b> Allow display in edit tab.
+		   <br>
+		   &nbsp;&nbsp;&nbsp;<b>popup</b> Allow display in popup dialog.
+		   <br>
+		   &nbsp;&nbsp;&nbsp;<b>erase</b> Allow this type to be erased.
+		   <br>
+		   &nbsp;&nbsp;&nbsp;<b>export</b> Allow this type to be exported.
+		   <br>
+		   &nbsp;&nbsp;&nbsp;<b>import</b> Allow this type to be imported.
+		   <br>
+		   &nbsp;&nbsp;&nbsp;<b>compile</b> Allow this type to be compiled.
+		   <br>
+		   &nbsp;&nbsp;&nbsp;<b>checkin</b> Allow this type to be checked in.
+		   <br><br>
+		   Some examples would be:                    
+		   <br>
+		   &nbsp;&nbsp;&nbsp;<b>String "edit,popup"</b>
+		   <br>
+		   &nbsp;&nbsp;&nbsp;<b>Vector "descend"</b>
+		   <br>
+		   &nbsp;&nbsp;&nbsp;<b>Lambda "descend,edit"</b>
+		   <br>
+		<BR><B>Type:</B> Function</P>
+		<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+		<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+		<TD>(browseLib.getTypes cabinetName)</TD>
+		</TR>
+		<TR VALIGN=TOP><TD><B>cabinetName</B></TD>
+		<TD>The name of the Lambda file cabinet whose XPath directory type list is to be returned.</TD>
+		</TR>
+		<TR VALIGN=TOP><TD><B>Returns</B></TD>
+		<TD>an XPath directory type list string.</TD>
+		</TR>
+		</TABLE>
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="ShtmlPageRegistry"></A>htmlPageRegistry</H2></P>		
+		    <div class="h2section" id="htmlPageRegistry">
+			 <P>The <B>htmlPageRegistry</B> property contains the dictionary of Analytic Information Server URL names bound with the Lambdas which such URL's are to be routed.<BR>
+			<BR><B>Type:</B> Property</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>browseLib.htmlPageRegistry</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>The dictionary of Analytic Information Server URL names bound to their servicing Lambdas.</TD>
+			</TR>
+			</TABLE>
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="ShtmlPageServer"></A>htmlPageServer</H2></P>		
+		    <div class="h2section" id="htmlPageServer">
+			<P>The <B>htmlPageServer</B> function routes a message, from an html page, to an html server Lambda (see the <B>htmlPageRegistry</B> property).<BR>
+			<BR><B>Type:</B> Function</p>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.htmlPageServer  pageName  pageParms)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>pageName</B></TD>
+			<TD>The name of the page where the message originated.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>The parameter structure associated with this message.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>The URL name of the html page created as a response.</TD>
+			</TR>
+			</TABLE> 
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="ShtmlParmToStructure"></A>htmlParmToStructure</H2></P>		
+		    <div class="h2section" id="htmlParmToStructure">
+			 <P>The <B>htmlParmToStructure</B> function converts a message parameter string, from an html page, into an html server parameter structure (see the <B>htmlPageServer</B> function).<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.htmlParmToStructure htmlParameterString)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>htmlParameterString</B></TD>
+			<TD>The name of the page where the message originated.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>An html parameter structure.</TD>
+			</TR>
+			</TABLE>
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SimportDirectory"></A>importDirectory</H2></P>		
+		    <div class="h2section" id="importDirectory">
+			  <P>The <B>importDirectory</B> function imports all valid source files in the specified directory.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.importDirectory directory <L>saveInfoFlag</L>)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>directory</B></TD>
+			<TD>The directory containing all source files for a cabinet. The directory should be exported by the exportDirectory function.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>saveInfoFlag</B></TD>
+			<TD>(Optional) If set to "true", it will save the loaded source files to the object repository.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>true</TD>
+			</TR>
+			</TABLE>
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SimportSource"></A>importSource</H2></P>		
+		    <div class="h2section" id="importSource">
+			  <P>The <B>importSource</B> function imports the specified Lambda library text file into the file cabinet. The specified Lambda library file should have been created by a previous <B>exportSource</B> command.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.importSource  fileName)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>fileName</B></TD>
+			<TD>The path and file name of the Lambda library text file to be imported into the file cabinet.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>true</TD>
+			</TR>
+			</TABLE>
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="Sinspect"></A>inspect</H2></P>		
+		    <div class="h2section" id="inspect">
+			 <P>The <B>inspect</B> function returns a tab delimited string of statistics from the workspace. The single argument specifies the type of workspace inspection desired.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(parseLib.apply  theType)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>theType</B></TD>
+			<TD>The type of workspace inspection desired. A value of   <B>Lambdas:</B> returns a tab delimited string of Lambda names in the file cabinet. A value of   <B>globals:</B> returns a tab delimited string of global variables and their current values. A value of <B> stats:</B> returns a tab delimited string showing the current workspace memory and object usage.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>A tab delimited string of workspace statistics.</TD>
+			</TR>
+			</TABLE>
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="Sprecompiler"></A>precompiler</H2></P>		
+		    <div class="h2section" id="precompiler">
+			<P>The <B>precompiler</B> function provides a pre-compiler 
+			for adding C-like pre-compiler directives
+			to any source file. One note of caution, the pre-compiler 
+			directives use Lisp S-expressions instead of tiny C 
+			expressions.
+			<BR>
+			Provides the following C-like precompiler directives to any source file.</P>
+			<P> 
+			<BR>#define name	S-expression
+			<BR>#ifdef S-expression
+			<BR>#ifndef S-expression
+			<BR>#if S-expression
+			<BR>#else
+			<BR>#endif
+			</P>
+			<P>			 
+			Warning:  Each compiler directive MUST start at the very beginning 
+			of the source line or it will NOT be recognized as a 
+			pre-compiler directive.
+			<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.precompiler  inSource)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>inSource</B></TD>
+			<TD>The input source to be precompiled.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>The pre-compiled source string ready for compilation.</TD>
+			</TR>
+			</TABLE> 
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SreadSourceFile"></A>readSourceFile</H2></P>		
+		    <div class="h2section" id="readSourceFile">
+			 <P>The <B>readSourceFile</B> function reads the specified source file and returns a string.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.readSourceFile  filePathName)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>filePathName</B></TD>
+			<TD>The path and file name of the file to be read.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>A sting containing the contents of the file.</TD>
+			</TR>
+			</TABLE>
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SregisterDirectory"></A>registerDirectory</H2></P>		
+		    <div class="h2section" id="registerDirectory">
+			<P>The <B>registerDirectory</B> registers/imports all source and cabinet files inside a directory.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.registerDirectory cabinetDirectory <i>sourceDirectory</i>)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>cabinetDirectory</B></TD>
+			<TD>Directory containing cabinet and source files to be registered to browseLib.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>sourceDirectory</B></TD>
+			<TD>(Optional) If specified browseLib will load all source from this directory.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>true</TD>
+			</TR>
+			</TABLE> 
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SremoveDelimiters"></A>removeDelimiters</H2></P>		
+		    <div class="h2section" id="removeDelimiters">
+			<P>The <B>removeDelimiters</B> function removes all carriage returns, line feeds, and tabs from the string.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.removeDelimiters  aString)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>aString</B></TD>
+			<TD>The string whose delimiters are to be removed.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>A sting with the delimiters removed.</TD>
+			</TR>
+			</TABLE> 
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SshowGlobals"></A>showGlobals</H2></P>		
+		    <div class="h2section" id="showGlobals">
+			<P>The <B>showGlobals</B> function produces a report that shows globals accessed by a specified agency.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.showGlobals rootLambda)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>rootLambda</B></TD>
+			<TD>The name of a Lambda in memory.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>true </TD>
+			</TR>
+			</TABLE>
+			<p>This function shows globals except the following:</p>
+			<ul type="circle">
+				<li>Global Lambdas</li>
+				<li>Functions</li>
+				<li>_ais</li>
+				<li>_eol</li>
+				<li>_dataMineExtents</li>
+				<li>_path</li>
+				<li>end</li>
+			</ul>
+			<p>Use this function to check your Lambdas for unwanted global references.</p>
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SsetFocus"></A>setFocus</H2></P>		
+		    <div class="h2section" id="setFocus">
+			<P>The <B>setFocus</B> function sets the specified extent to be the current file cabinet.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.setFocus extentName)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>extentName</B></TD>
+			<TD>The name of the file cabinet extent to be made the focused file cabinet.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>The repository extent now in focus.</TD>
+			</TR>
+			</TABLE> 
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SstripAll"></A>stripAll</H2></P>		
+		    <div class="h2section" id="stripAll">
+			<P>The <B>stripAll</B> function removes the source code from every Lambda in the currently focused file cabinet. The stripped Lambdas are saved back into the file cabinet without their source.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.stripAll)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>true</TD>
+			</TR>
+			</TABLE> 
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="StabbedNameList"></A>tabbedNameList</H2></P>		
+		    <div class="h2section" id="tabbedNameList">
+			<P>The <B>tabbedNameList</B> function returns a tab delimited string containing the names of all child Lambdas stored in the file cabinet.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.tabbedNameList)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>A tab delimited string of all child Lambdas stored in the file cabinet.</TD>
+			</TR>
+			</TABLE> 
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="Stakeout"></A>takeout</H2></P>		
+		    <div class="h2section" id="takeout">
+			<P>The <B>takeout</B> function returns the acutal Lambda stored, in the file cabinet, under the specified Lambda name.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.takeout  LambdaName)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>LambdaName</B></TD>
+			<TD>The name of the Lambda in the file cabinet.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>The actual Lambda stored in the file cabinet.</TD>
+			</TR>
+			</TABLE>
+			<BR>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.takeout  cabinetName LambdaName)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>cabinetName</B></TD>
+			<TD>The name of the extent in the file cabinet.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>LambdaName</B></TD>
+			<TD>The name of the Lambda in the file cabinet.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>The actual Lambda stored in the file cabinet.</TD>
+			</TR>
+			</TABLE>
+			<P><B>Cabinet Search:</B></P>
+			<P>For all File Cabinets, during takeout operations without a cabinet name argument, the browseLib will not search 
+			   file cabinet extents whose names begin with the "~" character. This prevents the  
+			   needless automatic searching of unwarrented file cabinets during takeout.</P> 
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SupdateMetaData"></A>updateMetaData</H2></P>		
+		    <div class="h2section" id="updateMetaData">
+			 <P>The <B>updateMetaData</B> function updates the metadata information in the object repository.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.updateMetaData extentName extentFileName sourceFileName storageScope importSynch exportSync autoCompileFlag)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>extentName</B></TD>
+			<TD>The name of the cabinet extent to be updated.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>extentFileName</B></TD>
+			<TD>The path and file name of the file cabinet extent.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>sourceFileName</B></TD>
+			<TD>The path and file name of the source file.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>storageScope</B></TD>
+			<TD>Storage scope either "file" or "folder".</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>importSync</B></TD>
+			<TD>Valid values for import synchronization are: auto, ask, none, notify.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>exportSync</B></TD>
+			<TD>Valid values for export synchronization are: auto, ask, none, notify.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>autoCompileFlag</B></TD>
+			<TD>Valid values are "true" or "false".</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>true</TD>
+			</TR>
+			</TABLE>
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SvalidateMetadata"></A>validateMetadata</H2></P>		
+		    <div class="h2section" id="validateMetadata">
+			 <P>The <B>validateMetadata</B> function validates the passed metadata information.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.validateMetadata extentInfo)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>extentInfo</B></TD>
+			<TD>This should be a structure containing the metadata information to be validated.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>true if metadata information is valid, false if not.</TD>
+			</TR>
+			</TABLE>
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SwriteSourceFile"></A>writeSourceFile</H2></P>		
+		    <div class="h2section" id="writeSourceFile">
+			 <P>The <B>writeSourceFile</B> function writes the specified source file and returns a string.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.writeSourceFile  filePathName  textString)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>filePathName</B></TD>
+			<TD>The path and file name of the file to be read.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>textString</B></TD>
+			<TD>The string to be written to the file.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>true.</TD>
+			</TR>
+			</TABLE>
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P>
+
+ 
+
+</BODY>
+</HTML>

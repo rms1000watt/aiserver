@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Brick isIdentical 020</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isIdentical</FunctionKeywords>
+		<TypeKeywords>Brick</TypeKeywords>
+		<RelatedFunctions> compareEQ comparison isEqual </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>copy  memcopy pointer container</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example uses the <b>isEqual</b> function to compare the
+                 results of the <b>copy</b> and <b>setq</b> functions.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define nameList  (new Brick: 2 Name:Object:3))</sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60Record 123456&#62  ]]></Returns>
+        <Expression><![CDATA[ <sc>(copy nameList)      </sc>]]></Expression>
+        <Note><![CDATA[The copied brick has a different Object ID than the original brick.]]></Note>
+        <Returns><![CDATA[#&#60Record 234567&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(isIdentical #&#60Record 123456&#62  #&#60Record 234567&#62 )      </sc>]]></Expression>  
+        <Note><![CDATA[The copied Brick has a different Object ID than the original Brick.]]></Note> 
+        <Returns><![CDATA[false]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq nameList nameList2 )</sc>]]></Expression>  
+        <Note><![CDATA[The isEqual function returns true with Records created with the setq function.]]></Note> 
+        <Returns><![CDATA[#&#60Record 345678&#62  ]]></Returns>
+        <Expression><![CDATA[ <sc>(isIdentical nameList nameList2 )      </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

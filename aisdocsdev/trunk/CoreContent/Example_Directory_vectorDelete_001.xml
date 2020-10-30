@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Directory vectorDelete 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>remove</FunctionKeywords>
+		<TypeKeywords>Directory</TypeKeywords>
+		<RelatedFunctions>delete insert</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>delete remove key binding </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines a Directory and uses the <b>remove</b> function to 
+
+
+
+                   destructively delete a key-value binding by specified the Directory key.
+
+
+                  If the key does not exist in the Directory then the same Directory is returned unchanged.
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>$(setq X   #{dir| #Jan,1,1996 "New Year's Day"  #May,29,1996  "Memorial Day" } )   </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60Directory 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(vectorDelete X #Jan,1,1996)    </sc>]]></Expression>
+        <Note><![CDATA[Removes the key-value binding with key X: in the current Directory.]]></Note>
+        <Returns><![CDATA[#&#60Directory 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc> (display X)     </sc>]]></Expression>
+        <Note><![CDATA[Displays the modified Directory.]]></Note>
+        <Returns><![CDATA[#{dir| #May,29,1996 "Memorial Day"}]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

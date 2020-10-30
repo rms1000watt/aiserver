@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Boolean compareGE 009</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compareGE</FunctionKeywords>
+		<TypeKeywords> Boolean</TypeKeywords>
+		<RelatedFunctions>compare compareEQ compareNE compareGT compareLT  compareLE</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare void greater equal</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>compareGE</b> function to determine whether 
+                  the first object has a greater value or is equal to the value of the second object. The 
+                  <b>compareGE</b> function returns
+the Boolean value, true or false. 
+	]]></Description>
+	<Syntax>
+        <Expression><![CDATA[ <sc>(compareGE false 0 )         </sc>]]></Expression>
+        <Note><![CDATA[The Boolean value false has a state value of 1.]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>(compareGE false (&#62 2 3))           </sc>]]></Expression>
+        <Note><![CDATA[ The result from the &#62 operation is also the value 1.]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

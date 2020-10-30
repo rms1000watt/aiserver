@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Datatype SYSTEM "../DTD/Datatype.dtd">
+<Datatype>
+	<KnowledgeBase>
+        <Title>Date</Title>
+		<Type>Native</Type>
+		<RelatedTypes>Void Error Character Integer Number Money Percent String 
+		             Text Character</RelatedTypes>
+		<HumanKeywords>Native Date </HumanKeywords>
+	</KnowledgeBase>
+	<Section>                
+	    <Heading>Date Overview</Heading>
+		<Description><![CDATA[
+		<p class=MsoBodyText>The Date native type is a container, which
+		may hold a Date and Time of Day. Analytic Information Server supports Dates in the
+		range of 10<sup>15</sup>BC to 10<sup>15</sup>AD. This range exceeds the
+		approximate current age of the universe by a factor of 1000. At the extreme
+		ends of the Date range (10<sup>15</sup>BC or 10<sup>15</sup>AD), Time of Day
+		can be accurately recorded in Days only. At the center of the date range (10<sup>4</sup>BC
+		or 10<sup>4</sup>AD) Time of Day can be accurately recorded in microseconds. 
+		<b style='mso-bidi-font-weight:normal'></b></p>
+		<p class=MsoBodyText style='line-height:117%;page-break-after:avoid'>Using
+		the date value, you can perform calendar math and display dates in many
+		different formats. Some date functions require you to enter arguments as date
+		values; others require that date arguments be specified in text form.</p>
+        ]]></Description>
+    </Section>
+	<Section>                
+	    <Heading>When to Use</Heading>
+		<Description><![CDATA[
+          <p class=MsoBodyText>The Date native type is used to save Date or Time of Day values</p>         
+        ]]></Description>
+    </Section>
+    <Section>                
+	    <Heading>Constant Form</Heading>
+		<Description><![CDATA[
+			  <p class=MsoBodyText>Date constants are written as
+			#Month,Day,Year .  The # symbol is
+			mandatory; each date component is separated by a comma and no spaces are allowed.</p>
+			<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>&nbsp;</b></p>
+			<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>#Dec,12,1993   #Jan,13,56BC   #Feb,28,1994    #Jun,15,1876    #Jul,14,1786:6:10:30</b></p>
+			<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>            </b></p>
+			<p class=MsoBodyText>The valid month abbreviations are: Jan, Feb,
+			Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, and Dec. The day must be valid for
+			the specified month. The spelling of the months are case-sensitive.  The year must contain all of its digits. If
+			the year is before Christ, it must be followed by the initials BC.</p>
+			<p class=MsoBodyText> An
+			alternate form allows period symbols instead of commas as in #Month.Day.Year.</p>
+			<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>#Dec.12.1993   #Jan.13.56BC   #Feb.28.1994    #Jun.15.1876    #Jul.14.1786:6:10:30</b></p>
+        ]]></Description>
+    </Section>
+      <Section>                
+	    <Heading>Native Data Type</Heading>
+		<Description><![CDATA[
+          <p>The <b>Boolean</b> Data Type is an example of an AIS Native Data Type. </p>
+          <p> Analytic Information Server stores all of its Native Data Types in Virtual Machine Containers.  
+          All containers are stored in memory. Containers provide the basic storage mechanism for modeling 
+          data of all types. Containers provide these fundamental characteristics:      </p>
+          <p>  Ability to hold any type of data (including code) at any time.</p>     
+          <p>  Ability to know what type of data is contained.</p>  
+          <p>  Ability to be stored, retrieved and evaluated by the system.</p>  
+          <p>   Ability to handle type conversion, and memory management automatically.</p>   
+          <p> Containers come in two sizes, Large and Small. Small containers are six bytes in length, 
+          and large containers are ten bytes in length. Large containers can store larger amounts of data 
+          immediately and place less of a burden on the Heap manager. Small containers require less immediate space, 
+          but place more of a burden on the Heap manager.    </p>        
+          <p>  Large containers can store the following data types immediately and does not require the services of the Heap manager:</p>  
+         <ul>
+          <li> #void</li>  
+          <li> error</li>
+          <li> Boolean</li>
+          <li> Character</li>
+          <li> Integer</li>
+          <li> Number</li>
+          <li> Money</li>
+          <li> Percent</li>
+          <li> String</li>
+          <li> Text</li>
+          <li> Character</li>
+          <li> ...heap object references...</li> 
+          </ul>                         
+          <p>  Small containers can store the following data types immediately without placing additional burden on the Heap manager:</p>  
+         <ul>
+          <li> #void</li>  
+          <li> error</li>
+          <li> Boolean</li>
+          <li> Character</li>
+          <li> Integer</li>
+          <li> Number</li>
+          <li> Money</li>
+          <li> Percent</li>
+          <li> String</li>
+          <li> Text</li>
+          <li> Character</li>
+          <li> ...heap object references...</li> 
+          </ul>              
+          <p>  Analytic Information Server containers can be saved and loaded to and from persistent (database) 
+          storage at any time. Containers with immediate data are saved on disk in fixed length records equal 
+          to the size of the container. Containers with Heap object references are saved in fixed length records, 
+          which are automatically expanded to include the contents of the Heap object, and any objects referenced 
+          by the Heap object, etc. This feature is called Object Closure Management and is automatic with every 
+          Analytic Information Server container database save. Analytic Information Server containers may be loaded 
+          from any database repository record at any time. If the data in the record is immediate, the database 
+          load fills the container with the immediate data. If the data in the record is an object closure, the 
+          database load fills the container with a Heap object reference, and all of the objects in the record 
+          are loaded back into the Heap with the same referential relationships they had when they were saved.</p>   
+        ]]></Description>
+    </Section>
+</Datatype>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>error</Title>
+		<FunctionName>error</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>Error </ArgumentTypes>
+        <DataType>Error  </DataType>
+		<RelatedFunctions>errorTrap isError isIdentical onError</RelatedFunctions>
+        <RelatedVMInstructions> none </RelatedVMInstructions>
+		<HumanKeywords>error function errorStr expression </HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>error</b> function writes the value of the expressions to the Lambda 
+              Information Server Console Window, and returns to the top level Analytic Information 
+               Server event loop with the specified error string. 
+
+
+            </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>error</b> function writes the value of the expressions <b>{exp}</b> to the 
+           Analytic Information Server Console Window, and returns to the top level Analytic Information 
+           Server event loop with the specified error string <b>{errorStr}</b>.  If no Console 
+           Window is open, Lisp will open a Console Window.  In Lisp, the <b>error</b> function 
+           always terminates the current process, unless enclosed inside an <b>errorTrap</b> 
+           function call (see errorTrap). Furthermore, the error string <b>{errorStr}</b> 
+           argument will always be truncated to 12 characters and will be displayed as an 
+           error constant which is the error text preceded by an exclamation <b>(!)</b> and 
+           terminating with an exclamation <b>(!)</b>.
+        </p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>error</b> function is used to exit out of a function to the top level  
+           (usually to the console) and display an error message. 
+        </p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p><b> (error  errorStr exp ...)</b></p>
+        ]]></Expression>
+		<Argument>
+		  <Name>errorStr</Name>
+		  <Note><![CDATA[
+		  <p> The Error value !errorStr!</p>
+          ]]></Note>
+		  <AISTypes>String</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>exp</Name>
+		  <Note><![CDATA[
+		  <p> An expression, which will be evaluated, and the result displayed on the console.</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>Return value is the !errorStr! constructed as an Analytic Information Server Error value. 
+           The error function also evaluates exp and displays the result on the console.</p>
+	    ]]></Return>
+	</Syntax>
+</Function>

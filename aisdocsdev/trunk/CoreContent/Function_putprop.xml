@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>putprop</Title>
+		<FunctionName>putprop</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>Symbol Structure List Pair</ArgumentTypes>
+		<DataType>Symbol</DataType>
+		<RelatedFunctions>proplist proprecord</RelatedFunctions>
+        <RelatedVMInstructions>  none  </RelatedVMInstructions>
+		<HumanKeywords>symbol property  bindings name descriptor attribute</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             	<p>The <b>putprop</b> function adds the property-descriptor 
+                   and the property-name to the named  symbol. </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>putprop</b> function adds the property-descriptor <b>{propDesc}</b> and the 
+           property-name <b>{propName}</b>  to the named  symbol <b>{sym}</b>. If the 
+           <b>{propName}</b> already exists, the new value <b>{val}</b> replaces 
+           the old value. 
+        </p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>putprop </b> function is a function defined as part of the standard 
+            Lisp language.  There are five functions that deal with assigning, 
+            acquiring and removing a property from a property list of a symbol: 
+            <b>putProp, getProp, proplist, proprecord, and remProp</b>.  
+            The notion of a property for a symbol consists one or more property 
+            bindings:  a property-descriptor followed by a property-name.   
+            While Lisp supports the traditional Lisp functions for properties, 
+            the Structure and Dictionary objects offer a more flexible way of 
+            storing attribute bindings.</p>
+        ]]></Usage>
+    </Brief>
+	<Syntax-Symbol>
+	    <Expression><![CDATA[<p>(putprop sym  val  prop)</p>]]></Expression>
+		<Argument>
+		  <Name>sym</Name>
+		  <Note><![CDATA[
+		  <p>A Symbol</p>
+          ]]></Note>
+		  <AISTypes>Symbol </AISTypes>
+		</Argument>
+     	<Argument> 
+		  <Name>propName</Name>
+		  <Note><![CDATA[
+		  <p>The property Name</p>
+          ]]></Note>
+		  <AISTypes>Symbol </AISTypes>
+		</Argument>
+    	<Argument> 
+		  <Name>propDesc</Name>
+		  <Note><![CDATA[
+		  <p>The property Descriptor</p>
+          ]]></Note>
+		  <AISTypes>Symbol </AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>Adds the property binding, consisting of a property-Name and 
+           property-Descriptor.  If the property-Name is already installed, 
+           then the old property-Descriptor is replaced with the incoming 
+           propDesc. Returns the propDesc.
+        </p>
+	    ]]></Return>
+	</Syntax-Symbol>
+</Function>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Symbol proplist 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>proplist</FunctionKeywords>
+		<TypeKeywords>Symbol</TypeKeywords>
+		<RelatedFunctions>proprecord</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>symbol property  bindings name descriptor attribute</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example assigns a property binding to a Symbol. Then it
+                  displays the contents of the property list of the Symbol using the
+                  <b>proplist</b> function.  
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(putprop  BLUE-WHALE:  OCEAN:  MAMMAL:)  </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[OCEAN]]></Returns>
+        <Expression><![CDATA[ <sc>(putprop  BLUE-WHALE:  GRAY:  COLOR:)    </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[GRAY]]></Returns>
+        <Expression><![CDATA[ <sc>(proplist BLUE-WHALE:)  </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[#&#60Pair 188445&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60Pair 188445&#62)  </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[(MAMMAL OCEAN COLOR GRAY)true]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

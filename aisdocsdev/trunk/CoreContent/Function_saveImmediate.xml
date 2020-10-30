@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>saveImmediate</Title>
+		<FunctionName>saveImmediate</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+        <ArgumentTypes>ObjectRepository Directory String</ArgumentTypes>
+        <DataType> ObjectRepository</DataType>
+	    <RelatedFunctions>isImmediate</RelatedFunctions>
+        <RelatedVMInstructions> none </RelatedVMInstructions>
+		<HumanKeywords>save repository index immediate boolean key pointer</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>saveImmediate</b> function reads a value stored at the specified key, from the
+              specified ObjectRepository and stores the new value  in the Repository Index.  </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>saveImmediate</b> function reads a value stored at the specified key, <b>{key}</b>, 
+        from the specified ObjectRepository <b>{aGor}</b> and stores the new value <b>{value}</b>
+        in the Repository Index. </p>
+        <p>The Repository Index is simply a Directory, which is saved on the disk with the Object Repository. The keys 
+        in the Repository Index normally map to a value which is a pointer to the location in the
+        disk file. Retrieving or Saving a value to the Object Repository is key driven and requires 
+        two disk access: </p>
+       <p><b>1) Load the Repository Index into the Virtual Memory of the Analytic Information Server 
+          Server. </b></p>
+       <p><b>2) Use the key and then the disk pointer associated with the key, read the value from 
+           the disk. </b></p>
+       <p>The <b>saveImmediate</b> function replaces the pointer value with the immediate value 
+        from retrieved from the disk. Thus, if the Object Repository file is closed, the Repository 
+        Index is saved in its modified state. If another Object Repository references causes the Object 
+        Repository to be opened and the Repository Index to be loaded into virtual memory, the result of 
+        the <b>saveImmediate</b> from the last reference is persists in the Repository Index. </p>
+     <p></p>
+       <IMG SRC="Image_saveImmediate.gif" >
+      <p></p>
+       ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>saveImmediate</b> function should be used on values that are referenced many times 
+       during an execution of an Lambda or function as it eliminates a disk access and will result in 
+       optimized access times. The Repository Index will be dynamically resized to accommodate immediate 
+        values and can grow to any size limited only by available virtual memory. </p>
+        ]]></Usage>
+    </Brief>
+    <Syntax>
+	    <Expression><![CDATA[<p>(saveImmediate aGor key value )   </p>]]></Expression>
+		<Argument>
+		  <Name>aGor</Name>
+		  <Note><![CDATA[
+		  <p>The ObjectRepository which will be tested.</p>
+          ]]></Note>
+		  <AISTypes>ObjectRepository</AISTypes>
+		</Argument>    
+		<Argument> 
+		  <Name>key </Name>
+		  <Note><![CDATA[
+		  <p>The key value associated with the object.</p>
+          ]]></Note>
+		  <AISTypes>String</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>value </Name>
+		  <Note><![CDATA[
+		  <p>The value associated with the object.</p>
+          ]]></Note>
+		  <AISTypes>String</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>The Object Id of the Object Repository.
+        </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

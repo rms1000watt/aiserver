@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure defineStructure 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>defineStructure</FunctionKeywords>
+		<TypeKeywords>Structure</TypeKeywords>
+		<RelatedFunctions>defstruct makeStructure fieldsOf defclass objectToStructure</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>define set make object structure inherit 
+
+                       parent object-oriented classes</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines a new type object type name using the
+
+                  <b>defineStrucutre</b> function.  This new object type inherits the
+                  the previously define <b>employee</b> object type.          
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(defineStructure employee: name:  job:  salary:) </sc>]]></Expression>
+        <Note><![CDATA[The Structure name "employee" is defined. ]]></Note>
+        <Returns><![CDATA[employee ]]></Returns>
+ 
+ <Expression><![CDATA[ <sc>(define Z (new employee: name: "John Doe"  job:  "CEO" salary: 100000 ) )       </sc>]]></Expression>  
+        <Note><![CDATA[Create an instance of the employee object using a constructor function and initializers]]></Note> 
+        <Returns><![CDATA[employee ]]></Returns>   
+  	    <Expression><![CDATA[ <sc>(defineStructure manager:  include: employee:  perks:)  </sc>]]></Expression>
+        <Note><![CDATA[The object type "manager" inherits all the field names from the 
+              "employee" object and adds a  new field named perks:]]></Note>
+        <Returns><![CDATA[manager ]]></Returns>
+ <Expression><![CDATA[ <sc>(define  W  (new manager: perks:  "parking"))   </sc>]]></Expression>
+        <Note><![CDATA[Create an instance of the employee object using a constructor function and initializers.]]></Note>
+        <Returns><![CDATA[manager ]]></Returns>
+        <Expression><![CDATA[ <sc>(display W.name)        </sc>]]></Expression>  
+        <Note><![CDATA[The properties of Structure W of the "manager" object type are displayed. ]]></Note> 
+        <Returns><![CDATA[#void true ]]></Returns> 
+        <Expression><![CDATA[ <sc>(display W.job)        </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#void true ]]></Returns>   
+        <Expression><![CDATA[ <sc>(display W.salary)        </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#void true ]]></Returns>    
+        <Expression><![CDATA[ <sc>(display W.perks)        </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[parking ]]></Returns>          
+        <Expression><![CDATA[ <sc>(isType manager:  W )           </sc>]]></Expression>  
+        <Note><![CDATA[The child type inherits the type from the parent object.]]></Note> 
+        <Returns><![CDATA[true ]]></Returns> 
+        <Expression><![CDATA[ <sc>(isType employee:  W )           </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[true ]]></Returns>  
+        <Expression><![CDATA[ <sc>(isType manager:  Z )           </sc>]]></Expression>  
+        <Note><![CDATA[Z, an object of "employee" type is not of type "manager" since 
+               a parent object does not inherit the type from the child type.]]></Note> 
+        <Returns><![CDATA[false ]]></Returns>         
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

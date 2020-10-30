@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Dictionary defMethod 006</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>defMethod</FunctionKeywords>
+		<TypeKeywords>Dictionary Symbol</TypeKeywords>
+		<RelatedFunctions>addMethod send methodsOf</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>method message messageName</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example calls the <b>defMethod</b> function where the method <b>Increment</b>
+                  is implemented for the type Dictionary.  The method <b>Increment</b>
+                  is invoked by  calling the method name  in the  Methods Dictionary.
+
+
+
+   	]]></Description>
+	<Syntax>
+	<Expression><![CDATA[
+    <sc> (defmethod  Dictionary:  Increment  (s n )  (add1 s[n]))   </sc>
+    ]]></Expression>
+   <Note><![CDATA[ The method, Increment is defined for the type Dictionary.
+   ]]></Note>
+   <Returns><![CDATA[#&#60Dictionary 12345&#62]]></Returns>
+   <Expression><![CDATA[<sc>(define Score  #{dic| Sam: 1  Sue: 1 Sylvia: 5})     <sc> ]]></Expression>
+   <Note><![CDATA[ Define a Dictionary that contains scores for a list of students ]]></Note>
+   <Returns><![CDATA[#&#60Dictionary 23456&#62]]></Returns>
+   <Expression><![CDATA[<sc>(send  Increment:  Score 2)         <sc> ]]></Expression>
+   <Note><![CDATA[Invoke the method named Increment to operate on the object of the 
+          Dictionary with index 2.
+
+   ]]></Note>
+   <Returns><![CDATA[6]]></Returns>
+   <Expression><![CDATA[<sc>(Increment:  Score 2)   <sc> ]]></Expression>
+   <Note><![CDATA[The method can be invoked simply by name.
+   ]]></Note>
+   <Returns><![CDATA[6]]></Returns>
+  <Hints><![CDATA[ <p>To view the entry in the methods Dictionary created by the defMethod function </p>
+        <p><b> #&#60Dictionary 123456&#62[msgName:] or </b></p>
+        <table>
+            <tr><td width=60%><b>(display (methodsOf Dictionary: )) </b></td>
+                <td width=40%> Returns: <b> #{dic| Increment #&#60Lambda 123456&#62}   </b></td></tr>
+        </table>
+]]></Hints>
+  </Syntax>
+</Example>

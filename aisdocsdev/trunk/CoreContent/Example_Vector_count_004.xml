@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Vector count 004</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>count</FunctionKeywords>
+		<TypeKeywords> Vector Integer</TypeKeywords>
+		<RelatedFunctions>length</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>count length </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines a Vector and uses the <b>count</b> function to perform
+
+
+
+                  a deep count of the values within the   defined Vector.
+
+
+                 
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define z  #(1  "All " 56  #void)) </sc>]]></Expression>
+        <Note><![CDATA[A Vector with a #void value. ]]></Note>
+        <Returns><![CDATA[#&#60Vector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(count z)     </sc>]]></Expression>
+        <Note><![CDATA[The #void value is  included.]]></Note>
+        <Returns><![CDATA[4]]></Returns>
+        <Expression><![CDATA[ <sc> (define w  #(1  "All " 56  #(1 2))) </sc>]]></Expression>
+        <Note><![CDATA[A Vector containing 4 values and an embedded Vector with 2 values.]]></Note>
+        <Returns><![CDATA[#&#60Vector 234567&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc> (count w ) </sc>]]></Expression>  
+        <Note><![CDATA[A deep count is perfomed.]]></Note> 
+        <Returns><![CDATA[5 ]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

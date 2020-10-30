@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>ccompareEQ</Title>
+		<FunctionName>ccompareEQ</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>Character Boolean</ArgumentTypes>
+		<DataType>Character</DataType>
+		<RelatedFunctions>ccompare ccompareNE ccompareGT ccompareGE ccompareLT  ccompareLE </RelatedFunctions>
+        <RelatedVMInstructions> vmregStringCompare vmregStringiCompare </RelatedVMInstructions>
+		<HumanKeywords>compare  equal boolean character </HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>ccompareEQ</b> is a fast comparison function that assume that its operands are Character values.  
+
+                 It returns true if the arguments are equal and false if otherwise.</p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>ccompareEQ</b>   is a fast comparison function that assume that its operands are Character values.  
+
+
+           The resulting value is a Boolean value of <b>true</b> or <b>false</b>. The operands are not checked and are not coerced.  
+
+
+        </p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>Use the <b>ccompareEQ</b> function when you wish to compare two Characters and determine 
+
+          if they are equal and you wish the result to be expressed as a Boolean value (true or false).  
+
+         These functions only operate on Character operands. For a more general, but slower, 
+
+         comparison, use the <b>compareEQ, compareNE, compareGT, compareGE, compareLT, and compareLE</b>
+         which performs type checking and type conversions.
+
+        </p>
+         ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[  (ccompareEQ  char1 char2)]]></Expression>
+		<Argument>
+		  <Name>char1</Name>
+		  <Note><![CDATA[
+		  <p> First character to be compared.</p>
+          ]]></Note>
+		  <AISTypes>Character</AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>char2</Name>
+		  <Note><![CDATA[
+		  <p>Second character to be compared</p>
+          ]]></Note>
+		  <AISTypes>Character</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>Returns true if the comparison is true, false if the comparison is false
+
+
+	    </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

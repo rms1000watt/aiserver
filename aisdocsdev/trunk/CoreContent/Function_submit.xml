@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>submit</Title>
+		<FunctionName>submit</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+        <ArgumentTypes> String Date  Number</ArgumentTypes>
+        <DataType> Context </DataType>
+	    <RelatedFunctions>inspect</RelatedFunctions>
+        <RelatedVMInstructions> none  </RelatedVMInstructions>
+		<HumanKeywords>queue events event request</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p>The <b>submit</b> function places events on the request queue of the context. </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+         <p>The <b>submit</b> function places events on the request queue of the context.
+         These events should consist of a lisp expression passed as a string. Use the second 
+        optional datetime argument to specify that the execution of the event should be delayed 
+        until a specified date time. </p>
+        ]]></Overview>
+       <Usage><![CDATA[
+       <p>Use the <b>submit</b> function to place events on the request queue of the context.</p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p><b>      (submit expressionString datetime) </b></p>]]></Expression>
+		<Argument>
+		  <Name>expressionString</Name>
+		  <Note><![CDATA[A Lisp expression in string form.]]></Note>
+		  <AISTypes>String </AISTypes>
+		</Argument>  
+		<Argument> 
+		  <Name>datetime</Name>
+		  <Note><![CDATA[An optinal parameter containing a date. The argument datatype must be date.]]></Note>
+		  <AISTypes>Date </AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>RequestID - this is the numeric requestID assigned to the 
+         event on the request queue.</p>
+	    ]]></Return>
+	</Syntax>
+</Function>

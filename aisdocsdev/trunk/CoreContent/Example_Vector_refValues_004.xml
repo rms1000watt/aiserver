@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Vector refValues 004</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>refValues</FunctionKeywords>
+		<TypeKeywords>Vector  ObjVector Integer Text</TypeKeywords>
+		<RelatedFunctions>setq  ref fieldsOf setAttributes  refAttributes </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>ref reference set position</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ The attribute-value vector pairs are
+                  set and saved through the <b>setAttributes</b> function. 
+                  Then the <b>refValues</b> function is used to return the
+Vector
+
+
+
+                  values previously saved in a Vector
+
+
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(setq attb (new  Vector:  object:  3  Product:  Amount:  Date:)  )    </sc>]]></Expression>
+        <Note><![CDATA[Creates the attribute Vector. ]]></Note>
+        <Returns><![CDATA[#&#60ObjVector 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(setq X #("Camaro"  22590  #Feb,1,1996)  )             </sc>]]></Expression>
+        <Note><![CDATA[Creates the value Vector.]]></Note>
+        <Returns><![CDATA[#&#60Vector 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(setAttributes X attb)              </sc>]]></Expression>  
+        <Note><![CDATA[X now contains value Vector paired with the attribute Vector.]]></Note> 
+        <Returns><![CDATA[#&#60Vector 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(setq theValues (refValues X))               </sc>]]></Expression>  
+        <Note><![CDATA[The attributes of X are stored in another Vector]]></Note> 
+        <Returns><![CDATA[#&#60Vector 234567&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display  theValues[0] )  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[Camaro]]></Returns>
+  	    <Expression><![CDATA[ <sc>(display  theValues[1] )  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[22590]]></Returns>
+        <Expression><![CDATA[ <sc>(display  theValues[2] )  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#Feb,1,1996]]></Returns>
+        <Hints><![CDATA[<p>If the names of the attributes are known, then the dot <b>(.)</b> operator 
+                can be used to retrieve the values associated with an attribute.  
+                (See also <b>setAttribute</b>) </p>
+               <p><b>(setq attb (new  Vector:  object:  3  Product:  Amount:  Date:)  ) </b>
+                  <blockquote>Creates the attribute Vector.</blockquote> </p>
+               <p><b>(setq X #("Camaro"  $22590  #Feb,1,1996)  )    </b>
+                  <blockquote>Creates the value Vector.</blockquote> </p>
+               <p><b>(setAttributes X attb)     </b>
+                  <blockquote>Assigns attributes from attb to X.</blockquote> </p>
+               <p><b>X.Product      </b>
+                  <blockquote>Returns: <b>Camaro</b></blockquote> </p>
+               <p><b>X.Amount     </b>
+                  <blockquote>Returns: <b>$22590 </b></blockquote> </p>
+               <p><b>X.Date     </b>
+                  <blockquote>Returns: <b>$#Feb,1,1996 </b></blockquote> </p>
+       ]]></Hints>
+   </Syntax>
+</Example>

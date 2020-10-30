@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmapply</Title>
+		<InstructionName>vmapply</InstructionName>
+		<InstructionType>Generic</InstructionType>
+		<ArgumentTypes>Integer Word</ArgumentTypes>
+		<RelatedVMInstructions>vmargcount vmargfetch vmcall vmsend</RelatedVMInstructions>
+		<HumanKeywords>apply argcount stack fetch call send </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[
+		<p>When evaluated, this vm instruction invokes the <b>source</b> 
+		function, passing the number of original Lambda arguments, 
+		controlled by the <b>argcount</b> integer, to be passed 
+		through to the <b>source</b> function. 
+		If the <B>argcount</B>
+	    integer is negative, the <b>source</b> function is passed 
+	    all of the original Lambda arguments <i>except the last <b>argcount</b>
+	    arguments.</i> 
+	    If the <b>argcount</b> integer is positive, 
+	    the <b>source</b> function is passed all of the original 
+        Lambda arguments <i>except the first <b>argcount</b> arguments</i>. 
+	    The <b>argcount</b> integer must be an immediate Integer. 
+	    The <b>source</b> word must be one of the function types 
+        (either a built-in C function or an AIS Lambda object). The
+	    result word is placed at the <b>target</b> location. 
+        The operation of this vm instruction is expressed in the 
+        following C expression:
+        </p>
+        <ul><li><b>(word)target = (word)source(..original stack words with
+        argcount words omitted..);</b></li></ul>
+    ]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[(vmapply argcount source target)]]></Expression>
+		<Argument> 
+		  <Name>argcount</Name>
+		  <Format>immediate</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>word</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>target</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>word</AISTypes>
+		</Argument>
+	</Syntax>
+</VMInstruction>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure apply 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>apply</FunctionKeywords>
+		<TypeKeywords>Structure Integer</TypeKeywords>
+		<RelatedFunctions>makeStructure defstruct defmethod addMethod</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>apply functions structure method</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines a Structure containing integer values.  Then it
+                  uses the <b>apply</b> function to add the integer values contained 
+                  in the Structure.
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define  X  #{A: 2 B: 5 C:10 D:3})  </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60Structure 198007&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(apply  +  X)      </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[20]]></Returns>
+        <Expression><![CDATA[ <sc> (+ (+ (+  X.A  X.B) X.C ) X.D)      </sc>]]></Expression>
+        <Note><![CDATA[Equivalent expression  ]]></Note>
+        <Returns><![CDATA[20 ]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

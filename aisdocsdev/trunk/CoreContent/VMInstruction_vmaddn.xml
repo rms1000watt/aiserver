@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmaddn </Title>
+		<InstructionName>vmaddn </InstructionName>
+		<InstructionType>Generic</InstructionType>
+		<ArgumentTypes>  Number Double    </ArgumentTypes>
+		<RelatedVMInstructions>  vmsubn vmmuln  vmdivn    </RelatedVMInstructions>
+		<HumanKeywords>  Number   Addition Subtraction
+
+		                 Multiplication Division  </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[
+		<p>When evaluated, this vm instruction adds the <b>argument</b> word numeric value to the 
+           <b>source</b> word numeric value and places the result it the target as a Number data 
+           type. Both words must be of numeric types. Conversion between different numeric types 
+           is automatic. The result will be returned as a Number data type. This instruction may 
+           return an Error value. After the operation, the Instruction Pointer is promoted. The 
+           operation of this vm instruction is expressed in the following C expression:
+        </p>
+        <ul><li><b>    (word:double)target = (word:numeric)source + (word:numeric)argument;  </b></li></ul>
+    ]]></Description>
+    <Example>
+        <![CDATA[ <sc> <pre>
+			(defun vmaddn_test(arg1)
+    			vars: ((a 0) b)
+    			(vmaddn a arg1 b)
+    			(vmreturn b)
+			)
+			(writeln(vmaddn_test 1.1 ))
+        </pre>  </sc>
+        ]]>
+    </Example>
+	<Syntax>
+	    <Expression><![CDATA[  (vmaddn argument source target) ]]></Expression>
+		<Argument>
+		  <Name> argument  </Name>
+		  <Format>regoffset  </Format>
+		  <AISTypes>(word:numeric)</AISTypes>
+		</Argument>
+		<Argument>
+		  <Name> source </Name>
+		  <Format>regoffset </Format>
+		  <AISTypes>(word:numeric)</AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>target  </Name>
+		  <Format>regoffset  </Format>
+		  <AISTypes>(word:double) </AISTypes>
+		</Argument>
+	</Syntax>
+</VMInstruction>

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>svmRegression</Title>
+		<FunctionName>svmRegression</FunctionName>
+		<FunctionType>Builtin (Vector Machine Learning)</FunctionType>
+        <ArgumentTypes>Vector Structure Integer NumVector Symbol Real</ArgumentTypes>
+        <DataType> Vector   </DataType>
+	    <RelatedFunctions> </RelatedFunctions>
+        <RelatedVMInstructions>   </RelatedVMInstructions> 
+		<HumanKeywords>regression linear train weights</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+           <p>The <b>svmRegression</b>  function returns the Number Vector containing the trained 
+              weights for the support vector machine regression on the specified training points. 
+</p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>svmRegression</b> function returns the Number Vector containing the trained 
+           weights for the support vector machine regression on the specified training points. 
+           The argument <b>{X}</b> contains the N x M  independent variables in the form of a 
+           number vector array:</p>
+           <table border="1" cellpadding="0" cellspacing="0" style="border-collapse: 
+              collapse" align="center" bordercolor="111111" width="60%" >
+           	<tr>
+    			<td width="25%" align="center">x<sub>11</sub></td>
+    			<td width="25%" align="center">x<sub>12</sub></td>
+    			<td width="25%" align="center">&nbsp;...</td>
+    			<td width="25%" align="center">x<sub>1M</sub></td>
+  			</tr>
+  			<tr>
+    			<td width="25%" align="center">x<sub>21</sub></td>
+    			<td width="25%" align="center">x<sub>22</sub></td>
+    			<td width="25%" align="center">...</td>
+    			<td width="25%" align="center">x<sub>2M</sub></td>
+  			</tr>
+  			<tr>
+    			<td width="25%" align="center">...</td>
+    			<td width="25%" align="center">...</td>
+			    <td width="25%" align="center">...</td>
+    			<td width="25%" align="center">...</td>
+  			</tr>
+  			<tr>
+    			<td width="25%" align="center">x<sub>N1</sub></td>
+    			<td width="25%" align="center">x<sub>N2</sub></td>
+    			<td width="25%" align="center">...</td>
+    			<td width="25%" align="center">x<sub>NM</sub></td>
+  			</tr>
+		</table>
+	    <p>The argument <b>{Y}</b> contains the N dependent variables in the form of a number vector:</p>
+		<table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse" 
+                bordercolor="#111111" align="center" width="25%">
+  		<tr>
+    		<td width="100%" align="center">y<sub>1</sub></td>
+  		</tr>
+  		<tr>
+    		<td width="100%" align="center">y<sub>2</sub></td>
+  		</tr>
+  		<tr>
+    		<td width="100%" align="center">...</td>
+  		</tr>
+  		<tr>
+    		<td width="100%" align="center">y<sub>N</sub></td>
+  		</tr>
+		</table>
+        <p>The return value is a Structure <b>{S}</b> containing the following elements:</p>
+        <ul><li><b> Error  </b></li></ul>
+ 		<ul><li><b> Weight  </b></li></ul>
+ 		<ul><li><b> Generations  </b></li></ul>
+ 		<ul><li><b> Ey  </b></li></ul>
+ 		<ul><li><b> Py  </b></li></ul>
+        <p>The return element <b>{Weights}</b> contains the N trained weights for the support 
+           vector machine dual form regression model in the form of a number vector:</p>
+    	<table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse" 
+                 bordercolor="#111111" align="center" width="25%">
+  		<tr>
+    		<td width="100%" align="center">w<sub>1</sub></td>
+  		</tr>
+  		<tr>
+    		<td width="100%" align="center">w<sub>2</sub></td>
+  		</tr>
+  		<tr>
+    		<td width="100%" align="center">...</td>
+  		</tr>
+  		<tr>
+    		<td width="100%" align="center">w<sub>N</sub></td>
+  		</tr>
+		</table>
+        <p>For a more thorough discussion of the complex subject of support vector machine 
+           regression, please refer to <b>"An Introduction to Support Vector Machines and other 
+           kernel-based learning methods"</b>, by Nello Christianini and John Shawe-Taylor, 
+           Cambridge University Press, 2000.</p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>svmRegression</b> function can be used to perform linear and non-linear dual 
+           form regressions on small, mid, and large scale training data. Training data up to 
+           50,000 x 100 can be regressed, in reasonable time, on medium speed laptop computers. 
+           A wide range of built-in support vector machine kernels are available plus user 
+           defined kernel Lambdas are also readily accepted, making the svmRegression function 
+           useful across a wide range of applications.
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p>  (svmRegression X Y kernel ETollerance maxError MaxGenerations maxSVSize printSW)</p>]]></Expression>
+		<Argument>
+		  <Name>X</Name>
+		  <Note><![CDATA[
+		  <p>The N x M Number Vector array of independent training points </p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>
+    	<Argument>
+		  <Name>Y</Name>
+		  <Note><![CDATA[
+		  <p> The N Number Vector of dependent training points </p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>
+    	<Argument> 
+		  <Name>kernel</Name>
+		  <Note><![CDATA[
+		  <p> The two argument support vector machine kernel function to be used 
+              in the regression.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+    	<Argument> 
+		  <Name>ETollerance</Name>
+		  <Note><![CDATA[
+		  <p> The error tolerance limit as a percent of dependent value.</p>
+          ]]></Note>
+		  <AISTypes>Real</AISTypes>
+		</Argument>
+	    <Argument> 
+		  <Name>maxError</Name>
+		  <Note><![CDATA[
+		  <p>The maximum error rate at which training may stop.</p>
+          ]]></Note>
+		  <AISTypes>Real</AISTypes>
+		</Argument>
+        <Argument> 
+		  <Name>MaxGenerations</Name>
+		  <Note><![CDATA[
+		  <p>The maximum number of training generations at which training must stop.</p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>
+        <Argument> 
+		  <Name>MaxSVSize</Name>
+		  <Note><![CDATA[
+		  <p>The maximum number of support vectors attempted during initialization.</p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>
+        <Argument> 
+		  <Name>printSW</Name>
+		  <Note><![CDATA[
+		  <p>The verbose mode display switch for testing purposes.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>The Structure {S} with elements: Error, Weights, Generations, Ey, and Py.
+        </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

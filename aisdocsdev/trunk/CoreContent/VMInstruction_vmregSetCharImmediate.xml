@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmregSetCharImmediate   </Title> 
+		<InstructionName> vmregSetCharImmediate     </InstructionName>
+		<InstructionType>Register</InstructionType>
+		<ArgumentTypes>  Integer CharPointer Character  </ArgumentTypes>
+		<RelatedVMInstructions> vmregSetCharacter vmregSetFloat   
+		                        vmregSetNumber vmregSetInteger vmregSetIntImmediate
+		                        vmregSetShort vmregSetShortImmediate</RelatedVMInstructions>
+		<HumanKeywords>   Character CharImmediate set  </HumanKeywords>
+	</KnowledgeBase>                   
+	<Description><![CDATA[
+		<p>When evaluated, this vm instruction, uses the CharPointer in the 
+		register <b>pointer</b>, to save an Integer value from the immediate 
+		<b>source</b>. The result is saved into the memory location pointed 
+		to by the <b>pointer</b> register. The result will be saved as a type 
+		Character from the Integer value in the immediate source. 
+		This instruction may return an Error value. After the operation, the 
+		Instruction Pointer is promoted. The operation of this vm instruction 
+		is expressed in the following C expression:
+     	</p>      
+        <ul><li><b> *((char*)pointer) = (char)((int)source);</b></li></ul>
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[(vmregSetCharImmediate source pointer)]]></Expression>
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>immediate</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>		 
+		<Argument> 
+		  <Name>pointer</Name>
+		  <Format>register</Format>
+		  <AISTypes>CharPointer</AISTypes>			     
+		</Argument>
+	</Syntax>
+</VMInstruction>

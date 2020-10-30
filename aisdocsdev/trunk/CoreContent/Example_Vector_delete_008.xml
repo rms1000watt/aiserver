@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Vector delete 008</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>delete</FunctionKeywords>
+		<TypeKeywords>Vector Integer Symbol</TypeKeywords>
+		<RelatedFunctions>remove insert</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>count length </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines a Vector and uses the <b>delete</b> function to 
+
+
+
+                  delete a value in the Vector.
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq X #("alpha" "beta" "gamma" "theta" ))          </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60Vector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(delete  X  "gamma")        </sc>]]></Expression>
+        <Note><![CDATA[Deletes the value "gamma".]]></Note>
+        <Returns><![CDATA[#&#60Vector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc> (display X)     </sc>]]></Expression>
+        <Note><![CDATA[Displays the modified Vector]]></Note>
+        <Returns><![CDATA[#("alpha" "beta" "theta" )]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

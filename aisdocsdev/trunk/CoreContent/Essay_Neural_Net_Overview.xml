@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Essay SYSTEM "../DTD/Essay.dtd">
+<Essay>
+	<KnowledgeBase>
+	    <Title>Neural Net Overview</Title>
+		<Topic>Lisp</Topic>
+		<SubTopic>Machine Learning</SubTopic>
+		<HumanKeywords>Lambda Neural Nets Machine Learning Programming</HumanKeywords>
+	</KnowledgeBase>
+	<Section>
+	    <Heading>Overview</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="Overview">
+		 <p class="MsoBodyText">Lambda
+		    Information Server supports NeuralNet Objects with continuous real sigmoid
+		    input, self-organizing hidden layers, and real number output user selectable
+		    as continuous, sigmoid, bipolar, or binary. The Analytic Information Server
+		    NeuralNet object learns any continuous mapping of the type <b>f(x) : I<sup>n</sup>
+		    =&gt; R<sup>m</sup></b>&nbsp; (modeled
+		    after requirements of the Hecht-Nielson theorem). Translated into
+		    programmers English, there may be from 1 to N inputs. These inputs must each
+		    be real numbers within the closed interval <b>[0, 1] </b>(yes that includes
+		    0 and 1 and all the real numbers in-between). There may be from 1 to M
+		    outputs. These outputs will each be real numbers, which the programmer may
+		    select to appear as continuous (unrestricted real number output), sigmoid
+		    real numbers in the closed interval <b>[0, 1]</b>, binary either <b>0 </b>or<b>
+		    1</b>, or bipolar either <b>-1 </b>or<b> 1</b>.</p>
+		    <p class="MsoBodyText">The Lambda
+		    Information Server NeuralNet object supports incremental learning with
+		    built-in methods for both forward propagation and back propagation. It is
+		    the responsibility of the programmer to convert the input into the numeric
+		    range required by the NeuralNet object and to convert the output from the
+		    numeric range produced by the NeuralNet object.</p>
+		    <p class="MsoBodyText">NeuralNet
+		    Objects are multilayer collections of neural cells molded into a network of
+		    interconnecting cells and weights. Each Analytic Information Server NeuralNet
+		    object contains a layer of input cells, a self-organizing layer of hidden
+		    cells, and a layer of output cells. Analytic Information Server NeuralNet
+		    objects are modeled after the organization of neural cells in biology.</p>
+		    <p class="MsoBodyText">Each of the
+		    neural cells in a Analytic Information Server NeuralNet object is connected to
+		    each cell in its neighboring layers. Each Analytic Information Server NeuralNet
+		    cell has assigned to it both a current value and a connection weight with
+		    respect to each of its neighboring cells. Analytic Information Server NeuralNet
+		    objects can be used for advanced pattern recognition applications, data
+		    compression and decompression, speech recognition, etc.</p>
+		    <p class="MsoBodyText">The parent
+		    Structure of a Analytic Information Server NeuralNet object is composed of the
+		    NeuralNet Structure, as shown below. It is a normal user defined Structure
+		    and can be easily created with the (new NeuralNet: ) function call; however,
+		    a special <b>makeNeuralNet</b> function has been provided to make creation
+		    of a complex NeuralNet objects much easier.</p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 1in; TEXT-INDENT: -1in"><b>&nbsp;
+		 
+		    </b></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 1.5in; TEXT-INDENT: -1in"><b>&nbsp;(defineStructure
+		    NeuralNet:
+		 
+		    </b></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 1.5in; TEXT-INDENT: -1in"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    input:&nbsp;
+		 
+		    </b></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 1.5in; TEXT-INDENT: -1in"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    hidden:
+		 
+		    </b></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 1.5in; TEXT-INDENT: -1in"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    output:
+		 
+		    </b></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 1.5in; TEXT-INDENT: -1in"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    momentum:
+		 
+		    </b></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 1.5in; TEXT-INDENT: -1in"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    learning:
+		 
+		    </b></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 1.5in; TEXT-INDENT: -1in"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    filter:
+		 
+		    </b></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 1.5in; TEXT-INDENT: -1in"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    theta:
+		 
+		    </b></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 1.5in; TEXT-INDENT: -1in"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    notes:
+		 
+		    </b></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 1.5in; TEXT-INDENT: -1in"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    error:)
+		 
+		    </b></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 1in; TEXT-INDENT: -1in"><b>&nbsp;
+		 
+		    </b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 116%">The
+		    internal Structures of a Analytic Information Server NeuralNet object, namely
+		    the input layer, the hidden layer, and the ouput layer are composed of the
+		    NeuralLayer child Structures, as shown below. It is a normal user defined
+		    Structure and can be easily created with the (new NeuralLayer: ) function
+		    call; however, a special <b>makeNeuralNet</b> function has been provided to
+		    make creation of a complex NeuralNet objects much easier.</p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 1in; TEXT-INDENT: -1in"><b>&nbsp;
+		 
+		    </b></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 1.5in; TEXT-INDENT: -1in"><b>&nbsp;(defineStructure
+		    NeuralLayer:
+		 
+		    </b></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 1.5in; TEXT-INDENT: -1in"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    inputs:
+		 
+		    </b></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 1.5in; TEXT-INDENT: -1in"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;outputs:
+		 
+		    </b></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 1.5in; TEXT-INDENT: -1in"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    weights:
+		 
+		    </b></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 1.5in; TEXT-INDENT: -1in"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    biases:
+		 
+		    </b></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 1.5in; TEXT-INDENT: -1in"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    deltas:
+		 
+		    </b></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 1.5in; TEXT-INDENT: -1in"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    errors:)
+		 
+		    </b></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 1in; TEXT-INDENT: -1in"><b>&nbsp;
+		 
+		    </b></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 1in; TEXT-INDENT: -1in"><b>&nbsp;
+		 
+		    </b></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 1in; TEXT-INDENT: -1in"><b>Reference</b>:
+		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <u>Fundamentals
+		    of Neural Networks</u>, Laurene Fausett, Florida Institute of Technology,
+		    Prentice-Hall Inc, 1994, ISBN 0-13-334186-0<b style="mso-bidi-font-weight: normal"><u>
+		    </u></b></p>		 
+		  </div>
+	    ]]></Description>
+	</Section>
+</Essay>

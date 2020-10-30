@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Essay SYSTEM "../DTD/Essay.dtd">
+<Essay>
+	<KnowledgeBase>
+	    <Title>Search</Title>
+		<Topic>Analytic Information Server</Topic>
+		<SubTopic>User's Guide</SubTopic>
+		<HumanKeywords>Development AIS Guide</HumanKeywords>
+	</KnowledgeBase>
+	<Section>
+	    <Heading>5.1 SearchRegion</Heading>
+		<Description><![CDATA[
+			<h3>Overview </h3>
+			<p>
+			Searching is done row by row.  A row is tested for a match with the pattern.  If a match is found, the search
+			stops on the first match in the row.  If not, the next row is searched and so on until the end of the search
+			region is reached.  The search can be conducted from the beginning of the search region to the end or from the
+			end of the search region backwards.  If the search region includes only a partial row, only the portion of the
+			row included in the search region is tested for a match.</p>
+			<p>
+			You can simply enter a pattern in the Find combo box and then press Return to search for the next match starting
+			from the beginning of the specified search region.
+			Press return a second time to dismiss the dialog and then press F3 (search down) or Shift-F3 (search up)
+			to find the next match.   Check the &quot;Match Words&quot; check box to search for patterns that start and end
+			on a word boundary.  Check the &quot;Match Case&quot; check box if you wish to make the search case
+			sensitive.  If the &quot;Regular Exp&quot; box is checked, the pattern in the Find combo box is treated as
+			a regular expression.  Select the Up radio button in to search from the end of the search region upward.</p>
+			<p>
+			<b>Repeat Search.</b> Each time that a match is found the cursor moves down, (or up if Up selected) in the region
+			to the next match and the matched text is selected.  Each subsequent search starts its search from the last match.
+			In the case of searching backwards, the search starts from one character to the left of the last match in order to
+			avoid rematching the same text.  The search terminates when the search reaches the end of the search region.</p>
+			<p>
+			If the search fails, you can modify the pattern, the search options, the search region, and the search direction and
+			continue the search.  Note that messages appear at the bottom of the find dialog box and also on the status bar to
+			guide your search.  If the search fails and the Find Dialog has been dismissed, you can press Ctrl-F3 to extend the
+			search region to the entire text.</p>
+			<h3>5.1.1 Search Region</h3>
+			<p>
+			The search region may be set to one of three options shown in the Region button group in the Find dialog.</p>
+			<p>
+			<b>Selection</b>
+			Suppose that you want to restrict your search to just one module of the source code.
+			First, select a text region of two or more rows that includes the module to be searched.  Then open the Find Dialog
+			and choose the Selection option in the search Region option group.  The search region extends from the beginning of
+			the selected text to the end of the selected text.  If a match is found, the matched text is selected and the cursor
+			is moved to the end of the matched text.  Even though the original text region is no longer selected, the
+			search region is still in effect until the Region option is not modified.  Subsequent searches will start from the
+			current cursor position to the end (or beginning if searching backwards) of the originally selected text.
+			The selected region is in effect until the Region option in the Find Dialog is changed or until no more matches
+			are found.</p>
+			<p>
+			<b>To End</b> The To-End option restricts the search region from the current cursor to the end-of-text if
+			searching forward (Down Option is selected) or to the beginning-of-text if searching backwards.  A second
+			search continues the search from the end of the last match if moving forwards.  The search continues from
+			the next to last matched character if searching backwards.</p>
+			<p>
+			<b>All Text</b>the All-Text option searches from the cursor forward or from the cursor backward.   If the end-of-text
+			is reached searching forward, the search continues from the beginning-of-text until the cursor is again reached.
+			If the beginning-of-text is reached scanning backwards, the search continues backward in the last row of the text.
+			If a match is found, the next search starts from the end of the last match.  If no match is found, the cursor is
+			not moved and an alert is emitted.</p>
+	    ]]></Description>
+	</Section>     
+	<Section>
+	    <Heading>5.2 Regular Expressions</Heading>
+		<Description><![CDATA[
+			<p>In the find or replace dialogs, a &quot;regular expression&quot; can be entered into the text
+			box named Find:.  This regular expression is often referred to as a &quot;pattern&quot;.  Find searches
+			each row of text in the document to see if any portion of the row matches the pattern in the text box.
+			Although you can turn off regular expression processing by unchecking the &quot;Use Regular Exp.&quot; check box,
+			you will learn new ways to employ regular expressions if you use them on a regular basis.        </p>
+			<p>
+			 After introducing a few essential definitions, regular expressions are defined in the table below.</p>
+			<h3>5.2.1 Definitions</h3>
+			Some of the special lingo used below is defined here.
+			<ul>
+				<li>ASCII Code.  The numerical code used to represent a letter.  The value is expressed in hexadecimal.  For example,
+				the ASCII code for a space character is 0x20.</li>
+				<li>Digit.  Any one digit from 0 through 9 inclusive.</li>
+				<li>Range. A range of characters, such as [0-9] that represents any one digit.</li>
+				<li>Whitespace.  A space (0x20), tab (0x09), or newline (0x0a)</li>
+				<li>Word Character.  A letter, digit, or underscore.</li>
+				<li>Word. A sequence of word characters.</li>
+			</ul>
+			<h3>5.2.2 Matching Words</h3>
+			By selecting the match words check box, the search is restricted to text that not only matches the pattern,
+			but also, begins and ends on a word boundary.  The pattern itself can contain word boundaries. Some examples:
+			<table  cellspacing=0 border=0 cellpadding=2>
+			<tr valign=top>
+				<th>Pattern</th>
+				<th>Text</th>
+				<th>Comments</th>
+			</tr><tr valign=top>
+				<td>abc def</td>
+				<td>abc def.uvw</td>
+				<td>Pattern does match the text because no word character precedes the initial a and a period separates
+				def from uvw.</td>
+			</tr><tr valign=top>
+				<td>def</td>
+				<td>def_uvw</td>
+				<td>Pattern does not match the text because a word character (underscore) follows def.</td>
+			</tr><tr valign=top>
+				<td>:abc</td>
+				<td>x:abc</td>
+				<td>Pattern does match the text because the initial colon serves as a word boundary.</td>
+			</tr>
+			</table>
+			<h3>5.2.3 Elements</h3>
+			 In a regular expression, most characters match themselves.  Some special characters with their
+			meaning are noted in the following table.  These elements are the basic building block of regular expressions.
+			In the examples, => should be read as &quot;matches&quot;.
+			<table  cellspacing=0 border=0 cellpadding=2>
+			<tr valign=top>
+				<th>Element</th>
+				<th>Example</th>
+				<th>Meaning</th>
+			</tr><tr valign=top>
+				<th>c</th>
+				<td>abc => abc in abcd</td>
+				<td>Any character except the special characters below match themselves.</td>
+			</tr><tr valign=top>
+				<th>c</th>
+				<td>abc => abc in abcd</td>
+				<td>Any character except the special characters below match themselves.</td>
+			</tr><tr valign=top>
+				<th>.</th>
+				<td>. => 7 in 7.89</td>
+				<td>Dot (.) matches any one character.</td>
+			</tr><tr valign=top>
+				<th>\x</th>
+				<td>\. => . in 7.89</td>
+				<td>When x is a &quot;special&quot; character, use \x to match x where x is one of
+				 \, ., ?, *, +, |, ^, $, [, ], (, ), {, }. </td>
+			</tr><tr valign=top>
+				<th>\a</th>
+				<td>\a => \07 in abc\07 </td>
+				<td>Matches the bell character, 0x7.</td>
+			</tr><tr valign=top>
+				<th>\f</th>
+				<td>\f => \014 in abc\014</td>
+				<td>Matches the form feed character 0x0c.</td>
+			</tr><tr valign=top>
+				<th>\n</th>
+				<td>\n => \n in abc\n</td>
+				<td>Matches the line feed character, 0x0a.</td>
+			</tr><tr valign=top>
+				<th>\r</th>
+				<td>\r => \r in abc\r\n</td>
+				<td>Matches the carriage return character, 0x0d.</td>
+			</tr><tr valign=top>
+				<th>\t</th>
+				<td>\t => \t in abc\t</td>
+				<td>Matches the tab character, 0x09.</td>
+			</tr><tr valign=top>
+				<th>\v</th>
+				<td>\v => \013 in abc\013d</td>
+				<td>Matches the vertical tab character, 0x0b.</td>
+			</tr><tr valign=top>
+				<th>\d</th>
+				<td>\d => 3 in a34c</td>
+				<td>Matches one digit.</td>
+			</tr><tr valign=top>
+				<th>\D</th>
+				<td>\D => a in 123a</td>
+				<td>Matches one non-digit character.</td>
+			</tr><tr valign=top>
+				<th>\0nnn</th>
+				<td>\041 => ! in abc!</td>
+				<td>Matches the character with a code in octal is nnn where nnn is 0-3 octal digits.</td>
+			</tr><tr valign=top>
+				<th>\s</th>
+				<td>\s => \t in abc\t</td>
+				<td>Matches one whitespace character.</td>
+			</tr><tr valign=top>
+				<th>\S</th>
+				<td>\S => a in abc\n</td>
+				<td>Matches one non-whitespace character, 0x0a.</td>
+			</tr><tr valign=top>
+				<th>\w</th>
+				<td>\w => a in abc\n</td>
+				<td>Matches one word character (alphanumeric character).</td>
+			</tr><tr valign=top>
+				<th>\W</th>
+				<td>\W => \n in abc\n</td>
+				<td>Matches a non-word character.</td>
+			</tr><tr valign=top>
+				<th>[ABC],[A-C]</th>
+				<td>[A-C] => B in XBC</td>
+				<td>Matches one char from the specified range. [ABC] or [A-C] matches A or B or C.</td>
+			</tr><tr valign=top>
+				<th>[^ABC]</th>
+				<td>[^ABC] => X in XBC</td>
+				<td>Matches any character <i>not</i> in the specified range.  [^ABC] matches any character except A or B or C.</td>
+			</tr>
+			</table>
+			<p>
+			Note that, when specifying a range, a leading caret (^) represents the negation of a class.  An intervening dash
+			represents a range.  In the classes of four characters [ABC^] or [-ABC] the tilde and the dash just represent
+			themselves.</p>
+			<h3>5.2.4 Examples</h3>
+			The above elements provide a way to represent a single character.  An element may be either represent a specific
+			character such as A, B, or C or it may represent one character that belongs to a class of characters such as \d, \w, \s,
+			or [A-Z].  As noted below, parentheses may be used to encapsulate a sequence of elements within an expression.
+			For  example, in (abc)+ the plus operator applies to &quot;abc&quot; whereas in abc+ the plus just applies to the
+			&quot;c&quot;.  Regular expressions combine elements to allow searches for more complex patterns.  When entering
+			a pattern in the Find Combo Box, the special characters noted below are shown in dark red.  In the table below,
+			E represents a regular expression such as (abc).
+			<table  cellspacing=0 border=0 cellpadding=2>
+			<tr valign=top>
+				<th>Expression</th>
+				<th>Example</th>
+				<th>Description</th>
+			</tr><tr valign=top>
+				<th>E?</th>
+				<td>a\d? => a9 in a999</td>
+				<td>E? matches zero or one occurrence of E.</td>
+			</tr><tr valign=top>
+				<th>E+</th>
+				<td>\d+ => 789 in 789</td>
+				<td>E+ matches one or more occurences of E.</td>
+			</tr><tr valign=top>
+				<th>E*</th>
+				<td>7\d* => 789 in 789</td>
+				<td>E* matches zero or more occurences of E. Some expression must precede the asterisk.</td>
+			</tr><tr valign=top>
+				<th>E{n}</th>
+				<td>\d{2} => 78 in 789</td>
+				<td>E{n} matches exactly n occurences of E.</td>
+			</tr><tr valign=top>
+				<th>E{n,}</th>
+				<td>\d{2,} => 789 in 789</td>
+				<td>E{n,} matches n or more occurences of E.</td>
+			</tr><tr valign=top>
+				<th>E{,m}</th>
+				<td>\d{,2} => 78 in 789</td>
+				<td>E{,m} matches zero to m occurences of E.</td>
+			</tr><tr valign=top>
+				<th>E{n,m}</th>
+				<td>\d{1,3} => 789 in 789</td>
+				<td>E{n,m} matches from n up to m occurences of E.</td>
+			</tr><tr valign=top>
+				<th>E|E</th>
+				<td>\d|[abc] => b in b789</td>
+				<td>E|E matches either the first E or the second E.</td>
+			</tr><tr valign=top>
+				<th>^E</th>
+				<td>^X => X in XYZ, but not X in WXYZ</td>
+				<td>^E matches E only at the beginning of a row of text.</td>
+			</tr><tr valign=top>
+				<th>E(?=E)</th>
+				<td>\d(?=\w+) => 9 in 9ab, but not 9 in 9.ab</td>
+				<td>Positive lookahead. E(?=E) matches the first E iff it is followed by the second E.</td>
+			</tr><tr valign=top>
+				<th>E(?!E)</th>
+				<td>\d(?!\w+) => 7 in 7 ab but not 7 in 78ab</td>
+				<td>Negative lookahead. E(?!E) matches the first E iff it is not followed by the second E.</td>
+			</tr>
+			</table>
+			<p>
+			Some important precautions:</p>
+			<ol>
+				<li>The largest expression is always matched.  For example \d{2,3} will match three digits rather than just two
+					if three digits are	available. .* will match everything up to and including the trailing newline in a row.</li>
+				<li>Zero-length patterns match nothing. The pattern \d* by itself matches <i>Zero</i> digits. So, for example,
+				it matches abc or &amp;%# or whatever.  Every pattern should have at least one element that is not zero length.</li>
+				<li>Escape special characters. Put a backslash (\) in front of the characters \, ., ?, *, +, |, ^, $, [, ], (, ), {, } 
+				to match the character itself.</li>
+				<li>Match words.  If the &quot;Match words&quot; check box is selected, the pattern must begin and end on
+				a word boundary.   &quot;b cd&quot; matches &quot;b cd e&quot; but not &quot;ab cd&quot; or &quot;b cde&quot;</li>
+				<li>Match case.  If the &quot;Match case&quot; check box is selected, upper case letters in the pattern only
+				match upper case letters in the text and vice versa.  Match case only applies to the letters [A-Z] and [a-z].</li>
+			</ol>
+			<h3>5.2.5 More Examples.</h3>
+			Here are a few examples of regular expressions used in the editor.
+			
+			<table  cellspacing=0 border=0 cellpadding=2>
+			<tr valign=top>
+				<th>Expression</th>
+				<th>Matches</th>
+				<th>Description</th>
+			</tr><tr valign=top>
+				<th>\w+\s*=\w+\n</th>
+				<td>name =value</td>
+				<td>Matches a word, optional whitespace, equal sign, a word, newline.</td>
+			</tr><tr valign=top>
+				<th>^\s*(#|\n)</th>
+				<td># comment</td>
+				<td>Matches row starting with optional spaces followed by # or a newline.</td>
+			</tr><tr valign=top>
+				<th>\$\(\s*\w*\s*\)</th>
+				<td>$( NAME )</td>
+				<td>Matches $( followed by optional spaces, word, optional spaces, closing paren.</td>
+			</tr><tr valign=top>
+				<th>[/\\]</th>
+				<td>foo/bar</td>
+				<td>Matches either a slash or a backslash.</td>
+			</tr><tr valign=top>
+				<th>[{&lt;([\])}&gt;}]</th>
+				<td>(paren)</td>
+				<td>Matches an opening or closing bracket. Note that ] must be escaped with a backslash.</td>
+			</tr><tr valign=top>
+				<th>\s*\(def\w{2,6}\s+</th>
+				<td>defriend</td>
+				<td>Matches (defun, (defchild, (defriend, (deforphan, etc.</td>
+			</tr>
+			</table>
+	    ]]></Description>
+	</Section>
+</Essay>

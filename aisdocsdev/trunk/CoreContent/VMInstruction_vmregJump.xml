@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmregJump</Title>
+		<InstructionName>vmregJump</InstructionName>
+		<InstructionType>Register</InstructionType>
+		<ArgumentTypes> Integer </ArgumentTypes>
+		<RelatedVMInstructions>vmregJmpCCNumber vmregJmpCCInteger vmregJmpCCImmediate</RelatedVMInstructions>
+		<HumanKeywords>  jump cc address label</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[                                                  
+		<p>When evaluated, this vm instruction resets the instruction pointer 
+		register, <b>Ip</b>, to the value contained in the target register. 
+		This results in an immediate unconditional jump to location address. 
+		The operation of this vm instruction is expressed in the following C expression:
+        </p>	
+        <ul><li><b>     Ip = address;    </b></li></ul>
+    ]]></Description>
+    <Example>
+        <![CDATA[  <sc><pre>
+			(defun testMe()
+				regs:(x JumpPointer:y)
+				(setq y MyLabel:)
+				(vmregJump y)
+				(setq x 20)
+				(return x)
+				MyLabel::
+				(setq x 10)
+				x)
+        </pre>   </sc>
+        ]]>
+    </Example>
+	<Syntax>
+	    <Expression><![CDATA[(vmregjump address)]]></Expression>
+		<Argument> 
+		  <Name>address</Name>
+		  <Format>register</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>		 
+	</Syntax>
+</VMInstruction>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Error error 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>error</FunctionKeywords>
+		<TypeKeywords>Error String </TypeKeywords>
+		<RelatedFunctions>errorTrap isError isIdentical onError  </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>error function errorStr expression  </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ The <b>error</b> function assigns an error string to the error type.
+
+
+
+
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc> (error  "bug"  "This is a bug")           </sc>]]></Expression>
+        <Note><![CDATA[The previous statement will return the error string as an Analytic Information Server 
+           error value. The error statement will also print on the console the second argument, which is simply a text string. ]]></Note>
+        <Returns><![CDATA[ "This is a bug" !bug!]]></Returns>
+        <Expression><![CDATA[ <sc> (error  "what?"  "The error is "  (+  1  3))         </sc>]]></Expression>
+        <Note><![CDATA[This will return the error string as an Analytic Information Server error value and print out the result of the second argument:]]></Note>
+        <Returns><![CDATA[ "The error is "4!what?!]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Integer integer 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>integer</FunctionKeywords>
+		<TypeKeywords>  Integer </TypeKeywords>
+		<RelatedFunctions> isType isObject  </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>integer type convert coerce </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[   The  <b>integer</b> function converts the Money, Text and Boolean arguments
+                   into its corresponding Integer value.</p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(integer "45")    </sc>   ]]></Expression>
+        <Note><![CDATA[A Text argument is converted into an Integer.]]></Note>
+        <Returns><![CDATA[45]]></Returns>
+        <Expression><![CDATA[ <sc>(integer $3.50 )  </sc>   ]]></Expression>
+        <Note><![CDATA[A Money argument is converted into a Integer.]]></Note>
+        <Returns><![CDATA[3]]></Returns>
+  	    <Expression><![CDATA[ <sc>(integer false )      </sc>   ]]></Expression>  
+        <Note><![CDATA[A Boolean argument with a state value of 0 is converted into an Integer.]]></Note> 
+        <Returns><![CDATA[0]]></Returns>
+ 	    <Expression><![CDATA[ <sc>(integer true )      </sc>   ]]></Expression>  
+        <Note><![CDATA[A Boolean argument with a state value of 1 is converted into an Integer.]]></Note> 
+        <Returns><![CDATA[1]]></Returns>
+        <Expression><![CDATA[ <sc>(integer  #\backspace)   </sc>   ]]></Expression>  
+        <Note><![CDATA[A Character argument is converted into a Integer.]]></Note> 
+        <Returns><![CDATA[8]]></Returns>
+        <Hints><![CDATA[none
+
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

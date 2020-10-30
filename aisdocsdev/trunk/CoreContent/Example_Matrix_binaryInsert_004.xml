@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Matrix binaryInsert 004</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>binaryInsert</FunctionKeywords>
+		<TypeKeywords>Vector  Integer</TypeKeywords>
+		<RelatedFunctions>insert binarySearch uniqueInsert sort</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>binary insert matrix sort</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example sets a sorted Matrix. Then it
+
+
+                  uses the <b>binaryInsert</b> function to add a new value
+
+                  while maintaining the ascending sort order
+
+
+                  of values in the Matrix.
+
+
+	]]></Description>
+	<Syntax>
+  	   <Expression><![CDATA[ <sc>(setq SortedMatrix (sort #(mat| 5 4 3 7) &#60))           </sc>]]></Expression>
+        <Note><![CDATA[The predicate &#60 is used since the binaryInsert function always assumes
+              a sorted Matrix in ascending order. ]]></Note>
+        <Returns><![CDATA[#&#60Matrix 199917&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60Matrix 199917&#62 )       </sc>]]></Expression>
+        <Note><![CDATA[Displays the values of the sorted Matrix]]></Note>
+        <Returns><![CDATA[#(mat| 3 4 5 7 )]]></Returns>
+        <Expression><![CDATA[ <sc> (binaryInsert SortedMatrix 2 )          </sc>]]></Expression>
+        <Note><![CDATA[Returns the index where the value 2 will be inserted]]></Note>
+        <Returns><![CDATA[0 ]]></Returns>
+        <Expression><![CDATA[ <sc> (display #&#60Matrix 199917&#62 )       </sc>]]></Expression>
+        <Note><![CDATA[Displays the contents of the Matrix with the added value.]]></Note>
+        <Returns><![CDATA[#(2 3 4 5 7)]]></Returns>
+        <Hints><![CDATA[The <b>binaryInsert</b> function preserves sort order.  
+
+
+               Normally a Matrix does not maintain sort order by default but can 
+
+
+               be explicitly sorted by the <b>sort</b> function.  ]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Brick ref 036</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>ref</FunctionKeywords>
+		<TypeKeywords>Brick</TypeKeywords>
+		<RelatedFunctions>setq</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>ref reference set position</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples show the <b>ref</b> function retrieve a
+                  value from the Brick field.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq Contestant  (new Brick:  2 Name:Object:1 Score:Number:20))</sc>]]></Expression>
+        <Note><![CDATA[Create a new Brick, named Contestant, and give it two rows each containing two fields. 
+               The second field repeats 20 times (in each row).]]></Note>
+        <Returns><![CDATA[#&#60Record 123456&#62  ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Contestant.Name #("Anna Smith"))           </sc>]]></Expression>
+        <Note><![CDATA[Sets the value of the Name field as a Vector.]]></Note>
+        <Returns><![CDATA[#&#60Record 123456&#62  ]]></Returns>
+  	    <Expression><![CDATA[ <sc>(ref Contestant Name:) </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#&#60Vector 123456&#62 ]]></Returns>
+  	    <Expression><![CDATA[ <sc>(display #&#60Vector 123456&#62  ) </sc>]]></Expression>  
+        <Note><![CDATA[Displays the Brick content.]]></Note> 
+        <Returns><![CDATA[#("Anna Smith" )]]></Returns>
+  	    <Expression><![CDATA[ <sc>(ref Contestant  0) </sc>]]></Expression>  
+        <Note><![CDATA[Displays contents of the first Brick field. In this example the Name field as
+              a set Vector value.]]></Note> 
+        <Returns><![CDATA[Number]]></Returns>
+  	    <Expression><![CDATA[ <sc>(ref Contestant 1) </sc>]]></Expression>  
+        <Note><![CDATA[Displays contents of the second Brick field. In this example, the Score Field 
+              does not contain any value.]]></Note> 
+        <Returns><![CDATA[0.0]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

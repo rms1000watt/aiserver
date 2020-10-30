@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number expt 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>expt</FunctionKeywords>
+		<TypeKeywords>Number </TypeKeywords>
+		<RelatedFunctions>  </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>square root  base </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[  <p> The <b>expt</b> function treats the first argument
+             as the <b>base</b> and raises it to the value of the second argument. </p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+(expt 0 0)   </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[1.0]]></Returns>
+        <Expression><![CDATA[ <sc>(expt 2 4)    </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[16]]></Returns>
+        <Expression><![CDATA[ <sc>(expt 2 -4)    </sc>   ]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[.0625]]></Returns>
+        <Expression><![CDATA[ <sc>(expt 4 .5)    </sc>   ]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[2.0]]></Returns>
+        <Hints><![CDATA[none
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

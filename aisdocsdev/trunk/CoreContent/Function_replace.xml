@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>replace</Title>
+		<FunctionName>replace</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes> String Text Integer</ArgumentTypes>      
+		<DataType>String  </DataType>
+		<RelatedFunctions>substitute rept</RelatedFunctions>
+        <RelatedVMInstructions>none</RelatedVMInstructions>
+		<HumanKeywords>replace substitute substring</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[ 
+             <p> The <b>replace</b> function replaces a specified number of characters 
+                 in a Text or String with another Text or String.  </p>
+          ]]></Description>
+	<Brief>                
+	   <Overview><![CDATA[
+		<p>The <b>replace</b> function replaces a specified number of characters in a 
+        Text or String with another Text or String.  The <b>replace</b> function is 
+        non-destructive
+        </p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>replace</b> function replaces only the substring at the specified index.  
+           The <b>replace</b> function is similar to the <b>substitute</b> function, except 
+           that <b>substitute</b> can replace any or all of the occurrences of the specified 
+           substring whereas <b>replace</b> only replaces one at a specified position in the 
+           String. </p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p><b>(replace old-text start length new-text)</b></p>
+              ]]></Expression>
+		<Argument> 
+		  <Name>old-text</Name>
+		  <Note><![CDATA[
+		  <p>A String object or Text that contains the text to be replaced. </p>
+          ]]></Note>
+		  <AISTypes>String or Text</AISTypes>
+		</Argument>  
+    	<Argument> 
+		  <Name>start</Name>
+		  <Note><![CDATA[
+		  <p>A positive integer indicating the position of the first character in old-text to be replaced.
+              Set start to 0 for the first character, 1 for the second and so on</p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>  
+    	<Argument> 
+		  <Name>length</Name>
+		  <Note><![CDATA[
+		  <p>A positive integer representing the number of characters, after the starting 
+             position, to be replaced.  </p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>  
+        <Argument> 
+		  <Name>new-text</Name>
+		  <Note><![CDATA[
+		  <p>The Text or String to be inserted in old-text at start, replacing the 
+             specified characters. new-text does not have to be the same length as length</p>
+          ]]></Note>
+		  <AISTypes>String or Text</AISTypes>
+		</Argument>  
+		<Return><![CDATA[ 
+	    <p>The result string after the replace has been done</p>
+	    ]]></Return>
+	</Syntax>
+</Function>

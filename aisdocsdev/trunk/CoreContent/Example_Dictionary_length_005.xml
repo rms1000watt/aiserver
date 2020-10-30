@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Dictionary length 005</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>length</FunctionKeywords>
+		<TypeKeywords> Integer Dictionary</TypeKeywords>
+		<RelatedFunctions>comparison compareEQ compareNE compareLT
+
+
+
+                                     compareGT compareLE compareGE </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>length equal</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows the <b>length</b> function performing a 
+                  shallow count on a  <b>Dictionary  </b> object.
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(length  #{dic|Student: Ann  Grade: 2})  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[2]]></Returns>
+        <Expression><![CDATA[ <sc>(length  #{dic|Student: Ann  Grade: 2 Teacher: #void})  </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ 3 ]]></Returns>
+        <Expression><![CDATA[ <sc>(length  #{dic|Student: Ann  Grade: 2 Teacher: #{dic| name: "Ms.Smith" subject: "English"}})  </sc>]]></Expression>
+        <Note><![CDATA[Only 3 bindings are counted.  the length function does not include the  Dictionary
+
+              embedded within as key, such as, the Dictionary key-value bindings of the Teacher: key. ]]></Note>
+        <Returns><![CDATA[ 3 ]]></Returns>
+        <Hints><![CDATA[See the <b>count</b> function to illustrate <i>deep</i> counting of key-value bindings.]]></Hints>
+   </Syntax>
+</Example>

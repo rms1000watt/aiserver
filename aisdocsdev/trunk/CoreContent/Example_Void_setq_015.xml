@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Void setq 015</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>setq</FunctionKeywords>
+		<TypeKeywords>Void   Text </TypeKeywords>
+		<RelatedFunctions>new   define   </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>set setq replace global value  </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ The <b>setq</b> function assigns an Integer value to a previously uninitialized variable
+                  with the value #void.    
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc> (ref x)      </sc>]]></Expression>
+        <Note><![CDATA[X is currently empty. ]]></Note>
+        <Returns><![CDATA[ #void]]></Returns>
+        <Expression><![CDATA[ <sc> (type x)       </sc>]]></Expression>
+        <Note><![CDATA[Shows the data type of x. ]]></Note>
+        <Returns><![CDATA[ #void]]></Returns>
+        <Expression><![CDATA[ <sc>(setq x 1)      </sc>]]></Expression>
+        <Note><![CDATA[Assigns an Integer value to the variable.]]></Note>
+        <Returns><![CDATA[1]]></Returns>
+  	    <Expression><![CDATA[ <sc>(type x)      </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[Integer]]></Returns>
+        <Hints><![CDATA[The <b>set</b> function keyword may be used instead of <b>setq</b>.]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example NumVector binarySearch 007</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>binarySearch</FunctionKeywords>
+		<TypeKeywords>NumVector Boolean</TypeKeywords>
+		<RelatedFunctions>insert binaryInsert sort uniqueInsert</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>binary insert search vector sort</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines a sorted  Vector in ascending order. Then it
+
+
+
+
+                  uses the <b>binarySearch</b> function to search for a value
+
+
+
+
+                  in the Vector.
+
+
+
+	]]></Description>
+	<Syntax>
+  	   <Expression><![CDATA[ <sc> (setq SortedVector (sort #(num| .0984 3 7.342 6 -2 -1) &#60))    </sc>]]></Expression>
+        <Note><![CDATA[The predicate &#60 is used since the binarySearch function always assumes
+
+              a sorted vector in ascending order.]]></Note>
+        <Returns><![CDATA[#&#60NumVector 199917&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display SortedVector )         </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#(num| -2.0 -1.0 0.0984 3.0 6.0 7.342 )]]></Returns>
+        <Expression><![CDATA[ <sc>(binarySearch SortedVector 2 )             </sc>]]></Expression>
+        <Note><![CDATA[The value 2.65 is not found in the Vector]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(binarySearch SortedVector -1)             </sc>]]></Expression>
+        <Note><![CDATA[The index of the value is returned.]]></Note>
+        <Returns><![CDATA[1]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

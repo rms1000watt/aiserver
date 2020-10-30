@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>isInteger</Title>
+		<FunctionName>isInteger</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>Character String Symbol Vector BitVector ByteVector IntVector Void
+                       FltVector ObjVector Structure Dictionary Directory Brick Pair List
+                       Matrix NumMatrix Integer Float Number Complex Boolean</ArgumentTypes>
+		<DataType>Integer</DataType>
+		<RelatedFunctions> integer isType isObject isNumber</RelatedFunctions>
+        <RelatedVMInstructions>   none  </RelatedVMInstructions>
+		<HumanKeywords>boolean integer object </HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>isInteger </b> function returns true if the specified argument 
+                is an Integer; otherwise, false is returned.  </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>isInteger</b>  function returns true if the specified argument <b>{obj}</b> 
+           is an Integer; otherwise, false is returned.  
+        </p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>isInteger</b> function is used to determine if an object is an Integer.
+        </p>
+         ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[   (isInteger obj)]]></Expression>
+		<Argument>
+		  <Name>obj</Name>
+		  <Note><![CDATA[
+		  <p>The object to be  tested.</p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector ByteVector IntVector Void
+                       FltVector ObjVector Structure Dictionary Directory Brick Pair List
+                       Matrix NumMatrix Integer Float Number Complex Boolean</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>Returns true if  the  object is an Integer, false is returned otherwise
+
+	    </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

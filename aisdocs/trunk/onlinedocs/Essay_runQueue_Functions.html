@@ -1,0 +1,256 @@
+
+<HTML>
+<HEAD>
+<link rel="stylesheet" type="text/css" href="../CoreContent/help.css">
+<TITLE>AIS Essay Template</TITLE></HEAD>
+<!--Page Parameters -->
+<BODY BGCOLOR="#FFFFF0" TEXT="#000000" LINK="#0000ff">
+
+<A NAME="topage"></A>
+<A HREF="TOP"></A>
+
+
+
+<P>&nbsp;</P>
+
+<FONT COLOR="#000080"><H1>runQueue Functions</H1></FONT>
+<P>&nbsp;</P>
+
+<UL>
+<li><a href="#SrunQueue Overview"><FONT SIZE=2>runQueue Overview</font></a></li><li><a href="#Ssubmit"><FONT SIZE=2>submit</font></a></li><li><a href="#Srun"><FONT SIZE=2>run</font></a></li><li><a href="#SgetResult"><FONT SIZE=2>getResult</font></a></li><li><a href="#SgetStatus"><FONT SIZE=2>getStatus</font></a></li><li><a href="#Sremove"><FONT SIZE=2>remove</font></a></li>
+</UL>
+
+<P><H2><A NAME="SrunQueue Overview"></A>runQueue Overview</H2></P>
+		<p>The runQueue lambda implements a peer to peer architecture 
+           which can be used to submit jobs from anywhere and which 
+           can be used to accept and run jobs from anywhere. At an extreme, 
+           to make a point, this would even include submitting a job 
+           to runQueue and accepting the same job or another job, 
+           via runQueue, from the same running context. Contexts 
+           which submit jobs to runQueue for execution are called 
+           <b>suppliers</b>, while contexts which accept jobs from runQueue 
+           for execution are called <b>subscribers</b>.</p>
+
+        <p>This architecture is currently implemented on a local area  
+           network of computers and may be implemented with slight variations
+           in a cloud computing environment.</p>
+
+        <p>The runQueue Lambda, which is designed to be open source, 
+           provides added value through its job management API, through 
+           its console management API, via the thin job execution services 
+           it provides, and via the function hiding design of its API (ideally, 
+           if possible, the API design should not change regardless of a Network 
+           File Sharing implementation, a TCP/IP implementation, or a Cloud 
+           implementation). By far the most extensive value added will be provided
+           by several function/class libraries providing remote execution services 
+           for specific applications. The function library will provide services
+           for automatic data-matrix extraction, multiple regression distribution
+           and re-accumulation, multiple regression reporting, trader lambda
+           memoization (defaulting/learning/promotion) providing support of portfolio
+           and factor research.</p>
+
+        <p>It is possible for the runQueue Lambda to function without requiring 
+           the user to study any of the available function/class libraries. 
+           All jobFiles contain actual source code for the distributed work task 
+           (unnamed lambda values to avoid unwanted side affects). These work tasks 
+           may be completely stand alone or they may extend existing function/class 
+           libraries. Thus runQueue will provide much of its added value in a non 
+           restrictive manner.</p>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="Ssubmit"></A>submit</H2></P>
+		<p>The <b>submit</b> function writes a set of job configuration files to
+		  the JobQueue. The resulting filenames are based on the jobConfig structure.
+          The jobConfig structure must conform to the job config specifications.
+          The jobData and jobLambda are both strings which will be compiled and
+          evaluated by the subscriber. If present, the fourth parameter tells submit
+          to return an error if there are any jobs in the JobQueue with the specified
+          job name.</p>
+		<p>Type: <b>Function</b></p>
+		<table cellspacing="0" cellpadding="2" border="0">
+			<tr>
+				<td><b><u>Syntax</u></b></td>
+				<td>(runQueue.submit aJobConfig aJobData aJobLambda aExclusiveSW)</td>
+			</tr>
+			<tr>
+				<td><b>aJobConfig</b></td>
+				<td>A structure which contains the job configuration.</td>
+			</tr>
+			<tr>
+				<td><b>aJobData</b></td>
+				<td>A string which can be compiled and evaluated which produces the
+					argument to be passed by the subscriber to the generated lambda.
+					If not specified, aJobConfig.DataSourceFileName will be used.</td>
+			</tr>
+			<tr>
+				<td><b>aJobLambda</b></td>
+				<td>A string which can be compiled and evaluated which produces the
+					lambda to be executed by the subscriber. If not specified, 
+					aJobConfig.LambdaSourceFileName will be used.</td>
+			</tr>
+			<tr>
+				<td><b>aExclusiveSW</b></td>
+				<td>Optional. When set to "exclusive", will cause an error if job/s
+					with a similar name exists.</td>
+			</tr>
+		</table>
+		<p>The <b>aJobConfig</b> structure contains the following members:</p>
+		<table cellspacing="0" cellpadding="2" border="0">
+			<tr>
+				<td>JobName</td>
+				<td>Job name.</td>
+			</tr>
+			<tr>
+				<td>MajorName</td>
+				<td>Optional. Job major name.</td>
+			</tr>
+			<tr>
+				<td>MinorName</td>
+				<td>Optional. Job minor name.</td>
+			</tr>
+			<tr>
+				<td>SeriesName</td>
+				<td>Optional. Job series name.</td>
+			</tr>
+			<tr>
+				<td>LambdaSourceFileName</td>
+				<td>Optional. Path to lambda source file. Used ONLY when aJobLambda
+					was not specified.</td>
+			</tr>
+			<tr>
+				<td>DataSourceFileName</td>
+				<td>Optional. Path to data source file. Used ONLY when aJobData was
+					not specified.</td>
+			</tr>
+			<tr>
+				<td>MinMemoryFree</td>
+				<td>Optional. The minimum amount of context memory needed to run the
+					job.</td>
+			</tr>
+			<tr>
+				<td>RequiredLambdas</td>
+				<td>Optional. A list of lambdas required to run the job. Stored as a
+					string and lambda names are separated by space.</td>
+			</tr>
+		</table>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="Srun"></A>run</H2></P>
+		<p>The <b>run</b> function is intended to be executed on each subscriber.
+			It reads and executes jobs found in the JobQueue. Each job configuration
+			contains the information necessary for the subscriber to execute the
+			application in the subscriber context. Any generic library dependencies
+			must be specified in the job configuration so the subscriber will be able
+			to reasonably determine whether or not to accept the job.</p>
+		<p>Type: <b>Function</b></p>
+		<table cellspacing="0" cellpadding="2" border="0">
+			<tr>
+				<td><b><u>Syntax</u></b></td>
+				<td>(runQueue.run aRunOnce)</td>
+			</tr>
+			<tr>
+				<td><b>aRunOnce</b></td>
+				<td>Optional. When set to true, the run function will return after a
+					single pass on the JobQueue.</td>
+			</tr>
+		</table>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SgetResult"></A>getResult</H2></P>
+		<p>The <b>getResult</b> function reads the result of a specified job and
+			returns a structure which contains the lambda return value and some
+			additional job related information.</p>
+		<p>Type: <b>Function</b></p>
+		<table cellspacing="0" cellpadding="2" border="0">
+			<tr>
+				<td><b><u>Syntax</u></b></td>
+				<td>(runQueue.getResult aJobName aMajorName aMinorName aSeriesName)</td>
+			</tr>
+			<tr>
+				<td><b>aJobName</b></td>
+				<td>Job name.</td>
+			</tr>
+			<tr>
+				<td><b>aMajorName</b></td>
+				<td>Optional. Job major name.</td>
+			</tr>
+			<tr>
+				<td><b>aMinorName</b></td>
+				<td>Optional. Job minor name.</td>
+			</tr>
+			<tr>
+				<td><b>aSeriesName</b></td>
+				<td>Optional. Job series name.</td>
+			</tr>
+		</table>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SgetStatus"></A>getStatus</H2></P>
+		<p>The <b>getStatus</b> function returns the status of a specified job.</p>
+		<p>Type: <b>Function</b></p>
+		<table cellspacing="0" cellpadding="2" border="0">
+			<tr>
+				<td><b><u>Syntax</u></b></td>
+				<td>(runQueue.getStatus aJobName aMajorName aMinorName aSeriesName)</td>
+			</tr>
+			<tr>
+				<td><b>aJobName</b></td>
+				<td>Job name.</td>
+			</tr>
+			<tr>
+				<td><b>aMajorName</b></td>
+				<td>Optional. Job major name.</td>
+			</tr>
+			<tr>
+				<td><b>aMinorName</b></td>
+				<td>Optional. Job minor name.</td>
+			</tr>
+			<tr>
+				<td><b>aSeriesName</b></td>
+				<td>Optional. Job series name.</td>
+			</tr>
+		</table>
+		<p>The <b>getStatus</b> returns one of the following states:</p>
+		<table cellspacing="0" cellpadding="2" border="0">
+			<tr>
+				<td>ready</td>
+				<td>Job is ready to be picked up by the subscriber.</td>
+			</tr>
+			<tr>
+				<td>running</td>
+				<td>Job is running in the subscriber.</td>
+			</tr>
+			<tr>
+				<td>errored</td>
+				<td>Job errored out in the subscriber.</td>
+			</tr>
+			<tr>
+				<td>done</td>
+				<td>Job is complete.</td>
+			</tr>
+		</table>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="Sremove"></A>remove</H2></P>
+		<p>The <b>remove</b> function removes one or more jobs from the JobQueue.
+			If any of the major, minor, or series names are missing,
+			then all similar jobs will be removed.</p>
+		<p>Type: <b>Function</b></p>
+		<table cellspacing="0" cellpadding="2" border="0">
+			<tr>
+				<td><b><u>Syntax</u></b></td>
+				<td>(runQueue.remove aJobName aMajorName aMinorName aSeriesName)</td>
+			</tr>
+			<tr>
+				<td><b>aJobName</b></td>
+				<td>Job name.</td>
+			</tr>
+			<tr>
+				<td><b>aMajorName</b></td>
+				<td>Optional. Job major name.</td>
+			</tr>
+			<tr>
+				<td><b>aMinorName</b></td>
+				<td>Optional. Job minor name.</td>
+			</tr>
+			<tr>
+				<td><b>aSeriesName</b></td>
+				<td>Optional. Job series name.</td>
+			</tr>
+		</table>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P>
+
+ 
+
+</BODY>
+</HTML>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Symbol append 003</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>append</FunctionKeywords>
+		<TypeKeywords>Symbol</TypeKeywords>
+		<RelatedFunctions>new replace rept</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>append concatenate symbol </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines two Symbols and concatenates 
+                  these two Symbols to return the resulting Symbol.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define X White: )  </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[White ]]></Returns>
+        <Expression><![CDATA[ <sc>(define Y House: )    </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[House ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq W (append X Y ))     </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[WhiteHouse ]]></Returns>
+        <Expression><![CDATA[ <sc>(display W)       </sc>]]></Expression>  
+        <Note><![CDATA[Use the display command to display the appended Symbol. ]]></Note> 
+        <Returns><![CDATA[WhiteHouse ]]></Returns>
+        <Hints><![CDATA[The original Symbols are not modified. ]]></Hints>
+   </Syntax>
+</Example>

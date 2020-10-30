@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example String stringCiGT 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>stringCiGT</FunctionKeywords>
+		<TypeKeywords>String Integer</TypeKeywords>
+		<RelatedFunctions>stringCiEQ stringCiNE stringCiLT stringCiGE stringCiLE</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare string equal boolean case-insensitive greater </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>stringCiGT</b> function to see if the first String is greater than
+                  the second String.  
+
+                  The Boolean value, true or false is returned. In these examples, a case-insensitive comparison
+                  is done with the Strings.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(stringCiGT "Hello World" "Goodbye world" )   </sc>]]></Expression>
+        <Note><![CDATA[The ASCII numeric code for "H" is greater than the ASCII numeric code for "G".]]></Note>
+        <Returns><![CDATA[true ]]></Returns>
+        <Expression><![CDATA[ <sc>(stringCiGT "HelloWorld" "hello world" )  </sc>]]></Expression>
+        <Note><![CDATA[The ASCII numeric code for "W" is greater than the ASCII numeric code for the whitespace character. ]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

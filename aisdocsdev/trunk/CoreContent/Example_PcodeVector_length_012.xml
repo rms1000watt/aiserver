@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example PcodeVector length 012</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>length</FunctionKeywords>
+		<TypeKeywords> Integer PcodeVector</TypeKeywords>
+		<RelatedFunctions>count </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>length equal</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows the <b>length</b> function performing a 
+
+
+
+                  shallow count on a  <b>Vector  </b> object.
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(length (setq X (new Vector:  pcode: 5 4 ))   )     </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[5]]></Returns>
+        <Hints><![CDATA[See the <b>count</b> function to illustrate <i>deep</i> counting of vector values.]]></Hints>
+   </Syntax>
+</Example>

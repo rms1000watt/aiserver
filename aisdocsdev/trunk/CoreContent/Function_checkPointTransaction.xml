@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>checkPointTransaction</Title>
+		<FunctionName>checkPointTransaction</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+        <ArgumentTypes>ObjectRepository Boolean</ArgumentTypes>
+        <DataType> ObjectRepository</DataType>
+	    <RelatedFunctions> beginTransaction abortTransaction commitTransaction </RelatedFunctions>
+        <RelatedVMInstructions> none  </RelatedVMInstructions>
+		<HumanKeywords>persistent transaction </HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>checkPointTransaction </b> function closes the specified ObjectRepository database archive file  
+             and marks the end of a series of transactions. </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>checkPointTransaction</b> function closes the specified ObjectRepository database
+         archive file <b>{aGor}</b> and marks the end of a series of transactions. When a <b>beginTransaction</b>
+         function is evaluated, the ObjectRepository treats all transactions as temporary until either of the 
+         <b>abortTransaction</b>, <b>checkPointTransaction</b>, or <b>commitTransaction</b> functions are evaluated.
+         If an <b>abortTransaction</b> function is evaluated, all objects stored in the ObjectRepository, 
+         up to the previous <b>beginTransaction</b>, are rolled back; however, if a <b>checkPointTransaction</b> 
+         or a <b>commitTransaction</b> function is evaluated, all objects stored in the ObjectRepository,
+         up to the previous <b>beginTransaction</b>, are made persistent. </p>
+        ]]></Overview>
+        <Usage><![CDATA[
+         <p>The <b>checkPointTransaction</b> function leaves the ObjectRepository with the current 
+         transaction still in progress. The <b>checkPointTransaction</b> function is equivalent to 
+         invoking a <b>commitTransaction</b> function immediately followed by another <b>beginTransaction</b>
+          function. </p>
+        ]]></Usage>
+    </Brief>
+    <Syntax>
+	    <Expression><![CDATA[<p>(checkPointTransaction aGor)  </p>]]></Expression>
+		<Argument>
+		  <Name>aGor</Name>
+		  <Note><![CDATA[
+		  <p> The ObjectRepository whose database archive file is to be closed, then re-opened again.</p>
+          ]]></Note>
+		  <AISTypes>ObjectRepository</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>This function returns the Boolean value true, or an error value if an error occurred. 
+	    ]]></Return>
+	</Syntax>
+</Function>

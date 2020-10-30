@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Essay SYSTEM "../DTD/Essay.dtd">
+<Essay>
+	<KnowledgeBase>
+	    <Title>Context Functions</Title>
+		<Topic>Lisp</Topic>
+		<SubTopic>Overview</SubTopic>
+		<HumanKeywords>Lisp Context Lambda AIS Programming</HumanKeywords>
+	</KnowledgeBase>
+	<Section>
+	    <Heading>Built-in Functions</Heading>
+		<Description><![CDATA[
+		<div class="h2section" id="Built-in Functions">
+        <p> Here is a list of Context Built-in Functions that are loaded at context start-up
+            into RAM memory by the Analytic Information Server.
+        <P>
+	    <!--docscript>(aisRefGuide.contextLinkTable)</docscript-->
+	    </P>  
+        </div>
+      ]]></Description>
+	</Section>
+</Essay>

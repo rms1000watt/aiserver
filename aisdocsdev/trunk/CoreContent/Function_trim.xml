@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>trim</Title>
+		<FunctionName>trim</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>String Text</ArgumentTypes>       
+		<DataType>String  </DataType>
+		<RelatedFunctions>clean</RelatedFunctions>
+        <RelatedVMInstructions>   none  </RelatedVMInstructions>
+		<HumanKeywords>clean trim spaces leading trailing</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[ 
+             <p> The <b>trim</b> function removes the trailing, leading and extra spaces in a String.  </p>
+          ]]></Description>
+	<Brief>                
+	   <Overview><![CDATA[
+		<p>The <b>trim</b> function removes any leading or trailing spaces from a String or Text, 
+            and removes extra spaces from a Text or String, leaving one space separating each word. </p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>trim</b> function is used to remove excess spaces from a String or Text.</p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p>(trim  string)</p>
+                    <p>(trim  text)</p>]]></Expression>
+		<Argument> 
+		  <Name>string</Name>
+		  <Note><![CDATA[
+		  <p> Any String or Text or cell or cell reference that evaluates to 
+              a String or Text for which you want to trim extra spaces.
+          </p>
+          ]]></Note>
+		  <AISTypes>String or Text</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The result string after trimming
+        </p>
+	    ]]></Return>   
+	</Syntax>
+</Function>

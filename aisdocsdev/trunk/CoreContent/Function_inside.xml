@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>inside</Title>
+		<FunctionName>inside</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+        <ArgumentTypes>Structure Dictionary Directory Integer Boolean Symbol
+ 	   Structure Dictionary Directory Integer Boolean Symbol
+        Structure Dictionary Directory Integer Boolean Symbol
+       Character String Symbol Vector BitVector ByteVector IntVector ShortVector
+                       FltVector ObjVector Structure Dictionary Directory Boolean
+                       Matrix NumMatrix Integer Float Number Complex </ArgumentTypes>
+        <DataType> Structure Dictionary Directory Matrix  NumMatrix List  Vector BitVector ShortVector IntVector NumVector  </DataType>
+	    <RelatedFunctions>member isMember member isInside isIdentical</RelatedFunctions>
+        <RelatedVMInstructions> vmregObjPointer </RelatedVMInstructions>
+		<HumanKeywords>inside key value index</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ 
+             <p> The <b>inside</b>  function takes a key as an argument and a Structure as 
+                a second argument and returns either the index where the key was found or the 
+                Boolean value false if the key is not found.   </p>
+             <p> The <b>inside</b>  function takes a key as an argument and a  Dictionary as 
+                a second argument and returns either the index where the key was found or the 
+                Boolean value false if the key is not found.   </p>
+             <p> The <b>inside</b>  function takes a key as an argument and a Directory as 
+                a second argument and returns either the index where the key was found or the 
+                Boolean value false if the key is not found.   </p>
+             <p> The <b>inside</b> function searches the Vector argument for the match of the 
+                 search object argument  and returns  the index  where the object was found. 
+                 If the  was not found, false is returned.  </p>
+             <p> The <b>inside</b> function searches the Matrix argument for the match of the 
+                 search object argument  and returns  the index  where the object was found. 
+                 If the  was not found, false is returned.  </p>
+             <p> The <b>inside</b> function searches the NumMatrix argument for the match of the 
+                 search object argument  and returns  the index  where the object was found. 
+                 If the  was not found, false is returned.  </p>
+             <p> The <b>inside</b> function searches the List argument    for a match 
+                 of the search object argument   and returns  the index  where the object
+                 was found. </p>
+          ]]></Description>
+	<Brief>
+	   <Overview-Structure><![CDATA[
+		<p>The <b>inside</b> function takes a key as an argument and a Structure as a second 
+           argument and returns the index where the key was found.  If the key was not found, 
+           the inside function returns false. The <b>inside</b> function uses the <b>isIdentical</b> 
+           predicate.</p>
+        ]]></Overview-Structure>
+	   <Overview-Dictionary><![CDATA[
+		<p>The <b>inside</b> function takes a key as an argument and a Dictionary as a second 
+           argument and returns the index where the key was found.  If the key was not found, 
+           the inside function returns false. The <b>inside</b> function uses the <b>isIdentical</b> 
+           predicate.</p>
+        ]]></Overview-Dictionary>
+	   <Overview-Directory><![CDATA[
+		<p>The <b>inside</b> function takes a key as an argument and a Directory as a second 
+           argument and returns the index where the key was found.  If the key was not found, 
+           the inside function returns false. The <b>inside</b> function uses the <b>isIdentical</b> 
+           predicate.</p>
+        ]]></Overview-Directory>
+        <Overview><![CDATA[
+		<p>The <b>inside</b> function searches the Vector argument <b>{vector}</b>  for the match 
+           of the search object argument <b>{obj}</b> and returns  the index  where <b>{obj}</b> 
+           was found. If the <b>{obj}</b> was not found, false is returned. The <b>inside</b> 
+           function uses the <b>isIdentical</b> predicate.</p>
+        ]]></Overview>
+        <Overview-Matrix><![CDATA[
+        <p>The inside function searches the Matrix argument <b>{matrix}</b>  for the match of the 
+           search object argument <b>{obj}</b> and returns  the index  where <b>{obj}</b> was 
+           found. If the <b>{obj}</b> was not found, false is returned. The <b>member</b> function 
+           uses the <b>isIdentical</b> predicate
+        ]]></Overview-Matrix>
+       <Overview-NumMatrix><![CDATA[
+        <p>The inside function searches the NumMatrix argument <b>{nummatrix}</b>  for the match of the 
+           search object argument <b>{obj}</b> and returns  the index  where <b>{obj}</b> was 
+           found. If the <b>{obj}</b> was not found, false is returned. The <b>member</b> function 
+           uses the <b>isIdentical</b> predicate
+        ]]></Overview-NumMatrix>
+        <Overview-List><![CDATA[
+		 <p> The <b>inside</b> function searches the List argument <b>{list}</b>  for a match 
+             of the search object argument <b>{obj}</b> and returns  the index  where <b>{obj}</b> 
+             was found. If the <b>{obj}</b> was not found, false is returned. The <b>isIdentical</b> 
+             predicate is used to perform the comparison </p>
+        ]]></Overview-List>
+        <Usage-Structure><![CDATA[
+        <p>The <b>inside</b> function if you want to locate the position of a certain key 
+           in a Structure.  If you just want to know if a member is in the Structure but do not 
+           care where it is located if it is found, use the <b>isInside</b> function, which returns a 
+           Boolean true or false.
+
+		</p>
+        ]]></Usage-Structure>
+        <Usage-Dictionary><![CDATA[
+        <p>The <b>inside</b> function if you want to locate the position of a certain key 
+           in a  Dictionary.  If you just want to know if a member is in the Directory but do not 
+           care where it is located if it is found, use the <b>isInside</b> function, which returns a 
+           Boolean true or false.
+		</p>
+        ]]></Usage-Dictionary>
+        <Usage-Directory><![CDATA[
+        <p>The <b>inside</b> function if you want to locate the position of a certain key 
+           in a Directory.  If you just want to know if a member is in the Structure,
+           Dictionary or Directory but do not 
+           care where it is located if it is found, use the <b>isInside</b> function, which returns a 
+           Boolean true or false.
+		</p>
+        ]]></Usage-Directory>
+        <Usage><![CDATA[
+        <p>The <b>inside</b> Function is used to find an object <b>{obj}</b> in a Vector 
+           <b>{vector}</b>. Since the <b>inside</b> function returns the location of the  
+           <b>{obj}</b>, the <b>inside</b> function makes it convenient to perform some operation 
+           on the <b>{obj}</b> .  An alternate function, the <b>isInside</b> function, is used 
+           when a Boolean value of either true or false is sufficient.
+		</p>
+        ]]></Usage>
+        <Usage-Matrix><![CDATA[
+        <p>The <b>inside</b> Function is used to find an object <b>{obj}</b> in a Matrix 
+           <b>{matrix}</b>. Since the <b>inside</b> function returns the location of the  
+           <b>{obj}</b>, the <b>inside</b> function makes it convenient to perform some operation 
+           on the <b>{obj}</b> .  An alternate function, the <b>isInside</b> function, is used 
+           when a Boolean value of either true or false is sufficient.
+		</p>
+        ]]></Usage-Matrix>
+        <Usage-NumMatrix><![CDATA[
+        <p>The <b>inside</b> function is used to find an object <b>{obj}</b> in a NumMatrix 
+           <b>{nummatrix}</b>. Since the <b>inside</b> function returns the location of the  
+           <b>{obj}</b>, the <b>inside</b> function makes it convenient to perform some operation 
+           on the <b>{obj}</b> .  An alternate function, the <b>isInside</b> function, is used 
+           when a Boolean value of either true or false is sufficient.
+		</p>
+        ]]></Usage-NumMatrix>
+       <Usage-Pair><![CDATA[
+        <p>The <b>inside</b> Function is used to find an object <b>{obj}</b> in a List 
+           <b>{list}</b>. Since the <b>inside</b> function returns the location of the  
+           <b>{obj}</b>, the <b>inside</b> function makes it convenient to perform some operation 
+           on the <b>{obj}</b> .  An alternate function, the <b>isInside</b> function, is used 
+           when a Boolean value of either true or false is sufficient.
+		</p>
+        ]]></Usage-Pair>
+    </Brief>
+	<Syntax-Structure>
+	    <Expression><![CDATA[<p> (inside  key   struct)</p>]]></Expression>
+		<Argument>
+		  <Name>key</Name>
+		  <Note><![CDATA[
+		  <p> The key (member) you wish to locate. </p>
+          ]]></Note>
+		  <AISTypes>String or Text </AISTypes>
+		</Argument>
+	    <Argument>
+		  <Name>struct</Name>
+		  <Note><![CDATA[
+		  <p> The structure to be searched. </p>
+          ]]></Note>
+		  <AISTypes>Structure </AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>Returns the index of the member if it is found, otherwise it returns false
+        </p>
+	    ]]></Return>
+	</Syntax-Structure>
+	<Syntax-Dictionary>
+	    <Expression><![CDATA[<p> (inside  key   dictionary)</p>]]></Expression>
+		<Argument> 
+		  <Name>key</Name>
+		  <Note><![CDATA[
+		  <p> The key (member) you wish to locate. </p>
+          ]]></Note>
+		  <AISTypes>String or Text </AISTypes>
+		</Argument>
+	    <Argument> 
+		  <Name>dictionary</Name>
+		  <Note><![CDATA[
+		  <p> The Dictionary to be searched. </p>
+          ]]></Note>
+		  <AISTypes>Dictionary </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns the index of the member if it is found, otherwise it returns false
+        </p>
+	    ]]></Return>   
+	</Syntax-Dictionary>
+	<Syntax-Directory>
+	    <Expression><![CDATA[<p> (inside  key   directory)</p>]]></Expression>
+		<Argument> 
+		  <Name>key</Name>
+		  <Note><![CDATA[
+		  <p> The key (member) you wish to locate. </p>
+          ]]></Note>
+		  <AISTypes>String or Text </AISTypes>
+		</Argument>
+	    <Argument> 
+		  <Name>directory</Name>
+		  <Note><![CDATA[
+		  <p> The Directory to be searched. </p>
+          ]]></Note>
+		  <AISTypes>Directory </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns the index of the member if it is found, otherwise it returns false
+        </p>
+	    ]]></Return>   
+	</Syntax-Directory>
+	<Syntax>
+	    <Expression><![CDATA[<p> (inside obj vector)</p>]]></Expression>
+		<Argument> 
+		  <Name>obj</Name>
+		  <Note><![CDATA[
+		  <p> The search object. </p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory
+                       Matrix NumMatrix Integer Float Number Complex</AISTypes>
+		</Argument>
+	    <Argument> 
+		  <Name>vector</Name>
+		  <Note><![CDATA[
+		  <p>The Vector to be searched.</p>
+          ]]></Note>
+		  <AISTypes>Vector BitVector ShortVector IntVector NumVector </AISTypes>
+		</Argument>        
+		<Return><![CDATA[ 
+	    <p>Returns false if the object is not present. If the object is present, returns an integer representing the 
+           index into the vector where the object was found.
+        </p>
+	    ]]></Return>   
+	</Syntax>
+	<Syntax-Matrix>
+	    <Expression><![CDATA[<p> (inside obj matrix)</p>]]></Expression>
+		<Argument> 
+		  <Name>obj</Name>
+		  <Note><![CDATA[
+		  <p> The search object. </p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory
+                       Matrix NumMatrix Integer Float Number Complex</AISTypes>
+		</Argument>
+	    <Argument> 
+		  <Name>matrix</Name>
+		  <Note><![CDATA[
+		  <p>The Matrix to be searched.</p>
+          ]]></Note>
+		  <AISTypes>Matrix </AISTypes>
+		</Argument>        
+		<Return><![CDATA[ 
+	    <p>Returns false if the object is not present. If the object is present, returns an integer representing the 
+           index into the matrix where the object was found.
+        </p>
+	    ]]></Return>   
+	</Syntax-Matrix>
+	<Syntax-NumMatrix>
+	    <Expression><![CDATA[<p> (inside obj nummatrix)</p>]]></Expression>
+		<Argument> 
+		  <Name>obj</Name>
+		  <Note><![CDATA[
+		  <p> The search object. </p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory
+                       Matrix NumMatrix Integer Float Number Complex</AISTypes>
+		</Argument>
+	    <Argument> 
+		  <Name>nummatrix</Name>
+		  <Note><![CDATA[
+		  <p>The NumMatrix to be searched.</p>
+          ]]></Note>
+		  <AISTypes>NumMatrix </AISTypes>
+		</Argument>        
+		<Return><![CDATA[ 
+	    <p>Returns false if the object is not present. If the object is present, returns an integer representing the 
+           index into the matrix where the object was found.
+        </p>
+	    ]]></Return>   
+	</Syntax-NumMatrix>
+	<Syntax-List>
+	    <Expression><![CDATA[<p> (inside  obj  list )</p>]]></Expression>
+		<Argument> 
+		  <Name>obj</Name>
+		  <Note><![CDATA[
+		  <p> The search object. </p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory
+                       Matrix NumMatrix Integer Float Number Complex</AISTypes>
+		</Argument>
+	    <Argument> 
+		  <Name>list</Name>
+		  <Note><![CDATA[
+		  <p>The List to be searched.</p>
+          ]]></Note>
+		  <AISTypes>List </AISTypes>
+		</Argument>        
+		<Return><![CDATA[ 
+	    <p>Returns false if the object is not present. If the object is present, returns an 
+           integer representing the index into the list where the object was found.
+        </p>
+	    ]]></Return>   
+	</Syntax-List>
+</Function>

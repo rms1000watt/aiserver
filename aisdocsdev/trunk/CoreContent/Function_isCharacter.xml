@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>isCharacter</Title>
+		<FunctionName>isCharacter</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+    	<ArgumentTypes>Character String Symbol Vector BitVector ByteVector IntVector
+
+
+
+
+                       FltVector ObjVector Structure Dictionary Directory
+
+
+
+
+                       Matrix NumMatrix Integer Float Number Complex Boolean </ArgumentTypes>
+        <DataType> Character</DataType>
+		<RelatedFunctions>isType  isIdentical  
+
+
+
+                          isObject   </RelatedFunctions>
+        <RelatedVMInstructions> none  </RelatedVMInstructions>
+		<HumanKeywords>  Character</HumanKeywords>
+	</KnowledgeBase>
+          <Description><![CDATA[
+             <p> The <b>isCharacter</b> function checks the argument to determine if it is 
+
+           a Character object.  </p>
+          ]]></Description>
+	<Brief>
+        <Overview><![CDATA[
+		<p>The <b>isCharacter</b> function checks the argument <b>{obj}</b> to determine if it is 
+
+          a Character object.  If the object is a Character, the <b>isCharacter</b> function returns 
+
+          true.  If the object is not a Character, false is returned.
+
+        </p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>isCharacter</b> function  is used whenever it is necessary to determine if an object is a Character.
+
+        </p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p>   (isCharacter obj ) </p>]]></Expression>
+		<Argument>
+		  <Name>obj</Name>
+		  <Note><![CDATA[
+		  <p> An Analytic Object</p>
+          ]]></Note>
+		  <AISTypes>Character, String, Symbol, Vector, BitVector, ByteVector, IntVector,
+
+
+
+
+
+                       FltVector, ObjVector, Structure, Dictionary, Directory,
+
+
+
+
+
+                       Matrix, NumMatrix, Integer, Float, Number, Complex, Boolean </AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>Returns true if the object is a  Character, otherwise false is returned.
+
+
+
+
+        </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

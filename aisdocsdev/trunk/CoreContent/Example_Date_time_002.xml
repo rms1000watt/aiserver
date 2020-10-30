@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Date time 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>time</FunctionKeywords>
+		<TypeKeywords>Number Date String Text Integer</TypeKeywords>
+		<RelatedFunctions> second hour minute</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>24-hour hour clock time julian</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example will add a time portion to a Julian date without a time portion and convert the result to a readable string.
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc> 
+(setq t #Aug,1,1996)             </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[ #Aug,1,1996]]></Returns>
+	    <Expression><![CDATA[ <sc> (setq t (date (+  (julian t)  (time 1 30 00))))              </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#Aug,1,1996:01:30:00]]></Returns>
+	    <Expression><![CDATA[ <sc> (writeln (string t))                 </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#Aug,1,1996,1:30:00]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

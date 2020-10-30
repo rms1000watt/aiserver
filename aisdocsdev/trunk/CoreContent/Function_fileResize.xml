@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>fileResize</Title>
+		<FunctionName>fileResize</FunctionName>
+		<FunctionType>Builtin(FileIO)</FunctionType>
+		<ArgumentTypes>Integer  </ArgumentTypes>
+		<DataType>ByteVector  Text String</DataType>
+		<RelatedFunctions>fileClose fileRead  fileOpen  </RelatedFunctions>
+        <RelatedVMInstructions> none   </RelatedVMInstructions>
+		<HumanKeywords> file fileID resize disk space</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>fileResize</b> function sets the size of a
+               host file to the specified number of bytes. </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		 <p> The <b>fileResize</b> function sets the size of a host file to the specified 
+          number of bytes. The <b>fileResize</b> function returns the new file size after
+           performing the resize operation.</p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>fileResize</b> function is used to change the size of a file. 
+           This function is typically used to allocate a large section of disk space for a 
+           file, in anticipation of future needs, or to scale back a files size when the space
+           is no longer needed.</p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p><b> (fileResize fileID newsize) </b></p>]]></Expression>
+		<Argument>
+		  <Name>fileID </Name>
+		  <Note><![CDATA[
+		  <p>An Integer representing the fileID of the file returned from a previous
+            fileOpen function.</p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>newsize </Name>
+		  <Note><![CDATA[
+		  <p>The new size of the file.</p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The new file size is returned.
+        </p>
+	    ]]></Return>   
+	</Syntax>
+</Function>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example String stringFill 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>stringFill</FunctionKeywords>
+		<TypeKeywords>String Text  </TypeKeywords>
+		<RelatedFunctions>substitute replace rept substringFill</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>replace substitute substring repeating fill</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows the <b>stringFill</b> function creating a new String
+                  by replacing the characters of the old String with the caracters of the 
+                  fill String. 
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define  Y  "My love")      </sc>]]></Expression>
+        <Note><![CDATA[Defines String Y.]]></Note>
+        <Returns><![CDATA[My love]]></Returns>
+        <Expression><![CDATA[ <sc>(stringFill Y #\x)  </sc>]]></Expression>
+        <Note><![CDATA[Replaces all characters of String Y with "x". ]]></Note>
+        <Returns><![CDATA[xxxxxxx]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

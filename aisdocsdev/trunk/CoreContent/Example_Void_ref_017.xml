@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Void ref 017</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>ref</FunctionKeywords>
+		<TypeKeywords> Void Text String Integer</TypeKeywords>
+		<RelatedFunctions>setq  ref fieldsOf   refValues  </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>ref reference set position</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This examples show how a Void value is returned by the <b>ref</b> function
+                  if the variable is uninitialized.
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(ref x)             </sc>]]></Expression>
+        <Note><![CDATA[An uninitialized variable. ]]></Note>
+        <Returns><![CDATA[#void]]></Returns>
+       <Expression><![CDATA[ <sc>x  </sc>]]></Expression>
+        <Note><![CDATA[The shorthand form of getting the value of  a variable is simply the variable name itself:]]></Note>
+        <Returns><![CDATA[#void]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

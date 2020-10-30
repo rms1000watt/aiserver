@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Context loadWorkspace 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>loadWorkspace  </FunctionKeywords>
+		<TypeKeywords>Context</TypeKeywords>
+		<RelatedFunctions> saveWorkspace </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>context workspace pointer</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[  <p> This example saves, loads and displays the workspace using the <b>saveWorkspace</b>
+                   and <b>loadWorkspace</b> functions.   </p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+ (clear)     </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[true ]]></Returns>
+  	    <Expression><![CDATA[ <sc> (setq mtest "hello")         </sc>   ]]></Expression>  
+        <Note><![CDATA[Create and initialize a global variable.]]></Note> 
+        <Returns><![CDATA[hello ]]></Returns>
+  	    <Expression><![CDATA[ <sc> (saveWorkspace "workspace.db")            </sc>   ]]></Expression>  
+        <Note><![CDATA[The current workspace is saved.]]></Note> 
+        <Returns><![CDATA[true ]]></Returns>
+  	    <Expression><![CDATA[ <sc> (clear)            </sc>   ]]></Expression>  
+        <Note><![CDATA[The current workspace is cleared.]]></Note> 
+        <Returns><![CDATA[true ]]></Returns>
+  	    <Expression><![CDATA[ <sc> (writeln mtest)             </sc>   ]]></Expression>  
+        <Note><![CDATA[There is no previously saved value for mtest.]]></Note> 
+        <Returns><![CDATA[#void ]]></Returns>
+  	    <Expression><![CDATA[ <sc> (loadWorkspace "workspace.db" )             </sc>   ]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[true]]></Returns>
+  	    <Expression><![CDATA[ <sc> (writeln mtest)                  </sc>   ]]></Expression>  
+        <Note><![CDATA[The saved value of mtestin the currently loaded workspace is displayed.]]></Note> 
+        <Returns><![CDATA[hello]]></Returns>
+        <Hints><![CDATA[none
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Character cdiv 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>cdiv</FunctionKeywords>
+		<TypeKeywords>Character Integer </TypeKeywords>
+		<RelatedFunctions>cadd csub cmul cmod</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>addition subtraction multiplication division character </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ The <b>cdiv</b> function divides Character operands and returns the result as a Character.
+	]]></Description>
+	<Syntax>
+ 	    <Expression><![CDATA[ <sc>  (cdiv  #\z 1)            </sc>]]></Expression>  
+        <Note><![CDATA[Converts the Integer operatnd into a Character value.]]></Note> 
+        <Returns><![CDATA[#\z]]></Returns>
+	    <Expression><![CDATA[ <sc> 
+(cdiv  #\a  #\2)        </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#\0]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

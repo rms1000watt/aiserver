@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Document SYSTEM "../DTD/Document.dtd">
+<Document>
+	<KnowledgeBase>
+	    <Title>Alice AIML Language Guide</Title>
+		<Topic>Alice</Topic>
+		<SubTopic>Language Guide</SubTopic>
+		<HumanKeywords>AIML Natural Language ChatBot Programming </HumanKeywords>
+	</KnowledgeBase>
+	<Essay>Essay_History_of_Alice</Essay>
+	<Essay>Essay_Alice</Essay>
+	<Essay>Essay_AIML</Essay>
+</Document>

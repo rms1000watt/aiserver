@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Complex log10 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>log10</FunctionKeywords>
+		<TypeKeywords>Complex Integer</TypeKeywords>
+		<RelatedFunctions> log logbase log2 expt</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords> natural logarithm base decimal  </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>log10</b> function to compute the log of a
+
+                  number using base 10.
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq X (new Complex: 4.0 0.0))  </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[#&#60Complex 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(log10 X) </sc>]]></Expression>  
+        <Note><![CDATA[The result of the log10 function is: ]]></Note> 
+        <Returns><![CDATA[#c1.0]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq X (new Complex: 0.0 -100.0))  </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[#&#60Complex 234567&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(log10 X) </sc>]]></Expression>  
+        <Note><![CDATA[The result of the log10 function is: ]]></Note> 
+        <Returns><![CDATA[#c2.0-0.682i]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq X (new Complex: 10.0 10.0))  </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[#&#60Complex 345678&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(log10 X) </sc>]]></Expression>  
+        <Note><![CDATA[The result of the log10 function is: ]]></Note> 
+        <Returns><![CDATA[#c1.15+0.341i]]></Returns>
+       <Hints><![CDATA[<p>The logarithm is the inverse of expt. For example, for Value given by 
+                <b>(setq Value (expt 2.71828 power))</b>, <b>(log Value)</b> returns power. ]]></Hints>
+   </Syntax>
+</Example>

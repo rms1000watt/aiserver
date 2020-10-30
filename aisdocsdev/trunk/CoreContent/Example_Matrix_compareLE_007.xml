@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Matrix compareLE 007</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compareLE</FunctionKeywords>
+		<TypeKeywords>Matrix Boolean</TypeKeywords>
+		<RelatedFunctions>compare compareEQ compareNE compareGE compareLT  compareGT </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare symbol equal lesser </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>compareLE</b> function to compare two Matrices and return
+                  the Boolean value, true or false.  The corresponding values of each Matrix are compared
+                  to determine whether one Matrix is lesser than or equal to the other.
+	]]></Description>
+	<Syntax>
+        <Expression><![CDATA[ <sc>(compareLE #(mat| "Hello" "World" ) #(mat| "Hello" "World" ))     </sc>]]></Expression>
+        <Note><![CDATA[Both Matrices are equal.]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>(compareLE #(mat| "Hello" "Worlds" ) #(mat| "Hello" "World" ))     </sc>]]></Expression>
+        <Note><![CDATA[ The value of the first Matrix is greater than the value
+               of the second Matrix.]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(compareLE #(mat| "Hello" "Earth" ) #(mat| "Hello" "World" ))    </sc>]]></Expression>
+        <Note><![CDATA[The value of the first Matrix is lesser than the value
+               of the second Matrix.]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

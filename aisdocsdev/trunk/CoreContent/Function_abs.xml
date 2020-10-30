@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>abs</Title>
+		<FunctionName>abs</FunctionName>
+		<FunctionType>Builtin(Math)</FunctionType>
+		<ArgumentTypes> Number Integer</ArgumentTypes>
+		<DataType>Number Complex </DataType>
+		<RelatedFunctions> </RelatedFunctions>
+        <RelatedVMInstructions>none </RelatedVMInstructions>
+		<HumanKeywords>absolute value </HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[ 
+             <p> The <b>abs</b> function returns the absolute value of its argument. </p>
+          ]]></Description>
+	<Brief>                
+	   <Overview><![CDATA[
+		 <p> The <b>abs</b> function returns the absolute value of its argument. </p>
+        ]]></Overview>
+	   <Overview-Complex><![CDATA[
+		 <p> The <b>abs</b> function computes the absolute value of a single complex number 
+         argument where the absolute value of a complex number <b>a &#43 b<i>i</i></b> is given by:</p>
+         <p>sqrt(a<superscript>2</superscript> &#43 b<superscript>2</superscript>)</p>
+
+       ]]></Overview-Complex>
+        <Usage><![CDATA[
+        <p>The <b>abs</b> function is used to compute the absolute value of a number.
+         </p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p><b> (abs num)</b></p>]]></Expression>
+		<Argument> 
+		  <Name>num</Name>
+		  <Note><![CDATA[
+		  <p>A Number</p>
+          ]]></Note>
+		  <AISTypes>Number</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The absolute value of the Number</p>
+	    ]]></Return>
+	</Syntax>
+	<Syntax-Complex>
+	    <Expression><![CDATA[<p><b> (abs num)</b></p>]]></Expression>
+		<Argument> 
+		  <Name>num</Name>
+		  <Note><![CDATA[
+		  <p>A complex number.</p>
+          ]]></Note>
+		  <AISTypes>Number</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>A real number holding the magnitude of X.</p>
+	    ]]></Return>
+	</Syntax-Complex>
+</Function>

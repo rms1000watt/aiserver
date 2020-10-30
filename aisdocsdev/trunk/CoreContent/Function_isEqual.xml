@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>isEqual</Title>
+		<FunctionName>isEqual</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+    	<ArgumentTypes>Character String Symbol Vector BitVector ByteVector IntVector Complex ShortVector
+                       FltVector ObjVector Structure Dictionary Directory Brick Void Function
+                       Matrix NumMatrix Integer Float Number Complex Boolean Pair List Date </ArgumentTypes>    
+        <DataType>String Structure ShortVector Dictionary Directory Vector Brick Complex NumMatrix Boolean Matrix Pair List Void Character Number Date Function FltVector IntVector NumVector ObjVector  BitVector</DataType>
+		<RelatedFunctions>compareEQ comparison stringCiEQ substringCiEQ isIdentical</RelatedFunctions>
+        <RelatedVMInstructions>vmregObjPointer vmregStringCompare vmregStringiCompare  </RelatedVMInstructions>
+		<HumanKeywords>  Equal Analytic Object </HumanKeywords>
+	</KnowledgeBase>
+  <Description><![CDATA[ 
+             <p> The <b>isEqual</b> function uses a case-sensitive comparison to determine if two objects are equal.  </p>
+             <p> The <b>isEqual</b> function determines if the two object arguments of the same data type are equal . 
+                 The resulting value is a Boolean value of true or false.   </p>
+          ]]></Description>
+	<Brief>
+	   <Overview-String><![CDATA[
+		<p>The <b>isEqual</b> function returns true if the argument <b>{obj1}</b> the argument 
+        <b>{obj2}</b> are equal; otherwise false is returned. Two objects are considered equal 
+        if they are the same type, each character value is the same, and the case is the same.
+        </p>
+        ]]></Overview-String>
+        <Overview-Void><![CDATA[
+		<p>The <b>isEqual</b> comparison function determines if two object  arguments are equal . 
+           The resulting value is a Boolean value of true or false. The <b>isEqual</b> behaves 
+           exactly like the <b>compareEQ</b> function. The #void constant will always be less than any other value.
+        </p>
+        ]]></Overview-Void>
+        <Overview-Number><![CDATA[
+		<p>The <b>isEqual</b> function returns true if its arguments are equivalent; otherwise false 
+          is returned.  Two native objects are equivalent if they are equal after coercion.  
+          Two compound objects are equal if they have the same type and if their individual 
+          components are equivalent. 
+        </p>
+        ]]></Overview-Number>
+        <Overview-Date><![CDATA[
+		<p>The <b>isEqual</b> function returns true if its arguments are equivalent; otherwise false 
+          is returned.  Two native objects are equivalent if they are equal after coercion.  
+          Two compound objects are equal if they have the same type and if their individual 
+          components are equivalent. 
+        </p>
+        ]]></Overview-Date>
+        <Overview-Function><![CDATA[
+		<p>The <b>isEqual</b> function returns true if its arguments are equivalent; otherwise false 
+          is returned. When the arguments are both functions, the object ids of each function 
+          will be compared. 
+        </p>
+        ]]></Overview-Function>
+        <Overview><![CDATA[
+		<p>The <b>isEqual</b> comparison function determines if two object  arguments are equal . 
+           The resulting value is a Boolean value of true or false. The <b>isEqual</b> behaves 
+           exactly like the <b>compareEQ</b> function
+        </p>
+        ]]></Overview>
+        <Usage-String><![CDATA[
+        <p>The <b>isEqual</b> function uses a case-sensitive comparison to determine if two 
+         objects are equal.  An alternate method would be to use the <b>compareEQ</b> function 
+         or the <b>=</b> function.  If  a case-insensitive comparison is desired, then the 
+         <b>stringCiEQ</b> and <b>substringCiEQ</b> functions are available. 
+        </p>
+        ]]></Usage-String>
+        <Usage-Number><![CDATA[
+        <p>The <b>isEqual</b> function is used to determine if two Numbers are equal. 
+        </p>
+        ]]></Usage-Number>
+        <Usage-Date><![CDATA[
+        <p>The <b>isEqual</b> function is used to determine if two Dates are equal. 
+        </p>
+        ]]></Usage-Date>
+        <Usage-Function><![CDATA[
+        <p>The <b>isEqual</b> function is used to determine if two functions object 
+           ids are equal. 
+        </p>
+        ]]></Usage-Function>
+        <Usage-Complex><![CDATA[
+        <p>The <b>isEqual</b> function is used to determine if two Complex Numbers are equal. 
+        </p>
+        ]]></Usage-Complex>
+       <Usage><![CDATA[
+        <p>The <b>isEqual</b> function when you wish to compare two object arguments and determine 
+             if they are equal and you wish the result to be a Boolean.  The <b>isEqual</b> 
+             function compares the keys and values of the two object arguments. Two objects are considered equal 
+             if they are the same type, each character value is the same, and the case is the same.
+        </p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p>   (isEqual  obj1 obj2) </p>]]></Expression>
+		<Argument>
+		  <Name>obj1</Name>
+		  <Note><![CDATA[
+		  <p> An Analytic Object</p>
+          ]]></Note>
+		  <AISTypes>Character, String, Symbol, Vector, BitVector, ByteVector, IntVector, Void, Function
+                       FltVector, ObjVector, Structure, Dictionary, Directory, Brick, Pair, List
+                       Matrix, NumMatrix, ShortVector, Integer, Float, Number, Complex, Boolean, Date </AISTypes>
+		</Argument>
+    	<Argument> 
+		  <Name>obj2</Name>
+		  <Note><![CDATA[
+		  <p> An Analytic Object</p>
+          ]]></Note>
+		  <AISTypes>Character, String, Symbol, Vector, BitVector, ByteVector, IntVector, Void, Function
+                       FltVector, ObjVector, Structure, Dictionary, Directory,
+Pair, List
+                       Matrix, NumMatrix, Integer, Float, Number, Complex,ShortVector,  Boolean, Date </AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>If the obj1 and obj2 are of the same type and they are equal, a Boolean value 
+           true is returned. Otherwise false is returned
+        </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

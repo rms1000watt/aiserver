@@ -1,0 +1,206 @@
+#############################################################################
+# Makefile for building: libjit.a
+# Manually managed. Originally created by copy of Makefile generated
+# by qmake. For some reason, the qmake process ignores the build flags
+# entered into the KDevelop environment. This means we have to manage the
+# makefile ourselves. Note the reference to this makefile in the Basics
+# tab of the subproject dialog for the jit subproject. See the 
+# OPTIMIZATION section below for those manual settings required to 
+# compile the jit.
+#############################################################################
+
+####### Compiler, tools and options
+
+CC            = gcc
+CXX           = g++
+LEX           = flex
+YACC          = yacc
+DEFINES       = -D_GCC -D_AMD64 -D_LINUX -D_JIT -DQT_GUI_LIB -DQT_CORE_LIB -DQT_SHARED
+OPTIMIZATION  = -fdefer-pop -fdelayed-branch -fguess-branch-probability -fcprop-registers -floop-optimize -fif-conversion -fif-conversion2 -ftree-ccp -ftree-dce -ftree-dominator-opts -ftree-dse -ftree-ter -ftree-lrs -ftree-sra -ftree-copyrename -ftree-fre -ftree-ch -funit-at-a-time -fmerge-constants -fthread-jumps -fcrossjumping -foptimize-sibling-calls -fcse-follow-jumps  -fcse-skip-blocks -fgcse  -fgcse-lm  -fexpensive-optimizations -fstrength-reduce -frerun-cse-after-loop -frerun-loop-opt -fcaller-saves -fpeephole2 -fsched-interblock  -fsched-spec -fregmove -fstrict-aliasing -freorder-blocks  -freorder-functions -falign-functions -falign-jumps -falign-loops  -falign-labels -ftree-vrp -ftree-pre
+#### Notes: The flags above include O1 and O2 optimization levels excluding the O2 flags -fschedule-insns and -fschedule-insns2. With the excluded
+#### flags the jit causes a segmentation fault. BTW: doing -O1 by itself also causes a seg fault for some reason. TM Feb 28 07
+
+CFLAGS        = -m64 -pipe -g $(OPTIMIZATION) -fPIC -Wall -W -D_REENTRANT  $(DEFINES)
+CXXFLAGS      = -m64 -pipe -g -O1 -fPIC -Wall -W -D_REENTRANT  $(DEFINES)
+LEXFLAGS      = 
+YACCFLAGS     = -d
+INCPATH       = -I../smtbase -I../include
+AR            = ar cqs
+RANLIB        = 
+QMAKE         = /usr/local/Trolltech/Qt-4.2.2/bin/qmake
+TAR           = tar -cf
+COMPRESS      = gzip -9f
+COPY          = cp -f
+COPY_FILE     = $(COPY)
+COPY_DIR      = $(COPY) -r
+INSTALL_FILE  = install -m 644 -p
+INSTALL_DIR   = $(COPY_DIR)
+INSTALL_PROGRAM = install -m 755 -p
+DEL_FILE      = rm -f
+SYMLINK       = ln -sf
+DEL_DIR       = rmdir
+MOVE          = mv -f
+CHK_DIR_EXISTS= test -d
+MKDIR         = mkdir -p
+
+####### Output directory
+
+OBJECTS_DIR   = obj/
+
+####### Files
+
+SOURCES       = fvmamd64jit.c 
+OBJECTS       = obj/fvmamd64jit.o
+DIST          = /usr/local/Trolltech/Qt-4.2.2/mkspecs/common/unix.conf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/common/g++.conf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/common/linux.conf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/qconfig.pri \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/qt_functions.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/qt_config.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/exclusive_builds.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/default_pre.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/debug.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/default_post.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/staticlib.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/static.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/warn_on.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/qt.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/unix/thread.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/moc.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/resources.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/uic.prf \
+		jit.pro
+QMAKE_TARGET  = jit
+DESTDIR       = ../lib/
+TARGET        = libjit.a
+
+first: all
+####### Implicit rules
+
+.SUFFIXES: .o .c .cpp .cc .cxx .C
+
+.cpp.o:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
+
+.cc.o:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
+
+.cxx.o:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
+
+.C.o:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
+
+.c.o:
+	$(CC) -c $(CFLAGS) $(INCPATH) -o "$@" "$<"
+
+####### Build rules
+
+all: Makefile ../lib/$(TARGET) 
+
+staticlib: ../lib/$(TARGET)
+
+../lib/$(TARGET):  $(OBJECTS) $(OBJCOMP) 
+	@$(CHK_DIR_EXISTS) ../lib/ || $(MKDIR) ../lib/ 
+	-$(DEL_FILE) $(TARGET)
+	$(AR) $(TARGET) $(OBJECTS)
+	-$(DEL_FILE) ../lib/$(TARGET)
+	-$(MOVE) $(TARGET) ../lib/
+
+
+Makefile: jit.pro  /usr/local/Trolltech/Qt-4.2.2/mkspecs/linux-g++-64/qmake.conf /usr/local/Trolltech/Qt-4.2.2/mkspecs/common/unix.conf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/common/g++.conf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/common/linux.conf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/qconfig.pri \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/qt_functions.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/qt_config.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/exclusive_builds.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/default_pre.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/debug.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/default_post.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/staticlib.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/static.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/warn_on.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/qt.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/unix/thread.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/moc.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/resources.prf \
+		/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/uic.prf \
+		/usr/local/Trolltech/Qt-4.2.2/lib/libQtGui.prl \
+		/usr/local/Trolltech/Qt-4.2.2/lib/libQtCore.prl
+	$(QMAKE) -unix -o Makefile jit.pro
+/usr/local/Trolltech/Qt-4.2.2/mkspecs/common/unix.conf:
+/usr/local/Trolltech/Qt-4.2.2/mkspecs/common/g++.conf:
+/usr/local/Trolltech/Qt-4.2.2/mkspecs/common/linux.conf:
+/usr/local/Trolltech/Qt-4.2.2/mkspecs/qconfig.pri:
+/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/qt_functions.prf:
+/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/qt_config.prf:
+/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/exclusive_builds.prf:
+/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/default_pre.prf:
+/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/debug.prf:
+/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/default_post.prf:
+/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/staticlib.prf:
+/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/static.prf:
+/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/warn_on.prf:
+/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/qt.prf:
+/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/unix/thread.prf:
+/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/moc.prf:
+/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/resources.prf:
+/usr/local/Trolltech/Qt-4.2.2/mkspecs/features/uic.prf:
+/usr/local/Trolltech/Qt-4.2.2/lib/libQtGui.prl:
+/usr/local/Trolltech/Qt-4.2.2/lib/libQtCore.prl:
+qmake:  FORCE
+	@$(QMAKE) -unix -o Makefile jit.pro
+
+dist: 
+	@$(CHK_DIR_EXISTS) obj/jit1.0.0 || $(MKDIR) obj/jit1.0.0 
+	$(COPY_FILE) --parents $(SOURCES) $(DIST) obj/jit1.0.0/ && $(COPY_FILE) --parents fvmamd64jit.h obj/jit1.0.0/ && $(COPY_FILE) --parents fvmamd64jit.c obj/jit1.0.0/ && (cd `dirname obj/jit1.0.0` && $(TAR) jit1.0.0.tar jit1.0.0 && $(COMPRESS) jit1.0.0.tar) && $(MOVE) `dirname obj/jit1.0.0`/jit1.0.0.tar.gz . && $(DEL_FILE) -r obj/jit1.0.0
+
+
+yaccclean:
+lexclean:
+clean:compiler_clean 
+	-$(DEL_FILE) $(OBJECTS)
+	-$(DEL_FILE) *~ core *.core
+
+
+####### Sub-libraries
+
+distclean: clean
+	-$(DEL_FILE) $(TARGET) 
+	-$(DEL_FILE) Makefile
+
+
+/usr/local/Trolltech/Qt-4.2.2/bin/moc:
+	(cd $(QTDIR)/src/tools/moc && $(MAKE))
+
+mocclean: compiler_moc_header_clean compiler_moc_source_clean
+
+mocables: compiler_moc_header_make_all compiler_moc_source_make_all
+
+compiler_moc_header_make_all:
+compiler_moc_header_clean:
+compiler_rcc_make_all:
+compiler_rcc_clean:
+compiler_image_collection_make_all: qmake_image_collection.cpp
+compiler_image_collection_clean:
+	-$(DEL_FILE) qmake_image_collection.cpp
+compiler_moc_source_make_all:
+compiler_moc_source_clean:
+compiler_uic_make_all:
+compiler_uic_clean:
+compiler_clean: compiler_moc_header_clean compiler_rcc_clean compiler_image_collection_clean compiler_moc_source_clean compiler_uic_clean 
+
+####### Compile
+
+obj/fvmamd64jit.o: fvmamd64jit.c fvmamd64jit.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o obj/fvmamd64jit.o fvmamd64jit.c
+
+####### Install
+
+install:   FORCE
+
+uninstall:   FORCE
+
+FORCE:
+

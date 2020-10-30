@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number mod 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>mod</FunctionKeywords>
+		<TypeKeywords>  Number Integer </TypeKeywords>
+		<RelatedFunctions>  imod div  modi (sym)div</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords> number arithmetic division mod remainder number operators  </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ <p> This example shows how the <b>mod</b> function returns the Number result from
+                  the Integer divide operation it performs on the Numbers in the argument list.</p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(mod 5 6) </sc>   ]]></Expression>
+        <Note><![CDATA[Returns the result as a Number Data Type.]]></Note>
+        <Returns><![CDATA[5.0 ]]></Returns>
+        <Expression><![CDATA[ <sc>(mod (+ 1 5) (+ 3 3))  </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[0.0]]></Returns>
+        <Hints><![CDATA[none
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

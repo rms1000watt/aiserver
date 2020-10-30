@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmvecPopNumber</Title>
+		<InstructionName>vmvecPopNumber</InstructionName>
+		<InstructionType>Vector</InstructionType>
+		<ArgumentTypes>  Number Double  </ArgumentTypes>
+		<RelatedVMInstructions>vmvecPush vmvecPop vmvecPushNumber</RelatedVMInstructions>
+		<HumanKeywords>vector pop push number</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[
+		<p>When evaluated, this vm instruction stores the top number from 
+		the internal Vector Processing Stack, into the destination, specified 
+		by the <b>target</b> argument, and decrements the internal Vector 
+		Processing Stack by one position. The top stack word is stored, in the 
+		target register, as a Number data type. There are no conversions made 
+		between different types. The initial values in the three pointer registers, 
+		the three increment registers, and the counter register are NOT altered by 
+		this instruction. This instruction may return an Error value. After the 
+		operation, the Instruction Pointer is promoted. The operation of this vm 
+		instruction is expressed in the following C expression:
+	    </p>
+        <ul><li> <b>   (double)target = (double)ST[top--]; </b></li></ul>          
+    ]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[(vmvecPopNumber target)]]></Expression>   
+	    <Argument> 
+		  <Name>target</Name>
+		  <Format>register</Format>
+		  <AISTypes>number</AISTypes>
+		</Argument>
+	</Syntax>
+</VMInstruction>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number &#43; 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>&#43;</FunctionKeywords>
+		<TypeKeywords>Number</TypeKeywords>
+		<RelatedFunctions> &#42; - &#47; </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>multiplication addition subtraction division</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[  <p> The <b>&#43</b> function returns the sum of all the numbers in the argument list. </p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(&#43 2 3 4)   </sc>   ]]></Expression>
+        <Note><![CDATA[The 3 numbers are added.]]></Note>
+        <Returns><![CDATA[9]]></Returns>
+        <Expression><![CDATA[ <sc>(&#43 2 -4.1)   </sc>   ]]></Expression>
+        <Note><![CDATA[The 2 numbers are added.]]></Note>
+        <Returns><![CDATA[-2.1]]></Returns>
+        <Expression><![CDATA[ <sc>(&#43 )   </sc>   ]]></Expression>
+        <Note><![CDATA[The argument list is empty, so 0 is returned.]]></Note>
+        <Returns><![CDATA[0]]></Returns>
+        <Hints><![CDATA[none
+        ]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>lisp</Title>
+		<FunctionName>lisp</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>Lambda List Boolean</ArgumentTypes>
+        <DataType> List Lambda</DataType>
+		<RelatedFunctions>eval morph compile</RelatedFunctions>
+        <RelatedVMInstructions>   </RelatedVMInstructions> 
+		<HumanKeywords>compile evaluation morph parse Lambda</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>lisp</b> function produces an Analytic Information Server generic parse tree 
+                    by parsing the ascii input string. </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>lisp</b> function produces an Analytic Information Server generic parse tree <b>{parseTree}</b> 
+            by parsing the ascii input string argument (normally output from <b>morph</b>) and returns an Lambda object. If the optional <b>{anLambda}</b> argument is passed, 
+           it becomes the target of the compilation and is returned; otherwise, a new Lambda object is returned. If the optional <b>true</b> argument is passed, 
+            the compilation always inherits the persistent variables of the <b>{anLambda}</b> argument.
+        </p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>Use the <b>compile</b> when producing an Lambda from a parse tree is required. Normally, a 
+           three step process will compile Lisp source: <b>lisp</b>, followed by <b>morph</b>, followed by <b>compile</b>.
+
+        </p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p>  (lisp  sourceString)</p>
+                   <p>   (lisp  sourceString anLambda)</p>
+                   <p>   (lisp  sourceString anLambda extended:)</p>]]></Expression>
+		<Argument>
+		  <Name>sourceString</Name>
+		  <Note><![CDATA[
+		  <p> A Lisp language ascii string to be parsed.</p>
+          ]]></Note>
+		  <AISTypes>String</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>anLambda</Name>
+		  <Note><![CDATA[
+		  <p>  Optional Argument. If present, the parse will place debugging information 
+             in the {anLambda} argument.</p>
+          ]]></Note>
+		  <AISTypes>Lambda</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>extended:</Name>
+		  <Note><![CDATA[
+		  <p> Optional Argument. If present, the parse will place debugging information 
+             in the {anLambda} argument.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>Either an Analytic Information Server generic parse tree (normally input to compile or morph)
+        or an Lambda whose Sc section contains the modified source 
+        and whose In section contains the universal parseTree and debugging information.
+        </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

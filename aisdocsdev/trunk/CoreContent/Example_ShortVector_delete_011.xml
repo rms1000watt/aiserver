@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example ShortVector delete 011</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>delete</FunctionKeywords>
+		<TypeKeywords>ShortVector Integer Symbol</TypeKeywords>
+		<RelatedFunctions>remove insert</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>count length </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines a Vector and uses the <b>delete</b> function to 
+                  delete a value  by specified the <b>index</b> of the value in the Vector.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq X #(short| 11 12 ))          </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60ShortVector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(delete  X  1)        </sc>]]></Expression>
+        <Note><![CDATA[Deletes the value with index 2.]]></Note>
+        <Returns><![CDATA[#&#60ShortVector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc> (display X)     </sc>]]></Expression>
+        <Note><![CDATA[Displays the modified Vector]]></Note>
+        <Returns><![CDATA[#(short| 11 )]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

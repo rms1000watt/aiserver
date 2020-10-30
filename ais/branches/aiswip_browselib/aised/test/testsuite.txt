@@ -1,0 +1,283 @@
+# aised/test/testsuite.txt
+
+#							AISED - TEST SUITE
+# Test suite for AIS editor.  Place this testsuite in the same directory as the executable
+# aised.exe.  The test suite dialog is started by pressing F5.  The following sequence of edit
+# operations are conducted on the editor.  By placing a breakpoint at the beep function,
+# ATextEdit::beep(), the editor will stop on an error.  By inspecting the stack, the
+# circumstances leading up to this error are shown in some detail.  If the worst should
+# happen and an uncaught exception occurs, determine which test instigated the exception
+# and then single step through the test.  A synopsis of the edit commands is shown below.
+
+# CHANGE HISTORY
+# Version	Date		Who		Change
+# 1.0110	10/20/2006	tlw		Allow append and appendfile if readonly
+# 1.0109	10/2/2006	tlw		Add pause command.
+# 1.0108	9/28/2006	tlw		No quotes on file names and parameter names.
+# 1.0039	4/20/2004	tlw		Include test files for each feature, All undo,redo
+# 1.0038	4/15/2004	tlw		Add switch anchor w/ cursor, move to test file
+# 1.0038	4/14/2004	tlw		Add tabify, #include
+# 1.0037	4/6/2004	tlw		Add show
+# 1.0036	3/18/2004	tlw		Add named parameters
+# 1.0035	3/12/2004	tlw		Add unit tests
+# 1.0035	3/8/2004	tlw		Original
+
+# NOTES
+#	 1. When making changes to this file, be sure to note them in the change history above.
+#		Put the latest entry at the top of the history.
+#	 2.	Comments beginning with # or blank lines are ignored.
+#	 3. Command names and move operations are not case sensitive.
+#	 4. It is recommended to start the tests with the clear command so that the tests start
+#		from a known state.
+#	 5. In the command synopis below, args enclosed in quotes represent quoted strings.
+#		Enclose them in quotes, but don't place quotes around other items (move-to operations,
+#		option names, file names, parameter names)
+#	 6. Arguments beginning with i are integer arguments. Enter a sequence of digits.
+#	 7. Move is one of the move operations listed below.
+#	 8. All, Append, Forward, Insert, MatchCase, MatchWord, RegExp, Select, ToTabs, and Wrap
+#		represent boolean values (either 0, 1, false, true). You may also use the option
+#		names listed below which are translated into a boolean value.
+#	 9. Warning! The original contents of the current text will be overwritten!  If the
+#		Write command is included in this test suite, the named file will be overwritten!
+#	10. Every token in the syntax diagrams below is a meta-symbol representing a number,
+#		move name, or a quoted string.
+#	11. Enclose the arguments in parentheses.  Separate the arguments with commas.
+#	12. These commands invoke the same functions as invoked by key presses, mouse events,
+#		dialogs, etc.
+#	13. #stop causes all succeeding commands to be ignored
+#		stop causes the execution of a test sequence to be suspended
+#	14. #include sFileName  inserts the commands found in FileName into the test suite.
+#	15. If an operation is ill-formed, check debugger output window for details.
+
+# EDIT COMMANDS
+# append("Text", Forward)
+# appendfile(FileName)
+# clear
+# comment(Insert)
+# copy(Append)
+# cut(Append)
+# delete(MoveTo)
+# find("Pattern", AllText, MatchCase, Down, RegExp, Select, MatchWord)
+# functionList
+# indent(Insert)
+# insert("Text", Forward)
+# isModified
+# isSelected
+# move(MoveTo, Select)
+# paste
+# pause
+# print
+# read(FileName)
+# redo(ToMark)
+# replace("Pattern", "Text", All, MatchCase, RegExp, Select, MatchWord)
+# replaceAll("Pattern", "Text", All, MatchCase, RegExp, Select, MatchWord)
+# selectedText
+# selectMatchedText
+# setModified(Enable)
+# setParameter(ParamName, iValue)
+# setReadOnly(Enable)
+# show(Item, iRow)
+# switch
+# tabify(iExtraSpaces, ToTabs)
+# text
+# textLength
+# textRows
+# undo(All)
+# word(Select)
+# write(FileName)
+
+# BOOLEAN OPTION NAMES
+# The first option in each pair represents true, the second option represents false:
+# 1 / 0 - May be used in place of any option name
+# true/false - May be used in place of any option name
+# All/NotAll - Search all/Notall the text in search/replace operations
+# Append/NoAppend - Append/Dont-append seleted text to clipboard
+# Down/Up - Search forward/back in text
+# Enable/Disable - Enable/Disable modified, setReadOnly
+# Forward/Backward - Move or search forward/backward
+# Insert/Remove - Insert/Remove comment/indent
+# MatchCase/NoMatchCase - Case sensitive/insensitive search for match
+# MatchWord/NoMatchWord - Matched text on/not-on word boundaries
+# RegExp/NoRegExp - Treat pattern as a regular-expression/plain text.
+# Select/NoSelect - Select/don't select text on move or search selected/all text
+# ToMark/One - Undo or redo to mark or just one operation.
+# ToTabs/ToSpaces - Convert leading spaces to tabs or vice versa
+
+# DEFAULT OPTION SETTINGS
+#  All = false			Replace all matches
+#  Append = false		Append text to clipboard
+#  Down = true			Search downward
+#  Forward = true		Move to end of inserted region. Search forward/backward.
+#  Insert = true		Insert/remove indent or comment
+#  MatchCase=false		Case-sensitive search 
+#  MatchWord=false		Matched text must be on word boundaries
+#  RegExp = false		Treat pattern as a regular expression
+#  Select = false		Just search selected text
+#  ToTabs = true		Convert spaces to tabs
+
+# MOVE OPERATIONS
+# nomove - don't move
+# bol - beginning-of-line
+# bot - beginning-of-text
+# eol - end-of-line
+# eot - end-of-text
+# nextbow - next beginning-of-word
+# nextchar - next char
+# nextcur - next cursor in cursor stack
+# nexteow - next end-of-word
+# nexthalf - next half-page
+# nextline - next line
+# nextpage - next page
+# nextsow - next bow if not at already at bow
+# prevbow - previous beginning-of-word
+# prevchar - previous char
+# prevcur  - previous cursor in cursor stack
+# prevhalf - previous half-page
+# prevline - previous line
+# prevpage - previous page
+# prevsow - previous bow if not already at bow
+# prevtab - previous tab stop
+# same - no move
+
+# ITEM NAMES (for show)
+#   cursors Show the cursors (anchor, cursor, endcur)
+#   row		Show row specified by Row
+#   text	Show next near row specified by Row
+#   undo    Show undo operation relative to cUndoCur
+
+# CONFIGURABLE PARAMETERS (for setParameter)
+# The units, default value, and range follow each parameter name (units of # means a boolean or integer value):
+# Default (value is ignored, sets default values)
+# Font = [string]Courier New (FontFamilyNames)
+# FontSize = [points]10, (8-12,14,16,18,20), 72 pts/inch
+# Language = [string]Text (text,html,cpp,javascript,lisp)
+# MatchParens [#]1 (0,1)
+# MaximumRows = [#]0 (0 - 0x7fffffff), 0 for unlimited (same as 0x7fffffff)
+# MaximumRowWidth = [chars]1024, (128 - 4096)
+# MaximumUndoDepth [#]1024, (0-2048)
+# ShowWhiteSpace [#]0 (0,1)
+# TabWidth [chars]4 (1-32)
+# WordWrap [#]0 (0, 1)
+
+# TEST STRATEGY
+# To test a function, create several test files and a sequence of edit commands.
+# Run the test sequence against every test file.
+
+# PENDING
+# append - test insert command
+# delete - test delete of parts of a single long line at end.
+# delete - test delete of parts of multiple long lines
+# find - test tab and newline in search pattern
+# setParameter - test each parameter
+# undo,redo - test
+
+#	*************************************************************************************************
+# SYNTAX
+# Leading and trailing spaces are ignored. Command/move/option names are not case sensitive.
+# Parens are required only if arguments.
+# If text is not quoted, the string is from first non-space up to comma, closing paren, or newline
+# Some arguments are optional.
+clear
+ setParameter(ShowWhiteSpace, true)
+ Insert ( "one\n\t\\\"two\" ",  Forward )
+insert ( more\n)
+append("three\n(Four)\n")
+move(prevline, select)
+show( cursors )
+
+# APPEND - append("Text", Forward)
+# APPEND FILE - appendfile(FileSpec)
+#include testappend.txt
+
+# CLEAR - clear
+# see above
+
+# COMMENT - comment(Insert)
+#include testcomment.txt
+
+#COPY - copy(Append)
+# CUT - cut()
+#include testcopy.txt
+
+# DELETE - delete(Move)
+#include testdelete.txt
+
+# FIND - find("Pattern",All,MatchCase,Down,RegExp,Select,MatchWord);
+#include testfind.txt
+
+# FUNCTIONLIST - FunctionList()
+# See TEXT
+
+# INDENT - indent(Insert)
+#include testindent.txt
+
+# INSERT - insert("Text", Forward)
+# See APPEND
+
+# ISMODIFIED - isModified()
+# See WRITE
+
+# ISSELECTED - isSelected()
+# see TEXT
+
+# MOVE - move(MoveTo, Select)
+#include testmove.txt
+
+# PASTE - paste()
+# See CUT
+
+# PAUSE - pause()
+
+# PRINT - print()
+# See TEXT
+
+# READ - read(FileName)
+# See TEXT
+
+# REDO - redo(ToMark)
+# See UNDO
+
+# REPLACE - replace("Pattern", "Text", All, MatchCase, RegExp, Select, MatchWord)
+# REPLACEALL - replaceAll("Pattern", "Text", All, MatchCase, RegExp, Select, MatchWord)
+#include testreplace.txt
+
+# SELECTEDTEXT - selectedText()
+# See TEXT
+
+# SELECTMATCHEDTEXT - selectMatchedText()
+# See TEXT
+
+# SETMODIFIED - setModified(Enable)
+# See WRITE
+
+# SETPARAMETER - setParameter(ParamName, Value)
+#include testsetparameter.txt
+
+# SETREADONLY - setReadOnly(Enable)
+#include testreadonly.txt
+
+# SHOW - show(Item, Row)
+# SWITCH - switch()
+#include testshow.txt
+
+# TABIFY - tabify(iExtraSpaces, ToTabs)
+#include testTabify.txt
+
+# TEXT - text()
+# TEXTLENGTH - textLength()
+# TEXTROWS - textRows()
+#include testtext.txt
+
+# UNDO - undo(All)
+pause
+#include testundo.txt
+
+# WORD - word(Select)
+###include testword.txt
+
+# WRITE - write(FileSpec)
+#include testwrite.txt
+
+#stop
+all lines ignored after #stop
+#end

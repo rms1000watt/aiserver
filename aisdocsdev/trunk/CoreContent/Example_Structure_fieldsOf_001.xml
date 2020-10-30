@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure fieldsOf 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>fieldsOf</FunctionKeywords>
+		<TypeKeywords>Structure</TypeKeywords>
+		<RelatedFunctions>defstruct makeStructure defineStructure defclass objectToStructure</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>define set make object structure inherit 
+
+
+                       parent object-oriented classes fields</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines a new type Structure name using the
+
+
+                  <b>defineStructure</b> function.  Then it retireves the fields of the
+                  defined Structure using the <b>fieldsOf</b> function.       
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(defineStructure employee: name: salary:) </sc>]]></Expression>
+        <Note><![CDATA[The Structure name "employee" is defined. ]]></Note>
+        <Returns><![CDATA[employee ]]></Returns>
+ <Expression><![CDATA[ <sc>(fieldsOf  employee:)    </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[Returns #{name:  #void salary:  #void} ]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

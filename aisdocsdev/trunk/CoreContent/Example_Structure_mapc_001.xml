@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure mapc 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>mapc</FunctionKeywords>
+		<TypeKeywords>Structure</TypeKeywords>
+		<RelatedFunctions>map makeStructure</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>map mapc copy process</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ The following example will define a user function, <b>total</b>, 
+                  that will take an argument (which is a structure field) and add the 
+                  argument to a <b>pvar</b> container (persistent variable).  
+                  The input to the <b>total</b> function is a structure containing monthly 
+                  sales figures. The <b>mapc</b> function then applies each Structure element
+                  as argument to the function <b>total</b>.            
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define MonthlySales  #{Jan: 1000  Feb: 2300  Mar: 3200  Apr: 4500})</sc>]]></Expression>
+        <Note><![CDATA[Defines the Structure Monthly Sales. ]]></Note>
+        <Returns><![CDATA[#&#60Structure 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(defun total(x) pvars: (n) (setq n (+ n x)))  </sc>]]></Expression>
+        <Note><![CDATA[Defines the function total.]]></Note>
+        <Returns><![CDATA[#&#60Lambda 123456&#62]]></Returns>
+  <Expression><![CDATA[ <sc>(display total.n)  </sc>]]></Expression>  
+        <Note><![CDATA[The result is saved in the persistent variable, n.]]></Note> 
+        <Returns><![CDATA[11000]]></Returns>
+        <Expression><![CDATA[ <sc> (define MonthlySales  #{Jan: 1000  Feb: 2300  Mar: 3200  Apr: 4500})    </sc>]]></Expression>
+        <Note><![CDATA[The following code sample using a loop, produces the same result as mapc:]]></Note>
+        <Returns><![CDATA[#&#60Structure 34567&#62]]></Returns>
+        <Expression><![CDATA[ <sc> (defun total(x) pvars: (n) (setq n (+ n x)))    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60Structure 45678&#62]]></Returns>
+        <Expression><![CDATA[ <sc> (loop for  n  from 0  until (length MonthlySales)  do <br>
+                            (total MonthlySales[i]) )   </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[4]]></Returns>
+        <Expression><![CDATA[ <sc>  (display total.n)  </sc>]]></Expression>
+        <Note><![CDATA[The result is saved in the the persistent variable, n]]></Note>
+        <Returns><![CDATA[11000]]></Returns>
+        <Hints><![CDATA[<p>Note, the return value from the loop is the number of iterations performed.  
+                  In this case, it is the number 4, whereas the return value from the <b>mapc</b> 
+                  function is the value of the function as it is applied to the last member of 
+                  the structure, 11000.  </p>
+               <p>The <b>mapc</b> function does not produce a duplicate structure as in the <b>map</b> function.</p>
+ ]]></Hints>
+   </Syntax>
+</Example>

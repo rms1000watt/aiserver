@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number nsub 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>nsub</FunctionKeywords>
+		<TypeKeywords>Integer Boolean Number</TypeKeywords>
+		<RelatedFunctions>nadd nmul ndiv nmod</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>number arithmetic subtraction   operators</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>nsub</b> function to subtract two Number objects and return
+
+
+
+
+
+
+
+
+                 the resulting number value.
+Money values are also considered Number objects.
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+(nsub 3.6  2.1 )             </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[1.5]]></Returns>
+ 	    <Expression><![CDATA[ <sc>
+(nsub $3.6 $2.1 )</sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[1.5]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

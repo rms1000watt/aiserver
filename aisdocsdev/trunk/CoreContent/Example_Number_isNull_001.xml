@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number isNull 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isNull</FunctionKeywords>
+		<TypeKeywords>  Number</TypeKeywords>
+		<RelatedFunctions> isPositive isOdd isExact isZero isEven isNegative</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>fraction integer null void    </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples determine if the argument is equal to the value of the Void Data Type.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(isNull  1 )                    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(isNull  #void )                      </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ true ]]></Returns>
+        <Expression><![CDATA[ <sc>(isNull  x )                              </sc>]]></Expression>  
+        <Note><![CDATA[An uninitialized variable has the value of #void..]]></Note> 
+        <Returns><![CDATA[ true ]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>  
+		<Title>Example String comparison functions 001</Title>  
+		<Template>Example</Template> 
+		<FunctionKeywords>comparison</FunctionKeywords>
+		<TypeKeywords>String Boolean</TypeKeywords>	
+		<RelatedFunctions>compare compareEQ compareGT compareNE compareLT  compareLE</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare string equal lesser </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>comparison</b> functions to do a 
+                  case-sensitive comparison of two Strings.  A Boolean value is returned.
+	]]></Description>
+	<Syntax> 
+  	    <Expression><![CDATA[ <sc>(= "Hello World" "Hello World" ) </sc>]]></Expression>  
+        <Note><![CDATA[Both strings are equal.]]></Note> 
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>(= "hello world" "Hello World" )        </sc>]]></Expression>  
+        <Note><![CDATA[In this example, lowercase "h" in the first string has a higher value in the ASCII
+               table than uppercase "H", therefore the Strings are not equal. ]]></Note> 
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(&#62 "hello World" "Hello World" ) </sc>]]></Expression>  
+        <Note><![CDATA[Lowercase "h" in the first string has a higher value in the ASCII
+               table than uppercase "H", therefore the first String is greater than the second String.]]></Note> 
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>(&#60 "Hi World" "Hello World" ) </sc>]]></Expression>  
+        <Note><![CDATA[Lowercase "i" in the first string has a higher value in the ASCII
+               table than lowercase "e", therefore the first String is greater than the second String.]]></Note> 
+        <Returns><![CDATA[false]]></Returns>
+        <Hints><![CDATA[
+           <p>The comparison functions are case-sensitive. For case-insensitive 
+           comparisons see the <b> StringCiEQ, StringCiNE,</b> etc. functions.If you prefer an integer resulting from the comparison 
+           (0 for equal, -1 for less than, and 1 for greater than), use the <b>compare</b> function. </p>
+        ]]></Hints>
+   </Syntax>
+</Example>

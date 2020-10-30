@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example ObjectRepository sizeof 027</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>length</FunctionKeywords>
+		<TypeKeywords>ObjectRepository</TypeKeywords>
+		<RelatedFunctions>  new length  </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>sizeof closure bytes length disk memory </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows the <b>sizeof</b> function return the 
+                 Disck File Closure size of the Object Repository with 2 defined values.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq gor (new ObjectRepository: "myarchive.odb"))      </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 197815&#62 ]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq gor["one"] "Hello World")      </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 197815&#62 ]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq gor["two"] "Goodbye World")      </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 197815&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(sizeof gor)  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[332]]></Returns>
+        <Hints><![CDATA[<p>
+The closure size may be different values for the same object on different
+           hardware platforms due to word alignment issues. The values returned from the <b>sizeof</b>
+           function in the examples above are the values returned on a Intel Pentium-based 
+          platform. </p>
+        ]]></Hints>
+   </Syntax>
+</Example>

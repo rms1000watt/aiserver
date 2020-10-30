@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>macroReplace</Title>
+		<FunctionName>macroReplace</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>Character String Symbol Vector BitVector ByteVector IntVector Date
+                       FltVector ObjVector Structure Brick Dictionary Directory  List Void
+                       Matrix NumMatrix Integer Float Number Complex Boolean Number Lambda </ArgumentTypes>
+		<DataType>String </DataType>
+		<RelatedFunctions>defmacro substitute </RelatedFunctions>
+        <RelatedVMInstructions> none   </RelatedVMInstructions>
+		<HumanKeywords>macro</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>macroReplace</b> function supports c-like argument substitution macros.
+                 Up to ten arguments may be entered. 
+                 The final argument must be macro String template with embedded argument references. 
+                 </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>macroReplace</b> function supports c-like argument substitution macros. 
+           Up to ten arguments may be entered %1, %2, ... %9.
+           The final argument must be the macro template containing the argument references to be replaced.
+           If the argument template is a String, the function will substitute areguments and return a String.
+           If the argument template is a List, the function will substitute areguments and return a List.
+           </P>
+        <p>For instance the expression, <i>(macroReplace '(/ 1 x) 23 {(+ %1 %2)})</i> 
+           performs argument substitution and returns the following string:  "(+ (/ 1 x) 23)".
+           </p>
+        <p>Alternatively the expression, <i>(macroReplace '(/ 1 x) 23 '(+ %1 %2))</i> 
+           performs argument substitution and returns the following List:  '(+ (/ 1 x) 23).
+           </p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>macroReplace</b> function is used to support c-like argument substitution macros. 
+          It is used in connection with the <b>defmacro</b> special form.</p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p>(macroReplace %1 %2 ... %9 macroTemplate)</p>]]></Expression>
+		<Argument>
+		  <Name>%1</Name>
+		  <Note><![CDATA[
+		  <p>Any Lisp expression to be substituted into the String macro template</p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector ByteVector IntVector Date
+                       FltVector ObjVector Structure Brick Dictionary Directory  List Void
+                       Matrix NumMatrix Integer Float Number Complex Boolean Number Lambda   </AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>%2</Name>
+		  <Note><![CDATA[
+		  <p>(Optional) Lisp expression to be substituted into the String macro template</p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector ByteVector IntVector Date
+                       FltVector ObjVector Structure Brick Dictionary Directory  List Void
+                       Matrix NumMatrix Integer Float Number Complex Boolean Number Lambda   </AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>%3</Name>
+		  <Note><![CDATA[
+		  <p>(Optional) Lisp expression to be substituted into the String macro template</p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector ByteVector IntVector Date
+                       FltVector ObjVector Structure Brick Dictionary Directory  List Void
+                       Matrix NumMatrix Integer Float Number Complex Boolean Number Lambda   </AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>%4</Name>
+		  <Note><![CDATA[
+		  <p>(Optional) Lisp expression to be substituted into the String macro template</p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector ByteVector IntVector Date
+                       FltVector ObjVector Structure Brick Dictionary Directory  List Void
+                       Matrix NumMatrix Integer Float Number Complex Boolean Number Lambda   </AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>%5</Name>
+		  <Note><![CDATA[
+		  <p>(Optional) Lisp expression to be substituted into the String macro template</p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector ByteVector IntVector Date
+                       FltVector ObjVector Structure Brick Dictionary Directory  List Void
+                       Matrix NumMatrix Integer Float Number Complex Boolean Number Lambda   </AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>%6</Name>
+		  <Note><![CDATA[
+		  <p>(Optional) Lisp expression to be substituted into the String macro template</p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector ByteVector IntVector Date
+                       FltVector ObjVector Structure Brick Dictionary Directory  List Void
+                       Matrix NumMatrix Integer Float Number Complex Boolean Number Lambda   </AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>%7</Name>
+		  <Note><![CDATA[
+		  <p>(Optional) Lisp expression to be substituted into the String macro template</p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector ByteVector IntVector Date
+                       FltVector ObjVector Structure Brick Dictionary Directory  List Void
+                       Matrix NumMatrix Integer Float Number Complex Boolean Number Lambda   </AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>%8</Name>
+		  <Note><![CDATA[
+		  <p>(Optional) Lisp expression to be substituted into the String macro template</p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector ByteVector IntVector Date
+                       FltVector ObjVector Structure Brick Dictionary Directory  List Void
+                       Matrix NumMatrix Integer Float Number Complex Boolean Number Lambda   </AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>%9</Name>
+		  <Note><![CDATA[
+		  <p>(Optional) Lisp expression to be substituted into the String macro template</p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector ByteVector IntVector Date
+                       FltVector ObjVector Structure Brick Dictionary Directory  List Void
+                       Matrix NumMatrix Integer Float Number Complex Boolean Number Lambda   </AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>macroTemplate</Name>
+		  <Note><![CDATA[
+		  <p>A macro template containing references to arguments %1 thru %9.
+             The arguments are substituted with the value of the actual arguments.
+             Up to nine arguments can be substituted.
+             If the macroTemplate is a String, then a String, with the arguments substituted, will be returned. 
+             If the macroTemplate is a List, then a List, with the arguments substituted, will be returned. 
+             </p>
+          ]]></Note>
+		  <AISTypes>String</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>Returns the macro String template with arguments substituted
+        </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure ref 004</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>ref</FunctionKeywords>
+		<TypeKeywords>Structure Symbol String</TypeKeywords>
+		<RelatedFunctions>setq  ref fieldsOf   refValues  </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>ref reference set position</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows the <b>ref</b> function returns the
+
+                  value of the Structure through the <b>key</b> reference.
+                  This example uses the <b> (ref aStruct key)</b> function syntax.
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(setq Employee  (new Structure:  Name: "John Doe"  Title:  "Director")) </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60Structure 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display Employee)    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#{Name: "John Doe" Title: "Director"}]]></Returns>
+        <Expression><![CDATA[ <sc>(ref  Employee Name:)  </sc>]]></Expression>
+        <Note><![CDATA[The ref function returns the value with the key Name: in the Structure. ]]></Note>
+        <Returns><![CDATA[John Doe]]></Returns>
+  	    <Expression><![CDATA[ <sc>(ref  Employee Title:)       </sc>]]></Expression>
+        <Note><![CDATA[The ref function returns the value with the key Title: in the Structure.]]></Note>
+        <Returns><![CDATA[Director]]></Returns>
+        <Hints><![CDATA[none
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

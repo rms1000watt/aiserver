@@ -1,0 +1,22 @@
+/* XPM */
+static const char *folderup[]={
+"16 16 3 1",
+"# c #000000",
+". c #d4d0c8",
+"a c #ffff99",
+"................",
+"...#####........",
+"..#aaaaa#.......",
+".###############",
+".#aaaaaaaaaaaaa#",
+".#aaaa#aaaaaaaa#",
+".#aaa###aaaaaaa#",
+".#aa#####aaaaaa#",
+".#aaaa#aaaaaaaa#",
+".#aaaa#aaaaaaaa#",
+".#aaaa######aaa#",
+".#aaaaaaaaaaaaa#",
+".#aaaaaaaaaaaaa#",
+".###############",
+"................",
+"................"};

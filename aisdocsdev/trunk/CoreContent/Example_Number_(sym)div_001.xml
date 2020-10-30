@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number &#47; 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>&#47;</FunctionKeywords>
+		<TypeKeywords>Number</TypeKeywords>
+		<RelatedFunctions> &#42; &#43; &#45; </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>>multiplication addition subtraction division</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[  <p> The <b>&#47</b> function returns the quotient of all the numbers in the argument list. </p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+(&#47 12 3 4)   </sc>   ]]></Expression>
+        <Note><![CDATA[The 3 numbers are divided from left to right.]]></Note>
+        <Returns><![CDATA[1]]></Returns>
+        <Expression><![CDATA[ <sc>(&#45 2 -4)   </sc>   ]]></Expression>
+        <Note><![CDATA[The 2 numbers are subtracted.]]></Note>
+        <Returns><![CDATA[-.5]]></Returns>
+        <Expression><![CDATA[ <sc>(&#45 20 )   </sc>   ]]></Expression>
+        <Note><![CDATA[The reciprocal value of the single argument is returned.]]></Note>
+        <Returns><![CDATA[.05]]></Returns>
+        <Hints><![CDATA[none
+        ]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example NumMatrix count 009</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>count</FunctionKeywords>
+		<TypeKeywords> NumMatrix Integer</TypeKeywords>
+		<RelatedFunctions>length</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>count length </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines a NumMatrix and uses the <b>count</b> function to perform
+
+
+
+
+
+                  a deep count of the values within the   defined Matrix.
+
+
+                 
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define z  #(nummat| 1 4.3 -3.25 2 #void)) </sc>]]></Expression>
+        <Note><![CDATA[A NumMatrix with a #void value. ]]></Note>
+        <Returns><![CDATA[#&#60NumMatrix 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(count z)     </sc>]]></Expression>
+        <Note><![CDATA[The #void value is included.]]></Note>
+        <Returns><![CDATA[5]]></Returns>
+        <Expression><![CDATA[ <sc> (define w  #(nummat| 1 56 32 -45 #(nummat| 1 2))) </sc>]]></Expression>
+        <Note><![CDATA[A NumMatrix containing 4 values and an embedded Matrix with 2 values.]]></Note>
+        <Returns><![CDATA[#&#60NumMatrix 234567&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc> (count w ) </sc>]]></Expression>
+        <Note><![CDATA[A shallow count is perfomed.]]></Note>
+        <Returns><![CDATA[5]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

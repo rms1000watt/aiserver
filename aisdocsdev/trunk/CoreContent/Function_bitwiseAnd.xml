@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>bitwiseAnd</Title>
+		<FunctionName>bitwiseAnd</FunctionName>
+		<FunctionType>Builtin(Bitwise)</FunctionType>
+		<ArgumentTypes>Integer Character Boolean</ArgumentTypes>
+		<DataType>Integer</DataType>
+		<RelatedFunctions>bitwiseOr bitwiseXor</RelatedFunctions>
+        <RelatedVMInstructions> none   </RelatedVMInstructions>
+		<HumanKeywords>numerical and bitwise </HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>bitwiseAnd</b> function  performs a numerical bitwise <b>and</b> of each expression 
+               from left to right, returning the value of the result as an Integer.</p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+	       <p> The <b>bitwiseAnd</b> function performs a numerical bitwise <b>and</b> of each expression <b>{exp}</b>
+               from left to right, returning the value of the result as an Integer. 
+           The arguments are assumed to be Integers, and are not checked for the correct type. 
+          Characters and Boolean arguments will be treated as Integers in this function.</p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>Use the <b>bitwiseAnd</b> function when a binary integer operation is required. </p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p>(bitwiseAnd exp ...)</p>]]></Expression>
+		<Argument> 
+		  <Name>exp ...</Name>
+		  <Note><![CDATA[
+		  <p>One or more Integer expressions.  A Character or Boolean expression is converted to Integer.</p>
+          ]]></Note>
+		  <AISTypes>Integer Character Boolean </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The bitwise and of the argument(s).
+        </p>
+	    ]]></Return>   
+	</Syntax>
+</Function>

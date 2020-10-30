@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>uniqueInsert</Title>
+		<FunctionName>uniqueInsert</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+        <ArgumentTypes>Structure  Symbol Integer
+			 Character String Symbol Vector BitVector ByteVector IntVector
+			   FltVector ObjVector Structure Dictionary Directory ShortVector
+			   Matrix NumMatrix Integer Float Number Complex</ArgumentTypes>  
+        <DataType> Structure Vector Matrix NumMatrix NumVector ObjVector IntVector FltVector ShortVector</DataType>
+	    <RelatedFunctions>insert binaryInsert binarySearch sort</RelatedFunctions>
+        <RelatedVMInstructions> vmregRefPointer </RelatedVMInstructions>
+		<HumanKeywords>binary insert structure sort</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>uniqueInsert</b> function function destructively inserts the 
+
+                 specified new value into the Structure, Vector or Matrix at the proper location.  </p>
+          ]]></Description>
+	<Brief>
+	   <Overview-Structure><![CDATA[
+		<p>The  <b>uniqueInsert</b> function destructively inserts the specified new value 
+           into the Structure at the specified location. If the key argument <b>{newKey}</b> 
+           does not exist in the Structure, the Structure is increased in size to accommodate 
+           the new key. If the key is already in the Structure, no insertion is made. 
+           The index where the new key was inserted or (if already in the Structure) the index 
+           where the key was found will be returned by the <b>uniqueInsert</b> function.</p>
+        ]]></Overview-Structure>
+       <Overview><![CDATA[
+		<p>The  <b>uniqueInsert</b> function destructively inserts the specified new object 
+           <b>{obj}</b> into the Vector at the specified  location. If the <b>{obj}</b>  
+           argument  does not exist in the Vector ,  the Vector  is increased in size to 
+           accommodate the <b>{obj}</b>.  If  the <b>{obj}</b>  is already in the Vector, 
+           no insertion is made. The index where the new <b>{obj}</b>  was inserted or 
+            (if already in the Vector) the index where the object  was found will be returned 
+            by the <b>uniqueInsert</b> function.</p>
+        ]]></Overview>
+       <Overview-Matrix><![CDATA[
+		<p>The  <b>uniqueInsert</b> function destructively inserts the specified new object 
+           <b>{obj}</b> into the Matrix at the specified  location. If the <b>{obj}</b>  
+           argument  does not exist in the Matrix ,  the Matrix  is increased in size to 
+           accommodate the <b>{obj}</b>.  If  the <b>{obj}</b>  is already in the Matrix, 
+           no insertion is made. The index where the new <b>{obj}</b>  was inserted or 
+            (if already in the Matrix) the index where the object  was found will be returned 
+            by the <b>uniqueInsert</b> function.</p>
+        ]]></Overview-Matrix>
+       <Overview-NumMatrix><![CDATA[
+		<p>The  <b>uniqueInsert</b> function destructively inserts the specified new object 
+           <b>{obj}</b> into the NumMatrix at the specified  location. If the <b>{obj}</b>  
+           argument  does not exist in the NumMatrix ,  the NumMatrix  is increased in size to 
+           accommodate the <b>{obj}</b>.  If  the <b>{obj}</b>  is already in the NumMatrix, 
+           no insertion is made. The index where the new <b>{obj}</b>  was inserted or 
+            (if already in the NumMatrix) the index where the object  was found will be returned 
+            by the <b>uniqueInsert</b> function.</p>
+        ]]></Overview-NumMatrix>
+        <Usage-Structure><![CDATA[
+        <p>The <b>uniqueInsert</b> function is used whenever you want to install a new key 
+           into a structure. Also the <b>uniqueInsert</b> function behaves like the 
+           <b>binaryInsert</b> function except the target structure is not in sorted order. 
+		</p>
+        ]]></Usage-Structure>
+       <Usage><![CDATA[
+        <p>The <b>uniqueInsert</b> function is used whenever you want to install a new object 
+           into a vector. Also the <b>uniqueInsert</b> function behaves like the 
+           <b>binaryInsert</b> function except the target vector is not in sorted order. 
+		</p>
+        ]]></Usage>
+       <Usage-Matrix><![CDATA[
+        <p>The <b>uniqueInsert</b> function is used whenever you want to install a new object 
+           into a matrix. Also the <b>uniqueInsert</b> function behaves like the 
+           <b>binaryInsert</b> function except the target matrix is not in sorted order. 
+		</p>
+        ]]></Usage-Matrix>
+       <Usage-NumMatrix><![CDATA[
+        <p>The <b>uniqueInsert</b> function is used whenever you want to install a new object 
+           into a NumMatrix. Also the <b>uniqueInsert</b> function behaves like the 
+           <b>binaryInsert</b> function except the target matrix is not in sorted order. 
+		</p>
+        ]]></Usage-NumMatrix>
+    </Brief>
+	<Syntax-Structure>
+	    <Expression><![CDATA[<p> (uniqueInsert struct newkey)</p>]]></Expression>
+		<Argument>
+		  <Name>struct</Name>
+		  <Note><![CDATA[
+		  <p> The structure to be updated. </p>
+          ]]></Note>
+		  <AISTypes>Structure </AISTypes>
+		</Argument>
+     	<Argument>
+		  <Name>newkey</Name>
+		  <Note><![CDATA[
+		  <p> The new key to be installed in the Structure.</p>
+          ]]></Note>
+		  <AISTypes>Symbol </AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>The index where the key was installed or where the key was found.
+        </p>
+	    ]]></Return>
+	</Syntax-Structure>
+   <Syntax>
+	    <Expression><![CDATA[<p>  (uniqueInsert  vector  obj)</p>]]></Expression>
+		<Argument> 
+		  <Name>vector</Name>
+		  <Note><![CDATA[
+		  <p> The Vector to be updated. </p>
+          ]]></Note>
+		  <AISTypes>Vector NumVector ObjVector IntVector FltVector ShortVector</AISTypes>
+		</Argument>
+     	<Argument> 
+		  <Name>obj</Name>
+		  <Note><![CDATA[
+		  <p> The object to be installed.</p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory ShortVector
+                       Matrix NumMatrix Integer Float Number Complex </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The index where the object was installed or where the object was found.
+        </p>
+	    ]]></Return>   
+	</Syntax>
+   <Syntax-Matrix>
+	    <Expression><![CDATA[<p>  (uniqueInsert  matrix  obj)</p>]]></Expression>
+		<Argument> 
+		  <Name>matrix</Name>
+		  <Note><![CDATA[
+		  <p> The Matrix to be updated. </p>
+          ]]></Note>
+		  <AISTypes>Matrix </AISTypes>
+		</Argument>
+     	<Argument> 
+		  <Name>obj</Name>
+		  <Note><![CDATA[
+		  <p> The object to be installed.</p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory
+                       Matrix NumMatrix Integer Float Number Complex </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The index where the object was installed or where the object was found.
+        </p>
+	    ]]></Return>   
+	</Syntax-Matrix>
+   <Syntax-NumMatrix>
+	    <Expression><![CDATA[<p>  (uniqueInsert  nummatrix  obj)</p>]]></Expression>
+		<Argument> 
+		  <Name>nummatrix</Name>
+		  <Note><![CDATA[
+		  <p> The NumMatrix to be updated. </p>
+          ]]></Note>
+		  <AISTypes>NumMatrix </AISTypes>
+		</Argument>
+     	<Argument> 
+		  <Name>obj</Name>
+		  <Note><![CDATA[
+		  <p> The object to be installed.</p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory
+                       Matrix NumMatrix Integer Float Number Complex </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The index where the object was installed or where the object was found.
+        </p>
+	    ]]></Return>   
+	</Syntax-NumMatrix>
+</Function>

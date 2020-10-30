@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>boolean</Title>
+		<FunctionName>boolean</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>Character String Symbol Vector BitVector Brick ByteVector IntVector Void
+                       FltVector ObjVector Structure Dictionary Directory Pair List
+                       Matrix NumMatrix Integer Float Number Complex Boolean</ArgumentTypes>
+		<DataType>Boolean</DataType>
+		<RelatedFunctions>isBoolean isType</RelatedFunctions>
+        <RelatedVMInstructions>   </RelatedVMInstructions>
+		<HumanKeywords>convert boolean object </HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>boolean</b> function converts an argument into a Boolean object. </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>boolean</b>  function converts an argument <b>{obj}</b> into a Boolean object.  
+         If the object has a value of zero, the <b>boolean</b> function returns false.  
+         All other values result in a return value of true. 
+
+
+        </p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>boolean</b> function is used to convert an object to a Boolean value.  
+         Numeric values are reduced to two states: zero state is converted to false, 
+         and any other state is converted to true.  If the argument is already a Boolean, no 
+         conversion is performed.
+        </p>
+         ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[  (boolean obj)]]></Expression>
+		<Argument>
+		  <Name>obj</Name>
+		  <Note><![CDATA[
+		  <p>The object to be  converted.</p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector Brick ByteVector IntVector Void
+                       FltVector ObjVector Structure Dictionary Directory Pair List
+                       Matrix NumMatrix Integer Float Number Complex Boolean</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>Returns false if the object has a value of 0.  Returns true otherwise.
+	    </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

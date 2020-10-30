@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Function ref 021</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>ref</FunctionKeywords>
+		<TypeKeywords>  Date  </TypeKeywords>
+		<RelatedFunctions>setq  </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>ref reference set position</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This examples show how the Date value is returned using the
+
+                  <b>ref</b> function and using the shorthand method.
+
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(ref muli)             </sc>]]></Expression>
+        <Note><![CDATA[The return value of the ref function returns #&#60Function muli&#62]]></Note>
+        <Returns><![CDATA[muli]]></Returns>
+        <Expression><![CDATA[ <sc>(ref #&#60Function muli&#62)  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[ muli]]></Returns>
+	    <Expression><![CDATA[ <sc>muli             </sc>]]></Expression>
+        <Note><![CDATA[The shorthand form of getting the value of a variable is simply the variable name itself:]]></Note>
+        <Returns><![CDATA[muli]]></Returns>
+        <Expression><![CDATA[ <sc> #&#60Function muli&#62 </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[ muli]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT Function (KnowledgeBase, Description, Brief, (Syntax | Syntax-Lambda | Syntax-BitVector | Syntax-Boolean | Syntax-ByteVector | Syntax-Character | Syntax-Complex | Syntax-CpxVector | Syntax-Date | Syntax-Dictionary | Syntax-Directory | Syntax-Error | Syntax-FltVector | Syntax-Function | Syntax-Integer | Syntax-IntVector | Syntax-List | Syntax-Matrix | Syntax-Number | Syntax-NumMatrix | Syntax-NumVector | Syntax-ObjectRepository | Syntax-ObjVector | Syntax-Pair | Syntax-Record | Syntax-ShortVector | Syntax-String | Syntax-Structure | Syntax-Symbol | Syntax-Text | Syntax-Vector | Syntax-Void)+)>
+	<!ELEMENT KnowledgeBase (Title,  FunctionName,  FunctionType,  ArgumentTypes,  DataType,  RelatedFunctions,  RelatedVMInstructions,  HumanKeywords)>
+		<!ELEMENT Title (#PCDATA)>
+		<!ELEMENT FunctionName (#PCDATA)>
+		<!ELEMENT FunctionType (#PCDATA)>
+		<!ELEMENT ArgumentTypes (#PCDATA)>
+		<!ELEMENT DataType (#PCDATA)>
+		<!ELEMENT RelatedFunctions (#PCDATA)>
+		<!ELEMENT RelatedVMInstructions (#PCDATA)>
+		<!ELEMENT HumanKeywords (#PCDATA)>
+	<!ELEMENT Description ANY>
+	<!ELEMENT Brief ((Overview | Overview-Lambda | Overview-BitVector | Overview-Boolean | Overview-ByteVector | Overview-Character | Overview-Complex | Overview-CpxVector | Overview-Date | Overview-Dictionary | Overview-Directory | Overview-Error | Overview-FltVector | Overview-Function | Overview-Integer | Overview-IntVector | Overview-List | Overview-Matrix | Overview-Number | Overview-NumMatrix | Overview-NumVector | Overview-ObjectRepository | Overview-ObjVector | Overview-Pair | Overview-Record | Overview-ShortVector | Overview-String | Overview-Structure | Overview-Symbol | Overview-Text | Overview-Vector | Overview-Void)+, (Usage | Usage-Lambda | Usage-BitVector | Usage-Boolean | Usage-ByteVector | Usage-Character | Usage-Complex | Usage-CpxVector | Usage-Date | Usage-Dictionary | Usage-Directory | Usage-Error | Usage-FltVector | Usage-Function | Usage-Integer | Usage-IntVector | Usage-List | Usage-Matrix | Usage-Number | Usage-NumMatrix | Usage-NumVector | Usage-ObjectRepository | Usage-ObjVector | Usage-Pair | Usage-Record | Usage-ShortVector | Usage-String | Usage-Structure | Usage-Symbol | Usage-Text | Usage-Vector | Usage-Void)+)>
+		<!ELEMENT Overview ANY>
+		<!ELEMENT Overview-Lambda ANY>
+		<!ELEMENT Overview-BitVector ANY>
+		<!ELEMENT Overview-Boolean ANY>
+		<!ELEMENT Overview-ByteVector ANY>
+		<!ELEMENT Overview-Character ANY>
+		<!ELEMENT Overview-Complex ANY>
+		<!ELEMENT Overview-CpxVector ANY>
+		<!ELEMENT Overview-Date ANY>
+		<!ELEMENT Overview-Dictionary ANY>
+		<!ELEMENT Overview-Directory ANY>
+		<!ELEMENT Overview-Error ANY>
+		<!ELEMENT Overview-FltVector ANY>
+		<!ELEMENT Overview-Function ANY>
+		<!ELEMENT Overview-Integer ANY>
+		<!ELEMENT Overview-IntVector ANY>
+		<!ELEMENT Overview-List ANY>
+		<!ELEMENT Overview-Matrix ANY>
+		<!ELEMENT Overview-Number ANY>
+		<!ELEMENT Overview-NumMatrix ANY>
+		<!ELEMENT Overview-NumVector ANY>
+		<!ELEMENT Overview-ObjectRepository ANY>
+		<!ELEMENT Overview-ObjVector ANY>
+		<!ELEMENT Overview-Pair ANY>
+		<!ELEMENT Overview-Record ANY>
+		<!ELEMENT Overview-ShortVector ANY>
+		<!ELEMENT Overview-String ANY>
+		<!ELEMENT Overview-Structure ANY>
+		<!ELEMENT Overview-Symbol ANY>
+		<!ELEMENT Overview-Text ANY>
+		<!ELEMENT Overview-Vector ANY>
+		<!ELEMENT Overview-Void ANY>
+		<!ELEMENT Usage ANY>
+		<!ELEMENT Usage-Lambda ANY>
+		<!ELEMENT Usage-BitVector ANY>
+		<!ELEMENT Usage-Boolean ANY>
+		<!ELEMENT Usage-ByteVector ANY>
+		<!ELEMENT Usage-Character ANY>
+		<!ELEMENT Usage-Complex ANY>
+		<!ELEMENT Usage-CpxVector ANY>
+		<!ELEMENT Usage-Date ANY>
+		<!ELEMENT Usage-Dictionary ANY>
+		<!ELEMENT Usage-Directory ANY>
+		<!ELEMENT Usage-Error ANY>
+		<!ELEMENT Usage-FltVector ANY>
+		<!ELEMENT Usage-Function ANY>
+		<!ELEMENT Usage-Integer ANY>
+		<!ELEMENT Usage-IntVector ANY>
+		<!ELEMENT Usage-List ANY>
+		<!ELEMENT Usage-Matrix ANY>
+		<!ELEMENT Usage-Number ANY>
+		<!ELEMENT Usage-NumMatrix ANY>
+		<!ELEMENT Usage-NumVector ANY>
+		<!ELEMENT Usage-ObjectRepository ANY>
+		<!ELEMENT Usage-ObjVector ANY>
+		<!ELEMENT Usage-Pair ANY>
+		<!ELEMENT Usage-Record ANY>
+		<!ELEMENT Usage-ShortVector ANY>
+		<!ELEMENT Usage-String ANY>
+		<!ELEMENT Usage-Structure ANY>
+		<!ELEMENT Usage-Symbol ANY>
+		<!ELEMENT Usage-Text ANY>
+		<!ELEMENT Usage-Vector ANY>
+		<!ELEMENT Usage-Void ANY>
+	<!ELEMENT Syntax (Expression, Argument+, Return)>
+	<!ELEMENT Syntax-Lambda (Expression, Argument+, Return)>
+	<!ELEMENT Syntax-BitVector (Expression, Argument+, Return)>
+	<!ELEMENT Syntax-Boolean (Expression, Argument+, Return)>
+	<!ELEMENT Syntax-ByteVector (Expression, Argument+, Return)>
+	<!ELEMENT Syntax-Character (Expression, Argument+, Return)>
+	<!ELEMENT Syntax-Complex (Expression, Argument+, Return)>
+	<!ELEMENT Syntax-CpxVector (Expression, Argument+, Return)>
+	<!ELEMENT Syntax-Date (Expression, Argument+, Return)>
+	<!ELEMENT Syntax-Dictionary (Expression, Argument+, Return)>
+	<!ELEMENT Syntax-Directory (Expression, Argument+, Return)>
+	<!ELEMENT Syntax-Error (Expression, Argument+, Return)>
+	<!ELEMENT Syntax-FltVector (Expression, Argument+, Return)>
+	<!ELEMENT Syntax-Function (Expression, Argument+, Return)>
+	<!ELEMENT Syntax-Integer (Expression, Argument+, Return)>
+	<!ELEMENT Syntax-IntVector (Expression, Argument+, Return)>
+	<!ELEMENT Syntax-List (Expression, Argument+, Return)>
+	<!ELEMENT Syntax-Matrix (Expression, Argument+, Return)>
+	<!ELEMENT Syntax-Number (Expression, Argument+, Return)>
+	<!ELEMENT Syntax-NumMatrix (Expression, Argument+, Return)>
+	<!ELEMENT Syntax-NumVector (Expression, Argument+, Return)>
+	<!ELEMENT Syntax-ObjectRepository (Expression, Argument+, Return)>
+	<!ELEMENT Syntax-ObjVector (Expression, Argument+, Return)>
+	<!ELEMENT Syntax-Pair (Expression, Argument+, Return)>
+	<!ELEMENT Syntax-Record (Expression, Argument+, Return)>
+	<!ELEMENT Syntax-ShortVector (Expression, Argument+, Return)>
+	<!ELEMENT Syntax-String (Expression, Argument+, Return)>
+	<!ELEMENT Syntax-Structure (Expression, Argument+, Return)>
+	<!ELEMENT Syntax-Symbol (Expression, Argument+, Return)>
+	<!ELEMENT Syntax-Text (Expression, Argument+, Return)>
+	<!ELEMENT Syntax-Vector (Expression, Argument+, Return)>
+	<!ELEMENT Syntax-Void (Expression, Argument+, Return)>
+		<!ELEMENT Expression ANY>
+		<!ELEMENT Return ANY>
+		<!ELEMENT Argument (Name, Note, AISTypes)>
+			<!ELEMENT Name (#PCDATA)>
+			<!ELEMENT Note ANY>
+			<!ELEMENT AISTypes (#PCDATA)>
+<!-- end -->

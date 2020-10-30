@@ -1,0 +1,199 @@
+<html><head>
+<link rel="stylesheet" type="text/css" href="../CoreContent/help.css">
+<title>AIS Essay Template</title></head>
+<!--Page Parameters -->
+<body bgcolor="#FFFFF0" text="#000000" LINK="#0000ff">
+<a name="topage"></a>
+<a href="top"></a>
+<p>&nbsp;</p>
+<font color="#000080"><h1>HTML 4.0</h1></font>
+<p>&nbsp;</p>
+<ul>
+<li><a href="#S1"><FONT SIZE=2>HTML Validation</font></a></li><li><a href="#S2"><FONT SIZE=2>HTML Guidelines</font></a></li><li><a href="#S3"><FONT SIZE=2>HTML Styles</font></a></li>
+</ul>
+<P><H2><A NAME="S1"></A>HTML Validation</H2></P>
+	<p><b>Overview.</b>
+	HTML 4.0 is the current HTML standard that describes what HTML is and how it should be used.  This standard is important in that
+	it describes a subset of all the current browser features that will work on every conforming browser, including
+	the most recent versions of Internet Explorer (4.0 and higher) and Firefox (2.0 and higher).  Standards are important
+	in that they allow HTML authors and HTML application developers to agree on a common syntax that works across the internet.
+	</p>
+	<p><b>Reference.</b>
+	Our reference for this standard is &quot;HTML The Definitive Guide Third Edition&quot; by Musciano and Kennedy, an O&#039;Reilly
+	&amp; Associates book.  This excellent reference includes many useful examples.  The remainder of this document highlights
+	selected sections of this standard that applies to our situation.
+	</p>
+	<p><b>Tools.</b>
+	The two essential ingredients to establishing a documentation standard are a comprehensive reference and a tool for automated
+	validation of our generated documents.  Fortunately, both are available for HTML.  HomeSite 5.5 from Macromedia
+	provides three important features, composition, spell-checking, and validation.  This tool should be used to validate all
+	HTML documents.
+	</p>
+<P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="S2"></A>HTML Guidelines</H2></P>
+	<p><b>Overview.</b>
+	This section highlights and emphasizes selected aspects of the HTML 4.0 standard as described in the above reference. Several
+	examples are included here that further document some of the more subtle portions of the standard that require clarification.
+	The section numbers shown below correspond to the sections in the HTML reference. We start with an HTML snippet that
+	violates the standard followed by a correct version.
+	</p>
+	<h4>Ill-Formed HTML Page</h4>
+	<pre>
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;ILL-FORMED HTML&lt;/TITLE&gt;&lt;/HEAD&gt;
+&lt;BODY BGCOLOR=#FFFFF0 TEXT=&quot;#000000&quot; LINK=#0000ff&gt;
+&lt;TABLE CELLSPACING=0 CELLPADDING=6 BORDER=0 WIDTH=&quot;600&quot;&gt;
+&lt;TR&gt;
+&lt;TD  BGCOLOR=&quot;#406000&quot; WIDTH=&quot;22%&quot; VALIGN=&quot;TOP&quot;&gt;
+&lt;IMG SRC=&quot;Image_AILogo.gif&quot; WIDTH=128 HEIGHT=203&gt;
+&lt;P ALIGN=&quot;CENTER&quot;&gt;
+&lt;INPUT TYPE='button' VALUE='Home'&gt;
+&lt;/P&gt;
+&lt;TD WIDTH=&quot;78%&quot; VALIGN=&quot;TOP&quot;&gt;
+&lt;P&gt;&nbsp;&lt;/P&gt;
+&lt;FONT COLOR=&quot;#000080&quot;&gt;&lt;H1&gt;Agent...&lt;/H1&gt;&lt;/FONT&gt;
+&lt;P&gt;&nbsp;&lt;/P&gt;
+&lt;UL&gt;
+&lt;LI&gt;&lt;A HREF=&quot;#Q1&quot;&gt;&lt;FONT SIZE=2&gt;Introducing:&lt;/FONT&gt;&lt;/A&gt;&lt;/LI&gt;
+&lt;/UL&gt;
+&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;
+&lt;P&gt;&nbsp;&lt;/P&gt;
+&lt;FONT COLOR=&quot;#0000ff&quot;&gt;&lt;H4&gt;&lt;A NAME=&quot;Q1&quot;&gt;&lt;/A&gt;Intro...&lt;/H4&gt;&lt;/FONT&gt;
+&lt;P&gt;
+Agent Information Server&amp;trade(AIS) is ...&lt;/P&gt;
+&lt;P&gt;
+&lt;/BODY&gt;&lt;/HTML&gt;
+	</pre>
+	<h4>Well-Formed HTML Page</h4>
+	<pre>
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD html 4.0 Transitional//EN&quot;&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;WELL-FORMED HTML&lt;/title&gt;
+  &lt;style type=&quot;text/css&quot;&gt;&lt;!--
+    /* Set h4 color */
+    H4 {color: #0000FF;}
+    /* Set ListElement font size */
+    LI {font-size: small;}
+  --&gt;&lt;/style&gt;
+&lt;/head&gt;
+&lt;body bgcolor=&quot;#FFFFF0&quot; text=&quot;#000000&quot; link=&quot;#0000FF&quot;&gt;
+  &lt;table cellspacing=0 cellspacing=6 border=0 width=600&gt;
+    &lt;tr&gt;
+      &lt;td  bgcolor=&quot;#406000&quot; width=132 valign=top&gt;
+        &lt;img src=&quot;Image_AILogo.gif&quot; alt=&quot;Ais Logo&quot; height=203 width=128&gt;
+        &lt;input type=Submit value=&quot;Home&quot;&gt;&lt;/p&gt; 
+      &lt;/td&gt;
+      &lt;td valign=top&gt;
+        &lt;h1&gt;Agent...&lt;/h1&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#Q1&quot;&gt;Introducing:&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+  &lt;br/&gt;
+  &lt;h4&gt;&lt;a name=&quot;Q1&quot;&gt;&lt;/a&gt;Intro...&lt;/h4&gt;
+  &lt;p&gt;
+    Agent Information Server&amp;trade;(AIS) is ...
+  &lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+	</pre>
+	<p><b>3.3 HTML Tags.</b>
+	A &quot;tag&quot; is the portion of the text between the less-than character (&lt;) and greater-than (&gt;) character.
+	A &quot;tag name&quot; and zero or more attributes may be included between these angle brackets. Some nomenclature is shown
+	in the following list:
+	</p>
+	<ul>
+		<li>Tag Name.  A lower-case key-word.  A list of permitted tag names are listed in Appendix B. Other names are
+		not allowed.</li>
+		<li>Attribute Name.  A lower-case key-word.  A list of permitted attributes within eacy tag are listed in Appendix
+		B.  Other attribute names are not allowed.</li>
+		<li>Attribute Value. Some attribute names may be followed by an equal sign (=) and a value.  The value may
+		be a keyword, a number or a string.  Only strings are enclosed in quotes(&quot;).</li>
+		<li>Closing tag. Most tags have a closing tag noted by a slash (/) following the less-than (&lt;) character.
+		HTML tags with no end tag are listed in Section 3.3.5 of the HTML reference.</li>
+		<li>Segment. A &quot;segment&quot; is the entire text between the beginning of a tag to the end of the closing
+		tag.</li>
+	</ul>
+	<p><b>Well-Formed HTML.</b>
+	As noted in the XML Programming Guidelines, it is not difficult to compose HTML documents that are also XML compatible.
+	Specifically, the XHTML standard requires tag names to be lower case, an end tag for every start tag, and attribute values
+	enclosed in quotes.  It makes sense to generalize our guidelines so that our HTML documents can be processed using XML tools.
+	For a complete list of requirements, see Chapter 7 or our XML reference.
+	The guidelines for composing tags are:
+	</p>
+	<ul>
+		<li>Case. Tag names and attribute names must be in lower case.</li>
+		<li>End Tags. Every start tag must be followed by an end tag.</li>
+		<li>Attribute Values. Surround all attribute values with quotes.</li>
+	</ul>
+	<p><b>3.5 Document Type Definition (DTD).</b>
+	Every HTML page should conform to the HTML SGML DTD that defines the HTML 4.0 standard.  It is important to inform browsers and
+	validation tools that each page conforms to this standard by including the following DTD declaration at the beginning of every
+	page as shown in the Well-Formed page shown above.
+	</p>
+	<p><b>4.10 Character Entities.</b>
+	Some characters are reserved by HTML for defining tags and special characters. Other characters whose codes exceed 127
+	are considered special.  These special characters should be encoded as character entities.  A list of special characters
+	is shown in Appendix E.  A list of reserved characters for use in a URL (Uniform Resource Locator) are noted in
+	section 7.2.
+	</p>
+	<p><b>4.6.3 Deprecated Tags.</b>
+	Deprecated tags are tags that have been replaced by new constructs.  They may not be supported in the future and they
+	represent an old implementation that has been made obsolete by new, improved options.  The FONT tag is one of the
+	deprecated tags that has been replaced by styles which allow a more uniform  look and feel that can be easily adapted
+	without massive changes to the existing HTML documents.  Separation of the format from the content is central to
+	constructing reference documentation that can adapt to a variety of end-uses.
+	</p>
+	<p>A list of deprecated tags are included in the Summary below.  The same rationale applies to deprecated attributes that can
+	create a formatting nightmare.  In the above examples, the Well-Formed version shows how it is possible to set the format
+	of all of the H4 headers or List Elements of a page in one place.  Compare this simple situation with making a formatting
+	change to the ill-formed page.  Every tag must be examined and modified in the entire document.  A list of deprecated
+	attributes are shown in the Summary below.
+	</p>
+	<p><b>Appendix A. Nesting Rules.</b>
+	Not just any tag can be included in the body of another tag.  For example, only the LI tag is allowed in a UL segment.
+	A complete list of which tags are allowed in other tags is found in Appendix A of the HTML reference.  Guidance on the
+	appropriate use of tags is provided by the validation tool described above.
+	</p>
+	<p><b>Summary.</b>
+	The HTML guidelines include the following recommendations:
+	</p>
+	<ul>
+		<li>HTML Tags. Tag names and attribute names shall be in lower case.  Attribute values are enclosed in quotes.</li>
+		<li>Document Type Definition. Note DTD in an SGML command on the first line.</li>
+		<li>Character Entities. Use character entities for all reserved characters such as less-than, greater-than, and quote.</li>
+		<li>Deprecated Tags. Do not use deprecated tags such as S, STRIKE, U, BASEFONT, FONT, CENTER,LISTING,PLAINTEXT, or XMP.</li>
+		<li>Deprecated Attributes. Do not use deprecated attributes such as ALIGN, COLOR.</li>
+		<li>Nesting Rules. Observe the nesting rules as described in Appendix A. For example, the UL tag may not appear in a P
+		segment. A TITLE tag can only appear in a HEAD segment.</li>
+		<li>Style Sheets. Use styles to set the documentation format.</li>
+	</ul>
+<P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="S3"></A>HTML Styles</H2></P>
+	<p><b>Style Management.</b>
+	Suppose that we want to impose a uniform look and feel to the help documentation for a particular application. Or, suppose
+	that we wish to render the presentation for a variety of end-uses (print, web, pda, etc.).  Or suppose that we wish to
+	have one group compose the help text and another group format the end-user presentation.  All of these tasks are facilitated
+	by separating the formatting from the meta-data and content of the help documents.  Fortunately, HTML provides a straightforward
+	mechanism for separating the formatting from the content.
+	</p>
+	<p><b>9.0 Style Sheets</b></p>
+	<p><b>Summary.</b>
+	The HTML style guidelines are described in Chapter 9 of our HTML reference.  An example of using styles is shown in the
+	well-formed HTML shown above. One rule in the style segment sets the color of the H4 headers and a second rule sets the font
+	size of the list elements. To change the color or the size requires a simple change in just one spot.  Compare that
+	option to changing every H4 tag or every LI tag in the entire document.
+	</p>
+	<p><b>9.5.2 External Styles.</b>
+	The above example shows a document-level style in the head segment of an HTML document.  It is also possible to set the
+	styles for an entire set of documents in a single separate file.  The pros and cons of these two approaches are noted in
+	Chapter 9 of the HTML reference.  We adopt the following recommendations made by the authors:
+	</p>
+	<ul>
+		<li>Document-level Styles.  Use document-level styles to set those rules that impact three or fewer documents.</li>
+		<li>External Styles.  Move document-level rules to an external style sheet file when a rule will impact more than three
+		documents.</li>
+		<li>Inline Styles.  Inline styles are not recommended.</li>
+	</ul>
+<P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P>
+</body></html>

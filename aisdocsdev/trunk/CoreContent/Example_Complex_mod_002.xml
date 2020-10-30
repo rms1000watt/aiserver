@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Complex mod 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>mod</FunctionKeywords>
+		<TypeKeywords>Number</TypeKeywords>
+		<RelatedFunctions>  imod div  modi (sym)div </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>number arithmetic division mod remainder number operators</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[  <p> The modulo of a variety of data types with a complex number is shown 
+                  in this example. The result is always a real number that represents the 
+                  remainder from the division of the real part of the first argument divided 
+                  by the real part of the second argument.
+                    </p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq X #c3.0-2.0i)   </sc>   ]]></Expression>
+        <Note><![CDATA[The first Complex Number is defined.]]></Note>
+        <Returns><![CDATA[#&#60Complex 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq Y #c2.0+7.0i)   </sc>   ]]></Expression>
+        <Note><![CDATA[The second Complex Number is defined.]]></Note>
+        <Returns><![CDATA[#&#60Complex 234567&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(mod X Y)   </sc>   ]]></Expression>
+        <Note><![CDATA[The modulo of  2 Complex Numbers.]]></Note>
+        <Returns><![CDATA[1.0]]></Returns>
+        <Expression><![CDATA[ <sc>(mod X #void )   </sc>   ]]></Expression>
+        <Note><![CDATA[The result after the mod function of a Complex Number and a Void data type
+
+              is an error. ]]></Note>
+        <Returns><![CDATA[!drmVM: div/0!]]></Returns>
+        <Expression><![CDATA[ <sc>(mod X 2 )   </sc>   ]]></Expression>
+        <Note><![CDATA[The modulo of a Complex Number and a Number data type.]]></Note>
+        <Returns><![CDATA[0.5]]></Returns>
+        <Expression><![CDATA[ <sc>(mod X 2.0 )   </sc>   ]]></Expression>
+        <Note><![CDATA[The result after the division of a Complex Number anda Real Number data type.]]></Note>
+        <Returns><![CDATA[0.5]]></Returns>
+        <Expression><![CDATA[ <sc>(mod X #\A )   </sc>   ]]></Expression>
+        <Note><![CDATA[The modulo of a Complex Number and a Character data type.]]></Note>
+        <Returns><![CDATA[3.0]]></Returns>
+        <Expression><![CDATA[ <sc>(mod X true)	   </sc>   ]]></Expression>
+        <Note><![CDATA[The modulo of a Complex Number and a Boolean data type.]]></Note>
+        <Returns><![CDATA[0.5]]></Returns>
+        <Expression><![CDATA[ <sc>(mod X #Jan,1,2000)	   </sc>   ]]></Expression>
+        <Note><![CDATA[The modulo of a Complex Number and a Date data type. 
+
+             Dates are stored as the number of days lapsed since day 0.]]></Note>
+        <Returns><![CDATA[1.0]]></Returns>
+        <Expression><![CDATA[ <sc>(mod X $-.25)	   </sc>   ]]></Expression>
+        <Note><![CDATA[The modulo of a Complex Number and a Money data type.]]></Note>
+        <Returns><![CDATA[-0.1]]></Returns>
+        <Expression><![CDATA[ <sc>(mod X -.25)	   </sc>   ]]></Expression>
+        <Note><![CDATA[The modulo of a Complex Number and a Fraction numeric data type.]]></Note>
+        <Returns><![CDATA[-0.1]]></Returns>
+        <Hints><![CDATA[<p>Immediate numeric types are converted to a pure real part with a zero 
+
+          imaginary part prior to forming the result. </p>
+       ]]></Hints>
+   </Syntax>
+</Example>

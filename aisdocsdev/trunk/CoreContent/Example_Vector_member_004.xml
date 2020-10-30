@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Vector member 004</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>member</FunctionKeywords>
+		<TypeKeywords>   Vector Boolean Integer
+
+
+</TypeKeywords>
+		<RelatedFunctions> inside isInside isMember</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>Vector Equal Analytic Object </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples check if the Text object is a member of the Vector using the
+
+
+
+
+
+
+                  <b>member</b> function.
+If the Text object is a member of the Vector, its
+
+
+
+                  index value will be returned, if not the Boolean, false will be returned.
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define Fruits  #("apple" "orange" "lemon")   )     </sc>]]></Expression>
+        <Note><![CDATA[A Vector is defined. ]]></Note>
+        <Returns><![CDATA[#&#60Vector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(member "peach" Fruits)              </sc>]]></Expression>
+        <Note><![CDATA[The text, "peach" is a not a member contained in the Vector. ]]></Note>
+        <Returns><![CDATA[false ]]></Returns>
+        <Expression><![CDATA[ <sc>(member "apple"  Fruits)                  </sc>]]></Expression>  
+        <Note><![CDATA[The text, "apple" is a member contained in the Vector. Its index is returned. ]]></Note> 
+        <Returns><![CDATA[0 ]]></Returns>
+        <Hints><![CDATA[none  ]]></Hints>
+   </Syntax>
+</Example>

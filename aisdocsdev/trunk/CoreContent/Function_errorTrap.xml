@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>errorTrap</Title>
+		<FunctionName>errorTrap</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>Error </ArgumentTypes>
+        <DataType>Error  </DataType>
+		<RelatedFunctions>error isError isIdentical onError</RelatedFunctions>
+        <RelatedVMInstructions> none </RelatedVMInstructions>
+		<HumanKeywords>error function errorStr expression errorTrap  </HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>errorTrap</b> function traps an error value instead of returning to the 
+
+
+                 top level console.
+            </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>errorTrap</b> function evaluates the first expression.  If an Error value 
+         results, the second expression is evaluated.   The Error value is trapped by the 
+         function instead of returning to the top level console as would occur if an <b>error</b> 
+         function was used.
+        </p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>errorTrap</b> function is used if you didn't want to exit to the top level 
+           console if an error occurred.  One could therefore trap the error and performed some 
+           other action once the error is trapped.
+        </p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p><b> (errorTrap  exp1  exp2)</b></p>
+        ]]></Expression>
+		<Argument>
+		  <Name>exp1</Name>
+		  <Note><![CDATA[
+		  <p> The expression to be evaluated.</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>exp2</Name>
+		  <Note><![CDATA[
+		  <p> The expression  to be evaluated if an error occurred.</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>The result of expr1 (if no error).</p>
+	    ]]></Return>
+	</Syntax>
+</Function>

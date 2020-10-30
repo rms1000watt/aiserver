@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Matrix remove 005</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>remove</FunctionKeywords>
+		<TypeKeywords>Matrix</TypeKeywords>
+		<RelatedFunctions>delete insert</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>delete remove value </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines a Matrix and uses the <b>remove</b> function to 
+
+
+
+
+
+                  non-destructively delete a value.
+
+
+
+
+                  If the value does not exist in the Matrix then the same Matrix is returned unchanged.
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq Z   #(mat| "Now" "is" "the" "Time") )</sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60Matrix 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq A (remove  "Time" Z))    </sc>]]></Expression>
+        <Note><![CDATA[Removes the specified value and copies the result
+
+
+
+
+              to a new Matrix.]]></Note>
+        <Returns><![CDATA[#&#60Matrix 234567&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc> (display A)     </sc>]]></Expression>
+        <Note><![CDATA[Displays the modified Matrix.]]></Note>
+        <Returns><![CDATA[#(mat| "Now" "is" "the" ) ]]></Returns>
+      <Expression><![CDATA[ <sc> (display Z)     </sc>]]></Expression>
+        <Note><![CDATA[The original Matrix still remains unchanged.]]></Note>
+        <Returns><![CDATA[#(mat| "Now" "is" "the" "Time") ]]></Returns>
+        <Expression><![CDATA[ <sc> (setq A (remove  "Today" Z))       </sc>]]></Expression>
+        <Note><![CDATA[The value "Today" is not found in Matrix Z.]]></Note>
+        <Returns><![CDATA[>#&#60Matrix 345678&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc> (display Z)     </sc>]]></Expression>
+        <Note><![CDATA[If the value is not found, the Matrix remains unchanged.]]></Note>
+        <Returns><![CDATA[ #(mat| "Now" "is" "the" "Time")]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

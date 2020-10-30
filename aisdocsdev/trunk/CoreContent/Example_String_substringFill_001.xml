@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example substringFill 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>substringFill</FunctionKeywords>
+		<TypeKeywords>String Text  </TypeKeywords>
+		<RelatedFunctions>substitute replace rept stringFill</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>replace substitute substring repeating fill</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows the <b>substringFill</b> function replacing the
+                  characters in the  old String with the caracters of the 
+
+                  fill String. 
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define  Y  "My love")      </sc>]]></Expression>
+        <Note><![CDATA[Defines String Y.]]></Note>
+        <Returns><![CDATA[My love]]></Returns>
+        <Expression><![CDATA[ <sc>(substringFill Y  0 1 #\x)   </sc>]]></Expression>
+        <Note><![CDATA[Replaces the substring from position 0 to 1 of String Y with "x". ]]></Note>
+        <Returns><![CDATA[xx Love]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

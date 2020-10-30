@@ -1,0 +1,48 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<Document>
+	<KnowledgeBase>
+	    <Title>Evolutionary Sequencing Machine</Title>
+		<Topic>ESM</Topic>
+		<SubTopic>Reference Guide</SubTopic>
+		<HumanKeywords>ESM Lambdas Machine-Learning  Genetic-Programming Artificial-Intelligence</HumanKeywords>
+	</KnowledgeBase>
+	<Essay>Essay_ESM_Introduction</Essay>
+	<Essay>Essay_ESM_Design_Notes</Essay>
+	<Essay>Essay_Selector_Introduction</Essay>
+	<Essay>Essay_Selector_Statements</Essay>
+	<Essay>Essay_ESM_Performance_Tests</Essay>
+ 
+</Document>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

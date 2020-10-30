@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example FltVector compareLT 014</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compareLT</FunctionKeywords>
+		<TypeKeywords>Vector Boolean</TypeKeywords>
+		<RelatedFunctions>compare compareEQ compareNE compareGE compareGT  compareLE </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare symbol equal lesser </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>compareLT</b> function to compare two Vectors and return
+
+
+
+
+
+
+
+
+                  the Boolean value, true or false.  The corresponding values of each Vector are compared
+
+
+
+
+
+                  to determine whether one Vector is lesser than the other.
+
+
+
+
+
+	]]></Description>
+	<Syntax> 
+        <Expression><![CDATA[ <sc>(compareLT #(float| 5.456699848175 3.141592025757 ) #(float| 5.456699848175 3.141592025757 ))     </sc>]]></Expression>  
+        <Note><![CDATA[Both Vectors are equal.]]></Note> 
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(compareLT #(float| 5.456699848175 3.141592025757 ) #(num| 5.456699848175 3.141592025757 ))     </sc>]]></Expression>  
+        <Note><![CDATA[The Vectors have equal values although they are not of the same type.]]></Note> 
+        <Returns><![CDATA[false]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

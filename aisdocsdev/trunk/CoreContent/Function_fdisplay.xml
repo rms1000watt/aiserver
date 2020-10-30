@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>fdisplay</Title>
+		<FunctionName>fdisplay</FunctionName>
+		<FunctionType>Builtin(FileIO)</FunctionType>
+		<ArgumentTypes>ByteVector Text Integer Boolean </ArgumentTypes>
+		<DataType>ByteVector  Text</DataType>
+		<RelatedFunctions>fileOpen fileClose fileRead fileWrite writeln display fileDisplay </RelatedFunctions>
+        <RelatedVMInstructions> none   </RelatedVMInstructions>
+		<HumanKeywords> file fileID display ASCII</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>fdisplay </b> function converts the expression   to ascii text and writes the text
+              value of the expressions to the specified fileID.  This function is the deprecated version of
+              	the <b>fileDisplay</b> function. </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>fdisplay</b> function converts the expression <b>{exp}</b> to ascii text and 
+          writes the text value of the expressions to the specified fileID <b>{fileID}</b>. 
+          The fileID must be assigned from a previous fileOpen function. The <b>fdisplay</b>
+         function always returns a Boolean value <b>true</b>.</p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>Data is written to a file with the <b>fileWrite, fileWriteln, fwriteln, fdisplay or fileDisplay</b> function, 
+         however, records are not actually <i>committed</i> to the file until the file is closed. 
+         Thus, attempting to read a record immediately after a <b>fileWrite, fileWriteln, fwriteln, fdisplay or fileDisplay</b>
+         will result in an error. In order to verify records that have been written, it is 
+         necessary to close the file and save the file (<b>fileClose</b> with an option argument
+          equal to 1) . The file can then be re-opened and read with the <b>fileRead</b> function.</p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p>(fdisplay fileID exp )</p>]]></Expression>
+		<Argument> 
+		  <Name>fileID</Name>
+		  <Note><![CDATA[
+		  <p>An Integer representing the fileID of the file which was opened with a fileOpen function.</p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>exp</Name>
+		  <Note><![CDATA[
+		  <p>An expression</p>
+          ]]></Note>
+		  <AISTypes>String Text ByteVector  </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Always the Boolean value, true.
+        </p>
+	    ]]></Return>   
+	</Syntax>
+</Function>

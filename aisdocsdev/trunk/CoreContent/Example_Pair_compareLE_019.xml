@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Pair compareLE 019</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compareLE</FunctionKeywords>
+		<TypeKeywords>Pair Integer</TypeKeywords>
+		<RelatedFunctions>compare compareEQ compareGT compareNE  compareLT compareGE</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare  lesser than equal </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>compareLE</b> functions to do a 
+
+
+
+
+
+
+                  case-sensitive comparison of two objects of the same type.  A Boolean value is returned.
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc> (compareLE  '(A  .  B)  '(A  .  B) )      </sc>]]></Expression>
+        <Note><![CDATA[ none]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc> (compareLE  '(A  B  (C . F)) '(A  .  B)   )       </sc>]]></Expression>
+        <Note><![CDATA[ The first Pair is lesser than the second Pair.]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[
+none
+
+]]></Hints>
+   </Syntax>
+</Example>

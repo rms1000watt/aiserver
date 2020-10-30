@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Dictionary setq 008</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>setq</FunctionKeywords>
+		<TypeKeywords>Dictionary Integer</TypeKeywords>
+		<RelatedFunctions>new defineStructure define makeStructure </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>set setq replace global value  </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows the <b>setq</b> function changing
+
+                  the value of the <b>Age:</b> key  
+
+                  using one <b>index</b> value.
+This example uses the
+                  <b>(setq  dict index1 newValue)</b> function syntax.
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(define Dict  #{dic| Name: "Bill"  SSN: "616 55 1209" Age: 45}  )  </sc>]]></Expression>
+        <Note><![CDATA[Sets the key-value bindings of the Dictionary. ]]></Note>
+        <Returns><![CDATA[ #&#60Dictionary 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq Dict 0 46)     </sc>]]></Expression>
+        <Note><![CDATA[Here, value of the key  is changed.]]></Note>
+        <Returns><![CDATA[ #&#60Dictionary 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(ref Dict 0 0)     </sc>]]></Expression>  
+        <Note><![CDATA[Here, the key is referenced.]]></Note> 
+        <Returns><![CDATA[Age:]]></Returns>
+        <Expression><![CDATA[ <sc>(ref Dict 0 1)     </sc>]]></Expression>  
+        <Note><![CDATA[Here, value of the key  is referenced.]]></Note> 
+        <Returns><![CDATA[46]]></Returns>      
+        <Hints><![CDATA[Since Dictionary keys are maintained in sorted ascending order, the internal 
+               representation does not always match the order in which the keys are installed.   
+               When the setq function uses an index, the value or key that is returned will 
+               match the internal ordering of the Dictionary:]]></Hints>
+   </Syntax>
+</Example>

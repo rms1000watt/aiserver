@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure refAttributes 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>refAttributes</FunctionKeywords>
+		<TypeKeywords>Structure ObjVector Text Integer Symbol</TypeKeywords>
+		<RelatedFunctions>setq  ref fieldsOf setAttributes  refValues </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>ref reference set position</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ The <b>refAttributes</b> function returns the
+
+
+                  keys of the Structure and saves it in an Object Vector.
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(setq aStruct #{Make: "Ford" Model: "Mustang" Year: 1998} )   </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60Structure 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(setq theAttributes (refAttributes aStruct ))        </sc>]]></Expression>
+        <Note><![CDATA[Saves the keys of the Structure in an Object  Vector]]></Note>
+        <Returns><![CDATA[#&#60ObjVector 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display  theAttributes[0] )  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[Make]]></Returns>
+  	    <Expression><![CDATA[ <sc>(display  theAttributes[1] )  </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[Model]]></Returns>
+         <Expression><![CDATA[ <sc>(display  theAttributes[2] )  </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[Year]]></Returns>
+        <Hints><![CDATA[none
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

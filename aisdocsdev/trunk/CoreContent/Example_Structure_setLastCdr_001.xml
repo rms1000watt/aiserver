@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure setLastCdr 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>setLastCdr</FunctionKeywords>
+		<TypeKeywords>Structure</TypeKeywords>
+		<RelatedFunctions>ref refValues refAttributes cdr setCdr</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>tail ref index cdr setLastCdr</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines a Structure with already a cdr value. 
+
+                  The cdr value is changed using the <b>setCdr</b> function.  The <b>cdr</b>
+                  expression is a Vector.
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq S #{a: 1 b: 2})    </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60Structure 188141&#62 ]]></Returns>
+ 		<Expression><![CDATA[ <sc>(setLastCdr  S  3)        </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60Structure 188141&#62 ]]></Returns>
+		<Expression><![CDATA[ <sc>(display S)     </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#{a: 1 b: 2 . 3}]]></Returns>
+        <Expression><![CDATA[ <sc> (cdr S)    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[3]]></Returns>
+        <Hints><![CDATA[The only technique of accessing the cdr or tail of a Vector is via the 
+
+               <b>cdr</b> function. ]]></Hints>
+   </Syntax>
+</Example>

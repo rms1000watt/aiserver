@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+	    <Title>deleteRows</Title>
+		<FunctionName>deleteRows</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>Brick Integer </ArgumentTypes>
+		<DataType>Brick  </DataType>
+		<RelatedFunctions>delete remove insertRows</RelatedFunctions>
+		<RelatedVMInstructions>   </RelatedVMInstructions>
+		<HumanKeywords>brick delete rows columns</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[
+	  <p>The <b>deleteRows</b> function deletes the specified number of old rows 
+         including the specified row.</p>
+	]]></Description>
+	<Brief>
+        <Overview><![CDATA[
+	       <p>The <b>deleteRows</b> function deletes the specified number of old rows 
+            including the specified row.</p>
+         ]]></Overview>
+         <Usage><![CDATA[
+            <p>Use the <b>deleteRows</b> function to delete old rows from a Brick object. 
+            The old rows will be deleted just at the specified deletion row.</p>
+         ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[ (deleteRows  aBrick  rowNum  rowCount)]]></Expression>
+		<Argument>
+		  <Name>aBrick</Name>
+		  <Note><![CDATA[The Brick object from which rows will be deleted.]]></Note>
+		  <AISTypes>Brick</AISTypes>
+		</Argument>
+        <Argument> 
+		  <Name>rowNum</Name>
+		  <Note><![CDATA[The row number where deleteRow will start deleting the rows.]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>
+        <Argument> 
+		  <Name>rowCount</Name>
+		  <Note><![CDATA[The number of new rows to be deleted.]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>
+		<Return><![CDATA[The modified Brick Object.]]></Return>
+	</Syntax>
+</Function>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure defineStructure 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>defineStructure</FunctionKeywords>
+		<TypeKeywords>Structure</TypeKeywords>
+		<RelatedFunctions>defstruct makeStructure fieldsOf defclass objectToStructure</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>define set make object structure inherit 
+
+                       parent object-oriented classes</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines a new type Structure name using the
+
+                  <b>defineStrucutre</b> function with the properties name, job, salary.
+
+            
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(defineStructure employee: name:  job:  salary:) </sc>]]></Expression>
+        <Note><![CDATA[The Structure name "employee" is defined. ]]></Note>
+        <Returns><![CDATA[employee ]]></Returns>
+ 
+ <Expression><![CDATA[ <sc>(define Z (new employee: name: "John Doe"  job:  "CEO" salary: 100000 ) )       </sc>]]></Expression>  
+        <Note><![CDATA[Create an instance of the employee object using a constructor function and initializers]]></Note> 
+        <Returns><![CDATA[employee ]]></Returns>   
+        <Expression><![CDATA[ <sc>(display Z.name)        </sc>]]></Expression>  
+        <Note><![CDATA[The properties of Structure Y now contain the initilized values.]]></Note> 
+        <Returns><![CDATA[John Doe ]]></Returns> 
+        <Expression><![CDATA[ <sc>(display Z.job)        </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[CEO ]]></Returns>   
+        <Expression><![CDATA[ <sc>(display Z.salary)        </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[100000 ]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure type 003</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>type</FunctionKeywords>
+		<TypeKeywords>Structure </TypeKeywords>
+		<RelatedFunctions>isText isSymbol isObject isString isType isStructure</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>Type Analytic Object</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows how the <b>type</b> function return the
+
+
+                    user-defined data type  of the AIS Objects evaluated.
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc> (defineStructure  employee:  'name  'job  'salary) </sc>]]></Expression>
+        <Note><![CDATA[Define a type named employee.]]></Note>
+        <Returns><![CDATA[employee ]]></Returns>
+        <Expression><![CDATA[ <sc>(define  X  (new  employee:  salary:  2201.34))  </sc>]]></Expression>
+        <Note><![CDATA[Creates an instance of the employee type.]]></Note>
+        <Returns><![CDATA[ employee  ]]></Returns>
+        <Expression><![CDATA[ <sc>(type X)   </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ employee ]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

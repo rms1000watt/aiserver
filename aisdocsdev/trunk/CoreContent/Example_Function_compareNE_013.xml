@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Function compareNE 013</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compareNE</FunctionKeywords>
+		<TypeKeywords> Function</TypeKeywords>
+		<RelatedFunctions>compare compareEQ compareGT compareGE compareLT  compareLE</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare function equal not</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>compareNE</b> function to compare two function object IDs and return
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  the Boolean value, true or false.  
+
+	]]></Description>
+	<Syntax>
+        <Expression><![CDATA[ <sc>(compareNE add1 add1)                           </sc>]]></Expression>
+        <Note><![CDATA[ none]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(setq a sub1)                       </sc>]]></Expression>
+        <Note><![CDATA[ none]]></Note>
+        <Returns><![CDATA[sub1]]></Returns>
+        <Expression><![CDATA[ <sc>(setq b add1)                            </sc>]]></Expression>
+        <Note><![CDATA[ none]]></Note>
+        <Returns><![CDATA[add1]]></Returns>
+        <Expression><![CDATA[ <sc>(compareNE a b)                               </sc>]]></Expression>  
+        <Note><![CDATA[ none]]></Note> 
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

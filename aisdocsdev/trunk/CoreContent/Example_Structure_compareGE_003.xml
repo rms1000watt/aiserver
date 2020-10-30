@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure compareGE 003</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compareGE</FunctionKeywords>
+		<TypeKeywords>Structure Integer</TypeKeywords>
+		<RelatedFunctions>compare compareEQ compareGT compareNE compareLT  compareLE</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare symbol equal greater </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>compareGE</b> function to compare two Structures and return
+
+
+                  the Boolean value, true or false.  The corresponding keys and values of each Structure are compared.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(compareGE #{X: 1 Y: 2} #{X: 1 Y: 2})  </sc>]]></Expression>
+        <Note><![CDATA[Both Structures are equal.]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>(compareGE #{X: 1 Y: 2} #{A: 1 B: 2})  </sc>]]></Expression>
+        <Note><![CDATA[The first Structure is greater than the second Structure.]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

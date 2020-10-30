@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Dictionary isEqual 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isEqual</FunctionKeywords>
+		<TypeKeywords>Dictionary Boolean</TypeKeywords>
+		<RelatedFunctions>compareEQ isIdentical comparison stringCiEQ  substringCiEQ  </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>Dictionary Equal Analytic Object </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples check if the key-value binding of the first Dictionary
+
+                   is equal to the corresponding key-value binding of the second
+
+                   Dictionary. If they are, the function returns true, otherwise, it returns false.
+
+
+ 
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(isEqual  #{dic|X: 1 Y: 2} #{dic|X: 1 Y: 2})    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>(isEqual  #{dic|X: 1 Y: 2} #{dic|X: 1 Y: 3})       </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ false ]]></Returns>
+        <Expression><![CDATA[ <sc>(isEqual  #{dic|X: 1 Y: 2 Z: 3} #{dic|X: 1 Y: 3})  </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ false ]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

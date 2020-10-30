@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>argFetch</Title>
+		<FunctionName>argFetch</FunctionName>
+		<FunctionType>Special Form</FunctionType>
+        <ArgumentTypes> Lambda</ArgumentTypes>
+        <DataType> Lambda</DataType>
+	    <RelatedFunctions>argCount</RelatedFunctions>
+        <RelatedVMInstructions>vmargcount vmargfetch   </RelatedVMInstructions>
+		<HumanKeywords>Lambda arguments</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>argFetch  </b> special form returns the nth argument passed to the current function.</p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+	<p> The <b>argFetch  </b> special form returns the nth argument passed to the current function.</p>
+        ]]></Overview>
+       <Usage><![CDATA[
+        <p>The <b>argFetch</b> special form is used to access arguments in Lambdas, which have 
+       been sent an indefinite number of arguments using the ellipsis syntax form.  The number 
+       of arguments is only known at runtime.	</p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p>      (argFetch index) </p>
+ ]]></Expression>              
+		<Argument>
+		  <Name>index</Name>
+		  <Note><![CDATA[
+		  <p> The index of the argument to be fetched. </p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>The value of the indexed argument
+        </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

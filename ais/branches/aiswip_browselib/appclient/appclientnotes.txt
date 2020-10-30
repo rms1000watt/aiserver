@@ -1,0 +1,97 @@
+appclien/appclientnotes.txt		tlwms				8/28/02
+
+							Application Client
+
+The AppClient project generates a static library that provides a local
+or remote application an interface to Lambda Internet Server (AIS).
+One instance of this class is created for every context window, server message
+window, browser, Flash movie, etc.  Each instance of the appclient class
+keeps state about the window, and provides a set of functions that expose
+the functionality that is available to all AIS clients.  Some functions
+are implemented right in the client and return immediately.  Other functions
+make calls to the appsvr and return asynchronously, often on a different
+thread. The connection between a remote appclient and appsvr is made over
+a TCP socket connection.
+	
+
+DOCUMENTATION GUIDE
+-------------------
+*	appclient/appclientnotes.txt - this document.
+*	include/appclient.h - appclient class specifications.
+*	webide/main.cpp - example of the use of appclient.
+*	Docs/InternalDocumentation/Qt - Documents on building Qt
+	projects.
+*	Docs/InternalDocumentation/VisualStudio - Importing Qt projects,
+	general project settings, and compiler options.
+
+GENERAL NOTES
+-------------
+
+
+
+						APPLICATION CLIENT CONFIGURATION
+CONFIGURATION
+-------------
+1.	Edit abase.ini file.  Modify values to fit your installation.
+	This file must be in the same directory as ????
+	For now, just add the configuration parameters to ???? 
+
+
+						APPCLIENT PROJECT
+PROJECT SETUP
+-------------
+This project was created as follows:
+1.	Compose appclient.pro by hand.  See comments in the .pro file and Qt
+	Qmake.doc for more details.  One can also generate a .pro
+	file using QtDesigner.
+2.	Start Visual Studio. Select "Open Qt Project" icon in Qt
+	add-in toolbar and select appclient.pro to create a appclient.dsp.
+3.	Select File->OpenWorkspace->FileType->*.dsp. Select
+	appclient.dsp to create the appclient Project.
+4.	Modify project settings as noted below.  Build debug and
+	release configurations.
+							
+PROJECT SETTINGS
+----------------
+Project->Settings
+	C/C++ tab
+		General
+			WarningLevel: 3
+		C++ Language
+			Enable Exceptions
+		CodeGeneration:
+			Blend,DebugMultithreadedDLL,cdecl,8 bytes
+		PreProcessor
+			IncludeDirs: $(QTDIR)/Include, $(QTDIR)/mkspecs/win32-msvc,
+				../Include
+			Definitions: WIN32,_DEBUG,_LIB,_MCBS,UNICODE,QT_DLL,
+				QT_THREAD_SUPPORT
+	Library tab
+		General
+			OutputFile: ../bin/debug/appclient.lib
+
+	C/C++ tab
+		General
+			(not currently done) Add to Options: /def:"appclient.def" ???
+
+
+Static Library Debug Project Options:
+/nologo /MDd /W3 /Gm /GX /Zi /Od /I "../include" /I "$(QTDIR)/include"
+/I "$(QTDIR)/mkspecs/win32-msvc" /D "WIN32" /D "_DEBUG" /D "_MBCS"
+/D "_LIB" /D "UNICODE" /D "QT_DLL" /D "QT_THREAD_SUPPORT"
+/Fo"Debug/" /Fd"Debug/" /FD /GZ /c
+ 
+Static Library Release Project Options:
+...
+
+See Docs/InternalDocumentation/VisualStudio/VsProcedures.doc
+for list of above compiler options.
+
+BUILD
+-----
+Moc'ing ../include/????
+etc...
+ 
+					TIPS 'N TRICKS
+
+

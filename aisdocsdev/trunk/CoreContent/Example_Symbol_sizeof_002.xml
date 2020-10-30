@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Symbol sizeof 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>sizeof</FunctionKeywords>
+		<TypeKeywords>Character String Symbol Vector BitVector ByteVector IntVector
+
+
+
+
+
+
+                       FltVector ObjVector Structure Dictionary Directory
+
+
+
+
+
+
+                       Matrix NumMatrix Integer Float Number Complex</TypeKeywords>
+		<RelatedFunctions>new length </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>sizeof closure bytes length disk memory</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples return the closure size of the Symbol objects.  
+                  The closure size would depend on the 
+
+                  length of the evaluated objects.
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq A (new Symbol:  "Mickey"))  </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[Mickey]]></Returns>
+        <Expression><![CDATA[ <sc>(ref Mickey)  </sc>]]></Expression>
+        <Note><![CDATA[Void is returned since no value is assigned to the Symbol Mickey.]]></Note>
+        <Returns><![CDATA[ #void ]]></Returns>
+        <Expression><![CDATA[ <sc>(ref A)   </sc>]]></Expression>
+        <Note><![CDATA["A" contains the symbol Mickey.]]></Note>
+        <Returns><![CDATA[ Mickey ]]></Returns>
+        <Expression><![CDATA[ <sc>(sizeof  A)   </sc>]]></Expression>
+        <Note><![CDATA[Returns the closure size "A" which holds the Symbol ]]></Note>
+        <Returns><![CDATA[ 72 ]]></Returns>   
+        <Expression><![CDATA[ <sc>(sizeof  Mickey)   </sc>]]></Expression>  
+        <Note><![CDATA[Returns the closure size Mickey is the name of the allocated Symbol Data Type.]]></Note> 
+        <Returns><![CDATA[ 16 ]]></Returns>
+        <Hints><![CDATA[The closure size may be different values for the same object on different 
+
+               hardware platforms due to word alignment issues. The values returned from 
+
+               the <b>sizeof</b> function in the examples above are the values returned on a 
+
+               Intel Pentium-based platform.
+
+        ]]></Hints>
+   </Syntax>
+</Example>

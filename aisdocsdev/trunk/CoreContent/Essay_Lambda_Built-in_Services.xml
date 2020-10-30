@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Essay SYSTEM "../DTD/Essay.dtd">
+<Essay>
+	<KnowledgeBase>
+	    <Title>Lambda Built-in Services</Title>
+		<Topic>AIS</Topic>
+		<SubTopic>Overview</SubTopic>
+		<HumanKeywords>Analytic Information Server Overview Objects Programming</HumanKeywords>
+	</KnowledgeBase>
+	<Section>
+	    <Heading>Built-in AIS Data Types</Heading>
+		<Description><![CDATA[		
+		 <div class="h2section" id="Built-in AIS Data Types">
+	     <p class="MsoBodyText">Analytic Information Server data types are divided
+	      into three categories: Native Data Types (also known as Immediate types),
+	      Objects<span style="mso-spacerun: yes">&nbsp; </span>(heap objects) and
+	      Repositories. The Native (immediate) types can be entirely contained
+	      within the immediate data of a single Virtual Machine Container. The
+	      Objects (heap objects) types are too large to be contained within a single
+	      Virtual Machine Container and require extra memory must be managed by the
+	      heap manager. Without exception, all of the Object types are identified by
+	      an object id.<span style="mso-spacerun: yes">&nbsp; </span>The object id
+	      identifies a block of memory, managed by the Analytic Information Server
+	      memory manager, in which the Object's data is stored.</p>
+	      <p class="MsoBodyText"><![if !supportEmptyParas]>Virtual Machine
+	      Containers are of fixed length and come in different sizes. Containers
+	      store data immediately and, when data becomes too large to store
+	      immediately, it is stored in the Heap and is referenced by the container.</p>
+	      <p class="MsoBodyText"><![if !supportEmptyParas]>The Heap contains memory
+	      resident data, which is of variable length or is too large to fit in small
+	      fixed containers. The Analytic Information Server object Heap manager
+	      supports automated object resizing, garbage collection, and
+	      anti-fragmentation algorithms so that the user may concentrate on the
+	      analysis and modeling of data rather than on memory management.</p>
+	      <p class="MsoBodyText"><![if !supportEmptyParas]>Repositories (databases)
+	      contain persistent data of all sorts. Analytic Information Server supports
+	      repositories with multiple database volumes and multiple database schema's
+	      including General Object Repositories, Text Repositories, and Spreadsheet
+	      Repositories.</p>
+	      <p><font color="navy" size="4">Native Data Types</font></p>
+	      <p class="MsoBodyText">Analytic Information Server stores all of its Native
+	      Data Types in Virtual Machine Containers.<span style="mso-spacerun: yes">&nbsp;
+	      </span>All containers are stored in memory. Containers provide the basic
+	      storage mechanism for modeling data of all types. Containers provide these
+	      fundamental characteristics:</p>
+	      <p class="MsoBodyText"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	      </span>Ability to hold any type of data (including code) at any time.</p>
+	      <p class="MsoBodyText"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	      </span>Ability to know what type of data is contained.</p>
+	      <p class="MsoBodyText"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	      </span>Ability to be stored, retrieved and evaluated by the system.</p>
+	      <p class="MsoBodyText"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	      </span>Ability to handle type conversion, and memory management
+	      automatically.&nbsp;<![endif]><o:p></o:p></p>
+	      <p class="MsoBodyText">Containers come in two sizes, Large and Small.
+	      Small containers are six bytes in length, and large containers are ten
+	      bytes in length. Large containers can store larger amounts of data
+	      immediately and place less of a burden on the Heap manager. Small
+	      containers require less immediate space, but place more of a burden on the
+	      Heap manager.</p>
+	      <p class="MsoBodyText">Large containers can store the following data types
+	      immediately and does not require the services of the Heap manager:</p>
+	      <p class="MsoBodyText"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	      </span>#void</p>
+	      <p class="MsoBodyText"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	      </span>error</p>
+	      <p class="MsoBodyText"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	      </span>Boolean</p>
+	      <p class="MsoBodyText" style="text-indent:.5in">Character</p>
+	      <p class="MsoBodyText"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	      </span>Integer</p>
+	      <p class="MsoBodyText" style="margin-left:.5in;mso-list:skip">Number</p>
+	      <p class="MsoBodyText" style="margin-left:.5in;mso-list:skip">Integer</p>
+	      <p class="MsoBodyText" style="margin-left:.5in;mso-list:skip">Money</p>
+	      <p class="MsoBodyText" style="margin-left:.5in;mso-list:skip">Percent</p>
+	      <p class="MsoBodyText" style="text-indent:.5in">String</p>
+	      <p class="MsoBodyText" style="text-indent:.5in">Text</p>
+	      <p class="MsoBodyText" style="text-indent:.5in">Character</p>
+	      <p class="MsoBodyText"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	      </span>Spair</p>
+	      <p class="MsoBodyText"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	      </span>...heap object references...</p>
+	      <p class="MsoBodyText">Small containers can store the following data types
+	      immediately without placing additional burden on the Heap manager:</p>
+	      <p class="MsoBodyText"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	      </span>#void</p>
+	      <p class="MsoBodyText"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	      </span>Boolean</p>
+	      <p class="MsoBodyText"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	      </span>Character</p>
+	      <p class="MsoBodyText"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	      </span>Number</p>
+	      <p class="MsoBodyText"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	      </span>Integer</p>
+	      <p class="MsoBodyText"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	      </span>...heap object reference...&nbsp;<![endif]><o:p></o:p></p>
+	      <p class="MsoBodyText">Analytic Information Server containers can be saved
+	      and loaded to and from persistent (database) storage at any time.
+	      Containers with immediate data are saved on disk in fixed length records
+	      equal to the size of the container. Containers with Heap object references
+	      are saved in fixed length records, which are automatically expanded to
+	      include the contents of the Heap object, and any objects referenced by the
+	      Heap object, etc. This feature is called Object Closure Management and is
+	      automatic with every Analytic Information Server container database save.
+	      Analytic Information Server containers may be loaded from any database
+	      repository record at any time. If the data in the record is immediate, the
+	      database load fills the container with the immediate data. If the data in
+	      the record is an object closure, the database load fills the container
+	      with a Heap object reference, and all of the objects in the record are
+	      loaded back into the Heap with the same referential relationships they had
+	      when they were saved.</p>
+	      <p><font color="navy" size="4">Object Data Types</font></p>
+	      <p class="MsoBodyText">The Analytic Information Server Object Types are
+	      stored in the Heap and are managed by the Heap manager.<span style="mso-spacerun: yes">&nbsp;
+	      </span>The Analytic Information Server Heap manager supports object resizing,
+	      garbage collection, and anti-fragmentation algorithms so that the user may
+	      concentrate on the analysis and modeling of data rather than on memory
+	      management. Without exception, all of the Object types are identified by
+	      an object id.<span style="mso-spacerun: yes">&nbsp; </span>The object id
+	      identifies a block of memory, managed by the Analytic Information Server
+	      memory manager, in which the Object's data is stored.</p>
+	      <p class="MsoBodyText">The Analytic Information Server Heap Object and Native
+	      Data types can be saved and loaded to and from persistent (disk file)
+	      storage at any time. Containers with immediate data are saved on disk in
+	      fixed length records equal to the size of the container. Containers with
+	      Heap object references are saved in fixed length records, which are
+	      automatically expanded to include the contents of the Heap object, and any
+	      objects referenced by the Heap object, etc. This feature is called Object
+	      Closure Management and is automatic with every Analytic Information Server
+	      container database save.</p>
+	      <p class="MsoBodyText">Analytic Information Server containers may be loaded
+	      from any database repository record at any time. If the data in the record
+	      is immediate, the database load fills the container with the immediate
+	      data. If the data in the record is an object closure, the database load
+	      fills the container with a Heap object reference, and all of the objects
+	      in the record are loaded back into the Heap with the same referential
+	      relationships they had when they were saved in the repository.<![endif]><o:p></o:p></p>
+	      <p class="MsoBodyText">Analytic Information Server supports global variables
+	      which are valid during the whole life of the current workspace.<span style="mso-spacerun: yes">&nbsp;
+	      </span>Global variables are not lost when the current Lambda invocation
+	      returns control.<span style="mso-spacerun: yes">&nbsp; </span>Lambda
+	      Information Server global variables are referenced by specifying the
+	      symbol.<span style="mso-spacerun: yes">&nbsp; </span>In addition to user
+	      defined globals, Analytic Information Server global variables include all of
+	      the built-in functions.</p>     
+	      <!--docscript>(aisRefGuide.dataTypeLinkTable)</docscript-->
+	    </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>Built-in Lambda Functions</Heading>
+		<Description><![CDATA[
+		    <div class="h2section" id="Built-in Lambda Functions">
+		      <p>The sections, which follow, describe all of the AIS built-in global
+		      functions, methods, macros, and global variables, which operate upon or
+		      are specifically related to the Lambda executable object type. Each
+		      function, method, and global variable has its own section. The sections
+		      are listed in alphabetic order. In the next sections, we have also included several Lisp special
+		      forms which illustrate general features and properties of Lambda objects.</p> 
+		      <!--docscript>(aisRefGuide.functionLinkTable)</docscript-->
+		    </div>
+	    ]]></Description>
+	</Section>
+</Essay>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Symbol hashString 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>hashString</FunctionKeywords>
+		<TypeKeywords>Symbol Integer</TypeKeywords>
+		<RelatedFunctions>char code</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>hash symbol convert hashtable</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples convert the Symbols into  non-unique integer values in a hash table.
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(hashString MyLabel:)</sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[-1495275065]]></Returns>
+        <Expression><![CDATA[ <sc>(hashString YourLabel:) </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[-907999770 ]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

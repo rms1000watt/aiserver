@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>callcc</Title>
+		<FunctionName>callcc</FunctionName>
+		<FunctionType>Special Form</FunctionType>
+        <ArgumentTypes> Lambda Function</ArgumentTypes>
+        <DataType> Lambda</DataType>
+	    <RelatedFunctions>eval end </RelatedFunctions>
+        <RelatedVMInstructions>vmcall  </RelatedVMInstructions>
+		<HumanKeywords>call continuation function terminate recursion </HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>call_cc</b> function provides a mechanism for terminating a called 
+              function prematurely. </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+	     <p> The  <b>call_cc</b>  function provides a mechanism for terminating a called function 
+          prematurely. No matter where the called function is, in terms of recursion depth, 
+          <b>call_cc</b> allows the called function to terminate prematurely and return to the 
+          spot just after the <b>call_cc</b> invocation.</p>
+          <p>In order to do this, <b>call_cc</b> creates an artifice called a "current continuation", 
+           which is passed to the called function as an argument. The called function must have 
+           one and only one argument, which is to be the current continuation created by <b>call_cc</b>.
+          <p>The  <b>call_cc</b>  function passes the current continuation as an argument to 
+          function.  The current continuation is also a function with one argument which, when 
+          invoked, resumes execution from the spot just after the <b>call_cc</b> invocation.</p>
+        ]]></Overview>
+       <Usage><![CDATA[
+        <p>Use whenever you may need a call back function to a higher recursion level in a 
+         program. Multiple <b>call_cc</b> functions can be invoked in the same program. Each 
+          continuation will always call back to the <b>call_cc</b> which created it.</p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p>      (call_cc  aFunction) </p>
+ ]]></Expression>
+		<Argument>
+		  <Name>aFunction</Name>
+		  <Note><![CDATA[
+		  <p>A function, expecting a current continuation argument, which may terminate 
+              prematurely by invoking the current continuation.</p>
+          ]]></Note>
+		  <AISTypes>aFunction</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>The value returned by the aFunction argument.</p>
+	    ]]></Return>
+	</Syntax>
+</Function>

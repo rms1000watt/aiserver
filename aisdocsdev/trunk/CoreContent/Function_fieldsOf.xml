@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>fieldsOf</Title>
+		<FunctionName>fieldsOf</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>Structure</ArgumentTypes>
+		<DataType>Structure </DataType>
+		<RelatedFunctions>defstruct makeStructure defclass objectToStructure defineStructure</RelatedFunctions>
+        <RelatedVMInstructions>vmregObjPointer  </RelatedVMInstructions>
+		<HumanKeywords>define set make object structure inherit 
+
+                       parent object-oriented classes</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p>  The fieldsOf function returns the field bindings  associated with the specified 
+                  structure type.   </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>fieldsOf</b> function returns the field bindings (symbolic key-value pair) 
+         associated with the specified structure type (see <b>defineStructure</b>).  
+         The field bindings for a given type are set by the <b>defineStructure</b>
+         or the <b>defstruct</b> Function.
+        </p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>fieldsOf</b> function is used to retrieve the field names and values for a 
+           user defined structure type (defined by <b>defineStructure</b> or <b>defstruct</b>) .</p>
+        ]]></Usage>
+    </Brief>
+	<Syntax-Structure>
+	    <Expression><![CDATA[<p>(fieldsOf type )</p>]]></Expression>
+		<Argument>
+		  <Name>type</Name>
+		  <Note><![CDATA[
+		  <p>A user defined structure type (symbolic name)</p>
+          ]]></Note>
+		  <AISTypes>String or Text </AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>A structure containing the bindings (fields names and value pairs) for the type
+
+        </p>
+	    ]]></Return>
+	</Syntax-Structure>
+</Function>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmregSetInteger</Title> 
+		<InstructionName> vmregSetInteger   </InstructionName>
+		<InstructionType>Register</InstructionType>
+		<ArgumentTypes>  Integer  IntPointer </ArgumentTypes>
+		<RelatedVMInstructions> vmregSetCharImmediate vmregSetCharacter 
+		                        vmregSetNumber vmregSetIntImmediate vmregSetFloat
+		                        vmregSetShort vmregSetShortImmediate</RelatedVMInstructions>
+		<HumanKeywords>   Integer IntImmediate set  </HumanKeywords>
+	</KnowledgeBase>                   
+	<Description><![CDATA[
+		<p>When evaluated, this vm instruction, uses the IntPointer in the 
+		register <b>pointer</b>, to save an Integer value from the register 
+		<b>source</b>. The result is saved into the memory location pointed 
+		to by the <b>pointer</b> register. The result will be saved as a type 
+		Integer from the Integer value in the <b>source</b> register. 
+		This instruction may return an Error value. After the operation, the 
+		Instruction Pointer is promoted. The operation of this vm instruction 
+		is expressed in the following C expression:
+     	</p>      
+        <ul><li><b>  *((int*)pointer) = (int)source;</b></li></ul>
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[(vmregSetInteger source pointer)]]></Expression>
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>register</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>		 
+		<Argument> 
+		  <Name>pointer</Name>
+		  <Format>register</Format>
+		  <AISTypes>IntPointer</AISTypes>			     
+		</Argument>
+	</Syntax>
+</VMInstruction>

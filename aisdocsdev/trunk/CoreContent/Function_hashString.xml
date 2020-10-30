@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>hashString</Title>
+		<FunctionName>hashString</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>String Integer</ArgumentTypes>    
+		<DataType>String Symbol </DataType>
+		<RelatedFunctions>code char</RelatedFunctions>
+        <RelatedVMInstructions>   </RelatedVMInstructions>
+		<HumanKeywords>hash convert string symbol hashtable</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[ 
+             <p> The <b>hashString</b> function converts the target object into an integer hash number. </p>
+          ]]></Description>
+	<Brief>                
+	   <Overview><![CDATA[
+		<p>The <b>hashString</b> function converts the target object into an integer hash number.</p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>hashString</b> function is used to convert a String or Symbol into a non-unique integer value for storage and later retrieval in a hash table.</p>
+        ]]></Usage>
+    </Brief>
+	<Syntax-String>
+	    <Expression><![CDATA[<p> (hashString aString)</p>]]></Expression>
+		<Argument> 
+		  <Name>aString</Name>
+		  <Note><![CDATA[
+		  <p> The String to be converted into a hash integer</p>
+          ]]></Note>
+		  <AISTypes>String </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The String to be converted into a hash integer.</p>
+	    ]]></Return>   
+	</Syntax-String>
+	<Syntax-Symbol>
+	    <Expression><![CDATA[<p> (hashString aSymbol)</p>]]></Expression>
+		<Argument> 
+		  <Name>aSymbol</Name>
+		  <Note><![CDATA[
+		  <p> The Symbol to be converted into a hash integer</p>
+          ]]></Note>
+		  <AISTypes>Symbol </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>A non-unique integer hash value.</p>
+	    ]]></Return>   
+	</Syntax-Symbol>
+</Function>

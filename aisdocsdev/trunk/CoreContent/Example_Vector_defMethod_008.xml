@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Vector defmethod 008</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>defmethod</FunctionKeywords>
+		<TypeKeywords>Vector Dictionary Symbol</TypeKeywords>
+		<RelatedFunctions>addMethod send methodsOf</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>method message messageName</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example calls the <b>defmethod</b> function where the method <b>appendString</b>
+                  is implemented for the Vector type.  The method <b>appendString</b>
+                  is invoked by  calling the method name  in the  Methods Dictionary.
+
+
+
+
+
+
+
+   	]]></Description>
+	<Syntax>
+	<Expression><![CDATA[
+    <sc> (defmethod  Vector: appendStrings (s)  (apply append  s))      </sc>
+    ]]></Expression>
+   <Note><![CDATA[ The method, appendString is defined for the Vector type.
+
+
+
+
+   ]]></Note>
+   <Returns><![CDATA[#&#60Dictionary 12345&#62]]></Returns>
+   <Expression><![CDATA[<sc>(define Mary  #("Mary " "had " "a " "little " "lamb ")  )     </sc> ]]></Expression>
+   <Note><![CDATA[ Define a Vector that contains a set of Strings. ]]></Note>
+   <Returns><![CDATA[#&#60Vector 123456&#62]]></Returns>
+   <Expression><![CDATA[<sc>(send  appendStrings:  Mary)            </sc> ]]></Expression>
+   <Note><![CDATA[Invoke the method named appendStrings to append all the values in the Vector named Mary.
+
+
+
+   ]]></Note>
+   <Returns><![CDATA[Mary had a little lamb]]></Returns>
+   <Expression><![CDATA[<sc>(appendStrings:  Mary)   </sc> ]]></Expression>
+   <Note><![CDATA[The method can be invoked simply by name.
+
+
+
+
+   ]]></Note>
+   <Returns><![CDATA[Mary had a little lamb]]></Returns>
+  <Hints><![CDATA[ <p>To view the entry in the methods Dictionary created by the defMethod function </p>
+        <p><b> #&#60Dictionary 123456&#62[msgName:] or </b></p>
+        <table>
+            <tr><td width=60%><b>(display (methodsOf Vector: )) </b></td>
+                <td width=40%> Returns: <b> #{dic| appendString #&#60Lambda 123456&#62}   </b></td></tr>
+        </table>
+         <p>If the method Name is unknown, it is possible to reference the nth name 
+
+
+            from the dictionary:</p>
+         <p><b>(ref  (methodsOf Vector: ) n  0) </b></p>
+         <p> or </p>
+         <p><b>#&#60Dictionary 123456[n 0] </b></p>
+]]></Hints>
+  </Syntax>
+</Example>

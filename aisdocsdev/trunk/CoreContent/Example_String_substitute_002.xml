@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example String substitute 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>substitute</FunctionKeywords>
+		<TypeKeywords>String Text Integer</TypeKeywords>
+		<RelatedFunctions>replace rept </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>replace substitute substring</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows the <b>substitute</b> function with the
+                  optional <b>{count}</b> argument modifying
+                  a substring of a given Text or String with a specified Text or String.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq S  (new String:  "the apple and the orange"))      </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[the apple and the orange]]></Returns>
+        <Expression><![CDATA[ <sc>(setq S (substitute S "the" "an" ))</sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[an apple and an orange]]></Returns>
+        <Expression><![CDATA[ <sc>(setq S (substitute S "the" "an" 1 ))</sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[the apple and an orange]]></Returns>
+        <Hints><![CDATA[The <b>substitute</b> function is non-destructive.]]></Hints>
+   </Syntax>
+</Example>

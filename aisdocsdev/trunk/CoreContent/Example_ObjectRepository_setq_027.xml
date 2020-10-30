@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example ObjectRepository setq 027</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>setq</FunctionKeywords>
+		<TypeKeywords>ObjectRepository</TypeKeywords>
+		<RelatedFunctions> setf ref set </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>set setq replace global value</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows the <b>setq</b> special form and set function equivalences.
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq target newValue)        </sc>]]></Expression>
+        <Note><![CDATA[Same as:]]></Note>
+        <Returns><![CDATA[(set 'target newValue)]]></Returns>
+ 	    <Expression><![CDATA[ <sc>(setq target newValue)    </sc>]]></Expression>  
+        <Note><![CDATA[Same as:]]></Note> 
+        <Returns><![CDATA[(set target: newValue)]]></Returns>
+	    <Expression><![CDATA[ <sc>(setq target newValue)    </sc>]]></Expression>  
+        <Note><![CDATA[Same as:]]></Note> 
+        <Returns><![CDATA[(vmmove newValue target)]]></Returns>
+ 	    <Expression><![CDATA[ <sc>(setq (ref target index1) newValue)       </sc>]]></Expression>  
+        <Note><![CDATA[Same as:]]></Note> 
+        <Returns><![CDATA[(set target index1 newValue)]]></Returns>
+ 	    <Expression><![CDATA[ <sc>(setq target[index1] newValue)        </sc>]]></Expression>  
+        <Note><![CDATA[Same as:]]></Note> 
+        <Returns><![CDATA[(set target index1 newValue)]]></Returns>
+ 	    <Expression><![CDATA[ <sc>(setq target.index1 newValue)          </sc>]]></Expression>  
+        <Note><![CDATA[Same as:]]></Note> 
+        <Returns><![CDATA[(set target index1 newValue)]]></Returns>
+ 	    <Expression><![CDATA[ <sc>(setq (ref target index1 index2) newValue)         </sc>]]></Expression>  
+        <Note><![CDATA[Same as:]]></Note> 
+        <Returns><![CDATA[(set target index1 index2 newValue)]]></Returns>
+ 	    <Expression><![CDATA[ <sc>(setq (ref target index1 index2 index3) newValue)        </sc>]]></Expression>  
+        <Note><![CDATA[Same as:]]></Note> 
+        <Returns><![CDATA[(set target index1 index2 index3 newValue)]]></Returns>
+ 	    <Expression><![CDATA[ <sc>(setq target[index1 index2 index3] newValue)        </sc>]]></Expression>  
+        <Note><![CDATA[Same as:]]></Note> 
+        <Returns><![CDATA[(set target index1 index2 index3 newValue)]]></Returns>
+        <Hints><![CDATA[none
+        ]]></Hints>
+   </Syntax>
+</Example>

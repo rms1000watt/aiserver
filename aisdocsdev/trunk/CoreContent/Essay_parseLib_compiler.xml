@@ -1,0 +1,1303 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Essay SYSTEM "../DTD/Essay.dtd">
+<Essay>
+	<KnowledgeBase>
+	    <Title>Introduction</Title>
+		<Topic>parseLib</Topic>
+		<SubTopic>Overview</SubTopic>
+		<HumanKeywords>parseLib compiler</HumanKeywords>
+	</KnowledgeBase>
+	<Section>
+	    <Heading>Overview</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="Overview">
+		<p class=MsoBodyText>This Lambda is a compiler compiler tool in the same general
+		class of tools as yacc. The compiler definition language for this Lambda uses a
+		feature based grammar. Feature based grammars exceed the capabilities of
+		regular expressions and BNF notation grammars. This Lambda is capable of
+		supporting context sensitive compilers, such as those required to parse natural
+		languages.</p>
+		<p class=MsoBodyText>This Lambda converts a compiler definition into a generated
+		Lambda, which is a compiler or translator for the language specified in the
+		compiler definition. The compiler definition language may be described as a
+		&quot;meta language&quot; with which to describe compilers, and is capable of
+		describing, not only the formal syntax of the language to be compiled, but also
+		the semantics, code optimization, and code generation required from the
+		compiler.</p>
+		<p class=MsoBodyText>There are a number of features which differentiate this
+		Lambda from other compiler compiler tools of previous generations (such as yacc
+		and lex). A brief list of these differentiating features is as follows:</p>
+		<p class=MsoBodyText style='margin-left:.5in;text-indent:-.25in;mso-list:l0 level1 lfo4;
+		tab-stops:list .5in'><a name="_Toc392061948">??&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		Support for context sensitive languages, natural
+		languages, and extensive semantic analysis.</a></p>
+		<p class=MsoBodyText style='margin-left:.5in;text-indent:-.25in;mso-list:l0 level1 lfo4;
+		tab-stops:list .5in'>??&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		Complete code generation facilities by parse tree pass
+		through to morph and compile.</p>
+		<p class=MsoBodyText style='margin-left:.5in;text-indent:-.25in;mso-list:l0 level1 lfo4;
+		tab-stops:list .5in'>??&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		Built-in lexical analyzer with user defined alterations
+		and extensions.</p>
+		<p class=MsoBodyText style='margin-left:.5in;text-indent:-.25in;mso-list:l0 level1 lfo4;
+		tab-stops:list .5in'>??&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		Feature based grammar support in both dynamic and
+		static modes.</p>
+		<p class=MsoBodyText style='margin-left:.5in;text-indent:-.25in;mso-list:l0 level1 lfo4;
+		tab-stops:list .5in'>??&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		Simple RTN recognition rules including rule iteration
+		and rule argument passing.</p>
+		<p class=MsoBodyText style='margin-left:.5in;text-indent:-.25in;mso-list:l0 level1 lfo4;
+		tab-stops:list .5in'>??&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		Semantic forward production rules including rule
+		iteration and rule argument passing.</p>
+		<p class=MsoBodyText style='margin-left:.5in;text-indent:-.25in;mso-list:l0 level1 lfo4;
+		tab-stops:list .5in'>??&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		Produces human readable source code as well as
+		generating the resulting compiler.</p>
+		<p class=MsoBodyText>&nbsp;</p>
+		  </div>	  
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>Compiler Definition Language</Heading>
+		<Description><![CDATA[
+          <div class="h2section" id="Compiler Definition Language"> 
+		<p class=MsoBodyText>This Lambda supports a Compiler Definition Language (<b style='mso-bidi-font-weight:normal'>CDL</b>) of <b style='mso-bidi-font-weight:
+		normal'>IF -&gt; THEN</b> feature based recognition rules for transforming an
+		ASCII source string into compiled or transformed output. The IF - &gt; THEN
+		rules are all entered via the <b style='mso-bidi-font-weight:normal'>CDL</b>. This
+		Lambda accepts a set of compiler definition rules as its sole input argument.
+		The compiler definition language, described in the previous section,
+		constitutes the CDL of this Lambda. After receiving the compiler definition
+		language input, the this Lambda constructs a result Lambda. The result Lambda is
+		produced in human readable Lisp source code format and is checked into the file
+		cabinet. The result Lambda is a compiler which implements the specified compiler
+		definition rules.</p>       
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>browseLib</Heading>
+		<Description><![CDATA[
+            <div class="h2section" id="browseLib">
+			<p class=MsoBodyText>This Lambda depends upon the browseLib and upon an open
+			Lambda file cabinet. The <b style='mso-bidi-font-weight:normal'>parseLib</b>
+			is passed the name of the compiler to be generated, &quot;<b style='mso-bidi-font-weight:
+			normal'>myCompiler&quot;</b>. The parseLib assumes that the compiler
+			definition language input for generating the &quot;myCompiler&quot; compiler is
+			checked into the file cabinet under the key:
+			&quot;myCompiler:%DEFINITION&quot;. The parseLib generates the the
+			&quot;myCompiler&quot; compiler in Lisp source form and checks the source into
+			the file cabinet.</p>	
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>Theory Of Operation</Heading>
+		<Description><![CDATA[
+		    <div class="h2section" id="Theory of Operation">
+			<p class=MsoBodyText>This Lambda expects to receive a single argument, which is
+			the name of the compiler definition source in the Lambda file cabinet. The <b style='mso-bidi-font-weight:normal'>parseLib</b> then generates human
+			readable source code back into the file cabinet as follows:</p>
+			<p class=MsoBodyText style='line-height:117%;page-break-after:avoid;mso-outline-level:
+			1'><b style='mso-bidi-font-weight:normal'><u>Theory Of
+			Operation</u></b></p>
+			<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>(parseLib
+			cabinetName &quot;java&quot;)</b></p>
+			<p class=MsoBodyText style='margin-left:.25in;text-indent:-.25in;mso-list:l7 level1 lfo3;
+			tab-stops:list .25in'>??&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			First, the parseLib, using the browseLib, checks
+			out the compiler definition under the key &quot;<b style='mso-bidi-font-weight:
+			normal'>java:%DEFINITION</b>&quot;. </p>
+			<p class=MsoBodyText style='margin-left:.25in;text-indent:-.25in;mso-list:l7 level1 lfo3;
+			tab-stops:list .25in'>??&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			After reading the compiler definition file, the
+			parseLib generates the Lisp source code for the java compiler. The main <b style='mso-bidi-font-weight:normal'>java</b> Lambda and several child Lambdas are
+			generated.</p>
+			<p class=MsoBodyText style='margin-left:.25in;text-indent:-.25in;mso-list:l7 level1 lfo3;
+			tab-stops:list .25in'>??&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			Using the browseLib, the java compiler's Lisp source
+			code is checked into the file cabinet.</p>
+			<p class=MsoBodyText style='margin-left:.25in;text-indent:-.25in;mso-list:l7 level1 lfo3;
+			tab-stops:list .25in'>??&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			The java compiler's Lisp source code is compile,
+			producing a complete java compiler read to run.</p>
+			</div>	
+       ]]></Description>
+ </Section>	     
+	<Section>
+	    <Heading>parseLib</Heading>
+		<Description><![CDATA[
+			<div class="h2section" id="parseLib">
+		    <p class=MsoBodyText>The <b style='mso-bidi-font-weight:normal'>parseLib</b>
+			function accepts the name of the compiler cabinet and the name of the compiler
+			to be generated. It is assumed that the compiler definition for the new
+			compiler is checked into the file cabinet under the key: &quot;<i style='mso-bidi-font-style:normal'>NAME</i>:%DEFINITION&quot;. The resulting
+			compiler is generated in the form of Lisp source code and is checked into the
+			file cabinet under the key &quot;<i style='mso-bidi-font-style:normal'>NAME</i>&quot;.</p>
+			<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>Note:</b> The
+			parseLib can also generate a compiler which is a friend Lambda within a parent
+			Lambda. In this case, it is assumed that the compiler definition for the new
+			compiler is checked into the file cabinet under the key: &quot;PARENT:<i style='mso-bidi-font-style:normal'>NAME</i>:%DEFINITION&quot;. The resulting
+			compiler is generated in the form of Lisp source code and is checked into the
+			file cabinet under the key &quot;PARENT:<i style='mso-bidi-font-style:normal'>NAME</i>&quot;.</p>
+			<p class=MsoBodyText>&nbsp;</p>
+			<p class=MsoBodyText style='mso-outline-level:1'><b style='mso-bidi-font-weight:
+			normal'>Type:
+			           Function</b></p>
+			<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'><u>&nbsp;</u></b></p>
+			<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>Syntax:            (parseLib  cabinetName &quot;Name&quot;)</b></p>
+			<p class=MsoBodyText style='margin-left:.5in;text-indent:.5in'><b style='mso-bidi-font-weight:normal'>(parseLib  cabinetName &quot;Parent:Name&quot;)</b></p>
+			<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'><u>&nbsp;</u></b></p>
+			<p class=MsoBodyText style='line-height:117%;page-break-after:avoid;mso-outline-level:
+			1'><b style='mso-bidi-font-weight:normal'><u>When To
+			Use               </u></b></p>
+			<p class=MsoBodyText>The <b style='mso-bidi-font-weight:normal'>parseLib</b>
+			function performs the actual parsing recognition provided by this Lambda. Use
+			the <b style='mso-bidi-font-weight:normal'>parseLib</b> function you wish to regenerate
+			the specified compiler from its compiler definition.<b style='mso-bidi-font-weight:
+			normal'></b></p>
+			<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>__________________________________________________________________</b></p>
+			<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>Arguments                               Explanation                                                                  </b></p>
+			<table border=0 cellspacing=0 cellpadding=0 style='border-collapse:collapse;
+			 mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+			 <tr>
+			  <td width=227 valign=top style='width:135.9pt;padding:0in 5.4pt 0in 5.4pt'>
+			  <p class=TableText style='margin-top:2.0pt;margin-right:0in;margin-bottom:
+			  2.0pt;margin-left:0in'><b style='mso-bidi-font-weight:normal'>cabinetName</b></p>
+			  </td>
+			  <td width=572 valign=top style='width:342.9pt;padding:0in 5.4pt 0in 5.4pt'>
+			  <p class=TableText style='margin-top:2.0pt;margin-right:0in;margin-bottom:
+			  2.0pt;margin-left:0in'>The name of the file cabinet in which the compiler
+			  definition is to be found</p>
+			  </td>
+			 </tr>
+			 <tr>
+			  <td width=227 valign=top style='width:135.9pt;padding:0in 5.4pt 0in 5.4pt'>
+			  <p class=TableText style='margin-top:2.0pt;margin-right:0in;margin-bottom:
+			  2.0pt;margin-left:0in'><b style='mso-bidi-font-weight:normal'>&quot;Name&quot;</b></p>
+			  </td>
+			  <td width=572 valign=top style='width:342.9pt;padding:0in 5.4pt 0in 5.4pt'>
+			  <p class=TableText style='margin-top:2.0pt;margin-right:0in;margin-bottom:
+			  2.0pt;margin-left:0in'>A compiler definition for the specified compiler <b  style='mso-bidi-font-weight:normal'>Name</b> is checked into the file cabinet
+			  under the key: &quot;<i style='mso-bidi-font-style:normal'>Name</i>:%DEFINITION&quot;.</p>
+			  </td>
+			 </tr>
+			 <tr>
+			  <td width=227 valign=top style='width:135.9pt;padding:0in 5.4pt 0in 5.4pt'>
+			  <p class=TableText style='margin-top:2.0pt;margin-right:0in;margin-bottom:
+			  2.0pt;margin-left:0in'><b style='mso-bidi-font-weight:normal'>Returns</b></p>
+			  </td>
+			  <td width=572 valign=top style='width:342.9pt;padding:0in 5.4pt 0in 5.4pt'>
+			  <p class=TableText style='margin-left:0in'>The compiler Name is generated in
+			  Lisp source code form and is checked into the file cabinet under the key
+			  &quot;<i style='mso-bidi-font-style:normal'>Name</i>&quot;.</p>
+			  </td>
+			 </tr>
+			</table>
+			<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>________________________________________________________________</b></p>
+			<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>Arguments                               Explanation                                                                  </b></p>
+			<table border=0 cellspacing=0 cellpadding=0 style='border-collapse:collapse;
+			 mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+			 <tr>
+			  <td width=227 valign=top style='width:135.9pt;padding:0in 5.4pt 0in 5.4pt'>
+			  <p class=TableText style='margin-top:2.0pt;margin-right:0in;margin-bottom:
+			  2.0pt;margin-left:0in'><b style='mso-bidi-font-weight:normal'>cabinetName</b></p>
+			  </td>
+			  <td width=572 valign=top style='width:342.9pt;padding:0in 5.4pt 0in 5.4pt'>
+			  <p class=TableText style='margin-top:2.0pt;margin-right:0in;margin-bottom:
+			  2.0pt;margin-left:0in'>The name of the file cabinet in which the compiler
+			  definition is to be found</p>
+			  </td>
+			 </tr>
+			 <tr>
+			  <td width=227 valign=top style='width:135.9pt;padding:0in 5.4pt 0in 5.4pt'>
+			  <p class=TableText style='margin-top:2.0pt;margin-right:0in;margin-bottom:
+			  2.0pt;margin-left:0in'><b style='mso-bidi-font-weight:normal'>&quot;Parent:Name&quot;</b></p>
+			  </td>
+			  <td width=572 valign=top style='width:342.9pt;padding:0in 5.4pt 0in 5.4pt'>
+			  <p class=TableText style='margin-top:2.0pt;margin-right:0in;margin-bottom:
+			  2.0pt;margin-left:0in'>A compiler definition for the specified compiler <b  style='mso-bidi-font-weight:normal'>&quot;Parent:Name&quot;</b> is checked
+			  into the file cabinet under the key: &quot;Parent<i style='mso-bidi-font-style:
+			  normal'>:Name</i>:%DEFINITION&quot;.</p>
+			  </td>
+			 </tr>
+			 <tr>
+			  <td width=227 valign=top style='width:135.9pt;padding:0in 5.4pt 0in 5.4pt'>
+			  <p class=TableText style='margin-top:2.0pt;margin-right:0in;margin-bottom:
+			  2.0pt;margin-left:0in'><b style='mso-bidi-font-weight:normal'>Returns</b></p>
+			  </td>
+			  <td width=572 valign=top style='width:342.9pt;padding:0in 5.4pt 0in 5.4pt'>
+			  <p class=TableText style='margin-left:0in'>The compiler Parent:Name is
+			  generated in Lisp source code form and is checked into the file cabinet under
+			  the key &quot;Parent:<i style='mso-bidi-font-style:normal'>Name</i>&quot;.</p>
+			  </td>
+			 </tr>
+			</table>
+			<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>________________________________________________________________</b></p>
+			<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'><u>&nbsp;</u></b></p>
+			<p class=example>Example1                     </p>
+			<p class=code><b style='mso-bidi-font-weight:normal'>(parseLib  "Test" &quot;tinyC&quot;)</b></p>
+			<p class=code><b style='mso-bidi-font-weight:normal'>(tinyC  {writeln(&quot;Hello World!&quot;)}          </b></p>
+			<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'><u>&nbsp;</u></b></p>
+			<p class=MsoBodyText style='line-height:117%;page-break-after:avoid;mso-outline-level:
+			1'><b style='mso-bidi-font-weight:normal'><u>Notes and
+			Hints           </u></b></p>
+			<p class=MsoBodyText>The example calls, shown above, cause the following
+			effects. </p>
+			<p class=MsoBodyText style='margin-left:.25in;text-indent:-.25in;mso-list:l7 level1 lfo3;
+			tab-stops:list .25in'>??&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			First, the parseLib, using the browseLib, checks
+			out the compiler definition under the key &quot;tinyC:%DEFINITION&quot;. </p>
+			<p class=MsoBodyText style='margin-left:.25in;text-indent:-.25in;mso-list:l7 level1 lfo3;
+			tab-stops:list .25in'>??&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			After reading the compiler definition file, the
+			parseLib generates the Lisp source code for the tiny C compiler.</p>
+			<p class=MsoBodyText style='margin-left:.25in;text-indent:-.25in;mso-list:l7 level1 lfo3;
+			tab-stops:list .25in'>??&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			Using the browseLib, the tinyC compiler's Lisp source
+			code is checked into the file cabinet.</p>
+			<p class=MsoBodyText style='margin-left:.25in;text-indent:-.25in;mso-list:l7 level1 lfo3;
+			tab-stops:list .25in'>??&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			The tinyC compiler's Lisp source code is compiled.</p>
+			<p class=MsoBodyText style='margin-left:.25in;text-indent:-.25in;mso-list:l7 level1 lfo3;
+			tab-stops:list .25in'>??&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			The tinyC compiler is invoked to compile the simple C
+			expression.</p>
+			<p class=MsoBodyText style='margin-left:.25in;text-indent:-.25in;mso-list:l7 level1 lfo3;
+			tab-stops:list .25in'>??&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			The words  <b style='mso-bidi-font-weight:normal'>&quot;Hello World!&quot;</b>  are displayed on the console.</p>
+		  </div>
+	    ]]></Description>
+	</Section> 
+	<Section>
+         <Heading>_explanOnOff</Heading>
+         <Description><![CDATA[ 
+            <div class="h2section" id="_explanOnOff">
+			 <p class=overview>Overview  </p>
+			<p class=MsoBodyText>The <b style='mso-bidi-font-weight:normal'>_explanOnOff</b>
+			variable turns on (true) or off (false) the compiler compiler's explanation
+			mode for all semantic passes. In explain mode, the parseLib saves every
+			semantic rule firing in the persistent variable, _<b style='mso-bidi-font-weight:
+			normal'>explanation</b>, for human use after the parsing run.</p>
+			<p class=MsoBodyText style='mso-outline-level:1'><b style='mso-bidi-font-weight:
+			normal'> Type:              Variable</b></p>
+			<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'><u>&nbsp;</u></b></p>
+			<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>Syntax:            (setq  parseLib._explainOnOff  true)</b></p>
+			<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'><u>&nbsp;</u></b></p>
+			<p class=whentouse>  When To
+Use            </p>
+			<p class=MsoBodyText>The <b style='mso-bidi-font-weight:normal'>_explainOnOff</b>
+			variable can be used to aid the debugging of difficult compiler definitions.<b style='mso-bidi-font-weight:normal'></b></p>
+			<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>__________________________________________________________________</b></p>
+			<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>Variable                                   Explanation                                                                  </b></p>
+			<table border=0 cellspacing=0 cellpadding=0 style='border-collapse:collapse;
+			 mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+			 <tr>
+			  <td width=227 valign=top style='width:135.9pt;padding:0in 5.4pt 0in 5.4pt'>
+			  <p class=TableText style='margin-top:2.0pt;margin-right:0in;margin-bottom:
+			  2.0pt;margin-left:0in'><b style='mso-bidi-font-weight:normal'>_explainOnOff</b></p>
+			  </td>
+			  <td width=572 valign=top style='width:342.9pt;padding:0in 5.4pt 0in 5.4pt'>
+			  <p class=TableText style='margin-top:2.0pt;margin-right:0in;margin-bottom:
+			  2.0pt;margin-left:0in'>Contains true if explain mode is on, or false if
+			  explain mode is off.</p>
+			  </td>
+			 </tr>
+			 <tr>
+			  <td width=227 valign=top style='width:135.9pt;padding:0in 5.4pt 0in 5.4pt'>
+			  <p class=TableText style='margin-top:2.0pt;margin-right:0in;margin-bottom:
+			  2.0pt;margin-left:0in'><b style='mso-bidi-font-weight:normal'>Effects</b></p>
+			  </td>
+			  <td width=572 valign=top style='width:342.9pt;padding:0in 5.4pt 0in 5.4pt'>
+			  <p class=TableText style='margin-left:0in'>Turns the compiler's explain mode
+			  on or off.</p>
+			  </td>
+			 </tr>
+			</table>
+			<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>__________________________________________________________________</b></p>
+			<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'><u>&nbsp;</u></b></p>
+			<p class=example>Example1                     </p>
+			<p class=MsoBodyText>This simple example demonstrates the effect turning on
+			explain mode during debugging. </p>
+			<blockquote>
+			<p class=code><b style='mso-bidi-font-weight:normal'>(parseLib  "Test" &quot;tinyC&quot;)</b></p>
+			<p class=code><b style='mso-bidi-font-weight:normal'>(setq
+			tinyC._explainOnOff  true)          </b></p>
+			<p class=code><b style='mso-bidi-font-weight:normal'>(tinyC &quot;x + y
+			- 10&quot;) </b></p>
+			<p class=code><b style='mso-bidi-font-weight:normal'>tinyC._explain </b></p>
+			<p class=code style='mso-outline-level:1'><b style='mso-bidi-font-weight:
+			normal'>&quot;Replacing:  x + x - 10
+			==&gt; (-  (+  x
+			x)  10)</b></p>
+			<p class=code style='mso-outline-level:1'><b style='mso-bidi-font-weight:
+			normal'>Replacing:  (+
+			x  x) ==&gt; (*  2  x)
+			</b></p>
+			<p class=code style='mso-outline-level:1'><b style='mso-bidi-font-weight:
+			normal'>Replacing: (-  (+
+			x  x)  10)  ==&gt; (-  (*
+			2  x) 10)</b></p>
+			<p class=code style='mso-outline-level:1'><b style='mso-bidi-font-weight:
+			normal'>Replacing: x + x - 10  ==&gt; (-
+			(*  2  x) 10)&quot;</b></p>
+			 </blockquote>      
+            </div>
+        ]]></Description>
+     </Section>	   
+     <Section>
+         <Heading>_verbose </Heading>
+         <Description><![CDATA[ 
+            <div class="h2section" id="_verbose">
+			<p class=overview>Overview </p>
+			<p class=MsoBodyText>The <b style='mso-bidi-font-weight:normal'>_verbose</b>
+			variable turns on (true) or off (false) the compiler compiler's verbose mode.
+			In verbose mode the parseLib displays every compiler definition rule which
+			has fired.</p>
+			<p class=MsoBodyText style='mso-outline-level:1'><b style='mso-bidi-font-weight:
+			normal'> Type:              Variable</b></p>
+			<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'><u>&nbsp;</u></b></p>
+			<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>Syntax:            (setq  parseLib._verbose  true)</b></p>
+			<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'><u>&nbsp;</u></b></p>
+			<p class=MsoBodyText style='line-height:117%;page-break-after:avoid;mso-outline-level:
+			1'><b style='mso-bidi-font-weight:normal'><u>When To
+			Use               </u></b></p>
+			<p class=MsoBodyText>The <b style='mso-bidi-font-weight:normal'>_verbose</b>
+			variable can be used to aid the debugging of difficult compiler definitions.<b style='mso-bidi-font-weight:normal'></b></p>
+			<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>__________________________________________________________________</b></p>
+			<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>Variable                                   Explanation                                                                  </b></p>
+			<table border=0 cellspacing=0 cellpadding=0 style='border-collapse:collapse;
+			 mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+			 <tr>
+			  <td width=227 valign=top style='width:135.9pt;padding:0in 5.4pt 0in 5.4pt'>
+			  <p class=TableText style='margin-top:2.0pt;margin-right:0in;margin-bottom:
+			  2.0pt;margin-left:0in'><b style='mso-bidi-font-weight:normal'>_verbose</b></p>
+			  </td>
+			  <td width=572 valign=top style='width:342.9pt;padding:0in 5.4pt 0in 5.4pt'>
+			  <p class=TableText style='margin-top:2.0pt;margin-right:0in;margin-bottom:
+			  2.0pt;margin-left:0in'>Contains true if verbose mode is on, or false if
+			  verbose mode is off.</p>
+			  </td>
+			 </tr>
+			 <tr>
+			  <td width=227 valign=top style='width:135.9pt;padding:0in 5.4pt 0in 5.4pt'>
+			  <p class=TableText style='margin-top:2.0pt;margin-right:0in;margin-bottom:
+			  2.0pt;margin-left:0in'><b style='mso-bidi-font-weight:normal'>Effects</b></p>
+			  </td>
+			  <td width=572 valign=top style='width:342.9pt;padding:0in 5.4pt 0in 5.4pt'>
+			  <p class=TableText style='margin-left:0in'>Turns the compiler's verbose mode
+			  on or off.</p>
+			  </td>
+			 </tr>
+			</table>
+			<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>__________________________________________________________________</b></p>
+			<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'><u>&nbsp;</u></b></p>
+			<p class=example> Example1                      </p>
+			<p class=MsoBodyText>This simple example demonstrates the effect turning on
+			verbose mode during debugging. </p>
+			<blockquote>
+			<p class=code><b style='mso-bidi-font-weight:normal'>(parseLib  "Test" &quot;tinyC&quot;)</b></p>
+			<p class=code><b style='mso-bidi-font-weight:normal'>(setq
+			tinyC._verbose  true)      </b></p>
+			<p class=code><b style='mso-bidi-font-weight:normal'>(tinyC &quot;x + y
+			- 10&quot;) </b></p>
+			<p class=code style='mso-outline-level:1'><b style='mso-bidi-font-weight:
+			normal'>MAIN: Term Operator Term &lt;&lt;
+			(addToList $0 (list (list $2.Value $1.Value $3.Value))) &gt;&gt; </b></p>
+			<p class=code style='mso-outline-level:1'><b style='mso-bidi-font-weight:
+			normal'>MAIN: Operator Number &lt;&lt;
+			(foldConstants $0 $1.Value 0 $2.Value) &gt;&gt;</b></p> 
+			</blockquote>    
+          </div>
+        ]]></Description>
+     </Section>	   
+     <Section>
+     <Heading>_verboseSynIn, _verboseLexIn, _verboseSemIn</Heading>
+     <Description><![CDATA[
+       <div class="h2section" id="_verboseSynIn, _verboseLexIn, _verboseSemIn"> 
+		<p class=overview> Overview  </p>
+		<p class=MsoBodyText>The <b style='mso-bidi-font-weight:normal'>_verboseSynIn</b>
+		variable contains is #void by default but may be assigned a structure
+		containing instructions for selectively turning on the _verbose switch for
+		selected rules and specifying how many the selected rule will execute before
+		exiting the parse process. _verboseLexIn and _verboseSemIn provide the same
+		functionality in the Lexical and Semantic passes respectively.</p>
+		<p class=MsoBodyText style='mso-outline-level:1'><b style='mso-bidi-font-weight:
+		normal'> Type:              Variable</b></p>
+		<p class=code><b style='mso-bidi-font-weight:normal'><u>&nbsp;</u></b></p>
+		<p class=code><b style='mso-bidi-font-weight:normal'>Syntax:            (setq  parseLib._verboseSynIn  #{RULENAME: count}) </b></p>
+		<p class=whentouse><u>When To
+		Use               </u></b></p>
+		<p class=MsoBodyText>The <b style='mso-bidi-font-weight:normal'>_verboseSynIn </b>variable
+		can be used to aid the debugging of difficult compiler definitions.<b style='mso-bidi-font-weight:normal'></b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>__________________________________________________________________</b></p>
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>Variable                                   Explanation                                                      </b></p>
+		<table border=0 cellspacing=0 cellpadding=0 style='border-collapse:collapse;
+		 mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+		 <tr>
+		  <td width=227 valign=top style='width:135.9pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-top:2.0pt;margin-right:0in;margin-bottom:
+		  2.0pt;margin-left:0in'><b style='mso-bidi-font-weight:normal'>_verboseSynIn</b></p>
+		  </td>
+		  <td width=572 valign=top style='width:342.9pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-top:2.0pt;margin-right:0in;margin-bottom:
+		  2.0pt;margin-left:0in'>Contains #void or structure created by user</p>
+		  </td>
+		 </tr>
+		 <tr>
+		  <td width=227 valign=top style='width:135.9pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-top:2.0pt;margin-right:0in;margin-bottom:
+		  2.0pt;margin-left:0in'><b style='mso-bidi-font-weight:normal'>Effects</b></p>
+		  </td>
+		  <td width=572 valign=top style='width:342.9pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>Selectively turns the compiler's
+		  verbose mode on or off for specified rules.</p>
+		  </td>
+		 </tr>
+		 <tr>
+		  <td width=227 valign=top style='width:135.9pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-top:2.0pt;margin-right:0in;margin-bottom:
+		  2.0pt;margin-left:0in'><b style='mso-bidi-font-weight:normal'>RULENAME</b></p>
+		  </td>
+		  <td width=572 valign=top style='width:342.9pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>The name of the rule in which want
+		  to turn _verbose on. Note that all rules called from this rule will also have
+		  _verbose set to true</p>
+		  </td>
+		 </tr>
+		 <tr>
+		  <td width=227 valign=top style='width:135.9pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-top:2.0pt;margin-right:0in;margin-bottom:
+		  2.0pt;margin-left:0in'><b style='mso-bidi-font-weight:normal'>Count</b></p>
+		  </td>
+		  <td width=572 valign=top style='width:342.9pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>Number of times the specified rule
+		  should execute before forcing an exit from the parse. Set count to -1 for
+		  unlimited executions.</p>
+		  </td>
+		 </tr>
+		</table>		
+		<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>__________________________________________________________________</b></p>              
+	   </div>    
+	   ]]></Description>
+	   </Section>  
+	 <Section>
+         <Heading>_verboseSynCount, _verboseLexCount, _verboseSemCount</Heading>
+         <Description><![CDATA[ 
+            <div class="h2section" id="_verboseSynCount, _verboseLexCount, _verboseSemCount">
+			 <p class=overview>Overview                </p>
+			<p class=MsoBodyText>The <b style='mso-bidi-font-weight:normal'>_verboseSynCount</b>
+			variable contains a structure with symbolic key entries for each rule executed
+			during the Syntactical pass. The value associated with each symbolic key is the
+			execution count of the rule during that pass.
+			_verboseLexCount and _verboseSemCount provide the same functionality in
+			the Lexical and Semantic passes respectively.</p>
+			<p class=MsoBodyText style='mso-outline-level:1'><b style='mso-bidi-font-weight:
+			normal'> Type:              Variable</b></p>
+			<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'><u>&nbsp;</u></b></p>
+			<p class=whentouse>When To Use        </p>
+			<p class=MsoBodyText>These values are useful for performance analysis of the
+			rules you have defined.</p>
+			<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>__________________________________________________________________</b></p>
+			<p class=example>Example1</p>
+			<p class=code>(javaScript &quot;a=15;&quot;)</p>
+			<p class=code>(writeln javaScript._verboseSynCount)</p>
+			<p class=code>#{MAIN: 1 STMTLIST: 1
+			SEXPRESSION: 4 EXPRESSION: 4 PHRASE: 4 CFCALL: 1 NAME: 7 QUALIFY: 1 TERM: 3
+			STATEMENT: 2 CHILD: 2 CLASS: 2 FRIEND: 2 FUNCTION: 2 METHOD: 2 ORPHAN: 2}</p>
+            </div>
+        ]]></Description>
+     </Section>	                     
+     	 <Section>
+         <Heading>_verboseSynCount, _verboseLexCount, _verboseSemCount</Heading>
+         <Description><![CDATA[ 
+            <div class="h2section" id="_verboseSynCount, _verboseLexCount, _verboseSemCount">
+			 <p class=overview>Overview       </p>
+			<p class=MsoBodyText>The <b style='mso-bidi-font-weight:normal'>_verboseSynCount</b>
+			variable contains a structure with symbolic key entries for each rule executed
+			during the Syntactical pass. The value associated with each symbolic key is the
+			execution count of the rule during that pass.
+			_verboseLexCount and _verboseSemCount provide the same functionality in
+			the Lexical and Semantic passes respectively.</p>
+			<p class=MsoBodyText style='mso-outline-level:1'><b style='mso-bidi-font-weight:
+			normal'> Type:              Variable</b></p>
+			<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'><u>&nbsp;</u></b></p>
+			<p class=whentouse>When To Use        </p>
+			<p class=MsoBodyText>These values are useful for performance analysis of the
+			rules you have defined.</p>
+			<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>__________________________________________________________________</b></p>
+			<p class=example>Example1</p>
+			<p class=code>(javaScript &quot;a=15;&quot;)</p>
+			<p class=code>(writeln javaScript._verboseSynCount)</p>
+			<p class=code>#{MAIN: 1 STMTLIST: 1
+			SEXPRESSION: 4 EXPRESSION: 4 PHRASE: 4 CFCALL: 1 NAME: 7 QUALIFY: 1 TERM: 3
+			STATEMENT: 2 CHILD: 2 CLASS: 2 FRIEND: 2 FUNCTION: 2 METHOD: 2 ORPHAN: 2}</p>
+            </div>
+        ]]></Description>
+     </Section>	  
+	<Section>
+         <Heading>Features of Generated Compilers</Heading>
+         <Description><![CDATA[ 
+            <div class="h2section" id="Features of Generated Compilers">   
+           		<h3> _verbose </h3>
+				<p class=overview>Overview   </p>
+				<p class=MsoBodyText>The <b style='mso-bidi-font-weight:normal'>_verbose</b>
+				variable turns on (true) or off (false) the compiler compiler's verbose mode.
+				In verbose mode the parseLib displays every compiler definition rule which
+				has fired. _verbose operates the same in a generated compiler as it does in
+				parseLib.</p>
+				<h3> _verboseSynCount, _verboseLexCount, _verboseSemCount </h3>
+				<p class=overview>Overview  </p>
+				<p class=MsoBodyText>The <b style='mso-bidi-font-weight:normal'>_verboseSynCount</b>
+				variable contains a structure with symbolic key entries for each rule executed
+				during the Syntactical pass. The value associated with each symbolic key is the
+				execution count of the rule during that pass.
+				_verboseLexCount and _verboseSemCount provide the same functionality in
+				the Lexical and Semantic passes respectively. These settings operate the same
+				in a generated compiler as they do in parseLib.</p>
+				<h3> _consoleErrors </h3>
+				<p class=overview>Overview    </p>
+				<p class=MsoBodyText>The _consoleErrors variable contains a value of true or
+				false. A value of true will cause the compiler to generate a full error to the
+				console when it is encountered. A value of false will cause the compiler to
+				return from an error but suppress any error messages on the console.</p>
+				<p class=MsoBodyText style='mso-outline-level:1'><b style='mso-bidi-font-weight:
+				normal'> Type:              Variable</b></p>
+				<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'><u>&nbsp;</u></b></p>
+				<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>Syntax:            (setq  javaScript._consoleErrors false) </b></p>
+				<p class=MsoBodyText>&nbsp;</p>
+				<h3> _lastError </h3>
+				<p class=overview>Overview        </p>
+				<p class=MsoBodyText>The _lastError variable is a structure  containing the details of the last error
+				encountered during the compilation process. </p>
+				<p class=MsoBodyText style='mso-outline-level:1'><b style='mso-bidi-font-weight:
+				normal'> Type:              Variable</b></p>
+				<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'><u>&nbsp;</u></b></p>
+				<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>Syntax:            (writeln  javaScript._lastError)</b></p>
+				<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>__________________________________________________________________</b></p>
+				<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>Variable                                   Explanation                                                      </b></p>
+				<table border=0 cellspacing=0 cellpadding=0 style='border-collapse:collapse;
+				 mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+				 <tr>
+				  <td width=227 valign=top style='width:135.9pt;padding:0in 5.4pt 0in 5.4pt'>
+				  <p class=TableText style='margin-top:2.0pt;margin-right:0in;margin-bottom:
+				  2.0pt;margin-left:0in'><b style='mso-bidi-font-weight:normal'>_lastError</b></p>
+				  </td>
+				  <td width=572 valign=top style='width:342.9pt;padding:0in 5.4pt 0in 5.4pt'>
+				  <p class=TableText style='margin-top:2.0pt;margin-right:0in;margin-bottom:
+				  2.0pt;margin-left:0in'>Contains a structure describing the last error found</p>
+				  </td>
+				 </tr>
+				 <tr>
+				  <td width=227 valign=top style='width:135.9pt;padding:0in 5.4pt 0in 5.4pt'>
+				  <p class=TableText style='margin-top:2.0pt;margin-right:0in;margin-bottom:
+				  2.0pt;margin-left:0in'><b style='mso-bidi-font-weight:normal'>_lastError.errorKey</b></p>
+				  </td>
+				  <td width=572 valign=top style='width:342.9pt;padding:0in 5.4pt 0in 5.4pt'>
+				  <p class=TableText style='margin-left:0in'>The short error identifier - set
+				  by _makeError</p>
+				  </td>
+				 </tr>
+				 <tr>
+				  <td width=227 valign=top style='width:135.9pt;padding:0in 5.4pt 0in 5.4pt'>
+				  <p class=TableText style='margin-top:2.0pt;margin-right:0in;margin-bottom:
+				  2.0pt;margin-left:0in'><b style='mso-bidi-font-weight:normal'>_lastError.desc</b></p>
+				  </td>
+				  <td width=572 valign=top style='width:342.9pt;padding:0in 5.4pt 0in 5.4pt'>
+				  <p class=TableText style='margin-left:0in'>The error description - set by
+				  _makeError</p>
+				  </td>
+				 </tr>
+				 <tr>
+				  <td width=227 valign=top style='width:135.9pt;padding:0in 5.4pt 0in 5.4pt'>
+				  <p class=TableText style='margin-top:2.0pt;margin-right:0in;margin-bottom:
+				  2.0pt;margin-left:0in'><b style='mso-bidi-font-weight:normal'>_lastError.line</b></p>
+				  </td>
+				  <td width=572 valign=top style='width:342.9pt;padding:0in 5.4pt 0in 5.4pt'>
+				  <p class=TableText style='margin-left:0in'>The line number the error occurred
+				  in - set by _makeError</p>
+				  </td>
+				 </tr>
+				 <tr>
+				  <td width=227 valign=top style='width:135.9pt;padding:0in 5.4pt 0in 5.4pt'>
+				  <p class=TableText style='margin-top:2.0pt;margin-right:0in;margin-bottom:
+				  2.0pt;margin-left:0in'><b style='mso-bidi-font-weight:normal'>_lastError.charpos</b></p>
+				  </td>
+				  <td width=572 valign=top style='width:342.9pt;padding:0in 5.4pt 0in 5.4pt'>
+				  <p class=TableText style='margin-left:0in'>The character position the error
+				  occurred in - set by _makeError</p>
+				  </td>
+				 </tr>
+				 <tr>
+				  <td width=227 valign=top style='width:135.9pt;padding:0in 5.4pt 0in 5.4pt'>
+				  <p class=TableText style='margin-top:2.0pt;margin-right:0in;margin-bottom:
+				  2.0pt;margin-left:0in'><b style='mso-bidi-font-weight:normal'>_lastError.message</b></p>
+				  </td>
+				  <td width=572 valign=top style='width:342.9pt;padding:0in 5.4pt 0in 5.4pt'>
+				  <p class=TableText style='margin-left:0in'>The formatted contextual error
+				  message - set by _makeError</p>
+				  </td>
+				 </tr>
+				</table>
+				<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>__________________________________________________________________
+				</b></p>
+				<p class=MsoBodyText>&nbsp;</p>
+				<p class=example>Example1                  </p>
+				<p class=MsoBodyText>This simple example demonstrates the error handling and
+				content of _lastError</p>
+				<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>(javaScript
+				&quot;a=13=15&quot;)</b></p>
+				<p class=NotSideBySide style='margin-bottom:12.0pt'><b style='mso-bidi-font-weight:
+				normal'>&quot; Invalid expression Line:0 Charpos:4<br>
+				a=13=15;<br>
+				    ^error<br>
+				&quot;<br>
+				!JS 100!</b><b style='mso-bidi-font-weight:normal'></b></p>
+				<p class=code align=left style='text-align:left'><b style='mso-bidi-font-weight:
+				normal'>(writeln javaScript._lastError)<br>
+				#{errorKey: &quot;JS 100&quot; line: 0 desc: &quot;Invalid expression&quot;
+				charpos: 4 message: &quot;<br>
+				a=13=15;<br>
+				    ^error<br>
+				</b><b style='mso-bidi-font-weight:normal'>&quot;}</b></p>
+				<p class=MsoBodyText>Notes:</p>
+				<p class=MsoBodyText>To get errors of the format shown in the _lastError
+				example, you must call the _makeError function instead of _error or error when
+				specifying an error condition in a rule. For example:</p>
+				<p class=code><b style='mso-bidi-font-weight:normal'>MAIN: STMTLIST Any <br>
+				    :: (_makeError &quot;JS 100&quot;
+				$2.Charpos &quot;Invalid expression&quot;) ::</b></p>
+		  </div>
+	   ]]></Description>
+	</Section>			
+      <Section>
+         <Heading>Appendix </Heading>
+         <Description><![CDATA[ 
+            <div class="h2section" id="Appendix">
+            <h3><a name="_Toc78728611">JavaScript Compiler Definition</a>  </h3>
+			<p class=MsoBodyText>This is the compiler definition source for a small
+			JavaScript compiler, included here as an example only. Remember to allow for
+			the fact that many of the longer lines are wrapped around to the next line.</p>
+			<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'>&nbsp;</b></p>
+			<p class=MsoNormal>;; ********************************************************************</p>
+			<p class=MsoNormal>;; summary:  This JavaScript compiler definition includes all the features</p>
+			<p class=MsoNormal>;;           of a full JavaScript compiler for the Analytic Information
+			Server engine.</p>
+			<p class=MsoNormal>;;           See the following references:</p>
+			<p class=MsoNormal>;;</p>
+			<p class=MsoNormal>;;           [1]  &quot;Lambda
+			Information Server JavaScript compiler&quot;, Korns Associates</p>
+			<p class=MsoNormal>;;           [2]
+			&quot;JavaScript For The World Wide Web&quot;, Postscript Press</p>
+			<p class=MsoNormal>;;           [3]
+			&quot;JavaScript Developer's Resource&quot;, Prentice Hall</p>
+			<p class=MsoNormal>;;</p>
+			<p class=MsoNormal>;; Notes:    Requires the browseLib, the parseLib, and this compiler</p>
+			<p class=MsoNormal>;;           definition source must be checked into the file cabinet </p>
+			<p class=MsoNormal>;;           under the key: |javaScript:%DEFINITION|.</p>
+			<p class=MsoNormal>;; Parms:    none</p>
+			<p class=MsoNormal>;; return:   java   The parseLib
+			checks in a newly updated copy of the</p>
+			<p class=MsoNormal>;;                  java compiler source and compiles the
+			&quot;javaScript&quot; compiler.</p>
+			<p class=MsoNormal>;;
+			********************************************************************</p>
+			<p class=MsoNormal>&nbsp;</p>
+			<p class=MsoNormal>#RuleDefinitions#</p>
+			<p class=MsoNormal>&nbsp;</p>
+			<p class=MsoNormal>
+			MAIN: # &quot;javaScript&quot; # || (= $3.Charpos 11) || &lt;&lt; true
+			&gt;&gt;</p>
+			<p class=MsoNormal>
+			MAIN: STMTLIST :: (list $1.Value) ::</p>
+			<p class=MsoNormal>
+			MAIN: SEXPRESSION Eof :: (list $1.Value) ::</p>
+			<p class=MsoNormal>
+			MAIN: Value :: (error (append &quot;Invalid expression [&quot;
+			$1.Charpos &quot;] &quot; (mid $IN $1.Charpos 20))) ::</p>
+			<p class=MsoNormal>
+			MAIN: Eof :: (list #void) ::</p>
+			<p class=MsoNormal>&nbsp;</p>
+			<p class=MsoNormal>
+			STMTLIST: STATEMENT &lt;&lt; (addToBeginList $0 $1.Value) &gt;&gt;</p>
+			<p class=MsoNormal>&nbsp;</p>
+			<p class=MsoNormal>
+			STATEMENT: Semicolon :: $0 ::</p>
+			<p class=MsoNormal>
+			STATEMENT: PHRASE Semicolon :: $1 ::</p>
+			<p class=MsoNormal style='mso-outline-level:1'>  STATEMENT: PHRASE  :: $1 ::</p>
+			<p class=MsoNormal>
+			STATEMENT: FUNCTION Name LeftParen ARGLIST LeftBrace STMTLIST RightBrace
+			:: (funList $0 $2 $4 $6) ::</p>
+			<p class=MsoNormal>
+			STATEMENT: FRIEND Name Name LeftParen ARGLIST LeftBrace STMTLIST
+			RightBrace :: (friendList $0 $2 $3 $5 $7) ::</p>
+			<p class=MsoNormal>
+			STATEMENT: CHILD Name Name LeftParen ARGLIST LeftBrace STMTLIST
+			RightBrace :: (childList $0 $2 $3 $5 $7) ::</p>
+			<p class=MsoNormal>&nbsp;</p>
+			<p class=MsoNormal>
+			FUNCTION: Function :: (pushVars $0) ::</p>
+			<p class=MsoNormal>
+			FRIEND:   Friend :: (pushVars $0)
+			::</p>
+			<p class=MsoNormal>
+			CHILD:    Child :: (pushVars $0)
+			::</p>
+			<p class=MsoNormal>&nbsp;</p>
+			<p class=MsoNormal>
+			QUALIFY: DotOperator Name QUALIFY((qualifyName $0 %0.Value
+			(makeQuotedSymbol $2.Value))) :: $3 ::</p>
+			<p class=MsoNormal>
+			QUALIFY: DotOperator Name :: (qualifyName $0 %0.Value (makeQuotedSymbol
+			$2.Value)) ::</p>
+			<p class=MsoNormal>
+			QUALIFY: LeftBracket SEXPRESSION RightBracket QUALIFY((qualifyName $0
+			%0.Value $2.Value)) :: $4 ::</p>
+			<p class=MsoNormal>
+			QUALIFY: LeftBracket SEXPRESSION RightBracket :: (qualifyName $0
+			%0.Value $2.Value) ::</p>
+			<p class=MsoNormal>&nbsp;</p>
+			<p class=MsoNormal>
+			NAME: Name QUALIFY($1) :: $2 ::</p>
+			<p class=MsoNormal>
+			NAME: Name :: $1 ::</p>
+			<p class=MsoNormal>&nbsp;</p>
+			<p class=MsoNormal>
+			PHRASE: Increment NAME :: (setq $0.Value (list $1.Value $2.Value)) ::</p>
+			<p class=MsoNormal>
+			PHRASE: NAME Increment :: (postfix $0 $1.Value $2.Value) ::</p>
+			<p class=MsoNormal>
+			PHRASE: NAME AssignmentOperator SEXPRESSION :: (setq $0.Value
+			(appendList $2.Lisp $1.Value (list $3.Value))) ::</p>
+			<p class=MsoNormal>
+			PHRASE: NAME LeftParen ARGLIST :: (argList $0 $1.Value $3.Value) ::</p>
+			<p class=MsoNormal>
+			PHRASE: LeftBrace STMTLIST RightBrace :: $2 ::</p>
+			<p class=MsoNormal>
+			PHRASE: If SEXPRESSION STATEMENT :: (setq $0.Value (list |if|: $2.Value
+			$3.Value)) ::</p>
+			<p class=MsoNormal>
+			PHRASE: If SEXPRESSION STATEMENT Else STATEMENT :: (setq $0.Value (list
+			|if|: $2.Value $3.Value $5.Value)) ::</p>
+			<p class=MsoNormal>
+			PHRASE: While SEXPRESSION STATEMENT :: (setq $0.Value (list |while|:
+			$2.Value $3.Value)) ::</p>
+			<p class=MsoNormal>
+			PHRASE: For LeftParen PHRASE Semicolon SEXPRESSION Semicolon PHRASE
+			RightParen STATEMENT</p>
+			<p class=MsoNormal>             :: (setq $0.Value (list |begin|: $3.Value (list
+			|while|: $5.Value $9.Value $7.Value))) ::</p>
+			<p class=MsoNormal style='mso-outline-level:1'>  PHRASE: Var Name AssignmentOperator
+			SEXPRESSION </p>
+			<p class=MsoNormal>          :: (addVar varVector $2.Value (setq $0.Value (appendList
+			$3.Lisp $2.Value (list $4.Value)))) ::</p>
+			<p class=MsoNormal style='mso-outline-level:1'>  PHRASE: Pvar Name AssignmentOperator SEXPRESSION
+			</p>
+			<p class=MsoNormal>          :: (addVar pvarVector $2.Value (setq $0.Value (appendList
+			$3.Lisp $2.Value (list $4.Value)))) ::</p>
+			<p class=MsoNormal>
+			PHRASE: Var Name :: (addVar varVector $2.Value $0) ::</p>
+			<p class=MsoNormal>
+			PHRASE: Pvar Name :: (addVar pvarVector $2.Value $0) ::</p>
+			<p class=MsoNormal>&nbsp;</p>
+			<p class=MsoNormal>
+			TERM: Boolean :: (setq $0.Value $1.Boolean) ::</p>
+			<p class=MsoNormal>
+			TERM: + Term :: $2 ::</p>
+			<p class=MsoNormal>
+			TERM: - Number :: (foldConstants $0 |-|: 0 $2.Value) ::</p>
+			<p class=MsoNormal>
+			TERM: - Term :: (setq $0.Value (list |-|: 0 $2.Value)) ::</p>
+			<p class=MsoNormal>
+			TERM: NAME LeftParen ARGLIST :: (argList $0 $1.Value $3.Value) ::</p>
+			<p class=MsoNormal>
+			TERM: Number Operator Number :: (foldConstants $0 $2.Lisp $1.Value
+			$3.Value) ::</p>
+			<p class=MsoNormal style='mso-outline-level:1'>  TERM: NAME :: $1 ::</p>
+			<p class=MsoNormal>
+			TERM: Term :: $1 ::</p>
+			<p class=MsoNormal>
+			TERM: LeftParen SEXPRESSION RightParen :: $2 ::</p>
+			<p class=MsoNormal>
+			TERM: Increment NAME :: (setq $0.Value (list $1.Value $2.Value)) ::</p>
+			<p class=MsoNormal>
+			TERM: NAME Increment :: (postfix $0 $1.Value $2.Value) ::</p>
+			<p class=MsoNormal>&nbsp;</p>
+			<p class=MsoNormal>
+			ARGLIST: RightParen :: (setq $0.Value #void) ::</p>
+			<p class=MsoNormal>
+			ARGLIST: SEXPRESSION RightParen :: (setq $0.Value (new Vector: 1
+			$1.Value)) ::</p>
+			<p class=MsoNormal>
+			ARGLIST: SEXPRESSION Comma ARGLIST :: (setq $0.Value (insert $3.Value 0
+			$1.Value)) ::</p>
+			<p class=MsoNormal>&nbsp;</p>
+			<p class=MsoNormal>
+			SEXPRESSION: TERM Operator SEXPRESSION :: (setq $0.Value (list $2.Lisp
+			$1.Value $3.Value)) ::</p>
+			<p class=MsoNormal style='mso-outline-level:1'>  SEXPRESSION: TERM :: $1 ::</p>
+			<p class=MsoNormal>&nbsp;</p>
+			<p class=MsoNormal>#End#</p>
+			<p class=MsoNormal>&nbsp;</p>
+			<p class=MsoNormal>#DelimitedStrings#</p>
+			<p class=MsoNormal>
+			String: {&quot;} {&quot;}</p>
+			<p class=MsoNormal>
+			Whitespace: {/*} {*/}</p>
+			<p class=MsoNormal>
+			Whitespace2: {//} _eol</p>
+			<p class=MsoNormal>#End#</p>
+			<p class=MsoNormal>&nbsp;</p>
+			<p class=MsoNormal>#AttributeClasses#</p>
+			<p class=MsoNormal>&nbsp;</p>
+			<p class=MsoNormal>
+			Operator: [+ - * / % == &lt; &lt;= &gt; &gt;= !=]</p>
+			<p class=MsoNormal>
+			AssignmentOperator: [= += -= /= *=]</p>
+			<p class=MsoNormal>
+			Lisp: [+ - * / % == &lt; &lt;= &gt; &gt;= != = += -= /= *=] [+ - * / mod
+			= &lt; &lt;= &gt; &gt;= &lt;&gt; setq += -= /= *=]</p>
+			<p class=MsoNormal>
+			Boolean: [true false] [true false]</p>
+			<p class=MsoNormal>
+			Term: [true false]</p>
+			<p class=MsoNormal>
+			Increment: [++ --]</p>
+			<p class=MsoNormal>
+			For: [for]</p>
+			<p class=MsoNormal>
+			Function: [function]</p>
+			<p class=MsoNormal>
+			Friend: [friend]</p>
+			<p class=MsoNormal>
+			Child: [child]</p>
+			<p class=MsoNormal>
+			If: [if]</p>
+			<p class=MsoNormal>
+			While: [while]</p>
+			<p class=MsoNormal>
+			Else: [else]</p>
+			<p class=MsoNormal>
+			Var: [var]</p>
+			<p class=MsoNormal>
+			Pvar: [pvar]</p>
+			<p class=MsoNormal>
+			Control: [child else for friend function if pvar var while]</p>
+			<p class=MsoNormal>
+			Semicolon: [&quot;;&quot;]</p>
+			<p class=MsoNormal>
+			LeftParen: [&quot;(&quot;]</p>
+			<p class=MsoNormal>
+			RightParen: [&quot;)&quot;]</p>
+			<p class=MsoNormal>
+			LeftBrace: [&quot;{&quot;]</p>
+			<p class=MsoNormal>
+			RightBrace: [&quot;}&quot;]</p>
+			<p class=MsoNormal>
+			LeftBracket: [&quot;[&quot;]</p>
+			<p class=MsoNormal>
+			RightBracket: [&quot;]&quot;]</p>
+			<p class=MsoNormal>
+			Comma: [&quot;,&quot;]</p>
+			<p class=MsoNormal>
+			DotOperator: [&quot;.&quot;]</p>
+			<p class=MsoNormal>&nbsp;</p>
+			<p class=MsoNormal>#End#</p>
+			<p class=MsoNormal>&nbsp;</p>
+			<p class=MsoNormal>#UserFunctions#</p>
+			<p class=MsoNormal>&nbsp;</p>
+			<p class=MsoNormal>;;*********************************************************************</p>
+			<p class=MsoNormal>;; Function start pushes a new
+			variable dictionary on the stack</p>
+			<p class=MsoNormal>;; Note: These persistant variables
+			will extend the java environment</p>
+			<p class=MsoNormal>;;*********************************************************************</p>
+			<p class=MsoNormal>(defchild javaScript:startRule()</p>
+			<p class=MsoNormal>
+			pvars:(pvarVector varVector)</p>
+			<p class=MsoNormal>
+			;; Initialize the variable vectors.</p>
+			<p class=MsoNormal>    (setq pvarVector (new
+			Vector: 0))</p>
+			<p class=MsoNormal>
+			(setq varVector (new Vector: 0))</p>
+			<p class=MsoNormal>
+			true) ; end startRule</p>
+			<p class=MsoNormal>&nbsp;</p>
+			<p class=MsoNormal>;;*********************************************************************</p>
+			<p class=MsoNormal>;; Function start pushes a new
+			variable dictionary on the stack</p>
+			<p class=MsoNormal style='mso-outline-level:1'>;; Note: We use
+			the persistant variables from startRule</p>
+			<p class=MsoNormal>;;*********************************************************************</p>
+			<p class=MsoNormal>(defchild javaScript:pushVars(struct)</p>
+			<p class=MsoNormal>
+			;; Create a new variable dictionary for this function.</p>
+			<p class=MsoNormal>
+			(setq pvarVector[(length pvarVector)] (new Dictionary:))</p>
+			<p class=MsoNormal>
+			(setq varVector[(length varVector)] (new Dictionary:))</p>
+			<p class=MsoNormal>
+			struct) ; end pushVars</p>
+			<p class=MsoNormal>&nbsp;</p>
+			<p class=MsoNormal>;;*********************************************************************</p>
+			<p class=MsoNormal>;; Function end pops the variable
+			dictionary from the stack</p>
+			<p class=MsoNormal style='mso-outline-level:1'>;; Note: We use
+			the persistant variables from startRule</p>
+			<p class=MsoNormal>;;*********************************************************************</p>
+			<p class=MsoNormal>(defchild javaScript:popVars()</p>
+			<p class=MsoNormal>
+			vars:(result pvarDic varDic vecLast varLen i varList)</p>
+			<p class=MsoNormal>
+			;; Pop the variable dictionaries from the stack.</p>
+			<p class=MsoNormal>
+			(setq vecLast (subi (length pvarVector) 1))</p>
+			<p class=MsoNormal>
+			(setq pvarDic pvarVector[vecLast])</p>
+			<p class=MsoNormal>
+			(setq varDic varVector[vecLast])</p>
+			<p class=MsoNormal>
+			(resize pvarVector vecLast)</p>
+			<p class=MsoNormal>
+			(resize varVector vecLast)</p>
+			<p class=MsoNormal>
+			;; If there are any pvars, append them to the result.</p>
+			<p class=MsoNormal>
+			(if (&gt; (length pvarDic) 0)</p>
+			<p class=MsoNormal style='mso-outline-level:1'>        (begin</p>
+			<p class=MsoNormal>           (setq result (list (makeQuotedSymbol
+			&quot;pvars&quot;)))</p>
+			<p class=MsoNormal>           (setq varLen (length pvarDic))</p>
+			<p class=MsoNormal>           (setq varList #void)</p>
+			<p class=MsoNormal>           (loop for i from 0 until varLen do</p>
+			<p class=MsoNormal>               (setq varList (appendList varList pvarDic[i 0]))</p>
+			<p class=MsoNormal>               ) ; end loop</p>
+			<p class=MsoNormal>           (if (not (isPair varList)) (setq varList (list
+			varList)))</p>
+			<p class=MsoNormal>           (setq result (appendList result (list varList)))</p>
+			<p class=MsoNormal style='mso-outline-level:1'>           )) ; end if pvars</p>
+			<p class=MsoNormal>
+			;; If there are any vars, append them to the result.</p>
+			<p class=MsoNormal>
+			 (if (&gt; (length varDic) 0)</p>
+			<p class=MsoNormal style='mso-outline-level:1'>        (begin</p>
+			<p class=MsoNormal>           (setq result (appendList result (list (makeQuotedSymbol
+			&quot;vars&quot;))))</p>
+			<p class=MsoNormal>           (setq varLen (length varDic))</p>
+			<p class=MsoNormal>           (setq varList #void)</p>
+			<p class=MsoNormal>           (loop for i from 0 until varLen do</p>
+			<p class=MsoNormal>               (setq varList (appendList varList varDic[i 0]))</p>
+			<p class=MsoNormal>               ) ; end loop</p>
+			<p class=MsoNormal>           (if (not (isPair varList)) (setq varList (list
+			varList)))</p>
+			<p class=MsoNormal>           (setq result (appendList result (list varList)))</p>
+			<p class=MsoNormal style='mso-outline-level:1'>           )) ; end if vars</p>
+			<p class=MsoNormal>
+			result) ; end popVars</p>
+			<p class=MsoNormal>&nbsp;</p>
+			<p class=MsoNormal>;;*********************************************************************</p>
+			<p class=MsoNormal>;; Add a new variable to the pvars or
+			the vars variable list</p>
+			<p class=MsoNormal style='mso-outline-level:1'>;; Note: We use
+			the persistant variables from startRule</p>
+			<p class=MsoNormal>;;*********************************************************************</p>
+			<p class=MsoNormal>(defchild javaScript:addVar(var name
+			struct)</p>
+			<p class=MsoNormal>
+			vars:(vecLast)</p>
+			<p class=MsoNormal>
+			;; Add a new variable to the variable dictionary for this function.</p>
+			<p class=MsoNormal>
+			(setq vecLast (subi (length var) 1))</p>
+			<p class=MsoNormal>
+			(if (&lt; vecLast 0)</p>
+			<p class=MsoNormal>        (error (append &quot;Found variable &quot; name &quot; declared
+			outside of a function&quot;)))</p>
+			<p class=MsoNormal>
+			(setq var[vecLast][(symbol name)] true)</p>
+			<p class=MsoNormal>
+			struct) ; end addVar</p>
+			<p class=MsoNormal>&nbsp;</p>
+			<p class=MsoNormal>;;*********************************************************************</p>
+			<p class=MsoNormal>;; Appends iterative results into a
+			single structure </p>
+			<p class=MsoNormal>;;*********************************************************************</p>
+			<p class=MsoNormal>(defchild javaScript:addToList(struct
+			x) </p>
+			<p class=MsoNormal>
+			(setq struct.Value (appendList struct.Value x))) ; end addToList</p>
+			<p class=MsoNormal>&nbsp;</p>
+			<p class=MsoNormal>;;*********************************************************************</p>
+			<p class=MsoNormal>;; Constructs a function call argument
+			list from an argument vector.</p>
+			<p class=MsoNormal>;;*********************************************************************</p>
+			<p class=MsoNormal>(defchild javaScript:argList(struct
+			name args)</p>
+			<p class=MsoNormal>
+			;; Return if there are no arguments.</p>
+			<p class=MsoNormal>
+			(if (= args #void) </p>
+			<p class=MsoNormal>        (setq struct.Value (list name))</p>
+			<p class=MsoNormal>        (setq struct.Value (append (list name) (objectToList
+			args)))</p>
+			<p class=MsoNormal>        ) ; end if</p>
+			<p class=MsoNormal>
+			(setq struct.Term true)</p>
+			<p class=MsoNormal>
+			struct) ; end argList</p>
+			<p class=MsoNormal>&nbsp;</p>
+			<p class=MsoNormal>;;*********************************************************************</p>
+			<p class=MsoNormal>;; AddToBeginList</p>
+			<p class=MsoNormal>;; Note: Avoid using append for
+			repeatedly linking long lists together.</p>
+			<p class=MsoNormal>;;       Use the setCdr function, it is much faster. Append was never</p>
+			<p class=MsoNormal>;;       meant to be used for long lists repeatedly.</p>
+			<p class=MsoNormal>;;*********************************************************************</p>
+			<p class=MsoNormal>(defchild
+			javaScript:addToBeginList(struct x)</p>
+			<p class=MsoNormal>
+			;; Return if there is nothing to append.</p>
+			<p class=MsoNormal>
+			(if (= x #void) (return struct))</p>
+			<p class=MsoNormal>
+			(cond</p>
+			<p class=MsoNormal>        ;; Set up begin list header the first time.</p>
+			<p class=MsoNormal>        ((= struct.Value #void)</p>
+			<p class=MsoNormal>         (begin </p>
+			<p class=MsoNormal>            (setq struct.Value (list |begin|: x))</p>
+			<p class=MsoNormal>            (setCdr struct (last struct.Value))</p>
+			<p class=MsoNormal>            ))</p>
+			<p class=MsoNormal>        ;; Append to the begin list the remaining times.</p>
+			<p class=MsoNormal>        (else </p>
+			<p class=MsoNormal>         (begin </p>
+			<p class=MsoNormal>            (setCdr (cdr struct) (list x))</p>
+			<p class=MsoNormal>            (setCdr struct (last (cdr struct)))</p>
+			<p class=MsoNormal>            ))</p>
+			<p class=MsoNormal>        ) ; end conf</p>
+			<p class=MsoNormal>
+			struct) ; end addToBeginList</p>
+			<p class=MsoNormal>&nbsp;</p>
+			<p class=MsoNormal>;;*********************************************************************</p>
+			<p class=MsoNormal>;; Constructs a java child definition
+			from an argument list.</p>
+			<p class=MsoNormal>;;*********************************************************************</p>
+			<p class=MsoNormal>(defchild javaScript:childList(struct
+			parent name args body)</p>
+			<p class=MsoNormal>
+			vars:(varList)</p>
+			<p class=MsoNormal>
+			;; Retrieve all the declare variables</p>
+			<p class=MsoNormal>
+			(setq varList (popVars))</p>
+			<p class=MsoNormal>
+			;; Set up |()| if there are no arguments.</p>
+			<p class=MsoNormal>
+			(if (= args.Value #void)</p>
+			<p class=MsoNormal>        (setq args (symbol &quot;()&quot;))</p>
+			<p class=MsoNormal>        (setq args (objectToList args.Value))</p>
+			<p class=MsoNormal>        ) ; end if</p>
+			<p class=MsoNormal>
+			;; Create the function declaration up to the variables</p>
+			<p class=MsoNormal>
+			(setq struct.Value (list |defchild|: (makeQuotedSymbol parent.Value)
+			name.Value args))</p>
+			<p class=MsoNormal>
+			;; Append the variable declarations (if any)</p>
+			<p class=MsoNormal>
+			(if (&lt;&gt; varList #void)</p>
+			<p class=MsoNormal>        (setq struct.Value (appendList struct.Value varList (list
+			body.Value)))</p>
+			<p class=MsoNormal>        (setq struct.Value (appendList struct.Value (list
+			body.Value)))</p>
+			<p class=MsoNormal style='mso-outline-level:1'>        ) ; end if</p>
+			<p class=MsoNormal>
+			(setq struct.Func true)</p>
+			<p class=MsoNormal>
+			struct) ; end childList</p>
+			<p class=MsoNormal>&nbsp;</p>
+			<p class=MsoNormal>;;*********************************************************************</p>
+			<p class=MsoNormal>;; Modified default rule for adding
+			Term attributes to all name tokens.</p>
+			<p class=MsoNormal>;;*********************************************************************</p>
+			<p class=MsoNormal>(defchild
+			javaScript:defaultTokenRule(token)</p>
+			<p class=MsoNormal>
+			vars:(result tokenLen tokenEnd)</p>
+			<p class=MsoNormal>
+			;; Is this token a delimited constant?</p>
+			<p class=MsoNormal>
+			(if (isVector token) </p>
+			<p class=MsoNormal>        (begin</p>
+			<p class=MsoNormal>           (setq result (new Structure: Value: token[1] token[0]
+			true  Constant: true))</p>
+			<p class=MsoNormal>           ;; If this is a String constant, make it a Term also and
+			remove the enclosing quotes</p>
+			<p class=MsoNormal>           (if (= token[0] String:) </p>
+			<p class=MsoNormal>               (begin</p>
+			<p class=MsoNormal>                  (setq result.Value (mid result.Value 1 (subi
+			(length result.Value) 2)))</p>
+			<p class=MsoNormal>
+			            (setq result.Term
+			true)</p>
+			<p class=MsoNormal>                  )) ; end if</p>
+			<p class=MsoNormal>           (return result)</p>
+			<p class=MsoNormal>           )) ;; end if delimited constant</p>
+			<p class=MsoNormal>
+			;; Is this token a numeric constant?</p>
+			<p class=MsoNormal>
+			(if (isNumber token) </p>
+			<p class=MsoNormal>        (begin</p>
+			<p class=MsoNormal>           (setq result (new Structure: Value: token  Number: true  Term: true))</p>
+			<p class=MsoNormal>           (return result)</p>
+			<p class=MsoNormal>           )) ;; end if numeric constant</p>
+			<p class=MsoNormal>
+			;; Is this token a name token?</p>
+			<p class=MsoNormal>
+			(if (isCharName token) </p>
+			<p class=MsoNormal>        (begin</p>
+			<p class=MsoNormal>           (setq result (new Structure: Value: token  Name: true
+			Term: true))</p>
+			<p class=MsoNormal>           (return result)</p>
+			<p class=MsoNormal>           )) ;; end if numeric constant</p>
+			<p class=MsoNormal>
+			;; Create a default attributed structure for this token</p>
+			<p class=MsoNormal>
+			(setq result (new Structure: Value: token Default: true))</p>
+			<p class=MsoNormal>
+			result) ;; end defaultTokenRule</p>
+			<p class=MsoNormal>&nbsp;</p>
+			<p class=MsoNormal>;;*********************************************************************</p>
+			<p class=MsoNormal>;; Constant Folding Function </p>
+			<p class=MsoNormal>;;*********************************************************************</p>
+			<p class=MsoNormal>(defchild
+			javaScript:foldConstants(struct op x y) </p>
+			<p class=MsoNormal>
+			vars:(f n)</p>
+			<p class=MsoNormal>
+			(setq f (getGlobalValue (symbol op))) </p>
+			<p class=MsoNormal>
+			(setq n (f x y))</p>
+			<p class=MsoNormal>
+			(if (&lt;&gt; struct #void)</p>
+			<p class=MsoNormal>        (begin</p>
+			<p class=MsoNormal>           (setq struct.Number true)</p>
+			<p class=MsoNormal>           (setq struct.Value (appendList struct.Value n)))</p>
+			<p class=MsoNormal>        else</p>
+			<p class=MsoNormal>        n)) ; end foldConstants</p>
+			<p class=MsoNormal>&nbsp;</p>
+			<p class=MsoNormal>;;*********************************************************************</p>
+			<p class=MsoNormal>;; Constructs a java friend definition
+			from an argument list.</p>
+			<p class=MsoNormal>;;*********************************************************************</p>
+			<p class=MsoNormal>(defchild javaScript:friendList(struct
+			parent name args body)</p>
+			<p class=MsoNormal>
+			vars:(varList)</p>
+			<p class=MsoNormal>
+			;; Retrieve all the declare variables</p>
+			<p class=MsoNormal>
+			(setq varList (popVars))</p>
+			<p class=MsoNormal>
+			;; Set up |()| if there are no arguments.</p>
+			<p class=MsoNormal>
+			(if (= args.Value #void)</p>
+			<p class=MsoNormal>        (setq args (symbol &quot;()&quot;))</p>
+			<p class=MsoNormal>        (setq args (objectToList args.Value))</p>
+			<p class=MsoNormal>        ) ; end if</p>
+			<p class=MsoNormal>
+			;; Create the function declaration up to the variables</p>
+			<p class=MsoNormal>
+			(setq struct.Value (list |defriend|: (makeQuotedSymbol parent.Value)
+			name.Value args))</p>
+			<p class=MsoNormal>
+			;; Append the variable declarations (if any)</p>
+			<p class=MsoNormal>
+			(if (&lt;&gt; varList #void)</p>
+			<p class=MsoNormal>        (setq struct.Value (appendList struct.Value varList (list
+			body.Value)))</p>
+			<p class=MsoNormal>        (setq struct.Value (appendList struct.Value (list
+			body.Value)))</p>
+			<p class=MsoNormal style='mso-outline-level:1'>        ) ; end if</p>
+			<p class=MsoNormal>
+			(setq struct.Func true)</p>
+			<p class=MsoNormal>
+			struct) ; end friendList</p>
+			<p class=MsoNormal>&nbsp;</p>
+			<p class=MsoNormal>;;*********************************************************************</p>
+			<p class=MsoNormal>;; Constructs a java function
+			definition from an argument list.</p>
+			<p class=MsoNormal>;;*********************************************************************</p>
+			<p class=MsoNormal>(defchild javaScript:funList(struct
+			name args body)</p>
+			<p class=MsoNormal>
+			vars:(varList)</p>
+			<p class=MsoNormal>
+			;; Retrieve all the declare variables</p>
+			<p class=MsoNormal>
+			(setq varList (popVars))</p>
+			<p class=MsoNormal>
+			;; Set up |()| if there are no arguments.</p>
+			<p class=MsoNormal>
+			(if (= args.Value #void)</p>
+			<p class=MsoNormal>        (setq args (symbol &quot;()&quot;))</p>
+			<p class=MsoNormal>        (setq args (objectToList args.Value))</p>
+			<p class=MsoNormal>        ) ; end if</p>
+			<p class=MsoNormal>
+			;; Create the function declaration up to the variables</p>
+			<p class=MsoNormal>
+			(setq struct.Value (list |defun|: name.Value args))</p>
+			<p class=MsoNormal>
+			;; Append the variable declarations (if any)</p>
+			<p class=MsoNormal>
+			(if (&lt;&gt; varList #void)</p>
+			<p class=MsoNormal>        (setq struct.Value (appendList struct.Value varList (list
+			body.Value)))</p>
+			<p class=MsoNormal>        (setq struct.Value (appendList struct.Value (list
+			body.Value)))</p>
+			<p class=MsoNormal style='mso-outline-level:1'>        ) ; end if</p>
+			<p class=MsoNormal>
+			(setq struct.Func true)</p>
+			<p class=MsoNormal>
+			struct) ; end funList</p>
+			<p class=MsoNormal>&nbsp;</p>
+			<p class=MsoNormal>&nbsp;</p>
+			<p class=MsoNormal>;;*********************************************************************</p>
+			<p class=MsoNormal>;; Appends iterative results into a
+			single structure </p>
+			<p class=MsoNormal>;;*********************************************************************</p>
+			<p class=MsoNormal>(defchild javaScript:postfix(struct
+			variable op)</p>
+			<p class=MsoNormal style='mso-outline-level:1'>    (setq struct.Value </p>
+			<p class=MsoNormal>           (list |begin|: </p>
+			<p class=MsoNormal>               (list |setq|: |_currentResult|: variable) </p>
+			<p class=MsoNormal>               (list op variable)</p>
+			<p class=MsoNormal>               _currentResult:))) ; end postfix</p>
+			<p class=MsoNormal>&nbsp;</p>
+			<p class=MsoNormal>;;*********************************************************************</p>
+			<p class=MsoNormal>;; Appends iterative results into a
+			single structure </p>
+			<p class=MsoNormal>;;*********************************************************************</p>
+			<p class=MsoNormal>(defchild javaScript:qualifyName(struct
+			x y) </p>
+			<p class=MsoNormal>
+			(setq struct.Value (list |ref|: x y))</p>
+			<p class=MsoNormal>
+			(setq struct.Name true)</p>
+			<p class=MsoNormal>
+			(setq struct.Term true)</p>
+			<p class=MsoNormal>
+			(setq struct.NAME true)) ; end qualifyName</p>
+			<p class=MsoNormal>&nbsp;</p>
+			<p class=MsoNormal>&nbsp;</p>
+			<p class=MsoNormal>#End#</p>
+			<p class=MsoNormal>&nbsp;</p>
+			<p class=MsoNormal>&nbsp;</p>
+			<p class=MsoBodyText><b style='mso-bidi-font-weight:normal'><u>&nbsp;</u></b></p>
+            </div>
+        ]]></Description>
+     </Section>
+</Essay>

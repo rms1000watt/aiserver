@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example FltVector methodsOf 017</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>methodsOf</FunctionKeywords>
+		<TypeKeywords> FltVector Symbol Dictionary </TypeKeywords>
+		<RelatedFunctions>defmethod send addMethod</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>method message messageName</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ The methods <b>Increment</b> and <b>Decrement</b> are defined and added in the Method Dictionary   
+                   for the FltVector object using the <b>defmethod</b> function. The <b>methodsOf</b> function returns the 
+                  defined methods stored in the Dictionary.
+	]]></Description>
+   <Syntax> 
+   <Expression><![CDATA[ <sc> (defmethod  FltVector:  Increment  (s n )  (add1 s[n]))       </sc> 
+   ]]></Expression>  
+   <Note><![CDATA[ Add a method named Increment which will increment a specific field in a Vector.
+   ]]></Note> 
+   <Returns><![CDATA[ #&#60Dictionary 123456&#62 ]]></Returns>
+   <Expression><![CDATA[ <sc> (defmethod  FltVector:  Decrement  (s n )  (sub1 s[n]))         </sc> 
+   ]]></Expression>  
+   <Note><![CDATA[ Add a method named Decrement which will decrement a specific field in a Vector.]]></Note> 
+   <Returns><![CDATA[ #&#60Dictionary 123456&#62 ]]></Returns>
+   <Expression><![CDATA[<sc>(display (methodsOf  FltVector: ))</sc> ]]></Expression>
+   <Note><![CDATA[Display the Methods Dictionary for the Vector Object Type:]]></Note>
+   <Returns><![CDATA[#{dic|| Decrement #&#60Lambda 123456&#62  Increment #&#60Lambda 234567&#62}true]]></Returns>
+   <Expression><![CDATA[ <sc> (length (methodsOf  FltVector: ))           </sc> 
+   ]]></Expression>  
+   <Note><![CDATA[ Query the methods Dictionary for the FltVector Object Type:]]></Note> 
+   <Returns><![CDATA[ 2 ]]></Returns>
+   <Expression><![CDATA[<sc>(ref (methodsOf FltVector:)[0 0])   </sc> 
+   ]]></Expression>
+   <Note><![CDATA[Get the names of  the methods  in the methods Dictionary for the 
+         FltVector Object Type:
+   ]]></Note>
+   <Returns><![CDATA[<b>Decrement </b>]]></Returns>
+   <Expression><![CDATA[<sc>(ref (methodsOf FltVector:)[1 0])   </sc> 
+   ]]></Expression>
+   <Note><![CDATA[none]]></Note>
+   <Returns><![CDATA[<b>Increment </b>]]></Returns>
+   <Expression><![CDATA[<sc>(ref (methodsOf FltVector:)[0 1])      </sc> 
+   ]]></Expression>
+   <Note><![CDATA[Get the Lambdas  in the Dictionary  for the FltVector Object Type: ]]></Note>
+   <Returns><![CDATA[ #&#60Lambda 123456#&62]]></Returns>
+   <Expression><![CDATA[<sc>(ref (methodsOf FltVector:)[1 1])      </sc> 
+   ]]></Expression>
+   <Note><![CDATA[none]]></Note>
+   <Returns><![CDATA[ #&#60Lambda 234567#&62]]></Returns>
+   <Hints><![CDATA[none]]></Hints>
+</Syntax>
+</Example>

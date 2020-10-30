@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example ShortVector compareEQ 015</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compareEQ</FunctionKeywords>
+		<TypeKeywords>ShortVector Boolean</TypeKeywords>
+		<RelatedFunctions>compare compareNE compareGT compareGE compareLT  compareLE</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare vector equal </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>compareEQ</b> function to compare two Vectors and return
+
+
+
+
+
+
+
+
+                  the Boolean value, true or false. The  values of each Vector are compared
+
+
+
+
+
+                  to determine whether the Vectors are equal or not.
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+        <Expression><![CDATA[ <sc>(compareEQ #(short| 11 12 )#(short| 11.0 12.0 ))     </sc>]]></Expression>
+        <Note><![CDATA[Both Vectors are equal.]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>(compareEQ #(short| 11 12 )#(int| 11.0 12.0 ))     </sc>]]></Expression>
+        <Note><![CDATA[The Vectors are not of the same type.]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

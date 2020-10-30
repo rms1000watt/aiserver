@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Document SYSTEM "../DTD/Document.dtd">
+<Document>
+	<KnowledgeBase>
+	    <Title>Function Libraries</Title>
+		<Topic>Lisp</Topic>
+		<SubTopic>Functions</SubTopic>
+		<HumanKeywords>Math Trigonometry FileIO Macros Functions Programming Computation</HumanKeywords>
+	</KnowledgeBase>
+	<Essay>Essay_Math_Functions</Essay>
+	<Essay>Essay_Trig_Functions</Essay>
+    <Essay>Essay_Bitwise_Functions</Essay>
+	<Essay>Essay_FileIO_Functions</Essay>
+    <Essay>Essay_Built-in_Macros</Essay>
+</Document>

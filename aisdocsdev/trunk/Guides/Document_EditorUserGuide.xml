@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Document SYSTEM "../DTD/Document.dtd">
+<Document>
+	<KnowledgeBase>
+	    <Title>AIS Editor User's Guide</Title>
+		<Topic>Analytic Information Server</Topic>
+		<SubTopic>User's Guide</SubTopic>
+		<HumanKeywords>Development AIS Guide</HumanKeywords>
+	</KnowledgeBase>
+	<Essay>Essay_Edit_Operations</Essay>
+    <Essay>Essay_Edit_Dialogs</Essay>
+    <Essay>Essay_Edit_SelectedText</Essay>
+    <Essay>Essay_Edit_Search</Essay>
+    <Essay>Essay_Edit_Undo</Essay>
+    <Essay>Essay_Edit_Configuration</Essay>
+    <Essay>Essay_Edit_API</Essay>
+    <Essay>Essay_Edit_Faqs</Essay>
+</Document>

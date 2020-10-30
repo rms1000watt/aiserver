@@ -1,0 +1,62 @@
+# aised/test/testdelete.txt
+
+#							AISED - TEST DELETE
+# Test delete operations.  
+
+# CHANGE HISTORY
+# Version	Date		Who		Change
+# 1.0108	10/1/2006	tlw		Add new delete instructions.
+# 1.0039	4/20/2004	tlw		Original
+
+# Move operations:
+# nomove - don't move
+# bol - beginning-of-line
+# bot - beginning-of-text
+# eol - end-of-line
+# eot - end-of-text
+# nextbow - next beginning-of-word
+# nextchar - next char
+# nextcur - next cursor in cursor stack
+# nexteow - next end-of-word
+# nexthalf - next half-page
+# nextline - next line
+# nextpage - next page
+# nextsow - next bow if not at already at bow
+# prevbow - previous beginning-of-word
+# prevchar - previous char
+# prevcur  - previous cursor in cursor stack
+# prevhalf - previous half-page
+# prevline - previous line
+# prevpage - previous page
+# prevsow - previous bow if not already at bow
+# prevtab - previous tab stop
+# same - no move
+
+# NOTES
+#	 1. When making changes to this file, be sure to note them in the change history above.
+#		Put the latest entry at the top of the history.
+#	 2. See testsuite.txt for lots of details.
+#	*************************************************************************************************
+# DELETE - delete(Move)
+clear
+insert("a")
+delete(bol)
+insert("b", Forward)
+delete(bot)
+insert("c", Backward)
+delete(eol)
+insert("d", Backward)
+delete(eot)
+insert(" e", Backward)
+delete(nextbow)
+delete(nextchar)
+insert("f g", Backward)
+delete(nexteow)
+insert("h\ni", Backward)
+delete(nextline)
+delete(nextpage)
+# PENDING
+# Delete parts of a single long line at end.
+# Delete parts of multiple long lines
+
+# end

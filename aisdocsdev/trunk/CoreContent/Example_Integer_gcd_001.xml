@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Integer gcd 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>gcd</FunctionKeywords>
+		<TypeKeywords>Integer </TypeKeywords>
+		<RelatedFunctions>  gcd  </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>common divisor division</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[  <p> The <b>gcd</b> function returns greatest common divisor of a 
+             pair of integers.</p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+(gcd 49 28)</sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[7.0 ]]></Returns>
+        <Expression><![CDATA[ <sc>(gcd 206 40)  </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[2.0]]></Returns>
+        <Hints><![CDATA[none
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

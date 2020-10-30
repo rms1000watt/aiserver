@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example List defmethod 022</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>defmethod</FunctionKeywords>
+		<TypeKeywords> Dictionary Symbol</TypeKeywords>
+		<RelatedFunctions>addMethod send methodsOf</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>method message messageName</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example uses the added method <b>appendString </b> which will append all the values in a List.
+	]]></Description>
+	<Syntax>
+	<Expression><![CDATA[<sc>(defmethod  List: appendStrings (s)  (apply append  s))       </sc>]]></Expression>
+    <Note><![CDATA[ Add a method named appendStrings which will increment each value in a Pair.
+
+    ]]></Note>
+    <Returns><![CDATA[ #&#60Dictionary 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(define Mary  '("Mary " "had " "a " "little " "lamb ")  )      <sc> ]]></Expression>
+    <Note><![CDATA[Define a List that contains Pairs of Strings.]]></Note>
+    <Returns><![CDATA[#&#60Pair 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(send  appendStrings:  Mary)      <sc> ]]></Expression>
+    <Note><![CDATA[Invoke the method named appendStrings to append all the values in a Pair.]]></Note>
+    <Returns><![CDATA[Mary had a little lamb]]></Returns>
+    <Expression><![CDATA[<sc>(appendStrings:  Mary)      <sc> ]]></Expression>
+    <Note><![CDATA[The method can be invoked simply by name:]]></Note>
+    <Returns><![CDATA[Mary had a little lamb]]></Returns>
+    <Hints><![CDATA[
+        <p>To view the entry in the methods Dictionary created by the defmethod  function, 
+
+           you can use the method name to access the dictionary entry by </p>
+        <p><b> #&#60Dictionary 123456&#62[methodName:] or </b></p>
+        <p> To determine the number of assigned methods:</p>
+        <p><b>(length  (methodsOf List: ))</b></p>
+        <p>To access the nth method name:</p>
+        <p><b>(methodsOf Pair: )[n  0]</b></p>
+        <p>If the method Name is unknown, it is possible to reference the nth name from the dictionary:</p>
+        <p><b>(ref  (methodsOf List: ) n  0)   </b></p>
+        <p> or </p>
+        <p><b> #&#60Dictionary 123456&#62[n 0] </b></p> 
+]]></Hints>
+</Syntax>
+</Example>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure defineStructure 003</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>defineStructure</FunctionKeywords>
+		<TypeKeywords>Structure</TypeKeywords>
+		<RelatedFunctions>defstruct defmethod fieldsOf makeStructure defclass objectToStructure</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>define set make object structure inherit 
+
+
+                       parent object-oriented classes</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines a method to be associated 
+                  with the <b>employee</b> object type as defined in the
+                  previous example.  Such method is
+                  invoked by an object of the <b>employee</b> type.          
+
+
+	]]></Description>
+	<Syntax>
+ 	    <Expression><![CDATA[ <sc>(defineStructure employee: name:  job:  salary:) </sc>]]></Expression>
+        <Note><![CDATA[The Structure name "employee" is defined. ]]></Note>
+        <Returns><![CDATA[employee ]]></Returns>
+ 		<Expression><![CDATA[ <sc>(define Z (new employee: name: "John Doe"  job:  "CEO" salary: 100000 ) ) </sc>]]></Expression>
+        <Note><![CDATA[Defines the employee object, Z.]]></Note>
+        <Returns><![CDATA[employee ]]></Returns>
+  	    <Expression><![CDATA[ <sc>(defmethod  employee:  raise(e  r)  (setq  e.salary (+ e.salary r)))  </sc>]]></Expression>
+        <Note><![CDATA[Define a method for the employee object to give an employee a raise in salary.]]></Note>
+        <Returns><![CDATA[#&#60Dictionary 173577&#62 ]]></Returns>
+
+        <Expression><![CDATA[ <sc>(send  raise:  Z  11000)       </sc>]]></Expression>  
+        <Note><![CDATA[Give John Doe a raise = $11,000 by invoking the raise method]]></Note> 
+        <Returns><![CDATA[employee ]]></Returns>
+        <Expression><![CDATA[ <sc>(display Z.name)        </sc>]]></Expression>
+        <Note><![CDATA[The properties of Z, an "employee" object type are displayed. ]]></Note>
+        <Returns><![CDATA[John Doe]]></Returns>
+        <Expression><![CDATA[ <sc>(display Z.name)        </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[CEO]]></Returns>
+        <Expression><![CDATA[ <sc>(display Z.salary)        </sc>]]></Expression>
+        <Note><![CDATA[The salary of John Does is increased from 100000 to 111000.]]></Note>
+        <Returns><![CDATA[111000]]></Returns>
+        <Hints><![CDATA[<p>To view the entry in the methods Dictionary created by the <b>defmethod</b> 
+               function, you can use the method name to access the dictionary entry  by </p>
+               <p><b>#&#60Dictionary 5678&#62[methodName] </b>  Returns the Lambda. </p>
+               <p>Or to retrieve the methodName: </p>
+               <p><b>(ref  (methodsOf employee: ) 0  0)  </b> </p> Returns the method name.
+         ]]></Hints>
+   </Syntax>
+</Example>

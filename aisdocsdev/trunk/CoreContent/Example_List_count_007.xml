@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example List count 007</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>count</FunctionKeywords>
+		<TypeKeywords>Pair Integer</TypeKeywords>
+		<RelatedFunctions>length</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>count length values deep shallow </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>count</b> function perform a deep count
+                  on the elements of List. Deep and shallow counting using both the
+                  <b>length</b> and <b>count</b> functions are also illustrated.         
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc> (count  '(1  2  3  4))          </sc>]]></Expression>
+        <Note><![CDATA[ none]]></Note>
+        <Returns><![CDATA[4]]></Returns>
+        <Expression><![CDATA[ <sc> (length   '(1  2  3  4))          </sc>]]></Expression>
+        <Note><![CDATA[ none]]></Note>
+        <Returns><![CDATA[4]]></Returns>
+  	    <Expression><![CDATA[ <sc> (count  '((1  2)  3  4))            </sc>]]></Expression>       
+        <Note><![CDATA[ A deep count is performed by the count function. ]]></Note> 
+        <Returns><![CDATA[4]]></Returns>   
+  	    <Expression><![CDATA[ <sc> (length  '((1  2)  3  4))            </sc>]]></Expression>       
+        <Note><![CDATA[ A shallow count is performed by the length function. ]]></Note> 
+        <Returns><![CDATA[3]]></Returns>
+        <Hints><![CDATA[
+none ]]></Hints>
+   </Syntax>
+</Example>

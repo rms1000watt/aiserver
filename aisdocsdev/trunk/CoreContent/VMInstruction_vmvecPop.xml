@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmvecPop</Title>
+		<InstructionName>vmvecPop</InstructionName>
+		<InstructionType>Vector</InstructionType>
+		<ArgumentTypes>Integer Number Double Float</ArgumentTypes>
+		<RelatedVMInstructions>vmvecPush vmvecPopNumber vmvecPushNumber</RelatedVMInstructions>
+		<HumanKeywords>vector pop push number</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[
+		<p>When evaluated, this vm instruction stores the top word from the 
+		internal Vector Processing Stack, into the destination, specified by 
+		the <b>destination</b> argument, and decrements the internal Vector 
+		Processing Stack by one position. The top stack word is stored, at 
+		the destination, as the data type specified by the <b>type</b> argument. 
+		There are no conversions made between different types. The initial 
+		values in the three pointer registers, the three increment registers, 
+		and the counter register are NOT altered by this instruction. 
+		This instruction may return an Error value. After the operation, the 
+		Instruction Pointer is promoted. The operation of this vm instruction 
+		is expressed in the following C expression:
+	    </p>
+        <ul><li> <b>   *((type*)destination) = (type)ST[top--]; </b></li></ul>
+        <p>
+         The possible values of the <b>type</b> argument are <u>any immediate integer value</u>, 
+         indicating the data type, or any one of the following symbolic data types:
+        </p>  
+         <li>Float: [NumStack Only] <i>(The top stack word is stored as a 32 bit IEEE floating point at the destination.)  </i></li>   
+         <li>Number: [NumStack Only]<i>(The top stack word is stored as a 64 bit IEEE floating point at the destination.) </i></li>
+        <p>
+        The possible values of the <b>destination</b> argument are <u>any immediate integer value</u>, 
+        indicating the destination, or any one of the following symbolic data types:
+        </p>
+        <ul><li>argument:{0}<i> (The top stack word is stored, as the specified data type, at the Internal Vector argument Pointer Register destination.) </i></li>  
+         <li>source:  {1}<i> (The top stack word is stored, as the specified data type, at the Internal Vector source Pointer Register destination.) </i></li>   
+         <li>target:  {2}<i>(The top stack word is stored, as the specified data type, at the Internal Vector target Pointer Register destination.)</i></li>  
+         <li>drop:    {3}<i>(The top stack word is dropped.) </i></li></ul>               
+    ]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[(vmvecPop type destination)]]></Expression>   
+	    <Argument> 
+		  <Name>type</Name>
+		  <Format>immediate</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument> 
+		 <Argument> 
+		  <Name>destination</Name>
+		  <Format>immediate</Format>
+		  <AISTypes>integer</AISTypes>   
+		</Argument>
+	</Syntax>
+</VMInstruction>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>setAttributes</Title>
+		<FunctionName>setAttributes</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+        <ArgumentTypes>  Integer Vector</ArgumentTypes>
+		<DataType> Vector Structure Dictionary Directory</DataType>
+		<RelatedFunctions>setq ref fieldsOf refAttributes   refValues</RelatedFunctions>
+        <RelatedVMInstructions>  vmregObjPointer</RelatedVMInstructions>
+		<HumanKeywords>ref reference attributes set position</HumanKeywords>
+	</KnowledgeBase>
+	  <Description><![CDATA[
+             <p> The <b>setAttributes</b> function sets the attributes of the   Vector argument to the value of the specified object vector, and returns the updated 
+                  Vector.</p>
+          ]]></Description>
+	<Brief>
+        <Overview><![CDATA[
+		<p>The <b>setAttributes</b> function sets the attributes of the argument <b>{vector}</b> 
+            to the value of the specified object vector <b>{objectVector}</b>, and returns the 
+            updated Vector. When a Vector is attributed, it may be referenced by attribute 
+            (similar in many ways to a Structure). If the attributes are set to Void 
+            (objectVector = #void) then the Vector is returned unattributed.
+        </p>
+        ]]></Overview>
+       <Usage><![CDATA[
+        <p>The <b>setAttributes</b> function is used to set the attributes of a <b>{vector}</b> 
+           to the specified <b>{objectVector}</b>, allowing the Vector to be accessed via the 
+          attributes. Alternatively, the <b>{vector}</b> argument may be a block of Vectors 
+          (an ObjVector, a Structure, or a Dictionary of Vectors). In this case, the 
+          <b>setAttributes</b> function will set the attributes of all Vectors contained in the 
+          block.
+          </p>
+        ]]></Usage>
+    </Brief>
+  <Syntax>
+	    <Expression><![CDATA[  <p><b>  (setAttributes  vector  objectVector)</b></p>]]></Expression>
+		<Argument> 
+		  <Name>vector</Name>
+		  <Note><![CDATA[
+		  <p>A Vector</p>
+          ]]></Note>
+		  <AISTypes>Vector</AISTypes>
+    	</Argument> 
+    	<Argument> 
+		  <Name>objectVector</Name>
+		  <Note><![CDATA[
+		  <p>An object vector containing new attributes or #void</p>
+          ]]></Note>
+		  <AISTypes>ObjVector</AISTypes>
+		</Argument>  
+		<Return><![CDATA[ 
+	    <p>The attributed Vector.</p>
+	    ]]></Return>  	 
+  </Syntax>
+</Function>

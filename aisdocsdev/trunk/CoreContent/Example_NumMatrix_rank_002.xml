@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example NumMatrix rank 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>rank</FunctionKeywords>
+		<TypeKeywords>NumMatrix  Integer</TypeKeywords>
+		<RelatedFunctions>new  objectToNumMatrix objectToMatrix</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords> rank dimension</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example returns the number of values in the NumMatrix using the <b>rank</b> function.
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	     <Expression><![CDATA[ <sc>(rank  #(nummat| "a" 18) )          </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60Vector 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60Vector 123456&#62)      </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ #(1) ]]></Returns>
+        <Expression><![CDATA[ <sc>(rank  #(nummat[2 3]| 4  5  6  7  9  3) )     </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60Vector 234567&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60Vector 234567&#62)      </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ #(2 3) ]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example ShortVector map 007</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>map</FunctionKeywords>
+		<TypeKeywords>ShortVector  </TypeKeywords>
+		<RelatedFunctions>mapc new</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>map mapc copy process</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines a ShortVector and applies the <b>add1</b>
+                 function to each element of the ShortVector using the  <b>map</b> function.   
+
+
+
+
+
+                
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define Scores  #(short| 89 90 91 ) ) </sc>]]></Expression>
+        <Note><![CDATA[A Short Vector is defined. ]]></Note>
+        <Returns><![CDATA[#&#60ShortVector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq  NewScores  (map  add1  Scores))      </sc>]]></Expression>
+        <Note><![CDATA[Increments the values by  one.]]></Note>
+        <Returns><![CDATA[#&#60ShortVector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>  NewScores[0]  </sc>]]></Expression>
+        <Note><![CDATA[Displays the resulting Vector.]]></Note>
+        <Returns><![CDATA[90]]></Returns>
+        <Expression><![CDATA[ <sc>  NewScores[1]  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[91]]></Returns>
+        <Expression><![CDATA[ <sc>  NewScores[2]  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[92]]></Returns>
+        <Hints><![CDATA[none
+
+       ]]></Hints>
+   </Syntax>
+</Example>

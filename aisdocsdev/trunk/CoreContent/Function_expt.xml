@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>expt</Title>
+		<FunctionName>expt</FunctionName>
+		<FunctionType>Builtin(Math)</FunctionType>
+		<ArgumentTypes> Number  </ArgumentTypes>
+		<DataType>Number Complex </DataType>
+		<RelatedFunctions> sqrt exp logbase</RelatedFunctions>
+        <RelatedVMInstructions>none </RelatedVMInstructions>
+		<HumanKeywords>square root  base    </HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>expt</b> function will compute the exponential of the two arguments.  </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		  <p> The <b>expt</b> function will compute the exponential of the two arguments. The first argument 
+          <b>{base}</b> is raised to the value of the second argument <b>{n}</b>. Expressed as a
+           formula the <b>expt</b> function performs the following: <b>base<superscript>n</superscript></b>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>expt</b> function raises the <b>{base}</b> to the nth power <b>{n}</b>.
+         </p>
+        ]]></Usage>
+        <Usage-Complex><![CDATA[
+        <p>The <b>expt</b> function is used to raise a number, base, to the power, exponent, 
+        where one or both arguments are complex. Do not use if immediate types, such as real 
+        numbers, would suffice.
+         </p>
+        ]]></Usage-Complex>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p><b> (expt base n)</b></p>]]></Expression>
+		<Argument>
+		  <Name>base</Name>
+		  <Note><![CDATA[
+		  <p>The number to be raised to the nth power</p>
+          ]]></Note>
+		  <AISTypes>Number</AISTypes>
+		</Argument>
+ 	    <Argument> 
+		  <Name>n</Name>
+		  <Note><![CDATA[
+		  <p>The power n.</p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>Computes and returns base<superscript>n</superscript>.</p>
+	    ]]></Return>
+	</Syntax>
+	<Syntax-Complex>
+	    <Expression><![CDATA[<p><b> (expt base n)</b></p>]]></Expression>
+		<Argument> 
+		  <Name>base</Name>
+		  <Note><![CDATA[
+		  <p>The number to be raised to the nth power</p>
+          ]]></Note>
+		  <AISTypes>Number</AISTypes>
+		</Argument>  
+ 	    <Argument> 
+		  <Name>n</Name>
+		  <Note><![CDATA[
+		  <p>The power n.</p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>     	 
+		<Return><![CDATA[ 
+	    <p>A complex number holding base to the exponent power.</p>
+	    ]]></Return>    	      
+	</Syntax-Complex>
+</Function>

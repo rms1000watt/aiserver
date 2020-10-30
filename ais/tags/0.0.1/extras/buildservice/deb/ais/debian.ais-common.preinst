@@ -1,0 +1,41 @@
+#!/bin/bash -e
+#
+# pre-install script
+
+. /usr/share/debconf/confmodule
+
+if [ -n "$DEBIAN_SCRIPT_DEBUG" ]; then set -v -x; DEBIAN_SCRIPT_TRACE=1; fi
+${DEBIAN_SCRIPT_TRACE:+ echo "#42#DEBUG# RUNNING $0 $*" 1>&2 }
+
+export PATH=$PATH:/sbin:/usr/sbin:/bin:/usr/bin
+DATADIR=/var/lib/ais
+
+# creating ais group if he isn't already there
+if ! getent group ais > /dev/null; then
+	# Adding system group: ais.
+	addgroup --system ais > /dev/null
+fi
+
+# creating ais user if he isn't already there
+if ! getent passwd ais > /dev/null; then
+	# Adding system user: ais.
+	adduser \
+	  --system \
+	  --disabled-login \
+	  --ingroup ais \
+	  --home $DATADIR \
+	  --gecos "AIS Service User" \
+	  --shell /bin/false \
+	  ais > /dev/null
+else
+	# Try to create $DATADIR
+	mkdir -p $DATADIR
+	chown -R ais:ais $DATADIR
+fi
+
+db_stop
+
+#DEBHELPER#
+
+exit 0
+

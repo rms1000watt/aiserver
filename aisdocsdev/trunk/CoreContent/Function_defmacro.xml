@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>defmacro</Title>
+		<FunctionName>defmacro</FunctionName>
+		<FunctionType>Macro</FunctionType>
+        <ArgumentTypes> Lambda  Symbol</ArgumentTypes>
+        <DataType> Lambda</DataType>
+	    <RelatedFunctions>setq set lambda defmacro defun defriend defchild
+                         list morph compile deforphan defmethod</RelatedFunctions>
+        <RelatedVMInstructions>   </RelatedVMInstructions>
+		<HumanKeywords>declaration initialization variables macro</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p>The <b>defmacro</b> macro creates a Macro object, assigns it to the specified variable {name} 
+                in the global environment, and returns the newly created Macro object.   </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+	    <p> The <b>defmacro</b> macro creates a Macro object, assigns it to the specified variable 
+            <b>{name}</b> in the global environment, and returns the newly created Macro object.  
+            The new Macro object is assigned to the specified global variable name <b>{name}</b> , 
+            and will be invoked by the <b>morph</b> function during the macro substitution phase 
+            of compilation (see the <b>lisp</b>, <b>morph</b>, and <b>compile</b> functions). 
+            The defmacro macro results in the following substitution:</p>
+        <p>
+ (define  macro: (name  arg...)  faces:(var...) vars:(var...)  pvars:(var...)  cvars:(var...)  
+              regs:(var...)  exp...)</p>
+        ]]></Overview>
+       <Usage><![CDATA[
+        <p>Use the <b>define macro:</b> function when you wish to create an in-line macro, which 
+           expands its arguments, rather than invoking a function call.</p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p><b>    (defmacro name(arg...)  faces:(vars...)  vars:(var...)  pvars:(var...) cvars:(var...) 
+                      regs:(var...)  exp...)</b></p>
+]]></Expression>  
+		<Argument> 
+		  <Name>name</Name>
+		  <Note><![CDATA[
+		  <p> The name that the Lambda will be associated with. </p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>(arg...)</Name>
+		  <Note><![CDATA[
+		  <p> Optional Argument. Argument list for the Lambda. </p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>faces:(var...)</Name>
+		  <Note><![CDATA[
+		  <p> Optional Argument. If present, must be followed by a interfaces feature list. </p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>vars:(var...)</Name>
+		  <Note><![CDATA[
+		  <p> Optional Argument. If present, must be followed by a local variable list.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>pvars:(var...)</Name>
+		  <Note><![CDATA[
+		  <p> Optional Argument. If present, must be followed by a persistent variable list.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>cvars:(var...)</Name>
+		  <Note><![CDATA[
+		  <p> Optional Argument. If present, must be followed by a persistent class variable list.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>regs:(var...)</Name>
+		  <Note><![CDATA[
+		  <p> Optional Argument. If present, must be followed by a register variable list 
+
+              (up to fifty register variables are allowed).</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>exp...</Name>
+		  <Note><![CDATA[
+		  <p> The Lisp statements that forms the Lambdas</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>An Lambda that will be assigned the name {name}.</p>
+	    ]]></Return>
+	</Syntax>
+</Function>

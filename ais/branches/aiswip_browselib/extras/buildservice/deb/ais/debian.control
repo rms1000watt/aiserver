@@ -1,0 +1,45 @@
+Source: ais
+Section: misc
+Priority: optional
+Maintainer: Franklin Chua <franklin.chua@gmail.com> 
+Standards-Version: 3.8.0
+Build-Depends: debhelper, ais-qt-dev, ais-mysql-dev
+
+Package: ais-service
+Architecture: any
+Pre-Depends: debconf
+Depends: ais-common, ${shlibs:Depends}, passwd, lsb-base (>= 3.0-10)
+Description: AIS service 
+ AIS is a Development Platform providing a high-speed
+ JIT compiler for LISP and JavaScript, web server,
+ object repositories, MySQL integration and libraries
+ supporting a wide variety of advanced genetic programming
+ and symbolic regression techniques. 
+ .
+ This package includes the server binaries.
+
+Package: ais-common
+Section: misc
+Architecture: any
+Pre-Depends: adduser (>= 3.40), debconf
+Description: AIS common files
+ AIS is a Development Platform providing a high-speed
+ JIT compiler for LISP and JavaScript, web server,
+ object repositories, MySQL integration and libraries
+ supporting a wide variety of advanced genetic programming
+ and symbolic regression techniques.
+ .
+ This package includes files needed by all AIS packages.
+
+Package: ais-ide
+Architecture: any
+Depends: ais-common, ${shlibs:Depends}
+Description: AIS webide, ride, and editor
+ AIS is a Development Platform providing a high-speed
+ JIT compiler for LISP and JavaScript, web server,
+ object repositories, MySQL integration and libraries
+ supporting a wide variety of advanced genetic programming
+ and symbolic regression techniques.
+ .
+ This package includes the graphical client binaries.
+

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Character isIdentical 008</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isIdentical</FunctionKeywords>
+		<TypeKeywords>  Character</TypeKeywords>
+		<RelatedFunctions>compareEQ isIdentical comparison isEqual     </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>   Equal Analytic Object Boolean Character</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example  sets the value of the variables and uses the
+
+
+
+
+
+
+
+                  <b>isIdentical</b> function to compare the values of these two variables.  
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(isIdentical #\A #\a)                </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(isIdentical 97 #\a)              </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[ none  ]]></Hints>
+   </Syntax>
+</Example>

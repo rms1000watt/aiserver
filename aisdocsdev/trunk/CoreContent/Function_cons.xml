@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>cons</Title>
+		<FunctionName>cons</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+        <ArgumentTypes> Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory Brick
+                       Matrix NumMatrix Integer Float Number Complex Boolean</ArgumentTypes>
+        <DataType> Pair</DataType>
+	    <RelatedFunctions>objectToList setCar setCdr</RelatedFunctions>
+        <RelatedVMInstructions>   </RelatedVMInstructions>
+		<HumanKeywords>cons set car cdr</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p>The <b>cons</b> function builds a Pair from object1 which becomes the car and 
+                object2 which becomes the cdr.</p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The  <b>cons</b> function builds a Pair from object1 <b>{object1}</b> which becomes 
+           the car and object2 <b>{object2}</b>  which becomes the cdr.</p>
+        ]]></Overview>
+       <Usage><![CDATA[
+        <p>The <b>cons</b> function constructs a Pair from any two Analytic Information Server objects.</p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p>  (cons   object1  object2) </p>
+]]></Expression>
+		<Argument>
+		  <Name>object1</Name>
+		  <Note><![CDATA[
+		  <p> Any Analytic Information Server native or object data type.</p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory Brick
+                       Matrix NumMatrix Integer Float Number Complex Boolean </AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>object2</Name>
+		  <Note><![CDATA[
+		  <p> Any Analytic Information Server native or object data type.</p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory Brick
+                       Matrix NumMatrix Integer Float Number Complex Boolean </AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>A Pair.
+
+        </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

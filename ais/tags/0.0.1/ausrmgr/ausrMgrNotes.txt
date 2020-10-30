@@ -1,0 +1,87 @@
+UsrMgr/aUsrMgrNotes.txt		tlwms				1/31/02
+
+							Usr Manager
+
+aUsrmgr.lib is a static library that manages user logon, logoff and
+user validation.
+
+FILES
+Source: ausrmgr.cpp
+Header; ausrmgr.h
+Generated: none
+
+DOCUMENTATION GUIDE
+-------------------
+*	ausrmgr/ausrmgrNotes.txt - this project setup and configuration.
+*	../include/ausrmgr.h - usrmgr interface specifications.
+*	websvr/test/main.cpp - example of the use of usrMgr.
+*	Docs/InternalDocumentation/Qt - Documents on building Qt
+	projects.
+*	Docs/InternalDocumentation/VisualStudio - Importing Qt projects,
+	general project settings, and compiler options.
+
+GENERAL NOTES
+-------------
+1.	Warning! ausrmgr.lib may not run on the same thread as the event
+	loop (i.e. the GUI).   It may not include Q_OBJECT in any class
+	definition and may not contain any slots or signals.
+
+
+						USR MANAGER CONFIGURATION
+CONFIGURATION
+-------------
+1.	Edit aisapp.ini file in the same directory as the executable.
+	Modify values to fit your installation.
+
+						USR MANAGER PROJECT
+PROJECT SETUP
+-------------
+This project was created as follows:
+1.	Compose ausrmgr.pro by hand.  See comments in the .pro file and Qt
+	Qmake.doc for more details.  One can also generate a .pro
+	file using QtDesigner.
+2.	Start Visual Studio. Select "Open Qt Project" icon in Qt
+	add-in toolbar and select ausrmgr.pro to create a usrmgr.dsp.
+3.	Select File->OpenWorkspace->FileType->*.dsp. Select
+	usrmgr.dsp to create ausrmgr Project.
+4.	Modify project settings as noted below.  Build debug and
+	release configurations.
+							
+PROJECT SETTINGS
+----------------
+Project->Settings
+	C/C++ tab
+		General
+			WarningLevel: 3
+		C++ Language
+			Enable Exceptions
+		CodeGeneration:
+			Blend,DebugMultithreadedDLL,cdecl,8 bytes
+		PreProcessor
+			IncludeDirs:
+				../include,$(QTDIR)/Include,$(QTDIR)/mkspecs/win32-msvc
+			Definitions:
+				WIN32,_DEBUG,_MCBS,_LIB,UNICODE,QT_DLL, QT_THREAD_SUPPORT
+	Library tab
+		General
+			OutputFile: ../bin/debug/ausrmgr.lib
+		
+Static Library Debug Project Options:
+/nologo /MDd /W3 /Gm /GX /Zi /Od /I "../include" /I "$(QTDIR)/include"
+/I "$(QTDIR)/mkspecs/win32-msvc" /D "WIN32" /D "_DEBUG" /D "_MBCS"
+/D "_LIB" /D "UNICODE" /D "QT_DLL" /D "QT_THREAD_SUPPORT"
+/Fo"Debug/" /Fd"Debug/" /FD /GZ /c
+
+Static Library Release Project Options:
+...
+
+See Docs/InternalDocumentation/VisualStudio/VsProcedures.doc
+for list of above compiler options.
+
+BUILD
+-----
+Moc'ing ..\Include\ausrmgr.h...
+etc...
+ 
+
+

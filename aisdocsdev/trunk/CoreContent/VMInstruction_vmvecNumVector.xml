@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmvecNumVector</Title>
+		<InstructionName>vmvecNumVector</InstructionName>
+		<InstructionType>Vector</InstructionType>
+		<ArgumentTypes>Integer Number Double</ArgumentTypes>
+		<RelatedVMInstructions>vmvecNumScalar vmvecSetPointers</RelatedVMInstructions>
+		<HumanKeywords>vector numscalar numvector scalar</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[
+		<p>When evaluated, this vm instruction performs the vector to vector
+		operation, specified by the immediate <b>operator</b> argument, 
+		using the <i>argPtr, srcPtr,</i> and <i>tarPtr</i> pointer registers 
+		plus the <i>argInc, srcInc,</i> and <i>tarInc</i> increment registers 
+		declared in the previous <b>vmvecSetPointer</b> instruction. 
+		The length of the vector(s) is determined by the register <b>counter</b> 
+		argument, and the scalar result is placed in the target register. 
+		The counter register must contain an Integer value. There are no conversions 
+		made between different types. The initial values in the three pointer registers, 
+		the three increment registers, and the counter register are NOT altered by this 
+		instruction. This instruction may return an Error value. After the operation, 
+		the Instruction Pointer is promoted. The operation of this vm instruction is 
+		expressed in the following C expressions:
+	    </p>
+         <li>add: {0} <b>for (;--(int)counter > 0;argPtr+=argInc,srcPtr+=srcInc,tarPtr+=tarInc) 
+                            *(double*)tarPtr = *(double*)srcPtr + *(double*)argPtr; 
+                            </b></li>   
+         <li>div: {1} <b> for (;--(int)counter > 0;argPtr+=argInc,srcPtr+=srcInc,tarPtr+=tarInc) 
+                            *(double*)tarPtr = *(double*)srcPtr / *(double*)argPtr; 
+                            </b></li> 
+         <li>mov: {2} <b> for (;--(int)counter > 0;srcPtr+=srcInc,tarPtr+=tarInc) 
+                            *(double*)tarPtr = *(double*)srcPtr; 
+                            </b></li> 
+         <li>mul: {3} <b> for (;--(int)counter > 0;argPtr+=argInc,srcPtr+=srcInc,tarPtr+=tarInc) 
+                            *(double*)tarPtr = *(double*)srcPtr * *(double*)argPtr; 
+                             </b></li> 
+         <li>sub: {4} <b> for (;--(int)counter > 0;argPtr+=argInc,srcPtr+=srcInc,tarPtr+=tarInc) 
+                            *(double*)tarPtr = *(double*)srcPtr - *(double*)argPtr;                     
+                             </b></li>  
+         <li>swp: {5} <b> for (;--(int)counter > 0;srcPtr+=srcInc,tarPtr+=tarInc) tmp = 
+                            *(double*)tarPtr; *(double*)tarPtr = *(double*)srcPtr; *(double*)srcPtr = tmp; 
+                              </b></li> 
+        <p>
+        The valid <b>operator</b> arguments are <u>any immediate integer value</u>, 
+        indicating the operation to be performed, or any one of the following 
+        symbolic operators:
+        </p>  
+        <ul><li>add: {0} <i>(Add the argument vector to the source vector and store in the target vector) </i></li>   
+         <li>div: {1} <i>(Divide the argument vector into the source vector and store in the target vector)</i></li> 
+         <li>mov: {2} <i>(The source vector is moved to the target vector) </i></li>    
+         <li>mul: {3} <i> (Multiply the argument vector by the source vector and store in the target vector) </i></li> 
+         <li>sub: {4} <i>(Subtract the argument vector from the source vector and store in the target vector)</i></li>   
+         <li>swp: {5} <i>(The source and target vectors are swapped)</i></li></ul> 
+    ]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[(vmvecNumVector operator counter)]]></Expression>   
+	    <Argument> 
+		  <Name>operator</Name>
+		  <Format>immediate</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument> 
+		 <Argument> 
+		  <Name>counter</Name>
+		  <Format>register</Format>
+		  <AISTypes>integer</AISTypes>   
+		</Argument>
+	</Syntax>
+</VMInstruction>

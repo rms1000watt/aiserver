@@ -1,0 +1,87 @@
+00
+01//
+02// Summary:	Chop off the last iLen characters of a string.
+03/ Args:		iMsg:	The string to be right truncated.
+04//			iLen:	The number of string characters to be truncated.
+05// Return:	result:	The result of right truncating the string.
+06// ----------------------------------------------------------------------
+07function chop(iMsg, iLen) {
+08	return iMsg.slice(0, iMsg.length - iLen);
+09}
+10
+11// ----------------------------------------------------------------------
+12// Summary:  Decode all XML predefined entities in the specified string
+13// Args:     iMsg:    The string with predefined entities to be decoded
+14// Return:   result:  The string with its XML special characters decoded
+15// ----------------------------------------------------------------------
+16function decodeXml(iMsg) {
+17	// Convert predefined entities, &lt;, &amp;, &gt;, &apos;, &quot;
+18	var aRet = iMsg.replace(/&quot;/g, '"');
+19	aRet = aRet.replace(/&lt;/g, "<");
+20	aRet = aRet.replace(/&gt;/g, ">");
+21	aRet = aRet.replace(/&apos;/g, "'");
+22	// Do ampersand last!
+23	aRet = aRet.replace(/&amp;/g, "&");
+24	return aRet;
+25}
+26
+27// ----------------------------------------------------------------------
+28// Summary:  Encodes the <, &, and " characters in the specified string
+29// Args:     iMsg:      String with special XML chars to be encoded
+30// Return:   result:    String with <, &," encoded as predefined entities
+31// Note:     Encode all strings before including them in an XML doc.
+32// ----------------------------------------------------------------------
+33function encodeXml(iMsg) {
+34	// Do & first!
+35	var aRet = iMsg.replace(/&/g, "&amp;");
+36	aRet = aRet.replace(/</g, "&lt;");
+37	aRet = aRet.replace(/"/g, "&quot;"); "
+38	return aRet;
+39}
+40
+41// ----------------------------------------------------------------------
+42// Summary:  Converts a map into a list w/ entries separated by iSep
+43// Args:     irMap:    Map to be converted to iSep-delimited string
+44//           iSep:     The separator characters
+45// Return:   result:   The string with map entries separated by iSep
+46// ----------------------------------------------------------------------
+47function map2String(irMap, iSep) {
+48	var aE, aStg = , aLen = 0;
+49	for (aE in irMap) {
+50		aStg += aE + "=" + irMap[aE].toString() + iSep;
+51		++aLen;
+52	}
+53	aStg = "(" + aLen + ")  " + aStg;
+54	return chop(aStg, iSep.length);
+55}
+56
+57// ----------------------------------------------------------------------
+58// Summary:  Converts an AMP message to an XML document.
+59// Args:     iAmp:      AMP message to be converted into an XML document
+60//           iSep:      AMP message separator characters.
+61// Return:   result:    The final converted XML document.
+62// ----------------------------------------------------------------------
+63function amp2Xml(iAmp, iSep) {
+64	var arTkns = iAmp.split(iSep);
+65	var aLgth = arTkns.length;
+66	if (aLgth < 2)
+67		return null;
+68	var aXml = '<amp target="' + arTkns[0] +'" act="' + arTkns[1];
+69	if (aLgth == 2)
+70		aXml += '"/>';
+71	else {
+72		var aName;
+73		aXml += '">';
+74		for (var i = 2; i < arTkns.length; ++i) {
+75			aName = arTkns[i++];
+76			if (i >= arTkns.length || arTkns[i].length <= 0)
+77				aXml += "<" + aName + "/>";
+78			else {
+79				aName += ">";
+80				aXml += "<" + aName + encodeXml(arTkns[i]) + "</" + aName;
+81			}
+82		}
+83		aXml += "</amp>";
+84	}
+85	return aXml;
+86}

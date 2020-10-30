@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example PcodeVector type 020</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>type</FunctionKeywords>
+		<TypeKeywords>PcodeVector</TypeKeywords>
+		<RelatedFunctions>isType isIntegerVector isFloatVector 
+
+                          isNumberVector isByteVector isIdentical
+
+                           isObjectVector isPcodeVector isVector isBitVector</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>Type Analytic Object</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows how the <b>type</b> function return the
+
+
+
+
+
+
+                    user-defined data type  of the AIS Objects evaluated.
+
+
+
+
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+          <Expression><![CDATA[ <sc> (setq X (new Vector:  pcode: 5 4 ))         </sc>]]></Expression>  
+        <Note><![CDATA[Define a Pcode Vector and check the type.]]></Note> 
+        <Returns><![CDATA[#&#60PcodeVector 123456&#62   ]]></Returns>
+        <Expression><![CDATA[ <sc>(type X)   </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[PcodeVector]]></Returns>    
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

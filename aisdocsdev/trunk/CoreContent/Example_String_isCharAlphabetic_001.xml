@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>  
+		<Title>Example String isCharAlphabetic 001</Title>  
+		<Template>Example</Template> 
+		<FunctionKeywords>isCharAlphabetic</FunctionKeywords>
+		<TypeKeywords>Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory
+                       Matrix NumMatrix Integer Float Number Complex</TypeKeywords>	
+		<RelatedFunctions>isType isChar isCharAlphanumeric isCharLowercase
+                          isCharName isCharNumeric isCharUppercase isCharWhitespace
+                          isString isText </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>Character Alphabetic Object Uppercase Lowercase Name
+                       Underscore Numeric Alphanumeric Name Whitespace</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples check if the datatype of the object is an alphabetic character. If it is,
+                  the function returns true, otherwise, it returns false.
+ 
+	]]></Description>
+	<Syntax> 
+  	    <Expression><![CDATA[ <sc>(isCharAlphabetic  #\a)</sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>(isCharAlphabetic  #\^)   </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[ false ]]></Returns>
+        <Expression><![CDATA[ <sc>(isCharAlphabetic "Abcde") </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[ true ]]></Returns>
+        <Expression><![CDATA[ <sc>(isCharAlphabetic "Ab2de") </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[ false ]]></Returns>
+        <Expression><![CDATA[ <sc>(isCharAlphabetic  #&#60Dictionary 47917&#62) </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[ false ]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

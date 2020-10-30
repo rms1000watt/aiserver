@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Pair length 014</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>length</FunctionKeywords>
+		<TypeKeywords>Pair Integer</TypeKeywords>
+		<RelatedFunctions>count</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>length count </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>length</b> function perform a shallow count
+
+                  on the elements of Pairs. The cdr value is not included in the count.          
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc> (length  '(4 . 5 ) )        </sc>]]></Expression>
+        <Note><![CDATA[ none]]></Note>
+        <Returns><![CDATA[1]]></Returns>
+  	    <Expression><![CDATA[ <sc> (length '( 0 1 2 3 4 5  . 6) )         </sc>]]></Expression>
+        <Note><![CDATA[ none]]></Note>
+        <Returns><![CDATA[6]]></Returns>
+        <Hints><![CDATA[
+none ]]></Hints>
+   </Syntax>
+</Example>

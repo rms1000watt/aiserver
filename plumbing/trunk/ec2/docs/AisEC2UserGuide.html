@@ -1,0 +1,936 @@
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<base target="_top">
+<style type="text/css">
+  
+
+/* default css */
+
+table {
+  font-size: 1em;
+  line-height: inherit;
+  border-collapse: collapse;
+}
+
+
+tr {
+  
+  text-align: left;
+  
+}
+
+
+div, address, ol, ul, li, option, select {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+p {
+  margin: 0px;
+}
+
+
+pre {
+  font-family: Courier New;
+  white-space: pre-wrap;
+  margin:0;
+}
+
+body {
+  margin: 6px;
+  padding: 0px;
+  font-family: Verdana, sans-serif;
+  font-size: 10pt;
+  background-color: #ffffff;
+}
+
+
+img {
+  -moz-force-broken-image-icon: 1;
+}
+
+@media screen {
+  html.pageview {
+    background-color: #f3f3f3 !important;
+  }
+
+  
+
+  body {
+    min-height: 1100px;
+    
+    counter-reset: __goog_page__;
+  }
+  * html body {
+    height: 1100px;
+  }
+  .pageview body {
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-right: 2px solid #bbb;
+    border-bottom: 2px solid #bbb;
+    width: 648px !important;
+    margin: 15px auto 25px;
+    padding: 40px 50px;
+  }
+  /* IE6 */
+  * html {
+    overflow-y: scroll;
+  }
+  * html.pageview body {
+    overflow-x: auto;
+  }
+  /* Prevent repaint errors when scrolling in Safari. This "Star-7" css hack
+     targets Safari 3.1, but not WebKit nightlies and presumably Safari 4.
+     That's OK because this bug is fixed in WebKit nightlies/Safari 4 :-). */
+  html*#wys_frame::before {
+    content: '\A0';
+    position: fixed;
+    overflow: hidden;
+    width: 0;
+    height: 0;
+    top: 0;
+    left: 0;
+  }
+  
+  
+
+  
+    .writely-callout-data {
+      display: none;
+      *display: inline-block;
+      *width: 0;
+      *height: 0;
+      *overflow: hidden;
+    }
+    .writely-footnote-marker {
+      background-image: url('MISSING');
+      background-color: transparent;
+      background-repeat: no-repeat;
+      width: 7px;
+      overflow: hidden;
+      height: 16px;
+      vertical-align: top;
+
+      
+      -moz-user-select: none;
+    }
+    .editor .writely-footnote-marker {
+      cursor: move;
+    }
+    .writely-footnote-marker-highlight {
+      background-position: -15px 0;
+      -moz-user-select: text;
+    }
+    .writely-footnote-hide-selection ::-moz-selection, .writely-footnote-hide-selection::-moz-selection {
+      background: transparent;
+    }
+    .writely-footnote-hide-selection ::selection, .writely-footnote-hide-selection::selection {
+      background: transparent;
+    }
+    .writely-footnote-hide-selection {
+      cursor: move;
+    }
+
+    
+    .editor .writely-comment-yellow {
+      background-color: #FF9;
+      background-position: -240px 0;
+    }
+    .editor .writely-comment-yellow-hover {
+      background-color: #FF0;
+      background-position: -224px 0;
+    }
+    .editor .writely-comment-blue {
+      background-color: #C0D3FF;
+      background-position: -16px 0;
+    }
+    .editor .writely-comment-blue-hover {
+      background-color: #6292FE;
+      background-position: 0 0;
+    }
+    .editor .writely-comment-orange {
+      background-color: #FFDEAD;
+      background-position: -80px 0;
+    }
+    .editor .writely-comment-orange-hover {
+      background-color: #F90;
+      background-position: -64px 0;
+    }
+    .editor .writely-comment-green {
+      background-color: #99FBB3;
+      background-position: -48px 0;
+    }
+    .editor .writely-comment-green-hover {
+      background-color: #00F442;
+      background-position: -32px 0;
+    }
+    .editor .writely-comment-cyan {
+      background-color: #CFF;
+      background-position: -208px 0;
+    }
+    .editor .writely-comment-cyan-hover {
+      background-color: #0FF;
+      background-position: -192px 0;
+    }
+    .editor .writely-comment-purple {
+      background-color: #EBCCFF;
+      background-position: -144px 0;
+    }
+    .editor .writely-comment-purple-hover {
+      background-color: #90F;
+      background-position: -128px 0;
+    }
+    .editor .writely-comment-magenta {
+      background-color: #FCF;
+      background-position: -112px 0;
+    }
+    .editor .writely-comment-magenta-hover {
+      background-color: #F0F;
+      background-position: -96px 0;
+    }
+    .editor .writely-comment-red {
+      background-color: #FFCACA;
+      background-position: -176px 0;
+    }
+    .editor .writely-comment-red-hover {
+      background-color: #FF7A7A;
+      background-position: -160px 0;
+    }
+
+    .editor .writely-comment-marker {
+      background-image: url('MISSING');
+      background-color: transparent;
+      padding-right: 11px;
+      background-repeat: no-repeat;
+      width: 16px;
+      height: 16px;
+      -moz-user-select: none;
+    }
+
+    .editor .writely-comment-hidden {
+      padding: 0;
+      background: none;
+    }
+    .editor .writely-comment-marker-hidden {
+      background: none;
+      padding: 0;
+      width: 0;
+    }
+    .editor .writely-comment-none {
+      opacity: .2;
+      filter:progid:DXImageTransform.Microsoft.Alpha(opacity=20);
+      -moz-opacity: .2;
+    }
+    .editor .writely-comment-none-hover {
+      opacity: .2;
+      filter:progid:DXImageTransform.Microsoft.Alpha(opacity=20);
+      -moz-opacity: .2;
+    }
+  
+
+
+  
+  .br_fix br:not(:-moz-last-node):not(:-moz-first-node) {
+    
+    position:relative;
+    
+    left: -1ex
+    
+  }
+  
+  .br_fix br+br {
+    position: static !important
+  }
+
+  
+  #cb-p-tgt {
+    font-size: 8pt;
+    padding: .4em;
+    font-style: oblique;
+    background-color: #FFF1A8;
+    border: 1px solid #000;
+  }
+}
+
+h6 { font-size: 8pt }
+h5 { font-size: 8pt }
+h4 { font-size: 10pt }
+h3 { font-size: 12pt }
+h2 { font-size: 14pt }
+h1 { font-size: 18pt }
+
+blockquote {padding: 10px; border: 1px #DDD dashed }
+
+.webkit-indent-blockquote { border: none; }
+
+a img {border: 0}
+
+.pb {
+  border-width: 0;
+  page-break-after: always;
+  /* We don't want this to be resizeable, so enforce a width and height
+     using !important */
+  height: 1px !important;
+  width: 100% !important;
+}
+
+.editor .pb {
+  border-top: 1px dashed #C0C0C0;
+  border-bottom: 1px dashed #C0C0C0;
+}
+
+div.google_header, div.google_footer {
+  position: relative;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+
+/* Table of contents */
+.editor div.writely-toc {
+  background-color: #f3f3f3;
+  border: 1px solid #ccc;
+}
+.writely-toc > ol {
+  padding-left: 3em;
+  font-weight: bold;
+}
+ol.writely-toc-subheading {
+  padding-left: 1em;
+  font-weight: normal;
+}
+/* IE6 only */
+* html writely-toc ol {
+  list-style-position: inside;
+}
+.writely-toc-none {
+  list-style-type: none;
+}
+.writely-toc-decimal {
+  list-style-type: decimal;
+}
+.writely-toc-upper-alpha {
+  list-style-type: upper-alpha;
+}
+.writely-toc-lower-alpha {
+  list-style-type: lower-alpha;
+}
+.writely-toc-upper-roman {
+  list-style-type: upper-roman;
+}
+.writely-toc-lower-roman {
+  list-style-type: lower-roman;
+}
+.writely-toc-disc {
+  list-style-type: disc;
+}
+
+/* Ordered lists converted to numbered lists can preserve ordered types, and
+   vice versa. This is confusing, so disallow it */
+ul[type="i"], ul[type="I"], ul[type="1"], ul[type="a"], ul[type="A"] {
+  list-style-type: disc;
+}
+
+ol[type="disc"], ol[type="circle"], ol[type="square"] {
+  list-style-type: decimal;
+}
+
+/* end default css */
+
+
+  /* default print css */
+  
+  @media print {
+    body {
+      padding: 0;
+      margin: 0;
+    }
+
+    div.google_header, div.google_footer {
+      display: block;
+      min-height: 0;
+      border: none;
+    }
+
+    div.google_header {
+      flow: static(header);
+    }
+
+    /* used to insert page numbers */
+    div.google_header::before, div.google_footer::before {
+      position: absolute;
+      top: 0;
+    }
+
+    div.google_footer {
+      flow: static(footer);
+    }
+
+    /* always consider this element at the start of the doc */
+    div#google_footer {
+      flow: static(footer, start);
+    }
+
+    span.google_pagenumber {
+      content: counter(page);
+    }
+
+    span.google_pagecount {
+      content: counter(pages);
+    }
+
+
+    callout.google_footnote {
+      
+      display: prince-footnote;
+      footnote-style-position: inside;
+      /* These styles keep the footnote from taking on the style of the text
+         surrounding the footnote marker. They can be overridden in the
+         document CSS. */
+      color: #000;
+      font-family: Times New Roman;
+      font-size: 12.0pt;
+      font-weight: normal;
+    }
+
+    /* Table of contents */
+    #WritelyTableOfContents a::after {
+      content: leader('.') target-counter(attr(href), page);
+    }
+
+    #WritelyTableOfContents a {
+      text-decoration: none;
+      color: black;
+    }
+  }
+
+  @page {
+    @top {
+      content: flow(header);
+    }
+    @bottom {
+      content: flow(footer);
+    }
+    @footnotes {
+      border-top: solid black thin;
+      padding-top: 8pt;
+    }
+  }
+  /* end default print css */
+
+
+/* custom css */
+
+
+/* end custom css */
+
+/* ui edited css */
+
+body {
+  font-family: Times New Roman;
+  
+  font-size: 12.0pt;
+  line-height: normal;
+  background-color: #ffffff;
+}
+/* end ui edited css */
+
+
+/* editor CSS */
+.editor a:visited {color: #551A8B}
+.editor table.zeroBorder {border: 1px dotted gray}
+.editor table.zeroBorder td {border: 1px dotted gray}
+.editor table.zeroBorder th {border: 1px dotted gray}
+
+
+.editor div.google_header, .editor div.google_footer {
+  border: 2px #DDDDDD dashed;
+  position: static;
+  width: 100%;
+  min-height: 2em;
+}
+
+.editor .misspell {background-color: yellow}
+
+.editor .writely-comment {
+  font-size: 9pt;
+  line-height: 1.4;
+  padding: 1px;
+  border: 1px dashed #C0C0C0
+}
+
+
+/* end editor CSS */
+
+</style>
+
+  
+  <title>AisEC2UserGuide</title>
+
+</head>
+
+<body 
+    
+    >
+    
+    
+    
+<div class=Section1>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#17365d; FONT-FAMILY:'Times New Roman'"><font size=6>AIS EC2 User’s Guide</font></span>
+  </p>
+  <h1 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#365f91; FONT-FAMILY:'Times New Roman'"><b><font size=5>Prerequisites</font></b></span>
+  </h1>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>This document describes the process of launching an AMI (Amazon Machine Instance) as an instance on the EC2 (Elastic Compute Cloud )</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> that runs the AIS (Analytic Information Server) application</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>.&nbsp; It is assumed that you have already completed the following steps:</font></span>
+  </p>
+  <ol type=1>
+    <li>
+      <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Established an AWS Account (Amazon Web Services Account) including a User ID, password, keys, certificates.&nbsp; See S:\IT\cloud\AccountId.txt for more info.</font></span>
+    </li>
+    <li>
+      <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Installed ec2 tools</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>, java runtime,</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> and putty on your local </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>computer.&nbsp; Set the appropriate environment variables for the ec2 environment.</font></span>
+    </li>
+    <li>
+      <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Created and saved the appropriate AMIs in S3.</font></span>
+    </li>
+  </ol>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Please refer to the companion document, </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>EC2AdminGuide</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>.doc for a de</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>tailed discussion of these </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>prerequisites</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>.</font></span>
+  </p>
+  <h1 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#365f91; FONT-FAMILY:'Times New Roman'"><b><font size=5>Getting Started</font></b></span>
+  </h1>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>The commands listed below are found in C:\ec2\ec2-api-tools\bin</font></span> <span style="FONT-FAMILY:'Times New Roman'"><font size=3>on your local computer.&nbsp; To run a DOS command, open a command window on your local computer and then change to the ec2 folder using “cd \ec2” from the C drive.</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>In the documentation below, each command is listed twice.&nbsp; The first one is the long form, and the second one is the short form of the command.&nbsp; You only need to enter one of these commands at each step.</font></span>
+  </p>
+  <h2 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#943634; FONT-FAMILY:'Times New Roman'"><b><font size=4>Viewing AMIs</font></b></span>
+  </h2>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>View AMIs. </font></b></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>To view the FIMCO AMIs</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> (Amazon Machine Images)</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>, enter:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>ec2-describe-images –o </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>self</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>ec2dim –o self</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Notice that the AMI ID is provided for each AMI in the list (the AMI ID is the one starting with ami-).&nbsp; We will need this ID to launch an instance of the AMI on </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>EC2 (Elastic Compute Cloud).</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>AIS Servers. </font></b></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>A server instance has</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> a name that begins with AisSvc followed by the underlying OS and OS version.&nbsp; This AMI is small and fast.&nbsp; It just runs AIS (Analytic Information Server) as a service.&nbsp; It does not include a desktop, a development environment or X windows; thus, you cannot access this instance using NX client.&nbsp; It is intended to run one or more AIS contexts that can be accessed by other instances of AIS, or by using a remote client such as RIDE, an Excel-aware C# client, a Web browser, or an XML-aware client such as Flash.</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>AIS IDE.</font></b></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; In the above list, an AIS IDE (Integrated Development Environment) has a name that begins with AisDev followed by the underlying OS and OS version.&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>This image includes a KDE desktop, AIS source, an Eclipse IDE, QT, and MySql.&nbsp; It is primarily for use by developers who wish to modify AIS.&nbsp; An instance of this image may be accessed using an NX client from either Microsoft Windows or Linux.</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;</font></span>
+  </p>
+  <h2 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#943634; FONT-FAMILY:'Times New Roman'"><b><font size=4>Managing Instances</font></b></span>
+  </h2>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>An image is just a bunch of bytes stored on a disk.&nbsp; In order to transform an image into a program running on a computer, you may load this image into a computer that is maintained by Amazon either in the United States or in Europe.&nbsp; When the image is loaded, the computer begins execution by starting up the operating system that is part of the image.&nbsp; You can launch one or more instances of each image listed above, depending upon the computational task involved as described below.</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;</font></span>
+  </p>
+  <h3 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#31849b; FONT-FAMILY:'Times New Roman'"><b><font size=3>Launch </font></b></span><span style="COLOR:#31849b; FONT-FAMILY:'Times New Roman'"><b><font size=3>a Server </font></b></span><span style="COLOR:#31849b; FONT-FAMILY:'Times New Roman'"><b><font size=3>Instance</font></b></span>
+  </h3>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>Launch. </font></b></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>To l</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>aunch an instance of </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>one of the above</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> AMI</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>s,</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> using</font></span> <span style="FONT-FAMILY:'Times New Roman'"><font size=3>enter one of the following commands in a command window on your local computer</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>ec2-run-instances ami-</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>335fb85a</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> –k gsg-keypair –t </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>m1.large</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>ec2run ami-335fb85a –k gsg-keypair –t m1.large</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>Open Port.&nbsp; </font></b></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>An AIS service is automatically started when the instance is launched.&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>Port </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>8081 is used to access to this instance using a remote client such as RIDE (Remote Integrated Development Environment). </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; You probably won’t need to do this. </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> To authorize access to this port, enter:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>ec2-authorize default –p 8081</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>ec2</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>auth</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> default –p 80</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>81</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>Start Service.</font></b></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; You can check the status of </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>the AIS service in a remote bash shell using:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>service aissvc status</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>To start or stop the service, use:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>service aissvc start</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>service aissvc stop</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>The service logs are found in /var/log/ais.&nbsp; Check the sysmsg.log for errors during startup.&nbsp; If there are no errors, but a remote connection fails, try stopping and starting the AIS service.</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>That’s it.&nbsp; The AIS server is now read</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>y to respond to remote requests from anywhere on the internet.</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Note the instance id (e.g.&nbsp; i-1303977a) which will be used to identify this instance.&nbsp;&nbsp; Be sure to terminate the instance when it is no longer being used to avoid incurring unnecessary charges!</font></span>
+  </p>
+  <h3 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#31849b; FONT-FAMILY:'Times New Roman'"><b><font size=3>View Your Instances</font></b></span>
+  </h3>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>To view the instances that you have launched using:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>ec2-describe-instances</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>ec2din</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>It may be several minutes before the instance is started.&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>W</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>h</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>en the instance is started, </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>the pending items in the response to this command </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>will </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>be filled in.&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>Note the instance ID (e.g.&nbsp; i-1303977a) which will be used to identify this instance.&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>Replace i-1303977a below with the ID returned by the ec2din command.&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>Use this ID to terminate the instance when it is no longer being used in order to avoid incurring unnecessary charges!</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>You can also view the console output generated on startup, using:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>ec2-get-console-output i-1303977a</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>ec2gcons i-1303977a</font></span>
+  </p>
+  <h3 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#31849b; FONT-FAMILY:'Times New Roman'"><b><font size=3>Terminate the Instance</font></b></span>
+  </h3>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>From a command window on your local computer when you are not using an instance, be sure to terminate the executing instance using:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>ec2-terminate-instances i-1303977a</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>ec2kill i-1303977a</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>where the instance ID is obtained from ec2din command.</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;</font></span>
+  </p>
+  <h2 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#943634; FONT-FAMILY:'Times New Roman'"><b><font size=4>Connecting to an Instance</font></b></span>
+  </h2>
+  <h3 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#31849b; FONT-FAMILY:'Times New Roman'"><b><font size=3>Start a Remote Shell</font></b></span>
+  </h3>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>You can </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>instantiate a remote </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>bash shell </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>on your</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> local Windows</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> machine</font></span> <span style="FONT-FAMILY:'Times New Roman'"><font size=3>by opening a command window and</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> entering:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>putty</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>In the PuTTY Configuration dialog, expand SSH -&gt; Auth and enter the path to the private key file for authentication:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>C:\ec2\id_rsa-gsg-keypair.ppk</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Highlight Session and enter the host name:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>root@ec2-xxx.compute-1.amazonaws.com</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Replace xxx with the URL shown by ec2-describe-instances for this instance.&nbsp; Click on Open to bring up a remote bash shell that is connected to your new instance.</font></span>
+  </p>
+  <h3 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#31849b; FONT-FAMILY:'Times New Roman'"><font size=3>Start a Remote IDE</font></span>
+  </h3>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Check out an AIS folder that contains a version of ride (AIS Remote Integrated Development Environment) that is appropriate for your local computer from SourceForge subversion repository (details to be determined…) or from your local StarTeam repository.&nbsp; For example, you may wish to checkout ais32 if you are running Microsoft Windows.&nbsp;&nbsp; Start up an instance of ride on your local computer by selecting ride32.exe in the ais32 root folder.</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>Start an Instance.</font></b></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp; An instance of one of the above AMIs must be started before you can connect to it.&nbsp; Follow the instructions above to launch an instance and use the ec2din command to view the URL associated with the instance that you wish to connect to.&nbsp; The digits following the ec2- prefix in the URL are the IP address of the instance.&nbsp; In the directions below, substitute the IP address for your instance for the IP address shown.</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; If you are starting a development version, it will take several minutes for the URL to appear (it is shown as pending until the instance has booted).</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>Connecting to AisSvc.</font></b></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; A connection dialog should be automatically opened when you start ride.&nbsp; If not, select the connection toolbar icon on the left to open a Connection Manager dialog.&nbsp;&nbsp; Select Add Server button on the right side panel.&nbsp; Add the following entries to the dialog:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Server:&nbsp; AisSvc</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>Ub8.10</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>IP Address: 174.129.129.244</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Port: </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> 8081</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Select OK to close the Add Server dialog.&nbsp; Select the Open Server </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>button on the right side panel or you can expand the entry for this server by selecting the plus on the left of the server entry. </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> Note the messages shown </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>in the status bar at the</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> bottom of the Connection Manager dialog while ride connects to the server in EC2.</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>You should get a logon dialog.&nbsp; The userID and the password are “admin”.&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>Once you are connected, you can open a remote session, start new contexts, etc.&nbsp;&nbsp; After opening a session, you can close the Connection Manager dialog and begin to use the interface provided to monitor the server operation and to develop your AIS application.</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>If you encounter a problem, open a remote bash shell.&nbsp; You can check the status of the service and the message logs as noted in </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>Start Service section above.</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;</font></span>
+  </p>
+  <h3 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#31849b; FONT-FAMILY:'Times New Roman'"><font size=3>Start</font></span><span style="COLOR:#31849b; FONT-FAMILY:'Times New Roman'"><font size=3> an</font></span><span style="COLOR:#31849b; FONT-FAMILY:'Times New Roman'"><font size=3> NX Client</font></span>
+  </h3>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>Configure. </font></b></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>This section only applies to a</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> development instance that provides a desktop.&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> NXClient must be installed on your local computer.&nbsp; Start a fresh instance of NXClient on your local computer.&nbsp; You should have a logon dialog.&nbsp; Click on the Configure button in the lower left corner.&nbsp; In the Server group, enter the URL of the instance (see </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>“</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>Start</font></span> <span style="FONT-FAMILY:'Times New Roman'"><font size=3>An Instan</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>ce” section above for details).&nbsp;&nbsp; Select Unix and KDE in the Desktop group and select Available Area in the Display area.&nbsp; Click on the Ok button when done.</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>Login.</font></b></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; Enter sysadmin as the Login name and enter g0t0.com as the password.&nbsp; Click on the Login button.&nbsp;&nbsp; Click on Yes button if an Authenticity dialog appears.&nbsp;&nbsp; Assuming that the URL is correct and that the AIS development instance is ready, you will have a remote KDE desktop available on your local computer.</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; If it fails, wait a few minutes and try again.</font></span>
+  </p>
+  <h2 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#943634; FONT-FAMILY:'Times New Roman'"><b><font size=4>Data Transfer Options</font></b></span>
+  </h2>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Only one data transfer option is shown here.&nbsp; However, taking snapshots of EBS volumes (described in the next section) also transfers a collection of files to S3.&nbsp; There are several 3</font></span><span style="FONT-FAMILY:'Times New Roman'; VERTICAL-ALIGN:super"><font size=1>rd</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> party applications that carry out transfers, but they all have significant limitations if a large number of files are to be transferred.</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;</font></span>
+  </p>
+  <h3 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#31849b; FONT-FAMILY:'Times New Roman'"><b><font size=3>Upload Files to an Instance</font></b></span>
+  </h3>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>To upload one or more files</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> from your local computer</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>,</font></span> <span style="FONT-FAMILY:'Times New Roman'"><font size=3>in</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> a local command window</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>,</font></span> <span style="FONT-FAMILY:'Times New Roman'"><font size=3>enter:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>pscp –i id_rsa-gsg-keypair.ppk&nbsp; files… root@ec2-xxx.compute-1.amazonaws.com</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>:</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>/path</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Replace xxx with the URL for your particular instance</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> and replace path with the path to the destination in the instance’s file system</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>. </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; The xxx portion of the URL is, in fact, the IP address assigned to the instance.&nbsp; </font></span> <span style="FONT-FAMILY:'Times New Roman'"><font size=3>For example, t</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>o upload the </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>X.509 certificate to the m</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>nt folder of this</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> AMI instance,</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> enter</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:36pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>cd </font></span> <span style="FONT-FAMILY:'Times New Roman'"><font size=3>\ec2</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:36pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>pscp -</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>i id_rsa-gsg-keypair.ppk </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>cert-</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>*</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>.pem</font></span> <span style="FONT-FAMILY:'Times New Roman'"><font size=3>root@ec2-xxx.compute-1.amazonaws.com</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>:</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>/mnt</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Replace xxx with the URL for your particular instance</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>.&nbsp; Run the command ec2din to get the current URL for your instance</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>.</font></span> <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; If you get are asked if you trust the host question in response to this command, enter “y”.</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; Note that files uploaded to an instance will not be saved when the instance is terminated!</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>Password.</font></b></span> <span style="FONT-FAMILY:'Times New Roman'"><font size=3> If you are asked for a password, the key was not available or one or more minus signs were not interpreted as an ASCII minus when you pasted from the above line.&nbsp;&nbsp; Retype all the minus signs in the command in the console and re-run the command.</font></span>
+  </p>
+  <h3 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#31849b; FONT-FAMILY:'Times New Roman'"><b><font size=3>&nbsp;</font></b></span>
+  </h3>
+  <h2 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#943634; FONT-FAMILY:'Times New Roman'"><b><font size=4>Elastic Block Storage</font></b></span>
+  </h2>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Documentation on EBS (Elastic Block Storage) can be found in the Amazon Web Services, Technical Documentation page at </font></span><a href=http://aws.amazon.com/documentation/><span style="COLOR:#0000ff; FONT-FAMILY:'Times New Roman'"><u><font size=3>http://aws.amazon.com/documentation/</font></u></span></a><span style="FONT-FAMILY:'Times New Roman'"><font size=3> .&nbsp; Just select the Amazon Elastic Compute Cloud Developer Guide and then navigate to “Introduction to Amazon Elastic Block Store” section of the document.&nbsp;&nbsp; Rather than reproduce this document, an ex</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>ample of the use of EBS is presented.</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>EBS Volume.</font></b></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; An EBS Volume is a disk storage area that supports a persistent file system that can be connected to an EC2 instance.&nbsp; The data in the EBS Volume persists even if the instance fails or is terminated.&nbsp; Further, a “snapshot” of an EBS Volume can be saved in S3 (Simple Storage System).</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;</font></span>
+  </p>
+  <h3 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#31849b; FONT-FAMILY:'Times New Roman'"><b><font size=3>Creating an EBS Volume</font></b></span>
+  </h3>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>Create Volume.</font></b></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; To create a 100 Gb. </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>v</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>olume in the same zone as our instance, open </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>a command window on your local computer and enter:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:36pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>ec2-create-volume </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>--</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>size 100 </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>--</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>zone us-east-1a</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:36pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>ec2addvol </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>-</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>s 100 </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>-z</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> us-east-1a</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Either command will return a volume ID which will be needed in subsequent commands.&nbsp; To check the existence of the volume, enter:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>ec2-describe-volumes vol-6b06e502</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>ec2dvol vol-6b06e502</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Substitute the volume ID returned by the create-volume command for vol-6b06e502.</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>Attach Volume.</font></b></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; Assuming that you are currently running an instance as noted in the “Launch a Server Instance” section above, enter the following command in your local command window:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>e</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>c2-attach-volume</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3> vol-6b06e502 --instance i-a75833ce --device /dev/sdh</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>ec2attvol vol-6b06e502 -i i-a75833ce -d /dev/sdh</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>The volume is not visible to the instance as a new file storage device.</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;</font></span>
+  </p>
+  <h3 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#31849b; FONT-FAMILY:'Times New Roman'"><b><font size=3>C</font></b></span><span style="COLOR:#31849b; FONT-FAMILY:'Times New Roman'"><b><font size=3>onstructing an EBS File System</font></b></span>
+  </h3>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>In order to use an EBS volume, a file system must be created on the volume.&nbsp; Assuming that the instance is Linux-based, we use a remote bash shell to create a file system and copy files from the instance to the volume.&nbsp; Commands have a # prefix to denote that they are to be entered in a remote bash shell.&nbsp; See the above section named “</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>Start a Remote </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>Shell” for more information on starting a remote bash shell.</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>Create File System.</font></b></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; Enter the following command in a remote bash shell to create a file system:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3># mkfs –t ext3 /dev/sdh</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Depending upon the size of volume, this command may take a while.</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Mount the file system on /mnt/ebs using the following two commands:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3># mkdir /mnt/ebs</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3># mount /dev/sdh /mnt/ebs</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>You can use this mounted file system for all the files that you wish to preserve across </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>multiple instantiations of an AMI in the same manner as any other file system.</font></span>
+  </p>
+  <h3 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#31849b; FONT-FAMILY:'Times New Roman'"><b><font size=3>&nbsp;</font></b></span>
+  </h3>
+  <h3 style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="COLOR:#31849b; FONT-FAMILY:'Times New Roman'"><b><font size=3>Backup an EBS Volume</font></b></span>
+  </h3>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Although disks are very reliable, the disk holding this volume can fail; however, the volume can be backed up to S3 using a snapshot.&nbsp; This snapshot can also be used to initialize a newly created volume. </font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>Snapshots.</font></b></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>We return to the command window on our local computer to perform a snapshot.&nbsp; To create a snapshot of an EBS volume, enter the command:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>ec2-creat</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>e</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>-snapshot vol-6b06e502</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>ec2addsnap vol-6b06e502</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Substitute the volume ID for your volume for vol-6b06e502.&nbsp; This create-snapshot command will return a snapshot ID of the form snap-30b84559.&nbsp; The status will be pending until the backup is completed.</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; You can check the status using:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>ec2-describe-snapshots</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>ec2dsnap</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>When the backup is completed, the status will change to “completed” and the percentage will change to 100%.</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>Detach.</font></b></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; We can detach a volume from an instance.&nbsp; Be sure to unmount the volume before detaching the volume from an instance!&nbsp; From the remote bash shell, enter the command:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3># umount –d /dev/sdh</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>Then, from the command window on your local computer, enter the command:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>ec2-detach-volume vol-6b06e502</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>ec2detvol vol-6b06e502</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>The </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>EBS </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>volume will </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>remain attached even if the instance is terminated.&nbsp; The volume will be automatically attached when this AMI is restarted.</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><b><font size=3>Delete.</font></b></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp; Finally, a volume can be deleted using the delete-volume command.&nbsp; From a command window on your local computer, enter the command:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>ec2-delete-volume vol-6b06e502</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>ec2delvol vol-6b06e502</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>A snapshot can also be deleted using a similar command:</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>ec2-delete-snapshot </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>snap-30b84559</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>ec2delsnap </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>snap-30b84559</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>AisEC2UserGuide</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>.doc</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>May 28</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>, 2009</font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>Page </font></span><span style="FONT-FAMILY:'Times New Roman'"><font size=3>5</font></span>
+  </p>
+  <p style=" MARGIN-LEFT:0pt; MARGIN-RIGHT:0pt">
+    <span style="FONT-FAMILY:'Times New Roman'"><font size=3>&nbsp;</font></span>
+  </p>
+</div>
+<br></body>
+</html>

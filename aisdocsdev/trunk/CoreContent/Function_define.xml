@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>define</Title>
+		<FunctionName>define</FunctionName>
+		<FunctionType>Special Form</FunctionType>
+        <ArgumentTypes> Lambda  Symbol</ArgumentTypes>
+        <DataType> Lambda</DataType>
+	    <RelatedFunctions>setq set lambda defmacro defun defriend defchild deforphan defmethod</RelatedFunctions>
+        <RelatedVMInstructions>   </RelatedVMInstructions>
+		<HumanKeywords>declaration initialization variables </HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>define</b> special form permits the user to declare a new variable and initialize it to an Lambda.  </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+	    <p> The <b>define</b> special form permits the user to declare a new variable and 
+         initialize it to an Lambda. The Lambda may receive zero or more arguments, and its body 
+         may have zero or more expressions. In this form, define always returns the value to 
+         which name is initialized (Note: this value will always be an Lambda object). </p>
+        <p>If a list of argument names is specified  <b>(name   arg...)</b>, at runtime,  
+         the Lambda's arguments are bound to the  actual arguments respectively.  Passing an 
+          incorrect number of arguments results in an error message. (See the <b>lambda</b> 
+          special form).</p>
+        <p>If an indefinite list of argument names is specified  <b>(name arg...)</b> , at runtime,  
+          the Lambda's arguments are bound to the actual definite arguments respectively.  
+          Passing too few arguments results in an error message.  If too many arguments are passed, 
+          the remaining arguments can only be accessed via the <b>argCount</b> and <b>argFetch</b> 
+          functions.  (See the <b>lambda</b> special form).</p>
+        <p>The keyword <b>faces: (var...)</b>  declares the interfaces feature Structure of the 
+         Lambda.  The features are specified as lists, <b>faces:  ((english  true) (french  false))</b>,  
+         the listed feature is initialized to the value specified.</p>
+        <p>The keyword <b>vars: (var...)</b>  declares the temporary variables of the Lambda. 
+          The variables are specified as a list <b>vars: (X  Y...)</b>.   If any one of the variables 
+          is specified as a list,  <b>vars: ((X  0)  Y...)</b>,  the listed variable is initialized 
+          to the constant value specified. (The local variable X is initialized to the constant 0). 
+          Unlike the setq or define special forms, the <b>vars</b> special form always evaluates 
+          the initialization value as a constant. </p>
+        <p>The keyword <b>pvars: (var...)</b>  declares the persistent variables of the Lambda.  
+           The variables are specified as a list  <b>pvars: (W  Q...)</b>.   If any one of the 
+           variables is specified as a list,  <b>pvars: ((X  0)  Y...)</b>,  the listed variable 
+           is initialized to the constant value specified. (The variable X is initialized to the 
+           constant 0). Unlike the <b>setq</b> or <b>define</b> special forms, the <b>pvars</b> 
+           special form always evaluates the initialization value as a constant. &#60![endif]&#62.</p>
+        <p>The keyword <b>cvars: (var...)</b>  declares the persistent class variables of the Lambda.  
+           The variables are specified as a list <b>cvars:(W  Q...)</b>.   If any one of the variables is 
+           specified as a list, <b>cvars: ((X  0)  Y...)</b>,  the listed variable is initialized to the 
+           constant value specified. (The variable X is initialized to the constant 0). Unlike the 
+           <b>setq</b> or <b>define</b> special forms, the <b>cvars</b> special form always evaluates the 
+           initialization value as a constant.</p>
+        <p>The keyword <b>rvars: (var...)</b>  declares the register variables of the Lambda.  
+           The variables are specified as a list <b>rvars:(W  Q...)</b>.   If any one of the variables is 
+           specified as a list, <b>regs:  ((X  Integer)  Y...)</b>,  the listed variable is initialized to the
+           type value specified <i>(Integer, Number, CharPointer, ShortPointer, JumpPointer, IntPointer, or NumPointer)</i>.  
+           The variable X is initialized to the data type Integer <i> (up to fifty register variables are allowed)</i>. 
+           Unlike the <b>cvars</b> or <b>pvars</b> special forms, the <b>regs</b> special form always evaluates the 
+           initialization value as a data type.</p>
+        <p>The keyword <b>doomed:</b>  declares that the Lambda is to be evaluated, by the garbage collector, when the
+           Lambda is doomed.  The Lambda's <b>EvalWhenDoomed</b> property is set to true. The Lambda is always evaluated, 
+           by the garbage collector, with no arguments.</p>
+        <p>The body of the Lambda is a sequence of Lisp expressions <b>{exp}</b>.  At runtime, each of the expressions is 
+           evaluated, in the extended environment, from left to right.  The Lambda returns the value of the final expression 
+           in the sequence.</p>
+        ]]></Overview>
+       <Usage><![CDATA[
+        <p>The <b>define</b> function defines the name of an Lambda, its arguments, and the statements that 
+           comprise the Lambda.</p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p><b>    (define  (name  arg...)  faces:  (var...)  vars:  (var...)  pvars:  (var...)  
+                   cvars: (var...)   regs: (vars...)  exp...)</b></p>
+        ]]></Expression>
+		<Argument> 
+		  <Name>(arg...)</Name>
+		  <Note><![CDATA[
+		  <p> Optional Argument. Argument list for the Lambda. </p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>faces:(var...)</Name>
+		  <Note><![CDATA[
+		  <p> Optional Argument. If present, must be followed by a interfaces feature list. </p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>vars:(var...)</Name>
+		  <Note><![CDATA[
+		  <p> Optional Argument. If present, must be followed by a local variable list.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>  
+		<Argument> 
+		  <Name>pvars:(var...)</Name>
+		  <Note><![CDATA[
+		  <p> Optional Argument. If present, must be followed by a persistent variable list.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>  
+		<Argument> 
+		  <Name>cvars:(var...)</Name>
+		  <Note><![CDATA[
+		  <p> Optional Argument. If present, must be followed by a persistent class variable list.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>  
+		<Argument> 
+		  <Name>regs:(var...)</Name>
+		  <Note><![CDATA[
+		  <p> Optional Argument. If present, must be followed by a register variable list 
+              (up to fifty register variables are allowed).</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>  
+		<Argument> 
+		  <Name>exp...</Name>
+		  <Note><![CDATA[
+		  <p> The Lisp statements that forms the Lambdas</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>  
+		<Return><![CDATA[
+	    <p>An Lambda that will be assigned the name {child}.</p>
+	    ]]></Return>
+	</Syntax>
+</Function>

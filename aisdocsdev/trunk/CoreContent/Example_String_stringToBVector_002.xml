@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example String stringToBVector 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>stringToBVector</FunctionKeywords>
+		<TypeKeywords>String Vector Text Character ObjVector</TypeKeywords>
+		<RelatedFunctions>stringToVector </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>vector separates token key substrings</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example separates the String into tokens using the
+                  <b>{key}</b> Character as the break point of the 
+                  String.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define  S  "Humpty Dumpty")  </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[Humpty Dumpty]]></Returns>
+        <Expression><![CDATA[ <sc>(stringToBVector S "p") </sc>]]></Expression>
+        <Note><![CDATA[Returns the object ID of the Object Vector]]></Note>
+        <Returns><![CDATA[ #&#60ObjVector 194250&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60ObjVector 194250&#62) </sc>]]></Expression>  
+        <Note><![CDATA[Display the contents of the Object Vector]]></Note> 
+        <Returns><![CDATA[#(obj| Hump ty Dump ty ) ]]></Returns>
+        <Expression><![CDATA[<sc>
+              (defun StringTokenizer(S) 
+               	;; Places the resulting Vector in the variable objVector   
+               	(setq vector (stringToBVector S #\space)) 
+               	(setq N (length vector)) 
+               	;; Prints out the contents of objVector  
+              	(loop for n from 0 until  N do 
+                   (writeln vector[n] )) 
+               	)   ;; end of StringTokenizer   
+                 ;; add the method to the String Methods Dictionary   
+              	(addMethod  String: Token: StringTokenizer )  
+              </sc>]]></Expression>
+        <Note><![CDATA[Here is a function that prints out the contents of the tokenized String
+              using the stringToBVector function]]></Note>
+        <Returns><![CDATA[ #&#60Dictionary 47916&#62]]></Returns>  
+        <Expression><![CDATA[ <sc>(define  S  "Humpty Dumpty")  <br>
+                        (Token: S)</sc>]]></Expression>  
+        <Note><![CDATA[Invoke the function StringTokenizer on String S. ]]></Note> 
+        <Returns><![CDATA[Hump <br>
+                 ty Dump <br>
+                 ty]]></Returns>
+        <Hints><![CDATA[none
+        ]]></Hints>
+   </Syntax>
+</Example>

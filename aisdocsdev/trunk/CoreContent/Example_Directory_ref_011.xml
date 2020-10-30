@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Directory ref 011</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>ref</FunctionKeywords>
+		<TypeKeywords> Directory Symbol Integer</TypeKeywords>
+		<RelatedFunctions>setq  ref fieldsOf   refValues  </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>ref reference set position</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows the <b>ref</b> function returns the
+
+
+
+                  value of the Directory through the <b>index</b> reference.
+
+
+                  This example uses the <b> (ref aDir index1)</b> function syntax.
+
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(define aDir  #{dir|#Jan,1,1996  "New Year's Day"  #Feb,14,1996  "Valentine's Day" })</sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60Directory 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(ref  aDir 0 0)  </sc>]]></Expression>
+        <Note><![CDATA[The ref function returns the key with the specified index in the Directory. ]]></Note>
+        <Returns><![CDATA[#Jan,1,1996]]></Returns>
+  	    <Expression><![CDATA[ <sc>(ref dir  1 0)            </sc>]]></Expression>
+        <Note><![CDATA[The ref function returns the key with the specified index in the Directory.]]></Note>
+        <Returns><![CDATA[#Feb,14,1996]]></Returns>
+        <Hints><![CDATA[Since Directory keys are maintained by sort ascending order, the internal 
+
+               representation does not always match the order in which the keys are installed.   
+
+               When a reference by index, the value or key that is returned will reflect the 
+
+               internal ordering of the Dictionary or Directory:
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

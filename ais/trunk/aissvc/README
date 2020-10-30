@@ -1,0 +1,168 @@
+Analytic Information System Service/Daemon
+
+Chapter 1. Overview
+    This document explains the procedures for installing and configuring the
+    AIS Service/Daemon in both Windows and Linux environments.
+
+Chapter 2. Windows Environment
+    This chapter explains the setup of AIS Service under Windows.
+
+2.1 Installation
+    The syntax for installing AIS Service is as follows:
+        aissvc.exe --install [service name] [display name] [startup script]
+            or
+        aissvc.exe --install-manual [service name] [display name] [startup script]
+
+    Using --install would set the startup type of the service to automatic.
+    Which means, the service will automatically started at boot time.
+
+    Using --install-manual would set the startup type of the service to manual.
+    The service can be started using the Service Control Manager or
+    the --start command, see Section 2.1.
+
+    The [service name] parameter specifies the unique identifier of the service.
+    The same value is used when removing, starting, or stopping a service.
+
+    This parameter allows several instances of the AIS Service to be installed
+    in the system. Which can be useful when dealing with multiple configurations.
+
+    When installing serveral instance of the AIS Service, it is necessary to have
+    different copies of the AIS Service binary and the required configuration files.
+
+    The contents of the configuration files should not be conflicting with each
+    other as well.
+
+    The [display name] parameter corresponds to the displayed name in the
+    Service Control Manager list. It does not have to be unique. But this can
+    be useful to easily identify between different configurations.
+
+    The [startup script] parameter specifies the full path to the startup script
+    which will be loaded by the AIS service at run-time.
+
+    Important:  The full path to the startup script must be used.
+
+    Examples:
+
+    To install AIS Service (automatic)
+    C:\ISC\AIS>aissvc.exe --install "AIS" "Analytic Information System" "C:\ISC\AIS\Test\AStartup.sl"
+
+    To install AIS Service (manual)
+    C:\ISC\AIS>aissvc.exe --install-manual "AIS" "Analytic Information System" "C:\ISC\AIS\Libraries\AStartup.sl"
+
+    To install 2 AIS Service instances
+    C:\ISC\AIS_1>aissvc.exe --install "AIS1" "Analytic Information System 1" "C:\ISC\AIS_1\Test\AStartup.sl"
+    C:\ISC\AIS_2>aissvc.exe --install "AIS2" "Analytic Information System 2" "C:\ISC\AIS_2\Test\AStartup.sl"
+
+2.2 Removal
+    The syntax for removing an installed AIS Service is as follows:
+        aissvc.exe --remove [service name]
+
+    The [service name] parameter specifies which installed service is to be removed.
+    Note that if the service is still running, it will be stopped first, before getting removed from
+    the Service Control Manager list.
+
+    Warning: This feature is primarily designed to be used with AIS Service instance ONLY,
+    but it can be used to remove other installed services. However this is NOT recommended.
+    For it may cause major problems to the system if the wrong [service name] was used.
+
+    Example:
+    
+    To remove an AIS Service:
+    C:\ISC\AIS>aissvc.exe --remove "AIS1"
+
+2.3 Starting
+    The syntax for starting an installed AIS Service is as follows:
+        aissvc.exe --start [service name]
+
+    The [service name] parameter specifies which installed service is to be started.
+
+    Warning: This feature is primarily designed to be used with AIS Service instance ONLY,
+    but it can be used to remove other installed services. However this is NOT recommended.
+    For it may cause major problems to the system if the wrong [service name] was used.
+
+    Example:
+
+    To start an AIS Service:
+    C:\ISC\AIS>aissvc.exe --start "AIS1"
+
+2.4 Stopping
+    The syntax for starting an installed AIS Service is as follows:
+        aissvc.exe --stop [service name]
+
+    The [service name] parameter specifies which installed service is to be stopped.
+
+    Warning: This feature is primarily designed to be used with AIS Service instance ONLY,
+    but it can be used to remove other installed services. However this is NOT recommended.
+    For it may cause major problems to the system if the wrong [service name] was used.
+
+    Example:
+
+    To stop an AIS Service:
+    C:\ISC\AIS>aissvc.exe --stop "AIS1"
+
+Chapter 3. Linux Environment
+    This chapter explains the setup of AIS Daemon under Linux.
+
+3.1 Installation
+    The AIS installation/sources comes with a utility script called "aissvc.sh" which is
+    designed to be modified and copied to "/etc/init.d or /etc/rc.d" directory of the Linux system.
+
+    The first requirement for the setup is to copy all the required files to the target install directory,
+    usually in "/usr/local/xxx". In this particular discussion we will use "/usr/local/ais".
+
+    The following files/directories should be copied to the target install directory (e.g. /usr/local/ais):
+
+    * AIS daemon binary (aissvcdevexe or aissvcdebugexe)
+    * Libraries folder and contents (Libraries)
+    * Configuration files (*.ini)
+    * Usr folder and contents (usr)
+    * Log folder (logs)
+    * MySQL messages folder and contents (mysqlmsgs)
+    * Test folders and contents (Test or TestAis)
+
+
+    The AIS daemon can be configured to run as another user, typically with lesser
+    privileges than the root user. If this is to be the case, the target user MUST 
+    have read and write permissions to the target install directory. This can be done
+    by changing the owner of the target install directory (using chown).
+
+    After the preliminary steps are completed. The utility script "aissvc.sh" can already be copied to
+    "/etc/init.d or /etc/rc.d". Most Linux distributions require additional system commands to be
+    executed to complete the installation of the daemon. The filename of "aissvc.sh" can be renamed
+    to something else (e.g. "aissvc").
+
+    For Redhat-based distributions, the "chkconfig" command can be used.
+        # chkconfig --add aissvc
+
+    For Debian-based distributions, the "update-rc.d" command can be used.
+        # update-rc.d aissvc defaults
+
+    The commands above will create the necessary symbolic links that will
+    configure the system to start and stop the daemon automatically.
+
+    Certain script parameters/variables are required to be updated with the correct values:
+
+    * bindir - Should be set to the absolute path to the target install directory (e.g. /usr/local/ais)
+    * aissvc - Should be set to the name of the binary to be used (e.g. aissvcdevexe)
+    * user - Should be set to the target effective user
+    * pidfile - Should be set to the path of the desired PID file (optional)
+
+
+3.2 Removal
+    For Redhat-based distributions, the "chkconfig" command can be used.
+        # chkconfig --del aissvc
+
+    For Debian-based distributions, the "update-rc.d" command can be used.
+        # update-rc.d aissvc remove
+
+    The actual utility script will not be removed by the commands above.
+
+3.3 Starting
+    The following command can be used to start the AIS daemon.
+        # /etc/init.d/aissvc start
+
+3.4 Stopping
+    The following command can be used to stop the AIS daemon.
+        # /etc/init.d/aissvc stop
+
+

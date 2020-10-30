@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Essay SYSTEM "../DTD/Essay.dtd">
+<Essay>
+	<KnowledgeBase>
+	    <Title>Lisp FAQs</Title>
+		<Topic>Lisp</Topic>
+		<SubTopic>Overview</SubTopic>
+		<HumanKeywords>Lisp Language Basics Syntax Programming Constants Variables Objects </HumanKeywords>
+	</KnowledgeBase>
+	<Section>
+	    <Heading>Overview</Heading>
+		<Description><![CDATA[     
+		  <p>This chapter contains Frequently Asked Questions (FAQs) about AIS Lisp and supplied by its user community.
+             Each FAQ is signed by its author.
+             Any AIS Lisp user may add FAQs to this chapter and all AIS Lisp users are encouraged to contribute.
+             </p>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>Accessing Elements of a Foreign Class</Heading>
+		<Description><![CDATA[     
+		  <p><b><font color="blue">Author:</font>&nbsp;&nbsp;&nbsp;<i>anonymous</i></b></p>
+
+		  <p>How do we access elements of a foreign class Lambda in AIS Lisp?
+             From the example below, if we have a foreign class Lambda 'foo' and we would like to access
+             it's class variable 'x' declared in foo's svars. 
+             Unfortunately, we are not a method of foo (in which case we inherit foo'as svars).
+             We can  access 'x' by defining a template that will hold the format of the <b>svar</b> structure of class 'foo' which is 'foo.Sv'.
+             Then declare a register pointer 'pr' to be used to offset the class element 'x' thru the template. 
+             (This is similar to C/C++'s arrow notation pr->x).
+             The pointer holds the address of the foreign object while the template holds the format.
+             </p>
+
+			 <p class="example"><u><b><font color="blue">Example</font></u></b></p>
+			 <p>&nbsp;</p>
+			 <p class="code">&nbsp;&nbsp;&nbsp; 
+			 (defclass foo() svars:((Number:x 2.0)) true)</p>
+			 <p class="code">&nbsp;&nbsp;&nbsp; 
+			 (defun test(self Number:y)</p>
+			 <p class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			 regs:(WordPointer:pr)</p>
+			 <p class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			 (define template foo.Sv)</p>
+			 <p class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			 (setq pr self)</p>
+			 <p class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			 (+= pr[template(x)] y))</p>
+			 <p class="code">&nbsp;&nbsp;&nbsp; 
+			 (setq self (new foo))</p>
+			 <p class="code">&nbsp;&nbsp;&nbsp; 
+			 (test self 3.0)&nbsp;&nbsp;&nbsp;<i>Returns</i>&nbsp;&nbsp;&nbsp;5.0</p>
+ 
+		  <h3>Hints & Notes</h3>
+          <ul>
+            <li>Load a template with the format of the foreign object.</li>
+            <li>Load a pointer with the address of the foreign object.</li>
+            <li>Use the pointer and template to create a direct offset address of the foreign variable.</li>
+          </ul>
+
+
+		  <h3><font color="red">Warning</font></h3>
+		  <p>Don't forget to load the address of the foreign class object into the pointer!</p>
+	    ]]></Description>
+	</Section>                
+	
+	<Section>
+	    <Heading>Embedding macros in a defmacro</Heading>
+		<Description><![CDATA[     
+		  <p><b><font color="blue">Author:</font>&nbsp;&nbsp;&nbsp;<i>Loryfel Nunez</i></b></p>
+
+		  <p>Can we embed macros inside a defmacro?   </p>  
+		  <p> Yes, we can as long as we use macroReplace to generate a new List everytime the macro is called in any Lambda.  
+		  Using macroReplace  will eliminate the chance of the compiler to mess up the original macro. </p>
+          <p>  Aside from macros created using the defmacro Lambda, there are several other buil-in macros in LISP, to wit:  </p>
+             &#43&#43 </br>
+             &#43&#61 </br>
+              &#47&#61 </br>
+               &#42&#61 </br>
+              &#45&#61 </br>
+              &#45&#45 </p>  
+          
+          <p> <b> To illustrate: </b></p>
+          <p> We have a parent Lambda and two child Lambdas with each child Lambda calling a macro
+          	  with the macro inside a list constant : </p>
+          <p> ;; Parent Lambda <br>
+          (defun parent() pvars:(child MacroTest parentVar) true)  </p>
+ 
+	     
+          <p> <font color="red"> ;; Macro &#43&#43 is embedded inside a defmacro using a list constant, for instance, <br> 
+          (defmacro MacroTest()  <br>
+				'(&#43&#43 x)   <br>
+			   ) ;; end defmacro   <br>   
+		   </font></p>    
+		  
+		  <p> ;; Define the first child Lambda   <br>
+		  (defchild parent:child1() (parent@MacroTest))  <br>
+		  </p>
+ 
+          <p>  ;; Define the first child Lambda   <br>
+ 			(defchild parent:child2() (parent@MacroTest))   <br>
+ 		  </p>
+ 
+           <p>When at least two child Lambdas call the MacroTest, the List constant is destroyed with 
+           macros passing back a List constant.  Therefore, <br>
+           '(begin  (setq x 10) (&#43&#43 x))  <br>
+           generates  (&#43&#43 x) in child1  but it generates (setq &#43&#43 x)  in child2 which is an error. </p>
+          
+           <p> To solve this problem, we use <b>macroReplace</b> to create a new List each time  MacroTest is replaced in
+           every Lambda.  The new MacroTest looks like this: </p>
+           
+           <p><b>(defmacro parent:MacroTest() <br>
+           (macroReplace   '(&#43&#43 parentVar))) </b> </p>
+ 
+		  <h3>Hints & Notes</h3>
+          <ul>
+            <li>Use macroReplace when you have embedded macros in your defmacro.</li>
+            <li>Use the begin keyword inside the List when the List contains more than one command, for instance, <br>
+                '(begin (setq x 10) (&#43&#43 x))</li>
+          </ul>
+
+
+	    ]]></Description>
+	</Section>
+ 
+ 
+</Essay>

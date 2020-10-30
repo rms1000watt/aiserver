@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmregJumpCCInteger</Title>
+		<InstructionName>vmregJumpCCInteger</InstructionName>                                      
+		<InstructionType>Register</InstructionType>
+		<ArgumentTypes> Integer</ArgumentTypes>
+		<RelatedVMInstructions>vmregJumpCCImmediate vmregJumpCCNumber vmnatJumpCCNumber vmnatJumpCCInteger</RelatedVMInstructions>
+		<HumanKeywords> cc jump jumpcc comparitor label </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[                                                  
+		<p>When evaluated, this vm instruction compares the <b>source</b> integer value 
+		with the register <b>comparitor</b> value. If the comparison is true, the instruction 
+		pointer is set equal to the immediate<b>label</b> argument; otherwise, the instruction 
+		pointer is promoted as usual. Both words are assumed to be of type Integer.  
+		The operation of this vm instruction is expressed in the following 
+		C expression:
+		
+		       
+        <ul><li><b>if ((int)source &#060  (int)comparitor) Ip = label; </b></li></ul>
+		<ul><li><b>if ((int)source &#060&#061  (int)comparitor) Ip = label; </b></li></ul>   
+		<ul><li><b>if ((int)source &#061 (int)comparitor) Ip = label; </b></li></ul> 
+		<ul><li><b>if ((int)source &#33&#061 (int)comparitor) Ip = label; </b></li></ul> 
+		<ul><li><b>if ((int)source &#062&#061 (int)comparitor) Ip = label; </b></li></ul> 		   
+		<ul><li><b>if ((int)source &#062  (int)comparitor) Ip = label; </b></li></ul>
+    ]]></Description>
+	<Syntax>
+	  <Expression><![CDATA[  (vmregJmpLTInteger source comparitor label) ]]></Expression>	 
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>register</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>comparitor</Name>
+		  <Format>register </Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name> label </Name>
+		  <Format>register</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+	 <Expression><![CDATA[  (vmregJmpLEInteger source comparitor label)]]></Expression>		 
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>register</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>comparitor</Name>
+		  <Format>register </Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name> label </Name>
+		  <Format>label</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+	 <Expression><![CDATA[  (vmregJmpEQInteger source comparitor label)]]></Expression> 
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>register</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>comparitor</Name>
+		  <Format>register </Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name> label </Name>
+		  <Format>label</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+	  <Expression><![CDATA[  (vmregJmpNEInteger source comparitor label)]]></Expression>		 
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>register</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>comparitor</Name>
+		  <Format>register </Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name> label </Name>
+		  <Format>label</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+       	 <Expression><![CDATA[  (vmregJmpGEInteger source comparitor label)]]></Expression>		 
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>register</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>comparitor</Name>
+		  <Format>register </Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name> label </Name>
+		  <Format>label</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+         <Expression><![CDATA[  (vmregJmpGTInteger source comparitor label)]]></Expression>
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>register</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>comparitor</Name>
+		  <Format>immediate </Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name> label </Name>
+		  <Format>label</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+	</Syntax>
+</VMInstruction>

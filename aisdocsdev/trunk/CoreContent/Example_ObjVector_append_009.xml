@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example ObjVector append 009</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>append</FunctionKeywords>
+		<TypeKeywords>ObjVector</TypeKeywords>
+		<RelatedFunctions>new replace rept</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>append concatenate vector </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example takes 2 existing Object Vectors and appends 
+                  the values of each Object Vector.  The result is placed in a new Object Vector.
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq X (new Vector:  object:  2  #{A: 1 B: 2} #(1 2) ) )         </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60ObjVector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Y (new Vector:  object:  2  #{dic| A: a B: b} #(1 2) ) )          </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60ObjVector 234567&#62   ]]></Returns>
+        <Expression><![CDATA[ <sc> (append X Y )    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60ObjVector 456789&#62   ]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60ObjVector 456789&#62 )       </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#(obj| #{A: 1 B: 2} #(1 2 ) #{dic|| A a B b} #(1 2 ) )]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

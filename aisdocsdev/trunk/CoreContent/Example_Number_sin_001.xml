@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number sin 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>sin</FunctionKeywords>
+		<TypeKeywords>Number Integer</TypeKeywords>
+		<RelatedFunctions> cos tan cosh</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>   sine radians angle </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>sin</b> function to  compute the sine of a number.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(sin 0)  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[0.0]]></Returns>
+  	    <Expression><![CDATA[ <sc>(sin .7854)   </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[0.7071080798595]]></Returns>
+  	    <Expression><![CDATA[ <sc>(sin 1.0472)  </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[0.8660266281835]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

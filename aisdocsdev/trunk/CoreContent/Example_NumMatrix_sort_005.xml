@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example NumMatrix uniqueInsert 005</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>uniqueInsert</FunctionKeywords>
+		<TypeKeywords>NumMatrix  Integer</TypeKeywords>
+		<RelatedFunctions>insert binarySearch binaryInsert sort</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>binary insert structure sort</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ The first example shows how  the <b>uniqueInsert</b> function works
+
+
+                  when a value that already exists in the Matrix is inserted. The second 
+
+
+                  example shows how the <b>uniqueInsert</b> function works when a new value
+
+
+                  is inserted in the NumMatrix.
+
+
+                  
+
+
+
+	]]></Description>
+	<Syntax>
+  	   <Expression><![CDATA[ <sc>(setq X #(nummat| 2 4 3 6 1))         </sc>]]></Expression>
+        <Note><![CDATA[Try to insert a value that already exists]]></Note>
+        <Returns><![CDATA[#&#60Matrix123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(uniqueInsert X 3 )       </sc>]]></Expression>
+        <Note><![CDATA[The index of the value in the Vector is returned.]]></Note>
+        <Returns><![CDATA[2]]></Returns>
+        <Expression><![CDATA[ <sc>(uniqueInsert X 5 )       </sc>]]></Expression>
+        <Note><![CDATA[The new value is inserted at the end of the Matrix. The 
+
+
+              in the Matrix where the new value is inserted is returned.]]></Note>
+        <Returns><![CDATA[5]]></Returns>
+        <Expression><![CDATA[ <sc>(display X )       </sc>]]></Expression>
+        <Note><![CDATA[The modified NumMatrix is displayed. ]]></Note>
+        <Returns><![CDATA[#(nummat| 2.0 4.0 3.0 6.0 1.0 5.0 )]]></Returns>
+        <Hints><![CDATA[The <b>uniqueInsert</b> function always inserts a new value at the end, since a 
+
+
+
+                Matrix is by default not sorted. If sort order is needed, use the <b>sort</b>
+                function and insert new objects by calling the <b>binaryInsert</b> function.
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number add1 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>add1</FunctionKeywords>
+		<TypeKeywords>Number</TypeKeywords>
+		<RelatedFunctions> sub1 </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>number arithmetic addition increment decrement</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[  <p> The <b>add1</b> function returns the value of the argument, incremented by 1. </p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+(define x  4)   </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[4]]></Returns>
+        <Expression><![CDATA[ <sc>(add1 x)    </sc> ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[5]]></Returns>
+        <Expression><![CDATA[ <sc>(define y  3.75)   </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[ 3.75]]></Returns>
+         <Expression><![CDATA[ <sc>(add1 y )     </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[4.75]]></Returns>
+        <Hints><![CDATA[none
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

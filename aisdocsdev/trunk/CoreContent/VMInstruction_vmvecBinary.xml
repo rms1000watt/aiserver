@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmvecBinary</Title>
+		<InstructionName>vmvecBinary</InstructionName>
+		<InstructionType>Vector</InstructionType>
+		<ArgumentTypes>Integer</ArgumentTypes>
+		<RelatedVMInstructions>vmvecUnary</RelatedVMInstructions>
+		<HumanKeywords>vector operator binary</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[
+		<p>When evaluated, this vm instruction performs the binary operation, 
+		specified by the immediate <b>operator</b> argument, against the data 
+		in the vector processing stack. There are no conversions made between 
+		different types. The initial values in the three pointer registers, 
+		the three increment registers, and the counter register are NOT altered 
+		by this instruction. This instruction may return an Error value. 
+		After the operation, the Instruction Pointer is promoted. 
+		The operation of this vm instruction is expressed in the following 
+		C expression:
+	    </p>
+        <li>add: {0} <b>(ST[top-1] += ST[top]; --top;)   </b></li>   
+        <li>div: {1} <b>(ST[top-1] /= ST[top]; --top;)   </b></li> 
+        <li>mul: {3} <b>(ST[top-1] *= ST[top]; --top;)   </b></li> 
+        <li>sub: {4} <b>(ST[top-1] -= ST[top]; --top;)   </b></li> 
+        <p>
+        The valid operator arguments are any <u>immediate integer value</u>, 
+        indicating the operation to be performed, or any one of the following 
+        symbolic operators: 
+        </p>  
+         <ul><li>  add: {0} <i>(Add the top stack number to the second stack number and pop the stack)</i></li>
+         <li>  div: {1} <i>(Divide the top stack number into the second stack number and pop the stack)</i></li>  
+         <li>  mul: {2} <i>(Multiply the top stack number by the second stack number and pop the stack)</i></li> 
+         <li>  sub: {3} <i>(Subtract the top stack number from the second stack number and pop the stack)</i></li> </ul>     
+    ]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[(vmvecBinary operator)]]></Expression>   
+	    <Argument> 
+		  <Name>operator</Name>
+		  <Format>immediate</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+	</Syntax>
+</VMInstruction>

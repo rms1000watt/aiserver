@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example ObjectRepository length 016</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>length</FunctionKeywords>
+		<TypeKeywords>ObjectRepository</TypeKeywords>
+		<RelatedFunctions>  count  </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>length equal </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows the <b>length</b> function work with a defined Object Repository
+                   with two values.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq gor (new ObjectRepository: "myarchive.odb"))      </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 197815&#62 ]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq gor["one"] "Hello World")      </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#&#60ObjectRepository 197815&#62 ]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq gor["two"] "Goodbye World")      </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#&#60ObjectRepository 197815&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(length gor)  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[2]]></Returns>
+        <Expression><![CDATA[ <sc>(clear gor)  </sc>]]></Expression>  
+        <Note><![CDATA[The contents of the Object REpository are cleared.]]></Note> 
+        <Returns><![CDATA[ --- ]]></Returns>
+        <Expression><![CDATA[ <sc>(length gor)  </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[0]]></Returns>
+        <Hints><![CDATA[none
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

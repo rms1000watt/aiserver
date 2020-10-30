@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure binarySearch 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>binarySearch</FunctionKeywords>
+		<TypeKeywords>Structure Boolean Integer Symbol</TypeKeywords>
+		<RelatedFunctions>insert binaryInsert sort uniqueInsert</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>binary insert search structure sort</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ Each one of these examples defines a sorted  Structure. Then it
+
+                  uses the <b>binarySearch</b> function to search for a key
+
+                  in the defined Structures.
+	]]></Description>
+	<Syntax>
+  	   <Expression><![CDATA[ <sc>(binarySearch  #{a:  4.2  c:  5.1}  b:)       </sc>]]></Expression>
+        <Note><![CDATA[The key b: is not contained in the Structure]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(binarySearch  #{a:  4.2  c:  5.1}  a:)         </sc>]]></Expression>
+        <Note><![CDATA[The key a: has index value 0 in the Structure.]]></Note>
+        <Returns><![CDATA[0]]></Returns>
+        <Expression><![CDATA[ <sc> (binarySearch  #{a:  4.2  c:  5.1}  a: false)         </sc>]]></Expression>
+        <Note><![CDATA[The Boolean value false indicates that the comparison is made on the object IDs only.]]></Note>
+        <Returns><![CDATA[0 ]]></Returns>
+        <Hints><![CDATA[The Structure must have previously been sorted for the <b>binarySearch</b> 
+               function to work. ]]></Hints>
+   </Syntax>
+</Example>

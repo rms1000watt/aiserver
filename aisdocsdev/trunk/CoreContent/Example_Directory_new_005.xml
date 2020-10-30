@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Directory new 005</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>new</FunctionKeywords>
+		<TypeKeywords>Symbol Integer  Directory String</TypeKeywords>
+		<RelatedFunctions>string  define </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>new pointer create initialize</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples show how to create an instance of
+
+
+
+                  a Directory through the <b>new</b> function.
+
+
+
+                  The key-value pairs specified in the new function are transformed 
+
+                  into Directory bindings.  The order specified in the new function 
+
+                  Directory may not match the internal representation because 
+
+                  Directory keys are always maintained in ascending order.  
+
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(setq A (new  Directory: Name:  "John Doe"  Address: "184 B Street"  State: "California") )</sc>]]></Expression>
+        <Note><![CDATA[ Create a new Directory, named A, and initialize it with three bindings.]]></Note>
+        <Returns><![CDATA[#&#60Directory 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>A[0 0]    </sc>]]></Expression>
+        <Note><![CDATA[The key-value pairs are displayed through accessing its index value. ]]></Note>
+        <Returns><![CDATA[ Name]]></Returns>
+        <Expression><![CDATA[ <sc>A[1 0]     </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[Address]]></Returns>
+        <Expression><![CDATA[ <sc>A[1]    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[John Doe]]></Returns>
+  	    <Expression><![CDATA[ <sc>A.Name    </b>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[John Doe]]></Returns>
+        <Expression><![CDATA[ <sc>A.Address    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[184 B Street]]></Returns>
+        <Expression><![CDATA[ <sc>A.State    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[California]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

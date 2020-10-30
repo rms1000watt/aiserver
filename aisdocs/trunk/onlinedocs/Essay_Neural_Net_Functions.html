@@ -1,0 +1,1195 @@
+
+<HTML>
+<HEAD>
+<link rel="stylesheet" type="text/css" href="../CoreContent/help.css">
+<TITLE>AIS Essay Template</TITLE></HEAD>
+<!--Page Parameters -->
+<BODY BGCOLOR="#FFFFF0" TEXT="#000000" LINK="#0000ff">
+
+<A NAME="topage"></A>
+<A HREF="TOP"></A>
+
+
+
+<P>&nbsp;</P>
+
+<FONT COLOR="#000080"><H1>Neural Net Functions</H1></FONT>
+<P>&nbsp;</P>
+
+<UL>
+<li><a href="#SIntroduction"><FONT SIZE=2>Introduction</font></a></li><li><a href="#Sclear"><FONT SIZE=2>clear</font></a></li><li><a href="#ScomputeError"><FONT SIZE=2>computeError</font></a></li><li><a href="#SgetWeights"><FONT SIZE=2>getWeights</font></a></li><li><a href="#SmakeNeuralNet"><FONT SIZE=2>makeNeuralNet</font></a></li><li><a href="#SpropagateBackward"><FONT SIZE=2>propagateBackward</font></a></li><li><a href="#SpropogateForward"><FONT SIZE=2>propogateForward</font></a></li><li><a href="#SpropagateUserError"><FONT SIZE=2>propagateUserError</font></a></li>
+</UL>
+
+<P><H2><A NAME="SIntroduction"></A>Introduction</H2></P>		
+		    <div class="h2section" id="Introduction">
+		  <p>The sections which follow,
+		    describe all of the functions, methods, and global variables which operate
+		    upon or are specifically related to the Neural Net Object type. Each
+		    function, method, and global variable has its own section. The sections are
+		    listed in alphabetic order.</p>	 
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="Sclear"></A>clear</H2></P>		
+		    <div class="h2section" id="clear">
+			  <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>Overview&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		 
+		    </u></b></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">clear</b>
+		    Method resets the specified NeuralNet object and randomizes all of the
+		    weights at each level of the net.&nbsp; Alternatively,
+		    the clear method may reset all of the weights to those specified in the
+		    weights vector supplied as an argument.</p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">&nbsp;
+		 
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Type:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    Method
+		 
+		    </b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 116%"><b style="mso-bidi-font-weight: normal"><u>&nbsp;
+		 
+		    </u></b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Syntax:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    (clear:aNeuralNet)
+		 
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Syntax:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    (clear:aNeuralNet&nbsp; seed)
+		 
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Syntax:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    (clear:aNeuralNet&nbsp; weightsVector)
+		 
+		    </b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 116%"><b style="mso-bidi-font-weight: normal"><u>&nbsp;
+		 
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 116%"><b style="mso-bidi-font-weight: normal"><u>When
+		    To Use&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </u>
+		    </b></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">clear</b>
+		    method is used to reset a NeuralNet object and randomize its weights.</p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;
+		 
+		    </u></b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">__________________________________________________________________
+		 
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Arguments&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    Explanation&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		 
+		    </b></p>
+		    <table style="BORDER-COLLAPSE: collapse; mso-padding-alt: 0in 5.4pt 0in 5.4pt" cellspacing="0" cellpadding="0" border="0">
+		      <tbody>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 149.4pt; PADDING-TOP: 0in" valign="top" width="249">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">aNeuralNet
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 329.4pt; PADDING-TOP: 0in" valign="top" width="549">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            NeuralNet Object to be cleared</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 149.4pt; PADDING-TOP: 0in" valign="top" width="249">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">Returns
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 329.4pt; PADDING-TOP: 0in" valign="top" width="549">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            NeuralNet Object cleared</p>
+		          </td>
+		        </tr>
+		      </tbody>
+		    </table>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">__________________________________________________________________
+		 
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;
+		 
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 116%"><b style="mso-bidi-font-weight: normal"><u>Example1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </u>
+		    </b></p>
+		    <p class="MsoBodyText">...to
+		    be continued...
+		 
+		    </p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 116%"><b style="mso-bidi-font-weight: normal"><u>&nbsp;
+		 
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 116%"><a name="_Toc394828151"><b style="mso-bidi-font-weight: normal"><u>When
+		    To Use&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </u>
+		    </b></a></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">clear</b>
+		    method is used to reset a NeuralNet object and pseudo randomize its weights.</p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;
+		 
+		    </u></b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">__________________________________________________________________
+		 
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Arguments&nbsp;&nbsp;
+		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    Explanation&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		 
+		    </b></p>
+		    <table style="BORDER-COLLAPSE: collapse; mso-padding-alt: 0in 5.4pt 0in 5.4pt" cellspacing="0" cellpadding="0" border="0">
+		      <tbody>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 149.4pt; PADDING-TOP: 0in" valign="top" width="249">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">aNeuralNet
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 329.4pt; PADDING-TOP: 0in" valign="top" width="549">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            NeuralNet Object to be cleared</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 149.4pt; PADDING-TOP: 0in" valign="top" width="249">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">seed
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 329.4pt; PADDING-TOP: 0in" valign="top" width="549">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            seed for the <b>srandom</b> function to be set before pseudo
+		            randomizing the weights.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 149.4pt; PADDING-TOP: 0in" valign="top" width="249">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">Returns
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 329.4pt; PADDING-TOP: 0in" valign="top" width="549">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            NeuralNet Object cleared</p>
+		          </td>
+		        </tr>
+		      </tbody>
+		    </table>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">__________________________________________________________________
+		 
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;
+		 
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 116%"><b style="mso-bidi-font-weight: normal"><u>Example1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </u>
+		    </b></p>
+		    <p class="MsoBodyText">...to
+		    be continued...
+		 
+		    </p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;
+		 
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 116%"><b style="mso-bidi-font-weight: normal"><u>When
+		    To Use&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </u>
+		    </b></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">clear</b>
+		    method is used to reset the weights in a NeuralNet object to those values
+		    contained in the&nbsp; specified
+		    weights vector. The weights vector would have been obtained from a previous <b>getWeights</b>
+		    method.</p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;
+		 
+		    </u></b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">__________________________________________________________________
+		 
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Arguments&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    Explanation&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		 
+		    </b></p>
+		    <table style="BORDER-COLLAPSE: collapse; mso-padding-alt: 0in 5.4pt 0in 5.4pt" cellspacing="0" cellpadding="0" border="0">
+		      <tbody>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 149.4pt; PADDING-TOP: 0in" valign="top" width="249">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">aNeuralNet
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 329.4pt; PADDING-TOP: 0in" valign="top" width="549">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            NeuralNet Object to be cleared</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 149.4pt; PADDING-TOP: 0in" valign="top" width="249">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">weightsVector
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 329.4pt; PADDING-TOP: 0in" valign="top" width="549">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            vector containing the new weights for this NeuralNet.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 149.4pt; PADDING-TOP: 0in" valign="top" width="249">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">Returns
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 329.4pt; PADDING-TOP: 0in" valign="top" width="549">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            NeuralNet Object has all its weights reset.</p>
+		          </td>
+		        </tr>
+		      </tbody>
+		    </table>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">__________________________________________________________________
+		 
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;
+		 
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 116%"><b style="mso-bidi-font-weight: normal"><u>Example1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </u>
+		    </b></p>
+		    <p class="MsoBodyText">...to
+		    be continued...      </p>
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="ScomputeError"></A>computeError</H2></P>		
+		    <div class="h2section" id="computeError">
+			   <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>Overview&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		 
+		    </u></b></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">computeError</b>
+		    Method computes the output error for the specified NeuralNet <b style="mso-bidi-font-weight: normal">{aNeuralNet}</b>.
+		    The output signal is compared to the specified target <b style="mso-bidi-font-weight: normal">{target}</b>,
+		    and the resulting <i><u>least squares error</u></i> is computed and placed
+		    in the error property of the NeuralNet.</p>
+		    <p class="MsoBodyText">The target
+		    must be a Number Vector of the same length or larger than specified in the
+		    previous makeNeuralNet (if larger, the target signals are taken from the
+		    right of the target vector). The output error is computed and placed in the
+		    error property of the NeuralNet. This method does NOT adjust weights in each
+		    hidden layer of the NeuralNet.</p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">&nbsp;
+		 
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Type:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    Method
+		 
+		    </b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 116%"><b style="mso-bidi-font-weight: normal"><u>&nbsp;
+		 
+		    </u></b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Syntax:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    (computeError:aNeuralNet&nbsp; target)
+		 
+		    </b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 116%"><b style="mso-bidi-font-weight: normal"><u>&nbsp;
+		 
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 116%"><b style="mso-bidi-font-weight: normal"><u>When
+		    To Use&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </u>
+		    </b></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">computeError</b>
+		    method is used to compute the error.</p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;
+		 
+		    </u></b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">__________________________________________________________________
+		 
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Arguments&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    Explanation&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		 
+		    </b></p>
+		    <table style="BORDER-COLLAPSE: collapse; mso-padding-alt: 0in 5.4pt 0in 5.4pt" cellspacing="0" cellpadding="0" border="0">
+		      <tbody>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 149.4pt; PADDING-TOP: 0in" valign="top" width="249">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">aNeuralNet
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 329.4pt; PADDING-TOP: 0in" valign="top" width="549">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            NeuralNet whose input signal is to be propagated.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 149.4pt; PADDING-TOP: 0in" valign="top" width="249">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">target
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 329.4pt; PADDING-TOP: 0in" valign="top" width="549">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            target vector to be compared with the output signal.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 149.4pt; PADDING-TOP: 0in" valign="top" width="249">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">Returns
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 329.4pt; PADDING-TOP: 0in" valign="top" width="549">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            Object Identifier of the new NeuralLayer Object</p>
+		          </td>
+		        </tr>
+		      </tbody>
+		    </table>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">__________________________________________________________________
+		 
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;
+		 
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 116%"><b style="mso-bidi-font-weight: normal"><u>Example1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </u>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">(setq&nbsp;
+		    aNN&nbsp; (makeNeuralNet&nbsp;
+		    6&nbsp; 1&nbsp;
+		    binary:))
+		 
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">(clear:aNN)
+		 
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">(setq&nbsp;
+		    in&nbsp; (makeVector&nbsp;
+		    number:&nbsp; 6&nbsp;
+		    .2&nbsp; .1&nbsp;
+		    .3&nbsp; .5&nbsp;
+		    .7&nbsp; .22))
+		 
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">(setq&nbsp;
+		    target&nbsp; (makeVector&nbsp;
+		    number:&nbsp; 1 32))
+		 
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">(propagateForward:aNN&nbsp;
+		    in)
+		 
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">(setq
+		    error (computeError:aNN&nbsp; target))&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		 
+		    </b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 116%"><b style="mso-bidi-font-weight: normal"><u>Note1</u>&nbsp;&nbsp;
+		    </b>The returned error is
+		    the sum of the squared errors for each output signal.<b style="mso-bidi-font-weight: normal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		 
+		    </b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 116%"><b style="mso-bidi-font-weight: normal"><u>Note2</u>&nbsp;&nbsp;
+		    </b>Input must be within the
+		    closed interval <b style="mso-bidi-font-weight: normal">[0, 1]</b>.      </p>
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SgetWeights"></A>getWeights</H2></P>		
+		    <div class="h2section" id="getWeights">
+		   <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>Overview&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		 
+		    </u></b></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">getWeights</b>
+		    Method returns the weights of the specified NeuralNet object. The clear
+		    method may then be used later to reset all of the weights to those specified
+		    in the specified weights vector. In effect, the getWeights method saves the
+		    state of the NeuralNet object at that time.</p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">&nbsp;
+		 
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Type:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    Method
+		 
+		    </b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 116%"><b style="mso-bidi-font-weight: normal"><u>&nbsp;
+		 
+		    </u></b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Syntax:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    (getWeights:aNeuralNet)
+		 
+		    </b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 116%"><b style="mso-bidi-font-weight: normal"><u>&nbsp;
+		 
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 116%"><b style="mso-bidi-font-weight: normal"><u>When
+		    To Use&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </u>
+		    </b></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">getWeights</b>
+		    method is used to save the sate of a NeuralNet object for later use.</p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;
+		 
+		    </u></b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">__________________________________________________________________
+		 
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Arguments&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    Explanation&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		 
+		    </b></p>
+		    <table style="BORDER-COLLAPSE: collapse; mso-padding-alt: 0in 5.4pt 0in 5.4pt" cellspacing="0" cellpadding="0" border="0">
+		      <tbody>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 149.4pt; PADDING-TOP: 0in" valign="top" width="249">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">aNeuralNet
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 329.4pt; PADDING-TOP: 0in" valign="top" width="549">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            NeuralNet Object whose state is to be saved</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 149.4pt; PADDING-TOP: 0in" valign="top" width="249">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">Returns
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 329.4pt; PADDING-TOP: 0in" valign="top" width="549">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            weightsVector containing the weights of the NeuralNet object</p>
+		          </td>
+		        </tr>
+		      </tbody>
+		    </table>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">__________________________________________________________________
+		 
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;
+		 
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 116%"><b style="mso-bidi-font-weight: normal"><u>Example1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </u>
+		    </b></p>
+		    <p class="MsoBodyText">...to
+		    be continued...                   </p> 	 
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SmakeNeuralNet"></A>makeNeuralNet</H2></P>		
+		    <div class="h2section" id="makeNeuralNet">
+			    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>Overview&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		 
+		    </u></b></p>
+		    <p class="MsoBodyText">The&nbsp;
+		    <b style="mso-bidi-font-weight: normal">makeNeuralNet</b> Function
+		    creates a new NeuralNet object complete with all child NeuralLayer objects
+		    required. The <b>makeNeuralNet</b> function provides a time-saving short cut
+		    as opposed to using the (new NeuralNet: ) function call for the outer object
+		    and the (new NeuralLayer: ) function call for each of the input, hidden
+		    layer, and output neural layers.</p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">&nbsp;
+		 
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Type:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    Function
+		 
+		    </b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 116%"><b style="mso-bidi-font-weight: normal"><u>&nbsp;
+		 
+		    </u></b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Syntax:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    (makeNeuralNet&nbsp; inputs
+		    outputs filter)
+		 
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Syntax:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    (makeNeuralNet&nbsp; inputs
+		    hidden outputs filter)
+		 
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Syntax:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    (makeNeuralNet&nbsp; weightsVector)
+		 
+		    </b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 116%"><b style="mso-bidi-font-weight: normal"><u>&nbsp;
+		 
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 116%"><a name="_Toc394828152"><b style="mso-bidi-font-weight: normal"><u>When
+		    To Use&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </u>
+		    </b></a></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">makeNeuralNet</b>
+		    function is used to create a NeuralNet object easily. The number of hidden
+		    layer neurons is automatically set to (2 x inputs) + 1. This is the minimum
+		    number which allows the neural net to recognize any continuous function with
+		    the specified number of inputs.</p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;
+		 
+		    </u></b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">__________________________________________________________________
+		 
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Arguments&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    Explanation&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		 
+		    </b></p>
+		    <table style="BORDER-COLLAPSE: collapse; mso-padding-alt: 0in 5.4pt 0in 5.4pt" cellspacing="0" cellpadding="0" border="0">
+		      <tbody>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 149.4pt; PADDING-TOP: 0in" valign="top" width="249">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">inputs
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 329.4pt; PADDING-TOP: 0in" valign="top" width="549">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            number of cells in the input layer</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 149.4pt; PADDING-TOP: 0in" valign="top" width="249">
+		            <p class="TableText" style="MARGIN: 2pt -9.9pt 2pt 0in"><b style="mso-bidi-font-weight: normal">output
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 329.4pt; PADDING-TOP: 0in" valign="top" width="549">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            number of cells in the output layer .</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 149.4pt; PADDING-TOP: 0in" valign="top" width="249">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">filter
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 329.4pt; PADDING-TOP: 0in" valign="top" width="549">
+		            <p class="TableText" style="MARGIN: 2pt 0in">Must
+		            be one of the following valid output filter functions:</p>
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">continuous:&nbsp;
+		            </b>Continuous unrestricted real number output</p>
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">sigmoid:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		            </b>Continuous output restricted within <b>[0, 1]</b></p>
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">binary:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		            </b>Binary output (either <b>0</b> or <b>1</b>)</p>
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">bipolar:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		            </b>Bipolar output (either <b>-1</b> or <b>1</b>)</p>
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            default is&nbsp; <b style="mso-bidi-font-weight: normal">continuous:
+		 
+		            </b></p>
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            filter symbol identifies the output function used to determine the
+		            final output value from the NeuralNet object.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 149.4pt; PADDING-TOP: 0in" valign="top" width="249">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">Returns
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 329.4pt; PADDING-TOP: 0in" valign="top" width="549">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            Object Identifier of the new NeuralNet Object</p>
+		          </td>
+		        </tr>
+		      </tbody>
+		    </table>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">__________________________________________________________________
+		 
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;
+		 
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 116%"><b style="mso-bidi-font-weight: normal"><u>Example1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </u>
+		    </b></p>
+		    <p class="MsoBodyText">...to
+		    be continued...
+		 
+		    </p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 116%"><b style="mso-bidi-font-weight: normal"><u>&nbsp;
+		 
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 116%"><b style="mso-bidi-font-weight: normal"><u>When
+		    To Use&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </u>
+		    </b></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">makeNeuralNet</b>
+		    function is used to create a NeuralNet object easily. The number of hidden
+		    layer neurons is specified by the user.</p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;
+		 
+		    </u></b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">__________________________________________________________________
+		 
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Arguments&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    Explanation&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		 
+		    </b></p>
+		    <table style="BORDER-COLLAPSE: collapse; mso-padding-alt: 0in 5.4pt 0in 5.4pt" cellspacing="0" cellpadding="0" border="0">
+		      <tbody>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 149.4pt; PADDING-TOP: 0in" valign="top" width="249">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">inputs
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 329.4pt; PADDING-TOP: 0in" valign="top" width="549">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            number of cells in the input layer</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 149.4pt; PADDING-TOP: 0in" valign="top" width="249">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">hidden
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 329.4pt; PADDING-TOP: 0in" valign="top" width="549">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            number of cells in the hidden layer</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 149.4pt; PADDING-TOP: 0in" valign="top" width="249">
+		            <p class="TableText" style="MARGIN: 2pt -9.9pt 2pt 0in"><b style="mso-bidi-font-weight: normal">output
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 329.4pt; PADDING-TOP: 0in" valign="top" width="549">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            number of cells in the output layer .</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 149.4pt; PADDING-TOP: 0in" valign="top" width="249">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">filter
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 329.4pt; PADDING-TOP: 0in" valign="top" width="549">
+		            <p class="TableText" style="MARGIN: 2pt 0in">Must
+		            be one of the following valid output filter functions:</p>
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">continuous:&nbsp;
+		            </b>Continuous unrestricted real number output</p>
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">sigmoid:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		            </b>Continuous output restricted within <b>[0, 1]</b></p>
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">binary:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		            </b>Binary output (either <b>0</b> or <b>1</b>)</p>
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">bipolar:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		            </b>Bipolar output (either <b>-1</b> or <b>1</b>)</p>
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            default is&nbsp; <b style="mso-bidi-font-weight: normal">continuous:
+		 
+		            </b></p>
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            filter symbol identifies the output function used to determine the
+		            final output value from the NeuralNet object.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 149.4pt; PADDING-TOP: 0in" valign="top" width="249">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">Returns
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 329.4pt; PADDING-TOP: 0in" valign="top" width="549">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            Object Identifier of the new NeuralNet Object</p>
+		          </td>
+		        </tr>
+		      </tbody>
+		    </table>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">__________________________________________________________________
+		 
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;
+		 
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 116%"><b style="mso-bidi-font-weight: normal"><u>Example1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </u>
+		    </b></p>
+		    <p class="MsoBodyText">...to
+		    be continued...
+		 
+		    </p>
+		    <p class="MsoBodyText">&nbsp;
+		 
+		    </p>
+		    <p class="MsoBodyText">&nbsp;
+		 
+		    </p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 116%"><b style="mso-bidi-font-weight: normal"><u>When
+		    To Use&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </u>
+		    </b></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">makeNeuralNet</b>
+		    function is used to recreate a NeuralNet object from the weightsVector
+		    returned from a previous <b>getWeights</b> method.</p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;
+		 
+		    </u></b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">__________________________________________________________________
+		 
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Arguments&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    Explanation&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		 
+		    </b></p>
+		    <table style="BORDER-COLLAPSE: collapse; mso-padding-alt: 0in 5.4pt 0in 5.4pt" cellspacing="0" cellpadding="0" border="0">
+		      <tbody>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 149.4pt; PADDING-TOP: 0in" valign="top" width="249">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">weightsVector
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 329.4pt; PADDING-TOP: 0in" valign="top" width="549">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            weightsVector returned from a previous <b>getWeights</b> method.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 149.4pt; PADDING-TOP: 0in" valign="top" width="249">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">Returns
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 329.4pt; PADDING-TOP: 0in" valign="top" width="549">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            recreated NeuralNet Object</p>
+		          </td>
+		        </tr>
+		      </tbody>
+		    </table>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">__________________________________________________________________
+		 
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;
+		 
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 116%"><b style="mso-bidi-font-weight: normal"><u>Example1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </u>
+		    </b></p>
+		    <p class="MsoBodyText">...to
+		    be continued...          </p>
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SpropagateBackward"></A>propagateBackward</H2></P>		
+		    <div class="h2section" id="propagateBackward">
+			  <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>Overview&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		 
+		    </u></b></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">propagateBackward</b>
+		    Method propagates the output error for the specified NeuralNet <b style="mso-bidi-font-weight: normal">{aNeuralNet}</b>.
+		    The output signal is compared to the specified target <b style="mso-bidi-font-weight: normal">{target}</b>,
+		    and the resulting <i><u>least squares error</u></i> is propagated backward
+		    through each layer of the NeuralNet.</p>
+		    <p class="MsoBodyText">The target
+		    must be a Number Vector of the same length or larger than specified in the
+		    previous makeNeuralNet (if larger, the target signals are taken from the
+		    right of the target vector). The output error is propagated backward through
+		    the hidden layer finally producing adjusted weights in each layer of the
+		    NeuralNet.</p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">&nbsp;
+		 
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Type:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    Method
+		 
+		    </b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 116%"><b style="mso-bidi-font-weight: normal"><u>&nbsp;
+		 
+		    </u></b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Syntax:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    (propagateBackward:aNeuralNet&nbsp; target)
+		 
+		    </b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 116%"><b style="mso-bidi-font-weight: normal"><u>&nbsp;
+		 
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 116%"><b style="mso-bidi-font-weight: normal"><u>When
+		    To Use&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </u>
+		    </b></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">propagateBackward</b>
+		    method is used to produce adjusted weights in the NeuralNet's layers.</p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;
+		 
+		    </u></b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">__________________________________________________________________
+		 
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Arguments&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    Explanation&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		 
+		    </b></p>
+		    <table style="BORDER-COLLAPSE: collapse; mso-padding-alt: 0in 5.4pt 0in 5.4pt" cellspacing="0" cellpadding="0" border="0">
+		      <tbody>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 149.4pt; PADDING-TOP: 0in" valign="top" width="249">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">aNeuralNet
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 329.4pt; PADDING-TOP: 0in" valign="top" width="549">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            NeuralNet whose input signal is to be propagated.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 149.4pt; PADDING-TOP: 0in" valign="top" width="249">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">target
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 329.4pt; PADDING-TOP: 0in" valign="top" width="549">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            target vector to be compared with the output signal.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 149.4pt; PADDING-TOP: 0in" valign="top" width="249">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">Returns
+		 
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 329.4pt; PADDING-TOP: 0in" valign="top" width="549">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The
+		            Object Identifier of the new NeuralLayer Object</p>
+		          </td>
+		        </tr>
+		      </tbody>
+		    </table>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">__________________________________________________________________
+		 
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;
+		 
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 116%"><b style="mso-bidi-font-weight: normal"><u>Example1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </u>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">(setq&nbsp;
+		    aNN&nbsp; (makeNeuralNet&nbsp;
+		    6&nbsp; 1&nbsp;
+		    binary:))
+		 
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">(clear:aNN)
+		 
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">(setq&nbsp;
+		    in&nbsp; (makeVector&nbsp;
+		    number:&nbsp; 6&nbsp;
+		    .2&nbsp; .1&nbsp;
+		    .3&nbsp; .5&nbsp;
+		    .7&nbsp; .22))
+		 
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">(setq&nbsp;
+		    target&nbsp; (makeVector&nbsp;
+		    number:&nbsp; 1 32))
+		 
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">(propagateForward:aNN&nbsp;
+		    in)
+		 
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">(propagateBackward:aNN&nbsp;
+		    target)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		 
+		    </b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 116%"><a name="_Toc394828153"><b style="mso-bidi-font-weight: normal"><u>Note</u>&nbsp;&nbsp;&nbsp;&nbsp;
+		    </b>Input must be within the
+		    closed interval <b style="mso-bidi-font-weight: normal">[0, 1]</b>.<b style="mso-bidi-font-weight: normal">&nbsp;</b></a></p> 
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SpropogateForward"></A>propogateForward</H2></P>		
+		    <div class="h2section" id="propogateForward">
+			 <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>Overview&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		 
+		      </u></b></p>
+		      <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">propagateForward</b>
+		      method propagates an input signal <b style="mso-bidi-font-weight: normal">{inVector}</b>
+		      forward in the specified neural net <b style="mso-bidi-font-weight: normal">{aNeuralNet}</b>.&nbsp;
+		      The input signal must be a Number Vector of the same length as
+		      specified in the previous makeNeuralNet. If the input signal is omitted,
+		      the current values in the input layer (<b style="mso-bidi-font-weight: normal">aNeuralNet.input.output</b>)
+		      are used as the input signal. The input signal is propagated forward
+		      through the hidden layer and producing new values in the output layer.</p>
+		      <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">&nbsp;
+		 
+		      </b></p>
+		      <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Type:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		      Method
+		 
+		      </b></p>
+		      <p class="MsoBodyText" style="LINE-HEIGHT: 116%"><b style="mso-bidi-font-weight: normal"><u>&nbsp;
+		 
+		      </u></b></p>
+		      <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Syntax:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		      (propagateForward:aNeuralNet&nbsp; inVector)
+		 
+		      </b></p>
+		      <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: 0.5in"><b style="mso-bidi-font-weight: normal">(propagateForward:aNeuralNet)
+		 
+		      </b></p>
+		      <p class="MsoBodyText" style="LINE-HEIGHT: 116%"><b style="mso-bidi-font-weight: normal"><u>&nbsp;
+		 
+		      </u></b></p>
+		      <p class="MsoBodyText" style="LINE-HEIGHT: 116%"><b style="mso-bidi-font-weight: normal"><u>When
+		      To Use&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		      </u>
+		      </b></p>
+		      <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">propagateForward</b>
+		      method is used to produce new values in the NeuralNet's output layer.</p>
+		      <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;
+		 
+		      </u></b></p>
+		      <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">__________________________________________________________________
+		 
+		      </b></p>
+		      <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Arguments&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		      Explanation&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		 
+		      </b></p>
+		      <table style="BORDER-COLLAPSE: collapse; mso-padding-alt: 0in 5.4pt 0in 5.4pt" cellspacing="0" cellpadding="0" border="0">
+		        <tbody>
+		          <tr>
+		            <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 149.4pt; PADDING-TOP: 0in" valign="top" width="249">
+		              <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">aNeuralNet
+		 
+		              </b></p>
+		            </td>
+		            <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 329.4pt; PADDING-TOP: 0in" valign="top" width="549">
+		              <p class="TableText" style="MARGIN: 2pt 0in">The
+		              NeuralNet whose input signal is to be propagated.</p>
+		            </td>
+		          </tr>
+		          <tr>
+		            <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 149.4pt; PADDING-TOP: 0in" valign="top" width="249">
+		              <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">inVector
+		 
+		              </b></p>
+		            </td>
+		            <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 329.4pt; PADDING-TOP: 0in" valign="top" width="549">
+		              <p class="TableText" style="MARGIN: 2pt 0in">Optional
+		              Argument .&nbsp; The input
+		              signal to be propagated.</p>
+		            </td>
+		          </tr>
+		          <tr>
+		            <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 149.4pt; PADDING-TOP: 0in" valign="top" width="249">
+		              <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">Returns
+		 
+		              </b></p>
+		            </td>
+		            <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 329.4pt; PADDING-TOP: 0in" valign="top" width="549">
+		              <p class="TableText" style="MARGIN: 2pt 0in">Propagates
+		              the input signal forward through the hidden layer producing new
+		              values and returns the Object Identifier of the NeuralNet Object.</p>
+		            </td>
+		          </tr>
+		        </tbody>
+		      </table>
+		      <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">__________________________________________________________________
+		 
+		      </b></p>
+		      <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;
+		 
+		      </u></b></p>
+		      <p class="MsoBodyText" style="LINE-HEIGHT: 116%"><b style="mso-bidi-font-weight: normal"><u>Example1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		      </u>
+		      </b></p>
+		      <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">(setq&nbsp;
+		      aNN&nbsp; (makeNeuralNet&nbsp;
+		      6&nbsp; 1&nbsp;
+		      continuous:))
+		 
+		      </b></p>
+		      <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">(clear:aNN)
+		 
+		      </b></p>
+		      <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">(setq&nbsp;
+		      in&nbsp; (makeVector&nbsp;
+		      number:&nbsp; 6&nbsp;
+		      .2&nbsp; .1&nbsp;
+		      .3&nbsp; .5&nbsp;
+		      .7&nbsp; .22))
+		 
+		      </b></p>
+		      <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">(propagateForward:aNN&nbsp;
+		      in)&nbsp;&nbsp;&nbsp;
+		 
+		      </b></p>
+		      <p class="MsoBodyText"><u>&nbsp;
+		 
+		      </u></p>
+		      <p class="MsoBodyText" style="LINE-HEIGHT: 116%"><b style="mso-bidi-font-weight: normal"><u>Note</u>&nbsp;&nbsp;&nbsp;&nbsp;
+		      </b>Input must be within
+		      the closed interval <b style="mso-bidi-font-weight: normal">[0, 1]</b>.       </p>
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SpropagateUserError"></A>propagateUserError</H2></P>		
+		    <div class="h2section" id="propagateUserError">
+			    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>Overview&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		 
+		      </u></b></p>
+		      <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">propagateUserError</b>
+		      Method propagates the user error for the specified NeuralNet <b style="mso-bidi-font-weight: normal">{aNeuralNet}</b>.
+		      The output signal is assigned the specified user error <b style="mso-bidi-font-weight: normal">{target}</b>,
+		      and the resulting <i><u>user supplied error</u></i> is propagated backward
+		      through each layer of the NeuralNet.</p>
+		      <p class="MsoBodyText">The final
+		      error value is the sum of the squares of each user supplied error signal <b style="mso-bidi-font-weight: normal">{target}</b>.
+		      Each user supplied error signal should be positive (if the current output
+		      should be moved higher) or negative (if the current output should be moved
+		      lower). The magnitude of the error signal determines the magnitude of the
+		      output signal adjustment.</p>
+		      <p class="MsoBodyText">The
+		      target must be a Number Vector of the same length or larger than specified
+		      in the previous makeNeuralNet (if larger, the errors are taken from the
+		      right of the error vector). The user error is propagated backward through
+		      the hidden layer finally producing adjusted weights in each layer of the
+		      NeuralNet.</p>
+		      <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">&nbsp;
+		 
+		      </b></p>
+		      <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Type:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		      Method
+		 
+		      </b></p>
+		      <p class="MsoBodyText" style="LINE-HEIGHT: 116%"><b style="mso-bidi-font-weight: normal"><u>&nbsp;
+		 
+		      </u></b></p>
+		      <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Syntax:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		      (propagateUserError:aNeuralNet&nbsp;
+		      target)
+		 
+		      </b></p>
+		      <p class="MsoBodyText" style="LINE-HEIGHT: 116%"><b style="mso-bidi-font-weight: normal"><u>&nbsp;
+		 
+		      </u></b></p>
+		      <p class="MsoBodyText" style="LINE-HEIGHT: 116%"><b style="mso-bidi-font-weight: normal"><u>When
+		      To Use&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		      </u>
+		      </b></p>
+		      <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">propagateUserError</b>
+		      method is used to produce adjusted weights in the NeuralNet's layers.</p>
+		      <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;
+		 
+		      </u></b></p>
+		      <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">__________________________________________________________________
+		 
+		      </b></p>
+		      <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Arguments&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		      Explanation&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		 
+		      </b></p>
+		      <table style="BORDER-COLLAPSE: collapse; mso-padding-alt: 0in 5.4pt 0in 5.4pt" cellspacing="0" cellpadding="0" border="0">
+		        <tbody>
+		          <tr>
+		            <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 149.4pt; PADDING-TOP: 0in" valign="top" width="249">
+		              <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">aNeuralNet
+		 
+		              </b></p>
+		            </td>
+		            <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 329.4pt; PADDING-TOP: 0in" valign="top" width="549">
+		              <p class="TableText" style="MARGIN: 2pt 0in">The
+		              NeuralNet whose input signal is to be propagated.</p>
+		            </td>
+		          </tr>
+		          <tr>
+		            <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 149.4pt; PADDING-TOP: 0in" valign="top" width="249">
+		              <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">target
+		 
+		              </b></p>
+		            </td>
+		            <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 329.4pt; PADDING-TOP: 0in" valign="top" width="549">
+		              <p class="TableText" style="MARGIN: 2pt 0in">The
+		              target vector to assign user errors to each output signal.</p>
+		            </td>
+		          </tr>
+		          <tr>
+		            <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 149.4pt; PADDING-TOP: 0in" valign="top" width="249">
+		              <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">Returns
+		 
+		              </b></p>
+		            </td>
+		            <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 329.4pt; PADDING-TOP: 0in" valign="top" width="549">
+		              <p class="TableText" style="MARGIN: 2pt 0in">The
+		              Object Identifier of the new NeuralLayer Object</p>
+		            </td>
+		          </tr>
+		        </tbody>
+		      </table>
+		      <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">__________________________________________________________________
+		 
+		      </b></p>
+		      <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;
+		 
+		      </u></b></p>
+		      <p class="MsoBodyText" style="LINE-HEIGHT: 116%"><b style="mso-bidi-font-weight: normal"><u>Example1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		      </u>
+		      </b></p>
+		      <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">(setq&nbsp;
+		      aNN&nbsp; (makeNeuralNet&nbsp;
+		      6&nbsp; 1 &nbsp;binary:))
+		 
+		      </b></p>
+		      <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">(clear:aNN)
+		 
+		      </b></p>
+		      <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">(setq&nbsp;
+		      in&nbsp; (makeVector&nbsp;
+		      number:&nbsp; 6&nbsp;
+		      .2&nbsp; .1&nbsp;
+		      .3&nbsp; .5&nbsp;
+		      .7&nbsp; .22))
+		 
+		      </b></p>
+		      <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">(setq&nbsp;
+		      target&nbsp; (makeVector&nbsp;
+		      number:&nbsp; 1 32))
+		 
+		      </b></p>
+		      <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">(propagateForward:aNN&nbsp;
+		      in)
+		 
+		      </b></p>
+		      <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">(propagateUserError:aNN&nbsp;
+		      target)&nbsp;</b>               </p>
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P>
+
+ 
+
+</BODY>
+</HTML>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number rad 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>rad</FunctionKeywords>
+		<TypeKeywords>Number Integer</TypeKeywords>
+		<RelatedFunctions> deg</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>   radians degree </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>pi</b> function to return the value of pi.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(rad 45)  </sc>]]></Expression>
+        <Note><![CDATA[The argument to the rad function must be an Integer]]></Note>
+        <Returns><![CDATA[0.7853981633974]]></Returns>
+  	    <Expression><![CDATA[ <sc>(rad -40)  </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[-0.6981317007977]]></Returns>
+  	    <Expression><![CDATA[ <sc>(rad 60)  </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[1.047197551197]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

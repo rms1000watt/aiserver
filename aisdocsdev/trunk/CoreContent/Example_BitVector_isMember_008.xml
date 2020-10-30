@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example BitVector isMember 008</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isMember</FunctionKeywords>
+		<TypeKeywords>  BitVector
+Boolean Integer
+
+</TypeKeywords>
+		<RelatedFunctions>compareEQ comparison isEqual isIdentical inside isInside isMember</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>Vector Equal Analytic Object </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples check if the integer value is a member of the Vectors using the
+
+
+
+
+
+
+                  <b>isMember</b> function.
+
+
+
+
+
+
+
+
+	]]></Description>
+	<Syntax> 
+  	    <Expression><![CDATA[ <sc>(isMember 0 #(bit| 1 1 1 1 1 ))                    </sc>]]></Expression>  
+        <Note><![CDATA[0 is not contained the Vector.]]></Note> 
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(isMember 1 #(bit| 1 1 1 1 1 ))          </sc>]]></Expression>  
+        <Note><![CDATA[1  is contained in the Vector. ]]></Note> 
+        <Returns><![CDATA[true ]]></Returns>
+        <Hints><![CDATA[none  ]]></Hints>
+   </Syntax>
+</Example>

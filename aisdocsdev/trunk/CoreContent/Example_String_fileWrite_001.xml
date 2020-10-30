@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>  
+		<Title>Example String fileWrite 001</Title>  
+		<Template>Example</Template> 
+		<FunctionKeywords>fileRead</FunctionKeywords>
+		<TypeKeywords>Character String  ByteVector </TypeKeywords>	
+		<RelatedFunctions>fileReadRecord fileClose fileRead fileOpen</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>file buffer record</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example uses the <b>fileWrite</b> function to write text to a file.
+	]]></Description>
+	<Syntax> 
+  	    <Expression><![CDATA[ <sc> (setq fileID (fileOpen "testReadRecord.txt" 1 0))</sc>]]></Expression>  
+        <Note><![CDATA[Creates a new file. ]]></Note> 
+        <Returns><![CDATA[1]]></Returns>
+        <Expression><![CDATA[ <sc> (fileWrite fileID {123456789012345678901234567890} )</sc>]]></Expression>  
+        <Note><![CDATA[Writes 30 characters in a file. ]]></Note> 
+        <Returns><![CDATA[ 30 ]]></Returns>   
+         <Expression><![CDATA[ <sc>(fileClose fileID 0)<sc>]]></Expression>  
+        <Note><![CDATA[Closes and erases the file. ]]></Note> 
+        <Returns><![CDATA[ true ]]></Returns>  
+          
+        
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

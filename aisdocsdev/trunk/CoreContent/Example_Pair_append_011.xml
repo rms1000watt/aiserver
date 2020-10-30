@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Pair append 011</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>append</FunctionKeywords>
+		<TypeKeywords> Pair List</TypeKeywords>
+		<RelatedFunctions>new rept replace </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>append concatenate </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example concatenates 3 Pairs into a single List.
+	]]></Description>
+	<Syntax>
+	<Expression><![CDATA[<sc>(define X  '("The " "rain "  "In " "Spain" ) )      </sc>]]></Expression>
+    <Note><![CDATA[ The first Pair is defined.
+    ]]></Note>
+    <Returns><![CDATA[ #&#60Pair 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(define Y '("falls " "mainly " "on " ) )         </sc> ]]></Expression>
+    <Note><![CDATA[The second Pair is defined.]]></Note>
+    <Returns><![CDATA[#&#60Pair 234567&#62]]></Returns>
+    <Expression><![CDATA[<sc>(define Z '("the " "plain") )          </sc> ]]></Expression>
+    <Note><![CDATA[The third Pair is defined.]]></Note>
+    <Returns><![CDATA[#&#60Pair 345678&#62]]></Returns>
+    <Expression><![CDATA[<sc>(setq W (append X Y Z ))          </sc> ]]></Expression>
+    <Note><![CDATA[The 3 Pairs are appended into a single List. W has the value:]]></Note>
+    <Returns><![CDATA['("The " "rain "  "In " "Spain" "falls " "mainly " "on " "the " "plain")]]></Returns>
+   <Hints><![CDATA[<p> The Pairs to be appended are not modified.  The <b>append</b> function is not destructive.</p>]]></Hints>
+</Syntax>
+</Example>

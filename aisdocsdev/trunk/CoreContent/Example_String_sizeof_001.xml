@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example String sizeof 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>sizeof</FunctionKeywords>
+		<TypeKeywords>Character String Symbol Vector BitVector ByteVector IntVector
+
+
+
+
+
+                       FltVector ObjVector Structure Dictionary Directory
+
+
+
+
+
+                       Matrix NumMatrix Integer Float Number Complex</TypeKeywords>
+		<RelatedFunctions>new length </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>sizeof closure bytes length disk memory</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples return the closure size of the Character, Text 
+                  and String objects.  The closure size would depend on the 
+                  length of the evaluated objects.
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(sizeof  #\a)  </sc>]]></Expression>
+        <Note><![CDATA[Returns the closure size of a Character. ]]></Note>
+        <Returns><![CDATA[16]]></Returns>
+        <Expression><![CDATA[ <sc>(sizeof  "Hello")   </sc>]]></Expression>
+        <Note><![CDATA[Returns the closure size of a Text. ]]></Note>
+        <Returns><![CDATA[ 16 ]]></Returns>
+        <Expression><![CDATA[ <sc>(sizeof  "Merry Christmas")   </sc>]]></Expression>
+        <Note><![CDATA[Returns the closure size of a String. ]]></Note>
+        <Returns><![CDATA[ 44 ]]></Returns>  
+        <Expression><![CDATA[ <sc>(sizeof  "Merry Christmas Everyone")   </sc>]]></Expression>  
+        <Note><![CDATA[Returns the closure size of another String. ]]></Note> 
+        <Returns><![CDATA[ 56 ]]></Returns>
+        <Hints><![CDATA[The closure size may be different values for the same object on different 
+               hardware platforms due to word alignment issues. The values returned from 
+               the <b>sizeof</b> function in the examples above are the values returned on a 
+               Intel Pentium-based platform.
+        ]]></Hints>
+   </Syntax>
+</Example>

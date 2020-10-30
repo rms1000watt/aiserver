@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>  
+		<Title>Example String methodsOf 001</Title>  
+		<Template>Example</Template> 
+		<FunctionKeywords>methodsOf</FunctionKeywords>
+		<TypeKeywords>String Text Dictionary</TypeKeywords>	
+		<RelatedFunctions>defmethod send addMethod</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>method message messageName</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example first defines the method <b>EatSpace</b>. The
+                  <b>addMethod</b> function is used to add the method <b>EatSpace</b> 
+                  with its corresponding message name <b>Eat</b> to the Methods
+                  Dictionary. Then the <b>methodsOf</b> function is used to query
+                  the Methods Dictionary to see if message <b>Eat</b> for the
+                  method <b>EatSpace</b> exists.
+	]]></Description>
+	<Syntax> 
+	<Expression><![CDATA[
+    <sc>(defun EatSpace ( S ) <br>
+    vars: (NewString, i, j, len)<br>
+    (setq NewString (new String: ""))<br>
+    (setq j 0)<br>
+    (setq len (length S))<br>
+    (loop for i from 0 until len do<br>
+         ;;Move the character to the buffer only if it isn't a space <br>
+         (if (&#60&#62 S[i] #\space)        <br>                            
+             (begin<br>
+             (setq NewString[j] S[i]) <br>
+             (setq j (add1 j ))<br>
+              )   ;; end begin <br>
+          )   ;; end if <br>
+    )   ;; end loop <br>
+   NewString)  ;; End EatSpace  <br>
+   ]]></Expression>  
+   <Note><![CDATA[ Define a method named <b>EatSpace</b> which will removes spaces from a  String. 
+   ]]></Note> 
+   <Returns><![CDATA[ modified String ]]></Returns>
+   <Expression><![CDATA[<sc>(addMethod  String: Eat: EatSpace )  </sc> ]]></Expression>
+   <Note><![CDATA[ Add the method EatSpace which responds to the message Eat:  to the String Methods 
+          Dictionary.
+   ]]></Note>
+   <Returns><![CDATA[#&#60Dictionary 12345&#62]]></Returns>
+   <Expression><![CDATA[<sc>(isMember Eat: (methodsOf String: ) ) </sc> ]]></Expression>
+   <Note><![CDATA[Query the Methods Dictionary to see if the Eat method exists.
+   ]]></Note>
+   <Returns><![CDATA[true]]></Returns>
+   <Hints><![CDATA[none]]></Hints>
+</Syntax>
+</Example>

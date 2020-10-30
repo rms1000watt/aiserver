@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure length 004</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>length</FunctionKeywords>
+		<TypeKeywords>Structure  Integer</TypeKeywords>
+		<RelatedFunctions>comparison compareEQ compareNE compareLT
+
+
+                                     compareGT compareLE compareGE </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>length equal</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows the <b>length</b> function at work on a  <b>Structure  </b> object.
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(length  #{Student: Ann  Grade: 2})  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[2]]></Returns>
+        <Expression><![CDATA[ <sc>(length  #{Student: Ann  Grade: 2 Teacher: #void})  </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ 3 ]]></Returns>
+        <Expression><![CDATA[ <sc>(length  #{Student: Ann  Grade: 2 Teacher: #{name: "Ms.Smith" subject: "English"}})  </sc>]]></Expression>  
+        <Note><![CDATA[Only 3 bindings are counted.  the length function does not include the  Structure
+              embedded within as key, such as, the Structure value of the Teacher: key. ]]></Note> 
+        <Returns><![CDATA[ 3 ]]></Returns>
+        <Hints><![CDATA[See the <b>count</b> function to illustrate <i>deep</i> counting of key-value bindings.]]></Hints>
+   </Syntax>
+</Example>

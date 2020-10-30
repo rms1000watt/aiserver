@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>count</Title>
+		<FunctionName>count</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>Structure Integer Character Number Symbol Text String Boolean
+NumMatrix
+                   List Pair Vector Dictionary Directory Matrix </ArgumentTypes> 
+		<DataType>Structure Dictionary Directory Vector Matrix Pair List  NumMatrix</DataType>
+		<RelatedFunctions>length</RelatedFunctions>
+        <RelatedVMInstructions> vmregObjLength   </RelatedVMInstructions>
+		<HumanKeywords>count length values deep shallow</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>count</b> function returns the number of values in the object argument. </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>count</b> function returns the number of values in the object argument <b>{obj}</b>.  
+           If <b>{obj}</b> is a collection object, such as a List, Vector, Structure, Matirx, Dictionary, or 
+           Directory, the <b>count</b> function performs a <i>deep</i> count, i.e., all items in 
+           any imbedded collection objects are also counted. </p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>Use the <b>count</b>function to determine the total number of items in an object, 
+           including the items in imbedded collection objects.  This type of counting is called a 
+           deep count. An alternate type of counting is called a shallow count in which embedded 
+           collection objects are counted as one.  An alternate function, the <b>length</b> 
+           function, performs a shallow count. </p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p>(count obj)</p>]]></Expression>
+		<Argument> 
+		  <Name>obj</Name>
+		  <Note><![CDATA[
+		  <p>Any Analytic Information Server object</p>
+          ]]></Note>
+		  <AISTypes>Structure Integer Character Number Symbol Text String Boolean
+                   List Pair Vector Dictionary Directory Matrix </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>If the target is #void, character, number, symbol, text, string, or Boolean, 
+           the value 1 is returned. <br>
+           If the target is a List, then the number of Pairs in the list is returned.<br>
+           If the target is a Vector, then the number of items in the vector is returned.<br>
+           If the target is a Structure, Dictionary, or Directory, then the number of bindings is returned.
+           If the target is a Matrix, then the number of non-void items is returned.
+        </p>
+	    ]]></Return>   
+	</Syntax>
+</Function>

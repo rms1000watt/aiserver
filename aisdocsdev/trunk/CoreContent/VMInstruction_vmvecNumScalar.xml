@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmvecNumScalar</Title>
+		<InstructionName>vmvecNumScalar</InstructionName>
+		<InstructionType>Vector</InstructionType>
+		<ArgumentTypes>Integer Number Double</ArgumentTypes>
+		<RelatedVMInstructions>vmvecNumVector vmvecSetPointers</RelatedVMInstructions>
+		<HumanKeywords>vector numscalar numvector scalar</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[
+		<p>When evaluated, this vm instruction performs the vector scalar 
+		operation, specified by the immediate <b>operator</b> argument, 
+		using the <i>argPtr, srcPtr,</i> and <i>tarPtr</i> pointer registers 
+		plus the <i>argInc, srcInc,</i> and <i>tarInc</i> increment registers 
+		declared in the previous <b>vmvecSetPointer</b> instruction. 
+		The length of the vector(s) is determined by the register <b>counter</b> 
+		argument, and the scalar result is placed in the target register. 
+		The counter register must contain an Integer value. There are no conversions 
+		made between different types. The initial values in the three pointer registers, 
+		the three increment registers, and the counter register are NOT altered by this 
+		instruction. This instruction may return an Error value. After the operation, 
+		the Instruction Pointer is promoted. The operation of this vm instruction is 
+		expressed in the following C expressions:
+	    </p>
+        <ul><li>dis: {0} <b>for ((double)target=0.0;--(int)counter > 0;argPtr+=argInc,srcPtr+=srcInc)
+                 {x = *(double*)srcPtr - *(double*)argPtr; (double)target += (x * x);} target = sqrt(target); 
+                         </b></li></ul>  
+        <ul><li>dot: {1} <b>for ((double)target=0.0;--(int)counter > 0;argPtr+=argInc,srcPtr+=srcInc) 
+                (double)target += (*(double*)argPtr * *(double*)srcPtr);  
+                          </b></li></ul>
+        <ul><li>sum: {2} <b>for ((double)target=0.0;--(int)counter > 0;argPtr+=argInc) 
+                    (double)target += *(double*)argPtr; 
+                    </b></li></ul>
+        <p>
+        The valid <b>operator</b> arguments are <u>any immediate integer value</u>, 
+        indicating the operation to be performed, or any one of the following 
+        symbolic operators:
+        </p>  
+         <ul><li>dis: {0} <i> (Compute the distance between the argument and the source vectors) </i></li>  
+         <li>dot: {1} <i>(Compute the dot product of the argument and source vectors)  </i></li> 
+        <li>sum: {2} <i>(Compute the sum of the argument vector) </i></li> </ul>  
+    ]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[(vmvecNumScalar operator counter target)]]></Expression>   
+	    <Argument> 
+		  <Name>operator</Name>
+		  <Format>immediate</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument> 
+		 <Argument> 
+		  <Name>counter</Name>
+		  <Format>register</Format>
+		  <AISTypes>integer</AISTypes>   
+		</Argument> 
+		<Argument> 
+		  <Name>target</Name>
+		  <Format>register</Format>
+		  <AISTypes>number</AISTypes>   
+		</Argument>
+	</Syntax>
+</VMInstruction>

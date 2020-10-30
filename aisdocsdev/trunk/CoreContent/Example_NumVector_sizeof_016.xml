@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example NumVector sizeof 016</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>sizeof</FunctionKeywords>
+		<TypeKeywords>NumVector Integer</TypeKeywords>
+		<RelatedFunctions>new length </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>sizeof closure bytes length disk memory</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples return the closure size of the Vector objects.  
+
+
+
+
+
+                  The closure size would depend on the 
+
+
+
+
+
+
+                  length of the evaluated objects.
+
+
+
+
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+        <Expression><![CDATA[ <sc>(define X  #(num| 11.433 -2.6 3.21 ) )      </sc>]]></Expression>
+        <Note><![CDATA[Defines a Vector]]></Note>
+        <Returns><![CDATA[#&#60NumVector 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(sizeof X)     </sc>]]></Expression>
+        <Note><![CDATA[Returns the closure size of the Vector object.]]></Note>
+        <Returns><![CDATA[68]]></Returns>
+        <Hints><![CDATA[The closure size may be different values for the same object on different 
+
+
+
+
+
+
+               hardware platforms due to word alignment issues. The values returned from 
+
+
+
+
+
+
+               the <b>sizeof</b> function in the examples above are the values returned on a 
+
+
+
+
+
+
+               Intel Pentium-based platform.
+
+
+
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

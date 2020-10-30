@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmrefnummatrix</Title>
+		<InstructionName>vmrefnummatrix</InstructionName>
+		<InstructionType>Generic</InstructionType>
+		<ArgumentTypes>  Word NumMatrix Integer</ArgumentTypes>
+		<RelatedVMInstructions> vmrefmatrix</RelatedVMInstructions>
+		<HumanKeywords>matrix  nummatrix </HumanKeywords>
+	</KnowledgeBase>                   
+	<Description><![CDATA[
+		<p>When evaluated, this vm instruction assigns the <b>source</b> word, 
+		indexed by the <b>index</b> word, into the <b>target</b> word. 
+		The source word must contain a  NumMatrix  object. The source, 
+		index, and target arguments are mandatory. The source argument word must 
+		contain an indexable value. The operation of this vm instruction is expressed 
+		in the following C expression:
+    	</p>      
+        <ul><li><b>  (word)target = (word:NumMatrix)source[(int)index];</b></li></ul>
+    ]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[(vmrefnummatrix index source target)]]></Expression>
+		<Argument> 
+		  <Name>index</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>(word:NumMatrix)</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>target</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>word</AISTypes>
+		</Argument>
+	</Syntax>
+</VMInstruction>

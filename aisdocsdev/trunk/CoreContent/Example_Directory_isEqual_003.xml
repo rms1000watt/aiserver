@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Directory isEqual 003</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isEqual</FunctionKeywords>
+		<TypeKeywords>Directory Boolean</TypeKeywords>
+		<RelatedFunctions>compareEQ isIdentical comparison   </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>Directory Equal Analytic Object </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples check if the key-value binding of the first Directory
+
+
+                   is equal to the corresponding key-value binding of the second
+
+
+                   Directory. If they are, the function returns true, otherwise, it returns false.
+
+
+
+ 
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(isEqual  #{dir|X: 1 Y: 2} #{dir|X: 1 Y: 2})    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>(isEqual  #{dir|X: 1 Y: 2} #{dir|X: 1 Y: 3})       </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ false ]]></Returns>
+        <Expression><![CDATA[ <sc>(isEqual  #{dir|X: 1 Y: 2 Z: 3} #{dir|X: 1 Y: 3})  </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ false ]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

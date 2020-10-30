@@ -1,0 +1,1374 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<TITLE>StarTeam Guidelines</TITLE>
+<LINK REL="stylesheet" TYPE="text/css" HREF="BookStyles.css">
+<STYLE TYPE="text/css"><!--
+--></STYLE>
+</HEAD>
+<BODY>
+<A HREF="#1">1 Introduction</A><BR>
+<UL>
+	<A HREF="#1.1">1.1 Configuration Management Concepts</A><BR>
+	<A HREF="#1.2">1.2 Main Window</A><BR>
+	<A HREF="#1.3">1.3 Notation</A><BR>
+</UL>
+<A HREF="#2">2 Installation and Configuration</A><BR>
+<UL>
+	<A HREF="#2.1">2.1 Installation</A><BR>
+	<A HREF="#2.2">2.2 Configuration</A><BR>
+</UL>
+<A HREF="#3">3 Routine Tasks</A><BR>
+<UL>
+	<A HREF="#3.1">3.1 Managing Folders</A><BR>
+	<A HREF="#3.2">3.2 Coordinating File Changes</A><BR>
+	<UL>
+		<A HREF="#3.2.1">3.2.1 Updating Files under Configuration Management</A><BR>
+		<A HREF="#3.2.2">3.2.2 Modifying Files</A><BR>
+</UL></UL>
+<A HREF="#4">4 Setting up Projects</A><BR>
+<UL>
+	<A HREF="#4.1">4.1 Managing Views</A><BR>
+	<A HREF="#4.2">4.2 Sharing Files</A><BR>
+	<A HREF="#4.3">4.3 Handling Dependencies between Projects</A><BR>
+</UL>
+<A HREF="#5">5 Managing Change Requests</A><BR>
+<A HREF="#6">6 Creating a New System Release</A><BR>
+<UL>
+<A HREF="#6.1">6.1 Promoting a View to a new Version</A><BR>
+<A HREF="#6.2">6.2 Generating a new Release</A><BR>
+<A HREF="#6.3">6.3 Using files from the _Release Project</A><BR>
+</UL>
+<A HREF="#7">7 Using Topics</A><BR>
+<UL>
+	<A HREF="#7.1">7.1 Attachments</A><BR>
+</UL>
+<A HREF="#8">8 Adding Links</A><BR>
+<A HREF="#9">9 Tips 'N Tricks</A>
+<UL>
+	<A HREF="#9.1">9.1 General</A><BR>
+	<A HREF="#9.2">9.2 Installation and Configuration</A><BR>
+	<A HREF="#9.3">9.3 Routine Tasks</A><BR>
+	<A HREF="#9.4">9.4 Projects</A><BR>
+	<A HREF="#9.5">9.5 Change Requests</A><BR>
+	<A HREF="#9.6">9.6 System Release</A><BR>
+	<A HREF="#9.7">9.7 Topics</A><BR>
+	<A HREF="#9.8">9.8 Links</A><BR>
+</UL>
+
+<H1>1</H1><HR>
+<DIV CLASS="h1section" ID="1"></DIV><H1>Introduction</H1>
+<P>
+StarTeam is a Configuration Management System (CMS) that provides a facility to coordinate
+and manage our software development.  (StarTeam's application to other situations is not included
+here.) The guideline is primarily aimed at deploying and using the StarTeam client in the InvestByAgent
+(IBA) environment.  In particular, this guideline focuses on the following topics:
+<UL>
+	<LI> Installation and Configuration - How to install StarTeam client and set it up to
+	work with IBA.
+	<LI> Routine Tasks - How to coordinate changes made to files by yourself and by others.
+	<LI> Projects - IBA projects and how changes are coordinated between projects.
+	<LI> Views - How views are used to differentiate between the phases of a software project
+	in its life cycle.  In particular, this guideline describes views for development,
+	test, and production.
+	<LI> Change Requests (CRs) - How IBA uses change requests to track enhancements and problem
+	reports from their inception to the time that these requests are incorporated into
+	the production software.
+	<LI> System Release - How to create and use a system release.
+	<LI> Topics - Topics provide a facility to track the assumptions, visions, and decisions
+	made over the life of a project.  This documentation is invaluable in code maintenance as
+	the software matures (and as new people are added to the project).
+</UL>
+Tips for each of these topics are gathered together in one section at the bottom
+of this document.</P>
+<P>
+This guideline is specifically tailored to the needs of InvestByAgent.com.
+For a general introduction to StarTeam, select Help from the menu bar at the top of
+the StarTeam window.  Further, this guideline does not include StarTeam administration.
+Please refer to the StarTeam help topics on administration for help on
+administration.</P>
+
+<DIV CLASS="h2section" ID="1.1"></DIV><H2>1.1 Configuration Management Concepts</H2>
+<P>
+<B>Definitions.</B>
+A brief overview of some of the terms are provided here with a link to later sections where
+you can find examples of the use of each of these terms.
+<UL>
+	<LI> All Descendants - All descendents refers to all of the files in the current folder
+	and all of the files in all of the sub folders currently under configuration management.
+	There is an all descendents button on the StarTeam Main Window just above the right pane.
+	Select this button to see the status of all of the items in the currently selected subtree.
+	<LI> Change Request - Other terms for a change request are a service request, an enhancement,
+	a problem report, a bug, or an error report.  StarTeam provides a facility for tracking and revising
+	these requests over their life cycle much the same way that the files themselves are tracked.
+	<LI> Check In - Check in refers to transferring a file from a working directory on the client
+	machine into the vault on the StarTeam server.  It is essential to keep the distinction between
+	check in and check out firmly in your mind.
+	<LI> Check Out - Check out refers to transferring a file from the vault on the StarTeam
+	server to the working directory on the client machine.   It is essential to keep the distinction
+	between check-in and check-out firmly in your mind.
+	<LI> Client/server Architecture - StarTeam is an example of a client/server architecture.
+	This architecture is ideal for an application where many users share a set of data.
+	That is, one or more StarTeam servers act as the central vault containing all of the files under
+	configuration management.  Many client instances of the StarTeam client can simultaneously
+	access this vault without interference (or at least a controlled amount of interference).
+	<LI> Configuration State - A configuration state (or just configuration) can be defined by
+	the user, usually one for development, test and production.  A configuration is associated
+	with a label.  For example, the test configuration might be associated with the label for
+	the first build.  Later, when a new build is created, the configuration may be promoted to
+	the label for the second build.  (v.f. label and promotion state below).
+	<LI> Directory - Directory refers to a working directory on the local client computer.
+	<LI> Folder - A folder refers to a folder on the StarTeam server vault.  A local directory
+	on your machine may correspond to a folder in the on the StarTeam server with the same name.
+	Nevertheless, there are times when the name and the location of a directory may differ
+	from the name and relative location of corresponding folder in the vault.
+	<LI> Label - A label marks a specific revision of all of the files at one point in the development
+	process.  By convention, IBA chooses the label to be numeric starting from 000 and increasing
+	by one each time a new label is attached to a project.  A configuration state can be associated
+	with a label and a view can be associated with a configuration as noted below.	
+	<LI> Link - A link is notation that relates two items together.  For example, a link may be
+	added to StarTeam linking each change request to one or more folders.  That way, one
+	can view all of the change requests that pertain to one portion of the software.
+	<LI> Lock - A file may be locked by one user.  This marks the file so that others can tell who
+	is currently using a file.  It also discourages others from inadvertently modifying the file.
+	<LI> Project - A project is a set of folders and files under configuration management that pertain to
+	the software being developed by a team.  A project is typically a software
+	application or a software engine.  A project might include a functional specification, software
+	documentation, the software itself, test data, etc.  It might exclude some files that do not
+	need to be under configuration management such as compiler generated files. 
+	<LI> Promotion State - The files in a software development project usually goes from a development
+	phase to a test phase and then to a production phase.  Development may proceed while an earlier
+	revision of the files are being tested.  When the current version of the software is ready for
+	testing, a label is attached to the current revision of the files.   The &quot;test&quot;
+	configuration is associated with this new label.  Then the test view can be configured to
+	view the files as of the revision number for this label.  As development proceeds, a new build
+	with a new label is created.  At this point the test configuration can be &quot;promoted&quot; to
+	this new label.  The promotion state of a configuration refers to the label associated with this
+	configuration.   A similar promotion process is carried out for the production configuration.
+	<LI> Repository - The area on the StarTeam server's hard disk where files are stored.  The word
+	vault is used in place of repository to avoid confusion with Smart Lisp terminology.
+	<LI> Revision Label - A revision label is a label attached to the subtree of a project. It is
+	rarely, if ever, used by IBA.
+	<LI> Revision Number - StarTeam attaches a revision number to every modification of a file.  This
+	number is not to be confused with the number associated with a label which may not be the same. A
+	Revision Number is sometimes just called a Revision.
+	<LI> Tasks - In StarTeam tasks allow a software manager to manage the work flow for a software
+	project.  Tasks are not currently being used.
+	<LI> Tip Revision - The latest revision of a file in the StarTeam vault.
+	<LI> Topics - In StarTeam topics allow users to record the documentation surrounding a project.
+	The topics are organized by thread.  It not only provides a means of communication between
+	team members, but it also records these conversations for later use during the maintenance of
+	the software.
+	<LI> Vault - The StarTeam repository on the StarTeam server hard disks.  The vault contains
+	all of the files that have been added to StarTeam.  The word repository is not used here to
+	avoid confusion with Smart Lisp repositories.
+	<LI> Version Control - Version control is a mechanism for storing and tracking the various
+	changes (revisions) to one or more files. A version control system maintains the revision
+	history as the files evolve over time. StarTeam uses version control so
+	that a file can be easily recreated as of any previous version.  See the
+	definition of label above.  Starteam also tracks the revisions of change requests, tasks, and
+	topics. A file may exist in the vault that is not under version control if it does not
+	appear in any view.
+	<LI> View - A project consists of a root folder containing files and sub folders.
+	When a project is created, StarTeam automatically creates a root view that includes the
+	entire subtree of folders for this project.  A set of working directories are associated
+	with each view of the project.   For example, the development view of the _AgentClient project
+	may have a working directory on the client machine of C:\Abase\AgentClientDev.  You may create
+	an additional view that has a different working directory.  In addition you may attach a
+	configuration state to a view which may cause the files be viewed as of an earlier point
+	in the development process.  For example, the test view may be set to view the files as of
+	the last successful build of the software. 
+	<LI> Working Directory - A directory on the client machine that contains copies of the files that are
+	in the StarTeam vault.  A working directory may contain other files and other directories that are not
+	under configuration management (i.e., they are not in the vault).
+</UL></P>
+<P>
+<B>CM Facts.</B>
+A few facts to keep in mind as you proceed:
+<UL>
+	<LI> Each project has its own vault on the StarTeam Server.  Folders with same name in
+	different projects refer to different folders in the vault.
+	<LI> The folders of a project may include some, but not all, of the directories in
+	a subtree on your local machine.  A file in a directory on your local machine may be
+	excluded from the StarTeam vault (such files will have the status &quot;Not in View&quot;).
+	<LI> Every update to a file in a project is given a new revision number.   Each project
+	has its own set of revision numbers independent of other projects.  StarTeam can recreate
+	any previous revision of a file.
+	<LI> Each view of a project has a separate set of working directories on the local machine.
+	You may select the working directories for a view independent of other users of that view.
+	<LI> You may assign a label to the one revision of each file in the project.  IBA uses
+	a sequence of numeric labels starting with 000.  Typically, a label is attached to that
+	revision of each file in a project used in a new build of the project.
+	<LI> In addition, you may define one or more configurations for each project.  Typically,
+	IBA defines a configuration for each view.  A configuration is associated with one label.
+	<LI> Each view of a project sees the same set of folders but, depending upon the configuration
+	selected for a view, a view will see the files at a different point in time.  For example,
+	the development view may see the current revision of each file, but the Test view may select
+	the Test configuration which is attached to the label that identifies the revision of the files
+	as of the last successful build. If two views of a project have the same configuration, they
+	will both see the same revisions of the same files.  (The status of the files in these views
+	may differ because the views have different working directories with different files in these
+	directories on the local machine.)
+</UL></P>
+
+<DIV CLASS="h2section" ID="1.2"></DIV><H2>1.2 Main Window</H2>
+<P>
+<IMG SRC="image002.jpg" WIDTH="576" HEIGHT="481" ALT="Main Window" BORDER="0">
+
+Note the following parts of the above window:
+<UL>
+	<LI> The title bar at the top shows (in brackets) the Project name, the View
+	name, and the path to the local working directory.
+	<LI> Next the menu bar shows the menus for the selected upper tabs.
+	<LI> Next the Project toolbar for the selected upper tabs.
+	<LI> The left pane shows the folder hierarchy pane.
+	<LI> The upper right pane shows the items for the tab selected at the bottom
+	of the upper right pane.  Note that the selection of a tab may change the
+	selected folder in the left pane (this &quot;feature&quot; can be annoying!).
+	<LI> The arrow at the bottom right of the pane may be used to hide the lower
+	pane.
+	<LI> The lower right pane shows the items for the tab selected at the bottom
+	of the lower right pane.
+</UL></P>
+
+<DIV CLASS="h2section" ID="1.3"></DIV><H2>1.3 Notation</H2>
+<P>
+A shorthand is described here to document a sequence of mouse operations.  The word
+<I>select</I> refers to pressing the left mouse key (right if you are left-handed) over the
+item mentioned.  <I>Right-click</I> refers to pressing the right mouse key (left if you
+are left-handed) over the item mentioned.  The item can be a menu, an icon, an option, etc.
+The -&gt; is used to separate elements in describing a set of steps in navigating to
+a StarTeam operation.  For example, consider View-&gt;Properties-&gt;Alternate.  The
+specific steps are:
+<UL>
+	<LI>Select the Menu item named View from the top of the StarTeam window.
+	<LI>In the drop down menu, select the menu item Properties
+	<LI>In the pop-up dialog, select the option named Alternate
+</UL>
+At first, you may have to search for the item listed, but you will quickly become familiar
+with the location of the items listed.  In those cases where the selection is obscure,
+some extra explanation is provided.</P>
+
+<H1>2</H1><HR>
+<DIV CLASS="h1section" ID="2"></DIV><H1>Installation and Configuration</H1>
+<P>
+This brief description includes the aspects of the installation and configuration that is
+specific to our situation.  For a more general discussion of the installation and setup,
+consult the StarTeam Help.</P>
+
+<DIV CLASS="h2section" ID="2.1"></DIV><H2>2.1 Installation</H2>
+<P>
+Before attempting to install the StarTeam Client, obtain the following from the StarTeam Manager:
+<UL>
+	<LI>a username and password on the StarTeam Server.
+	<LI>an installation file or StarTeam CD for the StarTeam Client.
+	<LI>a key for your copy of StarTeam.
+	<LI>The StarTeam Server IP address, the appropriate protocol to connect to the server.
+</UL>
+Armed with the above information, conduct the installation as outlined below:
+<OL>
+	<LI> Install the CD in your CD-Rom.  If it does not start automatically, open the CD in
+	Explorer and then select setup.exe.  If you are installing from a file, start the install
+	by selecting the executable file from Explorer.
+	<LI> Select Install StarTeam.
+	<LI> Follow the directions.  Select a &quot;typical&quot; install, 
+	&quot;StarTeam 4&quot; program group.
+</OL>
+You must register the product the first time that you start StarTeam as noted below:
+<UL>
+	<LI> Select Start-&gt;Programs -&gt;StarTeam 4-&gt;StarTeam to start up StarTeam.
+	<LI> The registration dialog should appear.  If not, select Help-&gt;About StarTeam
+	-&gt; Register.
+	<LI> Select the Register button and then enter your Client Activation Key,
+	obtained as noted above.
+</UL>
+This completes the installation.  Proceed to configure StarTeam as described next.</P>
+
+<DIV CLASS="h2section" ID="2.2"></DIV><H2>2.2 Configuration</H2>
+It is time to add one or more StarTeam servers to your application:
+<UL>
+	<LI> Select Project-&gt;Open-&gt;Add Server.
+	<LI> Enter the server information obtained as noted above.  For example:
+	<UL>
+		<LI> Server Description:  ByAgent.com
+		<LI> Server Address:  209.219.86.66
+		<LI> Protocol: TCP/IP (Sockets)
+		<LI> EndPoint: 49201
+	</UL>
+</UL>
+Be sure to select the NO Encryption and Compress check boxes.</P>
+<P>
+<B>Desktop Shortcut</B>
+Look in the <A HREF="#9.2">Section 9.2</A> for tips on setting up
+a shortcut with automatic login.</P>
+<P>
+<B>Working Directories</B>
+Select the working directories for each project as described in <A HREF="4.1">Section 4.1</A>,
+&quot;The Working Directories of a View&quot;.</P>
+
+<H1>3</H1><HR>
+<DIV CLASS="h1section" ID="3"></DIV><H1>Routine Tasks</H1>
+<P>
+A brief review of the most common tasks are mentioned here.  For a more complete description
+of StarTeam, please select the Help icon or the Help Menu item in StarTeam.</P>
+
+<DIV CLASS="h2section" ID="3.1"></DIV><H2>3.1 Managing Folders</H2>
+<P>
+It is easy to add a folder to a project.  It is highly recommended that you make the name of
+your local working folder the same as the name of the folder in the StarTeam vault.  Before
+adding a folder, add the corresponding directory to your local copy of the project.
+To add Folder to the vault, do the following:
+<UL>
+	<LI> Right-Click in Project Window->New Folder->Next
+	<LI> Enter Name of folder, leave Working Folder blank
+	<LI> Select Next.
+	<LI> Deselect any subdirectories that you do not wish to add the vault.  Do not
+	add debug and release subdirectories or an subdirectory that contains files that
+	are machine generated. 
+</UL></P>
+
+<DIV CLASS="h2section" ID="3.2"></DIV><H2>3.2 Coordinating File Changes</H2>
+<P>
+If you are familiar with every possible file status and how to deal with each one, it is safe
+to skip this section.  If you are not sure of your options when the status of a file is Unknown,
+you are advised to continue.</P>
+
+<DIV CLASS="h3section" ID="3.2.1"></DIV><H3>3.2.1 Updating Files under Configuration Management</H3>
+<P>
+The procedure for updating your local copy of a file is to <I>check out</I> the file from the vault.
+The procedure for updating the master copy of the file in the vault is to <I>check in</I> the file from
+your working directory on your machine.  If the file is not in the vault, the local file can be added to the
+vault (make sure that the file really belongs in the view that you are currently using).</P>
+<P>
+A file under configuration management can have one of the following statuses.  The appropriate
+operations are described for each status.
+<UL>
+	<LI> Current - Your local copy is the same as the master copy in the vault on the StarTeam server.
+	<LI> OutOfDate - The master copy in the vault has been changed.  To update your copy, highlight the
+	file in the upper right StarTeam pane and then select the check-out icon on the toolbar.
+	<B><I>Do not check in a file with an OutOfDate status.</I></B>  You will overwrite someone
+	else's changes.
+	<LI>Modified - Your local copy of the file has been changed.  To update the master copy in
+	the vault, highlight the file in the upper right StarTeam pane and then right-click on the file.
+	Enter a comment explaining the change and then select OK. Do not select the check-in icon
+	on the toolbar because you will not get a chance to fill in the comment field.
+	<B><I>Do not check out a file with a Modified status.</I></B>  You will overwrite
+	your own changes on the local copy of the file.
+	<LI>Merge.  Somehow both your local copy and the master copy in the vault have different
+	changes.  You can select the history tab to see who made the last change to the file.  Use
+	the merge facility in StarTeam to cut and paste your changes into the master copy.
+	<LI>NotInView - Either no master copy exists in the vault on the StarTeam server or else the
+	file is not included in the view.  If you are sure that the file should be in your currently
+	selected view, you can add your local copy of the file to the vault.  Just right-click on the
+	file in the	upper right pane and then select Add from the context menu.
+	<LI>Missing - The file exists in the vault but not in your local working directory.  Just check
+	out the file to get a local copy.
+	<LI>Unknown - If you copy a bunch of local files from one place to another and then change the
+	working directory to the new location, StarTeam may mark some or all of the files with an Unknown
+	status.  You can select File from the StarTeam menu and then select Update Status.  This may
+	not fix the status of some files.   You will have to either force a check out or force a check
+	in to change the status of some files.  Use check-in with great care in this situation.
+</UL>
+Tips on forcing check-in and check-out and other tricks are included in <A HREF="#9.3">Section 9.3</A>
+below.
+
+<DIV CLASS="h3section" ID="3.2.2"></DIV><H3>3.2.2 Modifying Files</H3>
+<P>
+Before you start to modify a file, check the status of the file.  If it is OutOfDate or
+Missing, be sure to check the file out so that you have the latest version of the file
+in the working directory on your machine.
+If the file status is NotInView, do not attempt to do anything to the file.  If the file
+status is Unknown,
+update the file status to Current as described above.  If the file status is Current
+and you wish to make changes to the file, be sure to lock the file.
+After making changes to the file you may check it
+back in and unlock it so that the file is available for others to modify.
+If the file status is Modified, either check in your changes, or lock the file if you intend
+to make additional changes.</P>
+<P>
+If you are the only one who will be making changes to a file, it is okay to keep the file
+locked for an extended period.  If others may also need to modify the file, it is best
+to only lock it for short periods while you are actively changing the file.  Even if you
+are not finished with your changes, you should bring the file to a stable state (it works and
+it compiles) and then unlock it.  See <A HREF="#9.3">Section 9.3</A> for more tips.</P>
+<P>
+It is rare for two users to be modifying the same portion of the same file at the same time.
+However, it is not uncommon for two users to be modifying different parts of the same file at
+the same time.  Here are some options:
+<OL>
+	<LI> Take turns - Each user takes turns locking the file as noted above.
+	<LI> Only one user locks the file - One user locks the file and modifies his own copy.
+	The other user also makes changes to his local copy.  Then the first user checks back in the
+	file and the second user then locks the file and merges his changes with those made by the
+	first user.  Since neither user made changes to the same part of the file, merging simply means
+	that the second user cuts and pastes his changes into just one place in the file checked out
+	from the vault.
+	<B><I>The second
+	user must be careful to save his local copy before checking out the file in
+	the vault or else he may lose his own changes.</I></B>
+	<LI> Nobody locks the file.  Two or more users make simultaneous changes to their local copies
+	of a file without locking the file.  The first user to check in his file can just check in his
+	changes.  The second user will discover that the file status is Merge, so he must merge his changes
+	with the file that is in the vault.  If the second user forces a check in, the changes made by the first
+	user will be lost.
+</OL>
+The first method is easiest.  The second method requires some coordination between the users but it
+does allow both users to work on the same file at the same time.  The last
+method is the least desirable in that neither user is taking advantage of the power of StarTeam to keep
+tabs on the file status which provides appropriate warnings to all users.</P>
+<P>
+It is considered poor form to break a lock
+on a file and then make changes to the file without first discussing the situation with the owner of the
+lock.  If you do this without notification, the owner of the original lock will probably forcibly check
+in his local copy thereby wiping out your changes.</P>
+<P>
+The StarTeam vault protects your changes against accidental loss.   Arrange your system so that you
+can check-in your changes frequently.  That way, when something horrible happens to your computer, you
+will be able to recover your work from the vault.  Remember, anyone can go back in time to get
+an earlier version of a file that you checked in.</P>
+
+<H1>4</H1><HR>
+<DIV CLASS="h1section" ID="4"></DIV><H1>Setting up Projects</H1>
+<P>
+A project is a set of folders and files under configuration management that pertain to
+the software being developed by a team.  Typical examples of a project are a software application
+or a software engine.  If an application is broken down into many projects, the coordination between
+projects becomes an onerous manual task.  If a project includes too large a scope then
+separate, independent development, test, and release of a portion of the application is difficult.
+This situation may lead to unnecessary branching and later merging.</P>
+<P>
+A project should include those files that can be developed, tested, and released into production as
+a unit by one organizational group in the company.   A project is too large if it can be usefully
+subdivided into two sets of files that meet the above requirements.
+<P>
+A project should only include those files that are not automatically generated.  It is not necessary
+to include Smart Lisp cabinets or compiler generated files such as those placed in a debug or release
+directory.  However, a project should include documentation related to the project.  Files included
+in a central vault are not likely to get misplaced, neglected, or forgotten.</P>
+<P>
+As an example, consider the following projects:
+<UL>
+	<LI> Deep Green - Deep green is an application that is developed separately from other IBA software.
+	In addition, it has some special requirements (development, test, and production may occur on
+	different machines) that do not apply to other IBA software.  Also the visibility of this software
+	is restricted.
+	<LI> ByAgent - This application is the glue layer between the underlying operating system and any
+	Smart Lisp applications such as DeepGreen.  Since this application is different for each operating
+	system, it needs to be in a project by itself to facilitate the independent development of ByAgent
+	for each possible operating system.  The fact that the software is written in a different language
+	(C++) from the other parts of the system, also favors the use of a separate project.
+	<LI> AgentClient - This is the integrated development environment for Smart Lisp development.
+	It also has more than one flavor and it is written in a different language (Delphi).  A separate
+	project makes the most sense here as well.
+</UL>
+Separating interdependent software elements into separate projects has its disadvantages.  Suppose
+that a new feature in ByAgent requires that a fix or a new feature be added to DeepGreen. These changes
+have to be coordinated so that they end up in the same build released to test and production.  Further,
+a project manager must keep track (manually) which version of each application will inter operate.
+If several dynamic link libraries (DLLs) are generated by these projects, the compatible combinations
+of the various versions of the DLLs must be tracked (manually).</P>
+
+<DIV CLASS="h2section" ID="4.1"></DIV><H2>4.1 Managing Views</H2>
+<P>
+When a project is created, a base (or root) view is automatically created.  In this view, the current
+version of all of the folders and files in the project are visible, starting from the root (topmost)
+folders of the project.
+Additional views may be created that provide access to only a subset of the files in a project.  For
+example, a technical writer may only need access to the documentation files in the project.  A view
+may be created that only makes the documentation files visible.  Such views are called reference
+views.  Later, we will see that views can also be used to capture the files at different stages
+in their development.</P>
+<P>
+<B>Creating a View</B>
+To create a new view for an existing project:
+<UL>
+	<LI> Select the base view of a project. Select New-&gt;View...
+	<LI> Select &quot;Derive new view from current view&quot; -&gt;Next
+	<LI> Select root folder -&gt;Next
+	<LI> Select default working directory for this view -&gt;Finish
+</UL>
+You will probably not have any occasion to create new views.  The views for all of the current projects have
+already been created.
+<P>
+<B>Selecting a View.</B>
+When you first open a project, you can select Project-&gt;Open and then select the project from the list.
+In the open dialog, select Next and then select the view that you wish to use.
+To select a new view for the currently opened project:
+<UL>
+	<LI> Select View-&gt;Select View...
+	<LI> Select the view from the dialog showing the views-&gt;OK
+</UL></P>
+<P>
+<B>Selecting a Configuration for a View</B>
+To select a configuration for this view:
+<UL>
+	<LI>Select View-&gt;Select Configuration...
+	<LI>Select the &quot;Promotion State Configuration&quot; option
+	<LI>Select the configuration with the same name as the current view.
+	For example, select Production configuration for the Configuration view.
+</UL>
+StarTeam does not remember the configuration that you assigned to a view the last time that
+you opened this view.  It always defaults to the current view.  <B><I>You must reselect the configuration
+for a view every time that you open a Test or Production view!</I></B> .</P>
+<P>
+This is a regrettable oversight in StarTeam.  If you fail to select the proper configuration, before
+you check out some files, then you will get the current revision of the file which will probably be
+incorrect.  You can check to see that you have the correct revision of a file by selecting the
+file and then checking the last revision in the label tab in the lower pane.  The revision shown
+at the top of the list should be labeled
+with the label number associated with the configuration that has the same name as the current view.</P>
+<P>
+<B>The Working Directories of a View.</B>
+Each view can have a different set of working directories.  For example, the base view of the _AgentClient
+project might have the working directory C:\Abase\AgentClientDev.   The production view of the
+AgentClient project might have the working directory C:\Abase\AgentClient.  So you can have
+two separate copies of the files in the vault in two different working directories. If you decide
+to have a separate machine for both development and production, then there would be no need for
+more than one view.</P>
+<P>
+<B>The Configuration of a View.</B>
+In addition, a view can also provide access to the files at some point in the past.  The base view
+will have all of the current revisions.  The configuration of the production view may be set to
+see the files as they existed at the time of last build.  (Note: as described below, the production
+view can be set to other configurations, but it makes sense to set this view to view the files
+as of the time of the last build.)
+<I>So you may have different versions of the same set of files in the StarTeam vault in different
+working directories on the same machine.</I></P>
+<P>
+<B>Using Different Machines.</B>
+As noted below, you can have several configurations that capture the state of all of the files
+at some point in the past.  For the purposes of this discussion we just have two configurations,
+the current configuration and the configuration of all of the files at the time of the last build.
+If you use separate machines, the development machine could just use the base view and the
+current configuration.  For example, the AgentClient project would have the working
+directory C:\Abase\AgentClient.  By selecting the current configuration for this base view, the
+development machine has all of the latest revisions.
+The production machine could also use the same set of working directories and the same base view
+except that the configuration selected for this machine would be the configuration of the
+files as of the last build. <I>So you may have different
+versions of the same set of files in the StarTeam vault in the same working directories on
+different machines.</I> The details on how to set up the various configurations is described
+next</P>
+<P>
+<B>Attaching a Build Label to a Revision</B>
+The first step in associating a configuration with a specific revision of the files is to attach
+a build label to a revision number of each file in a project.  This is done as follows:
+<UL>
+	<LI>Select the top folder in the desired view. Select View-&gt;Labels...  Select New.
+	<LI> Enter the name of the label. By convention, we ask that you make the label a number in
+	sequence starting with 000.  So, if the last label for this project was 11, enter 12.
+	<LI> Enter a description such as the date of this build.
+	<LI> Select the current revision or the revision as of a time in the past when the revisions for
+	this new build were completed.
+	<LI> You can adjust the revision associated with a specific file by selecting the file in the
+	upper right pane and then dragging the label in the history list in the label tab in the lower
+	pane to the desired revision.
+</UL> </P>
+<P>
+<B>Promoting a Configuration.</B>
+Now that we have a new label, we can assign that label to a configuration.  You can create any
+number of configurations and give each one a unique name.  Suppose that we have two configurations,
+one named Development and one named Production.  Note: these configurations have the same name
+as the above views, but it is possible to have associate any configuration with any view.
+The procedure for changing the label associated with a configuration is called &quot;Promoting a
+Configuration&quot;:
+<UL>
+	<LI>Select View-&gt;Promotion... Select the promotion state that you want to change.
+	<LI>Select Edit and then select the new label from the drop-down menu in the View Label
+	box at the bottom.
+</UL>
+The specific procedure for when a configuration is promoted to a new state is described in
+&quot;CM Guidelines for Abase Development&quot;.
+<P>
+A project is usually divided into three phases, a development phase, a test phase, and a
+production phase.  All of these phases exist together as the project goes through several development
+cycles.  Each phase captures a different revision of all of the files.  For example, the
+developer works with the most current revision of the files.  The tester works with the
+revision of the same files as of the last build.   The production phase includes the revision
+of these files as of the last build that was successfully tested and released.  Each phase
+reaches back further in time to capture the files at some point in the past.   If (and only if)
+you wish to keep multiple versions of the files for a project on the same machine, it is
+convenient to create a view for each phase of development.</P>
+
+<DIV CLASS="h2section" ID="4.2"></DIV><H2>4.2 Sharing Files</H2>
+<P>
+<B>Making Copies versus Sharing.</B>
+It is not usually a good idea to have multiple copies of the same file.   One copy may be changed
+one way and the other copy may be changed in a different way.  The situation soon becomes confusing
+and difficult to manage.  If you forced to have multiple copies of a file, impose special restrictions
+in order to keep the situation under control.  For example:
+<UL>
+	<LI> Make one copy the master copy.  Users may only check in modifications to the folder containing
+	the master copy.
+	<LI> Treat the other copy as a read-only copy.  Users may not check in any modifications to the
+	read-only copy, but they can check out versions of this file.
+	<LI> Attach labels to the revision history of the read-only copy that identify its relationship to
+	the master copy.
+</UL>
+The key to success is to have just one reliable person responsible for maintaining synchronization
+between the copies.</P>
+<P>
+Although we do not share files of files
+in any of the existing projects, the concept of sharing may be used in the future.  Sharing
+should always be considered first.  Only make copies as a last resort.</P>
+<P>
+<B>One File Viewed from Two Folders.</B>
+Sharing allows one file in the StarTeam vault to appear in two or more folders.  Furthermore,
+when the file in one folder is updated, the version of the file in the other folder is marked as
+OutOfDate (that is because the other folder is still looking at the previous revision).
+You can continue to keep two different versions of the same file in two different working directories,
+or you can check out the OutOfDate file in the other folder so that both directories have
+the same revision.  Of course, if both copies of the file in the two working directories are
+changed, when one of these is checked in, the other folder will change its status to merge.</P>
+<P>
+<B>How to Share Files.</B>
+A shared file starts out in just one folder.   This file is called the master version.
+To share this file in another folder, simply select the master version of the file, press the
+Ctrl key and drag the file to the new folder.
+If you wish to share the file across views or projects, open both views
+in separate windows and then carry out the above drag operation between the windows.
+To un share a file, just delete the file from one of the folders.</P>
+<P>
+<B>Limitations on Sharing.</B>
+Unfortunately, sharing has several limitations.  For example, build labels are not
+shared.  A label can be associated with one revision in the master version and the same
+label can be associated with a different revision in the other folder.  Several limitations
+are noted in <A HREF="#9.4">Section 9.4.</A></P>
+
+<H1>5</H1><HR>
+<DIV CLASS="h1section" ID="5"></DIV><H1>Managing Change Requests</H1>
+<P>
+Change Requests (CRs) may be initiated by developers, testers, customer service agents, or
+system installers.   A CR my be used to report a problem or an enhancement
+request.  CRs for an application are entered into StarTeam as follows:
+<UL>
+	<LI> Start StarTeam and open the base (development) view of the project that is
+	most appropriate for this Change Request (CR).
+	<LI> Since it may be difficult for these users to identify the appropriate
+	subfolder of a project for a CR, all CRs are entered in the
+	root folder of the selected project.  Select the root folder from the left folder
+	tree and then select the Change Request tab in the upper right pane of the Main Window.
+	<LI> Right-click in the Change Request pane and select New.   Fill out the
+	Change Request Form.
+	<LI> Select the person responsible for CRs for this project from the
+	responsibility drop-down list.
+	<LI> The responsible person will be notified of the new CR.  The responsible
+	person may fix the problem or assign the CR to another developer.
+	<LI>The developer, in turn, assigns the CR to a person who tests
+	changes in this project.
+	<LI> Finally, the CR may be assigned to the original person who entered
+	the CR to verify that the problem or enhancement has been completed.
+</UL>
+The process requires that all those who initiate CRs must be able to identify the
+appropriate project and responsible person for a CR.  If a CR is entered incorrectly
+the responsible person, whoever that turns out to be, must make the appropriate
+modifications to the CR so that the CR is assigned correctly.</P>
+
+<H1>6</H1><HR>
+<DIV CLASS="h1section" ID="6"></DIV><H1>Creating a New System Release</H1>
+<P>
+This section describes the promotion strategy for updating the version of the files to
+be tested or to be released to production.  In addition, this section describes
+the steps required to generate a new system release.   Both of these steps are
+described in detail in the &quot;CM Guidelines for ABASE Development&quot;.  Please
+refer to that document for the specific IBA procedures currently in effect.  This
+document is a general introduction to the process.</P>
+ <P>
+ Labels, Configurations, and Views are defined in <A HREF="#1.1">Section 1.1,</A>
+Configuration Management Concepts.   The techniques for configuring these items
+are described in <A HREF="#4.1">Section 4.1,</A> Managing Views.  Please review
+these sections to familiarize yourself with these concepts.</P>
+
+<DIV CLASS="h2section" ID="6.1"></DIV><H2>6.1 Promoting a View to a new Version</H2>
+<P>
+The purpose of promoting a view to a new build label is to update the revision level
+of the files available in a view.  This is a three step process:
+<OL>
+	<LI> Attach a build label to the revision number of each file to be included in
+	the build.   A new numeric label, starting with 000 and increasing by one for each
+	new build, is attached to the revision number of each file.  Recall that each time a
+	file is revised, it automatically gets a new revision number.
+	<LI> Promote the configuration to a new label.  StarTeam supports the creation of
+	one or more configurations.  For example, IBA often employs a Development Configuration,
+	a Test Configuration, and a Production Configuration for a  project.  These configurations are
+	not the same as the views by the same name.  Rather, they are just a name that
+	can be associated with a label.  Promoting a configuration just means that the
+	label associated with a configuration is updated.
+	<LI> Selecting a configuration for a View.  Each time that a view is opened it
+	must be associated with a Configuration.  The Development view is normally associated
+	with the Development Configuration.  Similarly, the other views are associated with
+	a Configuration by the same name.
+</OL>
+Note: if you set the Test view configuration to Development, the Test view will make
+available the <I>current</I> version of the files rather than the version as of the last
+build.  This is probably not what you want.</P>
+<P>
+We will go through the process in detail for a specific situation.  Even if you are not
+responsible for promoting views, it is helpful to be aware of the process.</P>
+<P>
+<B>Promoting the code for the _AgentClient Test View.</B>
+To make this discussion more concrete, consider the process required to promote the
+version of the files available in the Test view of the _AgentClient project to a new build.
+Each step contains a link to Section 4.2 where the required navigational steps are described.
+<UL>
+	<LI> Open the _AgentClient Development View as noted in <A HREF="#4.1">Selecting a View</A> 
+	<LI> Make sure that the latest version of each file in the project has been tested and
+	checked in to the vault.
+	Attach a label to the current revision of each file in the project as noted in
+	<A HREF="#4.1">Attaching a Build Label to a Revision</A>.  You may adjust this label in the
+	history tab to another revision number for any file in the project.  If the last label
+	was 011, then this label would be 012.
+	<LI> Promote the Test configuration for this project to the new label as noted in
+	<A HREF="#4.1">Promoting a Configuration.</A>  Now the Test configuration is promoted
+	to label 012 from 011.  
+	<LI> Now switch to the Test view as noted in <A HREF="#4.1">Selecting a View</A>.  Be
+	sure to select the Test configuration.  The Test configuration is not selected automatically!
+	<LI> The revision number for the files is now updated to the revision associated with the
+	new label.  Check out any files that are out-of-date as noted in
+	<A HREF="#3.2.1">3.2.1 Updating Files under Configuration Management</A>
+	<LI> Compile the new version of the code and proceed with testing.
+</UL></P>
+
+<DIV CLASS="h2section" ID="6.2"></DIV><H2>6.2 Generating a new Release</H2>
+<P>
+The purpose of a system release is to update the production version of the files
+for general use after a build has been successfully tested.  If the application
+consists of a single project, then the a new release just requires that the
+production view of the project be promoted to the same label as the label for
+the last successfully tested configuration.  The steps for this promotion are
+described next.  After discussing the promotion of a project we consider the
+case where multiple projects are involved.</P>
+<P>
+The process for promoting the production configuration is somewhat simpler than
+the process for promoting the test configuration because a new label is not
+required.</P>
+<P>
+<B>Promoting the code for the _AgentClient Production View.</B> 
+To continue the above discussion of the _AgentClient project, we promote the
+_AgentClient Production configuration to the same label as was used for the
+Test configuration of the _AgentClient project.
+Here we promote the Production configuration to the last build that was successfully
+tested.  Assume that the label for this build is 012.</P>
+<P>  Each step contains a link to Section 4.2 where the required navigational
+steps are described in the steps listed below:
+<UL>
+	<LI> Open the _AgentClient Development View as noted in <A HREF="#4.1">Selecting a View</A> 
+	<LI> Promote the Production configuration for this project to the label associated with the
+	current Test configuration.  The procedure is noted in 
+	<A HREF="#4.1">Promoting a Configuration.</A>  In this case, this label is 012. 
+	<LI> Now switch to the Production view as noted in <A HREF="#4.1">Selecting a View</A>.  Be
+	sure to select the Production configuration.  It does not happen automatically!
+	<LI> The revision number for the files is now updated to the revision associated with the
+	new label.  Check out any files that are out of date as noted in
+	<A HREF="#3.2.1">3.2.1 Updating Files under Configuration Management</A>
+	<LI> Compile the new version of the code and proceed with testing.
+</UL>
+Notice that a new label does not have to be created in this case.  The revision
+of the files that passed the QA tests are the ones that are promoted to the Production.</P>
+<P>
+<B>The Production Working Directory.</B>
+The working directory for the Production view of the _AgentClient project is C:\Abase\AgentClient.
+When the code in this directory is built during the test phase, new versions of AgentClient.exe
+and AgentClient.dll are placed into the C:\Abase directory.  These two files go into
+the final release of the system.
+<P>
+<B>Generating a Release with Multiple Projects</B>
+Several projects, such as the _AgentClient project and the _Libraries project
+contribute files that go into a new release.  It is the role of the _Release project to
+provide a composite view of just the files from the various projects that are required to run
+the application.   You may wish to review the CM Facts in 
+<A HREF="#1.1">Section 1.1 Configuration Management Concepts</A> before proceeding.</P>
+<P>
+The _Release project has two aspects, one from the viewpoint of the Release Manager who
+updates this project from time-to-time and one from the viewpoint of the Developers who
+use the files in this project.  Developers usually just check out files from the _Release
+project.  One person, the Release Manager, updates this project.  We continue with an
+overview of the update process.  For a more specific of the description of the process
+for IBA projects, consult the document &quot;CM Guidelines for ABASE Development&quot;.
+<P>
+<B>Updating the Release Project.</B>
+The following steps are only taken by the Release Manager when a new build is to be
+released.  The purpose of the release project is to collect all of the production files
+from several projects and put them into this project so that others may check out these
+files to support their development of projects that need one or more of these production
+files.  This is done in two steps.
+<UL>
+	<LI> Check out all of the files from the production view of each contributing project.
+	Build the latest production version of the files as described in &quot; Production Working
+	Directory&quot; above.
+	Now, your working directories contain all of the latest revision of your production files.
+	<LI> Now open the _Release project.  Remove the old files (just to make sure no old stuff
+	lingers) from the Release folders.  Check in the new production files into the Release
+	project. 
+</UL>
+This second step is described in more detail below.</P>
+<P> 
+Recall that each project has its own vault with its own copies of the files.  The _Release
+project has just one view, called the Release view. In the beginning, this vault is empty.
+From the steps noted above, the files in the Release Manager's production directories are
+all current. All that is left is to check these files in to the _Release project.  Recall that
+a Project may have folder for just a subset of all of the these working directories.  The
+Release Manager is careful to just include the files and directories that are required to
+run the application.  The steps are:
+<UL>
+	<LI> Add or remove folders from the _Release project such that only the folders that
+	are needed for distribution of the application are included.
+	<LI> Delete the old files in the Release vault.  For _AgentClient that would imply
+	that the files AgentClient*.* would be deleted from base folder and all of the files
+	in the AgentClient folder should be deleted. This way, files that
+	are no longer needed will be removed.  Further, if a file fails to be updated, an old
+	copy will not be inadvertently used in the release.
+	<LI> Check-in any files having a status of missing or modified. (These are the files updated in the
+	last build.) See <A HREF="#3.2.1">3.2.1 Updating Files under Configuration Management</A>
+	for more details.
+	<LI> Add a file to the _Release project if it has status NotInView and if the file is
+	needed to run the application. (If you deleted all of the files in the Release project
+	this will be the normal case.) 
+	<LI> Delete files from the vault that have status Missing. (These are old files no
+	longer needed in the new distribution.)
+	<LI> Create a new build label for this new revision of the files as described in
+	<A HREF="#4.1">Attaching a Build Label to a Revision</A>.
+	<LI> Be sure to note the build labels of the production version of each of the
+	component projects in the comments field of the build label.  This is the only way
+	that this build can be tied back to the build of the individual projects.
+</UL> 
+So, we now have a project that contains just the files needed to run an application that
+is based upon several projects.  Note that this vault contains copies of the files that
+are also in the vault of one of the component projects.  Except for the updates carried
+out by the Release Manager described just above, no one should revise the files in this
+project at any time.  How other developers might use the release project is the subject of
+the next section.</P>
+
+<DIV CLASS="h2section" ID="6.3"></DIV><H2>6.3 Using files from the _Release Project</H2>
+<P>
+The testing of a one module in a project usually requires working versions of other modules
+in the same project and production elements from other projects.  For example, all
+Smart Lisp development is dependent upon the IDE (Integrated Development Environment)
+provided by AgentClient.exe.  Several options exist for each developer in selecting the
+appropriate version of a support element.  Each option has two aspects:
+<OL>
+	<LI> Selecting the working directory that contains the support module.
+	<LI> Selecting the way that the module is populated.
+</OL>
+The discussion below will use two examples to illustrate several options.</P>
+<P>
+<B>Selecting the Working Directory containing the Support Module.</B>
+To make the discussion concrete, consider the development of the parseAgent in the
+_Libraries project.  The testing of this agent requires a working version of the
+dataMineAgent.  The parseAgent Test directory contains a rebuild script that populates
+a cabinet using the dataMineAgentCabinet.sl file.  One can edit the rebuild
+script to extract this file from any one of a number of directories as noted below:
+<OL>
+	<LI> Use C:\Abase\LibrariesDev.  This file will have all of the latest changes to the
+	dataMineAgent.  In fact, it may have recent changes that are not compatible with your
+	test environment.  To populate this directory, check out the latest copy from the
+	_Libraries Development view.
+	<LI> Use C:\Abase\LibrariesTest.  This file will have the version of the file that
+	is currently under test.   It will not necessarily contain the latest changes made to
+	the dataMineAgent.  To populate this directory, check out the latest copy from the
+	_Libraries Test view with the Test Configuration selected as described in
+	<A HREF="#4.1">Selecting a View</A>.  Of course, you could also just use the
+	development view and select the revision of the file associated with the current
+	Test Configuration (you can view the revision history and their labels in the
+	label tab of the lower right pane).
+	<LI> Use C:\Abase\Libraries.  This file will have the production version of the
+	dataMineAgent.  It will provide a version that has successfully passed the QA
+	tests.  It will probably not contain the latest changes made to
+	the dataMineAgent.  There are a couple of ways to populate this working directory
+	as noted in the next section.
+</OL>
+The first method gets the most volatile version of the file.  The last method gets the
+most stable version of the file, albeit one without all of the latest changes.  Next,
+we will consider some alternatives to populating the production directories that contain
+the support modules needed by other developers.</P>
+<P>
+<B>Selecting the Source of a Support Module.</B>
+To make this discussion concrete consider the ways that we might construct a version
+of AgentClient.exe for our use in developing the parseAgent.  First, we select which
+working directory we wish to use as described above.  In this case, the choice is trivial
+because the file is in the C:\Abase directory.  Here are some options, starting with
+the simplest and working up to the more complex.
+<OL>
+	<LI> Just check out the latest version of AgentClient.exe from the vault.  This is
+	not advisable, since you don't know where it came from.  (Your mother warned you
+	about picking up stuff when you didn't know where it had been.)
+	<LI> Select the Release view from the _Release project and check out the files from
+	there.  This has the advantage of getting just the files that you need and not a lot
+	of other stuff and you are sure to get a working version of the file.  It has the
+	disadvantage that this version may not have all of the latest changes.
+	<LI> Check out the agentClient files from the agentClient project and then compile a
+	new version of agentClient.exe.  You can use any one of the views, the Development
+	view, the Test view, or the Production view.  This is a lot more work, but you can
+	get all of the latest changes if you use the Development view.
+</OL>
+Unless you have some special needs, it is advisable to use the Release view described in
+the second option.  Remember that the _Release project is only modified by the
+Release Manager.  Others should just check out files from this project. </P>
+
+<H1>7</H1><HR>
+<DIV CLASS="h1section" ID="7"></DIV><H1>Using Topics</H1>
+<P>
+New developers may be mystified by the application architecture.  The rationale
+and decision process that led to the current structure can be lost in mists
+of time.  Some of the basic assumptions and restrictions that guided the
+original development may not be obvious to newcomers.   These misunderstandings
+can lead to errors and frustration.</P>
+<P>
+Topics within StarTeam are used to track and preserve documentation and conversations
+that are relevant to the application software and the development configuration.
+This document is an example of a development configuration document.</P>
+<P>
+Topics may be added to StarTeam as follows:
+<UL>
+	<LI> Select the appropriate project for the topic. Select one of the directories
+	within the project. For general topics concerning the
+	development environment, select the Abase directory.
+	<LI> Select the Topics tab for the upper right pane of the StarTeam main window.
+	<LI> Right-click in the Topics pane and select New.
+	<LI> Enter your comments and use the option tab to select the users whom you wish to notify.
+</UL>
+Readers may respond with comments of their own.  Each topic has a thread showing the
+responses for each topic.  Others may quickly sort through a set of topics to find
+information concerning a development question.   Users may select base folder in
+the left window and then select the &quot;All Descendants&quot;
+button on the StarTeam toolbar to see all of the topics within a project.
+For more information on reading and responding to topics, see <A HREF="#9.7">Section 9.7</A>
+below.</P>
+
+<DIV CLASS="h2section" ID="7.1"></DIV><H2>7.1 Attachments</H2>
+<P>
+Relevant documents may be attached to the topic.  To attach a document:
+<UL>
+	<LI> Select the Attachments tab in the Topic dialog.
+	<LI> Select Add and then navigate to the document you wish to attach.
+	Note that you do not need to check in the attachment.  It is automatically
+	placed in an unspecified place in vault.
+	<LI> Topic readers can double click on the attached document in the
+	Attachments pane to view the document. (The attachment is automatically
+	transferred to the reader's machine.
+</UL> </P>
+
+<H1>8</H1><HR>
+<DIV CLASS="h1section" ID="8"></DIV><H1>Adding Links</H1>
+<P>
+Links are a mechanism that allows you to cross reference items in StarTeam.  For
+example, suppose that maintenance programmers would like to view all of the CRs
+associated with a particular source file.  These links allow programmers to quickly
+review the history of all changes made.  Here is how a CR can be associated with
+a source file:
+<UL>
+	<LI> Highlight a topic from the Topic pane in the upper right corner.
+	<LI> Select the link icon from the StarTeam toolbar just above the Topic pane.
+	The mouse arrow turns into a link icon.
+	<LI> Select the source file that is to be linked to this topic.
+	<LI> Right-click on the file and select links and then select Complete Link.
+</UL> </P>
+<P>
+An alternative method may also be used to document the history of changes made to a
+file.  When checking in a source file that has been modified, do the following:
+<UL>
+	<LI> Right-click on the file to be checked in from the file pane in the upper right
+	corner.
+	<LI> Select check-in from the context menu.
+	<LI> Fill in the comment section with the CR number and a description of the changes
+	made.  The CR number is the number added in to the Ext. Reference field of the CR. 
+</UL>
+At a later time, users can review the history of changes to a file as follows:
+<UL>
+	<LI> Select a file from the File tab in the upper right window.
+	<LI> Select the history tab in the lower right window.
+	<LI> Double-click on one of the entries.
+	<LI> You may navigate through all of the changes by using the Next and Previous
+	buttons at the bottom of the change history dialog box.
+</UL>
+Links may be constructed between any two items in StarTeam.  As another example, related
+CRs may be linked together so that users may follow a chain of related CRs.</P>
+
+<H1>9</H1><HR>
+<DIV CLASS="h1section" ID="9"></DIV><H1>Tips 'N Tricks</H1>
+<P>
+This document is not intended to replace the extensive StarTeam help documentation.
+Nevertheless, a few of the most often used procedures are included here for easy
+reference.   Scan the following lists and make sure that you are familiar with
+each technique.  If you find a helpful tip or trick not mentioned here, please
+be sure to add it here and include a comment about the change in the StarTeam
+topic included in the Abase topics list.</P>
+<P>
+The tips and tricks are put into a Q &amp; A format and they are divided into the
+same categories as used in the above sections in this document.  Links are
+provided to the methods listed in each section for easy reference.</P>
+
+<DIV CLASS="h2section" ID="9.1"></DIV><H2>9.1 General</H2>
+<P>
+<B>What policies and procedures have been adopted by InvestByAgent.com?</B>
+For a description of the IBA policies, see
+&quot;CM Guidelines for Abase Development.doc&quot;.</P>
+<P>
+<B>What do the terms All Descendants, Change Request (CR), Check-in, Check-out, client/server,
+Configuration State,
+Label, Link, File Lock, Project, Promotion, Repository, Revision Label, Revision Number,
+Tasks, Topics, Vault, View, Version Control, and Working Directory mean?</B><BR>
+See Section <A HREF="#1.1">1.1 Configuration Management Concepts</A> for definitions of these
+terms.</P>
+<P>
+<B>What is the difference between a directory and a folder?</B><BR>
+In this document, folder refers to a folder in the vault on the StarTeam server and directory
+refers to a working directory in the file system on your local machine.</P>
+
+<DIV CLASS="h2section" ID="9.2"></DIV><H2>9.2 Installation and Configuration</H2>
+<P>
+<B>How can I login automatically without going through the logon dialog?</B><BR>
+You can add a shortcut to your desktop that automatically starts StarTeam and logs
+you in automatically.  Here's how:
+<UL>
+	<LI> Open the project(s) you want opened by this shortcut.
+	<LI> Select Project from the StarTeam menu.  Then select Shortcut Properties.
+	<LI> Enter the following:
+		<UL>
+			<LI> UserName
+			<LI> Password
+			<LI> Confirm Password
+		</UL>
+	<LI> Check the Remember Password checkbox and the ByPass Logon checkbox.
+	<LI> Select OK
+	<LI> Select Project again, then select Save Shortcut As...
+	<LI> Save the shortcut on your desktop with a name indicating the initial project
+	opened.
+</UL></P>
+
+<DIV CLASS="h2section" ID="9.3"></DIV><H2>9.3 Routine Tasks</H2>
+<P>
+<B>How can I add a folder to a project?</B><BR>
+See Section <A HREF="#3.1">3.1 Managing Folders</A></P>
+<P>
+<B>How can I avoid adding a subdirectory on my machine when adding the parent directory
+to a project?</B><BR>
+Deselect these subdirectories when adding a new folder to the vault as described
+in Section <A HREF="#3.1">3.1 Managing Folders.</A>
+If the folder has already been added to the vault, it can be removed as
+follows:
+<UL>
+	<LI> Right-click on the folder in the tree-structure shown on the left side
+	of the StarTeam window.
+	<LI> Select Delete Folder from the drop-down context menu.
+</UL>
+Or you can just select the folder and press the Del key.  Be careful that you do
+not remove the wrong folder!</P>
+<P>
+<B>What do all these file statuses mean?  How can I modify each file
+status? </B><BR>
+See Section <A HREF="#3.2.1">3.2.1 Updating Files under Configuration Management</A></P>
+<P>
+<B>My C drive is full. How can I change the default drive?</B><BR>
+Do not change the default directory!  If you change it, it changes for everyone, not
+just for your machine.  (I think that this is a deficiency in StarTeam, but it is considered
+a feature by others.) Select and then modify the alternate working directory.
+Here is how:
+<UL>
+	<LI> Select the top directory in your current view.
+	<LI> Select View-&gt;Properties-&gt;Info tab
+	<LI> Select the Alternate option.  Enter an alternate path in the text box. Do
+	not change the directory structure below the Abase or DeepGreen directory because
+	the system operation depends upon specific relative paths between working directories.
+	For example, one might set the alternate path to D:\Development\Abase\AgentClientDev
+	if the default path is C:\Abase\AgentClientDev. 
+</UL></P>
+<P>
+<B>Can I tailor the path to my working directories from the default settings?</B><BR>
+You can modify the path to any subdirectory in a view by selecting the subdirectory and
+then setting the alternate path as noted above.   But it is not a good idea to change
+these paths.  The system depends upon the relative paths in the working directory subtree.
+You may change the alternate default drive and the alternate top-level directory path as
+described above.</P>
+<P>
+<B>What are the recommended procedures for modifying a file?</B><BR>
+See Section	<A HREF="#3.2.2">3.2.2 Modifying Files</A></P>
+<P>
+<B>I selected a different tab and suddenly the currently folder in the left pane changed.
+What happened?</B><BR>
+StarTeam will spontaneously reset the currently selected folder back to the root folder
+from time to time.  Be wary of this quirk in StarTeam and learn to deal with it.</P>
+<P>
+<B>How can two users resolve conflicts caused by simultaneous changes to a file?</B><BR>
+See Section <A HREF="#3.2.2">3.2.2 Modifying Files</A></P>
+<P>
+<B>What do I do if someone else made changes to a file that I have also modified?</B><BR>
+Presumably you did not have a continuous lock on the file since the last time that you
+checked out the file.  Check the history (select the history tab and then select the
+file) and see who changed it last.  You have a few options:
+<UL>
+	<LI> Force a check-in (see below).  This will overwrite the changes made by others
+	since the last time that you checked out the file.
+	<LI> Force a check-out (see below).  This will overwrite the changes that you have
+	made since the last time that you checked-in this file.
+	<LI> Merge the differences in between the file in the vault and your local version of
+	this file.
+</UL></P>
+<P>
+<B>How do I merge my local copy of a file with the version that is in the vault?</B><BR>
+It is best to avoid this situation.  You can split the file into two or more smaller
+files so that each user can make changes to separate files.  However, there are times
+when you need to merge the changes in a file.  Usually the changes are made in two separate
+areas of the file.  Merge the files as soon as possible.  The more changes that you need
+to deal with, the more difficult the process will be.</P>
+<P>
+Several techniques for merging files exist.  One simple method for merging text files
+is as follows:
+<UL>
+	<LI> Rename your local copy of the file.
+	<LI> Forcibly check out (see below) the version in StarTeam.
+	<LI> Open both the local copy and the newly checked out file using notepad.
+	<LI> Place the two windows side-by-side (tiled vertically).
+	<LI> Cut the function(s) that you had changed from your local copy.
+	<LI> Paste this section of the file in over the top of the same section in the
+	version that you had checked out. Save your changes to the file that you checked out.
+	<LI> Close both notepad windows.
+	<LI> Check in the modified file.
+	<LI> Test the modified file to see that it works as intended.
+	<LI> Delete your local copy of the file.
+</UL></P>
+<P>
+<B>How can I force a check out a file even though it has the status Modified or
+Merge?</B><BR>
+Think carefully before you do this.  You will be overwriting changes that you have 
+made locally.  Take the following steps:
+<UL>
+	<LI> In StarTeam, right-click on the file.
+	<LI> Select Check Out from the drop-down context menu.
+	<LI> Select the Force check-out box.
+	<LI> Select OK.
+</UL>
+Note that the check-out icons on the toolbar won't force a check-out.</P>
+<P>
+<B>How do I break a lock held by another user?</B><BR>
+It is not recommended to do this without consulting with the current owner of
+the lock.  You are violating the safeguards provided by StarTeam, so the potential
+for making errors and losing changes are increased.
+If you still want to do this, you can do it as described in the StarTeam help.</P>
+<P>
+<B>How can I force a check-in of a file even though the status is OutOfDate
+or Merge?</B><BR>
+Be careful. If you force a check-in you will be overwriting changes made by
+another user.  Be sure to check the history of revisions to this file before
+proceeding.  If you are sure you want to do this:
+<UL>
+	<LI> In StarTeam, right-click on the file.
+	<LI> Select Check In from the drop-down context menu.
+	<LI> Select the Force check-in box.
+	<LI> Fill out the comment text box with the reason for the changes and
+	the affected CR numbers.
+	<LI> Select OK.
+</UL>
+Note: do not use the check-in icons on the toolbar as noted below.</P>
+<P>
+<B>Should I use the check-in icon on the toolbar?</B><BR>
+No, never use this icon.  Rather right-click on the file (or a set of files) and then select
+check-in.  Enter a comment which includes the changes made and the relevant CRs addressed by
+the change.  If you use the check-in icon, you will not have an opportunity to make a comment.
+<P>
+<B>How do I check out a file and lock it at the same time?</B><BR>
+The cylindrical icons on the toolbar are used for check-in and check-out.
+Think of the cylinder as the StarTeam vault.  An arrow pointing out of
+the cylinder signifies a check-out (the file is taken <I>out</I> of the vault).
+To lock and check out a file, you can choose from one of three methods:
+<UL>
+	<LI> Select the file and then select the red check-out icon.
+	<LI> Select the file and then select check-out from the drop-down menu.
+	<LI> Select the file and then press ctrl-O.
+</UL></P>
+<P>
+<B>How do I check in a file and unlock it at the same time?</B><BR>
+To check-in a file do <I>not</I> use the check-in icons on the toolbar
+(the cylindrical icons with an arrow pointing into the cylinder).  Rather,
+right click on the file and then select check-in so that you may enter a
+comment on the changes made and the relevant CRs. To check-in and 
+unlock the file:
+<UL>
+	<LI> Select the file and then right-click in the file list pane.
+	<LI> Select the unlock option.
+	<LI> Enter the reason for the changes and the affected CRs.
+	<LI> Select OK.
+</UL>
+It is not a good idea to first unlock a file and then check it in.  It leaves the
+open the possibility that another developer could check out the unlocked file before
+your revisions were checked in.  The next time that the other developer checks in
+his modifications, your changes will be lost!  This can also happen if the time
+on the individual computers are not synchronized.</P>
+<P>
+<B>How do I check out an earlier version of a file?</B><BR>
+<UL>
+	<LI> Select a file and then select the history tab in the lower
+	right pane.
+	<LI> Right-click on one of the revisions in the history pane.
+	<LI> Select check-out from the drop-down context menu.
+</UL></P>
+<P>
+<B>How can I lock/unlock a file?</B><BR>
+<UL>
+	<LI> Select the file in the upper right pane.
+	<LI> Select the red lock icon on the toolbar to lock the file.
+	<LI> Select the green unlocked icon on the toolbar to unlock the file.
+</UL>
+Do not first unlock a file and then check it in as a separate operation.  Also, do
+not check out a file and then lock it as a separate operation.  You are leaving a
+gap in which another user could inadvertently check out (or check in) a file during
+this gap, defeating the purpose of the lock.  (It can happen and it has happened.)
+It is better to select the appropriate lock option when checking a file in or
+checking a file out. StarTeam will perform the lock and update operations in a
+safe manner.</P>
+<P>
+<B>How can I tell if a file is locked?</B><BR>
+<UL>
+	<LI> The files that you have locked have an open book icon in the &quot;locked&quot;
+	by column in the files pane in the upper right pane of the StarTeam window.
+	<LI> The files that others have locked have a book icon with a locked clasp in the
+	&quot;locked by&quot; column.
+	The name of the person who owns the lock is listed to the right of the icon.
+	<LI> If the file is not locked, a closed book icon does not have a locked clasp.
+	</UL></P>
+<P>
+<B>How can I check in all of the Modified files in a subtree?</B><BR>
+<UL>
+	<LI> Select the topmost directory in the tree-structure on the left side of the
+	StarTeam window.
+	<LI> Select the All Descendants icon shown as a row of 4 rows of dotted lines in
+	the upper right side of the toolbar.
+	<LI> Select &quot;All Files by Status&quot; from the drop down box on the toolbar.
+	<LI> Make sure that the Modified portion of the file list is not expanded in the files
+	pane.
+	<LI> Check-in the files by right-clicking in the file pane and then select check-in
+	from the drop-down menu.  Enter a comment and select the new lock status.  Do not
+	use the check-in icon on the StarTeam toolbar because you will not have an opportunity
+	to make a comment.
+</UL></P>
+<P>
+<B>How can I check out all of the OutOfDate files in a subtree?</B><BR>
+<UL>
+	<LI> Select the topmost directory in the tree-structure on the left side of the
+	StarTeam window.
+	<LI> Select the All Descendants icon shown as a row of 4 rows of dotted lines in
+	the upper right side of the toolbar.
+	<LI> Select &quot;All Files by Status&quot; from the drop down box on the toolbar.
+	<LI> Make sure that the OutOfDate portion of the file list is not expanded in the files
+	pane.
+	<LI> Check-out the files using the check-out icon.  The check-out icon is the cylindrical
+	icon with and arrow pointing out of the cylinder (which represents the StarTeam vault).
+</UL></P>
+<P>
+<B>How do I move a file from one folder to another?</B><BR>
+Do <B>not</B> delete the file in one folder and then check the same file in to another folder!
+The new file will not inherit the history of the original.  To move a file, just drag it from
+one folder to another.</P>
+<P>
+<B>How do I rename a file?</B>
+To rename a file, select the file in the right upper pane.  Then Right-click on the file and
+select properties.  Modify the name of the file in the text box at the top.
+Do <B>not</B> delete the file and then add the file to the folder because the new file would not
+have the history of the original file.</P>
+<P>
+<B>How can I remove a file from the vault?</B><BR>
+Cabinets and machine generated files should not be included in the vault.  To remove a file
+from the vault:
+<UL>
+	<LI> Select the file(s) to be removed in the file pane in the upper right corner of the
+	StarTeam window.
+	<LI> Right-click in this pane, and select Delete from the drop-down context menu or just
+	press the Del key.
+</UL></P>
+<P>
+<B>I modified the status of several files.  How can I update the displayed status?</B><BR>
+Unfortunately, StarTeam does not have a menu item or a context menu item (using the Rt-mouse
+button) to refresh.  Press the F5 key to refresh the display.  You must memorize this
+command. (I view this as a flaw in the StarTeam interface.)
+</P>
+
+<DIV CLASS="h2section" ID="9.4"></DIV><H2>9.4 Projects</H2>
+<P>
+<B>How can I set up and/or use a project that has simultaneous development, test and
+production phases?</B><BR>
+See Section <A HREF="#4.1">4.1 Managing Views.</A></P>
+<P>
+<B>How can I determine the current project, current view, and current working directory?</B>
+The blue title bar at the top of the window shows the current project name, the current
+view and the current working directory separated by dashes.  A very useful feature.
+<P>
+<B>Should I share files or just make a copy?</B><BR>
+Share, don't copy. See Section <A HREF="#4.2">4.2 Sharing Files.</A></P>
+<P>
+<B>How do I share or unshare a file in my working directory?</B><BR>
+A share is set up between folders in the StarTeam vault.  The working directories
+play no direct role in sharing.  To share or unshare a file in a folder, see
+Section <A HREF="#4.2">4.2 Sharing Files.</A></P>
+<P>
+<B>How do I determine which one of a set of shared files is the master copy?</B><BR>
+The master copy of a set of shared files is distinguished by a blue dot in the
+file icon shown in the Reference tab in the lower right pane of the StarTeam
+window.</P>
+<P>
+<B>Will the build label for two shared files be attached to the same revision?</B><BR>
+No. The build label attached to one copy of a shared file is not necessarily
+attached to the same revision of the file as the build label for the other copy.
+Unfortunately, this limits the usefulness of sharing files between a development folder
+and a release folder because the two files would not necessarily have the same revision
+for a given build label.  It would be better if this synchronization were done automatically.</P>
+<P>
+<B>Can I share files across projects?</B><BR>
+It is possible to share files across projects but there are some limitations.
+Unfortunately, only	the latest version of the file can be shared across projects.  Since
+we usually want the version as of the last build, file sharing across projects is not
+very useful.</P>
+<P>
+<B>Can I share files between servers?</B><BR>
+It is not possible to share files across servers.</P>
+<P>
+<B>How do I exclude folders that I don't need in the Production View?</B><BR>
+You can't.  Unfortunately, StarTeam does not provide a mechanism in a derivative view
+to exclude a file or a folder.</P>
+
+<DIV CLASS="h2section" ID="9.5"></DIV><H2>9.5 Change Requests</H2>
+<P>
+<B>What fields must be filled out in a Change Request (CR)?</B><BR>
+See Section <A HREF="#5">5 Managing Change Requests</A></P>
+<P>
+<B>How can I find all of the CRs included in a specific build?</B><BR>
+This is a bit involved.  The items displayed in any pane can be subjected
+to a filter.  The following outlines the steps required to build a filter
+that limits the display of CRs to the build number 002.  You can, of course,
+replace 0002 with any other value in the following steps:
+<UL>
+	<LI> Select the Change Request (CR) pane.  Select the All Descendants button
+	to see all of the CRs in this subtree.
+	<LI> Right-click in the CR pane.  Select Filters, then Filters, then New.
+	<LI> Enter a name for the filter: Build002.  Check the public check box, then OK.
+	<LI> Highlight the new filter Build002 in the Filters Dialog.
+	<LI> Select Fields and Add the fields that you wish to see in the CR pane.
+	<LI> Select Query, New.  Enter a name: Build002.  Check the Public checkbox
+	on the right.
+	<LI> Select Field: Last Build Tested,  Equals,  0002
+</UL>
+The CR pane should now just display the selected fields for the all CRs included in
+build 0002.</P>
+
+<DIV CLASS="h2section" ID="9.7"></DIV><H2>9.7 Topics</H2>
+<P>
+<B>When should I add a topic to a project?</B><BR>
+See Section <A HREF="#7">7 Using Topics.</A></P>
+<P>
+<B>How do I attach a document to a topic?</B><BR>
+See Section <A HREF="#7.1">7.1 Attachments.</A></P>
+<P>
+<B>Where do I put attachments?</B><BR>
+You can put attachments in some directory that is not a working directory on your machine.
+When you attach a file to a topic, it automatically gets copied into some undefined place
+in the StarTeam server.
+Others can view the attachment without having access to your machine.</P>
+<P>
+<B>Should I check in attachments?</B><BR>
+Usually not.  It is rarely necessary to put attachments under configuration management.</P>
+
+<DIV CLASS="h2section" ID="9.8"></DIV><H2>9.8 Links</H2>
+<P>
+<B>How do I add a link to a project?</B><BR>
+See Section <A HREF="#8">8 Adding Links.</A><BR></P>
+</BODY>
+</HTML>

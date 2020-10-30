@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Character compareGE 010</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compareGE</FunctionKeywords>
+		<TypeKeywords> Character</TypeKeywords>
+		<RelatedFunctions>compare compareEQ compareNE compareGT compareLT  compareLE</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare void greater equal</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>compareGE</b> function to compare two objects and return
+
+
+
+
+
+
+
+
+
+
+                  the Boolean value true if the first argument is greater than or equal to the second argument
+                  or false if otherwise.
+The Integer argument is
+                  converted into Character values.
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+        <Expression><![CDATA[ <sc>(compareGE #\a #\b )         </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(compareGE 97 #\a)           </sc>]]></Expression>
+        <Note><![CDATA[ The character, a, has an ASCII value of 97]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

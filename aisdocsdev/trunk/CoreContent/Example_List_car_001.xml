@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example List car 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>car</FunctionKeywords>
+		<TypeKeywords>Pair List</TypeKeywords>
+		<RelatedFunctions> setCar cdr setCdr</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>search associate find car cdr</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples show the <b>car</b> function return the head of the List.
+	              
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(car  '((1  2  3)  (4  5  6)  (7  8  9)))    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA['(1 2 3)]]></Returns>
+        <Expression><![CDATA[ <sc>(car  '((0  2  3)  (4  5  6)  (7  8  9)))       </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA['(0  2  3)]]></Returns>
+        <Hints><![CDATA[none
+        ]]></Hints>
+   </Syntax>
+</Example>

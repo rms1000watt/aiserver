@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmior</Title>
+		<InstructionName>vmior</InstructionName>
+		<InstructionType>Generic</InstructionType>
+		<ArgumentTypes> Integer </ArgumentTypes>
+		<RelatedVMInstructions>vmiand vmiorb vmixor </RelatedVMInstructions>
+		<HumanKeywords> and or xor integer   </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[                                                  
+		<p>When evaluated, this vm instruction bitwise ors the Integer 
+		<b>argument</b> value to the Integer <b>source</b> value and places 
+		the result in the Word <b>target</b> as an Integer value. There 
+		are no conversions made between different types. The result will 
+		be returned as an Integer data type. This instruction may return an 
+		Error value. After the operation, the Instruction Pointer is promoted. 
+		The operation of this vm instruction is expressed in the following C 
+		expression:
+        </p>	
+        <ul><li><b> (word:int)target = (int)source | (int)argument;   </b></li></ul>
+    ]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[  (vmior argument source target)]]></Expression>
+		<Argument> 
+		  <Name>argument</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>source </Name>
+		  <Format>regoffset </Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>target </Name>
+		  <Format>regoffset </Format>
+		  <AISTypes>(word:integer) </AISTypes>
+		</Argument>
+	</Syntax>
+</VMInstruction>

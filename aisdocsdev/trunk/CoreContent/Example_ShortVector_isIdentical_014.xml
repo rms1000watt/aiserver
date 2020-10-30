@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example ShortVector isIdentical 014</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isIdentical</FunctionKeywords>
+		<TypeKeywords>ShortVector Boolean</TypeKeywords>
+		<RelatedFunctions>compareEQ isIdentical comparison isEqual     </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords> Vector Equal Analytic Object Boolean</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example sets two Vectors and makes copies of these Vectors 
+
+
+
+
+
+
+                  using the <b>setq</b> and the <b>copy</b> function. It then uses the
+
+
+
+
+
+
+                  <b>isIdentical</b> function to compare the copies of the two  Vectors.  
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq A #(short| 11 12 ))      </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60ShortVector 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(setq B  #(short| 11 12 ))           </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ #&#60ShortVector 234567&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq C (copy A ))           </sc>]]></Expression>
+        <Note><![CDATA[C has a different Object Id although the contents of C and A are the same. ]]></Note>
+        <Returns><![CDATA[ #&#60ShortVector 345678&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq D A)           </sc>]]></Expression>
+        <Note><![CDATA[D and A have the same Object Id since the setq function 
+
+
+
+
+
+
+             assigns a pointer to the same memory location of the source object. ]]></Note>
+        <Returns><![CDATA[ #&#60ShortVector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(isIdentical  A B)   </sc>]]></Expression>
+        <Note><![CDATA[A and B have different Object Ids.]]></Note>
+        <Returns><![CDATA[ false ]]></Returns>
+        <Expression><![CDATA[ <sc>(isIdentical  B C)   </sc>]]></Expression>
+        <Note><![CDATA[B and C have different Object Ids. ]]></Note>
+        <Returns><![CDATA[ false ]]></Returns>
+        <Expression><![CDATA[ <sc>(isIdentical  D A)   </sc>]]></Expression>
+        <Note><![CDATA[D and A access the same memory location. ]]></Note>
+        <Returns><![CDATA[ true ]]></Returns>
+        <Hints><![CDATA[<p>When you use the <b>setq</b> function on a collection data type such as a 
+
+
+
+
+
+
+               Vector, a pointer to the data location (the object id) is copied to the 
+
+
+
+
+
+
+               target container (target).  Therefore, the <b>source</b> and  <b>target</b>
+               container are pointing to the same data. The <b>isIdentical</b> function returns
+
+
+
+
+
+
+               true for the source and target containers in the <b>setq</b> function.</p>
+               <p>However if the <b>copy</b> function was used, it produces a copy of the 
+
+
+
+
+
+
+                  Vector (target) in a different memory location. Therefore, the <b>isIdentical</b>
+                  function returns false for the source and target containers in the <b>copy</b> function.  
+
+
+
+
+
+
+               </p>      ]]></Hints>
+   </Syntax>
+</Example>

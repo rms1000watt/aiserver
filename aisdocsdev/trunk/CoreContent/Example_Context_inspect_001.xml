@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Context inspect 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>inspect  </FunctionKeywords>
+		<TypeKeywords>Lambda Context </TypeKeywords>
+		<RelatedFunctions> sizeof </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>system statistical information</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ <p>This example returns the statistical and sytem inofrmation as specified
+
+                  by the arguments to the <b>inspect</b> function.</p>
+     ]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc> (setq  s  (new String:  "Hello there you all"))</sc>]]></Expression>
+        <Note><![CDATA[The object to be inspected.]]></Note>
+        <Returns><![CDATA[Hello there you all ]]></Returns>
+  	    <Expression><![CDATA[ <sc> (inspect  s)   </sc>]]></Expression>
+        <Note><![CDATA[The index for the specified object is returned.]]></Note>
+        <Returns><![CDATA[ 163051]]></Returns>
+	    <Expression><![CDATA[ <sc> (defun  foo(n) (++ n))      </sc>]]></Expression>  
+        <Note><![CDATA[An Lambda is defined.]]></Note> 
+        <Returns><![CDATA[#&#60Lambda 123456&#62]]></Returns>
+	    <Expression><![CDATA[ <sc> (inspect  foo)   </sc>]]></Expression>  
+        <Note><![CDATA[The index for the specified object is returned.]]></Note> 
+        <Returns><![CDATA[ 123456]]></Returns>
+  	    <Expression><![CDATA[ <sc> (inspect  true)   </sc>]]></Expression>
+        <Note><![CDATA[The statistical information of the object is returned in the form of the Vector.]]></Note>
+        <Returns><![CDATA[#&#60Vector 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc> (display #&#60Vector 123456&#62)   </sc>]]></Expression>
+        <Note><![CDATA[The contents of the Vector:]]></Note>
+        <Returns><![CDATA[#("Memory Block Count = 51584" "Used Memory Bytes  = 19613512" 
+
+               "Blocked Block Count = 0" "Blocked Memory Bytes  = 0" "Free Block Count = 1055" 
+
+              "Free Block Bytes  = 80208664" "Free User Bytes  = 80183112" "System Check Count = 1" 
+
+             "Block Join Count = 185837" "Block Split Count = 238484" "Memory Copy Count = 0" 
+
+             "Block Count = 185550" "Free List Hit Count = 14597" "Larger Frame Free List Hit Count = 232765" 
+
+             "Used Object Count  = 47593" "Free Object Index  = 162956" "New Block Function Time  = 0" 
+
+            "Free Block Function Time = 0" "Resize Block Function Time = 0" "Garbage Switch  = true" )]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

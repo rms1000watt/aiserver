@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example List objectToList 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>list</FunctionKeywords>
+		<TypeKeywords>Pair List</TypeKeywords>
+		<RelatedFunctions> last makeQuotedList list</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>create list arguments</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These example creates lists from a Vector, Structure, Dictionary and other
+                   Data type such as Integers and Strings.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc> (objectToList  '(4  6  5))              </sc>]]></Expression>
+        <Note><![CDATA[ The List is returned unchanged.]]></Note>
+        <Returns><![CDATA[#&#60Pair 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc> (display #&#60Pair 123456&#62 )          </sc>]]></Expression>
+        <Note><![CDATA[ none]]></Note>
+        <Returns><![CDATA[(1 2 3 4)]]></Returns>
+        <Expression><![CDATA[ <sc> (objectToList  #{A: (+  3  4)  B: 5})      </sc>]]></Expression>
+        <Note><![CDATA[ A Structure is converted into a List.]]></Note>
+        <Returns><![CDATA[#&#60Pair 234567&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc> (display #&#60Pair 234567&#62 )          </sc>]]></Expression>
+        <Note><![CDATA[ none]]></Note>
+        <Returns><![CDATA[(A (+ 3 4) B 5)]]></Returns>
+     <Expression><![CDATA[ <sc> (objectToList  #("This" "is" "a" "Vector"))      </sc>]]></Expression>
+        <Note><![CDATA[ A Vector is converted into a List]]></Note>
+        <Returns><![CDATA[#&#60Pair 34567&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc> (display #&#60Pair 345678&#62 )          </sc>]]></Expression>
+        <Note><![CDATA[ none]]></Note>
+        <Returns><![CDATA[("This" "is" "a" "Vector")]]></Returns>
+        <Expression><![CDATA[ <sc> (objectToList  #{dic| a: first b: second})      </sc>]]></Expression>  
+        <Note><![CDATA[ A Dictionary is converted into a List]]></Note> 
+        <Returns><![CDATA[#&#60Pair 456789&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc> (display #&#60Pair 456789&#62 )          </sc>]]></Expression>       
+        <Note><![CDATA[ none]]></Note> 
+        <Returns><![CDATA[(#{dic|| a first b second})]]></Returns>
+        <Expression><![CDATA[ <sc> (objectToList  "Hello There")      </sc>]]></Expression>  
+        <Note><![CDATA[ A String is converted into a List]]></Note> 
+        <Returns><![CDATA[#&#60Pair 567890&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc> (display #&#60Pair 567890&#62 )          </sc>]]></Expression>       
+        <Note><![CDATA[ none]]></Note> 
+        <Returns><![CDATA[("Hello There")]]></Returns>
+        <Expression><![CDATA[ <sc> (objectToList  22)      </sc>]]></Expression>  
+        <Note><![CDATA[ An Integer is converted into a List]]></Note> 
+        <Returns><![CDATA[#&#60Pair 678901&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc> (display #&#60Pair 678901&#62 )          </sc>]]></Expression>       
+        <Note><![CDATA[ none]]></Note> 
+        <Returns><![CDATA[(22)]]></Returns>
+        <Hints><![CDATA[
+none
+
+]]></Hints>
+   </Syntax>
+</Example>

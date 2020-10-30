@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Dictionary ref 009</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>ref</FunctionKeywords>
+		<TypeKeywords> Dictionary Symbol Integer Text</TypeKeywords>
+		<RelatedFunctions>setq  ref fieldsOf   refValues  </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>ref reference set position</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows the <b>ref</b> function returns the
+key or
+
+                  value of the Dictionary through the <b>index</b> reference.
+This example
+                  uses the <b>(ref aDictionary index1 index2)</b> function syntax.
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(define aDictionary  #{dic| Name: "Bill"  SSN: "616 55 1209" Age: 45}  )       </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60Dictionary 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(ref  aDictionary 0 0)  </sc>]]></Expression>
+        <Note><![CDATA[The ref function returns key of the Dictionary with the specified indices. ]]></Note>
+        <Returns><![CDATA[Age:]]></Returns>
+        <Expression><![CDATA[ <sc>(ref  aDictionary 0 1)       </sc>]]></Expression>  
+        <Note><![CDATA[The ref function returns the values of the  Dictionary with the specified indices.]]></Note> 
+        <Returns><![CDATA[45]]></Returns>
+        <Expression><![CDATA[ <sc>(ref  aDictionary 1 0)  </sc>]]></Expression>
+        <Note><![CDATA[The ref function returns key of the Dictionary with the specified indices. ]]></Note>
+        <Returns><![CDATA[Name:]]></Returns>
+  	    <Expression><![CDATA[ <sc>(ref  aDictionary 0 1)       </sc>]]></Expression>
+        <Note><![CDATA[The ref function returns the values  of the  Dictionary with the specified indices.]]></Note>
+        <Returns><![CDATA[45]]></Returns>
+  	    <Expression><![CDATA[ <sc>(ref  aDictionary 1 1)       </sc>]]></Expression>
+        <Note><![CDATA[Other values and keys of the Dictionary with the specified indices.]]></Note>
+        <Returns><![CDATA[Bill]]></Returns>
+        <Expression><![CDATA[ <sc>(ref  aDictionary 2 0)       </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[SSN]]></Returns>
+        <Expression><![CDATA[ <sc>(ref  aDictionary 2 1)       </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[616 55 1209]]></Returns>
+        <Hints><![CDATA[ An often used shorthand to reference a dictionary value or key is the . 
+                (period) operator  or the [ ]  (bracket) operator.  
+               <p><b>(define Dict   #{dic| Name: "Bill"  SSN: "616 55 1209" Age: 45}  )   </b></p>
+               <table>
+                 <tr><td width=60%><b>Dict.Age or  Dict[0]</b></td>
+                     <td width=40%>Returns:<b>45</b></td></tr>
+                 <tr><td width=60%><b>Dict.Name   or  Dict[1]</b></td>
+                     <td width=40%>Returns:<b>Bill</b></td></tr>
+                 <tr><td width=60%><b>Dict.SSN   or  Dict[2]</b></td>
+                     <td width=40%>Returns:<b>616 55 1209</b></td></tr>
+               </table>     
+               <p> When a single index is used, the value portion of the specified binding is 
+                   returned. However two indices offer the flexibility of referencing either the 
+                   key or value.</p>
+                <p><b>(define Dict   #{dic| Name: "Bill"  SSN: "616 55 1209" Age: 45}  )   </b></p>
+              <table>
+                 <tr><td width=60%><b>  Dict[0 0]</b></td>
+                     <td width=40%>Returns:<b>Age</b></td></tr>
+                 <tr><td width=60%><b>  Dict[0 1]</b></td>
+                     <td width=40%>Returns:<b>45</b></td></tr>
+                 <tr><td width=60%><b> Dict[1 0]</b></td>
+                     <td width=40%>Returns:<b>Name</b></td></tr>
+                 <tr><td width=60%><b>  Dict[1 1]</b></td>
+                     <td width=40%>Returns:<b>Bill</b></td></tr>
+                 <tr><td width=60%><b>  Dict[2 0]</b></td>
+                     <td width=40%>Returns:<b>SSN</b></td></tr>
+                 <tr><td width=60%><b> Dict[2 1]</b></td>
+                     <td width=40%>Returns:<b>616 55 1209</b></td></tr>
+               </table>
+]]></Hints>
+   </Syntax>
+</Example>

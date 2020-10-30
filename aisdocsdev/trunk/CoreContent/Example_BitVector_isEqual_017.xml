@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example BitVector isEqual 017</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isEqual</FunctionKeywords>
+		<TypeKeywords>BitVector Boolean</TypeKeywords>
+		<RelatedFunctions>compareEQ isIdentical comparison   </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>Vector Equal Analytic Object </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples check if the type and values of the first Vector
+
+
+
+
+                   is equal to the corresponding value   of the second
+
+
+
+
+                   Vector. If they are, the function returns true, otherwise, it returns false.
+
+
+
+
+
+ 
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(isEqual #(bit| 1 1 1 1 1 ) (setq X (new Vector:  bit: 5 1 ))  )    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>(isEqual #(bit| 1 1 1 1 1 ) #(int| 1 1 1 1 1 )  )       </sc>]]></Expression>
+        <Note><![CDATA[The arguments do not have the same Vetor subtype. ]]></Note>
+        <Returns><![CDATA[ false ]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

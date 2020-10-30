@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example FltVector mapc 005</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>mapc</FunctionKeywords>
+		<TypeKeywords>FltVector  </TypeKeywords>
+		<RelatedFunctions>map new</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>map mapc copy process</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines a FltVector and applies the <b>add1</b>
+                 function to each element of the Vector using the  <b>mapc</b> function.   
+
+
+
+
+                
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define Scores  #(float| 5.456699848175 3.141592025757 ) ) </sc>]]></Expression>
+        <Note><![CDATA[A Float Vector is defined. ]]></Note>
+        <Returns><![CDATA[#&#60FltVector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq  NewScores  (mapc  add1  Scores))      </sc>]]></Expression>
+        <Note><![CDATA[Returns the last result of the function add1.]]></Note>
+        <Returns><![CDATA[4.141592025757 ]]></Returns>
+        <Hints><![CDATA[none
+       ]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Directory count 003</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>count</FunctionKeywords>
+		<TypeKeywords> Directory Integer</TypeKeywords>
+		<RelatedFunctions>length</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>count length </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines a Directory and uses the <b>count</b> function to perform
+
+
+                  a deep count of the keys and imbedded Directories within the defined Directory.
+
+
+                  The <b>length</b> function is also included to illustrate the difference of
+
+
+                  deep versus shallow counting.    
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define v  #{dir|a: 1 b: 2 c: 3 d:4 e: #{dir|x: 5 y: 6}})  </sc>]]></Expression>
+        <Note><![CDATA[A Directory with an embedded Directory. ]]></Note>
+        <Returns><![CDATA[#&#60Directory 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(count v)     </sc>]]></Expression>
+        <Note><![CDATA[A deep count. The keys of the embedded Directory are included.]]></Note>
+        <Returns><![CDATA[6]]></Returns>
+        <Expression><![CDATA[ <sc> (length v) </sc>]]></Expression>
+        <Note><![CDATA[A shallow count.]]></Note>
+        <Returns><![CDATA[5]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>inspect</Title>
+		<FunctionName>inspect</FunctionName>
+		<FunctionType>Function</FunctionType>
+        <ArgumentTypes> Lambda Boolean Integer Symbol ObjectRepository String</ArgumentTypes>
+        <DataType> Lambda Context ObjectRepository</DataType>
+	    <RelatedFunctions> sizeof </RelatedFunctions>
+        <RelatedVMInstructions>   </RelatedVMInstructions> 
+		<HumanKeywords>system statistical information</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>inspect </b> function returns statistical and status information concerning the 
+              specified Analytic Information Server environment.  </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+	     <p> The <b>inspect </b> function returns statistical and status information concerning the 
+              specified Analytic Information Server environment. The type of information to be returned is 
+              dependent upon the optional arguments.</p>
+        ]]></Overview>
+       <Usage><![CDATA[
+        <p>Invoke the <b>inspect</b> function when statistical and status information concerning the specified 
+          Analytic Information Server environment is required.</p>
+       ]]></Usage>
+    </Brief>
+	<Syntax-Lambda>
+	    <Expression><![CDATA[<b>  (inspect) </b>
+]]></Expression>
+		 <Argument>
+		  <Name>none</Name>
+		  <Note><![CDATA[
+		  <p>none</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+	    <Return><![CDATA[
+	    <p>Returns the size of free memory in the current Analytic Information Server context.</p>
+	    ]]></Return>
+	</Syntax-Lambda>
+	<Syntax-Lambda>
+	    <Expression><![CDATA[<b>  (inspect true)  </b>]]></Expression>              
+		 <Argument> 
+		  <Name>true</Name>
+		  <Note><![CDATA[
+		  <p>Request for statistics on the current Analytic Information Server context.</p>
+          ]]></Note>
+		  <AISTypes>Boolean</AISTypes>
+		</Argument>    
+	    <Return><![CDATA[ 
+	    <p>Returns a structure of statistics on the current Analytic Information Server context.</p>
+	    ]]></Return>
+	</Syntax-Lambda>
+	<Syntax-Lambda> 
+	    <Expression><![CDATA[<b>  (inspect  anInteger)  </b>]]></Expression>              
+		 <Argument> 
+		  <Name>anInteger</Name>
+		  <Note><![CDATA[
+		  <p>Request for the object having the specified index.</p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>    
+	    <Return><![CDATA[ 
+	    <p>Returns the object having the specified index.</p>
+	    ]]></Return>
+	</Syntax-Lambda>
+	<Syntax-Lambda>
+	    <Expression><![CDATA[<b>  (inspect name: anInteger)  </b>]]></Expression> 
+		 <Argument> 
+		  <Name>name:</Name>
+		  <Note><![CDATA[
+		  <p>Optional object type name.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>                 
+		 <Argument> 
+		  <Name>anInteger</Name>
+		  <Note><![CDATA[
+		  <p>Request for the object having the specified index.</p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>    
+	    <Return><![CDATA[ 
+	    <p>Returns the object having the specified index.</p>
+	    ]]></Return>
+	</Syntax-Lambda>
+	<Syntax-Lambda>
+	    <Expression><![CDATA[<b>  (inspect stack:)  </b>]]></Expression> 
+		 <Argument> 
+		  <Name>stack:</Name>
+		  <Note><![CDATA[
+		  <p>Request for the top of Stack index in the current Analytic Information Server context.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>                   
+	    <Return><![CDATA[ 
+	    <p>Returns the object having the specified index.</p>
+	    ]]></Return>
+	</Syntax-Lambda>
+	<Syntax-Lambda>
+	    <Expression><![CDATA[<b>  (inspect stack: anInteger)  </b>]]></Expression> 
+		 <Argument> 
+		  <Name>stack:</Name>
+		  <Note><![CDATA[
+		  <p>Request for the nth item on the current Analytic Information Server context Stack.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument> 
+		 <Argument> 
+		  <Name>anInteger</Name>
+		  <Note><![CDATA[
+		  <p>Request for the nth item on the current Analytic Information Server context Stack.</p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>                   
+	    <Return><![CDATA[ 
+	    <p>Returns the nth item on the current Analytic Information Server context Stack.</p>
+	    ]]></Return>
+	</Syntax-Lambda>
+	<Syntax-Lambda>
+	    <Expression><![CDATA[<b>  (inspect anObject)  </b>]]></Expression> 
+		 <Argument> 
+		  <Name>anObject</Name>
+		  <Note><![CDATA[
+		  <p>Request for the integer index of the specified object.</p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>                 
+	    <Return><![CDATA[ 
+	    <p>Returns the integer index of the specified object.</p>
+	    ]]></Return>
+	</Syntax-Lambda>
+	<Syntax-Lambda>
+	    <Expression><![CDATA[<b>  (inspect objectList:)  </b>]]></Expression> 
+		 <Argument> 
+		  <Name>objectList:</Name>
+		  <Note><![CDATA[
+		  <p>Request for an Object Vector of all active objects in the current Lambda 
+             Information Server context.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>                 
+	    <Return><![CDATA[ 
+	    <p>Returns the value as determined by the command.</p>
+	    ]]></Return>                                    
+	</Syntax-Lambda>
+	<Syntax-ObjectRepository>
+	    <Expression><![CDATA[<b>  (inspect aGor) </b>]]></Expression>              
+		 <Argument> 
+		  <Name>aGor</Name>
+		  <Note><![CDATA[
+		  <p>The Object Repository which is to be inspected.</p>
+          ]]></Note>
+		  <AISTypes>ObjectRepository</AISTypes>
+		</Argument>    
+	    <Return><![CDATA[ 
+	    <p>Returns the size of the Database file in bytes. </p>
+	    ]]></Return>                    
+	</Syntax-ObjectRepository>
+	<Syntax-ObjectRepository>
+	    <Expression><![CDATA[<b>  (inspect aGor check:)   </b>
+                    <b>  (inspect aGor free:)   </b>
+                    <b>  (inspect aGor directory:)   </b>
+                    <b>  (inspect aGor index:)   </b>
+                    <b>  (inspect aGor open:)   </b>
+                    <b>  (inspect aGor pages:)   </b>
+                    <b>  (inspect aGor show:)   </b>
+                    <b>  (inspect aGor stats:)   </b>]]></Expression> 
+		 <Argument> 
+		  <Name>aGor</Name>
+		  <Note><![CDATA[
+		  <p>The Object Repository which is to be inspected.</p>
+          ]]></Note>
+		  <AISTypes>ObjectRepository</AISTypes>
+		</Argument>  
+		 <Argument> 
+		  <Name>command </Name>
+		  <Note><![CDATA[
+		  <p>The inspection command. If check:, a full damage inspection of the database is 
+            performed. If free: the number of free bytes remaining in the database is returned. 
+            If directory: a copy of the index directory for the database is returned. If index: 
+            the index allocation statistics for the database are displayed. If pages: the page 
+            statistics for the database are displayed. If open: true or false is returned 
+            depending upon whether the database is open or closed. If show: the full statistics 
+           for the database are displayed. If stats:, a structure of database statistics is 
+           returned.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>    
+	    <Return><![CDATA[ 
+	    <p>Returns the value as determined by the command.</p>
+	    ]]></Return> 
+	</Syntax-ObjectRepository>
+	<Syntax-ObjectRepository>
+	    <Expression><![CDATA[<b>  (inspect aGor frameCheck: frameID)   </b>]]></Expression>              
+		 <Argument> 
+		  <Name>aGor</Name>
+		  <Note><![CDATA[
+		  <p>The Object Repository which is to be inspected.</p>
+          ]]></Note>
+		  <AISTypes>ObjectRepository</AISTypes>
+		</Argument>
+		 <Argument> 
+		  <Name>frameCheck:</Name>
+		  <Note><![CDATA[
+		  <p>The inspection command for performing a full validation inspection on the specified frame.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>  
+		 <Argument> 
+		  <Name>frameID</Name>
+		  <Note><![CDATA[
+		  <p>The The frame id of the object to be inspected.</p>
+          ]]></Note>
+		  <AISTypes>String</AISTypes>
+		</Argument>      
+	    <Return><![CDATA[ 
+	    <p>Returns the value as determined by the command.</p>
+	    ]]></Return>                    
+	</Syntax-ObjectRepository>
+	<Syntax-ObjectRepository>
+	    <Expression><![CDATA[<b>  (inspect aGor check: recordkey)   </b>
+                    <b>  (inspect aGor length: recordkey)    </b>
+                    <b>  (inspect aGor date: recordkey)   </b>
+                    <b>  (inspect aGor filepos: recordkey)   </b>
+                    <b>  (inspect aGor frame: recordkey)    </b>]]></Expression> 
+		 <Argument> 
+		  <Name>aGor</Name>
+		  <Note><![CDATA[
+		  <p>The Object Repository which is to be inspected.</p>
+          ]]></Note>
+		  <AISTypes>ObjectRepository</AISTypes>
+		</Argument>            
+		 <Argument> 
+		  <Name>command</Name>
+		  <Note><![CDATA[
+		  <p>The inspection command for the specified retrieval key. If length: the number of bytes 
+          reserved for this object in the database is returned. If filepos: the absolute file
+           position for this object in the database is returned. If date: the date and time stamp 
+           for this object is returned. If frame:, a Disk Frame ID is returned containing the file 
+           position and the size of the record frame. If check:, a full validation check of the 
+           specified record is performed. </p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>  
+		 <Argument> 
+		  <Name>recordKey</Name>
+		  <Note><![CDATA[
+		  <p>The retrieval key of the object to be inspected. </p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>    
+	    <Return><![CDATA[ 
+	    <p>Returns the value as determined by the command.</p>
+	    ]]></Return>
+	</Syntax-ObjectRepository>
+</Function>

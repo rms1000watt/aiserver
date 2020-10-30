@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Boolean compareEQ 009</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compareEQ</FunctionKeywords>
+		<TypeKeywords> Boolean</TypeKeywords>
+		<RelatedFunctions>compare compareNE compareGT compareGE compareLT  compareLE</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare void equal </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>compareEQ</b> function to compare two objects and return
+
+
+
+
+
+
+
+
+
+                  the Boolean value, true or false. The  values of each objects are compared
+
+
+
+
+
+
+                  to determine whether the objects are equal or not.
+
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+        <Expression><![CDATA[ <sc>(compareEQ false 0 )         </sc>]]></Expression>
+        <Note><![CDATA[The Boolean value false has a state value of 1.]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(compareEQ false (&#62 2 3))           </sc>]]></Expression>
+        <Note><![CDATA[ The result from the &#62 operation is also the value 1.]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Function compareLE 013</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compareLE</FunctionKeywords>
+		<TypeKeywords> Function</TypeKeywords>
+		<RelatedFunctions>compare compareEQ compareNE compareGT compareGE  compareLT</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare function lesser equal</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>compareLE</b> function to compare two function object IDs and return
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  the Boolean value, true, if the first object ID is lesser than or equal to the second object ID
+
+                  or false, if otherwise.  
+
+
+
+	]]></Description>
+	<Syntax>
+        <Expression><![CDATA[ <sc>(compareLE add1 add1)                           </sc>]]></Expression>
+        <Note><![CDATA[ none]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>(setq a sub1)                       </sc>]]></Expression>
+        <Note><![CDATA[ none]]></Note>
+        <Returns><![CDATA[sub1]]></Returns>
+        <Expression><![CDATA[ <sc>(setq b add1)                            </sc>]]></Expression>
+        <Note><![CDATA[ none]]></Note>
+        <Returns><![CDATA[add1]]></Returns>
+        <Expression><![CDATA[ <sc>(compareLE a b)                               </sc>]]></Expression>
+        <Note><![CDATA[ none]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

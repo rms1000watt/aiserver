@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Directory setq 011</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>setq</FunctionKeywords>
+		<TypeKeywords>Directory Symbol Text </TypeKeywords>
+		<RelatedFunctions>new   define   </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>set setq replace global value  </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ If the setq function specifies a key argument that does not exist in the 
+                  specified Directory, the key and the value will be dynamically installed.
+                   This example shows the <b>setq</b> function adding a new key-value binding
+
+
+                  using the <b>(setq  aDir last: key newValue)</b> function syntax.                
+
+
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(define aDir  #{dir| Name: "Bill"  SSN: "616 55 1209" Age: 45}  )  </sc>]]></Expression>
+        <Note><![CDATA[Sets the Directory. ]]></Note>
+        <Returns><![CDATA[ #&#60Directory 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(set  aDir City: "L.A.")   </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[ #&#60Directory 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc>(display aDir)     </sc>]]></Expression>
+        <Note><![CDATA[Display the modified Directory appended with the new key-value binding.]]></Note>
+        <Returns><![CDATA[#{dic| Age 45 City "L.A." Name "Bill" SSN "616 55 1209"}]]></Returns>
+        <Expression><![CDATA[ <sc>(ref  aDir City:)  </sc>]]></Expression>
+        <Note><![CDATA[Displays the new value. ]]></Note>
+        <Returns><![CDATA[L.A.]]></Returns>
+        <Hints><![CDATA[The <b>set</b> function keyword may be used instead of <b>setq</b>.]]></Hints>
+   </Syntax>
+</Example>

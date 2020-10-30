@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number defmethod 014</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>defmethod</FunctionKeywords>
+		<TypeKeywords>   Symbol Dictionary </TypeKeywords>
+		<RelatedFunctions>addMethod send methodsOf</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>method message messageName</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[<p> This example defines a method named <b>doubleThis </b> that is invoked when the Number  
+                 type receives an double message.  The <b>doubleThis</b> method doubles its 
+                 numeric argument.  </p>
+	]]></Description>
+	<Syntax>
+	<Expression><![CDATA[<sc>(defmethod  Number:  double (b) (* b 2))        </sc>]]></Expression>  
+    <Note><![CDATA[ First Define the doubleThis method:]]></Note>    
+    <Returns><![CDATA[#&#60Dictionary 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(send double: 1.1)       <sc> ]]></Expression>
+    <Note><![CDATA[To invoke the Lambda that responds to the double message, issue the following statement:]]></Note>
+    <Returns><![CDATA[2.2]]></Returns>
+    <Expression><![CDATA[<sc>(double: 1.1)       <sc> ]]></Expression>
+    <Note><![CDATA[Alternatively, the Lambda may be invoked using the following syntax:]]></Note>
+    <Returns><![CDATA[2.2]]></Returns>
+    <Hints><![CDATA[ 
+        <p>To view the entry in the methods Dictionary created by the defmethod function, 
+           you can use the method name to access the directory entry by </p>
+        <p><b> #&#60Dictionary 123456&#62[methodName:] or </b></p>
+        <p> To determine the number of assigned methods:</p>
+        <p><b>(length  (methodsOf Number: ))</b></p>        
+        <p>To access the nth method name:</p>
+        <p><b>(methodsOf Number: )[n  0]</b></p>
+]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmnatLoadFloat</Title>
+		<InstructionName>vmnatLoadFloat</InstructionName>
+		<InstructionType>Native</InstructionType>
+		<ArgumentTypes>  Float  Number</ArgumentTypes>
+		<RelatedVMInstructions>  vmnatLoadCharacter vmnatLoadInteger vmnatLoadNumber   
+		                        vmnatLoadObject vmnatLoadShort </RelatedVMInstructions>
+		<HumanKeywords>  load float </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[                                                  
+		<p>When evaluated, this vm instruction loads the Float <b>source</b> 
+		value into the <b>target</b> word and sets the data type to Number. There 
+		are no conversions made between different types. This instruction may return 
+		an Error value. After the operation, the Instruction Pointer is promoted. 
+		The operation of this vm instruction is expressed in the following C expression:
+         </p>	
+        <ul><li><b> (word:number)target = (float)source;   </b></li></ul>
+    ]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[  (vmnatLoadFloat source target) ]]></Expression>
+		<Argument> 
+		  <Name> source </Name>
+		  <Format>regoffset </Format>
+		  <AISTypes> float </AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>target  </Name>
+		  <Format>regoffset  </Format>
+		  <AISTypes>(word:number) </AISTypes>
+		</Argument>
+	</Syntax>
+</VMInstruction>

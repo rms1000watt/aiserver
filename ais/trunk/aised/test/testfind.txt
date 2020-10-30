@@ -1,0 +1,54 @@
+# aised/test/testfind.txt
+
+#							AISED - TEST FIND
+# Test find operations.  
+
+# CHANGE HISTORY
+# Version	Date		Who		Change
+# 1.0110	10/20/2006	tlw		find. More tests for find.
+# 1.0109	10/8/2006	tlw		Add more tests
+# 1.0039	4/20/2004	tlw		Original
+
+# SYNTAX
+# FIND - find("Pattern",All,MatchCase,Down,RegExp,Select,MatchWord);
+
+# NOTES
+#	 1. When making changes to this file, be sure to note them in the change history above.
+#		Put the latest entry at the top of the history.
+#	 2. See testsuite.txt for lots of details.
+#	 3.	If Select is true, All is ignored.
+#	*************************************************************************************************
+# FIND - find("Pattern",All,MatchCase,Down,RegExp,Select,MatchWord);
+clear
+append("abc A \n", Backward)
+move(nextbow, Select)
+find("a[abc]{1,2}", All, MatchCase, Down, RegExp, Select, MatchWord)
+move(nextbow, Select)
+find("abc", All, MatchCase, Down, NoRegExp, Select, MatchWord)
+move(nextbow)
+find("a[abc]{1,2}", All, MatchCase, Down, RegExp, NoSelect, MatchWord)
+move(nextbow)
+find("abc", All, MatchCase, Down, NoRegExp, NoSelect, MatchWord)
+
+move(bol)
+find("a[abc]{1,2}", NotAll, MatchCase, Down, RegExp, NoSelect, MatchWord)
+move(bol)
+find("abc", NotAll, MatchCase, Down, NoRegExp, NoSelect, MatchWord)
+
+move(bol)
+find("A[ABC]{1,2}", NotAll, NoMatchCase, Down, RegExp, NoSelect, MatchWord)
+move(bol)
+find("ABC", NotAll, NoMatchCase, Down, NoRegExp, NoSelect, MatchWord)
+
+move(bol)
+find("[abc]{1,2}", NotAll, MatchCase, Down, RegExp, NoSelect, NoMatchWord)
+move(bol)
+find("a", NotAll, MatchCase, Down, NoRegExp, NoSelect, NoMatchWord)
+
+move(eol)
+find("[abc]{1,2}", NotAll, MatchCase, Up, RegExp, NoSelect, NoMatchWord)
+move(eol)
+find("a", NotAll, MatchCase, Up, NoRegExp, NoSelect, NoMatchWord)
+
+# PENDING - add special chars \n, \t, \??? into pattern
+# end

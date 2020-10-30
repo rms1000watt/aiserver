@@ -1,0 +1,6 @@
+usr/bin/*
+usr/sbin/*
+usr/lib/mysql/*
+usr/share/mysql/*
+usr/share/aclocal/*
+usr/include/mysql/*

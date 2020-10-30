@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Function isType 015</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isType</FunctionKeywords>
+		<TypeKeywords>  Number String </TypeKeywords>
+		<RelatedFunctions>  isObject isNumber isInteger </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>Type Analytic Object</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ The <b>isType</b> function is used to check if the argument object is
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  of the type Function.
+
+
+
+
+
+
+
+
+
+
+
+                  If it is,  the <b>isType</b> function returns true, otherwise, it returns false.
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(isType  Function:  muli)                            </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>(isType  Function:  addi)                                 </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>(isType  Function: (lambda (a) (+ a 1)))             </sc>]]></Expression>
+        <Note><![CDATA[The julian function returns a Number.]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

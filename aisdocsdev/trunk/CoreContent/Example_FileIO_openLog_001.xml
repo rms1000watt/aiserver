@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example FileIO openLog 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>openLog</FunctionKeywords>
+		<TypeKeywords>FileIO</TypeKeywords>
+		<RelatedFunctions>closeLog</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>console open log </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[<p> The <b>openLog</b> function writes to a file the displayed strings on the console. </p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(openLog "myLogfile.txt") </sc>]]></Expression>
+        <Note><![CDATA[By default, the logs are appended to myLogfile.txt if it is already existing. 
+		  Also, timestamps are included for each line]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+  	    <Expression><![CDATA[ <sc>(writeln "Hello World") </sc>]]></Expression>
+        <Note><![CDATA[The "Hello World" displayed on the console is written to "myLogfile.txt"]]></Note>
+        <Returns><![CDATA[HelloWorld]]></Returns>
+  	    <Expression><![CDATA[ <sc>(closeLog) </sc>]]></Expression>
+        <Note><![CDATA[Close the log file "myLogfile.txt"]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+  	    <Expression><![CDATA[ <sc>(openLog "myLogfile.txt" clear: notiming:) </sc>]]></Expression>
+        <Note><![CDATA[Open log file "myLogfile.txt" and clear its previous contents.
+		  Timestamps are not included for each line to be logged.]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+  	    <Expression><![CDATA[ <sc>(writeln "Hello World") </sc>]]></Expression>
+        <Note><![CDATA[The "Hello World" displayed on the console is written to "myLogfile.txt" without the timestamp]]></Note>
+        <Returns><![CDATA[HelloWorld]]></Returns>
+  	    <Expression><![CDATA[ <sc>(closeLog "Closing this log.") </sc>]]></Expression>
+        <Note><![CDATA[Close the log file "myLogfile.txt" with a note "Closing this log."]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[<p>none</p>]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Document SYSTEM "../DTD/Document.dtd">
+<Document>
+	<KnowledgeBase>
+	    <Title>browseLib</Title>
+		<Topic>Lisp</Topic>
+		<SubTopic>Data Management</SubTopic>
+		<HumanKeywords>Database Data Management Lambda Programming</HumanKeywords>
+	</KnowledgeBase>
+	<Essay>Essay_browseLib_Functions</Essay>
+	<Essay>Essay_Extent_Manager_Templates</Essay>
+    <Essay>Essay_browseLib.dir_Lambda</Essay>
+	<Essay>Essay_browseLib.fileInfo_Lambda</Essay>
+</Document>

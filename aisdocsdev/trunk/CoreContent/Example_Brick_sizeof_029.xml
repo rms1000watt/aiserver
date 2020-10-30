@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Brick sizeof 029</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>sizeof</FunctionKeywords>
+		<TypeKeywords>Brick</TypeKeywords>
+		<RelatedFunctions>new length </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>sizeof closure bytes length disk memory</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples show that the <b>sizeof</b> function return the Object Closure Size.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define nameList  (new Brick: 2 Name:Object:3))</sc>]]></Expression>
+        <Note><![CDATA[A Brick with 2 rows and one field is defined.]]></Note>
+        <Returns><![CDATA[#&#60Record 123456&#62  ]]></Returns>
+        <Expression><![CDATA[ <sc>(sizeof nameList)      </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[272]]></Returns>
+  	    <Expression><![CDATA[ <sc>(define customerList  (new Brick: 2 Name:Object:1 Mortagage:Number:5 Payment:Number:5))</sc>]]></Expression>
+        <Note><![CDATA[A Brick with 2 rows and 3 fields is defined.]]></Note>
+        <Returns><![CDATA[#&#60Record 123456&#62  ]]></Returns>
+        <Expression><![CDATA[ <sc>(sizeof nameList)      </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[648]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

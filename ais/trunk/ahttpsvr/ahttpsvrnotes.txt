@@ -1,0 +1,137 @@
+ahttpsvr/ahttpsvrnotes.txt			tlwms				1/18/02
+
+							Http Server Notes
+
+This project builds the AHttpSvr class which provides a small, fast
+web server with an ISAPI for use with the AIS application.  This
+API is used by the AisMgr (Lambda Internet Server Manager)which
+is an interface supplied for the Smartbase Engine.
+
+FILES
+Source: ahttpvr.cpp
+Header; ahttpsvr.h
+Generated: moc_ahttpsvr.cpp
+
+DOCUMENTATION GUIDE
+-------------------
+*	ahttpsvr/ahttpsvrnotes.txt - this project setup and configuration.
+*	Abase/Include/ahttpsvr.h - WebSvr specification. 
+*	abasedev/webide/main.cpp - example of how to use AHttpSvr class
+*	Docs/InternalDocumentation/Qt - Documents on building Qt
+	projects.
+*	Docs/InternalDocumentation/VisualStudio - Importing Qt projects,
+	general project settings, and compiler options.
+ 
+SUMMARY
+-------
+HttpSvr  - A simple web server that provides an ISAPI for use by
+Smartbase.
+
+NcsaLog - A logging facility that implements the NCSA Common Log
+Format (CLF).
+Config - Reads the settings in a configuration file.
+
+GENERAL NOTES
+-------------
+1.	Warning! AHttpSvr must run on the same thread as the event
+	loop (i.e. the GUI).   It depends upon receiving actions
+	initiated by window messages.
+2.	Include files. The include file ahttpsvr.h in Abasedev\include must
+	be included in httpsvr.pro.
+
+							HTTP SERVER
+PROJECT SETUP
+-------------
+This project was created as follows:
+1.	Compose ahttpsvr.pro by hand.  See comments in file and Qt
+	Qmake.doc for more details.  One can also generate a .pro
+	file using QtDesigner.
+2.	Start Visual Studio. Select "Open Qt Project" icon in Qt
+	add-in toolbar and select ahttpsvr.pro to create an ahttpsvr.dsp.
+3.	Select File->OpenWorkspace->FileType->*.dsp. Select
+	ahttpsvr.dsp to create httpsvr Project.
+4.	Modify project settings as noted below.  Build debug and
+	release configurations.
+		  
+PROJECT NOTES
+-------------
+1.	See Docs/InternalDocumentation/Qt/Qmake.doc.  Includes
+	composing Qt project files (*.pro) and creating Visual Studio
+	project files (*.dsp).
+2.	See Docs/InternalDocumentation/Qt/QtProcedures.doc
+	for a general discussion on setting up Qt library projects.
+	Includes notes on creating Qt toolbar, using Qt Designer,
+	and Qt Documentation.	
+3.	See Docs/InternalDocumentation/VisualStudio/VsProcedures.doc
+	for a general discussion on setting up Visual Studio library
+	projects.  Includes notes on standard project settings,
+	importing Qt projects, and list of compiler options.	
+								
+PROJECT SETTINGS
+----------------
+Project->Settings
+	C/C++ tab
+		General:
+			WarningLevel: 3
+		C++ Language:
+			Enable Exception Handling
+		CodeGeneration:
+			Blend,DebugMultithreadedDLL,cdecl,8 bytes
+		PreProcessor
+			IncludeDirs:
+				../include, $(QTDIR)/Include, $(QTDIR)/mkspecs/win32-msvc
+			Definitions:
+				WIN32,_DEBUG,_MBCS,_LIB,UNICODE,QT_DLL,QT_THREAD_SUPPORT
+	Library tab
+		OutputFile: ../Lib/Debug/ahttpsvr.lib
+
+Static Lib Debug Project Options:
+/nologo /MDd /W3 /Gm /GX /Zi /Od /I "../include" /I "$(QTDIR)/include"
+/I "$(QTDIR)/mkspecs/win32-msvc" /D "WIN32" /D "_DEBUG" /D "_MBCS"
+/D "_LIB" /D "UNICODE" /D "QT_DLL" /D "QT_THREAD_SUPPORT"
+/Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+
+
+Static Lib Release Project Options:
+/nologo /G5 /MT /W3 /Gx /O1 /I "D:/Qt/Include" /I
+"D:/Qt/mkspecs/win32-msvc" /I "../Include" /D "WIN32"
+/D "NDEBUG" /D "_MBCS" /D "_LIB" /D "QT_DLL" /D "UNICODE"
+/D "QT_THREAD_SUPPORT" /Fo"Release/" /Fd"Release/" /FD /c
+
+BUILD
+-----
+Moc'ing ..\Include\ahttpsvr.h...
+Compiling...
+ahttpsvr.cpp
+moc_ahttpsvr.cpp
+Generating Code...
+Creating library...
+
+COMPILER OPTIONS
+----------------
+See Docs/InternalDocumentation/VisualStudio/VsProcedures.doc
+for list of above compiler options.
+
+FD - Generate file dependencies
+G5 - Favor Pentium processor
+Gm - Enable minimal rebuild
+GX - enable synchronous exception handling
+GZ - Catch release-build errors in debug
+MD  - Creates a multithreaded DLL, (MSVCRT.LIB)
+MDd - Creates debug multithreaded DLL   (MSVCRTD.LIB)
+ML  - Creates a single-threaded exe file, (LIBC.LIB)
+MLd - Creates debug single-threaded exe, (LIBCD.LIB)
+MT  - Creates a multithreaded executable file,(LIBCMT.LIB) 
+MTd - Creates a debug multithreaded exe file, (LIBCMTD.LIB)
+O1  - Create smallest code
+O2  - Create fast code
+Od  - Disable optimizations
+ZI  - Generate debug information for Edit&Continue
+Zi  - Generate debugging information
+MBCS - Include multibyte character set mappings
+UNICODE - Include unicode character set mappings
+
+
+
+
+

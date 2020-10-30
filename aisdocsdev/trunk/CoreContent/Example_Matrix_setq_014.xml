@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Matrix setq 014</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>setq</FunctionKeywords>
+		<TypeKeywords>Matrix   Text </TypeKeywords>
+		<RelatedFunctions>new   define   </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>set setq replace global value  </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ If the setq function specifies a value that does not exist in the 
+
+
+                  specified Matrix, the value will be dynamically installed.
+
+
+                  This example shows the <b>setq</b> function replacing the old value in
+                  the Vector with a new value.     
+
+
+
+
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc> (define Fruits  #(mat| "apple" "orange" "lemon"))     </sc>]]></Expression>
+        <Note><![CDATA[Sets the Matrix. ]]></Note>
+        <Returns><![CDATA[ #&#60Matrix123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc> (setq Food  (new Matrix: 2 2 2 "apple" "orange" "lemon" "pear"))      </sc>]]></Expression>  
+        <Note><![CDATA[Sets another Matrix. ]]></Note> 
+        <Returns><![CDATA[ #&#60Matrix234567&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(setq  Fruits  0 "tomato")    </sc>]]></Expression>
+        <Note><![CDATA[The newly set value "tomato" replaces the old value "apple".]]></Note>
+        <Returns><![CDATA[ #&#60Matrix 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc>Fruits[0]     </sc>]]></Expression>
+        <Note><![CDATA[Displays the contents of the modified Matrix. ]]></Note>
+        <Returns><![CDATA[tomato]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Food 1 "potato")    </sc>]]></Expression>  
+        <Note><![CDATA[The newly set value "potato" replaces the old value "orange".]]></Note> 
+        <Returns><![CDATA[ #&#60Matrix23456y&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display Food)   </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#(mat[2 2]| "apple" "potato" "lemon" "pear" )]]></Returns> 
+        <Expression><![CDATA[ <sc>(setq Food 1 0 "meat")    </sc>]]></Expression>  
+        <Note><![CDATA[The newly set value "meat" replaces the old value "lemon".]]></Note> 
+        <Returns><![CDATA[ #&#60Matrix234567&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display Food)   </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#(mat[2 2]| "apple" "potato" "meat" "pear" )]]></Returns>      
+        <Hints><![CDATA[The <b>set</b> function keyword may be used instead of <b>setq</b>.]]></Hints>
+   </Syntax>
+</Example>

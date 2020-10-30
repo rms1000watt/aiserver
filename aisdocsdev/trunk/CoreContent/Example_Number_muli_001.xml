@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number muli 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>muli</FunctionKeywords>
+		<TypeKeywords>Number</TypeKeywords>
+		<RelatedFunctions> addi divi  divi subi iadd isub imul idiv </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>number arithmetic multiplication integer operators</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[  <p> The <b>muli</b> function performs multiplication of the argument values   and returns the result
+
+                     as an Integer.</p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+(muli  2  3.6  4)              </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[24]]></Returns>
+        <Expression><![CDATA[ <sc>(muli  2  -4.1)          </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[-8]]></Returns>
+        <Expression><![CDATA[ <sc>(muli  4  5)                </sc> ]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[20]]></Returns>
+        <Hints><![CDATA[none
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

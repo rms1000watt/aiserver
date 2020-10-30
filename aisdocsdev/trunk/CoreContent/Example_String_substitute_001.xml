@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example String substitute 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>substitute</FunctionKeywords>
+		<TypeKeywords>String Text Integer</TypeKeywords>
+		<RelatedFunctions>replace rept </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>replace substitute substring</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows the <b>substitute</b> function modifying
+                  a substring of a given Text or String with a specified Text or String.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq S  (new String:  "Small World"))      </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[Small World]]></Returns>
+        <Expression><![CDATA[ <sc>(setq S (substitute S "Small" "Old") )    </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ Old World ]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

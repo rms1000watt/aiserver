@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Vector compareGT 006</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compareGT</FunctionKeywords>
+		<TypeKeywords>Vector Boolean</TypeKeywords>
+		<RelatedFunctions>compare compareEQ compareNE compareGE compareLT  compareLE </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare symbol equal greater </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>compareGT</b> function to compare two Vectors and return
+
+
+
+
+
+
+                  the Boolean value, true or false.  The corresponding  values of each Vector are compared
+
+
+
+                  to determine whether one Vector is greater than the other.
+
+
+
+	]]></Description>
+	<Syntax>
+        <Expression><![CDATA[ <sc>(compareGT #("Hello" "World" ) #("Hello" "World" ))     </sc>]]></Expression>  
+        <Note><![CDATA[Both Vectors are equal.]]></Note> 
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(compareGT #("Hello" "Worlds" ) #("Hello" "World" ))     </sc>]]></Expression>  
+        <Note><![CDATA[ The value of the first Vector is greater than the value
+               of the second Vector.]]></Note> 
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>(compareGT #("Hello" "Earth" ) #("Hello" "World" ))    </sc>]]></Expression>  
+        <Note><![CDATA[The value of the first Vector is lesser than the value
+               of the second Vector.]]></Note> 
+        <Returns><![CDATA[false]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

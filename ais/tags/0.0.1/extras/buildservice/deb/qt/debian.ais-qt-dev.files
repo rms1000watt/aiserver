@@ -1,0 +1,4 @@
+usr/bin/*
+usr/lib/*
+usr/include/qt4/*
+usr/share/qt4/*

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Dictionary resize 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>resize</FunctionKeywords>
+		<TypeKeywords>Dictionary Integer</TypeKeywords>
+		<RelatedFunctions>sizeof remove insert delete</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>sizeof size   length   memory</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples modify the Dictionary according to the
+
+                  user-specified number of bindings using the <b>resize</b>
+                  function.
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(resize  #{dic| Student:  "Ann Smith" Age: 6}  3)   </sc>]]></Expression>
+        <Note><![CDATA[The specified size is greater than the Dictionary size.]]></Note>
+        <Returns><![CDATA[#&#60Dictionary 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60Dictionary 123456&#62)   </sc>]]></Expression>
+        <Note><![CDATA[Displays the contents of the resized Dictionary. For the third key-value pair, the 
+
+              key is an empty Symbol and the value is #void.]]></Note>
+        <Returns><![CDATA[#{dic| Student: "Ann Smith" Age: 6 |()|: #void}true ]]></Returns>
+        <Expression><![CDATA[ <sc>(resize  #{dic| Student:  "Ann Smith" Age: 6} 1)     </sc>]]></Expression>
+        <Note><![CDATA[The specified size is lesser than the Dictionary size. ]]></Note>
+        <Returns><![CDATA[#&#60Dictionary 234567#&62]]></Returns>
+        <Expression><![CDATA[ <sc>(display  #&#60Dictionary 234567&#62)   </sc>]]></Expression>
+        <Note><![CDATA[Displays the resized Dictionary. ]]></Note>
+        <Returns><![CDATA[#{dic|  Student:  "Ann Smith" }]]></Returns>
+        <Hints><![CDATA[The <b>resize</b> function is destructive: it updates the specified Dictionary 
+
+               argument in place.
+
+        ]]></Hints>
+   </Syntax>
+</Example>

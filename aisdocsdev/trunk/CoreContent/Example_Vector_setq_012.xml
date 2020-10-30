@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Vector setq 012</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>setq</FunctionKeywords>
+		<TypeKeywords>Vector   Text </TypeKeywords>
+		<RelatedFunctions>new   define   </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>set setq replace global value  </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ If the setq function specifies a value that does not exist in the 
+
+                  specified Vector, the value will be dynamically installed.
+
+                  This example shows the <b>setq</b> function replacing the old value in
+                  the Vector with a new value.     
+
+
+
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc> (define Fruits  #("apple" "orange" "lemon"))     </sc>]]></Expression>
+        <Note><![CDATA[Sets the Vector. ]]></Note>
+        <Returns><![CDATA[ #&#60Vector 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(setq  Fruits  1 "peach")    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[ #&#60Vector 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc>Fruits[0]     </sc>]]></Expression>
+        <Note><![CDATA[Displays the contents of the modified Vector. ]]></Note>
+        <Returns><![CDATA[apple]]></Returns>
+        <Expression><![CDATA[ <sc>Fruits[1]     </sc>]]></Expression>  
+        <Note><![CDATA[The newly set value "peach" replaces the old value "orange".]]></Note> 
+        <Returns><![CDATA[peach]]></Returns>
+        <Expression><![CDATA[ <sc>Fruits[2]     </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[lemon]]></Returns>      
+        <Hints><![CDATA[The <b>set</b> function keyword may be used instead of <b>setq</b>.]]></Hints>
+   </Syntax>
+</Example>

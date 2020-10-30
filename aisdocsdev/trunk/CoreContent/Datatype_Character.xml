@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Datatype SYSTEM "../DTD/Datatype.dtd">
+<Datatype>
+	<KnowledgeBase>
+        <Title>Character</Title>
+		<Type>Native</Type>
+		<RelatedTypes>Void Error Boolean Integer Number Money Percent String 
+		             Text Character</RelatedTypes>
+		<HumanKeywords>Native Character String </HumanKeywords>
+	</KnowledgeBase>
+	<Section>                
+	    <Heading>Character Overview</Heading>
+		<Description><![CDATA[
+		 <p class=MsoBodyText>Analytic Information Server supports the Character Native data type.  
+		 The Character type can contain the 256 valid ASCII character values. </p>
+        ]]></Description>
+    </Section>
+	<Section>                
+	    <Heading>When to Use</Heading>
+		<Description><![CDATA[
+          <p>The Character Native data type is suitable for situations in which one is operating on the 
+          elements of Text, String, or Symbol objects.   Example situations may include the lower case letters: 
+          "a" through "z", the upper case letters: "A" through "Z", the decimal digits: "0" through "1", or 
+          the special characters #\tab, #\newline.</p>          
+        ]]></Description>
+    </Section>
+    <Section>                
+	    <Heading>Character Constants</Heading>
+		<Description><![CDATA[
+		<p class=MsoBodyText style='line-height:117%;page-break-after:avoid'>Lambda
+		Information Server supports character constants.  The sharp character followed by the backslash (#\) precedes each
+		character constant.  </p>
+		<p class=MsoBodyText style='line-height:117%;page-break-after:avoid'>For
+		example:</p>
+		<p class=MsoBodyText style='line-height:117%;page-break-after:avoid'>&nbsp;</p>
+		<table border=0 cellspacing=0 cellpadding=0 style='border-collapse:collapse;
+		 mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+		 <tr>
+		  <td width=129 valign=top style='width:77.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>#\a</p>
+		  </td>
+		  <td width=669 valign=top style='width:401.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>The character |a|</p>
+		  </td>
+		 </tr>
+		 <tr>
+		  <td width=129 valign=top style='width:77.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>#\A</p>
+		  </td>
+		  <td width=669 valign=top style='width:401.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>The character |A|</p>
+		  </td>
+		 </tr>
+		 <tr>
+		  <td width=129 valign=top style='width:77.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>#\(</p>
+		  </td>
+		  <td width=669 valign=top style='width:401.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>The character |(|</p>
+		  </td>
+		 </tr>
+		 <tr>
+		  <td width=129 valign=top style='width:77.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>#\\</p>
+		  </td>
+		  <td width=669 valign=top style='width:401.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>The character |\|</p>
+		  </td>
+		 </tr>
+		 <tr>
+		  <td width=129 valign=top style='width:77.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>#\backspace</p>
+		  </td>
+		  <td width=669 valign=top style='width:401.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>The ASCII backspace character</p>
+		  </td>
+		 </tr>
+		 <tr>
+		  <td width=129 valign=top style='width:77.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>#\escape</p>
+		  </td>
+		  <td width=669 valign=top style='width:401.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>The ASCII escape character</p>
+		  </td>
+		 </tr>
+		 <tr>
+		  <td width=129 valign=top style='width:77.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>#\newline</p>
+		  </td>
+		  <td width=669 valign=top style='width:401.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>The ASCII newline character sequence</p>
+		  </td>
+		 </tr>
+		 <tr>
+		  <td width=129 valign=top style='width:77.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>#\page</p>
+		  </td>
+		  <td width=669 valign=top style='width:401.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>The ASCII form-feed character</p>
+		  </td>
+		 </tr>
+		 <tr>
+		  <td width=129 valign=top style='width:77.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>#\return</p>
+		  </td>
+		  <td width=669 valign=top style='width:401.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>The ASCII carriage-return character</p>
+		  </td>
+		 </tr>
+		 <tr>
+		  <td width=129 valign=top style='width:77.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>#\rubout</p>
+		  </td>
+		  <td width=669 valign=top style='width:401.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>The ASCII delete character</p>
+		  </td>
+		 </tr>
+		 <tr>
+		  <td width=129 valign=top style='width:77.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>#\space</p>
+		  </td>
+		  <td width=669 valign=top style='width:401.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>The ASCII blank character</p>
+		  </td>
+		 </tr>
+		 <tr>
+		  <td width=129 valign=top style='width:77.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>#\tab</p>
+		  </td>
+		  <span  style='mso-bookmark:_Toc316272496'>
+		  <td width=669 valign=top style='width:401.4pt;padding:0in 5.4pt 0in 5.4pt'>
+		  <p class=TableText style='margin-left:0in'>The ASCII tab character<b  style='mso-bidi-font-weight:normal'><u></u></b></p>
+		  </td>
+		 </tr>
+		</table>                  
+        ]]></Description>
+    </Section>
+      <Section>                
+	    <Heading>Native Data Type</Heading>
+		<Description><![CDATA[
+          <p>The <b>Character</b> Data Type is an example of an AIS Native Data Type. </p>
+          <p> Analytic Information Server stores all of its Native Data Types in Virtual Machine Containers.  
+          All containers are stored in memory. Containers provide the basic storage mechanism for modeling 
+          data of all types. Containers provide these fundamental characteristics:      </p>
+          <p>  Ability to hold any type of data (including code) at any time.</p>     
+          <p>  Ability to know what type of data is contained.</p>  
+          <p>  Ability to be stored, retrieved and evaluated by the system.</p>  
+          <p>   Ability to handle type conversion, and memory management automatically.</p>   
+          <p> Containers come in two sizes, Large and Small. Small containers are six bytes in length, 
+          and large containers are ten bytes in length. Large containers can store larger amounts of data 
+          immediately and place less of a burden on the Heap manager. Small containers require less immediate space, 
+          but place more of a burden on the Heap manager.    </p>        
+          <p>  Large containers can store the following data types immediately and does not require the services of the Heap manager:</p>  
+         <ul>
+          <li> #void</li>  
+          <li> error</li>
+          <li> Boolean</li>
+          <li> Character</li>
+          <li> Integer</li>
+          <li> Number</li>
+          <li> Money</li>
+          <li> Percent</li>
+          <li> String</li>
+          <li> Text</li>
+          <li> Character</li>
+          <li> ...heap object references...</li> 
+          </ul>                                      
+          <p>  Small containers can store the following data types immediately without placing additional burden on the Heap manager:</p>
+          <ul>
+          <li> #void</li>  
+          <li> error</li>
+          <li> Boolean</li>
+          <li> Character</li>
+          <li> Integer</li>
+          <li> Number</li>
+          <li> Money</li>
+          <li> Percent</li>
+          <li> String</li>
+          <li> Text</li>
+          <li> Character</li>
+          <li> ...heap object references...</li> 
+          </ul>
+          <p>  Analytic Information Server containers can be saved and loaded to and from persistent (database) 
+          storage at any time. Containers with immediate data are saved on disk in fixed length records equal 
+          to the size of the container. Containers with Heap object references are saved in fixed length records, 
+          which are automatically expanded to include the contents of the Heap object, and any objects referenced 
+          by the Heap object, etc. This feature is called Object Closure Management and is automatic with every 
+          Analytic Information Server container database save. Analytic Information Server containers may be loaded 
+          from any database repository record at any time. If the data in the record is immediate, the database 
+          load fills the container with the immediate data. If the data in the record is an object closure, the 
+          database load fills the container with a Heap object reference, and all of the objects in the record 
+          are loaded back into the Heap with the same referential relationships they had when they were saved.</p>   
+        ]]></Description>
+    </Section>
+</Datatype>

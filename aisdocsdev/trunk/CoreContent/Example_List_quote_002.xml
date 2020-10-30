@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example List quote 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>quote</FunctionKeywords>
+		<TypeKeywords> Pair List Function</TypeKeywords>
+		<RelatedFunctions>isFunction</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>evaluate lexical expression</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ A special case occurs when a empty List is the argument to the <b>quote</b> lexical form.
+	]]></Description>
+	<Syntax>
+	<Expression><![CDATA[<sc>(quote ())     </sc>]]></Expression>
+    <Note><![CDATA[ Since there is no such thing as an empty List, the constant #void is returned.]]></Note>
+    <Returns><![CDATA[ #void]]></Returns>
+    <Expression><![CDATA[<sc>'()         </sc> ]]></Expression>
+    <Note><![CDATA[none]]></Note>
+    <Returns><![CDATA[#void]]></Returns>
+   <Hints><![CDATA[none]]></Hints>
+</Syntax>
+</Example>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example PcodeVector copy 010</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>copy</FunctionKeywords>
+		<TypeKeywords>PcodeVector</TypeKeywords>
+		<RelatedFunctions>setq</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>copy  memcopy pointer</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows how a Vector may be modified destructively or
+
+                   non-destructively  using the  
+
+                   the <b>copy</b> and <b>setq</b> function. 
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq x (new Vector:  pcode: 5 4  ))  </sc>]]></Expression>
+        <Note><![CDATA[The original Vector.  ]]></Note>
+        <Returns><![CDATA[#&#60PcodeVector 123456&#62 ]]></Returns>
+ <Expression><![CDATA[ <sc>(setq z (copy x))  </sc>]]></Expression>
+        <Note><![CDATA[The copied Vector using the copy function.  ]]></Note>
+        <Returns><![CDATA[#&#60PcodeVector 234567&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq twin x)   </sc>]]></Expression>
+        <Note><![CDATA[The copied Vector using the setq function.  ]]></Note>
+        <Returns><![CDATA[#&#60PcodeVector 345678&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq twin[1] 3 )   </sc>]]></Expression>
+        <Note><![CDATA[The container named z is a copy of x (both are Vectors) and z has a separate 
+
+              memory space.  However, the containers named x and twin point to the same memory 
+
+              spaces on the heap.  Therefore ]]></Note>
+        <Returns><![CDATA[#&#60PcodeVector 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>twin[1]   </sc>]]></Expression>
+        <Note><![CDATA[The setq command results in the contents of both twin and x being both the same. ]]></Note>
+        <Returns><![CDATA[3]]></Returns>
+      <Expression><![CDATA[ <sc>x[1]   </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[3]]></Returns>
+        <Expression><![CDATA[ <sc>z[1]   </sc>]]></Expression>
+        <Note><![CDATA[Since z points to a different memory space, it still retained the original value
+
+              which was copied from x before the values of x were modified.]]></Note>
+        <Returns><![CDATA[4]]></Returns>
+        <Hints><![CDATA[Using the setq function results in objects having the same object id.
+
+
+
+               But the object that is being assigned the copied object has a
+
+
+
+              different object id than original object.  In this example twin and 
+
+
+
+              x have the same object id while z has a different object id. ]]></Hints>
+   </Syntax>
+</Example>

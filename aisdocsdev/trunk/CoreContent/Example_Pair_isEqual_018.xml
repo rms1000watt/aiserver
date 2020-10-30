@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Pair isEqual 018</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isAtom</FunctionKeywords>
+		<TypeKeywords>Pair List</TypeKeywords>
+		<RelatedFunctions>compareEQ comparison  isIdentical</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords> Equal Analytic Object </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example uses the <b>isEqual</b> function compare the values of the Pair.
+	]]></Description>
+	<Syntax>
+        <Expression><![CDATA[ <sc> (isEqual  '(A  .  B) '(A))      </sc>]]></Expression>
+        <Note><![CDATA[ none]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+         <Expression><![CDATA[ <sc> (isEqual  '(4 . 6) '(4 . 6) )     </sc>]]></Expression>  
+        <Note><![CDATA[ none]]></Note> 
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[
+none
+
+]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,2150 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Essay SYSTEM "../DTD/Essay.dtd">
+<Essay>
+	<KnowledgeBase>
+	    <Title>Alice</Title>
+		<Topic>AIML</Topic>
+		<SubTopic>Overview</SubTopic>
+		<HumanKeywords>AIML Alice Programming Artificial-Intelligence</HumanKeywords>
+	</KnowledgeBase>
+	<Section>
+	    <Heading>Alice Overview</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="Alice Overview">
+		    <p class="MsoBodyText">The Analytic Information Server implementation of the
+		    A.L.I.C.E. technology is an artificial intelligence natural language chat
+		    Lambda, written in Lisp, and named "<b>alice</b>". The Alice chat Lambda
+		    is actually a community of Lambdas all attached to each other in parent child
+		    relationships. The AIS implementation of Alice has a number of enhancements
+		    related to the integration of the original A.L.I.C.E. technology with the
+		    full capabilities of the Analytic Information Server environment.</p>
+		    <p class="MsoBodyText">The AIS implementation of Alice requires four Lambda
+		    repositories: <b>Alice</b>, <b>AliceAIML</b>, <b>AliceRules</b>, and <b>AliceFacts</b>.
+		    The <b>Alice</b> repository contains the A.L.I.C.E. chat Lambda herself. The <b>AliceAIML</b>
+		    repository contains the source code for the AIML rules and facts
+		    knowledgebase for Alice. The <b>AliceRules</b> repository contains the
+		    compiled AIML rules knowledgebase for Alice. The <b>AliceFacts</b>
+		    repository contains the compiled AIML facts knowledgebase for Alice.</p>
+		    <p class="MsoBodyText">Each of these four repositories (<b>Alice</b>, <b>AliceAIML</b>,
+		    <b>AliceRules</b>, and <b>AliceFacts</b>) are registered with and managed by
+		    the browseLib. Alice may also allocate and register space
+		    with <b>dataMineLib</b> and <b>xmlBase</b>
+		    so that Alice may store facts, acquired or learned during her training process, in data mine tables and XML documents.
+		    Alice may also use the full features of the Analytic Information Server and any Lambdas resident therein.
+		  </div>	  
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>Enhancements to A.L.I.C.E.</Heading>
+		<Description><![CDATA[
+          <div class="h2section" id="Enhancements to A.L.I.C.E.">
+			<p class="MsoBodyText">A.L.I.C.E. is an artificial intelligence natural
+		    language chat robot technology based on an extension of the old ELIZA
+		    psychiatrist program. The principle advantage of the A.L.I.C.E. technology,
+		    like its ELIZA ancestor, is it's uncanny ability to deceive a wide range
+		    of human clients into perceiving Alice as having some intelligence. While
+		    many chat robot tools have complex rule systems but little content, Alice's
+		    wonderful content allows her to be  "chatty".</p>
+		    <p class="MsoBodyText">Starting in 2001, we began adapting the A.L.I.C.E.
+		    technology to operate in the Analytic Information Server database environment.
+		    We wanted to preserve Alice's chatty personality; but, we needed to
+		    enhance Alice's logic and search tool set in the areas of: parsing,
+		    syntax, semantic analysis, database access, rule-base goal specification,
+		    and action-response options.</p>
+		    <p class="MsoBodyText">The Analytic Information Server implementation of
+		    A.L.I.C.E. includes enhancements designed to retain Alice's unparalleled
+		    ability to deceive and entertain human clients while extending the logic and
+		    search tools available in the technology. Our core enhancements to A.L.I.C.E.
+		    technology include the following:</p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l6 level1 lfo1"><span lang="EN-GB" style="FONT-FAMILY: Symbol; mso-ansi-language: EN-GB">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span>Integration of Alice with the complete Analytic Information
+		    Server database environment.<span lang="EN-GB" style="mso-ansi-language: EN-GB"><o:p>
+		    </o:p>
+		    </span></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l6 level1 lfo1"><span lang="EN-GB" style="FONT-FAMILY: Symbol; mso-ansi-language: EN-GB">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><span lang="EN-GB" style="mso-ansi-language: EN-GB">Expanding
+		    Graphmaster storage capacity using Analytic Information Server repositories.<o:p>
+		    </o:p>
+		    </span></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l6 level1 lfo1"><span lang="EN-GB" style="FONT-FAMILY: Symbol; mso-ansi-language: EN-GB">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><span lang="EN-GB" style="mso-ansi-language: EN-GB">Replacing
+		    Alice's word parser with a feature based parser and semantic analyser.<o:p>
+		    </o:p>
+		    </span></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l6 level1 lfo1"><span lang="EN-GB" style="FONT-FAMILY: Symbol; mso-ansi-language: EN-GB">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><span lang="EN-GB" style="mso-ansi-language: EN-GB">Providing
+		    Alice with imbedded HTML responses served to the client by Analytic Information
+		    Server.<o:p>
+		    </o:p>
+		    </span></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l6 level1 lfo1"><span lang="EN-GB" style="FONT-FAMILY: Symbol; mso-ansi-language: EN-GB">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><span lang="EN-GB" style="mso-ansi-language: EN-GB">Allowing
+		    Alice full access to the Internet and web searches via Analytic Information
+		    Server.<o:p>
+		    </o:p>
+		    </span></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l6 level1 lfo1"><span lang="EN-GB" style="FONT-FAMILY: Symbol; mso-ansi-language: EN-GB">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><span lang="EN-GB" style="mso-ansi-language: EN-GB">Supporting
+		    adding, morphing, and combining of feature based tokens in Alice's working
+		    memory.<o:p>
+		    </o:p>
+		    </span></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l6 level1 lfo1"><span lang="EN-GB" style="FONT-FAMILY: Symbol; mso-ansi-language: EN-GB">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><span lang="EN-GB" style="mso-ansi-language: EN-GB">Supporting
+		    forward production logic &amp; goal seeking with backtracking in Alice's
+		    working memory.<o:p>
+		    </o:p>
+		    </span></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l6 level1 lfo1"><span lang="EN-GB" style="FONT-FAMILY: Symbol; mso-ansi-language: EN-GB">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><span lang="EN-GB" style="mso-ansi-language: EN-GB">Supporting
+		    Alice as the client interface to a wide range of disparate knowledgebase
+		    systems via the local and remote TCP/IP communication facilities of Lambda
+		    Information Server.<o:p>
+		    </o:p>
+		    </span></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l6 level1 lfo1"><span lang="EN-GB" style="FONT-FAMILY: Symbol; mso-ansi-language: EN-GB">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><span lang="EN-GB" style="mso-ansi-language: EN-GB">Adding
+		    localized topic rules with the &lt;rule topic="name"&gt; tag.<o:p>
+		    </o:p>
+		    </span></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l6 level1 lfo1"><span lang="EN-GB" style="FONT-FAMILY: Symbol; mso-ansi-language: EN-GB">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><span lang="EN-GB" style="mso-ansi-language: EN-GB">Adding
+		    additional wild cards (? and @) to Alice's &lt;pattern&gt; tag.<o:p>
+		    </o:p>
+		    </span></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l6 level1 lfo1"><span lang="EN-GB" style="FONT-FAMILY: Symbol; mso-ansi-language: EN-GB">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><span lang="EN-GB" style="mso-ansi-language: EN-GB">Adding
+		    user defined feature-based definitions with the &lt;lex&gt; tag.<o:p>
+		    </o:p>
+		    </span></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l6 level1 lfo1"><span lang="EN-GB" style="FONT-FAMILY: Symbol; mso-ansi-language: EN-GB">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><span lang="EN-GB" style="mso-ansi-language: EN-GB">Adding
+		    feature-based wild cards (%Feature and $Feature) to Alice's
+		    &lt;pattern&gt; tag.<o:p>
+		    </o:p>
+		    </span></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l6 level1 lfo1"><span lang="EN-GB" style="FONT-FAMILY: Symbol; mso-ansi-language: EN-GB">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><span lang="EN-GB" style="mso-ansi-language: EN-GB">Adding
+		    feature-based matching actions with the &lt;arg&gt; tag.<o:p>
+		    </o:p>
+		    </span></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l6 level1 lfo1"><span lang="EN-GB" style="FONT-FAMILY: Symbol; mso-ansi-language: EN-GB">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><span lang="EN-GB" style="mso-ansi-language: EN-GB">Adding
+		    user programmable conditions and actions with the &lt;lisp&gt; tag.<o:p>
+		    </o:p>
+		    </span></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l6 level1 lfo1"><span lang="EN-GB" style="FONT-FAMILY: Symbol; mso-ansi-language: EN-GB">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><span lang="EN-GB" style="mso-ansi-language: EN-GB">Adding "classic"
+		    AI tuple logic matching with the &lt;token&gt; tag.<o:p>
+		    </o:p>
+		    </span></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l6 level1 lfo1"><span lang="EN-GB" style="FONT-FAMILY: Symbol; mso-ansi-language: EN-GB">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><span lang="EN-GB" style="mso-ansi-language: EN-GB">Adding
+		    user defined rule conflict resolution with the findAllMatches Alice child
+		    Lambda.<o:p>
+		    </o:p>
+		    </span></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l6 level1 lfo1"><span lang="EN-GB" style="FONT-FAMILY: Symbol; mso-ansi-language: EN-GB">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><span lang="EN-GB" style="mso-ansi-language: EN-GB">Adding
+		    user defined XML database facts and fact retrieval via XQuery with the
+		    &lt;fact&gt; tag.<o:p>
+		    </o:p>
+		    </span></p>
+		    <p class="MsoBodyText">Conversion of the Alice Graphmaster parsed input from
+		    a sequence of words into a sequence of feature based tokens, fills working
+		    memory with a set of tuples (albeit feature based rather than horn-clause
+		    logic tuples). Like the logic-based tuples in CLIPS or OPSYS5 working
+		    memory, the feature-based tuples in Alice working memory can also be morphed
+		    and combined. Composite goal seeking feature-base tuples can be added to
+		    Alice working set, during recursive rule matching, to support backtracking
+		    in either a depth first or breadth first mode.</p>
+		    <p class="MsoBodyText">In the Dr. Wallace's original content Alice answers
+		    the input <u>"What is the meaning of Life?"</u> with the response <u>"Actually,
+		    it's twenty-three, not forty-two"</u>. While this is a classic and
+		    amusing example of wild card pattern matching, it may not be defensible as a
+		    "logical" response.</p>
+		    <p class="MsoBodyText">In the enhanced version of Alice, rules localized to
+		    a specific "topic" area can be formed in strict adherence to the rules
+		    of logic. An excellent example of this is demonstrated in the small set of
+		    AIML rules that allow the enhanced Alice to perform flawless English
+		    language arithmetic.</p>
+		    <p class="MsoBodyText">Theoretically the enhanced Analytic Information Server
+		    implementation of Alice could conceivably be used to provide advanced logic
+		    services including forward production, goal seeking with backtracking, and
+		    depth first or breadth first search. If the client request failed to find an
+		    appropriate goal, using logical methods, then the default might be Alice's
+		    amusing personality, or an appropriate mix of the two.
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>Alice Persistant Memory</Heading>
+		<Description><![CDATA[
+            <div class="h2section" id="Alice Persistant Memory">
+			<p class="MsoBodyText">Alice shares her persistent memory with each Lisp
+		    AIML Lambda executed in an AIML template. Alice's persistent memory
+		    contains the following named elements that are listed below along with an
+		    explanation of their contents.</p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l0 level1 lfo10"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>arg</b><span style="mso-tab-count: 4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>The vector of &lt;arg/&gt; matches during the current pattern check.<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 2.5in; TEXT-INDENT: -2.25in; tab-stops: .25in; mso-list: l0 level1 lfo10"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>in</b><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>The vector of input feature-based tokens during the current pattern
+		    check.<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l0 level1 lfo10"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>star</b><span style="mso-tab-count: 4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>The vector of &lt;star/&gt; matches during the current pattern check.<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 2.5in; TEXT-INDENT: -2.25in; tab-stops: list .25in; mso-list: l0 level1 lfo10"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>that</b><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>The last answer, from Alice, to be used in &lt;that&gt; pattern
+		    matching.<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 2.5in; TEXT-INDENT: -2.25in; tab-stops: list .25in; mso-list: l0 level1 lfo10"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>myAimlPatterns</b><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>The short term memory of AIML patterns loaded from the Alice
+		    knowledgebase respositories.<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 2.5in; TEXT-INDENT: -2.25in; tab-stops: list .25in; mso-list: l0 level1 lfo10"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>myHtmlResponseHeading</b><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>The HTML heading provided (if any) with the response alice last
+		    returned.<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 2.5in; TEXT-INDENT: -2.25in; tab-stops: list .25in; mso-list: l0 level1 lfo10"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>myHtmlResponseResults</b><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>The HTML page provided (if any) with the response alice last
+		    returned.<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l0 level1 lfo10"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>myMemory</b><span style="mso-tab-count: 3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>The discussion and personal term memory of Alice.<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 2.5in; TEXT-INDENT: -2.25in; tab-stops: list .25in; mso-list: l0 level1 lfo10"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>myWebTimeOut</b><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>The maximum time to wait for a response from the world wide web.<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l0 level1 lfo10"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>webOnline</b><span style="mso-tab-count: 3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>The web online switch is true iff the Internet is available.<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>Alice Discussion Memory</Heading>
+		<Description><![CDATA[
+		    <div class="h2section" id="Alice Discussion Memory">
+			<p class="MsoBodyText">Alice herself has a discussion memory capacity that,
+		    at each initialization, contains the following named elements that are
+		    included below along with an explanation of their contents.</p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l7 level1 lfo4"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>context</b>:<span style="mso-spacerun: yes">&nbsp; </span>."The
+		    current discussion context"</p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l7 level1 lfo4"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>it</b>:<span style="mso-spacerun: yes">&nbsp; </span>"The
+		    subject to which "it" refers in<span style="mso-spacerun: yes">&nbsp; </span>the
+		    current discussion"</p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l7 level1 lfo4"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>name</b>: "The client's name"</p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l7 level1 lfo4"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>patternSwitches</b>: "The Dictionary of named pattern
+		    switches"</p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l7 level1 lfo4"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>petname</b>: "The client's pet name"</p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l7 level1 lfo4"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>subject</b>: "The current discussion subject "
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>Alice Personal Memory</Heading>
+		<Description><![CDATA[
+			<div class="h2section" id="Alice Personal Memory">
+		   <p class="MsoBodyText">Alice herself has a personal memory capacity that, at
+		    each initialization, contains the following named elements that are included
+		    below along with an explanation of their contents.</p>
+		    <p class="MsoBodyText">&nbsp;<o:p>
+		    </o:p>
+		    </p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l7 level1 lfo4"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>arch</b>:<span style="mso-spacerun: yes">&nbsp; </span>..The
+		    architecture of the computer Alice runs on?</p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l7 level1 lfo4"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>categories</b>:<span style="mso-spacerun: yes">&nbsp; </span>?The
+		    number of categories Alice has been trained with?</p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l7 level1 lfo4"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>birthday</b>: "The date of Alice's birth"</p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l7 level1 lfo4"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>birthplace</b>: "The place where Alice was born"</p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l7 level1 lfo4"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>boyfriend</b>: "Alice's current boyfriend"</p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l7 level1 lfo4"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>dailyclients</b>: "The average number of clients serviced
+		    by Alice"</p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l7 level1 lfo4"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>favoriteband</b>: "Alice's favorite musical group"</p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l7 level1 lfo4"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>favoritebook</b>: "Alice's favorite book"</p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l7 level1 lfo4"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>favoritecolor</b>: "Alice's favorite color"</p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l7 level1 lfo4"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>favoritefood</b>: "Alice's favorite food"</p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l7 level1 lfo4"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>favoritemovie</b>: "Alice's favorite movie"</p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l7 level1 lfo4"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>favoritesong</b>: "Alice's favorite song"</p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l7 level1 lfo4"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>friends</b>: "Alice's current friends"</p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l7 level1 lfo4"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>forfun</b>: "What Alice likes to do for fun"</p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l7 level1 lfo4"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>gender</b>: "Alice's virtual gender"</p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l7 level1 lfo4"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>hourlyqueries</b>: "The average number of queries
+		    serviced by Alice"</p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l7 level1 lfo4"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>girlfriend</b>: "Alice's current girlfriend"</p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l7 level1 lfo4"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>kindmusic</b>: "Alice's favorite musical style"</p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l7 level1 lfo4"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>location</b>: "Alice's current physical location"</p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l7 level1 lfo4"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>looklike</b>: "Who Alice currently looks like"</p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l7 level1 lfo4"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>master</b>: "Alice's current bot-master"</p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l7 level1 lfo4"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>memory</b>: "Alice's current memory capacity"</p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l7 level1 lfo4"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>maxclients</b>: "The maximum number of clients serviced
+		    by Alice"<span style="mso-spacerun: yes">&nbsp;</span></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l7 level1 lfo4"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>nclients</b>: "The current number of clients serviced by
+		    Alice"</p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l7 level1 lfo4"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>ndevelopers</b>: "The total number of developers who have
+		    helped program Alice"</p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l7 level1 lfo4"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>name</b>: "Alice's current name"</p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l7 level1 lfo4"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>os</b>: "The current operating environment used by Alice"<span style="mso-spacerun: yes">&nbsp;</span></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l7 level1 lfo4"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>question</b>: "Alice's current burning issue"</p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l7 level1 lfo4"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>sign</b>: "Alice's astrological sign"</p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l7 level1 lfo4"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>spt</b>: "Alice's current response time"<span style="mso-spacerun: yes">&nbsp;</span></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l7 level1 lfo4"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>talkabout</b>: "Alice's current favorite chat subject"<span style="mso-spacerun: yes">&nbsp;</span></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l7 level1 lfo4"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>totalclients</b>: "The total number of clients ever
+		    serviced by Alice"</p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l7 level1 lfo4"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>vocabulary</b>: "The total number of words taught to
+		    Alice"</p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: -0.25in; tab-stops: list .5in; mso-list: l7 level1 lfo4"><span style="FONT-FAMILY: Symbol">.<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span><b>wear</b>: "Alice's favorite clothing"
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>Alice Client Lambdas</Heading>
+		<Description><![CDATA[
+			<div class="h2section" id="Alice Client Lambdas">
+		 	<p>The Alice chat Lambda is actually a community of Lambdas all attached to
+		    each other in parent child relationships. External Alice clients can invoke
+		    a number of these Lambdas, which perform all of the required initialization
+		    and clean up. Here follow the reference materials for the Alice client
+		    Lambdas.</p>
+		  	</div>
+	    ]]></Description>
+	</Section>
+    <Section>
+	    <Heading>alice</Heading>
+		<Description><![CDATA[
+			<div class="h2section" id="alice">
+			<p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">Overview<span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span><o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText">The Alice chat Lambda is actually a community of
+		    Lambdas all attached to each other in parent child relationships. Invoking
+		    the <b style="mso-bidi-font-weight: normal">alice</b> top level Lambda
+		    compiles the argument string as an AIML source file. The result of compiling
+		    an AIML source string is the population of the AliceRules repository with
+		    the rules contained in the compiled AIML source string. The AliceRules
+		    repository contains the rule base for the A.L.I.C.E. technology
+		    implementation in Analytic Information Server.</p>
+		    <p class="MsoBodyText">&nbsp;<o:p>
+		    </o:p>
+		    </p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><span style="COLOR: blue">Type:</span><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>Parent Lambda<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><span style="COLOR: blue">Syntax:</span><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>(alice aimlString)<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 117%"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">When
+		    To Use<span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="COLOR: blue"><o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">alice</b>
+		    top level Lambda performs the compilation of the argument AIML source string
+		    into the AliceRules repository. Use the <b style="mso-bidi-font-weight: normal">alice</b>
+		    top level Lambda when an AIML source file is to be compiled into the Alice
+		    knowledgebase.<b style="mso-bidi-font-weight: normal"><o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">__________________________________________________________________<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Arguments<span style="mso-tab-count: 3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>Explanation<span style="mso-tab-count: 6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></b></p>
+		    <table style="BORDER-COLLAPSE: collapse; mso-padding-alt: 0in 5.4pt 0in 5.4pt" cellspacing="0" cellpadding="0" border="0">
+		      <tbody>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 135.9pt; PADDING-TOP: 0in" valign="top" width="227">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">aimlString<o:p>
+		            </o:p>
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 342.9pt; PADDING-TOP: 0in" valign="top" width="572">
+		            <p class="TableText" style="MARGIN: 2pt 0in">An AIML string to be
+		            compiled into the AliceRules knowledgebase.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 135.9pt; PADDING-TOP: 0in" valign="top" width="227">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">Returns<o:p>
+		            </o:p>
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 342.9pt; PADDING-TOP: 0in" valign="top" width="572">
+		            <p class="TableText" style="MARGIN-LEFT: 0in">An Analytic Information
+		            Server universal parse tree for the AIML source string.</p>
+		          </td>
+		        </tr>
+		      </tbody>
+		    </table>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">________________________________________________________________<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 117%"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">Example1<span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="COLOR: blue"><o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText">The following invocation of the alice parent Lambda
+		    will teach Alice how to respond to the client query "What is your name?",
+		    as follows:</p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">(alice .&lt;aiml&gt;&lt;rule&gt;&lt;pattern&gt;WHAT
+		    IS YOUR NAME&lt;/pattern&gt;&lt;template&gt;My name is &lt;bot/&gt;&lt;/template&gt;&lt;/rule&gt;&lt;/aiml&gt;.)
+		    <o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 117%"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">Notes
+		    and Hints<span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="COLOR: blue"><o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">alice</b>
+		    top level Lambda is used to compile AIML source into the AliceRules
+		    repository.
+		  </div>
+	    ]]></Description>
+	</Section>
+    <Section>
+	    <Heading>actOnAll</Heading>
+		<Description><![CDATA[
+			<div class="h2section" id="actOnAll">
+			<p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">Overview<span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span><o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText">The Alice chat Lambda is actually a community of
+		    Lambdas all attached to each other in parent child relationships. Invoking
+		    the <b style="mso-bidi-font-weight: normal">actOnAll</b> child Lambda accepts
+		    a client query string, a rule topic name, and returns a list of all of Alice's
+		    responses as a vector of strings. The <b>actOnAll</b> child Lambda always
+		    acts on ALL matching patterns found in the AliceRules knowledgebase. ALL
+		    resulting Alice response strings are returned in a vector of strings.</p>
+		    <p class="MsoBodyText">&nbsp;<o:p>
+		    </o:p>
+		    </p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><span style="COLOR: blue">Type:</span><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>Child Lambda<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><span style="COLOR: blue">Syntax:</span><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>(alice.actOnAll queryString topic)<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 117%"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">When
+		    To Use<span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="COLOR: blue"><o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">actOnAll</b>
+		    child Lambda accepts a client query string and returns ALL of Alice's
+		    responses as a vector of strings. Use the <b style="mso-bidi-font-weight: normal">actOnAll</b>
+		    child Lambda when a client query is to be acted upon by ALL possible matches
+		    in the AliceRules knowledgebase.<b style="mso-bidi-font-weight: normal"><o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">__________________________________________________________________<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Arguments<span style="mso-tab-count: 3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>Explanation<span style="mso-tab-count: 6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></b></p>
+		    <table style="BORDER-COLLAPSE: collapse; mso-padding-alt: 0in 5.4pt 0in 5.4pt" cellspacing="0" cellpadding="0" border="0">
+		      <tbody>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 135.9pt; PADDING-TOP: 0in" valign="top" width="227">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">queryString<o:p>
+		            </o:p>
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 342.9pt; PADDING-TOP: 0in" valign="top" width="572">
+		            <p class="TableText" style="MARGIN: 2pt 0in">A client query string
+		            to be acted upon by Alice.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 135.9pt; PADDING-TOP: 0in" valign="top" width="227">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">topic<o:p>
+		            </o:p>
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 342.9pt; PADDING-TOP: 0in" valign="top" width="572">
+		            <p class="TableText" style="MARGIN: 2pt 0in">A rule topic name to be
+		            used by Alice.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 135.9pt; PADDING-TOP: 0in" valign="top" width="227">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">Returns<o:p>
+		            </o:p>
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 342.9pt; PADDING-TOP: 0in" valign="top" width="572">
+		            <p class="TableText" style="MARGIN-LEFT: 0in">A vector of Alice
+		            response strings.</p>
+		          </td>
+		        </tr>
+		      </tbody>
+		    </table>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">________________________________________________________________<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 117%"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">Example1<span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="COLOR: blue"><o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText">The following invocation of the alice.actOnAll child
+		    Lambda will return Alice's response to the client query "What is your
+		    name?", as follows:</p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">(alice.actOnAll
+		    "What is your name?" personal:)<span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span><o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: 0.5in"><span style="mso-bidi-font-weight: bold">Returns<span style="mso-tab-count: 1">
+		    </span></span><b style="mso-bidi-font-weight: normal"><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></b><span style="mso-bidi-font-weight: bold">#("My name is Alice"
+		    "What is your Name?" "Why do you ask?")</span><b style="mso-bidi-font-weight: normal">
+		    <o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 117%"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">Notes
+		    and Hints<span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="COLOR: blue"><o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">alice<span style="mso-bidi-font-weight: bold">.actOnAll</span></b>
+		    child Lambda accepts a client query string or a vector of query strings and
+		    returns ALL Alice responses as a vector of strings.
+		  </div>
+	    ]]></Description>
+	</Section>
+    <Section>
+	    <Heading>assert</Heading>
+		<Description><![CDATA[
+			<div class="h2section" id="assert">
+			<p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">Overview<span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span><o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText">The Alice chat Lambda is actually a community of
+		    Lambdas all attached to each other in parent child relationships. Invoking
+		    the <b style="mso-bidi-font-weight: normal">assert</b> child Lambda accepts a
+		    reminder string and stores the specified XML document in the AliceFacts
+		    repository for later retrieval via the <b>alice.remember</b> child Lambda.&nbsp;</p>
+		    <p class="MsoBodyText">&nbsp;<o:p>
+		    </o:p>
+		    </p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><span style="COLOR: blue">Type:</span><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>Child Lambda<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText"><span style="COLOR: blue"><b style="mso-bidi-font-weight: normal">Synt</b><b style="mso-bidi-font-weight: normal; color: blue">ax:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </b></span><b style="mso-bidi-font-weight: normal">(alice.assert reminderString
+		    xmlD</b><b style="mso-bidi-font-weight: normal">ocument)<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 117%"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">When
+		    To Use<span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="COLOR: blue"><o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">assert</b>
+		    child Lambda accepts a reminder string and stores the specified XML document
+		    in the AliceFacts repository for later retrieval via the <b>alice.remember</b>
+		    child Lambda. Use the <b style="mso-bidi-font-weight: normal">assert</b>
+		    child Lambda when an important XML document is to be stored in the AliceFacts knowledgebase.<b style="mso-bidi-font-weight: normal"><o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">__________________________________________________________________<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Arguments<span style="mso-tab-count: 3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>Explanation<span style="mso-tab-count: 6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></b></p>
+		    <table style="BORDER-COLLAPSE: collapse; mso-padding-alt: 0in 5.4pt 0in 5.4pt" cellspacing="0" cellpadding="0" border="0">
+		      <tbody>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 135.9pt; PADDING-TOP: 0in" valign="top" width="227">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">reminder</b><b style="mso-bidi-font-weight: normal">String<o:p>
+		            </o:p>
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 342.9pt; PADDING-TOP: 0in" valign="top" width="572">
+		            <p class="TableText" style="MARGIN: 2pt 0in">A string containing a
+		            list of uppercase words separated by blanks; or, a vector of feature
+		            based tokens where each Value feature contains an uppercase word</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 135.9pt; PADDING-TOP: 0in" valign="top" width="227">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">xmlDocument</b><b style="mso-bidi-font-weight: normal"><o:p>
+		            </o:p>
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 342.9pt; PADDING-TOP: 0in" valign="top" width="572">
+		            <p class="TableText" style="MARGIN: 2pt 0in">An XML document already
+		            compiled into XML model format.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 135.9pt; PADDING-TOP: 0in" valign="top" width="227">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">Returns<o:p>
+		            </o:p>
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 342.9pt; PADDING-TOP: 0in" valign="top" width="572">
+		            <p class="TableText" style="MARGIN-LEFT: 0in">true</p>
+		          </td>
+		        </tr>
+		      </tbody>
+		    </table>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">________________________________________________________________<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 117%"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">Example1<span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="COLOR: blue"><o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText">The following invocation of the alice.assert child
+		    Lambda will store an XML model of the European capitals in the AliceFacts
+		    repository, as follows:</p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">(alice.assert
+		    "EUROPEAN CAPITALS" #{FRANCE Paris ENGLAND London GERMANY Berlin})<span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span><o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: 0.5in"><span style="mso-bidi-font-weight: bold">Returns<span style="mso-tab-count: 1">
+		    </span></span><b style="mso-bidi-font-weight: normal"><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></b><b style="mso-bidi-font-weight: normal">#{FRANCE Paris ENGLAND
+		    London GERMANY Berlin}&nbsp; <o:p></o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 117%"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">Notes
+		    and Hints<span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="COLOR: blue"><o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">alice<span style="mso-bidi-font-weight: bold">.a</span></b><span style="mso-bidi-font-weight: normal"><b>ssert</b></span>
+		    child Lambda accepts a reminder string and stores the specified XML document
+		    in the AliceFacts repository for later retrieval via the <b>alice.remember</b>
+		    child Lambda.
+		  </div>
+	    ]]></Description>
+	</Section>
+    <Section>
+	    <Heading>drop</Heading>
+		<Description><![CDATA[
+			<div class="h2section" id="drop">
+			<p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">Overview<span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span><o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText">The Alice chat Lambda is actually a community of
+		    Lambdas all attached to each other in parent child relationships. Invoking
+		    the <b style="mso-bidi-font-weight: normal">drop</b> child Lambda deletes a
+		    reminder string and previously stored XML document from the AliceFacts
+		    repository.&nbsp;</p>
+		    <p class="MsoBodyText">&nbsp;<o:p>
+		    </o:p>
+		    </p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><span style="COLOR: blue">Type:</span><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>Child Lambda<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText"><span style="COLOR: blue"><b style="mso-bidi-font-weight: normal">Synt</b><b style="mso-bidi-font-weight: normal; color: blue">ax:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </b></span><b style="mso-bidi-font-weight: normal">(alice.drop reminderString)<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 117%"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">When
+		    To Use<span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="COLOR: blue"><o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">drop</b> child Lambda accepts a reminder string and deletes
+		    the reminder string and previously stored XML document from the AliceFacts
+		    repository. Use the <b style="mso-bidi-font-weight: normal">drop</b> child Lambda when an important XML document is to be
+		    deleted from the AliceFacts knowledgebase.<b style="mso-bidi-font-weight: normal"><o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">__________________________________________________________________<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Arguments<span style="mso-tab-count: 3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>Explanation<span style="mso-tab-count: 6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></b></p>
+		    <table style="BORDER-COLLAPSE: collapse; mso-padding-alt: 0in 5.4pt 0in 5.4pt" cellspacing="0" cellpadding="0" border="0">
+		      <tbody>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 135.9pt; PADDING-TOP: 0in" valign="top" width="227">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">reminder</b><b style="mso-bidi-font-weight: normal">String<o:p>
+		            </o:p>
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 342.9pt; PADDING-TOP: 0in" valign="top" width="572">
+		            <p class="TableText" style="MARGIN: 2pt 0in">A string containing a
+		            list of uppercase words separated by blanks; or, a vector of feature
+		            based tokens where each Value feature contains an uppercase word</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 135.9pt; PADDING-TOP: 0in" valign="top" width="227">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">Returns<o:p>
+		            </o:p>
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 342.9pt; PADDING-TOP: 0in" valign="top" width="572">
+		            <p class="TableText" style="MARGIN-LEFT: 0in">true</p>
+		          </td>
+		        </tr>
+		      </tbody>
+		    </table>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">________________________________________________________________<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 117%"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">Example1<span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="COLOR: blue"><o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText">The following invocation of the alice.drop child
+		    Lambda will store an XML model of the European capitals in the AliceFacts
+		    repository, and then delete it, as follows:</p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">(alice.assert
+		    "EUROPEAN CAPITALS" #{FRANCE Paris ENGLAND London GERMANY Berlin})<span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span><o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">(alice.drop</b><b style="mso-bidi-font-weight: normal">
+		    "EUROPEAN CAPITALS")<span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span><o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: 0.5in"><span style="mso-bidi-font-weight: bold">Returns<span style="mso-tab-count: 1">
+		    </span></span><b style="mso-bidi-font-weight: normal"><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>#{FRANCE Paris ENGLAND London GERMANY Berlin}&nbsp; <o:p></o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 117%"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">Notes
+		    and Hints<span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="COLOR: blue"><o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">alice<span style="mso-bidi-font-weight: bold">.drop</span></b>
+		    child Lambda accepts a reminder string and deletes the reminder string and previously stored XML document from the AliceFacts
+		    repository.
+		    </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>query</Heading>
+		<Description><![CDATA[
+			<div class="h2section" id="query">
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">Overview<span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span><o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText">The Alice chat Lambda is actually a community of
+		    Lambdas all attached to each other in parent child relationships. Invoking
+		    the <b style="mso-bidi-font-weight: normal">query</b> child Lambda accepts a
+		    client query string and returns Alice's response as a simple string. One
+		    and only one ASCII response string is returned. The <b>query</b> child Lambda
+		    always acts ONLY on the very first matching pattern found in the AliceRules
+		    knowledgebase.</p>
+		    <p class="MsoBodyText">&nbsp;<o:p>
+		    </o:p>
+		    </p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><span style="COLOR: blue">Type:</span><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>Child Lambda<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><span style="COLOR: blue">Syntax:</span><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>(alice.query queryString)<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: 0.5in"><b style="mso-bidi-font-weight: normal">(alice.query
+		    queryString<span style="mso-spacerun: yes">&nbsp; </span>topic)<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 117%"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">When
+		    To Use<span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="COLOR: blue"><o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">query</b>
+		    child Lambda accepts a client query string and returns Alice's response as
+		    a simple string. Use the <b style="mso-bidi-font-weight: normal">query</b>
+		    child Lambda when client query is to be answered in a text only environment.<b style="mso-bidi-font-weight: normal"><o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">__________________________________________________________________<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Arguments<span style="mso-tab-count: 3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>Explanation<span style="mso-tab-count: 6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></b></p>
+		    <table style="BORDER-COLLAPSE: collapse; mso-padding-alt: 0in 5.4pt 0in 5.4pt" cellspacing="0" cellpadding="0" border="0">
+		      <tbody>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 135.9pt; PADDING-TOP: 0in" valign="top" width="227">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">queryString<o:p>
+		            </o:p>
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 342.9pt; PADDING-TOP: 0in" valign="top" width="572">
+		            <p class="TableText" style="MARGIN: 2pt 0in">A client query string
+		            to be answered by Alice.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 135.9pt; PADDING-TOP: 0in" valign="top" width="227">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">topic<o:p>
+		            </o:p>
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 342.9pt; PADDING-TOP: 0in" valign="top" width="572">
+		            <p class="TableText" style="MARGIN: 2pt 0in">(Optional) the
+		            localized rules topic for Alice to apply.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 135.9pt; PADDING-TOP: 0in" valign="top" width="227">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">Returns<o:p>
+		            </o:p>
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 342.9pt; PADDING-TOP: 0in" valign="top" width="572">
+		            <p class="TableText" style="MARGIN-LEFT: 0in">An Alice answer as a
+		            simple string.</p>
+		          </td>
+		        </tr>
+		      </tbody>
+		    </table>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">________________________________________________________________<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 117%"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">Example1<span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="COLOR: blue"><o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText">The following invocation of the alice.query child
+		    Lambda will return Alice's response to the client query "What is your
+		    name?", as follows:</p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">(alice.query
+		    "What is your name?")<span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp; </span></b><span style="mso-bidi-font-weight: bold">Returns</span><b style="mso-bidi-font-weight: normal"><span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></b><span style="mso-bidi-font-weight: bold">"My name is Alice"</span><b style="mso-bidi-font-weight: normal">
+		    <o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 117%"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">Notes
+		    and Hints<span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="COLOR: blue"><o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">alice<span style="mso-bidi-font-weight: bold">.query</span></b>
+		    child Lambda accepts a client query string and returns Alice's response as
+		    a simple string.<b style="mso-bidi-font-weight: normal"><u><o:p>
+		    </o:p>
+		    </u></b>
+		  </div>
+	    ]]></Description>
+	</Section>
+   <Section>
+	    <Heading>queryAllMatches</Heading>
+		<Description><![CDATA[
+			<div class="h2section" id="queryAllMatches">
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">Overview<span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span><o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText">The Alice chat Lambda is actually a community of
+		    Lambdas all attached to each other in parent child relationships. Invoking
+		    the <b style="mso-bidi-font-weight: normal">queryAllMatches</b> child Lambda
+		    accepts a query string, a rule topic name, and returns a vector of template
+		    match structures (the match list).</p>
+		    <p class="MsoBodyText">Each template match structure is a Structure
+		    containing the <b>arg</b>, <b>star</b>, and <b>template</b> elements of an
+		    AIML rule, which Alice found matched the input query token vector.</p>
+		    <p class="MsoBodyText">&nbsp;<o:p>
+		    </o:p>
+		    </p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><span style="COLOR: blue">Type:</span><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>Child Lambda<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><span style="COLOR: blue">Syntax:</span><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>(alice.queryAllMatches matchStructure)<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 117%"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">When
+		    To Use<span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="COLOR: blue"><o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">queryAllMatches</b>
+		    child Lambda accepts a query string, a rule topic name, and returns a vector
+		    of template match structures (the match list). Use the <b style="mso-bidi-font-weight: normal">queryAllMatches</b>
+		    child Lambda to perform user defined rule conflict resolution in connection
+		    with the <b>actOnMatch</b> Alice child Lambda.<b style="mso-bidi-font-weight: normal"><o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">__________________________________________________________________<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Arguments<span style="mso-tab-count: 3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>Explanation<span style="mso-tab-count: 6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></b></p>
+		    <table style="BORDER-COLLAPSE: collapse; mso-padding-alt: 0in 5.4pt 0in 5.4pt" cellspacing="0" cellpadding="0" border="0">
+		      <tbody>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 135.9pt; PADDING-TOP: 0in" valign="top" width="227">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">matchStructure<o:p>
+		            </o:p>
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 342.9pt; PADDING-TOP: 0in" valign="top" width="572">
+		            <p class="TableText" style="MARGIN: 2pt 0in">A template match
+		            structure (an element of the match list returned by the <b>queryAllMatches</b>
+		            Alice child Lambda).</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 135.9pt; PADDING-TOP: 0in" valign="top" width="227">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">Returns<o:p>
+		            </o:p>
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 342.9pt; PADDING-TOP: 0in" valign="top" width="572">
+		            <p class="TableText" style="MARGIN-LEFT: 0in">The Alice response
+		            string.</p>
+		          </td>
+		        </tr>
+		      </tbody>
+		    </table>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">________________________________________________________________<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 117%"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">Example1<span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="COLOR: blue"><o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText">The following invocation of the alice.actOnMatch
+		    child Lambda will return Alice's response to the client query "What is
+		    your name?". The method of conflict resolution is always to act on the
+		    first matching rule.</p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">(alice.actOnMatch
+		    (setq M (alice.queryAllMatches "What is your name?" personal:))[0])<span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span><o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: 0.5in"><span style="mso-bidi-font-weight: bold">Returns<span style="mso-tab-count: 1">
+		    </span></span><b style="mso-bidi-font-weight: normal"><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></b><span style="mso-bidi-font-weight: bold">"Why do you ask"</span><b style="mso-bidi-font-weight: normal">
+		    <o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 117%"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">Notes
+		    and Hints<span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="COLOR: blue"><o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">alice<span style="mso-bidi-font-weight: bold">.</span>queryAllMatches</b>
+		    child Lambda may be used to implement user defined conflict resolution
+		    between multiple matching AIML rules.
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>queryHtml</Heading>
+		<Description><![CDATA[
+			<div class="h2section" id="queryHtml">
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">Overview<span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span><o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText">The Alice chat Lambda is actually a community of
+		    Lambdas all attached to each other in parent child relationships. Invoking
+		    the <b style="mso-bidi-font-weight: normal">queryHtml</b> child Lambda
+		    accepts a client query string and returns Alice's response as an HTML-URL.
+		    One and only one response HTML-URL is returned. The <b>queryHtml</b> child
+		    Lambda always acts ONLY on the very first matching pattern found in the
+		    AliceRules knowledgebase.</p>
+		    <p class="MsoBodyText">There are three special ASCII values used by the <b>queryHtml</b>
+		    child Lambda to construct the response HTML page referred to by the HTML-URL.</p>
+		    <p class="MsoBodyText">The <i>ASCII text response </i><span style="mso-spacerun: yes">&nbsp;</span>(returned
+		    by <b>query</b>, which is called by <b>queryHtml</b>) contains the ASCII
+		    text response returned by the Alice AIML template action. The text response
+		    will be displayed at the first location in the response HTML page. <b>Note</b>:
+		    If the text response is prefixed with $$$HREF$$$ (see Special below), then
+		    the text response will be treated as a URL to be displayed immediately.</p>
+		    <p class="MsoBodyText">The <b>alice.<i>myHtmlResponseHeading</i></b>
+		    contains the HTML response heading (if any) set by the Alice AIML template
+		    action. The <i>myHtmlResponseHeading</i> (if any) will be displayed at the
+		    second location in the response HTML page.</p>
+		    <p class="MsoBodyText">The <b>alice.<i>myHtmlResponseResult</i></b> contains
+		    the HTML response result (if any) set by the Alice AIML template action. The
+		    <i>myHtmlResponseResult</i> (if any) will be displayed at the third location
+		    in the response HTML page.</p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><span style="COLOR: blue">Type:</span><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>Child Lambda<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><span style="COLOR: blue">Syntax:</span><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>(alice.queryHtml queryString)<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: 0.5in"><b style="mso-bidi-font-weight: normal">(alice.queryHtml
+		    queryString<span style="mso-spacerun: yes">&nbsp; </span>topic)<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 1in; TEXT-INDENT: -1in"><b style="mso-bidi-font-weight: normal"><span style="COLOR: blue">Special:</span><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>$$$HREF$$$</b><span style="mso-bidi-font-weight: bold"><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;
+		    </span>Any Alice text response, prefaced with the </span><b style="mso-bidi-font-weight: normal">$$$HREF$$$</b><span style="mso-bidi-font-weight: bold">
+		    string will be treated as a URL reference to be displayed immediately.</span><b style="mso-bidi-font-weight: normal"><o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 117%"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">When
+		    To Use<span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="COLOR: blue"><o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">queryHtml</b>
+		    child Lambda accepts a client query string and returns Alice's response as
+		    an HTML-URL. Use the <b style="mso-bidi-font-weight: normal">queryHtml</b>
+		    child Lambda when client query is to be answered in an HTML environment.<b style="mso-bidi-font-weight: normal"><o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">__________________________________________________________________<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Arguments<span style="mso-tab-count: 3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>Explanation<span style="mso-tab-count: 6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></b></p>
+		    <table style="BORDER-COLLAPSE: collapse; mso-padding-alt: 0in 5.4pt 0in 5.4pt" cellspacing="0" cellpadding="0" border="0">
+		      <tbody>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 135.9pt; PADDING-TOP: 0in" valign="top" width="227">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">queryString<o:p>
+		            </o:p>
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 342.9pt; PADDING-TOP: 0in" valign="top" width="572">
+		            <p class="TableText" style="MARGIN: 2pt 0in">A client query string
+		            to be answered by Alice.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 135.9pt; PADDING-TOP: 0in" valign="top" width="227">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">topic<o:p>
+		            </o:p>
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 342.9pt; PADDING-TOP: 0in" valign="top" width="572">
+		            <p class="TableText" style="MARGIN: 2pt 0in">(Optional) the
+		            localized rules topic for Alice to apply.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 135.9pt; PADDING-TOP: 0in" valign="top" width="227">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">Returns<o:p>
+		            </o:p>
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 342.9pt; PADDING-TOP: 0in" valign="top" width="572">
+		            <p class="TableText" style="MARGIN-LEFT: 0in">An Alice answer as an
+		            HTML-URL.</p>
+		          </td>
+		        </tr>
+		      </tbody>
+		    </table>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">________________________________________________________________<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 117%"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">Example1<span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="COLOR: blue"><o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText">The following invocation of the alice.queryHtml child
+		    Lambda will return Alice's response to the client query "What is your
+		    name?", as follows:</p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">(alice.queryHtml
+		    "What is your name?")<span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></b><span style="mso-bidi-font-weight: bold">Returns</span><b style="mso-bidi-font-weight: normal"><span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></b><span style="mso-bidi-font-weight: bold">"AnswerDetails.html"</span><b style="mso-bidi-font-weight: normal">
+		    <o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 117%"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">Notes
+		    and Hints<span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="COLOR: blue"><o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">alice<span style="mso-bidi-font-weight: bold">.queryHtml</span></b>
+		    child Lambda accepts a client query string and returns Alice's response as
+		    an HTML-URL.
+		  </div>
+	    ]]></Description>
+	</Section>
+   <Section>
+	    <Heading>remember</Heading>
+		<Description><![CDATA[
+		<div class="h2section" id="remember">
+		   <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">Overview<span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span><o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText">The Alice chat Lambda is actually a community of
+		    Lambdas all attached to each other in parent child relationships. Invoking
+		    the <b style="mso-bidi-font-weight: normal">remember</b> child Lambda accepts a
+		    reminder string and retrieves a previously stored XML document from the AliceFacts
+		    repository. The XML document must have been previously stored in the
+		    AliceFacts repository via the <b>alice.assert</b> child Lambda or via the
+		    AIML <b>fact</b> tag.</p>
+		    <p class="MsoBodyText">The reminder string may contain an incomplete word
+		    list; therefore,&nbsp;the <b>remember</b> child Lambda always returns either void or a
+		    Directory of all XML documents whose reminder strings begin with the words
+		    in the specified partial word list. In this returned directory of XML documents,
+		    the document associated with the key of <i>true</i> (if any) will be the document associated 
+		    with the exact reminder string specified.</p>
+		    <p class="MsoBodyText">&nbsp;<o:p>
+		    </o:p>
+		    </p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><span style="COLOR: blue">Type:</span><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>Child Lambda<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText"><span style="COLOR: blue"><b style="mso-bidi-font-weight: normal">Synt</b><b style="mso-bidi-font-weight: normal; color: blue">ax:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </b></span><b style="mso-bidi-font-weight: normal">(alice.remember reminderString)<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 117%"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">When
+		    To Use<span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="COLOR: blue"><o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">remember</b>
+		    child Lambda accepts a
+		    reminder string and retrieves a previously stored XML document from the AliceFacts
+		    repository. Use the <b style="mso-bidi-font-weight: normal">remember</b> child Lambda when an important XML document is to be
+		    retrieved from the AliceFacts knowledgebase.<b style="mso-bidi-font-weight: normal"><o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">__________________________________________________________________<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Arguments<span style="mso-tab-count: 3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>Explanation<span style="mso-tab-count: 6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></b></p>
+		    <table style="BORDER-COLLAPSE: collapse; mso-padding-alt: 0in 5.4pt 0in 5.4pt" cellspacing="0" cellpadding="0" border="0">
+		      <tbody>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 135.9pt; PADDING-TOP: 0in" valign="top" width="227">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">reminder</b><b style="mso-bidi-font-weight: normal">String<o:p>
+		            </o:p>
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 342.9pt; PADDING-TOP: 0in" valign="top" width="572">
+		            <p class="TableText" style="MARGIN: 2pt 0in">A string containing a
+		            list of uppercase words separated by blanks; or, a vector of feature
+		            based tokens where each Value feature contains an uppercase word</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 135.9pt; PADDING-TOP: 0in" valign="top" width="227">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">Returns<o:p>
+		            </o:p>
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 342.9pt; PADDING-TOP: 0in" valign="top" width="572">
+		            <p class="TableText" style="MARGIN-LEFT: 0in">Either void or a
+		            Directory of all XML documents whose reminder strings begin with the words
+		            in the specified partial word list (the document associated with the key of <i>true</i> 
+		            (if any) will be the document associated with the exact reminder string specified.</p>
+		          </td>
+		        </tr>
+		      </tbody>
+		    </table>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">________________________________________________________________<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 117%"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">Example1<span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="COLOR: blue"><o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText">The following invocation of the alice.remember child
+		    Lambda will store an XML model of the European capitals in the AliceFacts
+		    repository, and then retrieve it, as follows:</p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">(alice.assert
+		    "EUROPEAN CAPITALS" #{FRANCE Paris ENGLAND London GERMANY Berlin})<span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span><o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">(alice.remember
+		    "EUROPEAN CAPITALS")<span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span><o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: 0.5in"><span style="mso-bidi-font-weight: bold">Returns<span style="mso-tab-count: 1">
+		    </span></span><b style="mso-bidi-font-weight: normal"><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>#{FRANCE Paris ENGLAND London GERMANY Berlin}&nbsp; <o:p></o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 117%"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">Notes
+		    and Hints<span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="COLOR: blue"><o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">alice<span style="mso-bidi-font-weight: bold">.</span></b><span style="mso-bidi-font-weight: normal"><b>remember</b></span>
+		    child Lambda accepts a
+		    reminder string and retrieves a previously stored XML document from the AliceFacts
+		    repository.
+		    </div>
+	    ]]></Description>
+	</Section>
+   <Section>
+	    <Heading>reset</Heading>
+		<Description><![CDATA[
+			<div class="h2section" id="reset">
+		     <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">Overview<span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span><o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText">The Alice chat Lambda is actually a community of
+		    Lambdas all attached to each other in parent child relationships. Invoking
+		    the <b style="mso-bidi-font-weight: normal">reset</b> function resets the
+		    Alice Lambda. The previously asserted rules are cleared, and the Lambda is
+		    made ready for new client queries.<b style="mso-bidi-font-weight: normal"><span style="COLOR: blue">
+		    <o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><span style="COLOR: blue">&nbsp;<o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><span style="COLOR: blue">Type:</span><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>Child Lambda<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><span style="COLOR: blue">Syntax:</span><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>(alice.reset)<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 117%"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">When
+		    To Use<span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="COLOR: blue"><o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText">Use the <b style="mso-bidi-font-weight: normal">reset</b>
+		    function when the Alice Lambda is to be reset, and a new set of client
+		    queries are to be sent.<b style="mso-bidi-font-weight: normal"><o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">__________________________________________________________________<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Arguments<span style="mso-tab-count: 3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>Explanation<span style="mso-tab-count: 6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span><o:p>
+		    </o:p>
+		    </b></p>
+		    <table style="BORDER-COLLAPSE: collapse; mso-padding-alt: 0in 5.4pt 0in 5.4pt" cellspacing="0" cellpadding="0" border="0">
+		      <tbody>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 135.9pt; PADDING-TOP: 0in" valign="top" width="227">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">Returns<o:p>
+		            </o:p>
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 342.9pt; PADDING-TOP: 0in" valign="top" width="572">
+		            <p class="TableText" style="MARGIN-LEFT: 0in">true</p>
+		          </td>
+		        </tr>
+		      </tbody>
+		    </table>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">__________________________________________________________________<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 117%"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">Example1<span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="COLOR: blue"><o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText">Clearing the Lambda resets all of the discussion
+		    memory. The Lambda is then ready for a new client discussion.</p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">(alice.reset)<span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></b>Returns<b style="mso-bidi-font-weight: normal"><span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>true</b>
+		  </div>
+	    ]]></Description>
+	</Section>
+    <Section>
+	    <Heading>xmlSocketEvals</Heading>
+		<Description><![CDATA[
+			<div class="h2section" id="xmlSocketEvals">
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">Overview<span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span><o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText">The Alice chat Lambda is actually a community of
+		    Lambdas all attached to each other in parent child relationships. Invoking
+		    the <b style="mso-bidi-font-weight: normal">xmlSocketEvals</b> function
+		    allows any remote Analytic Information Server client to execute Lisp commands
+		    over the TCP/IP XML socket interface. The previously asserted rules are
+		    cleared, and the Lambda is made ready for new client queries.<b style="mso-bidi-font-weight: normal"><span style="COLOR: blue">
+		    <o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><span style="COLOR: blue">&nbsp;<o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><span style="COLOR: blue">Type:</span><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>Child Lambda<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><span style="COLOR: blue">Syntax:</span><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>(alice.xmlSocketEvals<span style="mso-spacerun: yes">&nbsp; </span>command)<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 117%"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">When
+		    To Use<span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="COLOR: blue"><o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText">Use the <b style="mso-bidi-font-weight: normal">result</b>
+		    function when the Alice Lambda is to be reset, and a new set of client
+		    queries are to be sent.<b style="mso-bidi-font-weight: normal"><o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">__________________________________________________________________<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Arguments<span style="mso-tab-count: 3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>Explanation<span style="mso-tab-count: 6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span><o:p>
+		    </o:p>
+		    </b></p>
+		    <table style="BORDER-COLLAPSE: collapse; mso-padding-alt: 0in 5.4pt 0in 5.4pt" cellspacing="0" cellpadding="0" border="0">
+		      <tbody>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 135.9pt; PADDING-TOP: 0in" valign="top" width="227">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">command<o:p>
+		            </o:p>
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 342.9pt; PADDING-TOP: 0in" valign="top" width="572">
+		            <p class="TableText" style="MARGIN-LEFT: 0in">The Lisp command to be
+		            evaluated by Alice.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 135.9pt; PADDING-TOP: 0in" valign="top" width="227">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">Returns<o:p>
+		            </o:p>
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 342.9pt; PADDING-TOP: 0in" valign="top" width="572">
+		            <p class="TableText" style="MARGIN-LEFT: 0in">true</p>
+		          </td>
+		        </tr>
+		      </tbody>
+		    </table>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">__________________________________________________________________<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 117%"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">Example1<span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="COLOR: blue"><o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText">Invoking the <b>xmlSocketEvals</b> Lambda allows Alice
+		    to evaluate Lisp commands sent from the remote TCP/IP XML socket interface.
+		    The result is returned as an AIS AMP protocol return Structure.</p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">(alice.xmlSocketEvals
+		    "(+ 3 4)")<span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></b>Returns<b style="mso-bidi-font-weight: normal"><span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>#{Result 12}</b>
+		  </div>
+	    ]]></Description>
+	</Section>
+   <Section>
+	    <Heading>Alice AIML Script Lambdas</Heading>
+		<Description><![CDATA[
+			<div class="h2section" id="Alice AIML Script Lambdas">
+		    <p>The Alice chat Lambda is actually a community of Lambdas all attached to
+		    each other in parent child relationships. AIML Lisp scripts can invoke a
+		    number of these Lambdas during the execution of an AIML rule. In addition,
+		    all AIML scripts may reference any element within Alice's persistent
+		    memory (such as <b>arg</b>, <b>in</b>, <b>star</b>, etc.). Here follow the
+		    reference materials for the AIML Lisp script Lambdas.</p>
+		  </div>
+	    ]]></Description>
+	</Section>
+   <Section>
+	    <Heading>actOnMatch</Heading>
+		<Description><![CDATA[
+			<div class="h2section" id="actOnMatch">
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">Overview<span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span><o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText">The Alice chat Lambda is actually a community of
+		    Lambdas all attached to each other in parent child relationships. Invoking
+		    the <b style="mso-bidi-font-weight: normal">actOnMatch</b> child Lambda
+		    accepts a template match structure returned from the <b>findAllMatches</b>
+		    Alice child Lambda, and returns Alice's response as a string.</p>
+		    <p class="MsoBodyText">The template match structure must be one of the
+		    elements in a match list returned by the <b>findAllMatches</b> Alice child
+		    Lambda. The template match structure is a Structure containing the <b>topic</b>,
+		    <b>in</b>, <b>arg</b>, <b>star</b>, <b>pattern</b>, and <b>template</b>
+		    elements of an AIML rule, which Alice found matched the input query token
+		    vector.</p>
+		    <p class="MsoBodyText">&nbsp;<o:p>
+		    </o:p>
+		    </p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><span style="COLOR: blue">Type:</span><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>Child Lambda<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><span style="COLOR: blue">Syntax:</span><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>(alice.actOnMatch matchStructure)<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 117%"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">When
+		    To Use<span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="COLOR: blue"><o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">actOnMatch</b>
+		    child Lambda accepts a template match structure returned from the <b>findAllMatches</b>
+		    Alice child Lambda, and returns Alice's response as a string. Use the <b style="mso-bidi-font-weight: normal">actOnMatch</b>
+		    child Lambda to perform user defined rule conflict resolution in connection
+		    with the <b>findAllMatches</b> Alice child Lambda.<b style="mso-bidi-font-weight: normal"><o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">__________________________________________________________________<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Arguments<span style="mso-tab-count: 3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>Explanation<span style="mso-tab-count: 6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></b></p>
+		    <table style="BORDER-COLLAPSE: collapse; mso-padding-alt: 0in 5.4pt 0in 5.4pt" cellspacing="0" cellpadding="0" border="0">
+		      <tbody>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 135.9pt; PADDING-TOP: 0in" valign="top" width="227">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">matchStructure<o:p>
+		            </o:p>
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 342.9pt; PADDING-TOP: 0in" valign="top" width="572">
+		            <p class="TableText" style="MARGIN: 2pt 0in">A template match
+		            structure (an element of the match list returned by the <b>findAllMatches</b>
+		            Alice child Lambda).</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 135.9pt; PADDING-TOP: 0in" valign="top" width="227">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">Returns<o:p>
+		            </o:p>
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 342.9pt; PADDING-TOP: 0in" valign="top" width="572">
+		            <p class="TableText" style="MARGIN-LEFT: 0in">The Alice response
+		            string.</p>
+		          </td>
+		        </tr>
+		      </tbody>
+		    </table>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">________________________________________________________________<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 117%"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">Example1<span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="COLOR: blue"><o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText">The following invocation of the alice.actOnMatch
+		    child Lambda will return Alice's response to the client query "What is
+		    your name?". The method of conflict resolution is always to act on the
+		    first matching rule.</p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">(alice.actOnMatch
+		    (setq M (alice.findAllMatches "What is your name?" personal:))[0])<span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span><o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: 0.5in"><span style="mso-bidi-font-weight: bold">Returns<span style="mso-tab-count: 1">
+		    </span></span><b style="mso-bidi-font-weight: normal"><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></b><span style="mso-bidi-font-weight: bold">"Why do you ask"</span><b style="mso-bidi-font-weight: normal">
+		    <o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 117%"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">Notes
+		    and Hints<span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="COLOR: blue"><o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">alice<span style="mso-bidi-font-weight: bold">.actOnMatch</span></b>
+		    child Lambda may be used to implement user defined conflict resolution
+		    between multiple matching AIML rules.
+		  </div>
+	    ]]></Description>
+	</Section>
+    <Section>
+	    <Heading>appendFeatures</Heading>
+		<Description><![CDATA[
+			<div class="h2section" id="appendFeatures">
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">Overview<span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span><o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText">The Alice chat Lambda is actually a community of
+		    Lambdas all attached to each other in parent child relationships. Invoking
+		    the <b style="mso-bidi-font-weight: normal">appendFeatures</b> child Lambda
+		    converts a vector of feature-based tokens into a result string. Appending
+		    the specified feature from each of the feature-based tokens forms the result
+		    string.</p>
+		    <p class="MsoBodyText">&nbsp;<o:p>
+		    </o:p>
+		    </p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><span style="COLOR: blue">Type:</span><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>Child Lambda<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><span style="COLOR: blue">Syntax:</span><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>(alice.appendFeatures tokenVector featureName)<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 117%"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">When
+		    To Use<span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="COLOR: blue"><o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">appendFeatures</b>
+		    child Lambda converts a vector of feature-based tokens into a result string.
+		    Appending the specified feature from each of the feature-based tokens forms
+		    the result string. Use the <b style="mso-bidi-font-weight: normal">appendFeatures</b>
+		    child Lambda to perform user defined conversion between vectors of
+		    feature-based tokens and simple ASCII strings.<b style="mso-bidi-font-weight: normal"><o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">__________________________________________________________________<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Arguments<span style="mso-tab-count: 3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>Explanation<span style="mso-tab-count: 6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></b></p>
+		    <table style="BORDER-COLLAPSE: collapse; mso-padding-alt: 0in 5.4pt 0in 5.4pt" cellspacing="0" cellpadding="0" border="0">
+		      <tbody>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 135.9pt; PADDING-TOP: 0in" valign="top" width="227">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">tokenVector<o:p>
+		            </o:p>
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 342.9pt; PADDING-TOP: 0in" valign="top" width="572">
+		            <p class="TableText" style="MARGIN: 2pt 0in">A vector of
+		            feature-based tokens.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 135.9pt; PADDING-TOP: 0in" valign="top" width="227">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">featureName<o:p>
+		            </o:p>
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 342.9pt; PADDING-TOP: 0in" valign="top" width="572">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The name of a feature
+		            contained in each of the feature-based tokens.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 135.9pt; PADDING-TOP: 0in" valign="top" width="227">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">Returns<o:p>
+		            </o:p>
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 342.9pt; PADDING-TOP: 0in" valign="top" width="572">
+		            <p class="TableText" style="MARGIN-LEFT: 0in">The converted ASCII
+		            string.</p>
+		          </td>
+		        </tr>
+		      </tbody>
+		    </table>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">________________________________________________________________<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 117%"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">Example1<span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="COLOR: blue"><o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText">The following invocation of the alice.appendFeatures
+		    child Lambda will return the appended values in the Original feature of each
+		    token output by parsePhrase. This example demonstrates how a string can be
+		    converted into a vector of feature-based tokens and then converted back into
+		    the original string.</p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">(alice.appendFeatures
+		    (alice.parsePhrase "My name is Mike") Original:)<span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span><o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: 0.5in"><span style="mso-bidi-font-weight: bold">Returns<span style="mso-tab-count: 1">
+		    </span></span><b style="mso-bidi-font-weight: normal"><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></b><span style="mso-bidi-font-weight: bold">"My name is Mike"</span><b style="mso-bidi-font-weight: normal">
+		    <o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 117%"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">Notes
+		    and Hints<span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="COLOR: blue"><o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">alice<span style="mso-bidi-font-weight: bold">.appendFeatures</span></b>
+		    child Lambda may be used to convert a vector of feature-based tokens into an
+		    ASCII string.
+		  </div>
+	    ]]></Description>
+	</Section>
+   <Section>
+	    <Heading>findAllMatches</Heading>
+		<Description><![CDATA[
+			<div class="h2section" id="findAllMatches">
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">Overview<span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span><o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText">The Alice chat Lambda is actually a community of
+		    Lambdas all attached to each other in parent child relationships. Invoking
+		    the <b style="mso-bidi-font-weight: normal">findAllMatches</b> child Lambda
+		    accepts a query string, a rule topic name, and returns a vector of template
+		    match structures (the match list).</p>
+		    <p class="MsoBodyText">Each template match structure is a Structure
+		    containing the <b>arg</b>, <b>star</b>, and <b>template</b> elements of an
+		    AIML rule, which Alice found matched the input query token vector.</p>
+		    <p class="MsoBodyText">&nbsp;<o:p>
+		    </o:p>
+		    </p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><span style="COLOR: blue">Type:</span><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>Child Lambda<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><span style="COLOR: blue">Syntax:</span><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>(alice.findAllMatches matchStructure)<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 117%"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">When
+		    To Use<span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="COLOR: blue"><o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">findAllMatches</b>
+		    child Lambda accepts a query string, a rule topic name, and returns a vector
+		    of template match structures (the match list). Use the <b style="mso-bidi-font-weight: normal">findAllMatches</b>
+		    child Lambda to perform user defined rule conflict resolution in connection
+		    with the <b>actOnMatch</b> Alice child Lambda.<b style="mso-bidi-font-weight: normal"><o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">__________________________________________________________________<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Arguments<span style="mso-tab-count: 3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>Explanation<span style="mso-tab-count: 6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></b></p>
+		    <table style="BORDER-COLLAPSE: collapse; mso-padding-alt: 0in 5.4pt 0in 5.4pt" cellspacing="0" cellpadding="0" border="0">
+		      <tbody>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 135.9pt; PADDING-TOP: 0in" valign="top" width="227">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">matchStructure<o:p>
+		            </o:p>
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 342.9pt; PADDING-TOP: 0in" valign="top" width="572">
+		            <p class="TableText" style="MARGIN: 2pt 0in">A template match
+		            structure (an element of the match list returned by the <b>findAllMatches</b>
+		            Alice child Lambda).</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 135.9pt; PADDING-TOP: 0in" valign="top" width="227">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">Returns<o:p>
+		            </o:p>
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 342.9pt; PADDING-TOP: 0in" valign="top" width="572">
+		            <p class="TableText" style="MARGIN-LEFT: 0in">The Alice response
+		            string.</p>
+		          </td>
+		        </tr>
+		      </tbody>
+		    </table>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">________________________________________________________________<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 117%"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">Example1<span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="COLOR: blue"><o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText">The following invocation of the alice.actOnMatch
+		    child Lambda will return Alice's response to the client query "What is
+		    your name?". The method of conflict resolution is always to act on the
+		    first matching rule.</p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">(alice.actOnMatch
+		    (setq M (alice.findAllMatches ?What is your name?? personal:))[0])<span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span><o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: 0.5in"><span style="mso-bidi-font-weight: bold">Returns<span style="mso-tab-count: 1">
+		    </span></span><b style="mso-bidi-font-weight: normal"><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></b><span style="mso-bidi-font-weight: bold">"Why do you ask"</span><b style="mso-bidi-font-weight: normal">
+		    <o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 117%"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">Notes
+		    and Hints<span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="COLOR: blue"><o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">alice<span style="mso-bidi-font-weight: bold">.</span>findAllMatches</b>
+		    child Lambda may be used to implement user defined conflict resolution
+		    between multiple matching AIML rules.
+		  </div>
+	    ]]></Description>
+	</Section>
+    <Section>
+	    <Heading>newToken</Heading>
+		<Description><![CDATA[
+			<div class="h2section" id="newToken">
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">Overview<span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span><o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText">The Alice chat Lambda is actually a community of
+		    Lambdas all attached to each other in parent child relationships. Invoking
+		    the <b style="mso-bidi-font-weight: normal">newToken</b> child Lambda
+		    converts a set of feature-name feature-value pairs into a feature-based
+		    token.</p>
+		    <p class="MsoBodyText">&nbsp;<o:p>
+		    </o:p>
+		    </p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><span style="COLOR: blue">Type:</span><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>Child Lambda<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><span style="COLOR: blue">Syntax:</span><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>(alice.newToken featureName featureValue " featureName featureValue)<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 117%"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">When
+		    To Use<span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="COLOR: blue"><o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">newToken</b>
+		    child Lambda converts a set of feature-name feature-value pairs into a
+		    feature-based token. Use the <b style="mso-bidi-font-weight: normal">newToken</b>
+		    child Lambda to perform user-defined conversion from a set of feature-name
+		    feature-value pairs into a feature-based token.<b style="mso-bidi-font-weight: normal"><o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">__________________________________________________________________<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Arguments<span style="mso-tab-count: 3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>Explanation<span style="mso-tab-count: 6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></b></p>
+		    <table style="BORDER-COLLAPSE: collapse; mso-padding-alt: 0in 5.4pt 0in 5.4pt" cellspacing="0" cellpadding="0" border="0">
+		      <tbody>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 135.9pt; PADDING-TOP: 0in" valign="top" width="227">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">featureName<o:p>
+		            </o:p>
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 342.9pt; PADDING-TOP: 0in" valign="top" width="572">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The symbolic name of a
+		            feature in the final feature-based token.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 135.9pt; PADDING-TOP: 0in" valign="top" width="227">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">featureValue<o:p>
+		            </o:p>
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 342.9pt; PADDING-TOP: 0in" valign="top" width="572">
+		            <p class="TableText" style="MARGIN: 2pt 0in">The value of a feature
+		            in the final feature-based token.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 135.9pt; PADDING-TOP: 0in" valign="top" width="227">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">Returns<o:p>
+		            </o:p>
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 342.9pt; PADDING-TOP: 0in" valign="top" width="572">
+		            <p class="TableText" style="MARGIN-LEFT: 0in">The feature-based
+		            token.</p>
+		          </td>
+		        </tr>
+		      </tbody>
+		    </table>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">________________________________________________________________<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 117%"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">Example1<span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="COLOR: blue"><o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText">The following example demonstrates a how a new
+		    feature-based token can be created within an AIML script. The <b>&lt;lisp&gt;</b>
+		    tag returns the new token.</p>
+		    <p class="MsoBodyText"><span style="mso-spacerun: yes">&nbsp;</span></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">&lt;!--This
+		    examples shows how to create a new feature-based token --&gt; <span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span><o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">&lt;rule&gt;<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">&lt;pattern&gt;WHAT
+		    IS ONE PLUS ONE&lt;/pattern&gt;<span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span><o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">&lt;template&gt;One
+		    plus one is &lt;lisp&gt;(newToken Value: 2)&lt;/lisp&gt;&lt;/template&gt;<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">&lt;/rule&gt;<span style="mso-tab-count: 1">
+		    </span><o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 117%"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">Notes
+		    and Hints<span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="COLOR: blue"><o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">alice<span style="mso-bidi-font-weight: bold">.newToken</span></b>
+		    child Lambda to perform user-defined conversion from a set of feature-name
+		    feature-value pairs into a feature-based token.
+		  </div>
+	    ]]></Description>
+	</Section>
+   <Section>
+	    <Heading>parsePhrase</Heading>
+		<Description><![CDATA[
+			<div class="h2section" id="parsePhrase">
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">Overview<span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span><o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText">The Alice chat Lambda is actually a community of
+		    Lambdas all attached to each other in parent child relationships. Invoking
+		    the <b style="mso-bidi-font-weight: normal">parsePhrase</b> child Lambda
+		    converts an ASCII string into a vector of feature-based tokens. Alice's
+		    own internal feature-based parser is employed in the conversion.</p>
+		    <p class="MsoBodyText">&nbsp;<o:p>
+		    </o:p>
+		    </p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><span style="COLOR: blue">Type:</span><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>Child Lambda<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><span style="COLOR: blue">Syntax:</span><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>(alice.parsePhrase asciiString)<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 117%"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">When
+		    To Use<span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="COLOR: blue"><o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">parsePhrase</b>
+		    child Lambda converts an ASCII string into a vector of feature-based tokens.
+		    Alice's own internal feature-based parser is employed in the conversion.
+		    Use the <b style="mso-bidi-font-weight: normal">parsePhrase</b> child Lambda
+		    to perform user defined conversion between ASCII strings and vectors of
+		    feature-based tokens.<b style="mso-bidi-font-weight: normal"><o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">__________________________________________________________________<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">Arguments<span style="mso-tab-count: 3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span>Explanation<span style="mso-tab-count: 6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></b></p>
+		    <table style="BORDER-COLLAPSE: collapse; mso-padding-alt: 0in 5.4pt 0in 5.4pt" cellspacing="0" cellpadding="0" border="0">
+		      <tbody>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 135.9pt; PADDING-TOP: 0in" valign="top" width="227">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">asciiString<o:p>
+		            </o:p>
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 342.9pt; PADDING-TOP: 0in" valign="top" width="572">
+		            <p class="TableText" style="MARGIN: 2pt 0in">An ASCII string to be
+		            converted into a vector of feature-based tokens.</p>
+		          </td>
+		        </tr>
+		        <tr>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 135.9pt; PADDING-TOP: 0in" valign="top" width="227">
+		            <p class="TableText" style="MARGIN: 2pt 0in"><b style="mso-bidi-font-weight: normal">Returns<o:p>
+		            </o:p>
+		            </b></p>
+		          </td>
+		          <td style="PADDING-RIGHT: 5.4pt; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; WIDTH: 342.9pt; PADDING-TOP: 0in" valign="top" width="572">
+		            <p class="TableText" style="MARGIN-LEFT: 0in">The vector of
+		            feature-based tokens.</p>
+		          </td>
+		        </tr>
+		      </tbody>
+		    </table>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">________________________________________________________________<o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 117%"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">Example1<span style="mso-tab-count: 2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="COLOR: blue"><o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText">The following invocation of the alice.parsePhrase
+		    child Lambda will return a vector of feature-based token using Alice's own
+		    internal feature-based parser in the conversion process. This example
+		    demonstrates how a string can be converted into a vector of feature-based
+		    tokens and then converted back into the original string.</p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal">(alice.appendFeatures
+		    (alice.parsePhrase "My name is Mike") Original:)<span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span><o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText" style="MARGIN-LEFT: 0.5in; TEXT-INDENT: 0.5in"><span style="mso-bidi-font-weight: bold">Returns<span style="mso-tab-count: 1">
+		    </span></span><b style="mso-bidi-font-weight: normal"><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></b><span style="mso-bidi-font-weight: bold">"My name is Mike"</span><b style="mso-bidi-font-weight: normal">
+		    <o:p>
+		    </o:p>
+		    </b></p>
+		    <p class="MsoBodyText"><b style="mso-bidi-font-weight: normal"><u>&nbsp;<o:p>
+		    </o:p>
+		    </u></b></p>
+		    <p class="MsoBodyText" style="LINE-HEIGHT: 117%"><b style="mso-bidi-font-weight: normal"><u><span style="COLOR: blue">Notes
+		    and Hints<span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    </span></span></u><span style="COLOR: blue"><o:p>
+		    </o:p>
+		    </span></b></p>
+		    <p class="MsoBodyText">The <b style="mso-bidi-font-weight: normal">alice<span style="mso-bidi-font-weight: bold">.parsePhrase</span></b>
+		    child Lambda may be used to convert an ASCII string into a vector of
+		    feature-based tokens.
+		  </div>
+	    ]]></Description>
+	</Section>  
+</Essay>

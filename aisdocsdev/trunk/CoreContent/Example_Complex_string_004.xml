@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Complex string 004</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>string</FunctionKeywords>
+		<TypeKeywords>Complex</TypeKeywords>
+		<RelatedFunctions> complex append  </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>converts parse value coerce complex</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[  <p> The conversion of a complex number into a string is shown in this example.</p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+(setq X #c1.0+2.0i)   </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60Complex 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc>(string X)   </sc>   ]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#c1.0+2.0i]]></Returns>
+        <Hints><![CDATA[none
+        ]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Complex string 004</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>abs</FunctionKeywords>
+		<TypeKeywords>Complex</TypeKeywords>
+		<RelatedFunctions>tan sin cos   </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>angle radians arctan polar coordinates </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[  <p> The argument of a complex value is shown below. The result of the 
+            operation is always a real value.</p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+(argument #c1.0+1.0i)   </sc>   ]]></Expression>
+        <Note><![CDATA[The result has the value of &#227 &#47 radians.]]></Note>
+        <Returns><![CDATA[0.7853981633974]]></Returns>
+        <Hints><![CDATA[<p>Use <b>argument</b> and <b>abs</b> to convert a complex number into polar 
+         coordinates. Some operations on complex numbers, such as multiplication and division, 
+         sine, and cosine are facilitated by the conversion to polar coordinates. </p>
+        ]]></Hints>
+   </Syntax>
+</Example>

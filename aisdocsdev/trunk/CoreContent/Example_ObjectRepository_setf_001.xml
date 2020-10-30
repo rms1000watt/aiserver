@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example ObjectRepository setf 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>setf</FunctionKeywords>
+		<TypeKeywords>ObjectRepository</TypeKeywords>
+		<RelatedFunctions> setq ref set </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>ref reference set position</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows the <b>setf</b> function use the [ ] (bracket) operators 
+           to specify the ObjectRepository and the key. 
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq gor (new ObjectRepository: "mice.db"))      </sc>]]></Expression>
+        <Note><![CDATA[Create a new ObjectRepository.]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 197815&#62 ]]></Returns>
+ 	    <Expression><![CDATA[ <sc>(setq gor[one] "minnie")      </sc>]]></Expression>
+        <Note><![CDATA[Install a key and value pair.]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 197815&#62 ]]></Returns>
+ 	    <Expression><![CDATA[ <sc>(setq gor[two] "speedy gonzales")      </sc>]]></Expression>
+        <Note><![CDATA[Install a key and value pair.]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 197815&#62 ]]></Returns>
+ 	    <Expression><![CDATA[ <sc>(setf gor[three] "mighty")      </sc>]]></Expression>
+        <Note><![CDATA[Install a key and value pair; Install the value as an immediate in the Repository index.]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 197815&#62 ]]></Returns>
+  	    <Expression><![CDATA[ <sc>gor[three]      </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[mighty]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

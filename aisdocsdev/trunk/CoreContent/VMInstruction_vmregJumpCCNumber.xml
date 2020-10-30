@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmregJumpCCNumber</Title>
+		<InstructionName>vmregJumpCCNumber</InstructionName>                                      
+		<InstructionType>Register</InstructionType>
+		<ArgumentTypes> Number Double</ArgumentTypes>
+		<RelatedVMInstructions>vmregJumpCCImmediate vmregJumpCCInteger vmnatJumpCCInteger vmnatJumpCCNumber</RelatedVMInstructions>
+		<HumanKeywords> cc jump jumpcc comparitor label </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[                                                  
+		<p>When evaluated, this vm instruction compares the <b>source</b> number value 
+		with the register <b>comparitor</b> number value. If the comparison is true, the instruction 
+		pointer is set equal to the immediate<b>label</b> argument; otherwise, the instruction 
+		pointer is promoted as usual. Both words are assumed to be of type Number.  
+		The operation of this vm instruction is expressed in the following 
+		C expression:
+		
+		       
+        <ul><li><b>if ((double)source &#060  (double)comparitor) Ip = label; </b></li></ul>
+		<ul><li><b>if ((double)source &#060&#061  (double)comparitor) Ip = label; </b></li></ul>   
+		<ul><li><b>if ((double)source &#061 (double)comparitor) Ip = label; </b></li></ul> 
+		<ul><li><b>if ((double)source &#33&#061 (double)comparitor) Ip = label; </b></li></ul> 
+		<ul><li><b>if ((double)source &#062&#061 (double)comparitor) Ip = label; </b></li></ul> 		   
+		<ul><li><b>if ((double)source &#062  (double)comparitor) Ip = label; </b></li></ul>
+    ]]></Description>
+	<Syntax>
+	  <Expression><![CDATA[  (vmregJmpLTNumber source comparitor label) ]]></Expression>	 
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>register</Format>
+		  <AISTypes>number</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>comparitor</Name>
+		  <Format>register </Format>
+		  <AISTypes>number</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name> label </Name>
+		  <Format>register</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+	 <Expression><![CDATA[  (vmregJmpLENumber source comparitor label)]]></Expression>		 
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>register</Format>
+		  <AISTypes>number</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>comparitor</Name>
+		  <Format>register </Format>
+		  <AISTypes>number</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name> label </Name>
+		  <Format>label</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+	 <Expression><![CDATA[  (vmregJmpEQNumber source comparitor label)]]></Expression> 
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>register</Format>
+		  <AISTypes>number</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>comparitor</Name>
+		  <Format>register </Format>
+		  <AISTypes>number</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name> label </Name>
+		  <Format>label</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+	  <Expression><![CDATA[  (vmregJmpNENumber source comparitor label)]]></Expression>		 
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>register</Format>
+		  <AISTypes>number</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>comparitor</Name>
+		  <Format>register </Format>
+		  <AISTypes>number</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name> label </Name>
+		  <Format>label</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+       	 <Expression><![CDATA[  (vmregJmpGENumber source comparitor label)]]></Expression>		 
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>register</Format>
+		  <AISTypes>number</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>comparitor</Name>
+		  <Format>register </Format>
+		  <AISTypes>number</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name> label </Name>
+		  <Format>label</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+         <Expression><![CDATA[  (vmregJmpGTNumber source comparitor label)]]></Expression>
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>register</Format>
+		  <AISTypes>number</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>comparitor</Name>
+		  <Format>immediate </Format>
+		  <AISTypes>number</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name> label </Name>
+		  <Format>label</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+	</Syntax>
+</VMInstruction>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example FltVector sort 013</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>sort</FunctionKeywords>
+		<TypeKeywords>FltVector IntVector  Boolean</TypeKeywords>
+		<RelatedFunctions>binarySearch ref setq binarySearch</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>sort arrange  ascending descending</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples show how the <b>sort</b> function sorts the 
+
+
+
+
+                  elements of the Vector in  ascending order returns an integer vector 
+
+                  containing the sorted indices of the Vector values.
+
+.
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq  X  #(float| 5.456699848175 3.141592025757 ))     </sc>]]></Expression>
+        <Note><![CDATA[Defines a Vector.]]></Note>
+        <Returns><![CDATA[#&#60FltVector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(sort X &#60 true )    </sc>]]></Expression>
+        <Note><![CDATA[Sort a Vector in ascending order and returns an IntVector
+
+
+
+              containing the sorted indices. ]]></Note>
+        <Returns><![CDATA[#&#60IntVector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60IntVector 123456&#62  )    </sc>]]></Expression>
+        <Note><![CDATA[Displays the IntVector with the sorted indices.]]></Note>
+        <Returns><![CDATA[#(int| 1 0 )]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

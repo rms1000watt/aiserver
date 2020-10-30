@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Pair isInside 009</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isInside</FunctionKeywords>
+		<TypeKeywords> Pair List</TypeKeywords>
+		<RelatedFunctions>member isMember member inside isIdentical </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>inside key value index boolean</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example uses the <b>isInside</b> function to search for an Integer  in the Pair.
+
+
+	]]></Description>
+	<Syntax>
+	<Expression><![CDATA[<sc>(isInside  5  '(1 6 7 3))      </sc>]]></Expression>
+    <Note><![CDATA[none]]></Note>
+    <Returns><![CDATA[false]]></Returns>
+    <Expression><![CDATA[<sc>(isInside  6 '(1 6 7 3))        </sc> ]]></Expression>
+    <Note><![CDATA[none]]></Note>
+    <Returns><![CDATA[true]]></Returns>
+   <Hints><![CDATA[none]]></Hints>
+</Syntax>
+</Example>

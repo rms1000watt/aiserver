@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>exp</Title>
+		<FunctionName>exp</FunctionName>
+		<FunctionType>Builtin(Trig)</FunctionType>
+		<ArgumentTypes> Number  </ArgumentTypes>
+		<DataType>Number Complex </DataType>
+		<RelatedFunctions> expt</RelatedFunctions>
+        <RelatedVMInstructions>none</RelatedVMInstructions>
+		<HumanKeywords> exponential natural  </HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+         <p> The <b>exp</b> function returns e to the X power where X is the argument of the function and e is 2.71828. </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+	    <p> The <b>exp</b> function computes the natural exponential of its argument.</p>
+        ]]></Overview>
+	   <Overview-Complex><![CDATA[
+	    <p> The <b>exp</b> function returns e to the X power where X is the argument of the function and e is 2.71828. </p>
+        ]]></Overview-Complex>
+        <Usage><![CDATA[
+        <p>The <b>exp</b> function is used to compute the natural exponential of a Number.
+         </p>
+        ]]></Usage>
+        <Usage-Complex><![CDATA[
+        <p>The <b>exp</b> function is used to determine the value of e to X power where the 
+          argument X is complex. Do not use if an immediate type, such as a real number, would suffice.
+         </p>
+        ]]></Usage-Complex>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p><b> (exp num)</b></p>]]></Expression>
+		<Argument>
+		  <Name>num</Name>
+		  <Note><![CDATA[
+		  <p>A Number</p>
+          ]]></Note>
+		  <AISTypes>Number</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>Computes the natural exponential of {num}</p>
+	    ]]></Return>
+	</Syntax>
+	<Syntax>
+	    <Expression><![CDATA[<p><b> (exp num)</b></p>]]></Expression>
+		<Argument> 
+		  <Name>num</Name>
+		  <Note><![CDATA[
+		  <p>A complex number.</p>
+          ]]></Note>
+		  <AISTypes>Number</AISTypes>
+		</Argument>  	        	 
+		<Return><![CDATA[ 
+	    <p>A complex number holding e to the X power.</p>
+	    ]]></Return>
+	</Syntax>
+</Function>

@@ -1,0 +1,12 @@
+In order to help you we need your help.
+When submitting a report, please help us reproduce the problem by including the following:
+ * Clear, detailed description of the problem/question/suggestion. 
+ * Version of AIS you are using (e.g. 1.0053) 
+ * Operating environment (OS, hardware, AIS configuration).  (You can do this once and
+   then copy it into subsequent reports). 
+ * A brief, self-contained program demonstrating the problem. Please include instructions
+   on the steps required to set the stage for running the program (note any required
+   libraries, projects, config files, ...).
+
+Your detailed report will allow us to make a prompt and accurate response.
+Thanks for your help!

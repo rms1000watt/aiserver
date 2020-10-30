@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Symbol putprop 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>putprop</FunctionKeywords>
+		<TypeKeywords>Symbol</TypeKeywords>
+		<RelatedFunctions>proplist proprecord </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>symbol property  bindings name descriptor attribute</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example assigns a property binding consisting of a property name and
+                  property description to a Symbol. Then it
+                  displays the contents of the property list of the Symbol using the
+                  <b>proprecord</b> function.  
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(putprop  BLUE-WHALE:  OCEAN:  MAMMAL:)  </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[OCEAN]]></Returns>
+        <Expression><![CDATA[ <sc>(putprop  BLUE-WHALE:  GRAY:  COLOR:)    </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[GRAY]]></Returns>
+        <Expression><![CDATA[ <sc>(proprecord BLUE-WHALE:)  </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[#&#60Structure 188574&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60Structure 188574&#62)  </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[#{MAMMAL OCEAN COLOR GRAY}true]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

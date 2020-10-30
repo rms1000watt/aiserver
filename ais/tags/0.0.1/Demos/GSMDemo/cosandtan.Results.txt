@@ -1,0 +1,2 @@
+TestName	Generations	Time	
+"cosandtan"	5	0.0	

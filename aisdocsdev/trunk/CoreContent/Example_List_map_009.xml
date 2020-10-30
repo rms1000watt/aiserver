@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example List mapc 009</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>mapc</FunctionKeywords>
+		<TypeKeywords>Pair List</TypeKeywords>
+		<RelatedFunctions> map makeStructure makeDictionary new</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>map mapc copy process</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples show the <b>map</b> function increment each element of the 
+
+                   List by 1.
+Only the last element of the List is returned.	              
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define Scores  '(5 8 4 9 ) )  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60Pair 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(setq  NewScores  (mapc  add1  Scores))      </sc>]]></Expression>
+        <Note><![CDATA[Map the function add1 to the Pair Scores.]]></Note>
+        <Returns><![CDATA[10]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

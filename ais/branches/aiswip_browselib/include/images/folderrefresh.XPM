@@ -1,0 +1,22 @@
+/* XPM */
+const static char *folderrefresh[]={
+"16 16 3 1",
+"# c #000000",
+". c #d4d0c8",
+"a c #ffff99",
+"................",
+"...#####........",
+"..#aaaaa#.......",
+".###############",
+".#aaaaaaaa#aaaa#",
+".#aaaaaaaa##aaa#",
+".#aaaaa######aa#",
+".#aaaa##aa##aaa#",
+".#aaaa#aaa#aaaa#",
+".#aaaa#aaaaaaaa#",
+".#aaaa##aa#aaaa#",
+".#aaaaa###aaaaa#",
+".#aaaaaaaaaaaaa#",
+".###############",
+"................",
+"................"};

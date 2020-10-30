@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>stdev</Title>
+		<FunctionName>stdev</FunctionName>
+		<FunctionType>Builtin(Math)</FunctionType>
+		<ArgumentTypes>Number Integer </ArgumentTypes>
+		<DataType>Number</DataType>
+		<RelatedFunctions>range kurtosis skew stdevp var</RelatedFunctions>
+        <RelatedVMInstructions> none  </RelatedVMInstructions>
+		<HumanKeywords>standard deviation distribution curve sample displacement mean </HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>stdev </b> function computes the standard deviation of a population based on a sample 
+              of values specified in the argument list.</p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		 <p> The <b>stdev</b> function computes the standard deviation of a population based 
+           on a sample of values specified in the argument list. Standard deviation measures 
+          the spread or dispersion of values from the mean. It is the same as the square root
+          of the variance of the population sample.</p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>stdev</b> function is suitable for calculating the standard deviation 
+         on a sample of values for a population. The formula for calculating the standard 
+         deviation of a sample is different from the formula for calculating the standard 
+         deviation of the population, though for large numbers of values (greater than 50) 
+        the difference between the two calculations is very small. If your data values 
+        represent an entire population rather than a sample, use the stdevp function to 
+        calculate the standard deviation
+         </p>
+         ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[   (stdev num1 num2 ...)]]></Expression>
+		<Argument>
+		  <Name>num1 num2... </Name>
+		  <Note><![CDATA[
+		  <p>Any number of values</p>
+          ]]></Note>
+		  <AISTypes>Number</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>Returns the standard deviation of a population based on a sample of values
+         specified in the argument list
+	    </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

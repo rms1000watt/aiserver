@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Pair apply 010</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>apply</FunctionKeywords>
+		<TypeKeywords>Pair</TypeKeywords>
+		<RelatedFunctions>   makeStructure defstruct defmethod addMethod</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>apply functions   method</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines a Pair containing Text values.  Then it
+
+                  uses the <b>apply</b> function to append all the values in the Pair.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define X '( "Humpty " "Dumpty " "sat " "on " "a " "wall" ) )</sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60Pair 197815&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(apply append X)       </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[Humpty Dumpty sat on a wall]]></Returns>
+        <Hints><![CDATA[none
+        ]]></Hints>
+   </Syntax>
+</Example>

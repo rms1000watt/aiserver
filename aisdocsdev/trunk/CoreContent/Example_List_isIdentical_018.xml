@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example List isIdentical 018</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isIdentical</FunctionKeywords>
+		<TypeKeywords>List</TypeKeywords>
+		<RelatedFunctions>compareEQ comparison isEqual</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords> Equal Analytic Object Identical</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ The <b>isIdentical</b> function compares
+                  the object ID of the List arguments. In this example  the <b>copy<b> and <b>setq</b> functions
+                  are used to illustrate how the <b>isIdentical</b> function behaves.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq A  ' ( 1 2 3) )  </sc>]]></Expression>
+        <Note><![CDATA[The first List.  ]]></Note>
+        <Returns><![CDATA[#&#60Pair 123456&#62 ]]></Returns>
+ 	    <Expression><![CDATA[ <sc>(setq B  ' ( 1 2 3) )  </sc>]]></Expression>  
+        <Note><![CDATA[The second List.  ]]></Note> 
+        <Returns><![CDATA[#&#60Pair 234567&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq C (copy A))  </sc>]]></Expression>
+        <Note><![CDATA[The copied List has a different Object ID.  ]]></Note>
+        <Returns><![CDATA[#&#60Pair 345678&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq D A)   </sc>]]></Expression>
+        <Note><![CDATA[List D has the same Object Id as List A.  ]]></Note>
+        <Returns><![CDATA[#&#60Pair 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(isIdentical  A B)      </sc>]]></Expression>  
+        <Note><![CDATA[A and B do not have identical Object IDs. ]]></Note> 
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(isIdentical B C)      </sc>]]></Expression>  
+        <Note><![CDATA[B and C do not have identical Object IDs. ]]></Note> 
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(isIdentical D A)      </sc>]]></Expression>  
+        <Note><![CDATA[D and A  have identical Object IDs. ]]></Note> 
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

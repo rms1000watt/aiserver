@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>append</Title>
+		<FunctionName>append</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>String Symbol Structure Vector Matrix Pair CpxVector   IntVector
+              NumVector ObjVector   BitVector </ArgumentTypes>        
+        <DataType>String Symbol Structure Vector Matrix Pair  FltVector IntVector ShortVector NumVector ObjVector  BitVector Complex NumMatrix CpxVector</DataType>
+	    <RelatedFunctions>new rept replace appendWriteln</RelatedFunctions>
+        <RelatedVMInstructions> vmregAddPointer  </RelatedVMInstructions>
+		<HumanKeywords>append concatenate  </HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[ 
+             <p> The <b>append</b> function concatenates one or more objects of the
+                 same Data Type. The final
+appended object is returned.  </p>
+          ]]></Description>
+	<Brief>
+	   <Overview-String><![CDATA[
+		<p>The <b>append</b> Function appends one or more String objects to the end of a target 
+           String and returns the result.  The <b>append</b> operation is non-destructive, 
+           that is the result of appending does not change any of the source or target objects.  
+           String objects are concatenated from left to right, returning the final appended
+           String .  If only one String is specified, it is returned. </p>
+        ]]></Overview-String>
+         <Overview-Symbol><![CDATA[
+        <p>The <b>append</b> function appends one or more Symbol objects to the end of a target 
+           Symbol:  and returns the result.  The <b>append</b> operation is non-destructive, 
+           that is the result of appending does not change any of the source or target objects. 
+           The objects to be appended are concatenated from left to right, returning the result 
+           Symbol.  If only one Symbol argument is specified, it is returned.</p>
+        ]]></Overview-Symbol>
+        <Overview-Structure><![CDATA[
+        <p>The <b>append</b> Function appends one or more structure objects to the end of a 
+           target structure and returns the result.  The append operation is non-destructive, 
+           that is the result of appending does not change any of the source or target objects. 
+           Two structure objects are concatenated from left to right, returning the final 
+           appended structure.  If only one structure is specified, it is returned. </p>
+        ]]></Overview-Structure>
+        <Overview><![CDATA[
+        <p>The <b>append</b> Function appends one or more Vector objects to the end of a 
+           target Vector and returns the result.  The append operation is non-destructive, 
+           that is the result of appending does not change any of the source or target objects. 
+           Two Vector objects are concatenated from left to right, returning the final 
+           appended Vector.  If only one Vector is specified, it is returned. </p>
+        ]]></Overview>
+        <Overview-Matrix><![CDATA[
+        <p>The <b>append</b> Function appends one or more Matrix objects to the end of a target 
+           Matrix and returns the result.  The <b>append</b> operation is non-destructive, 
+           that is the result of appending does not change any of the source or target objects. 
+           Two Matrix objects are concatenated from left to right, returning the final appended 
+           Matrix.  If only one Matrix is specified, it is returned.</p>
+        ]]></Overview-Matrix>
+        <Overview-NumMatrix><![CDATA[
+        <p>The <b>append</b> Function appends one or more NumMatrix objects to the end of a target 
+           NumMatrix and returns the result.  The <b>append</b> operation is non-destructive, 
+           that is the result of appending does not change any of the source or target objects. 
+           Two NumMatrix objects are concatenated from left to right, returning the final appended 
+           NumMatrix.  If only one NumMatrix is specified, it is returned.</p>
+        ]]></Overview-NumMatrix>
+        <Overview-Pair><![CDATA[
+        <p>The <b>append</b> Function appends one or more Pair objects to the end of a target 
+           Pair and returns the result.  The <b>append</b> operation is non-destructive, 
+           that is the result of appending does not change any of the source or target objects. 
+           Two Pair objects are concatenated from left to right, returning the final appended 
+           Pair.  If only one Pair is specified, it is returned.</p>
+        ]]></Overview-Pair>
+        <Overview-Complex><![CDATA[ 
+             <p> The <b>append</b> function appends a complex number to a string </p>
+          ]]></Overview-Complex>
+        <Usage-String><![CDATA[
+        <p>Use the  <b>append</b> function to concatenate one or more Strings.
+		</p>
+        ]]></Usage-String>
+        <Usage-Symbol><![CDATA[
+        <p>Use the  <b>append</b> function to concatenate one or more Symbols.
+		</p>
+        ]]></Usage-Symbol>
+        <Usage-Structure><![CDATA[
+        <p>Use the  <b>append</b> function to concatenate one or more Structures.
+		</p>
+        ]]></Usage-Structure>
+        <Usage><![CDATA[
+        <p>Use the  <b>append</b> function to concatenate one or more Vectors.
+		</p>
+        ]]></Usage>
+        <Usage-Matrix><![CDATA[
+        <p>Use the  <b>append</b> function to concatenate one or more Matrices.
+		</p>
+        ]]></Usage-Matrix>
+        <Usage-NumMatrix><![CDATA[
+        <p>Use the  <b>append</b> function to concatenate one or more NumMatrices.
+		</p>
+        ]]></Usage-NumMatrix>
+        <Usage-Pair><![CDATA[
+        <p>Use the  <b>append</b> function to concatenate one or more Pairs.
+		</p>
+        ]]></Usage-Pair>
+        <Usage-Complex><![CDATA[
+        <p>Use the  <b>append</b> function to convert a complex number to a String.
+		</p>
+        ]]></Usage-Complex>
+    </Brief>
+	<Syntax-String>
+	    <Expression><![CDATA[<p>(append string1 string2 .. )</p>]]></Expression>
+		<Argument> 
+		  <Name>string1</Name>
+		  <Note><![CDATA[
+		  <p> Only one String argument is mandatory.  
+              It can be followed by any number of Strings, each of which will be concatenated to 
+              a copy of the first one and the resulting String is returned.</p>
+          ]]></Note>
+		  <AISTypes>String</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>If one String was passed, the original String will be returned.  
+           If more than one String was passed, the resulting String after the append is returned.
+        </p>
+	    ]]></Return>   
+	</Syntax-String>
+    <Syntax-Symbol>
+	    <Expression><![CDATA[<p>(append sym1 sym2 ...)</p>]]></Expression>
+		<Argument> 
+		  <Name>symbol</Name>
+		  <Note><![CDATA[
+		  <p> Only one Symbol argument is mandatory.  
+              It can be followed by a list of Symbols, each of which will be concatenated to 
+              a copy of the first one and the resulting Symbol is returned.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>If one Symbol was passed, the original Symbol will be returned.  
+           If more than one Symbol was passed, the resulting Symbol after the append is returned.
+        </p>
+	    ]]></Return>   
+	</Syntax-Symbol>
+    <Syntax-Structure>
+	    <Expression><![CDATA[<p>(append struct1 ...)</p>]]></Expression>
+		<Argument> 
+		  <Name>struct1</Name>
+		  <Note><![CDATA[
+		  <p> Only one structure argument is mandatory.  It can be followed  a list 
+              of structures, each of which will be concatenated to the first one 
+              (non-destructively) and the resulting structure is returned.</p>
+          ]]></Note>
+		  <AISTypes>Structure</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>If one Structure was passed, the original Structure will be returned.  
+           If more than one Structure was passed, the resulting Structure after the append is returned.
+        </p>
+	    ]]></Return>   
+	</Syntax-Structure>
+    <Syntax>
+	    <Expression><![CDATA[<p>(append vector1 ...)</p>]]></Expression>
+		<Argument> 
+		  <Name>vector1</Name>
+		  <Note><![CDATA[
+		  <p> Only one Vector argument is mandatory.  It can be followed  a list 
+              of Vectors, each of which will be concatenated to the first one 
+              (non-destructively) and the resulting Vector is returned.</p>
+          ]]></Note>
+		  <AISTypes>Vector IntVector NumVector BitVector ShortVector</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>If one Vector was passed, the original Vector will be returned.  
+           If more than one Vector was passed, the resulting Vector after the append is returned.
+        </p>
+	    ]]></Return>   
+	</Syntax>
+    <Syntax-Matrix>
+	    <Expression><![CDATA[<p>(append matrix1 ...)</p>]]></Expression>
+		<Argument> 
+		  <Name>matrix1</Name>
+		  <Note><![CDATA[
+		  <p>Only one Matrix argument is mandatory.  It can be followed by a list of Matrices , 
+             each of which will be concatenated to a copy of the first one and the resulting 
+             Matrix is returned.</p>
+          ]]></Note>
+		  <AISTypes>Matrix</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>If one Matrix was passed, the original Matrix will be returned.  
+           If more than one Matrix was passed, the resulting Matrix after the append is returned.
+        </p>
+	    ]]></Return>   
+	</Syntax-Matrix>
+    <Syntax-NumMatrix>
+	    <Expression><![CDATA[<p>(append nummatrix1 ...)</p>]]></Expression>
+		<Argument> 
+		  <Name>nummatrix1</Name>
+		  <Note><![CDATA[
+		  <p>Only one NumMatrix argument is mandatory.  It can be followed by a list of NumMatrices , 
+             each of which will be concatenated to a copy of the first one and the resulting 
+             NumMatrix is returned.</p>
+          ]]></Note>
+		  <AISTypes>NumMatrix</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>If one NumMatrix was passed, the original NumMatrix will be returned.  
+           If more than one NumMatrix was passed, the resulting NumMatrix after the append is returned.
+        </p>
+	    ]]></Return>   
+	</Syntax-NumMatrix>
+    <Syntax-Pair>
+	    <Expression><![CDATA[<p>(append pair1 ...)</p>]]></Expression>
+		<Argument> 
+		  <Name>pair1</Name>
+		  <Note><![CDATA[
+		  <p>Only one Pair argument is mandatory.  It can be followed  a list of Pairs , 
+             each of which will be concatenated to a copy of the first one and the resulting 
+             Pair is returned.</p>
+          ]]></Note>
+		  <AISTypes>Pair</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>If one Pair was passed, the original Pair will be returned.  
+           If more than one Pair was passed, the resulting Pair after the append is returned.
+        </p>
+	    ]]></Return>   
+	</Syntax-Pair>
+    <Syntax-Complex>
+	    <Expression><![CDATA[<p>(append X)</p>]]></Expression>
+		<Argument> 
+		  <Name>X</Name>
+		  <Note><![CDATA[
+		  <p>A complex number.</p>
+          ]]></Note>
+		  <AISTypes>Complex</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>A String in the standard literal format representing the value of the complex argument.
+        </p>
+	    ]]></Return>   
+	</Syntax-Complex>
+</Function>

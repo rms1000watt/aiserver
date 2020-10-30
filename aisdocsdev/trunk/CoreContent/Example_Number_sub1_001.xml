@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number sub1 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>sub1</FunctionKeywords>
+		<TypeKeywords>Number</TypeKeywords>
+		<RelatedFunctions> add1 </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>number arithmetic subtraction increment decrement</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[  <p> The <b>sub1</b> function returns the value of the argument, decremented by 1. </p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+(define x  4)   </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[4]]></Returns>
+        <Expression><![CDATA[ <sc>(sub1 x)   </sc>  ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[3]]></Returns>
+        <Expression><![CDATA[ <sc>(define y  3.75)   </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[ 3.75]]></Returns>
+         <Expression><![CDATA[ <sc>(sub1 y )     </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[2.75]]></Returns>
+        <Hints><![CDATA[none
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

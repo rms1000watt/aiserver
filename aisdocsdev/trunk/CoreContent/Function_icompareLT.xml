@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>icompareLT</Title>
+		<FunctionName>icompareLT</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>Boolean Integer Number</ArgumentTypes>
+		<DataType>Integer</DataType>
+		<RelatedFunctions>icompare icompareEQ icompareNE icompareGE icompareGT icompareLE </RelatedFunctions>
+        <RelatedVMInstructions> vmregStringCompare vmregStringiCompare </RelatedVMInstructions>
+		<HumanKeywords>compare  equal boolean lesser integer</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+              <p> The <b>icompareLT</b>  is a fast comparison function that assume that its operands are Integer values.
+
+              It returns true if  the first object is lesser than  the second object and false if otherwise. </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+	    <p>The <b>icompareLT</b> is a fast comparison function that assume that its operands are Integer values.  
+
+           The resulting value is a Boolean value of <b>true</b> or <b>false</b>. The operands are not checked and are not coerced.  
+
+        </p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>Use the <b>icompareLT</b> function when you wish to compare two Integers and determine 
+
+          if <b>{int1}</b> is lesser than <b>{int2}</b> and you wish the result to be expressed as a Boolean value (true or false).  
+
+         These functions only operate on Integer operands. For a more general, but slower, 
+
+         comparison, use the <b>compareEQ, compareNE, compareGT, compareGE, compareLT, and compareLE</b>
+         which performs type checking and type conversions.
+
+        </p>
+         ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[ (icompareLT int1  int2 )]]></Expression>
+		<Argument>
+		  <Name>int1</Name>
+		  <Note><![CDATA[
+		  <p> The first Integer to be compared </p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>int2</Name>
+		  <Note><![CDATA[
+		  <p>The second Integer to be compared</p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>Returns true if the first Integer is lesser than the second Integer and false 
+
+
+           if the first Integer is greater or equal in value than the second Integer.
+
+
+	    </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

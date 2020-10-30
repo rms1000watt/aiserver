@@ -1,0 +1,39 @@
+# aised/test/testindent.txt
+
+#							AISED - TEST INDENT
+# Test indent operations.  
+
+# CHANGE HISTORY
+# Version	Date		Who		Change
+# 1.0109	10/7/2006	tlw		Add more tests
+# 1.0039	4/20/2004	tlw		Original
+
+# SYNTAX
+# INDENT - indent(Insert)
+
+# NOTES
+#	 1. When making changes to this file, be sure to note them in the change history above.
+#		Put the latest entry at the top of the history.
+#	 2. See testsuite.txt for lots of details.
+#	 3.	If Insert is true, indent; else, outdent
+#	*************************************************************************************************
+# INDENT - indent(Insert)
+clear
+setParameter(MaximumRowWidth, 20)
+insert("a", Backward)
+move(eot, Select)
+indent(Insert)
+indent(Remove)
+delete(nextchar)
+insert("123456789 123456789 ", Backward)
+append("123456789 123456789 0")
+move(prevchar, Select)
+indent(Insert)
+indent(Insert)
+indent(Remove)
+move(eol, NoSelect)
+insert("\n", Backward)
+move(nextbow, Select)
+indent(Insert)
+setParameter(MaximumRowWidth, 1024)
+#end

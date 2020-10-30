@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT Document (KnowledgeBase, Essay+)>
+	<!ELEMENT KnowledgeBase (Title, Topic,  SubTopic,  HumanKeywords)>
+		<!ELEMENT Title (#PCDATA)>
+		<!ELEMENT Topic (#PCDATA)>
+		<!ELEMENT SubTopic (#PCDATA)>
+		<!ELEMENT HumanKeywords (#PCDATA)>
+	<!ELEMENT Essay (#PCDATA)>
+<!-- end -->

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example NumMatrix isEqual 020</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isEqual</FunctionKeywords>
+		<TypeKeywords>NumMatrix Boolean</TypeKeywords>
+		<RelatedFunctions>compareEQ isIdentical comparison   </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>NumMatrix Equal Analytic Object </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples check if the value of the first NumMatrix
+
+
+
+
+
+                   is equal to the corresponding value   of the second
+
+
+
+
+
+                   NumMatrix. If they are, the function returns true, otherwise, it returns false.
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(isEqual  #(nummat| 3 -9 ) #(nummat| 3.0 -9.0 ))    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>(isEqual  #(nummat| 3 -9 4.0 ) #(nummat| 3.0 -9.0 ))       </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ false ]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,192 @@
+AIS EDITOR HELP:\n"
+"* Command requires selected text\n"
+"** Command requires selected text or matched parens\n"
+"ANYMoveKey - any command that moves cursor\n"
+"Shft+ANYMoveKey *Extends selected text to cursor\n"
+
+"Left        Move to prev char\n"
+"Ctrl-H      Move to prev char\n"
+"Right       Move to next char\n"
+"Ctrl-L      Move to next char\n"
+"Ctrl-Left   Move to prev beginning-of-word\n"
+"Ctrl-P      Move to prev beginning-of-word\n"
+"Ctrl-Right  Move to next beginning-of-word\n"
+"Ctrl-N      Move to next beginning-of-word\n"
+"BackTab     Move to prev tabstop\n"
+"Home        Move to beginning-of-line\n"
+"Ctrl-B      Move to beginning-of-line\n"
+"End         Move to end-of-line\n"
+"Ctrl-E      Move to end-of-line\n"
+"Up          Move to up one line\n"
+"Ctrl-K      Move to up one line\n"
+"Down        Move to down one line\n"
+"Ctrl-J      Move to down one line\n"
+"Ctrl-Up     Move up half-page\n"
+"Ctrl-Down   Move down half-page\n"
+"PgUp        Move up one page\n"
+"PgDown      Move down one page\n"
+"Ctrl-PgUp   Move to prev saved cursor position\n"
+"Ctrl-PgDown Move to next saved cursor position\n"
+"Ctrl-Home   Move to beginning-of-text\n"
+"Ctrl-End    Move to end-of-text\n"
+"Ctrl-^    **Move cursor to other end of matched text\n"
+"MouseClick  Move cursor to Ibeam cursor\n"
+"\n"		
+"DELETE:\n"
+"ANYDelKey  *Delete selected text\n"
+"BackSpace   Delete prev char\n"
+"Delete      Delete next char\n"
+"Ctrl-D      Delete next char\n"
+"Ctrl-Del    Delete left word\n"
+"Ctrl-BS     Delete right word\n"
+"Ctrl-U      Delete to beginning-of-line\n"
+"Ctrl-.      Delete to end-of-line\n"
+"Ctrl-X     *Cut selected text\n"
+"\n"
+"INSERT:\n"
+"ANYInsKey  *Deletes selected before insert\n"
+"Tab         Insert tab\n"
+"Ctrl-I      Insert tab\n"
+"Enter       Insert newline\n"
+"Ctrl-V     *Paste selected text\n"
+"\n"
+"SELECTED TEXT:\n"
+"Ctrl-A      Select all text\n"
+"Ctrl-C     *Copy selected text to clipboard\n"
+"*CtrlShft-C Append selected text to clipboard\n"
+"Ctrl-M      Select/unselect matched text\n"
+"Ctrl-X     *Move selected text to clipboard\n"
+"CtrlShft-X *Delete and append sel. text to clipboard\n"
+"Shift-Click Select text to Ibeam cursor\n"
+"Drag        Move cursor and select intervening text\n"
+"DblClick    If at paren, select between matching\n"
+"            parens, else select nearby word\n"
+"\n"
+"DIALOGS:\n"
+"RtClick     Context menu\n"
+"Ctrl-F      Find dialog\n"
+"Alt-L       Agent List dialog\n"
+"Ctrl-G      Go-to-line dialog\n"
+"Ctrl-R      Replace dialog\n"
+"Ctrl-T      Tabify dialog\n"
+"CtrlShift-T Set tab width dialog\n"
+"F1          This help dialog\n"
+"Ctrl-F1     Command help dialog\n"
+"Shift-F1    Search help dialog\n"
+"F3          Repeat find down\n"
+"Shift-F3    Repeat find up\n"
+"Ctrl-F3     Search All Text\n"
+"CtrlShiftF5 Test dialog\n"
+"\n"
+"MATCHED TEXT:\n"
+"Ctrl-(  Parenthesis matching on-off\n"
+"Ctrl-)  Parenthesis matching on-off\n"
+"Ctrl-M  Select/unselect matched text\n"
+"\n"
+"UNDO:\n"
+"Ctrl-Y        Redo last set of undos\n"
+"CtrlShift-Y   Redo last undo\n"
+"Ctrl-Z        Undo last set of cmds\n"
+"CtrlShift-Z   Undo last cmd\n"
+"CtrlShift-Del Clear undo stack\n"
+"\n"
+"FILE:\n"
+"Alt-C       Close file\n"
+"Alt-N       Open new file\n"
+"Alt-O       Open existing file\n"
+"Ctrl-S      Save file\n"
+"CtrlShift-S Save all files\n"
+"\n"
+"FORMAT & SWITCH:\n"
+"Ctrl-Tab    Switch documents\n"
+"Ctrl-;     *Comment selected text\n"
+"CtrlShift-;*Uncomment selected text\n"
+"Ctrl-W		Toggle word wrap\n"
+"Tab        *Indent selected text\n"
+"BackTab    *UnIndent selected text\n"
+"Insert      Display special chars\n"
+"Ctrl-Insert Toggle line numbers\n"
+
+
+		ALPHABETICAL LIST
+Ctrl-(		Parenthesis matching on-off
+Ctrl-)		Parenthesis matching on-off
+Ctrl-;		Comment selected text
+Ctrl-.		Delete to end-of-line
+CtrlShft-;	Uncomment selected text
+Ctrl-^		Move cursor to other end of matched text
+
+Ctrl-A		Select all text
+Ctrl-B		Move to beginning-of-line
+Ctrl-C		Copy selected text to clipboard
+CtrlShft-C	Append selected text to clipboard
+Alt-C		Close file
+Ctrl-D		Delete next char
+Ctrl-E		Move to end-of-line
+Ctrl-F		Find dialog
+Ctrl-G		Go-to-line dialog
+Ctrl-H		Move to prev char
+Ctrl-I		Insert tab
+Ctrl-J		Move to down one line
+Ctrl-K		Move to up one line
+Ctrl-L		Move to next char
+Alt-L		Agent List dialog
+Ctrl-M		Select/unselect matched text
+Alt-N		Open new file
+Ctrl-N		Move to next beginning-of-word
+Alt-O		Open existing file
+Ctrl-P		Move to prev beginning-of-word
+
+Ctrl-R		Replace dialog
+Ctrl-S		Save file
+CtrlShft-S	Save all files
+Ctrl-T		Tabify dialog
+CtrlShft-T	Set tab width dialog
+Ctrl-U		Delete to beginning-of-line
+Ctrl-V		Paste selected text
+Ctrl-W		Toggle word wrap
+Ctrl-X		Cut selected text
+CtrlShft-X	Cut and append selected text
+Ctrl-Y		Redo last set of undos
+CtrlShift-Y	Redo last undo
+Ctrl-Z		Undo last set of cmds
+CtrlSh-Z	Undo last cmd\n"
+Ctrl-X		Move selected text to clipboard
+
+BackSpace	Delete prev char
+Ctrl-Del	Delete left word
+Ctrl-BS		Delete right word
+BackTab		Move to prev tabstop
+BackTab		UnIndent selected text
+Delete		Delete next char
+CtrlSh-Del	Clear undo stack
+Down		Move to down one line
+Ctrl-Down	Move down half-page
+End			Move to end-of-line
+Ctrl-End	Move to end-of-text
+Enter		Insert newline
+F1			This help dialog
+Ctrl-F1		Command help dialog
+Shift-F1	Search help dialog
+F3			Repeat find down
+Ctrl-F3		Search All Text
+Shift-F3	Repeat find up
+CtrlShiftF5	Test dialog
+Home		Move to beginning-of-line
+Ctrl-Home	Move to beginning-of-text
+Insert		Display special chars
+Ctrl-Insert	Toggle line numbers
+Left		Move to prev char
+Ctrl-Left	Move to prev beginning-of-word
+PgDown		Move down one page
+Ctrl-PgDown	Move to next saved cursor position
+PgUp		Move up one page
+Ctrl-PgUp	Move to prev saved cursor position
+Right		Move to next char
+Ctrl-Right	Move to next beginning-of-word
+Tab			Insert tab
+Tab			Indent selected text
+Ctrl-Tab	Switch documents
+Up			Move to up one line
+Ctrl-Up		Move up half-page
+

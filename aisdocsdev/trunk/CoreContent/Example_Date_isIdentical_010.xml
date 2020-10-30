@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Date isIdentical 010</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isIdentical</FunctionKeywords>
+		<TypeKeywords>  Date</TypeKeywords>
+		<RelatedFunctions>compareEQ isIdentical comparison isEqual     </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>   Equal Analytic Object Boolean Date</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example  shows how the <b>isIdentical</b> function is used to compare
+                  Date values of different formats.
+
+
+
+
+
+
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq A #Jan,1,1996:08:22:00 )                   </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#Jan,1,1996:08:21:59]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq B #Jan,1,1996)                    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[ #Jan,1,1996]]></Returns>
+        <Expression><![CDATA[ <sc>(isIdentical A B)              </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+ 	    <Expression><![CDATA[ <sc>(setq C (julian A))                    </sc>]]></Expression>  
+        <Note><![CDATA[The julian date format is defined.]]></Note> 
+        <Returns><![CDATA[729023.0]]></Returns> 
+        <Expression><![CDATA[ <sc>(isIdentical A C)              </sc>]]></Expression>  
+        <Note><![CDATA[The julian date format is compared with the normal date format. ]]></Note> 
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[ none  ]]></Hints>
+   </Syntax>
+</Example>

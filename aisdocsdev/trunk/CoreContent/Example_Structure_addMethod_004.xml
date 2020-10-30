@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure addMethod 004</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>addMethod</FunctionKeywords>
+		<TypeKeywords>Structure Dictionary Symbol</TypeKeywords>
+		<RelatedFunctions>defmethod send methodsOf</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>method message messageName</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example uses the added method <b>ComputeProfit</b> to operate
+                  on the user-defined type <b>StockTransaction</b>. The  <b>ComputeProfit</b> 
+                  method is added in the Method Dictionary through the <b>addMethod</b> function.
+
+                  The <b>addValues</b> method is invoked using the <b>send</b> function or by
+
+                  calling the method directly with its required arguments. 
+
+	]]></Description>
+	<Syntax>
+	<Expression><![CDATA[<sc>(defineStructure  StockTransaction:  Symbol:  Bought:  Sold:  Profit: )</sc>]]></Expression>
+    <Note><![CDATA[ Define a structure that contains information about a single stock transaction.  
+           The structure contains fields for the stock symbol, the purchase price of the 
+            stock, the selling price and a profit field. 
+    ]]></Note>
+    <Returns><![CDATA[StockTransaction]]></Returns>
+    <Expression><![CDATA[<sc>(addMethod StockTransaction: ComputeProfit: (lambda  (e) (setq e.Profit (- e.Sold e.Bought ))))  </sc> ]]></Expression>
+    <Note><![CDATA[Define the method <b>ComputeProfit</b> to operate on the <b>StockTransaction</b> structure. ]]></Note>
+    <Returns><![CDATA[#&#60Dictionary 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(define IBM (new  StockTransaction: Symbol: "IBM" Bought: 100   Sold: 120))    </sc> ]]></Expression>
+    <Note><![CDATA[ Define a new Structure "IBM" of the <b>StockTransaction</b> user-defined Structure type.
+    ]]></Note>
+    <Returns><![CDATA[StockTransaction]]></Returns>
+    <Expression><![CDATA[<sc>(ComputeProfit: IBM)     </sc> ]]></Expression>
+    <Note><![CDATA[The method can be invoked simply by name.
+
+    ]]></Note>
+    <Returns><![CDATA[ ]]></Returns>
+    <Expression><![CDATA[<sc>(display IBM.Profit)       </sc> ]]></Expression>
+    <Note><![CDATA[Displays the result of the <b>ComputeProfit</b> method on the Structure "IBM".
+    ]]></Note>
+    <Returns><![CDATA[20 ]]></Returns>
+    <Hints><![CDATA[
+        <p>To view the entry in the methods Dictionary created by the addMethod function, 
+           you can use the method name to access the dictionary entry by </p>
+        <p><b> #&#60Dictionary 123456&#62[methodName:] or </b></p>
+        <p> To determine the number of assigned methods:</p>
+        <p><b>(length  (methodsOf Structure: ))</b></p>
+        <p><b>(length (methodsOf StockTransaction:) )</b></p>
+        <p>To access the nth method name:</p>
+        <p><b>(methodsOf Structure: )[n  0]</b></p>
+        <p><b>(methodsOf StockTransaction: )[n  0]</b></p>
+        <p>To view the Methods Dictionary:</p>
+        <table>
+           <tr><td width=60%> <p><b>(display (methodsOf Structure: ))  </td>
+               <td width=40%>  Returns <b> #{dic| addValues #&#60Lambda 5315&#62}</b> </td></tr>  
+              <tr><td width=60%> <p><b>(display (methodsOf StockTransaction:))  </td>
+               <td width=40%>  Returns <b>#{dic| ComputeProfit #&#60Lambda 5497&#62}</b> </td></tr>  
+        </table>
+]]></Hints>
+</Syntax>
+</Example>

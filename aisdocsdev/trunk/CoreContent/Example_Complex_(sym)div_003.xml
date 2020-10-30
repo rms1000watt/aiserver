@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Complex &#47; 003</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>&#45;</FunctionKeywords>
+		<TypeKeywords>Complex</TypeKeywords>
+		<RelatedFunctions> &#42; &#43; &#45; </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>multiplication addition subtraction division</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[  <p> The <b>ndiv</b> function is tested here with Complex Number arguments.</p>
+	]]></Description>
+	<Syntax>
+ 	    <Expression><![CDATA[ <sc>(setq F1 ndiv)   </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[ndiv]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq X (new Complex: -3.0  3.0))   </sc>   ]]></Expression>
+        <Note><![CDATA[The first Complex Number is defined.]]></Note>
+        <Returns><![CDATA[#&#60Complex 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq Y (new Complex:  2.0 -1.0))   </sc>   ]]></Expression>
+        <Note><![CDATA[The second Complex Number is defined.]]></Note>
+        <Returns><![CDATA[#&#60Complex 234567&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(F1 X Y)   </sc>   ]]></Expression>
+        <Note><![CDATA[The resulting complex number is returned not in complex number format.]]></Note>
+        <Returns><![CDATA[2.009179086586]]></Returns>
+        <Hints><![CDATA[none
+
+       ]]></Hints>
+   </Syntax>
+</Example>

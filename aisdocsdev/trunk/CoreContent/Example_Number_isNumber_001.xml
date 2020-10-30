@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number isNumber 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isNumber</FunctionKeywords>
+		<TypeKeywords>  Number</TypeKeywords>
+		<RelatedFunctions> integer isType isObject isInteger isMoney isPercent </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>boolean integer object number  </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples determine if the argument is a Number Data Type or any
+                  other Number Data Subtype (i.e. Integer, Money).
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(isNumber  1 )                   </sc>]]></Expression>
+        <Note><![CDATA[An Integer is a Number.]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>(isNumber  $1.45)                      </sc>]]></Expression>
+        <Note><![CDATA[Money is a Number. ]]></Note>
+        <Returns><![CDATA[ true ]]></Returns>
+        <Expression><![CDATA[ <sc>(isNumber 5%)                              </sc>]]></Expression>  
+        <Note><![CDATA[Percent value is a Number.]]></Note> 
+        <Returns><![CDATA[ true ]]></Returns>
+        <Expression><![CDATA[ <v>(isNumber  3.14)                                   </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[ true ]]></Returns>
+        <Expression><![CDATA[ <sc>(isNumber  #\space)                                     </sc>]]></Expression>  
+        <Note><![CDATA[Character is not a Number.]]></Note> 
+        <Returns><![CDATA[ false ]]></Returns>
+        <Expression><![CDATA[ <sc>(isNumber  #void)                                        </sc>]]></Expression>  
+        <Note><![CDATA[Void data type is not a Number.]]></Note> 
+        <Returns><![CDATA[ false ]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

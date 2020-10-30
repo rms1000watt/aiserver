@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Dictionary ref 007</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>ref</FunctionKeywords>
+		<TypeKeywords> Dictionary Symbol Integer Text</TypeKeywords>
+		<RelatedFunctions>setq  ref fieldsOf   refValues  </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>ref reference set position</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows the <b>ref</b> function returns the
+
+
+                  value of the Dictionary through the <b>key</b> reference.
+
+                  This example uses the <b> (ref aDict key)</b> function syntax.
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(define aDictionary  #{dic| Name: "Bill"  SSN: "616 55 1209" Age: 45}  ) </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60Dictionary 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(ref aDictionary Age:)    </sc>]]></Expression>
+        <Note><![CDATA[The ref function returns the value with the key Age: in the Dictionary. ]]></Note>
+        <Returns><![CDATA[45]]></Returns>
+        <Expression><![CDATA[ <sc>(ref  aDictionary Name:)  </sc>]]></Expression>
+        <Note><![CDATA[The ref function returns the value with the key Name: in the Dictionary. ]]></Note>
+        <Returns><![CDATA[Bill]]></Returns>
+  	    <Expression><![CDATA[ <sc>(ref aDictionary SSN:)        </sc>]]></Expression>
+        <Note><![CDATA[The ref function returns the value with the key SSN: in the Dictionary.]]></Note>
+        <Returns><![CDATA[616 55 1209]]></Returns>
+        <Hints><![CDATA[none
+
+
+]]></Hints>
+   </Syntax>
+</Example>

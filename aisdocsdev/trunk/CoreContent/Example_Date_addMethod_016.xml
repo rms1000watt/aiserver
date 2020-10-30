@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Date addMethod 016</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>addMethod</FunctionKeywords>
+		<TypeKeywords> Date Symbol Dictionary </TypeKeywords>
+		<RelatedFunctions>defmethod send methodsOf</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>method message messageName</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[<p> This example defines a method named <b>getMonth</b> that is invoked when the Number  
+
+                 type receives a <b>getMonth</b>   message.  The <b>getMonth</b> method prints out 
+                 the current full month name string. In this example, the <b>{proc}</b> argument is coded inline 
+                 using a lambda statement. </p>
+	]]></Description>
+	<Syntax>
+	<Expression><![CDATA[<sc>
+    (addMethod  Date: getMonth: 
+      (lambda(a)
+      (ref #("January"  "February" "March" "April" "May" "June" "July" "August" "September" "October" "November" "December"))
+      (sub1 (month a ) ) ) )        
+      </sc>]]></Expression>
+    <Note><![CDATA[ Add a message named getMonth to the Date Methods Dictionary.
+
+]]></Note>
+    <Returns><![CDATA[ #&60Dictionary 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(send getMonth:  #Jan,1,1996 )                 </sc> ]]></Expression>
+    <Note><![CDATA[The previous addMethod statement will install the getMonth message and the corresponding
+       Lambda defined by the lambda expression..  If a getMonth message is sent to the Date native 
+       type, the Lambda created by the lambda expression is invoked to return the month string 
+       derived from the Date argument. To invoke the Lambda that responds to the getMonth message, 
+        issue the following statement:]]></Note>
+    <Returns><![CDATA[January]]></Returns>
+    <Expression><![CDATA[<sc>(getMonth:  #Jan,1,1996 )              </sc> ]]></Expression>
+    <Note><![CDATA[Alternatively, the Lambda may be invoked using the following syntax:]]></Note>
+    <Returns><![CDATA[January]]></Returns>
+  <Hints><![CDATA[ 
+        <p>To view the entry in the methods Dictionary created by the addMethod  function, 
+           you can use the method name to access the dictionary entry by </p>
+        <p><b> #&#60Dictionary 123456&#62[methodName:] or </b></p>
+        <p> To determine the number of assigned methods:</p>
+        <p><b>(length  (methodsOf Date: ))</b></p>        
+        <p>To access the nth method name:</p>
+        <p><b>(methodsOf Date: )[n  0]</b></p>
+]]></Hints>
+</Syntax>
+</Example>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>  
+		<Title>Example String append 002</Title>  
+		<Template>Example</Template> 
+		<FunctionKeywords>append</FunctionKeywords>
+		<TypeKeywords>String</TypeKeywords>	
+		<RelatedFunctions>new replace rept</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>append concatenate string</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example separately assigns three strings into variables A, B
+                  and C.  Then it assigns to variable Y the result of the appended
+                  Strings A, B and C.
+	]]></Description>
+	<Syntax> 
+  	    <Expression><![CDATA[ <sc>(setq A  "abc") </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[ abc ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq B  "def") </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[ def ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq C "ghi") </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[ ghi ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Y (append A B C)) </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[ abcdefghi ]]></Returns>
+       <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

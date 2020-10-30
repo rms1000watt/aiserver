@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure sizeof 003</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>sizeof</FunctionKeywords>
+		<TypeKeywords>Structure Integer</TypeKeywords>
+		<RelatedFunctions>new length </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>sizeof closure bytes length disk memory</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples return the closure size of the Symbol objects.  
+
+                  The closure size would depend on the 
+
+
+                  length of the evaluated objects.
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define aStruct  #{A: 1  B: 2  C: 3})  </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60Structure 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(sizeof aStruct)     </sc>]]></Expression>
+        <Note><![CDATA[Returns the closure size of aStruct.]]></Note>
+        <Returns><![CDATA[264]]></Returns>
+        <Expression><![CDATA[ <sc>(define bStruct  #{A: 1  B: 2  C: 3 D: 5 })   </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[ #&#60Structure 234567&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(sizeof bStruct)   </sc>]]></Expression>
+        <Note><![CDATA[Returns the closure size of bStruct.]]></Note>
+        <Returns><![CDATA[336]]></Returns>
+        <Hints><![CDATA[The closure size may be different values for the same object on different 
+
+
+               hardware platforms due to word alignment issues. The values returned from 
+
+
+               the <b>sizeof</b> function in the examples above are the values returned on a 
+
+
+               Intel Pentium-based platform.
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

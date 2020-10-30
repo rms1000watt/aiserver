@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Document SYSTEM "../DTD/Document.dtd">
+<Document>
+	<KnowledgeBase>
+	    <Title>Lambda RunQueue</Title>
+		<Topic>Lisp</Topic>
+		<SubTopic>Overview</SubTopic>
+		<HumanKeywords>Job Management Lambda Object AIS Programming</HumanKeywords>
+	</KnowledgeBase>
+	<Essay>Essay_runQueue_Functions</Essay>
+</Document>

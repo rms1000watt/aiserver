@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Date isDate 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isDate</FunctionKeywords>
+		<TypeKeywords>  Date Character Void </TypeKeywords>
+		<RelatedFunctions>  second minute time </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>boolean date julian object </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples determine if the arguments are Date Data Type Objects.
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc> 
+(isDate  #Jan,1,4BC)                  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+	    <Expression><![CDATA[ <sc> (isDate  #Dec,31,20456)                   </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+	    <Expression><![CDATA[ <sc> (isDate  #\space)                     </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[false]]></Returns>
+	    <Expression><![CDATA[ <sc> (isDate  #void)                        </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

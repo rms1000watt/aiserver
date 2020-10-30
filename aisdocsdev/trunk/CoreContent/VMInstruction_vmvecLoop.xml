@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmvecLoop</Title>
+		<InstructionName>vmvecLoop</InstructionName>
+		<InstructionType>Vector</InstructionType>
+        <ArgumentTypes> none </ArgumentTypes>
+		<RelatedVMInstructions>vmvecInitialize</RelatedVMInstructions>
+		<HumanKeywords>vector loop initialize</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[
+		<p>When evaluated, this vm instruction decrements the internal Vector 
+		processing count register, specified by the previous <b>vmvecInitialize</b> 
+		instruction. If the internal Vector processing count is NOT zero, 
+		this vm instruction resets the instruction pointer register, Ip, to the previous 
+		Vector Processing Initialize Label <i>(see the vmvecInitialize instruction)</i>. 
+		Neither the Vector Processing Integer Stack nor the Floating Point Stack are 
+		reset by this instruction. There are no conversions made between different types. 
+		The initial values in the three pointer registers, the three increment registers, 
+		and the counter register are NOT altered by this instruction. 
+		This instruction may return an Error value. After the operation, the 
+		Instruction Pointer is promoted. The operation of this vm instruction 
+		is expressed in the following C expression:
+	    </p>
+        <ul><li><b> if (--count != 0) Ip = VectorInitializeLabel;</b></li></ul>
+        <p>
+        The vmvecLoop instruction also increments the internal Vector Processing 
+        Pointers depending upon the value of the <b>extents</b> argument to the previous 
+        <b>vmvecInitialize</b> instruction. The possible values of the extent argument are 
+        <u>any immediate integer value</u>, indicating the operation to be performed, 
+        or any one of the following symbolic operators:
+        </p>  
+         <ul><li>argument: {0} <i>(The internal Vector Processing argument pointer register is incremented) </i></li>   
+         <li>source: {1} <i>(The internal Vector Processing argument and source pointer registers are incremented)  </i></li> 
+         <li>target: {2} <i>(The internal Vector Processing argument, source, and target pointer registers are incremented)  </i></li></ul>   
+    ]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[(vmvecLoop)]]></Expression>
+	    <Argument>
+		  <Name> none  </Name>
+		  <Format> </Format>
+		  <AISTypes></AISTypes>
+		</Argument>
+	</Syntax>
+</VMInstruction>

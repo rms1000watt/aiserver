@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example NumMatrix binarySearch 007</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>binarySearch</FunctionKeywords>
+		<TypeKeywords>NumMatrix Boolean</TypeKeywords>
+		<RelatedFunctions>insert binaryInsert sort uniqueInsert</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>binary insert search matrix sort</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines a sorted  Matrix in ascending order. Then it
+
+
+
+
+
+                  uses the <b>binarySearch</b> function to search for a value
+
+
+
+
+
+                  in the Matrix.
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	   <Expression><![CDATA[ <sc>(setq SortedMatrix (sort #(nummat|  5 4 3 7) &#60))    </sc>]]></Expression>
+        <Note><![CDATA[The predicate &#60 is used since the binarySearch function always assumes
+
+
+              a sorted NumMatrix in ascending order.]]></Note>
+        <Returns><![CDATA[#&#60NumMatrix 199917&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display SortedMatrix )         </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#(nummat| 3 4 5 7)]]></Returns>
+        <Expression><![CDATA[ <sc>(binarySearch SortedMatrix 2 )             </sc>]]></Expression>
+        <Note><![CDATA[The value 2 is not found in the NumMatrix]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(binarySearch SortedMatrix 4 )             </sc>]]></Expression>
+        <Note><![CDATA[The index of the value is returned.]]></Note>
+        <Returns><![CDATA[1]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

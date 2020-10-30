@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>objectToDirectory</Title>
+		<FunctionName>objectToDirectory</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+        <ArgumentTypes>Directory </ArgumentTypes>
+        <DataType>   Directory </DataType>
+	    <RelatedFunctions>new   </RelatedFunctions>
+        <RelatedVMInstructions> vmregObjPointer </RelatedVMInstructions>
+		<HumanKeywords>object directory vector values keys merge </HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>objectToDirectory</b> function converts the arguments into a 
+
+
+                 Directory.  </p>
+          ]]></Description>
+	<Brief>
+       <Overview><![CDATA[
+       	<p>The <b>objectToDirectory</b> function converts the arguments <b>{source}</b> into 
+
+           a Directory returning the new Directory. If there are two arguments, such as <b>{vector1}</b> and <b>{vector2}</b>, 
+
+           the items from both vectors are paired to form a Directory.  If there are two arguments, 
+
+           and they are a combination of Structures, Dictionaries, or Directories, the <b><i>values</b></i> of 
+
+           the first argument are updated with the <b><i> values</i></b> of the second argument, only when the 
+
+           <b><i>keys</i></b>  match.  If the object is already a Directory, it is returned unchanged.</p>
+        ]]></Overview>
+	   <Usage><![CDATA[
+		<p>The <b>objectToDirectory</b> function is used to convert a Vector, Structure, or 
+
+           Directory object to a Directory object. The <b>objectToDirectory</b> function is 
+
+           also useful for key-based merge and update of an existing Directory, using the 
+
+          key-value pairs from a collection object such as a Structure or Dictionary.
+
+           A Vector object may also update the values of an existing Directory.
+
+
+
+
+        ]]></Usage>
+    </Brief>
+  <Syntax>
+	    <Expression><![CDATA[<p><b> (objectToDirectory obj) </b></p> ]]></Expression>
+    	<Argument>
+		  <Name>obj</Name>
+		  <Note><![CDATA[
+		  <p> A Vector, Structure or Dictionary object.</p>
+          ]]></Note>
+		  <AISTypes>Vector Structure Dictionary</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>A new Directory object.</p>
+	    ]]></Return>
+  </Syntax>
+  <Syntax>
+        <Expression><![CDATA[ <p><b>  (objectToDirectory {vector1} {vector2})  </b></p>]]></Expression>
+	   <Argument>
+		  <Name>vector1</Name>
+		  <Note><![CDATA[
+		  <p> A vector object.</p>
+          ]]></Note>
+		  <AISTypes>Vector</AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>vector2</Name>
+		  <Note><![CDATA[
+		  <p>A vector object.</p>
+          ]]></Note>
+		  <AISTypes>Vector</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>The I-th item of {vector1} is paired with the I-th item in the {vector2} 
+
+            to form a new Dictionary. Each item in {vector1} must be a Symbol  and may contain 
+
+            more items than {vector2}. If {vector1} contains more items than {vector2} then the 
+
+            keys in the directory will be assigned a value of #void.  The new Directory object
+
+             is returned.</p>
+	    ]]></Return>
+  </Syntax>
+  <Syntax>
+        <Expression><![CDATA[<p><b> (objectToDirectory {structure} {vector}) </b></p>]]></Expression>
+       <Argument>
+		  <Name>structure</Name>
+		  <Note><![CDATA[
+		  <p> A Structure object.</p>
+          ]]></Note>
+		  <AISTypes>Structure</AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>vector</Name>
+		  <Note><![CDATA[
+		  <p>A Vector object.</p>
+          ]]></Note>
+		  <AISTypes>Vector</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>The {structure} keys and values are copied into a newly created Directory object. 
+           The I-th item from  {vector} is mapped to the I-th item in the new Directory object.  
+           If {vector} contains more items than {structure}, the extra elements are ignored. 
+           The new Directory object is returned. </p>
+	    ]]></Return>
+  </Syntax>
+  <Syntax>
+        <Expression><![CDATA[<p><b>(objectToStructure {structure1} {object}) </b></p>
+]]></Expression>
+    	<Argument>
+		  <Name>structure1</Name>
+		  <Note><![CDATA[
+		  <p> A Structure object to be updated.</p>
+          ]]></Note>
+		  <AISTypes>Structure</AISTypes>
+		</Argument>
+	    <Argument>
+		  <Name>object</Name>
+		  <Note><![CDATA[
+		  <p> Must be a Structure, Dictionary, or Directory object. </p>
+          ]]></Note>
+		  <AISTypes>Structure Dictionary Directory</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>The {structure} keys and values are copied into a newly created Directory object . 
+           The new Directory object is updated with the values from the {object} argument 
+           only if the key from {object}, matches a key from {structure}. Keys that do not match 
+          are ignored The new Directory object is returned.</p>
+	    ]]></Return>
+  </Syntax>
+  <Syntax>
+        <Expression><![CDATA[<p><b>(objectToStructure {dictionary1} {dictionary2}) </b></p>
+                    <p><b>(objectToStructure {dictionary}  {directory}) </b></p>
+                    <p><b>(objectToStructure {directory1}  {directory2}) </b></p>
+                    <p><b>(objectToStructure {directory}   {dictionary})</b></p>]]></Expression>
+    	<Argument>
+		  <Name>dictionary or directory</Name>
+		  <Note><![CDATA[
+		  <p>Must be a Dictionary or Directory object. </p>
+          ]]></Note>
+		  <AISTypes>Dictionary Directory</AISTypes>
+		</Argument>
+	    <Argument>
+		  <Name>dictionary or directory</Name>
+		  <Note><![CDATA[
+		  <p>Must be a Dictionary or Directory object.</p>
+          ]]></Note>
+		  <AISTypes>Dictionary Directory</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>The {dictionary1} or {directory1} object is updated with the values from the 
+           {dictionary2} or {directory2}, object only if the key matches. If the key from 
+           {dictionary2} or {directory2}, does not match, the new key and its value is added 
+            to {dictionary1} or {directory1}. This is a destructive update to the {dictionary1} 
+            or {directory1} object.</p>
+	    ]]></Return>
+	</Syntax>
+</Function>

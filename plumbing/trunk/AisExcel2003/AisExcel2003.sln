@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AisExcel2003", "AisExcel2003.csproj", "{EA324E3E-3081-480C-AA9D-5DCD1A2561E4}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "AisExcel2003Setup", "..\AisExcel2003Setup\AisExcel2003Setup", "{1C651B4F-0A9E-4218-8995-87FBF8D01398}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EA324E3E-3081-480C-AA9D-5DCD1A2561E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA324E3E-3081-480C-AA9D-5DCD1A2561E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA324E3E-3081-480C-AA9D-5DCD1A2561E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA324E3E-3081-480C-AA9D-5DCD1A2561E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C651B4F-0A9E-4218-8995-87FBF8D01398}.Debug|Any CPU.ActiveCfg = Debug
+		{1C651B4F-0A9E-4218-8995-87FBF8D01398}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

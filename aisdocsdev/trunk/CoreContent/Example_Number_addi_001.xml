@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number addi 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>addi</FunctionKeywords>
+		<TypeKeywords>Number</TypeKeywords>
+		<RelatedFunctions> addi divi  muli subi iadd isub imul idiv </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>number arithmetic addition integer operators</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[  <p> The <b>addi</b> function performs addition of the argument values , which in 
+                    these examples are Numbers and Money values and returns the result
+                     as an Integer.</p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+(addi 12 3 4)        </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[19]]></Returns>
+        <Expression><![CDATA[ <sc>(addi $3.50 $4.70)    </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[7]]></Returns>
+        <Hints><![CDATA[none
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

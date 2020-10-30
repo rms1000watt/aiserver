@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmregSetXNumber </Title> 
+		<InstructionName>vmregSetXNumber    </InstructionName>
+		<InstructionType>Register</InstructionType>
+		<ArgumentTypes> Integer Number Double NumPointer</ArgumentTypes>
+		<RelatedVMInstructions> vmregSetXFloat  vmregSetXCharacter 
+		                        vmregSetXInteger  vmregSetXShort  vmregSetXCharImmediate
+		                        vmregSetXIntImmediate vmregSetXShortImmediate</RelatedVMInstructions>
+		<HumanKeywords> charpointer fltpointer intpointer numpointer shortpointer  index set</HumanKeywords>
+	</KnowledgeBase>                   
+	<Description><![CDATA[
+		<p>When evaluated, this vm instruction, uses the NumPointer in the 
+		register <b>pointer</b> plus the Integer value in the <b>index</b> 
+		register, to save a Number value from the register <b>source</b>. 
+		The result is saved into the memory location pointed to by the 
+		<b>pointer</b> register plus the <b>index</b> register. The result 
+		will be saved as a type Number from the Number value in the 
+		<b>source</b> register. This instruction may return an Error value. 
+		After the operation, the Instruction Pointer is promoted. 
+		The operation of this vm instruction is expressed in the following 
+		C expression:
+    	</p>      
+        <ul><li><b>   ((double*)pointer)[index] = (double)source; </b></li></ul>
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[(vmregSetXNumber source index pointer)]]></Expression>
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>register</Format>
+		  <AISTypes>number</AISTypes>
+		</Argument>		
+		<Argument> 
+		  <Name>index</Name>
+		  <Format>register</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>		  
+		<Argument> 
+		  <Name>pointer</Name>
+		  <Format>register</Format>
+		  <AISTypes>NumPointer</AISTypes>			     
+		</Argument>
+	</Syntax>
+</VMInstruction>

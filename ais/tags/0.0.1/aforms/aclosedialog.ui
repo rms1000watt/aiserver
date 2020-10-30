@@ -1,0 +1,129 @@
+<ui version="4.0" >
+ <class>ACloseDialogClass</class>
+ <widget class="QDialog" name="ACloseDialogClass" >
+  <property name="windowModality" >
+   <enum>Qt::ApplicationModal</enum>
+  </property>
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>391</width>
+    <height>214</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Close Session Form</string>
+  </property>
+  <layout class="QVBoxLayout" >
+   <item>
+    <widget class="QLabel" name="uiCloseSessionLabel" >
+     <property name="text" >
+      <string>You are about to close the session form, please select a close mode.</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" >
+     <item>
+      <widget class="QRadioButton" name="uiDefaultRadio" >
+       <property name="text" >
+        <string>&amp;Default</string>
+       </property>
+       <property name="checked" >
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="uiDisconnectRadio" >
+       <property name="text" >
+        <string>Disco&amp;nnect (Do not close the session)</string>
+       </property>
+       <property name="checked" >
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="uiSoftRadio" >
+       <property name="text" >
+        <string>&amp;Soft (Close the session, but finish pending requests)</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="uiFirmRadio" >
+       <property name="text" >
+        <string>&amp;Firm (Close the session, but finish current request)</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="uiHardRadio" >
+       <property name="text" >
+        <string>&amp;Hard (Close the session, abort all requests)</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>20</width>
+       <height>51</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="uiOkButton" >
+       <property name="text" >
+        <string>&amp;OK</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="uiCancelButton" >
+       <property name="text" >
+        <string>&amp;Cancel</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11" />
+ <tabstops>
+  <tabstop>uiOkButton</tabstop>
+  <tabstop>uiCancelButton</tabstop>
+  <tabstop>uiDefaultRadio</tabstop>
+  <tabstop>uiDisconnectRadio</tabstop>
+  <tabstop>uiSoftRadio</tabstop>
+  <tabstop>uiFirmRadio</tabstop>
+  <tabstop>uiHardRadio</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

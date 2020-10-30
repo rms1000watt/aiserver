@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Essay SYSTEM "../DTD/Essay.dtd">
+<Essay>
+<KnowledgeBase>
+	<Title>XML 1.1</Title>
+	<Topic>XML Documentation Guidelines</Topic>
+	<SubTopic>Overview</SubTopic>
+	<HumanKeywords>HTML 4.0 Standard Guidelines</HumanKeywords>
+</KnowledgeBase>
+<Section>
+<Heading>XML Validation</Heading>
+<Description><![CDATA[
+	<p><b>Overview.</b>
+	XML 1.1 is the current XML standard that describes what XML is and how it should be used.  This standard is important in that
+	it describes the requirements for interoperating with a wide variety of applications including modern browsers, Macromedia's
+	Flash MX, and X3D. Standards are important in that they allow XML authors and XML applications to agree on a common syntax that
+	improves reliability and maintenance.  It ensures that our XML documents will work with these applications, development
+	environments and validation tools.  Note that XML parsers are not allowed to fix or ignore errors in XML documents.  The
+	standard requires the XML parser to report errors.
+	</p>
+	<p><b>Reference.</b>
+	Our reference for this standard is &quot;XML In a Nutshell Third Edition&quot; by Harold and Means, an O&#039;Reilly
+	&amp; Associates book.  This excellent reference includes many useful examples.  The remainder of this document highlights
+	selected sections of this standard that apply to our situation.  A second reference, &quot;Definitive XML Schema Second
+	Edition&quot; by Walmsley is also a recommended supplement to the main XML reference.
+	</p>
+	<p><b>Tools.</b>
+	The two essential ingredients to establishing a documentation standard are a comprehensive reference and a tool for automated
+	validation of our generated documents.  Fortunately, both are available for XML.  For now, we use Internet Explorer 6 to validate
+	XML documents.  Simply enter the path to the XML file in the IE address bar.  The file should have an .xml file extension.
+	Several other XML validation tools are under consideration.
+	</p>
+]]></Description>
+</Section>
+<Section>
+<Heading>Well-formed XML</Heading>
+<Description><![CDATA[
+	<p><b>Overview.</b>
+	This section highlights and emphasizes selected aspects of the XML 1.1 standard as described in the above reference. XML
+	documents should conform to two separate requirements.  XML documents must be well-formed and valid.  Well-formed documents
+	meet the requirements described in the section below.  Valid documents conform to a separate Document Type Definition (DTD)
+	or a schema.  A DTD describes what elements may appear and where they may appear as well as prescribing their attributes
+	and contents.
+	</p>
+	<p><b>Well-Formed XML</b>
+	The well-formed XML requirements are noted in Chapter 21 of the XML reference.  A few of the essential requirements are
+	summarized here:</p>
+	<ul>
+		<li>XML Declaration. The very first thing in every XML document is a declaration such as:<br/>
+		&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&lt;</li>
+		<li>End Tag.  Every start tag must have a matching end tag or it must be an empty-element tag (ending in /&gt;).</li>
+		<li>Nested Tags. Inner tags must be closed before an outer tag is closed.</li>
+		<li>Root Element. There must be a single root element.</li>
+		<li>Attribute Value. Every attribute value must be quoted.</li>
+		<li>Attribute Names. An element cannot contain two attributes with the same name. Attribute names are case-sensitive.</li>
+		<li>Comments.  Comments and processing instructions cannot occur inside a tag.</li>
+		<li>Special Characters.  Less-than (&lt;), greater-than(&gt;) or ampersand (&amp;) characters in the character
+		data of an element or attribute value must be replaced by their respective predefined entitites.</li>
+	</ul>
+	<p><b>Validation.</b>
+	In addition to being well-formed, XML documents usually conform to a syntax that includes the what tags are allowed, where
+	they are allowed, their attributes and the contents of each element.  A Document Type Definition (DTD) makes these
+	expectations concrete.  An XML document is said to be &quot;valid&quot; if it conforms to a DTD that is specified in
+	a Document Type Declaration  (not to be confused with a Document Type Definition!).   This declaration is placed just
+	after the XML declaration which is always the first item in any well-formed document. Chapter 3 of the XML reference
+	describes the XML validation process in detail.
+	</p>
+]]></Description>
+</Section>
+<Section>
+<Heading>Well-formed HTML</Heading>
+<Description><![CDATA[
+	<p><b>XHTML Standard.</b>
+	XHTML is a W3C standard for a variant of HTML that is XML-compatible.  That is, it defines HTML as an XML-type document rather
+	than as an SGML-type document.  It looks a lot like HTML. XHTML includes the requirements of HTML 4.0 plus additional
+	requirements set forth in Chapter 7 of our XML reference. XHTML allows an application to process HTML using XML tools.
+	Note that XHTML does not include any other tags than those specified by HTML 4.0.  A few of the essential requirements
+	are repeated here:
+	</p>
+	<ul>
+		<li>HTML 4.0. Document meets the requirements included in the HTML 4.0 standard.</li>
+		<li>HTML Tags. Tag names and attribute names must be lower case versions of HTML tags and HTML attributes.
+		Every start tag must have an end tag or it must be converted to an empty-element tag (a tag that concludes with /&gt;).
+		For example, replace &lt;br&gt; with &lt;br/&gt; and &lt;hr&gt; with &lt;hr/&gt;</li>
+		<li>Nested Tags.  Inner tags must be closed before an outer tag is closed.  Observe the nesting rules for all HTML tags.
+		For example, a UL tag is not allowed in a P segement.  See the HTML reference Appendix A for a complete list of
+		nesting rules.</li>
+		<li>Attribute Values. Attribute values must be enclosed in quotes (&quot;). Every attribute must have a value.
+		For example, replace the boolean attribute checked with checked=&quot;checked&quot;.</li>
+		<li>Special Characters.  In HTML some special characters are represented by HTML entities that are not recognized
+		in XML.  Convert these HTML entities into XML character entitites.  For example, change &amp;nbsp; to &amp;#160;.
+		See Table 27-4 in the XML reference for a complete list.  Encode the special characters less-than, greater-than,
+		ampersand and quote in the content of each tag.</li>
+		<li>DTD. The root element tag name must be &quot;html&quot;.  Include a DOCTYPE declaration that references of the
+		three XHTML DTDs.  See Chapter 7 of the XML reference for a example converting HTML into XHTML.</li>
+	</ul>
+	]]></Description>
+</Section>
+<Section>
+<Heading>XML Styles</Heading>
+<Description><![CDATA[
+	<p><b>Style Management.</b>
+	Suppose that we want to impose a uniform look and feel to the help documentation for a particular application. Or, suppose
+	that we wish to render the presentation for a variety of end-uses (print, web, pda, etc.).  Or suppose that we wish to
+	have one group compose the help text and another group render the end-user presentation.  All of these tasks are facilitated
+	by separating the formatting from the meta-data and content of the help documents.  Fortunately, XML provides several
+	mechanisms for separating the formatting from the content which are described in our XML reference. One approach is
+	to use style sheets similar to the HTML style sheets described in the HTML Documentation Guidelines.
+	</p>
+	<p><b>Style Sheets</b></p>
+	<p><b>Summary.</b>
+	XML style sheets are described in Chapter 13 of our XML reference. The reference includes a small example that consists
+	of two files, an XML document and a CSS style sheet.  The style sheet sets a default format for all of the tags in the
+	XML document and then overrides that format for a selected subset of the elements in the XML document.  An XML-aware
+	browser, such as Internet Explorer 6.0, will render the document just as shown in the XML reference.
+	<!-- We could provide a link to the example here... -->
+	</p>
+	<p><b>Summary.</b>
+	The XML guidelines include the following recommendations:
+	</p>
+	<ul>
+		<li>Well-formed. All XML documents must be well-formed.</li>
+		<li>Validation. XML documents should conform to a DTD.</li>
+		<li>XHTML. XML-compatible versions of HTML documents must conform to the XHTML standard.</li>
+	</ul>
+]]></Description>
+</Section>
+</Essay>

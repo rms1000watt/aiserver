@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example String text 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>text</FunctionKeywords>
+		<TypeKeywords>Text String Integer</TypeKeywords>
+		<RelatedFunctions>isText char code string</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>convert text   format</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>text</b> function to convert a Numeric Data Type
+                 into a String or Text data type with a specified format.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(text  5732.279  "#,##0")</sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[5,732 ]]></Returns>
+        <Expression><![CDATA[ <sc>(text  5732.279  "#,###.##0")  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[5,732.279]]></Returns>
+        <Expression><![CDATA[ <sc>(text  5732.279 "$#,###.#0") </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[$5,732.28]]></Returns>
+        <Expression><![CDATA[ <sc>(text -57.327 "($##.#0)")</sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[($57.33)]]></Returns>
+        <Expression><![CDATA[ <sc>(text  .573279  "##.0%")  </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[57.3%]]></Returns>
+        <Expression><![CDATA[ <sc>(text  -.573279  "(##.0%)") </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[(57.3%)]]></Returns>     
+        <Hints><![CDATA[The position of the $ % and , symbols are not important. 
+              The comma (,) is always placed after three digits. The dollar 
+              ($) is always placed before the number. The percent (%) is always 
+              placed after the number.
+        ]]></Hints>
+   </Syntax>
+</Example>

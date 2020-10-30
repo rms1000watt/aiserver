@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>vectorDelete</Title>
+		<FunctionName>vectorDelete</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+        <ArgumentTypes>Directory Integer </ArgumentTypes>  
+		 <DataType>   Directory </DataType>
+		<RelatedFunctions>remove insert delete</RelatedFunctions>
+        <RelatedVMInstructions> vmregObjLength  </RelatedVMInstructions>
+		<HumanKeywords>delete remove key binding </HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>delete</b> function deletes the specified binding from a   Directory.  </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>vectorDelete </b> function destructively deletes the binding at the specified 
+           key from the Directory.  The Directory is dynamically resized to reflect the lost 
+           binding.</p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>Use <b>vectorDelete</b> function is used to remove a binding from a Directory. 
+           A numeric index or key specifies the binding.  The <b>vectorDelete</b> function
+           behaves like the <b>remove</b> function with the exception that the <b>vectorDelete</b> 
+           function is destructive and the <b>remove</b> function in non-destructive. 
+           </p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p> (vectorDelete  dir  key)</p>]]></Expression>
+		<Argument> 
+		  <Name>dir</Name>
+		  <Note><![CDATA[
+		  <p>The Directory to be modified.</p>
+          ]]></Note>
+		  <AISTypes>Directory  </AISTypes>
+		</Argument>
+	    <Argument> 
+		  <Name>key</Name>
+		  <Note><![CDATA[
+		  <p>If present, it must be an existing key in the Directory or a numeric index.</p>
+          ]]></Note>
+		  <AISTypes>Symbol or Integer</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The modified Dictionary. If the key or index is not found the Dictionary is 
+           returned unmodified
+        </p>
+	    ]]></Return>         
+	</Syntax>
+</Function>

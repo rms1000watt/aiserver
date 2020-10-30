@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example List morph 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>morph</FunctionKeywords>
+		<TypeKeywords>Pair List</TypeKeywords>
+		<RelatedFunctions>compile eval lisp</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compile evaluation morph parse Lambda</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows simple <b>macro</b> substitution using the <b>morph</b> function.	              
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc> (morph  '((++ x)))         </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60Pair 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc>(display #&#60Pair 123456&#62)     </sc>]]></Expression>
+        <Note><![CDATA[The ++ is a built-in macro.]]></Note>
+        <Returns><![CDATA[(setq x (+ x 1)) ]]></Returns>
+  	    <Expression><![CDATA[ <sc>(morph  1)         </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[1]]></Returns>
+	    <Expression><![CDATA[ <sc>(morph  '(1))       </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[1]]></Returns>
+        <Hints><![CDATA[none        
+
+        ]]></Hints>
+   </Syntax>
+</Example>

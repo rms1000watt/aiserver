@@ -1,0 +1,158 @@
+aiswip/glue/asysglue.txt
+
+aModeString.   In SysGlue_open, aModeString is no longer a string.  Please revise the name to
+aMode.  Make it as easy as possible for others to understand your code by using descriptive
+names.
+ 
+IO_Text.  As far as I can tell, the open of a text file does not include IO_Text in the
+internal mode.  This bit should be set for text files in order to allow for multi-platform
+eol (end-of-line) processing.
+ 
+Test Suite.  The test suite departs from the current tests in aisdev/test/ with regards to
+the method and the reporting format.  It simplifies learning, using, and combining the tests
+if they all work the same way.  Please change the test format to conform to the format that
+is used in the existing tests.
+ 
+Test Set.  Generate a test set that has as inputs a test file and a file containing the
+expected response for each individual test as noted below.  The test set has a test for
+every file type and every mode and one or more tests for each file operation.  The table
+of the tests are as follows.  Thus the test set includes 9 tests for each of 6 operations
+or at least 54 separate tests.  For some operations, such as seek, you will probably need
+to test at least 3 seek operations so a Test Set will actually contain more than 54 tests:
+ 
+Type   0    0    0   4   4   4    5   5   5
+Mode   0    1    2   0   1   2    0   1   2
+open
+read
+write
+seek
+resize
+close
+ 
+Test File.  I suggest a test file as the input rather than a string because it is
+inconvenient to generate long sequences of binary characters using a string as an input. For
+write tests, first read the Test File in binary mode and then write the exact string using
+the type and mode for the test.
+ 
+Expected Results.  Each Test Set will require a file containing the expected result for each
+of the above (54+) tests.  If the expected result is an error, then the entry for that test
+is the returned error message.  For a read operation, the expected result is all or part of
+the data that is read.  For a write operation, just follow the write operation with a binary
+read of the file and return all or part of the contents of the file.  For a seek operation,
+just read all or part of the file from the current position and return that information as
+the expected result.  The idea is to return enough information from each test to verify that
+the operation worked as documented.  You may need to adapt these suggestions to fit the
+actual circumstances for some combinations of the above tests.
+ 
+Test Suite.  Now, we are in a position to run a Test Set on any one of a bunch of different
+files.   Generate an input Test File and an Expected Results File for each of the following
+situations:
+NoFile    File is missing
+EmptyFile File exists and contains nothing.
+Newline	File File contains a single newline
+CharFile  File contains a single char.
+AllChars    File contains every value from 0 to 255.
+Database    File is a minimal database file
+Database    File is a typical, large database file
+LargeFile   File is very large.
+
+Special Cases.  The test suite will also have to contain some special cases, such as seeking past the end of the file and others that we have discussed.
+
+
+PENDING:
+Test Harness.  Test all the modes with all the file types?
+What if a text file is opened as a db file or vice versa?
+Test functions with and without all the optional arguments.
+
+Memory Leakage.  Check that all allocated resources are reclaimed on deletion of the
+last reference to the resource.  Try out valgrind on the Linux platform to see if that is
+of some help. SysGlue_IOInit has a memory leak.
+
+Test Coverage.  The test suite should include a comprehensive set of tests.  Once
+ they are in the test suite they can be rerun very quickly to make sure that everything is
+ working properly after changes have been made to the system.  In addition to the existing
+ tests, include:
+  1. Boundaries.   Determine the maximum size text/binary file that can be written/read.
+  2. Browse Lambda.  Duplicate all of the sequences of file I/O operations found in
+ BrowseLib that are not tested elsewhere.
+  3. Libraries.  Duplicate all of the sequences of file I/O operations found in libraries
+ that are not tested elsewhere.
+
+  5. Public Methods.  Test all the public methods including copy.  If this method cannot
+ be conveniently tested from AisLisp, then write a small C++ test program.
+  6. Newlines.  For text files, verify that each platform-specific line termination is
+ converted to a newline on  input  and converted from a newline back to the platform-specific
+ termination on output.  Note what happens if an existing file has a non-standard line
+ terminator (include a note in the documentation). This may have to be done outside of the
+ test suite.
+
+ 11. Platforms.  Test on both Linux and Windows.
+ 12. Delimiters.  Test for various path delimiters on each platform (include a note in the
+ documentation on your results).
+ 
+Synchronization.  Test asysglue with multiple simultaneous contexts executing File I/O
+operations without interference.
+
+Check for an empty input file name on open.
+
+4. File Modes and Types.  Test every combination of modes and types that can be expected.
+  Make sure test fails gracefully any combinations that do not make sense.  This includes all
+ of the modes that are no longer allowed.
+
+VERIFY:
+
+ 8.  Modes.  Test that database files are, indeed read-only, in mode 2.  Verify that the
+ other modes work as specified.
+
+COMPLETED:
+Test Suite. Use forward slash, not a backslash in file paths unless explicitly testing for
+paths with a backslash.  These routines have to run on all platforms.
+
+Startup File. Add hint on how to conduct the test after the welcome statement. For an
+example, see libraries/astartup.sl.  Continue to note changes to the in revision history.
+
+Treat an expected result as a success and an unexpected result as a failure.
+That way, anyone can quickly tell if any unexpected results were returned from the test.
+
+Error Checking. Add a CR that allows one to write nothing to a file.  In a complex program
+it is possible that an occasional empty string is written to a file. The routine should
+just return quietly without generating an error.
+
+Test Coverage.
+7. Truncation.  Make sure that existing files are indeed truncated in mode 1 even if
+nothing is written to the file.  Add any other weird cases that you can think of to the
+test suite.
+
+
+ 9.  Binary Files.  Test that binary files are faithfully read and written, including
+ nulls, control characters, etc.
+ 10. Text Files.  Test that all Latin1 chars are faithfully read and written.
+
+Startup File. Revise Astartup.sl to not initialize the cabinet and astartupinit.sl that
+initializes the cabinet. Revise the name of the cabinet to avoid confusion with an Lambda.
+Update change history.  Look for browse Lambda in libraries folder so as to avoid needless
+duplication of browseLib.sl
+
+Modifications. SysGlue_Open. Removed file types 1, 2, and 3 (Spreadsheet, Smarttable,
+Workspace) from SysGlue_open.  When everyone is ready to switch, move types 4 and 5 down to
+close up the gap.
+
+Documentation.
+  1. Document asysglue according to the Doxygen standards.
+  2. Add note to fopen refguide documentation about what happens if file type is an illegal
+type, such as the case that you mentioned in your email.
+
+Optional Arguments. Not all of the optional arguments seem to work for read and write in the
+tests.  Document current behavior in refguide.
+
+Coding Practice.  Bring the current code is up to the current programming standards.
+
+Test Harness.
+ 1.  Add a test harness with a cabinet, startup file and AisLisp test code to the
+ _Plumbing/asysglue folder.
+ 2.Put all the children right in testGlueLambda as nested functions.
+end
+
+
+
+

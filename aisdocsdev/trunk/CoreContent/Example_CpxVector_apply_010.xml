@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example CpxVector apply 010</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>apply</FunctionKeywords>
+		<TypeKeywords>Vector</TypeKeywords>
+		<RelatedFunctions>   defmethod addMethod</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>apply functions   method</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines a CpxVector.  Then it
+
+
+                  uses the <b>apply</b> function to add all the values in the Vector.
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq X (new Vector: complex: 2 1.0 2.0 3.0 4.0))  </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60CpxVector 197815&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(apply  sum  X)</sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60Complex 197815&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60Complex 197815&#62 )</sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#c4.0+6.0i ]]></Returns>
+        <Hints><![CDATA[<p>Make sure that the complex vector has at least one element.   </p>
+        ]]></Hints>
+   </Syntax>
+</Example>

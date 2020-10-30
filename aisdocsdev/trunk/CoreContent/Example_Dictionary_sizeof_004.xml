@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Dictionary sizeof 004</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>sizeof</FunctionKeywords>
+		<TypeKeywords>Dictionary Integer</TypeKeywords>
+		<RelatedFunctions>new length </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>sizeof closure bytes length disk memory</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples return the closure size of the Symbol objects.  
+
+
+                  The closure size would depend on the 
+
+
+
+                  length of the evaluated objects.
+
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+        <Expression><![CDATA[ <sc>(sizeof #{dic|A: 1 B: 2})      </sc>]]></Expression>
+        <Note><![CDATA[Returns the number of bytes required to save to disk.]]></Note>
+        <Returns><![CDATA[188]]></Returns>
+        <Expression><![CDATA[ <sc>(length #{dic|A: 1 B: 2})     </sc>]]></Expression>
+        <Note><![CDATA[Returns the number of items.]]></Note>
+        <Returns><![CDATA[2]]></Returns>
+        <Hints><![CDATA[The closure size may be different values for the same object on different 
+
+
+
+               hardware platforms due to word alignment issues. The values returned from 
+
+
+
+               the <b>sizeof</b> function in the examples above are the values returned on a 
+
+
+
+               Intel Pentium-based platform.
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

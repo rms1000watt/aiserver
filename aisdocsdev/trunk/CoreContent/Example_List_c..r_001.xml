@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example List c..r 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>c..r</FunctionKeywords>
+		<TypeKeywords>Pair List</TypeKeywords>
+		<RelatedFunctions> setCar setCdr</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>search associate find car cdr</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows how the <b>c..r</b> function is used
+	              to apply the <b>car</b> and <b>cdr</b> functions to the Pairs in the List.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(caddar  '((1  2  3)  (4  5  6)  (7  8  9)))    </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[3]]></Returns>
+        <Expression><![CDATA[ <sc>(car (cdr (cdr  (car   '((1  2  3)  (4  5  6)  (7  8  9))) ) ) )</sc>]]></Expression>
+        <Note><![CDATA[The long version is :  (starting from right to left)]]></Note>
+        <Returns><![CDATA[3]]></Returns>
+        <Expression><![CDATA[ <sc>(car  '((1  2  3)  (4  5  6)  (7  8  9)))     </sc>]]></Expression>
+        <Note><![CDATA[The results if the functions are applied individually:]]></Note>
+        <Returns><![CDATA['(1 2 3)]]></Returns>
+        <Expression><![CDATA[ <sc>(cdr  '(1 2 3) )      </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA['(2 3)]]></Returns>       
+        <Expression><![CDATA[ <sc>(cdr  '( 2 3) )             </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA['(3)]]></Returns>     
+        <Expression><![CDATA[ <sc>(car  '(3) )             </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[3]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

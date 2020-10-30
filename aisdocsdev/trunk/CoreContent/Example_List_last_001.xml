@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example List last 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>last</FunctionKeywords>
+		<TypeKeywords>Pair List</TypeKeywords>
+		<RelatedFunctions> car setCar cdr setCdr</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>last pair list cdr</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples show the <b>last</b> function return the last pair  of the List.
+
+	              
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(last  '((1  2  3)  (4  5  6)  (7  8  9)))    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60Pair 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60Pair 123456&#62)     </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA['(7 8 9)]]></Returns>
+        <Expression><![CDATA[ <sc>(last  '(1  2  3  4))    </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[(4)]]></Returns>
+       <Expression><![CDATA[ <sc>(last (last  ''(1  2  .  4)) )    </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#&#60Pair 234567&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60Pair 234567&#62)     </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[(2 . 4)]]></Returns>
+        <Hints><![CDATA[none
+
+        ]]></Hints>
+   </Syntax>
+</Example>

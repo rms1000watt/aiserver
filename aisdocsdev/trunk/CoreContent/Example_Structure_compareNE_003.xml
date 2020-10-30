@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure compareNE 003</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compareNE</FunctionKeywords>
+		<TypeKeywords>Structure Integer</TypeKeywords>
+		<RelatedFunctions>compare compareEQ compareLE compareGE compareLT  compareGT </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare symbol equal lesser </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>compareNE</b> function to compare two Structures and return
+
+
+
+
+
+                  the Boolean value, true or false.  The corresponding keys and values of each Structure are compared
+
+
+                  to determine whether one Structure is  equal to the other.
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(compareNE #{X: 1 Y: 2} #{X: 1 Y: 2})  </sc>]]></Expression>
+        <Note><![CDATA[Both Structures are equal.]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(compareNE  #{A: 1 B: 2} #{X: 1 Y: 2})  </sc>]]></Expression>
+        <Note><![CDATA[The first Structure is lesser than the second Structure.]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

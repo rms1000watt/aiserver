@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Symbol ref 003</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>ref</FunctionKeywords>
+		<TypeKeywords> Symbol</TypeKeywords>
+		<RelatedFunctions>setq </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>ref reference set position</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows the <b>ref</b> function return the
+                  value of the character specified by the character index 
+                  within a Symbol.
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(setq d (new Symbol:  "Donald")) </sc>]]></Expression>
+        <Note><![CDATA[The variable d is set with a Symbol data type.  ]]></Note>
+        <Returns><![CDATA[Donald]]></Returns>
+        <Expression><![CDATA[ <sc>(type d)  </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[Symbol]]></Returns>
+        <Expression><![CDATA[ <sc>(ref d  0)  </sc>]]></Expression>
+        <Note><![CDATA[The ref function returns the character with index value 0 in the Symbol. ]]></Note>
+        <Returns><![CDATA[D]]></Returns>
+  	    <Expression><![CDATA[ <sc>(ref d 4)    </sc>]]></Expression>
+        <Note><![CDATA[The ref function returns the character with index value 4 in the Symbol. ]]></Note>
+        <Returns><![CDATA[l]]></Returns>
+        <Hints><![CDATA[none
+
+        ]]></Hints>
+   </Syntax>
+</Example>

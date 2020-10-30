@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>stringToVector</Title>
+		<FunctionName>stringToVector</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>String Vector Text Character  </ArgumentTypes>
+		<DataType>String  </DataType>
+		<RelatedFunctions>stringToVector</RelatedFunctions>
+        <RelatedVMInstructions> vmrefvector  vmrefobjvector </RelatedVMInstructions>
+		<HumanKeywords>vector separates token key substrings</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>stringToBVector</b> function separates a String 
+                 into several substrings using the key  as the separator. 
+                 The key is not included in the result substring.  </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>stringToVector</b> function separates a String <b>{string}</b> into several
+           substrings using the key <b>{key}</b> as the separator.  The key is not included 
+            in the result substring.  All of the result substrings are collected to form a 
+            Vector and the Vector is returned. The <b>stringToVector</b>  has an optional third 
+            argument  <b>{true}</b>, which, if present, will treat the <b>{key}</b> argument as 
+            a collection of  keys rather than a single key or pattern.  In other words if 
+            <b>{true}</b> is present, any character in the <b>{key}</b> will cause a substring 
+            break. The <b>stringToVector</b> has an optional fourth argument <b>{true}</b>, 
+            which, if present along with the optional third argument, will treat the 
+            <b>{key}</b> argument as a field delimiter such as in a tab delimited record string.
+        </p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>stringToVector</b> function's ability to separate a String into several 
+           substrings makes the function ideally suitable for tokenizing a String. Afterwards, 
+           each substring in the Object Vector, can be processed as tokens.
+
+		</p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p>(stringToBVector  string  key)</p>
+                    <p>(stringToBVector  string  key  true)</p>
+                    <p>(stringToBVector  string  key  true true)</p>
+                    <p>(stringToBVector  text  key )</p>
+                    <p>(stringToBVector  text  key  true) </p>
+                    <p>(stringToBVector  text  key  true true) </p>
+       ]]></Expression>
+		<Argument>
+		  <Name>string</Name>
+		  <Note><![CDATA[
+		  <p> Target String or Text</p>
+          ]]></Note>
+		  <AISTypes>String or Text</AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>key</Name>
+		  <Note><![CDATA[
+		  <p>The break string or character</p>
+          ]]></Note>
+		  <AISTypes>String Text Character </AISTypes>
+		</Argument>   
+    	<Argument> 
+		  <Name>true</Name>
+		  <Note><![CDATA[
+		  <p>Optional. If present, treat the key argument as a collection of key characters, 
+             if not present, treat the key argument as the key string.</p>
+          ]]></Note>
+		  <AISTypes>Boolean</AISTypes>   
+		</Argument>  
+        <Argument> 
+		  <Name>true</Name>
+		  <Note><![CDATA[
+		  <p>Optional. If present along with the optional third argument, treat the key 
+             argument as field delimiter such as in a tab delimited record string.</p>
+          ]]></Note>
+		  <AISTypes>Boolean</AISTypes>   
+		</Argument>
+		<Return><![CDATA[
+	    <p>Returns a Vector</p>
+	    ]]></Return>
+	</Syntax>
+</Function>

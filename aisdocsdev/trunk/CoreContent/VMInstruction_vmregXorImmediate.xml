@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmregXorImmediate </Title> 
+		<InstructionName>vmregXorImmediate </InstructionName>
+		<InstructionType>Register</InstructionType>
+		<ArgumentTypes>  Integer</ArgumentTypes>
+		<RelatedVMInstructions>vmregOrImmediate vmregAndImmediate  </RelatedVMInstructions>
+		<HumanKeywords>and or xor immediate register</HumanKeywords>
+	</KnowledgeBase>                   
+	<Description><![CDATA[
+		<p>When evaluated, this vm instruction bitwise xors the <b>immediate</b> 
+		integer value to the register <b>target</b> integer value and places the result 
+		in the <b>target</b> register. Both words must be of integer type. The result 
+		will be returned as a type Integer. This instruction may return an Error value. 
+		After the operation, the Instruction Pointer is promoted. The operation of this vm instruction is expressed in the following C expression
+    	</p>      
+        <ul><li><b>     (int)target &#094&#061 (int)immediate;</b></li></ul>
+    ]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[(vmregXorImmediate source target))]]></Expression>
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>immediate</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>target</Name>
+		  <Format>register</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+	</Syntax>
+</VMInstruction>

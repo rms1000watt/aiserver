@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>morph</Title>
+		<FunctionName>morph</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>Pair List Boolean </ArgumentTypes>
+        <DataType>  List</DataType>
+		<RelatedFunctions>compile eval lisp</RelatedFunctions>
+        <RelatedVMInstructions>   none  </RelatedVMInstructions>
+		<HumanKeywords>compile evaluation morph parse Lambda</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>morph</b> function performs normal Analytic Information Server macro substitution 
+           on the input argument. </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>morph</b> function performs normal Analytic Information Server macro substitution on 
+          the input argument, <b>{input}</b>. The input argument <b>{input}</b> may be any Lisp form 
+          or forms enclosed in a list.  Normally the <b>morph</b> function receives the output of the 
+          <b>lisp</b> function. The output of the <b>morph</b> function is a Lisp form, which is 
+           the input argument after it has been transformed by macro substitution.  Normally the 
+           output of <b>morph</b> is input to the <b>compile</b> function, since the <b>morph</b> and 
+           <b>lisp</b> functions are called automatically when entering Analytic Information Server expressions.
+        </p>
+        <p>The second argument <b>{altRule}</b>,  called the alternative rule function, is optional. If the 
+           <b>{altRule}</b> function is specified, this function will perform the macro substitution in place of 
+           Normal Analytic Information Server macro substitution rules. The <b>{altRule}</b> function must be a function 
+           of one argument. The <b>morph</b> function will repeatedly send the <b>{altRule}</b> function every 
+           sub-list within the original input.  If the <b>{altRule}</b> function wishes to pass a sub-list without 
+           macro substitution, it should return the Boolean value false. If the <b>{altRule}</b> function wishes to 
+           perform macro substitution on a sub-list, it should return the Lisp form to be substituted in place of the sub list.
+        </p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>morph</b> function is used to perform macro substitution.  Since <b>morph</b> 
+           supports alternative rule functions, the substitution can be as complex as desired 
+           by the Lisp programmer.
+        </p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p> (morph input altRule altFailure)</p>]]></Expression>
+		<Argument>
+		  <Name>input</Name>
+		  <Note><![CDATA[
+		  <p> A Lisp form represented as a list.</p>
+          ]]></Note>
+		  <AISTypes>List</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>altRule</Name>
+		  <Note><![CDATA[
+		  <p> Optional function argument. If present, it must have a single argument, and it 
+              will replace the normal Analytic Information Server macro substitution rules. 
+              It must return the lisp form to be substituted, or pass a value </p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>altFailure</Name>
+		  <Note><![CDATA[
+		  <p> Optional argument. The altFailure is the value to be recognized by morph that the 
+              substitution will not take place.  If the altRule function returns the altFailure 
+              value, the morph function will not substitute.  If the altRule function returns a 
+              value other than the altFailure value,  morph will perform the substitution.  
+              If the altFailure argument is not present, morph will assume that the failure value 
+              is the Boolean value false.</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>A Lisp form containing any macro substitutions.
+        </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number compare 011</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compare</FunctionKeywords>
+		<TypeKeywords>Boolean Integer Number</TypeKeywords>
+		<RelatedFunctions>comparison compareEQ compareGT compareNE compareLT  compareLE</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare symbol equal lesser </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>compare</b> functions to do a 
+
+
+
+
+
+
+
+
+
+
+                  case-sensitive comparison of two objects of the same type.  A Boolean value is returned.
+
+
+
+
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+        <Expression><![CDATA[ <sc>(compare 5.9  5 )                  </sc>]]></Expression>  
+        <Note><![CDATA[ none]]></Note> 
+        <Returns><![CDATA[1]]></Returns>
+        <Expression><![CDATA[ <sc>(compare $4.21 4.21 )                  </sc>]]></Expression>  
+        <Note><![CDATA[ Number and Money values are equivalent.]]></Note> 
+        <Returns><![CDATA[0]]></Returns>
+         <Expression><![CDATA[ <sc>(compare 9 432 )                    </sc>]]></Expression>  
+        <Note><![CDATA[ none]]></Note> 
+        <Returns><![CDATA[-1]]></Returns>
+        <Hints><![CDATA[
+           <p>If you prefer a Boolean  resulting from the comparison , use the compareEQ, compareNE, compareGT, compareLT functions.</p>
+        ]]></Hints>
+   </Syntax>
+</Example>

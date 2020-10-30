@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure copy 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>copy</FunctionKeywords>
+		<TypeKeywords>Structure</TypeKeywords>
+		<RelatedFunctions>setq</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>copy structure memcopy pointer</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows how a Vector may be modified destructively or
+                   non-destructively  using the  
+                   the <b>copy</b> and <b>setq</b> function. 
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define x #{a: "The " b: "Rain " c: "in " d: "Spain "}) </sc>]]></Expression>
+        <Note><![CDATA[The original Structure.  ]]></Note>
+        <Returns><![CDATA[#&#60Structure 123456&#62 ]]></Returns>
+ <Expression><![CDATA[ <sc>(setq clone (copy x))  </sc>]]></Expression>  
+        <Note><![CDATA[The copied Structure using the copy function.  ]]></Note> 
+        <Returns><![CDATA[#&#60Structure 234567&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq z x)   </sc>]]></Expression>  
+        <Note><![CDATA[The copied Structure using the setq function.  ]]></Note> 
+        <Returns><![CDATA[#&#60Structure 345678&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(display x)   </sc>]]></Expression>  
+        <Note><![CDATA[The contents of x, clone and z Structures respectively.  ]]></Note> 
+        <Returns><![CDATA[#{a: "The " b: "Rain " c: "in " d: "Spain "}  ]]></Returns>
+        <Expression><![CDATA[ <sc>(display clone)   </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[#{a: "The " b: "Rain " c: "in " d: "Spain "}  ]]></Returns>
+        <Expression><![CDATA[ <sc>(display z)   </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[#{a: "The " b: "Rain " c: "in " d: "Spain "}  ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq x[1] "Hail" )  </sc>]]></Expression>  
+        <Note><![CDATA[The second element of the original Structure is modified.  ]]></Note> 
+        <Returns><![CDATA[#&#60Structure 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display x)   </sc>]]></Expression>  
+        <Note><![CDATA[The original Structure contains the modified value.   ]]></Note> 
+        <Returns><![CDATA[#{a: "The " b: "Rain " c: "in " d: "Spain "}  ]]></Returns>
+        <Expression><![CDATA[ <sc>(display clone)   </sc>]]></Expression>  
+        <Note><![CDATA[The copied Structure using the copy function does not contain the modified
+              value since the copied Structure produced is stored in a different memory location.  ]]></Note> 
+        <Returns><![CDATA[#{a: "The " b: "Hail " c: "in " d: "Spain "}  ]]></Returns>
+        <Expression><![CDATA[ <sc>(display z)   </sc>]]></Expression>  
+        <Note><![CDATA[The copied structure using the setq function contains the modified value 
+              since both x and z Structures are pointing to the same data. ]]></Note> 
+        <Returns><![CDATA[#{a: "The " b: "Rain " c: "in " d: "Spain "}  ]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

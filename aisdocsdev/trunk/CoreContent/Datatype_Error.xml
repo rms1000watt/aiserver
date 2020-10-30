@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Datatype SYSTEM "../DTD/Datatype.dtd">
+<Datatype>
+	<KnowledgeBase>
+        <Title>Error</Title>
+		<Type>Object</Type>
+		<RelatedTypes>Void Boolean Character Integer Number Money Percent String 
+		             Text Character</RelatedTypes>
+		<HumanKeywords>Native Error  </HumanKeywords>
+	</KnowledgeBase>
+	<Section>                
+	    <Heading>Error Overview</Heading>
+		<Description><![CDATA[
+		 <p class=MsoBodyText>Analytic Information Server has a heap or object data type named Error to distinguish errors 
+		 from other data types.  The Error is a container which may hold  text and is case-sensitive, may include 
+		 blanks but not special characters, may be up to 32767 characters in length, and <b>must</b>  begin and end 
+		 with an exclamation mark <b>(!)</b>.</p>   
+		  <p class=MsoBodyText>The Error type does not behave like the other Analytic Information Server types. If an 
+		  Error value is reference, the function referencing the Error value immediately terminates and calls the 
+		  <b>onError</b> function which displays the Error value. Therefore, the <b>setq</b> function will not work, 
+		  (nor will the <b>ref</b> function).  It is not possible to compare Error  values nor is it possible to 
+		  add methods to the Error type.</p>
+        ]]></Description>
+    </Section>
+	<Section>                
+	    <Heading>When to Use</Heading>
+		<Description><![CDATA[
+          <p>The Error native data type is ideal for returning text describing an error condition.  
+          Having  the Error data type eliminates the need to overload other data types to handle error conditions. </p>          
+        ]]></Description>
+    </Section>
+    <Section>                
+	    <Heading>Constant Form</Heading>
+		<Description><![CDATA[
+          <p>An Error constant may hold  text and is case-sensitive, may include blanks but not special 
+          characters, may be up to 12 characters in length, and <b>must</b> begin and end with an exclamation mark <b>(!)</b>.   
+          Some examples:</p>     
+          <p><b>!bad argument!  </b></p> 
+          <p><b>!illegal syntax! </b></p>  
+          <p><b>!out of memory!</b></p>    
+        ]]></Description>
+    </Section>
+    <Section>                
+	    <Heading>Object or Heap Data Type</Heading>
+		<Description><![CDATA[
+          <p>The <b>Error</b> Data Type is an example of an AIS Object Data Type. </p>
+		  <p>The Analytic Information Server Object Types are stored in the <b>Heap</b> and are
+          managed by the <b>Heap manager</b>. The <b>Analytic Information Server Heap manager</b> 
+          supports object resizing, garbage collection, and anti-fragmentation algorithms so 
+          that the user may concentrate on the analysis and modeling of data rather than on 
+          memory management. Without exception, all of the <b>Object types</b> are identified 
+          by an <b>object id</b>. The <b>object id</b>  identifies a block of memory, managed by 
+          the <b>Analytic Information Server memory manager</b>, in which the Object's data is stored.</p>
+          <p>The Analytic Information Server Heap Object and Native Data types can be saved and 
+          loaded to and from persistent (disk file) storage at any time. Words with immediate 
+          data are saved on disk in fixed length records equal to the size of the Word. Words 
+          with Heap object references are saved in fixed length records, which are automatically 
+          expanded to include the contents of the Heap object, and any objects referenced by 
+          the Heap object, etc. This feature is called <b>Object Closure Management</b> and is 
+          automatic with every Analytic Information Server database save.</p>
+	      <p>Analytic Information Server Words may be loaded from any database repository record at 
+          any time. If the data in the record is immediate, the database load fills the Word with 
+          the immediate data. If the data in the record is an <b>object closure</b>, the database
+          load fills the Word with a <b>Heap object reference</b>, and all of the objects in the 
+          record are loaded back into the <b>Heap</b>  with the same referential relationships 
+          they had when they were saved in the repository.</p>   
+        ]]></Description>
+    </Section>
+</Datatype>

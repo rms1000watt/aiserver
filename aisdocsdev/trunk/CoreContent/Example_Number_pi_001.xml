@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number pi 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>pi</FunctionKeywords>
+		<TypeKeywords>Number Integer</TypeKeywords>
+		<RelatedFunctions> none</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>  pi </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>pi</b> function to return the value of pi.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(pi)  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[3.14159265359]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

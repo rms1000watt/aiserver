@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>sqrt</Title>
+		<FunctionName>sqrt</FunctionName>
+		<FunctionType>Builtin(Math)</FunctionType>
+		<ArgumentTypes>Number Integer </ArgumentTypes>
+		<DataType>Number Complex</DataType>
+		<RelatedFunctions>fact (sym)div</RelatedFunctions>
+        <RelatedVMInstructions> none  </RelatedVMInstructions>
+		<HumanKeywords>square root</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>sqrt </b> function returns the square root of its Number argument. </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		  <p> The <b>sqrt </b> function returns the square root of its Number argument. </p>
+        ]]></Overview>
+	   <Overview-Complex><![CDATA[
+		  <p> The <b>sqrt </b> function returns the square root of a complex number. </p>
+        ]]></Overview-Complex>
+        <Usage><![CDATA[
+        <p>The <b>sqrt</b> function is used to compute the square root of a number.
+         ]]></Usage>
+        <Usage-Complex><![CDATA[
+        <p>The <b>sqrt</b> function is used to find the number, when multiplied by itself, 
+        equals the argument of the expression. Do not use if an immediate type, such as a real 
+        number, would suffice. Since complex numbers are heap objects, they require more space 
+        and operations on these types are slower than on immediate types.</p>
+         ]]></Usage-Complex>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[   (sqrt X)]]></Expression>
+		<Argument>
+		  <Name>X</Name>
+		  <Note><![CDATA[
+		  <p>A complex number.</p>
+          ]]></Note>
+		  <AISTypes>Complex</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>A complex number holding the square root of its argument X.
+	    </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

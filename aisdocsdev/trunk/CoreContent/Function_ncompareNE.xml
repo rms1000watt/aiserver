@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>ncompareNE</Title>
+		<FunctionName>ncompareNE</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>Number Boolean</ArgumentTypes>
+		<DataType>Number</DataType>
+		<RelatedFunctions>ncompare ncompareEQ ncompareGT ncompareGE ncompareLT  ncompareLE </RelatedFunctions>
+        <RelatedVMInstructions>  none  </RelatedVMInstructions>
+		<HumanKeywords>compare  equal boolean number </HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+              <p> The <b>ncompareNE</b>  is a fast comparison function that assume that its operands are Number values.
+
+
+              It returns true if  both objects are not equal and false if otherwise. </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+	    <p>The <b>ncompareNE</b> is a fast comparison function that assume that its operands are Number values.  
+
+
+           The resulting value is a Boolean value of <b>true</b> or <b>false</b>. The operands are not checked and are not coerced.  
+
+
+        </p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>Use the <b>ncompareNE</b> function when you wish to compare two Numbers and determine 
+
+
+          if <b>{num1}</b> is not equal to   <b>{num2}</b> and you wish the result to be expressed as a Boolean value (true or false).  
+
+
+         These functions only operate on Number operands. For a more general, but slower, 
+
+
+         comparison, use the <b>compareEQ, compareNE, compareGT, compareGE, compareLT, and compareLE</b>
+         which performs type checking and type conversions.
+
+
+        </p>
+         ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[ (ncompareNE num1 num2 )]]></Expression>
+		<Argument>
+		  <Name>num1</Name>
+		  <Note><![CDATA[
+		  <p> The first Number to be compared </p>
+          ]]></Note>
+		  <AISTypes>Number</AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>num2</Name>
+		  <Note><![CDATA[
+		  <p>The second Number to be compared</p>
+          ]]></Note>
+		  <AISTypes>Number</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>Returns true if the both Numbers are not equal and false is both Numbers are not equal.
+
+
+
+	    </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

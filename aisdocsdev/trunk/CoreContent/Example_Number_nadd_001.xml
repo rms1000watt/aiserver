@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number nadd 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>nadd</FunctionKeywords>
+		<TypeKeywords>Integer Boolean Number</TypeKeywords>
+		<RelatedFunctions>nsub nmul ndiv nmod</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>number arithmetic addition   operators</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>nadd</b> function to add two Number objects and return
+
+
+
+
+
+
+
+
+                 the resulting number value.
+Money values are also considered Number objects.
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+(nadd  2.1  3.6  )             </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[5.7]]></Returns>
+ 	    <Expression><![CDATA[ <sc>
+(nadd  $2.1  $3.6  )</sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[5.7]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

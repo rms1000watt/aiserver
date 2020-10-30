@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Symbol compareGE 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compareGE</FunctionKeywords>
+		<TypeKeywords>Symbol Integer</TypeKeywords>
+		<RelatedFunctions>compare compareEQ compareGT compareNE compareLT  compareLE</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare symbol equal greater </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>compareGE</b> function to compare two Symbols and return
+
+                  the Boolean value, true or false. In these examples, lowercase characters contained in the Symbols are compared as 
+
+                   against uppercase characters.In the ASCII table, uppercase characters are represented
+
+                  by 65 to 90 while lowercase characters are repsented by 97 to 122.  Using this table,
+
+                  lowercase characters have greater value than uppercase characters.
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(compareGE Hello: Hello: )  </sc>]]></Expression>
+        <Note><![CDATA[Both symbols are equal.]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>(compareGE hello: Hello: )  </sc>]]></Expression>
+        <Note><![CDATA[In this example, lowercase "h" in the first symbol has a higher value in the ASCII
+
+               table than uppercase "H", therefore the first symbol is greater than the second symbol. ]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Void defmethod 011</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>defmethod</FunctionKeywords>
+		<TypeKeywords> Void Symbol Dictionary </TypeKeywords>
+		<RelatedFunctions>addMethod send methodsOf</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>method message messageName</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[<p> This example uses the <b>{proc}</b> argument
+to the <b>defmethod</b> function.
+
+                  The <b>{proc}</b> argument is coded inline using a lambda statement.</p>
+	]]></Description>
+	<Syntax>
+	<Expression><![CDATA[<sc>(defmethod  Void: Add(a b) ( writeln "Cannot Add to value:" a))       </sc>]]></Expression>
+    <Note><![CDATA[ Define the Add method:
+
+
+]]></Note>
+    <Returns><![CDATA[ #&#60Dictionary 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(send Add: X 1)       </sc> ]]></Expression>
+    <Note><![CDATA[If the Void type is sent an Add message, an Lambda is invoked to output an error message.  The reason is that the 
+
+       Void type, or #void constant cannot be used as an operand of a binary add. To invoke the Lambda that responds to the 
+
+        Add message, issue the following statement:]]></Note>
+    <Returns><![CDATA[Cannot Add to value:#void]]></Returns>
+    <Expression><![CDATA[<sc>(Add: X 1)   </sc> ]]></Expression>
+    <Note><![CDATA[Alternatively, the Lambda may be invoked using the following syntax:]]></Note>
+    <Returns><![CDATA[Cannot Add to value:#void]]></Returns>
+    <Hints><![CDATA[
+        <p>To view the entry in the methods Dictionary created by the addMethod function, 
+
+
+
+
+
+
+           you can use the method name to access the directory entry by </p>
+        <p><b> #&#60Dictionary 123456&#62[methodName:] or </b></p>
+        <p> To determine the number of assigned methods:</p>
+        <p><b>(length  (methodsOf Vector: ))</b></p>
+        <p>To access the nth method name:</p>
+        <p><b>(methodsOf Vector: )[n  0]</b></p>
+]]></Hints>
+</Syntax>
+</Example>

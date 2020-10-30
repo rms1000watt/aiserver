@@ -1,0 +1,715 @@
+;;/**********************************************************************************
+;;    Copyright (C) 2008 Investment Science Corp.
+;;
+;;    This program is free software: you can redistribute it and/or modify
+;;    it under the terms of the GNU General Public License as published by
+;;    the Free Software Foundation, either version 3 of the License, or
+;;    any later version.
+;;
+;;    This program is distributed in the hope that it will be useful,
+;;    but WITHOUT ANY WARRANTY; without even the implied warranty of
+;;    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;;    GNU General Public License for more details.
+;;
+;;    You should have received a copy of the GNU General Public License
+;;    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+;;
+;;***********************************************************************************/
+;;
+;;  
+;;  Title:    Multiple Constraint Shipping Rollup Script
+;;
+;;  Author:   Michael F. Korns
+;;
+;;  Project:  Contains the LaFarge Cement Multiple Constraint sample
+;;            shipping application, procedures, and Smarttables. This
+;;            sample problem establishes a business model for LaFarge 
+;;            Cement involving multiple Smarttables, with interlocking
+;;            formulas, which define the costs for shipping the LaFarge
+;;            products to its customers world wide. The objective is to
+;;            minimize the shipping costs (%EXPENSES).
+;;
+;;  Notes:    No other dependencies.  
+;;
+
+(writeln "SmartBase Rollup Test started")
+
+(define MODE-count 4)
+(define PLANT-count 5)
+(define TERMINAL-count 5)
+(define PRODUCT_TYPE-count 2)
+
+;; *************************************************************************************
+;; Note:     Destroy old copies of roll up relations.
+;; *************************************************************************************
+(if (<> PLANT #void) (deleteView PLANT)) (setq PLANT #void)
+(if (<> TERMINAL #void) (deleteView TERMINAL)) (setq TERMINAL #void)
+(if (<> PRODUCT_TYPE #void) (deleteView PRODUCT_TYPE)) (setq PRODUCT_TYPE #void)
+(if (<> PRODUCTION_COST #void) (deleteView PRODUCTION_COST)) (setq PRODUCTION_COST #void)
+(if (<> SHIPPING_COST #void) (deleteView SHIPPING_COST)) (setq SHIPPING_COST #void)
+(if (<> FORCAST_ANNUAL_PRODUCTION #void) (deleteView FORCAST_ANNUAL_PRODUCTION)) (setq FORCAST_ANNUAL_PRODUCTION #void)
+(if (<> FORCAST_ANNUAL_SALES #void) (deleteView FORCAST_ANNUAL_SALES)) (setq FORCAST_ANNUAL_SALES #void)
+(if (<> CORRIDOR #void) (deleteView CORRIDOR)) (setq CORRIDOR #void)
+(if (<> ANNUAL_EXPENSES #void) (deleteView ANNUAL_EXPENSES)) (setq ANNUAL_EXPENSES #void)
+#CLEARCONSTRAINTS#
+
+;; *************************************************************************************
+;; name:     sortTableView
+;; 
+;; summary:  The sortTableView procedure sorts the specified Tableview on the specified
+;;           columns. Each column specification must be preceeded by either the < symbol
+;;           or the > symbol.
+;;            
+;; args:     ST:                 The Smarttable Tableview to be sorted.
+;;           sym1:               The < symbol or the > symbol.
+;;           col1:               The major Smarttable or Spreadsheet column name.
+;;            :                    :      :     :      :
+;;           symN:               The < symbol or the > symbol.
+;;           colN:               The minor Smarttable or Spreadsheet column name.
+;;
+;; return:   ret:                The sexpression which defines the tableview sort.
+;;
+;; *************************************************************************************
+(defmacro sortTableView(ST sym col ...)
+   vars:(i n opt opf ret docase sortProc)
+   ;; Define local procedures.
+   (setq docase (lambda (sym col)
+                     vars:(opt opf)
+                     (if (or (= sym <:) (= sym <))
+                         (begin 
+                            (setq opt <:)
+                            (setq opf >:))
+                         (begin 
+                            (setq opt >:)
+                            (setq opf <:)))
+                     (list 
+                        (list 
+                            (list opt 
+                               (list ref: x: (makeQuotedSymbol col))
+                               (list ref: y: (makeQuotedSymbol col)))
+                            true)
+                        (list 
+                            (list opf 
+                               (list ref: x: (makeQuotedSymbol col))
+                               (list ref: y: (makeQuotedSymbol col)))
+                            false))))
+   ;; Manage the simple case.
+   (if (= (setq n (argCount)) 3)
+       (return
+          (list
+             sort:
+             ST
+             (list 'lambda (list x: y:)
+                 (list
+                    sym
+                    (list ref: x: (makeQuotedSymbol col))
+                    (list ref: y: (makeQuotedSymbol col)))))))
+   ;; Manage the compound case.
+   (if (isEven n) (error "sortSyntax"))
+   (setq ret (docase sym col))
+   (loop for i from 3 until n by 2 do
+      (setq sym (argFetch i))
+      (setq col (argFetch (add1 i)))
+      (setq ret (append ret (docase sym col))))
+   (setq ret (append '(cond) ret (list (list (makeSymbol "else") false))))
+   (setq sortProc (list lambda: (list x: y:) ret))
+   (setq ret (list sort: ST sortProc))
+   ret)  
+
+;; *******************************************************************
+;; name:     diagnostic
+;; 
+;; summary:  Displays the diagnostic error message.
+;; *******************************************************************
+(defun diagnostic(msg) ((ringBell) (error msg)))
+
+;; *******************************************************************
+;; name:     timingTest
+;; 
+;; summary:  Define a simple VmScript timing test procedure.
+;; args:
+;;           proc:      the procedure to be tested
+;;           count:     the number of iterations to test
+;; *******************************************************************
+(define (timingTest proc count) 
+    vars:(i startTime endTime)
+    (setq startTime (getTickCount 0))
+    (loop for i from 0 until count do 
+       (proc)) 
+    (setq endTime (getTickCount startTime))
+    (writeln "Elapsed time for " count " roll ups is " endTime " Seconds" ) 
+    endTime)
+
+;; *************************************************************************************
+;; name:     columnRange
+;; 
+;; summary:  The columnRange procedure returns a range which covers the specified column
+;;           of the specified Smarttable or Spreadsheet.
+;;            
+;; args:     SS:                 The Smarttable or Spreadsheet.
+;;           col:                The Smarttable or Spreadsheet column name or index.
+;;
+;; return:   range:              The range which covers the specified column.
+;;
+;; *************************************************************************************
+(defun columnRange(SS col)
+   vars:(n)
+   (setq n (length SS))
+   (setq n (if (> n 0) (sub1 n)))
+   (if (isSymbol col) 
+       (setq col SS[col].cellIndex)) 
+   (makeRange 
+       SS
+       (makeAbsoluteCol col)
+       (makeAbsoluteRow 0)
+       (makeAbsoluteCol col)
+       (makeAbsoluteRow n)))
+
+;; *************************************************************************************
+;; name:     getRowByKey
+;; 
+;; summary:  The getRowByKey procedure gets a SmartRow from the specified Smarttable
+;;           using the values in the key attributes of the key object. The key object
+;;           may be any object which can be indexed by the key column names of the
+;;           specified Smarttable.
+;;            
+;; args:     SS:                 The Smarttable to be searched for the row.
+;;           key:                The key object whose attributes are used to find the row.
+;;
+;; return:   row:                The SmartRow whose key attributes match the key object,
+;;                               #void if there is no SmartRow whose key attributes match 
+;;                               the key object, or an error if there is more than one
+;;                               SmartRow whose key attributes match the key object.
+;;
+;; *************************************************************************************
+(defun getRowByKey(SS key)
+   vars:(i j n colCount row 
+         argVector (argIndex 0) valueIndex
+         value rowIndex colVector)
+   ;; If there are no rows, we can't find ours.
+   (if (= SS.rowCount 0) (return #void))
+   ;; Create the empty vector in which we will place the row indices for key columns.
+   (setq argVector (makeVector 0))
+   ;; Search the Smarttable columns looking for key columns.
+   (setq colCount SS.colCount)
+   (setq colVector SS.colVector)
+   (loop for i from 0 until colCount do
+      (if (= colVector[i].colFormat key:)
+          (begin
+             ;; Use the key column's name to get the index value from the key object.
+             (setq value key[colVector[i].name])
+             ;; Use the index value from the key object to key column's rowIndex.
+             (setq valueIndex colVector[i].valueIndex)
+             (setq n (find valueIndex value))
+             ;; If we can't find the value, then there is no matching row.
+             (if (= n false) (return #void))
+             (setq argVector[argIndex] valueIndex[n rowIndex:])
+             (++ argIndex))))
+   ;; Find the intersection of all Row-indices.
+    (setq row (rowIntersect argVector))
+   (if (= (type row) RowIndex:) (error "notUnique"))
+   row)  
+
+;; *************************************************************************************
+;; name:     updateRowByKey
+;; 
+;; summary:  The updateRowByKey procedure gets a SmartRow from the specified Smarttable
+;;           using the values in the key attributes of the key object. The key object
+;;           may be any object which can be indexed by the key column names of the
+;;           specified Smarttable. If there is no matching row, a new row is added with
+;;           the specified key values.
+;;            
+;; args:     SS:                 The Smarttable to be searched for the row.
+;;           key:                The key object whose attributes are used to find the row.
+;;
+;; return:   row:                The SmartRow whose key attributes match the key object,
+;;                               a new SmartRow whose key attributes are set to match 
+;;                               the key object, or an error if there is more than one
+;;                               SmartRow whose key attributes match the key object.
+;;
+;; *************************************************************************************
+(defun updateRowByKey(SS key)
+   vars:(i r n colCount row col 
+         valueIndex value
+         rowIndex colVector)
+   ;; If there is a matching row, then return it.
+   (setq row (getRowByKey SS key))
+   (if (<> row #void) (return row))
+   ;; Get the next available row index.
+   (setq row (length SS))
+   ;; Search the Smarttable columns looking for key columns.
+   (setq colCount SS.colCount)
+   (setq colVector SS.colVector)
+   (loop for i from 0 until colCount do
+      (if (= colVector[i].colFormat key:)
+          (begin
+             ;; Use the key column's name to get the index value from the key object.
+             (setq value key[colVector[i].name])
+             (setq col colVector[i].cellIndex)
+             ;; Set the index value from the key object into the new row.
+             (set SS col row value))))
+   ;; Return the newly added row.
+   SS[row])
+ 
+;; *************************************************************************************
+;; name:     fixup-expenses
+;; 
+;; summary:  The fixup-expenses procedure computes the total shipping and production
+;;           costs at each location (PLANT or TERMINAL). This procedure also produces
+;;           an updated copy of the ANNUAL_EXPENSES relation as a side effect.
+;;            
+;; args:     none
+;;
+;; return:   total:              The total shipping and production costs.
+;;
+;; *************************************************************************************
+(defun fixup-expenses()
+   vars:(i j n row key exp unit-cost cost)
+   ;; Create a new empty copy of the ANNUAL_EXPENSES relation.
+   (deleteView ANNUAL_EXPENSES)
+   (setq ANNUAL_EXPENSES (makeSmarttable normal: 
+                  (makeStructure
+                    Location: key:      
+                    Year: key:      
+                    Expense_Amount: formula: 
+                   ) 
+                  ANNUAL_EXPENSES:))
+  ;; Create key for the ANNUAL_EXPENSES relation.
+  (setq key #{Location: #void Year: 0})
+  ;; Fill in the contents of the ANNUAL_EXPENSES relation.
+  (loop for i from 0 until CORRIDOR.rowCount do
+      ;; Get the unit cost from the SHIPPING_COST relation.
+      (setq row CORRIDOR[i])
+      (setq unit-cost (ref (getRowByKey SHIPPING_COST row) Unit_Cost:))
+      ;; Set the key values for updating the ANNUAL_EXPENSES relation.
+      (setq key.Location row.Origin)
+      (setq key.Year row.Year)
+      (setq exp (updateRowByKey ANNUAL_EXPENSES key))
+      ;; Compute the shipping costs and update the ANNUAL_EXPENSES relation.
+      (setq costs (* (+ 0 
+                       row.Month_1_Qty
+                       row.Month_2_Qty
+                       row.Month_3_Qty
+                       row.Month_4_Qty
+                       row.Month_5_Qty
+                       row.Month_6_Qty
+                       row.Month_7_Qty
+                       row.Month_8_Qty
+                       row.Month_9_Qty
+                       row.Month_10_Qty
+                       row.Month_11_Qty
+                       row.Month_12_Qty) unit-cost))
+      (setq exp.Expense_Amount (money (+ costs exp.Expense_Amount))))
+  ;; Return the sum of all expenses for all Locations and Years.
+  (money (sum (columnRange ANNUAL_EXPENSES Expense_Amount:))))
+
+;; *************************************************************************************
+;; name:     DATA-ENTRY
+;; 
+;; summary:  The DATA-ENTRY procedure allows data entry to any of the relations iff
+;;           the model's constraints are not violated. Only one constraint is supported
+;;           in this prototype, and only to demonstrate proof of concept and to test
+;;           basic timing issues.
+;;            
+;; args:     SS:                 The Smarttable or Spreadsheet.
+;;           col:                The Smarttable or Spreadsheet column.
+;;           row:                The Smarttable or Spreadsheet row.
+;;           data:               The new data.
+;;
+;; return:   true
+;;
+;; *************************************************************************************
+(defun DATA-ENTRY(SS col row data)
+   vars:(oldData key corRow unit-cost expRow cost)
+   ;; We only support one type of update in this prototype.
+   (if (or (<> SS CORRIDOR) (< col 5))
+       (error "constraint"))
+   ;; Now we allow update to the CORRIDOR relation.
+   (setq oldData SS[col row])
+   (setq SS[col row] data)
+   (setq corRow SS[row])
+   (setq unit-cost (ref (getRowByKey SHIPPING_COST corRow) Unit_Cost:))
+   (setq cost (* (- data oldData)))
+   (setq key (makeStructure Location: corRow.Origin Year: corRow.Year))
+   (setq expRow (getRowByKey ANNUAL_EXPENSES key))
+   (setq expRow.Expense_Amount (money (+ cost expRow.Expense_Amount)))
+   ;; Compute model constraints here.
+   (setq %EXPENSES 0)
+   true)
+     
+;; *************************************************************************************
+;; Note:     Compute the previous free memory size.
+;; *************************************************************************************
+(gc)
+(setq _oldMemoryFree (inspect))
+(setq _buildStart (getTickCount 0))
+
+;; *************************************************************************************
+;; name:     PLANT
+;; 
+;; summary:  The PLANT relation decribes a shipping location, and the plant's 
+;;           capacity to store products at its location.
+;;            
+;; fields:   Description:        The unique descriptive name of the plant.
+;;           Silo_Capacity:      The local storage capacity. 
+;;
+;; *************************************************************************************
+(define PLANT (makeSmarttable normal: 
+                  (makeStructure
+                    Description: key:      
+                    Silo_Capacity: formula:
+                   ) 
+                  PLANT:))
+(setq r 0)
+(loop for i from 0 until PLANT-count do
+   (setq PLANT[Description: r] (append "Plant" i))
+   (setq PLANT[Silo_Capacity: r] (integer (random 100)))
+   (++ r))
+(writeln "PLANT relation build completed")
+
+;; *************************************************************************************
+;; name:     TERMINAL
+;; 
+;; summary:  The TERMINAL relation decribes a shipping location, and the location's 
+;;           capacity to store products.
+;;            
+;; fields:   Description:        The unique descriptive name of the terminal.
+;;           Silo_Capacity:      The local storage capacity. 
+;;
+;; *************************************************************************************
+(define TERMINAL (makeSmarttable normal: 
+                  (makeStructure
+                    Description: key:      
+                    Silo_Capacity: formula: 
+                   ) 
+                  TERMINAL:))
+(setq r 0)
+(loop for i from 0 until TERMINAL-count do
+   (setq TERMINAL[Description: r] (append "Terminal" i))
+   (setq TERMINAL[Silo_Capacity: r] (integer (random 100)))
+   (++ r))
+(writeln "TERMINAL relation build completed")
+     
+;; *************************************************************************************
+;; name:     PRODUCT_TYPE
+;; 
+;; summary:  The PRODUCT_TYPE relation decribes a product type which is
+;;           produced at the plants and shipped to the customers.
+;;            
+;; fields:   Product_Type        The unique descriptive name of the product type.
+;;           Product_Code:       The unique descriptive order code for the product.
+;;           Decription:         The long description of the product. 
+;;
+;; *************************************************************************************
+(define PRODUCT_TYPE (makeSmarttable normal: 
+                  (makeStructure
+                    Product_Type: key:      
+                    Product_Code: key:      
+                    Description: formula: 
+                   ) 
+                  PRODUCT_TYPE:))
+(setq r 0)
+(loop for i from 0 until PRODUCT_TYPE-count do
+   (setq PRODUCT_TYPE[Product_Type: r] (append "Product" i))
+   (setq PRODUCT_TYPE[Product_Code: r] i)
+   (setq PRODUCT_TYPE[Description: r] (append "Product number " i))
+   (++ r))
+(writeln "PRODUCT_TYPE relation build completed")
+
+;; *************************************************************************************
+;; name:     PRODUCTION_COST
+;; 
+;; summary:  The PRODUCTION_COST relation decribes the cost of a product type
+;;           when produced at a given plant.
+;;            
+;; fields:   Product_Type        The unique descriptive name of the product type.
+;;           Plant:              The unique descriptive name of the plant.
+;;           Unit_Cost:          The cost of producing the product at this plant. 
+;;
+;; *************************************************************************************
+(define PRODUCTION_COST (makeSmarttable normal: 
+                  (makeStructure
+                    Product_Type: key:      
+                    Plant: key:      
+                    Unit_Cost: formula: 
+                   ) 
+                  PRODUCTION_COST:))
+(setq r 0)
+(loop for i from 0 until PRODUCT_TYPE-count do
+   (loop for j from 0 until PLANT-count do
+      (setq PRODUCTION_COST[Product_Type: r] (append "Product" i))
+      (setq PRODUCTION_COST[Plant: r] (append "Plant" j))
+      (setq PRODUCTION_COST[Unit_Cost: r] (money (random 100)))
+      (++ r)))
+(writeln "PRODUCTION_COST relation build completed")
+     
+;; *************************************************************************************
+;; name:     SHIPPING_COST
+;; 
+;; summary:  The SHIPPING_COST relation decribes the cost of a product type
+;;           when shipped from a given origin to a given destination by a
+;;           given shipping mode.
+;;            
+;; fields:   Origin:             The unique descriptive name of the origin (PLANT or TERMINAL).
+;;           Destination:        The unique descriptive name of the destination (PLANT or TERMINAL).
+;;           Product_Type:       The unique descriptive name of the product type.
+;;           Shipping_Mode:      The means of transportation (barge, rail, truck, etc.).
+;;           Unit_Cost:          The cost of shipping the product. 
+;;
+;; *************************************************************************************
+(define SHIPPING_COST (makeSmarttable normal: 
+                  (makeStructure
+                    Origin: key:      
+                    Destination: key:      
+                    Product_Type: key:      
+                    Shipping_Mode: key:      
+                    Unit_Cost: formula: 
+                   ) 
+                  SHIPPING_COST:))
+(setq r 0)
+(loop for i from 0 until PLANT-count do
+   (loop for j from 0 until TERMINAL-count do
+      (loop for k from 0 until PRODUCT_TYPE-count do
+         (loop for g from 0 until MODE-count do
+            (setq SHIPPING_COST[Origin: r] (append "Plant" i))
+            (setq SHIPPING_COST[Destination: r] (append "Terminal" j))
+            (setq SHIPPING_COST[Product_Type: r] (append "Product" k))
+            (setq SHIPPING_COST[Shipping_Mode: r] (append "Mode" g))
+            (setq SHIPPING_COST[Unit_Cost: r] (money (random 100)))
+            (++ r)))))
+(writeln "SHIPPING_COST relation build completed")
+
+;; *************************************************************************************
+;; name:     FORCAST_ANNUAL_PRODUCTION
+;; 
+;; summary:  The FORCAST_ANNUAL_PRODUCTION relation decribes the annual production
+;;           forcast for each product type at each plant.
+;;            
+;; fields:   Plant:              The unique descriptive name of the plant.
+;;           Product_Type        The unique descriptive name of the product type.
+;;           Year:               The annual period for this production forcast.
+;;           Month_N_Qty:        The forcast quantity for each of the twelve months. 
+;;
+;; *************************************************************************************
+(define FORCAST_ANNUAL_PRODUCTION (makeSmarttable normal: 
+                  (makeStructure
+                    Plant: key:      
+                    Product_Type: key:      
+                    Year: key:      
+                    Month_1_Qty: formula: 
+                    Month_2_Qty: formula: 
+                    Month_3_Qty: formula: 
+                    Month_4_Qty: formula: 
+                    Month_5_Qty: formula: 
+                    Month_6_Qty: formula: 
+                    Month_7_Qty: formula: 
+                    Month_8_Qty: formula: 
+                    Month_9_Qty: formula: 
+                    Month_10_Qty: formula: 
+                    Month_11_Qty: formula: 
+                    Month_12_Qty: formula: 
+                   ) 
+                  FORCAST_ANNUAL_PRODUCTION:))
+(setq r 0)
+(loop for i from 0 until PLANT-count do
+   (loop for j from 0 until PRODUCT_TYPE-count do
+      (setq FORCAST_ANNUAL_PRODUCTION[Plant: r]  (append "Plant" i))
+      (setq FORCAST_ANNUAL_PRODUCTION[Product_Type: r]  (append "Product" j))
+      (setq FORCAST_ANNUAL_PRODUCTION[Year: r]  1995)
+      (setq FORCAST_ANNUAL_PRODUCTION[Month_1_Qty: r]  (integer (random 1000)))
+      (setq FORCAST_ANNUAL_PRODUCTION[Month_2_Qty: r]  (integer (random 1000)))
+      (setq FORCAST_ANNUAL_PRODUCTION[Month_3_Qty: r]  (integer (random 1000)))
+      (setq FORCAST_ANNUAL_PRODUCTION[Month_4_Qty: r]  (integer (random 1000)))
+      (setq FORCAST_ANNUAL_PRODUCTION[Month_5_Qty: r]  (integer (random 1000)))
+      (setq FORCAST_ANNUAL_PRODUCTION[Month_6_Qty: r]  (integer (random 1000)))
+      (setq FORCAST_ANNUAL_PRODUCTION[Month_7_Qty: r]  (integer (random 1000)))
+      (setq FORCAST_ANNUAL_PRODUCTION[Month_8_Qty: r]  (integer (random 1000)))
+      (setq FORCAST_ANNUAL_PRODUCTION[Month_9_Qty: r]  (integer (random 1000)))
+      (setq FORCAST_ANNUAL_PRODUCTION[Month_10_Qty: r]  (integer (random 1000)))
+      (setq FORCAST_ANNUAL_PRODUCTION[Month_11_Qty: r]  (integer (random 1000)))
+      (setq FORCAST_ANNUAL_PRODUCTION[Month_12_Qty: r]  (integer (random 1000)))
+      (++ r)))
+(writeln "FORCAST_ANNUAL_PRODUCTION relation build completed")
+
+
+;; *************************************************************************************
+;; name:     FORCAST_ANNUAL_SALES
+;; 
+;; summary:  The FORCAST_ANNUAL_SALES relation decribes the annual sales
+;;           forcast for each product type at each shipping location (PLANT or TERMINAL).
+;;            
+;; fields:   Plant:              The unique descriptive name of the plant.
+;;           Product_Type        The unique descriptive name of the product type.
+;;           Year:               The annual period for this sales forcast.
+;;           Month_N_Qty:        The forcast quantity for each of the twelve months. 
+;;
+;; *************************************************************************************
+(define FORCAST_ANNUAL_SALES (makeSmarttable normal: 
+                  (makeStructure
+                    Shipping_Location: key:      
+                    Product_Type: key:      
+                    Year: key:      
+                    Month_1_Qty: formula: 
+                    Month_2_Qty: formula: 
+                    Month_3_Qty: formula: 
+                    Month_4_Qty: formula: 
+                    Month_5_Qty: formula: 
+                    Month_6_Qty: formula: 
+                    Month_7_Qty: formula: 
+                    Month_8_Qty: formula: 
+                    Month_9_Qty: formula: 
+                    Month_10_Qty: formula: 
+                    Month_11_Qty: formula: 
+                    Month_12_Qty: formula: 
+                   ) 
+                  FORCAST_ANNUAL_SALES:))
+(setq r 0)
+(loop for i from 0 until TERMINAL-count do
+   (loop for j from 0 until PRODUCT_TYPE-count do
+      (setq FORCAST_ANNUAL_SALES[Shipping_Location: r]  (append "Terminal" i))
+      (setq FORCAST_ANNUAL_SALES[Product_Type: r]  (append "Product" j))
+      (setq FORCAST_ANNUAL_SALES[Year: r] 1995)
+      (setq FORCAST_ANNUAL_SALES[Month_1_Qty: r]  (integer (random 1000)))
+      (setq FORCAST_ANNUAL_SALES[Month_2_Qty: r]  (integer (random 1000)))
+      (setq FORCAST_ANNUAL_SALES[Month_3_Qty: r]  (integer (random 1000)))
+      (setq FORCAST_ANNUAL_SALES[Month_4_Qty: r]  (integer (random 1000)))
+      (setq FORCAST_ANNUAL_SALES[Month_5_Qty: r]  (integer (random 1000)))
+      (setq FORCAST_ANNUAL_SALES[Month_6_Qty: r]  (integer (random 1000)))
+      (setq FORCAST_ANNUAL_SALES[Month_7_Qty: r]  (integer (random 1000)))
+      (setq FORCAST_ANNUAL_SALES[Month_8_Qty: r]  (integer (random 1000)))
+      (setq FORCAST_ANNUAL_SALES[Month_9_Qty: r]  (integer (random 1000)))
+      (setq FORCAST_ANNUAL_SALES[Month_10_Qty: r]  (integer (random 1000)))
+      (setq FORCAST_ANNUAL_SALES[Month_11_Qty: r]  (integer (random 1000)))
+      (setq FORCAST_ANNUAL_SALES[Month_12_Qty: r]  (integer (random 1000)))
+      (++ r)))
+(writeln "FORCAST_ANNUAL_SALES relation build completed")
+
+;; *************************************************************************************
+;; name:     CORRIDOR
+;; 
+;; summary:  The CORRIDOR relation decribes the shipping schedules for products from
+;;           an origin shipping location (PLANT or TERMINAL) to a destination shipping
+;;           location (PLANT or TERMINAL).
+;;            
+;; fields:   Origin:             The unique descriptive name of the origin (PLANT or TERMINAL).
+;;           Destination:        The unique descriptive name of the destination (PLANT or TERMINAL).
+;;           Product_Type:       The unique descriptive name of the product type.
+;;           Shipping_Mode:      The means of transportation (barge, rail, truck, etc.).
+;;           Year:               The annual period for this sales forcast.
+;;           Month_N_Qty:        The forcast quantity for each of the twelve months. 
+;;
+;; *************************************************************************************
+(define CORRIDOR (makeSmarttable normal: 
+                  (makeStructure
+                    Origin: key:      
+                    Destination: key:      
+                    Product_Type: key:      
+                    Shipping_Mode: key:      
+                    Year: key:      
+                    Month_1_Qty: formula: 
+                    Month_2_Qty: formula: 
+                    Month_3_Qty: formula: 
+                    Month_4_Qty: formula: 
+                    Month_5_Qty: formula: 
+                    Month_6_Qty: formula: 
+                    Month_7_Qty: formula: 
+                    Month_8_Qty: formula: 
+                    Month_9_Qty: formula: 
+                    Month_10_Qty: formula: 
+                    Month_11_Qty: formula: 
+                    Month_12_Qty: formula: 
+                   ) 
+                  CORRIDOR:))
+(setq r 0)
+(loop for i from 0 until PLANT-count do
+   (loop for j from 0 until TERMINAL-count do
+      (loop for k from 0 until PRODUCT_TYPE-count do
+         (loop for g from 0 until MODE-count do
+            (setq CORRIDOR[Origin: r]  (append "Plant" i))
+            (setq CORRIDOR[Destination: r]  (append "Terminal" j))
+            (setq CORRIDOR[Product_Type: r]  (append "Product" k))
+            (setq CORRIDOR[Shipping_Mode: r]  (append "Mode" g))
+            (setq CORRIDOR[Year: r]  1995)
+            (setq CORRIDOR[Month_1_Qty: r]  (integer (random 100)))
+            (setq CORRIDOR[Month_2_Qty: r]  (integer (random 100)))
+            (setq CORRIDOR[Month_3_Qty: r]  (integer (random 100)))
+            (setq CORRIDOR[Month_4_Qty: r]  (integer (random 100)))
+            (setq CORRIDOR[Month_5_Qty: r]  (integer (random 100)))
+            (setq CORRIDOR[Month_6_Qty: r]  (integer (random 100)))
+            (setq CORRIDOR[Month_7_Qty: r]  (integer (random 100)))
+            (setq CORRIDOR[Month_8_Qty: r]  (integer (random 100)))
+            (setq CORRIDOR[Month_9_Qty: r]  (integer (random 100)))
+            (setq CORRIDOR[Month_10_Qty: r]  (integer (random 100)))
+            (setq CORRIDOR[Month_11_Qty: r]  (integer (random 100)))
+            (setq CORRIDOR[Month_12_Qty: r]  (integer (random 100)))
+            (++ r)))))
+(writeln "CORRIDOR relation build completed")
+
+;; *************************************************************************************
+;; name:     ANNUAL_EXPENSES
+;; 
+;; summary:  The ANNUAL_EXPENSES relation decribes the total shipping and production costs
+;;           at each location (PLANT or TERMINAL).
+;;            
+;; fields:   Location:           The unique descriptive name of the location (PLANT or TERMINAL).
+;;           Year:               The annual period for this expense roll up.
+;;           Expense_Amount:     The total shipping and production costs at the location.
+;;
+;; Notes:    This relation is recomputed whenever %EXPENSES is referenced.   
+;;
+;; *************************************************************************************
+(define ANNUAL_EXPENSES (makeSmarttable normal: 
+                  (makeStructure
+                    Location: key:      
+                    Year: key:      
+                    Expense_Amount: formula: 
+                   ) 
+                  ANNUAL_EXPENSES:))
+(fixup-expenses)
+(writeln "ANNUAL_EXPENSES relation build completed")
+(setq _buildEnd (getTickCount _buildStart))
+
+;; *************************************************************************************
+;; name:     %EXPENSES
+;; 
+;; summary:  The %EXPENSES variable computes the total shipping and production costs
+;;           for all locations (PLANT or TERMINAL) in all years.
+;; *************************************************************************************
+(setf %EXPENSES {(money (sum (columnRange ANNUAL_EXPENSES Expense_Amount:)))})
+     
+;; *************************************************************************************
+;; Note:     Compute the amount of memory used and the time required for roll ups.
+;; *************************************************************************************
+(gc)
+(setq _newMemoryFree (inspect))
+(writeln "Number of unique shipping modes is " MODE-count)
+(writeln "Number of unique plants is " PLANT-count)
+(writeln "Number of unique non plant shipping locations is " TERMINAL-count)
+(writeln "Number of unique product types is " PRODUCT_TYPE-count)
+(writeln "Number of PRODUCTION_COST records is " PRODUCTION_COST.rowCount)
+(writeln "Number of SHIPPING_COST records is " SHIPPING_COST.rowCount)
+(writeln "Number of FORCAST_ANNUAL_PRODUCTION records is " FORCAST_ANNUAL_PRODUCTION.rowCount)
+(writeln "Number of FORCAST_ANNUAL_SALES records is " FORCAST_ANNUAL_SALES.rowCount)
+(writeln "Number of CORRIDOR records is " CORRIDOR.rowCount)
+(writeln "Number of ANNUAL_EXPENSES records is " ANNUAL_EXPENSES.rowCount)
+
+(writeln "Memory required for entire database = " (- _oldMemoryFree _newMemoryFree)) 
+(writeln "Build time required for entire database = " _buildEnd " seconds.") 
+(writeln "Total shipping expenses are " %EXPENSES)
+
+;; *************************************************************************************
+;; Note:     save the workspace and try to load and recalc.
+;; *************************************************************************************
+(setq _saveStart (getTickCount 0))
+(saveWorkspace "test.wks")
+(setq _saveEnd (getTickCount _saveStart))
+(writeln "Save time required for entire database = " _saveEnd " seconds.") 
+(loadWorkspace "test.wks")
+(writeln "Total shipping expenses are " %EXPENSES)
+
+(setq fileID (fileOpen "test.wks" 1 3)) 
+(fileClose fileID 0) 
+
+;;  Notify user of completion
+(writeln "SmartBase Rollup Test completed")
+

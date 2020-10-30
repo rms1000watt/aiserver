@@ -1,0 +1,29 @@
+#!/bin/bash -e
+
+. /usr/share/debconf/confmodule
+
+if [ -n "$DEBIAN_SCRIPT_DEBUG" ]; then set -v -x; DEBIAN_SCRIPT_TRACE=1; fi
+${DEBIAN_SCRIPT_TRACE:+ echo "#42#DEBUG# RUNNING $0 $*" 1>&2 }
+
+case "$1" in
+  configure)
+    chown -R ais:ais /etc/ais
+    chown -R ais:ais /usr/share/ais
+    chown -R ais:ais /var/lib/ais
+  ;;
+
+  abort-upgrade|abort-remove|abort-configure)
+  ;;
+
+  *)
+    echo "postint called with unknown argument '$1'" 1>&2
+    exit 1
+  ;;
+esac
+
+db_stop # in case invoke fails
+
+#DEBHELPER#
+
+exit 0
+ 

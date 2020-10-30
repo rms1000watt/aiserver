@@ -1,0 +1,23 @@
+/* XPM */
+static const char *Lambdalist[]={
+"16 16 4 1",
+"a c #000000",
+"# c #000080",
+". c #d4d0c8",
+"b c #ffffff",
+"................",
+"################",
+"################",
+"a..bbbbbbbbbb..a",
+"a..bbaaaaaabb..a",
+"a..bbbbbbbbbb..a",
+"a..bbaaaaaabb..a",
+"a..bbbbbbbbbb..a",
+"a..bbaaaaaabb..a",
+"a..bbbbbbbbbb..a",
+"a..bbaaaaaabb..a",
+"a..bbbbbbbbbb..a",
+"a..bbaaaaaabb..a",
+"a..bbbbbbbbbb..a",
+"aaaaaaaaaaaaaaaa",
+"................"};

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example String string 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>string</FunctionKeywords>
+		<TypeKeywords>Error Void Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary DirectoryPair
+                       Matrix NumMatrix Integer Float Number Complex</TypeKeywords>
+		<RelatedFunctions>parse</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>converts parse value coerce</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples show how the <b>string</b> function works with other
+                  heap objects such as Vectors.  If <b>{true}</b> argument is specified
+                  the value of the object is returned instead of its external ID.  
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(string  #(1 2 3))  </sc>]]></Expression>  
+        <Note><![CDATA[This returns the external ID of the Vector object. ]]></Note> 
+        <Returns><![CDATA[ #&#60Vector 194550&#62]]></Returns>
+        <Expression><![CDATA[<sc>(string  #(1 2 3)  true)  </sc>]]></Expression>  
+        <Note><![CDATA[When the {true} argument is specified, the object's value is returned.]]></Note> 
+        <Returns><![CDATA[ #(1 2 3 )]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

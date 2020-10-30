@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>  
+		<Title>Example String fileRead 002</Title>  
+		<Template>Example</Template> 
+		<FunctionKeywords>fileRead</FunctionKeywords>
+		<TypeKeywords>Character String  ByteVector </TypeKeywords>	
+		<RelatedFunctions>fileReadRecord fileClose fileOpen fileWrite</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>file buffer record</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example uses the <b>fileRead</b> function to read a
+					previously written file using the file  <b>length</b> to specify what portion of 
+					the file to write  and a pointer to a new Byte Vector  where the portion of the file read is to be written.
+					
+	]]></Description>
+	<Syntax> 
+  	    <Expression><![CDATA[ <sc> 
+(defun fileLambda()    <br>
+regs:((CharPointer:fp) cc)  <br>
+vars:(fileRecord)        <br>
+
+(setq fileID (fileOpen "testReadRecord.txt" 1 0)) <br>
+(fileWrite fileID {abcdefghijklmnopqrstuvwxyz} )  <br>
+(fileClose fileID 1)                   <br>
+(setq fileID (fileOpen "testReadRecord.txt" 0 0))   <br>
+(setq fileRecord (new Vector: Byte: 30))   <br>
+(setq fp fileRecord)     <br>
+(fileRead fileID fp 20)	    <br>
+(setq cc fp[0])                  <br>
+(writeln "First character in the file is: " (char cc))     <br>
+(fileClose fileID 0)     <br>
+) </sc>]]></Expression>  
+        <Note><![CDATA[This Lambda saves the first 20 characters of the file in a Byte Vector.]]></Note> 
+        <Returns><![CDATA[abcdefghijklmnopqrst]]></Returns>
+      
+        
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

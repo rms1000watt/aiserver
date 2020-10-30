@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmvecPushNumber</Title>
+		<InstructionName>vmvecPushNumber</InstructionName>
+		<InstructionType>Vector</InstructionType>
+		<ArgumentTypes>  Number Double  </ArgumentTypes>
+		<RelatedVMInstructions>vmvecPush vmvecPopNumber vmvecPop</RelatedVMInstructions>
+		<HumanKeywords>vector pop push number</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[
+		<p>When evaluated, this vm instruction increments the stack pointer 
+		and loads the top word of the internal Vector Processing Stack, from 
+		the location, specified by the <b>source</b> register. The top stack 
+		word is loaded, from the source register, as a Number data type. 
+		There are no conversions made between different types. No type checking 
+		takes place. The initial values in the three pointer registers, the 
+		three increment registers, and the counter register are NOT altered 
+		by this instruction. This instruction may return an Error value. 
+		After the operation, the Instruction Pointer is promoted. 
+		The operation of this vm instruction is expressed in the following C 
+		expression:
+	    </p>
+        <ul><li> <b>    (double)ST[++top] = (double)source; </b></li></ul>          
+    ]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[(vmvecPushNumber source)]]></Expression>   
+	    <Argument> 
+		  <Name>source</Name>
+		  <Format>register</Format>
+		  <AISTypes>number</AISTypes>
+		</Argument>
+	</Syntax>
+</VMInstruction>

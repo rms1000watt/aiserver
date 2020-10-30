@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>setLastCdr</Title>
+		<FunctionName>setLastCdr</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+        <ArgumentTypes>Character String Symbol Vector BitVector ByteVector IntVector
+                   Pair FltVector ObjVector Structure Dictionary Directory
+ Pair List
+                       Matrix NumMatrix Integer Float Number Complex </ArgumentTypes>
+        <DataType> Vector  Structure Matrix  List NumMatrix FltVector IntVector NumVector ObjVector  BitVector</DataType>
+	    <RelatedFunctions>ref refValues refAttributes cdr setCdr</RelatedFunctions>
+        <RelatedVMInstructions> vmregObjPointer </RelatedVMInstructions>
+		<HumanKeywords>tail ref index cdr setCdr</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+           <p>The <b>setLastCdr</b> function sets the last cdr component of the argument   
+           to the value of the expression, and returns the object. 
+
+
+</p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>setLastCdr</b> function sets the last cdr component of the argument <b>{obj}</b> 
+           to the value of the expression <b>{expr}</b>, and returns the <b>{obj}</b> . 
+           This has special meaning in the case of lists, when the function traverses to the end 
+           of the list before setting the cdr. The argument <b>{obj}</b> may be a Pair, a Vector, 
+           a Matrix, List or a Structure. </p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>setCdr</b> and <b>setLastCdr</b> functions behave exactly the same when the obj 
+           argument is a Vector or Matrix.</p>
+        ]]></Usage>
+        <Usage-List><![CDATA[
+        <p>The <b>setLastCdr</b> function always adds a new cdr to a List or Pair.  Unlike the 
+           <b>setCdr</b> function which replaces the the existing cdr with the expression.</p>
+        ]]></Usage-List>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p>  (setLastCdr  obj  expr )</p>]]></Expression>
+		<Argument> 
+		  <Name>obj</Name>
+		  <Note><![CDATA[
+		  <p> The object to be modified. </p>
+          ]]></Note>
+		  <AISTypes>Vector Pair Structure Matrix List NumMatrix</AISTypes>
+		</Argument>
+    	<Argument> 
+		  <Name>expr</Name>
+		  <Note><![CDATA[
+		  <p> A cdr expression </p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory
+ Pair List
+                       Matrix NumMatrix Integer Float Number Complex </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The vector, list, pair, matrix or structure with the cdr set the the specified expression.
+        </p>
+	    ]]></Return>   
+	</Syntax>
+</Function>

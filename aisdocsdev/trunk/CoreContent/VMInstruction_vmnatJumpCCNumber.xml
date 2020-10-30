@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+ <VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmnatJumpCCNumber</Title>
+		<InstructionName>vmnatJumpCCNumber</InstructionName>                                      
+		<InstructionType>Native</InstructionType>
+		<ArgumentTypes> Number Double</ArgumentTypes>  
+		<RelatedVMInstructions>vmnatJumpCCInteger vmregJumpCCImmediate vmregJumpCCInteger vmregJumpCCNumber</RelatedVMInstructions>
+		<HumanKeywords> cc jump jumpcc comparitor label </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[                                                  
+		<p>When evaluated, this vm instruction compares the <b>source</b> value 
+		with the <b>comparitor</b> value. If the comparison is true, the instruction 
+		pointer is set equal to the <b>label</b> argument; otherwise, the instruction 
+		pointer is promoted as usual. Both arguments are assumed to be Number types 
+		(the types are not checked). There is no conversion of the <b>source</b> or 
+		<b>comparitor</b> types. This instruction will never return an Error value.
+       </p>
+		<p>The condition code for this instruction cc may compare for less than, 
+		less than or equal, equal, not equal, greater than, greater than or equal, 
+		all depending upon the value of cc. The condition code ccis an extension to 
+		the instruction name so that there are really six JMPcc instructions. 
+		<b>vmnatJumpLTNumber</b>, <b>vmnatJumpLENumber</b>, <b>vmnatJumpEQNumber</b>, 
+		<b>vmnatJumpNENumber</b>, <b>vmnatJumpGENumber</b>, and <b>vmnatJumpGTNumber</b>.
+	    </p>
+		<p>The operation of this vm instruction is expressed in the following 
+		C expression:
+		</p>  
+    	<ul><li><b>if ((double)source &#060  (double)comparitor) Ip = label; </b></li></ul>
+		<ul><li><b>if ((double)source &#8804  (double)comparitor) Ip = label; </b></li></ul>   
+		<ul><li><b>if ((double)source &#061&#061 (double)comparitor) Ip = label; </b></li></ul> 
+		<ul><li><b>if ((double)source &#8800 (double)comparitor) Ip = label; </b></li></ul> 
+		<ul><li><b>if ((double)source &#8805 (double)comparitor) Ip = label; </b></li></ul> 		   
+		<ul><li><b>if ((double)source &#062  (double)comparitor) Ip = label; </b></li></ul> 
+    ]]></Description>
+	<Syntax>
+	  <Expression><![CDATA[  (vmnatJmpGTNumber source comparitor label) ]]></Expression>	 
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>number</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>comparitor</Name>
+		  <Format>regoffset </Format>
+		  <AISTypes>number</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name> label </Name>
+		  <Format>immediate</Format>
+		  <AISTypes>number</AISTypes>
+		</Argument>
+	 <Expression><![CDATA[  (vmnatJmpLENumber  source comparitor label)]]></Expression>		 
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>number</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>comparitor</Name>
+		  <Format>regoffset </Format>
+		  <AISTypes>number</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name> label </Name>
+		  <Format>immediate</Format>
+		  <AISTypes>number</AISTypes>
+		</Argument>
+	 <Expression><![CDATA[  (vmnatJmpEQNumber  source comparitor label)]]></Expression> 
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>number</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>comparitor</Name>
+		  <Format>regoffset </Format>
+		  <AISTypes>number</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name> label </Name>
+		  <Format>immediate</Format>
+		  <AISTypes>number</AISTypes>
+		</Argument>
+	  <Expression><![CDATA[  (vmnatJmpNENumber  source comparitor label)]]></Expression>		 
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>number</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>comparitor</Name>
+		  <Format>regoffset </Format>
+		  <AISTypes>number </AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name> label </Name>
+		  <Format>immediate</Format>
+		  <AISTypes>number</AISTypes>
+		</Argument>
+       	 <Expression><![CDATA[  (vmnatJmpGENumber source comparitor label)]]></Expression>		 
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>number</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>comparitor</Name>
+		  <Format>regoffset </Format>
+		  <AISTypes>number</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name> label </Name>
+		  <Format>immediate</Format>
+		  <AISTypes>number</AISTypes>
+		</Argument>
+         <Expression><![CDATA[  (vmnatJmpGTNumber  source comparitor label)]]></Expression>
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>number</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>comparitor</Name>
+		  <Format>regoffset </Format>
+		  <AISTypes>number</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name> label </Name>
+		  <Format>immediate</Format>
+		  <AISTypes>number</AISTypes>
+		</Argument>
+	</Syntax>
+</VMInstruction>

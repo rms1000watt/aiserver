@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example substringGT 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>substringGT</FunctionKeywords>
+		<TypeKeywords>String Integer</TypeKeywords>
+		<RelatedFunctions>substringEQ substringNE substringLT substringGE substringLE</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare string equal boolean case-insensitive substring greater</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>substringGT</b> function to see if the first substring is
+
+                  greater than the second substring and return
+the Boolean value, true or false. In these examples, a case-sensitive comparison
+
+
+
+                  is done with the substrings.
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc> (define X "central park")  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[central park ]]></Returns>
+        <Expression><![CDATA[ <sc> (define Y "Jurassic Park")  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[Jurassic Park ]]></Returns>
+        <Expression><![CDATA[ <sc>(substringGT Y 0 8 X 0 6 )   </sc>]]></Expression>
+        <Note><![CDATA[Compares "Jurrasic" in Y and "central" in X.  ]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

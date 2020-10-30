@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example ObjectRepository inspect 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>inspect  </FunctionKeywords>
+		<TypeKeywords>ObjectRepository  </TypeKeywords>
+		<RelatedFunctions> sizeof </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>system statistical information</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ <p>This example returns the statistical and sytem information as specified
+
+                  by the arguments to the <b>inspect</b> function.</p>
+     ]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc> (setq gor (new ObjectRepository: "myarchive.odb"))</sc>]]></Expression>
+        <Note><![CDATA[Creates a new Object Repository.]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc> (setq gor["one"] "Hello world")</sc>]]></Expression>  
+        <Note><![CDATA[Install a value for a given key.]]></Note> 
+        <Returns><![CDATA[#&#60ObjectRepository 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc> (inspect gor length: "one")    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[ 256]]></Returns>
+  	    <Expression><![CDATA[ <sc> (inspect gor free:)    </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[ 256]]></Returns>
+  	    <Expression><![CDATA[ <sc> (inspect gor filepos: "one")    </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[ 792]]></Returns>
+  	    <Expression><![CDATA[ <sc> (inspect gor frame: "one")    </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[30000001.0]]></Returns>
+  	    <Expression><![CDATA[ <sc> (inspect gor pages:)   </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[
+        <pre>
+		*** Page Table Fragmentation Statistics ***
+		Starting File Position = 0
+		Page Table File Position = 280
+		Page Table Size = 256
+		File Size = 1304
+		Max Page Count = 256
+		Used Page Count = 4
+		Used File Bytes = 1048
+		Page Table Frame = 10000001.0
+		Index Object Frame = 40000001.0
+		Librarian Lambda Frame = 1.0
+		First Physical Page = 0
+		Last Physical Page = 4
+		Open Time Stamp = 732409.570544
+		Page Table is Dirty = false
+		Automatic Rollback On = true
+		Index Entries (if any)...
+		[one] FRAME = 30000001.0
+		Frame Entries...
+		[0] MAIN FREE = false, USED FREE = false
+		[1] MAIN FREE = false, USED FREE = false
+		[2] MAIN FREE = true, USED FREE = true
+		[3] MAIN FREE = false, USED FREE = false
+		[4] MAIN FREE = false, USED FREE = false
+        </pre>
+        ]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

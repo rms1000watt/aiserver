@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Matrix vectorFill 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>vectorFill</FunctionKeywords>
+		<TypeKeywords>Matrix Text Integer</TypeKeywords>
+		<RelatedFunctions> stringFill</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>delete remove fill</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ A Matrix with preallocated spaces is set. The <b>vectorFill</b> function 
+
+                  then sets the all the values of the Matrix with the user-specified Text or Integer.  
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq Z (new Matrix: 5 ) )         </sc>]]></Expression>
+        <Note><![CDATA[Returns a Matrix of size 5]]></Note>
+        <Returns><![CDATA[#&#60Matrix 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(vectorFill Z "a")</sc>]]></Expression>
+        <Note><![CDATA[Sets the Matrix value to the Text "a".]]></Note>
+        <Returns><![CDATA[#&#60Matrix 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(display Z)</sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#(mat| "a" "a" "a" "a" "a" )]]></Returns>
+        <Expression><![CDATA[ <sc>(vectorFill Z 1++)</sc>]]></Expression>
+        <Note><![CDATA[Sets the Matrix value to the result of the function (1++).]]></Note>
+        <Returns><![CDATA[#&#60Matrix 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(display Z)</sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#(mat| 1 2 3 4 5 )]]></Returns>
+       <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

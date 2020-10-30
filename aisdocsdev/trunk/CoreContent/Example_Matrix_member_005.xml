@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Matrix member 005</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>member</FunctionKeywords>
+		<TypeKeywords>   Matrix Boolean Integer
+
+
+</TypeKeywords>
+		<RelatedFunctions> inside isInside isMember</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>Matrix Equal Analytic Object </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples check if the Text object is a member of the Matrix using the
+
+
+
+
+
+
+
+                  <b>member</b> function.
+If the Text object is a member of the Matrix, its
+
+
+
+
+                  index value will be returned, if not the Boolean, false will be returned.
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define Fruits  #(mat| "apple" "orange" "lemon")   )     </sc>]]></Expression>
+        <Note><![CDATA[A Matrix is defined. ]]></Note>
+        <Returns><![CDATA[#&#60Matrix 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(member "peach" Fruits)              </sc>]]></Expression>
+        <Note><![CDATA[The text, "peach" is a not a member contained in the Matrix. ]]></Note>
+        <Returns><![CDATA[false ]]></Returns>
+        <Expression><![CDATA[ <sc>(member "apple"  Fruits)                  </sc>]]></Expression>
+        <Note><![CDATA[The text, "apple" is a member contained in the Matrix. Its index is returned. ]]></Note>
+        <Returns><![CDATA[0 ]]></Returns>
+        <Hints><![CDATA[none  ]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Complex exp 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>exp</FunctionKeywords>
+		<TypeKeywords>Number Integer</TypeKeywords>
+		<RelatedFunctions>expt</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>  radians angle  </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[<p>The value of <b>exp</b> for of a variety of complex numbers is shown. 
+             The first double shown is the real part of the result. The second number shown is 
+             the imaginary part of the result.</p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq X (new Complex: 3.0 4.0))  </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60Complex 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(exp X) </sc>]]></Expression>
+        <Note><![CDATA[The result of the exp function is: ]]></Note>
+        <Returns><![CDATA[#c-13.13-15.2i]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq X (new Complex: 3.0 -4.0))  </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[#&#60Complex 234567&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(exp X) </sc>]]></Expression>  
+        <Note><![CDATA[The result of the exp function is: ]]></Note> 
+        <Returns><![CDATA[#c-13.13+15.2i]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq X (new Complex: -3.0 4.0))  </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[#&#60Complex 345678&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(exp X) </sc>]]></Expression>  
+        <Note><![CDATA[The result of the exp function is: ]]></Note> 
+        <Returns><![CDATA[#c-0.0325-0.0377i]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq X (new Complex: -1.0))  </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[#&#60Complex 456789&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(exp X) </sc>]]></Expression>  
+        <Note><![CDATA[The result of the exp function is: ]]></Note> 
+        <Returns><![CDATA[#c0.368]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq X (new Complex: 0.0 1.0))  </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[#&#60Complex 567890&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(exp X) </sc>]]></Expression>  
+        <Note><![CDATA[The result of the exp function is: ]]></Note> 
+        <Returns><![CDATA[#c0.54+0.841i]]></Returns>
+        <Hints><![CDATA[<p>The expression (exp X) returns e to X power where X is the complex argument. 
+           The expression (expt base X) returns the value of base to the X power; thus, (exp X) 
+           returns approximately the same value as (expt 2.71828 X). </p>]]></Hints>
+   </Syntax>
+</Example>

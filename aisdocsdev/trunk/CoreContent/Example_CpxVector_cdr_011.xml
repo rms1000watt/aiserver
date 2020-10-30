@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example CpxVector cdr 011</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>cdr</FunctionKeywords>
+		<TypeKeywords>CpxVector </TypeKeywords>
+		<RelatedFunctions>ref refValues refAttributes setCdr setLastCdr</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>tail ref index</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows how the the <b>cdr</b>
+                  function accesses the tail value of a CpxVector.
+
+
+
+                 
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq X #(cpx| 1.0 2.0 2.0 5.0 . 3.0 4.0))  </sc>]]></Expression>
+        <Note><![CDATA[A CpxVector with a cdr value is defined. ]]></Note>
+        <Returns><![CDATA[#&#60CpxVector 188141&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(cdr X) </sc>]]></Expression>
+        <Note><![CDATA[The first cdr value is returned..]]></Note>
+        <Returns><![CDATA[3.0 ]]></Returns>
+        <Expression><![CDATA[ <sc> (setq X (new Vector: complex: 0))</sc>]]></Expression>
+        <Note><![CDATA[A CpxVector without a cdr value is defined.]]></Note>
+        <Returns><![CDATA[#&#60CpxVector 244141&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(cdr X)</sc>]]></Expression>
+        <Note><![CDATA[ none]]></Note>
+        <Returns><![CDATA[#void]]></Returns>
+        <Hints><![CDATA[<p>Cdr returns #void if the tail of the vector has not been set to another type. <p>
+               <p>The tail can be of any type, but it is usually either void or a complex number.</p> 
+        ]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number sumsqr 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>sumsqr</FunctionKeywords>
+		<TypeKeywords>  Number Integer   </TypeKeywords>
+		<RelatedFunctions> sum fact sqrt </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>sum square addition multiplication </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[   <p> This example compute the sum of the squared values of the arguments.
+                   using the <b>sumsqr</b> function. </p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(sumsqr 8 35 51 52 72 92 ) </sc>   ]]></Expression>
+        <Note><![CDATA[Computes the sum of the squares of the Integer arguments.]]></Note>
+        <Returns><![CDATA[20242.0]]></Returns>
+  	    <Expression><![CDATA[ <sc>(sumsqr 8.65 35.05 51.098) </sc>   ]]></Expression>  
+        <Note><![CDATA[Computes the sum of the squares of the Real Number arguments.]]></Note> 
+        <Returns><![CDATA[3914.330604]]></Returns>
+        <Hints><![CDATA[none
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

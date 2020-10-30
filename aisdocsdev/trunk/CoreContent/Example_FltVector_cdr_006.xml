@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example FltVector cdr 006</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>cdr</FunctionKeywords>
+		<TypeKeywords>FltVector Structure</TypeKeywords>
+		<RelatedFunctions>ref refValues refAttributes setCdr setLastCdr</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>tail ref index</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows how the the <b>cdr</b>
+                  function accesses the tail value of a Vector.
+
+
+
+                 
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define ClassRec #(float| 22.342 13.564 4.342 . #{Teacher: "Smith"  Subject: "Math" }) )</sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60FltVector 188141&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq TeacherRec (cdr ClassRec)) </sc>]]></Expression>
+        <Note><![CDATA[The cdr value is assigned to the variable TeacherRec.]]></Note>
+        <Returns><![CDATA[#&#60Structure 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc> (display TeacherRec)    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#{Teacher: "Smith" Subject: "Math"} ]]></Returns>
+        <Expression><![CDATA[ <sc>ClassRec[0]</sc>]]></Expression>
+        <Note><![CDATA[Displays the value of the Vector with index 0.]]></Note>
+        <Returns><![CDATA[22.34199905396]]></Returns>
+        <Expression><![CDATA[ <sc>ClassRec[1]</sc>]]></Expression>
+        <Note><![CDATA[Displays the value of the Vector with index 1.]]></Note>
+        <Returns><![CDATA[13.5640001297]]></Returns>
+        <Expression><![CDATA[ <sc>ClassRec[2]</sc>]]></Expression>
+        <Note><![CDATA[Displays the value of the Vector with index 2.]]></Note>
+        <Returns><![CDATA[4.342000007629]]></Returns>
+        <Expression><![CDATA[ <sc>ClassRec[3]</sc>]]></Expression>
+        <Note><![CDATA[The index 3 will not reach the structure that was defined as the cdr]]></Note>
+        <Returns><![CDATA[#void]]></Returns>
+        <Hints><![CDATA[The cdr is not reachable by the [] operator. ]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,126 @@
+# aised/test/testtabify.txt
+
+#							AISED - TEST TABIFY
+
+# CHANGE HISTORY
+# Version	Date		Who		Change
+# 1.0109	10/7/2006	tlw		Original
+
+# SYNTAX
+# TABIFY - tabify(iExtraSpaces, ToTabs)
+
+# NOTES
+# iExtraSpaces  -1, delete leftover spaces; 0, keep leftover spaces; +1 convert leftover spaces to tabs
+# The tabified region remains selected, cursor is moved to end of selected area.
+#	*************************************************************************************************
+# TABIFY - tabify(iExtraSpaces, ToTabs)
+# No spaces or tabs
+clear
+append("a", Forward)
+move(bol, Select)
+tabify(-1, ToTabs)
+clear
+insert("b", Backward)
+move(nextchar, Select)
+tabify(0, ToTabs)
+clear
+insert("c", Forward)
+move(prevchar, Select)
+tabify(1, ToTabs)
+
+clear
+insert("d", Forward)
+move(bol, Select)
+tabify(0, ToSpaces)
+clear
+append("e", Backward)
+move(nextchar, Select)
+tabify(0, ToSpaces)
+clear
+append("f", Forward)
+move(bol, Select)
+tabify(-1, ToSpaces)
+
+# One space.
+clear
+append(" g", Forward)
+move(bol, Select)
+tabify(-1, ToTabs)
+clear
+insert(" h", Backward)
+move(nextchar, Select)
+tabify(0, ToTabs)
+clear
+insert(" i", Forward)
+move(prevchar, Select)
+tabify(1, ToTabs)
+
+clear
+insert(" j", Forward)
+move(bol, Select)
+tabify(0, ToSpaces)
+clear
+append(" k", Backward)
+move(nextchar, Select)
+tabify(0, ToSpaces)
+clear
+append(" L", Forward)
+move(bol, Select)
+tabify(-1, ToSpaces)
+
+
+# Four spaces, one tab w/ leading space
+clear
+append("    m", Forward)
+move(bol, Select)
+tabify(-1, ToTabs)
+clear
+insert("    n", Backward)
+move(nextchar, Select)
+tabify(0, ToTabs)
+clear
+insert("    o", Forward)
+move(prevchar, Select)
+tabify(1, ToTabs)
+
+clear
+insert(" \tp", Forward)
+move(bol, Select)
+tabify(0, ToSpaces)
+clear
+append(" \tq", Backward)
+move(nextchar, Select)
+tabify(0, ToSpaces)
+clear
+append(" \tr", Forward)
+move(bol, Select)
+tabify(-1, ToSpaces)
+
+# Five spaces, one tab + 1 space
+clear
+append("     s", Forward)
+move(bol, Select)
+tabify(-1, ToTabs)
+clear
+insert("     t", Backward)
+move(nextchar, Select)
+tabify(0, ToTabs)
+clear
+insert("     u", Forward)
+move(prevchar, Select)
+tabify(1, ToTabs)
+
+clear
+insert(" \t v", Forward)
+move(bol, Select)
+tabify(0, ToSpaces)
+clear
+append(" \t w", Backward)
+move(nextchar, Select)
+tabify(0, ToSpaces)
+clear
+append(" \t x", Forward)
+move(bol, Select)
+tabify(-1, ToSpaces)
+#end
+

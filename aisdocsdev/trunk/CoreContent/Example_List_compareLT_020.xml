@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example List compareLT 020</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compareLT</FunctionKeywords>
+		<TypeKeywords>List Boolean</TypeKeywords>
+		<RelatedFunctions> compare compareEQ compareGE compareGT compareNE  compareLE</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare lesser than </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>compareLT</b> functions to do a 
+
+
+
+
+
+
+                  case-sensitive comparison of two objects of the same type.  A Boolean value is returned.
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc> (compareLT '(a b c d e) '(a  (b c)  (d e)  g ))      </sc>]]></Expression>
+        <Note><![CDATA[ The first Quoted List is greater than the second List.]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc> (compareLT '(1  2  3  4) '(A  B  C D))      </sc>]]></Expression>
+        <Note><![CDATA[ The first List is lesser than the second Pair.]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[ none   
+
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

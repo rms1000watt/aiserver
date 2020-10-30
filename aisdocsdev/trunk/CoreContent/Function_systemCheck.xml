@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>systemCheck</Title>
+		<FunctionName>systemCheck</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+        <ArgumentTypes> Boolean  </ArgumentTypes>
+        <DataType> Context </DataType>
+	    <RelatedFunctions>preAllocateFixedMemoryBlocks debug inspect</RelatedFunctions>
+        <RelatedVMInstructions> none  </RelatedVMInstructions>
+		<HumanKeywords>context system check debug</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p>The <b>systemCheck</b> function performs a system diagnostic check of the
+             current memory manager and displays a system error message if any memory blocks 
+             are damaged and cannot be repaired.   </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+	    <p>The <b>systemCheck</b> function performs a system diagnostic check of the current 
+         memory manager and displays a system error message if any memory blocks are damaged 
+         and cannot be repaired. If there are no arguments, the <b>systemCheck</b> function 
+         displays the low-level memory manager allocations according to frame size and displays
+         some basic statistics on memory usage. If there is a single argument, and it is false, 
+         then the <b>systemCheck</b> function does NOT display memory statistics on the console. If 
+         there is a second argument, and it is boolean (true or false), then the Analytic Information 
+         System engine system-self-check-mode is set on (true) or off (false). In system-self-check-mode,
+         a system check is performed a frequent intervals. This greatly reduces execution speed; 
+         but, is useful in tracking sown elusive error conditions. </p>
+        ]]></Overview>
+       <Usage><![CDATA[
+       <p>Use the <b>systemCheck </b> function to perform a system diagnostic check and to view
+        the memory usage of the Analytic Information Server System. The systemCheck function is 
+        useful for determining if there are memory leaks. As a debugging aid, the <b>systemCheck</b>
+        function is useful also to determine if invalid or damaged objects are created by the 
+        Analytic Information Server System. </p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p><b>      (systemCheck) </b></p>
+                    <p><b>      (systemCheck displaySW) </b></p>
+                    <p><b>      (systemCheck displaySW selfCheckSW)  </b></p>
+]]></Expression>
+		<Argument>
+		  <Name>displaySW </Name>
+		  <Note><![CDATA[
+		  <p> (Optional) A boolean argument which, if missing or true, causes memory
+            block statistics to be displayed on the AIS console during system self check. </p>
+          ]]></Note>
+		  <AISTypes>Boolean</AISTypes>
+		</Argument>   
+		<Argument> 
+		  <Name>selfCheckSW</Name>
+		  <Note><![CDATA[
+		  <p> (Optional) A boolean argument which causes the Analytic Information System 
+          engine system-self-check-mode is be set on (true) or off (false). </p>
+          ]]></Note>
+		  <AISTypes>Boolean</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>The Boolean value, true.</p>
+	    ]]></Return>
+	</Syntax>
+</Function>

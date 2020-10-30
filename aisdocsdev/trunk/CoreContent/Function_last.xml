@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>last</Title>
+		<FunctionName>last</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>Pair List</ArgumentTypes>
+        <DataType>  List</DataType>
+		<RelatedFunctions>cdr car</RelatedFunctions>
+        <RelatedVMInstructions>   none  </RelatedVMInstructions>
+		<HumanKeywords>last pair list cdr</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>last</b> function returns the last pair in a list.</p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>last</b> function returns the last pair in a list <b>{list}</b>.  The 
+           last pair is defined to be the first element of the list whose cdr component 
+           is not a pair.
+        </p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>last</b> function is used to get the last pair in a List.
+        </p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p>   (last list) </p>]]></Expression>
+		<Argument>
+		  <Name>list</Name>
+		  <Note><![CDATA[
+		  <p> A List (of Pairs).</p>
+          ]]></Note>
+		  <AISTypes>List</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>Returns the last Pair.
+        </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

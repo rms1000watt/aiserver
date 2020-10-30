@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>  
+		<Title>Example String methodsOf 002</Title>  
+		<Template>Example</Template> 
+		<FunctionKeywords>methodsOf</FunctionKeywords>
+		<TypeKeywords>String Text Dictionary</TypeKeywords>	
+		<RelatedFunctions>defmethod send addMethod</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>method message messageName</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example displays the message names stored in
+	              the String Method Dictionary.  This already includes
+	              the previously defined <b>EatSpace</b> method with
+	              the message name <b>Eat</b> in Example_methodsOf_001.
+	]]></Description>
+	<Syntax> 
+	<Expression><![CDATA[ <sc>(setq numLambda (length (methodsOf String: ))) </sc>  
+   ]]></Expression>  
+   <Note><![CDATA[ <p>A Dictionary object type is made up of bindings (key, value) 
+          similar to structures.  If a dictionary is accessed by 2 
+          index references, the first index retrieves the I-th binding.  
+          The second index (=0) will retrieve the binding's name and the 
+          index (=1) will retrieve the binding's value. </p>
+          <p> In this example, the binding's name, which is the message name
+              associated with the method is retrieved. </p>
+          <p> This line of code gets the number of methods defined in the 
+              String Methods Dictionary. </p> 
+   ]]></Note> 
+   <Returns><![CDATA[ 8 ]]></Returns>
+   <Expression><![CDATA[<sc>(loop for  n  from 0  until numLambda by 1  do 
+             <blockquote>  (writeln "Message #"  n  " is "  (ref  (methodsOf String:) n 0))) </blockquote></sc> 
+   ]]></Expression>
+   <Note><![CDATA[ <p>The binding's name is retrieved through the second index (=0) 
+          in the <b>ref</b> function.</p>
+          <p> Then the the Method names for the String type: are displayed. </p>
+   ]]></Note>
+   <Returns><![CDATA[<br>Message #0 is Eat   <br>
+            Message #1 is charAt <br>
+            Message #2 is indexOf <br>
+            Message #3 is lastIndexOf <br>
+            Message #4 is length <br>
+            Message #5 is split  <br>
+            Message #6 is substring <br>
+            Message #7 is toLowerCase   <br>
+            Message #8 is toUpperCase]]></Returns>
+   <Hints><![CDATA[none]]></Hints>
+</Syntax>
+</Example>

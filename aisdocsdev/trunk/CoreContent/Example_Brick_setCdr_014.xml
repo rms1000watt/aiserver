@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Brick setCdr 014</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>setCdr</FunctionKeywords>
+		<TypeKeywords>Brick</TypeKeywords>
+		<RelatedFunctions>  cdr</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>tail ref index</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ <p>These examples show the <b>setCdr</b> set a Structure as
+                     the <b>cdr</b> value of a Brick.</p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define nameList  (new Brick: 1 Name:Object:3)) </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60Record 123456&#62  ]]></Returns>
+        <Expression><![CDATA[ <sc>(setCdr  nameList  "This is a note")      </sc>]]></Expression>
+        <Note><![CDATA[This sets the cdr value.]]></Note>
+        <Returns><![CDATA[#&#60Record 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(cdr nameList)   </sc>]]></Expression>  
+        <Note><![CDATA[Retrieves the cdr value.]]></Note> 
+        <Returns><![CDATA[This is a note ]]></Returns>
+        <Expression><![CDATA[ <sc>(length nameList) </sc>]]></Expression>  
+        <Note><![CDATA[Retrieves the cdr value.]]></Note> 
+        <Returns><![CDATA[The cdr value is not accessible by the length function. ]]></Returns>
+        <Hints><![CDATA[<p>The <b>cdr</b> is not reachable by the dot or bracket operators.</p>]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>c..r</Title>
+		<FunctionName>c..r</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+        <ArgumentTypes>  List </ArgumentTypes>
+        <DataType> List</DataType>
+	    <RelatedFunctions>setCar setCdr</RelatedFunctions>
+        <RelatedVMInstructions>  </RelatedVMInstructions>
+		<HumanKeywords>search associate find car cdr</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>c..r</b> notation is a shorthand notation to represent the all the combinations 
+                 of  nested car and cdr function calls. </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The  <b>c..r</b> notation is a shorthand notation to represent the all the combinations 
+           of  nested car and cdr function calls. The "...." may be any combination of the letters 
+           <b>a</b> and <b>d</b> up to four letters long.   Each of the <b>c..r</b>  functions 
+           apply an appropriate sequence of <b>car</b> and <b>cdr</b> functions to a List 
+           (a set of Pairs linked together) and returns the result.</p>
+        <p>All of these functions are evaluated from right to left.</p>
+        ]]></Overview>
+       <Usage><![CDATA[
+        <p>The  <b>c..r</b> functions are a useful shortcut to replacing several nested car and 
+            cdr functions that are applied on the same list.          
+		</p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p>  (cadr  list ) </p>
+                    <p>  (caar  list ) </p>
+                    <p>  (cadar list)  </p>]]></Expression>
+		<Argument> 
+		  <Name>list</Name>
+		  <Note><![CDATA[
+		  <p> The target list.</p>
+          ]]></Note>
+		  <AISTypes>List </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The result expression after applying the car and cdr.
+        </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

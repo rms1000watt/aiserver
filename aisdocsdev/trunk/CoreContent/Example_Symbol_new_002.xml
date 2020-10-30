@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Symbol new 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>new</FunctionKeywords>
+		<TypeKeywords>Symbol Integer</TypeKeywords>
+		<RelatedFunctions>string makeQuotedSymbol</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>new pointer create initialize</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples show how to create an instance of
+                  a Symbol object through the <b>new</b> function.
+                  The <b>new</b> function initializes the
+
+	              Symbols with corresponding defined values.
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(new Symbol: "A")   </sc>]]></Expression>
+        <Note><![CDATA[ none]]></Note>
+        <Returns><![CDATA[ A]]></Returns>
+        <Expression><![CDATA[ <sc>(new Symbol:  "Donald")   </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[ Donald]]></Returns>
+  	    <Expression><![CDATA[ <sc>(new Symbol:  Duck: )  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[Duck]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

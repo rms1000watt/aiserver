@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number sizeof 011</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>sizeof</FunctionKeywords>
+		<TypeKeywords>Number Integer</TypeKeywords>
+		<RelatedFunctions>new length </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>sizeof closure bytes length disk memory</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example return the closure size of the Number objects.  
+
+
+
+
+
+
+
+
+
+     
+
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+        <Expression><![CDATA[ <sc>(sizeof  1)               </sc>]]></Expression>
+        <Note><![CDATA[The sizes of 4 Numbers and a Vector are returned.]]></Note>
+        <Returns><![CDATA[16]]></Returns>
+        <Expression><![CDATA[ <sc>(sizeof 1.56)          </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[16]]></Returns>
+        <Expression><![CDATA[ <sc>(sizeof  $1.56)               </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[16]]></Returns>
+        <Expression><![CDATA[ <sc>(sizeof  99%)          </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[16]]></Returns>
+         <Expression><![CDATA[ <sc>(sizeof #(1 1.56 $1.56 99%))                </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[116]]></Returns>
+        <Hints><![CDATA[<p>The closure size may be different values for the same object on different
+             hardware platforms due to word alignment issues. The values returned from the 
+             <b>sizeof</b> function in the examples above are the values returned on a Intel 
+              Pentium-based platform.</p>
+        ]]></Hints>
+   </Syntax>
+</Example>

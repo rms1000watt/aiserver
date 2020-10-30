@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example NumMatrix comparison functions 023</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>comparison</FunctionKeywords>
+		<TypeKeywords>NumMatrix Boolean</TypeKeywords>
+		<RelatedFunctions>compare compareEQ compareGT compareNE compareLT  compareLE</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare matrix equal lesser </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>comparison</b> functions to do a 
+
+
+
+
+
+
+
+                  case-sensitive comparison of two objects of the same type.  A Boolean value is returned.
+
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+   	    <Expression><![CDATA[ <sc>(= #(nummat| 12.32 42.01) #(nummat| 12.32 42.01 ))     </sc>]]></Expression>  
+        <Note><![CDATA[Both NumMatrices are equal.]]></Note> 
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>(&#60 #(nummat| 12.32 42.01) #(nummat| -12.32 42.01 ))     </sc>]]></Expression>  
+        <Note><![CDATA[ The value of the first NumMatrix is greater than the value
+               of the second NumMatrix.]]></Note> 
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(&#62 #(nummat| 12.32 5.34) #(nummat| 12.32 42.01 ))    </sc>]]></Expression>  
+        <Note><![CDATA[The value of the first Matrix is lesser than the value
+               of the second Matrix.]]></Note> 
+        <Returns><![CDATA[false]]></Returns>
+        <Hints><![CDATA[
+           <p>If you prefer an integer resulting from the comparison (0 for equal, -1 for less than, 
+
+
+
+
+
+
+              and 1 for greater than), use the <b>compare</b> function. </p>
+        ]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>cdr</Title>
+		<FunctionName>cdr</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+         <ArgumentTypes>Structure Dictionary Directory Vector Brick Symbol Matrix Pair List ShortVector
+                   FltVector IntVector NumVector ObjVector CpxVector BitVector NumMatrix</ArgumentTypes>
+<DataType> Structure Dictionary Directory Vector Brick Matrix List FltVector CpxVector ShortVector IntVector NumVector ObjVector BitVector NumMatrix</DataType>
+	    <RelatedFunctions>ref refValues refAttributes setCdr</RelatedFunctions>
+        <RelatedVMInstructions> vmregObjPointer </RelatedVMInstructions> 
+		<HumanKeywords>tail ref index</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>cdr</b> function returns the tail of the specified object.</p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>cdr</b> function returns the tail of the specified object.</p>. 
+           
+        ]]></Overview>
+	   <Overview-List><![CDATA[
+		<p>The <b>cdr</b> function is applicable to a List (a set of Pairs linked together) 
+          and returns the tail of a List.   The <b>{repeat}</b> argument is an optional argument 
+          and if it is present it must be an integer which can be from 1 to 4 and indicates the 
+          number of times to apply the <b>cdr</b>  operator to the List.  In other words 
+          (cdr list 3)  is equivalent to (cdddr list) .</p>. 
+        ]]></Overview-List>
+        <Usage><![CDATA[
+        <p>The <b>cdr</b> function is the only function to reference the tail of a structure
+            ,dictionary, directory, vector, Brick or matrix.  
+           The ref function will not return the tail nor will indexing with the [ ]  
+           operators return the tail.
+		</p>
+        ]]></Usage>
+        <Usage-List><![CDATA[
+        <p>The <b>cdr</b> function is used to retrieve the tail of a list.  The <b>cdr</b> 
+           function can be applied sequentially up to 4 times by repeating the "d"  as in 
+           <b>cddr, cdddr, cddddr</b>.  Alternatively, the number of repeats can be specified 
+           as an argument to <b>cdr</b> as in <b>(cdr list 4)</b> is equivalent to <b>(cddddr list 4)</b>.
+
+		</p>
+        ]]></Usage-List>
+    </Brief>
+	<Syntax-Structure>
+	    <Expression><![CDATA[<p> (cdr structure)</p>]]></Expression>
+		<Argument>
+		  <Name>structure</Name>
+		  <Note><![CDATA[
+		  <p> The Structure argument. </p>
+          ]]></Note>
+		  <AISTypes>Structure </AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>If the structure contains a cdr (or tail) it will return the tail otherwise, 
+           cdr will return #void
+        </p>
+	    ]]></Return>
+	</Syntax-Structure>
+	<Syntax-Dictionary>
+	    <Expression><![CDATA[<p> (cdr dict)</p>]]></Expression>
+		<Argument> 
+		  <Name>dict</Name>
+		  <Note><![CDATA[
+		  <p> The Dictionary argument. </p>
+          ]]></Note>
+		  <AISTypes>Dictionary </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>If the dictionary contains a cdr (or tail) it will return the tail otherwise, 
+           cdr will return #void
+        </p>
+	    ]]></Return>   
+	</Syntax-Dictionary>
+	<Syntax-Directory>
+	    <Expression><![CDATA[<p> (cdr directory)</p>]]></Expression>
+		<Argument> 
+		  <Name>directory</Name>
+		  <Note><![CDATA[
+		  <p> The directory argument. </p>
+          ]]></Note>
+		  <AISTypes>Directory </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>If the directory contains a cdr (or tail) it will return the tail otherwise, 
+           cdr will return #void
+        </p>
+	    ]]></Return>   
+	</Syntax-Directory>
+	<Syntax>
+	    <Expression><![CDATA[<p> (cdr vector)</p>]]></Expression>
+		<Argument> 
+		  <Name>vector</Name>
+		  <Note><![CDATA[
+		  <p> The vector argument. </p>
+          ]]></Note>
+		  <AISTypes>Vector FltVector CpxVector ShortVector IntVector NumVector ObjVector BitVector </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>If the vector contains a cdr (or tail) it will return the tail otherwise, 
+           cdr will return #void
+        </p>
+	    ]]></Return>   
+	</Syntax>
+	<Syntax-Brick>
+	    <Expression><![CDATA[<p> (cdr brick)</p>]]></Expression>
+		<Argument> 
+		  <Name>brick</Name>
+		  <Note><![CDATA[
+		  <p> The brick argument. </p>
+          ]]></Note>
+		  <AISTypes>Brick </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>If the Brick contains a cdr (or tail) it will return the tail otherwise, 
+           cdr will return #void
+        </p>
+	    ]]></Return>   
+	</Syntax-Brick>
+	<Syntax-Matrix>
+	    <Expression><![CDATA[<p> (cdr matrix)</p>]]></Expression>
+		<Argument> 
+		  <Name>matrix</Name>
+		  <Note><![CDATA[
+		  <p> The matrix argument. </p>
+          ]]></Note>
+		  <AISTypes>Matrix </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>If the Matrix contains a cdr (or tail) it will return the tail otherwise, 
+           cdr will return #void
+        </p>
+	    ]]></Return>   
+	</Syntax-Matrix>
+	<Syntax-NumMatrix>
+	    <Expression><![CDATA[<p> (cdr nummatrix)</p>]]></Expression>
+		<Argument> 
+		  <Name>matrix</Name>
+		  <Note><![CDATA[
+		  <p> The matrix argument. </p>
+          ]]></Note>
+		  <AISTypes>NumMatrix </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>If the NumMatrix contains a cdr (or tail) it will return the tail otherwise, 
+           cdr will return #void
+        </p>
+	    ]]></Return>   
+	</Syntax-NumMatrix>
+	<Syntax-List>
+	    <Expression><![CDATA[<p> (cdr list)</p>
+                    <p> (cddr list)</p>
+                    <p> (cdddr list)</p>
+                    <p> (cddddr list)</p>
+                    <p> (cdr list numRepeats)</p>]]></Expression>
+		<Argument> 
+		  <Name>list</Name>
+		  <Note><![CDATA[
+		  <p> A List. </p>
+          ]]></Note>
+		  <AISTypes>List </AISTypes>
+		</Argument>
+        <Argument> 
+		  <Name>numRepeats</Name>
+		  <Note><![CDATA[
+		  <p> The number of times to repeat the cdr function on the List. </p>
+          ]]></Note>
+		  <AISTypes>Integer </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The tail of the List argument.
+        </p>
+	    ]]></Return>   
+	</Syntax-List>
+</Function>

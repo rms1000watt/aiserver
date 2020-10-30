@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Complex sqrt 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>sqrt</FunctionKeywords>
+		<TypeKeywords>Number Integer</TypeKeywords>
+		<RelatedFunctions>fact (sym)div</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>square root</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[<p> The square root of a complex number are shown in this example. 
+                   The first double shown is the real part of the result. The second number 
+                   shown is the imaginary part of the result.</p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq X (new Complex: 3.0 4.0)) </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60Complex 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(sqrt X)</sc>]]></Expression>
+        <Note><![CDATA[The result of the sqrt function is: ]]></Note>
+        <Returns><![CDATA[#c2.0+1.0i]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq X (new Complex: -3.0 4.0))  </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60Complex 234567&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(sqrt X)</sc>]]></Expression>
+        <Note><![CDATA[The result of the sqrt function is: ]]></Note>
+        <Returns><![CDATA[#c1.0+2.0i]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq X (new Complex: 3.0 -4.0))  </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60Complex 345678&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(sqrt X)</sc>]]></Expression>
+        <Note><![CDATA[The result of the sqrt function is: ]]></Note>
+        <Returns><![CDATA[#c1.0-2.0i]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq X (new Complex: 0.0 4.0))  </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[#&#60Complex 456789&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(sqrt X)</sc>]]></Expression>  
+        <Note><![CDATA[The result of the sqrt function is: ]]></Note> 
+        <Returns><![CDATA[#c1.414+1.414i]]></Returns>
+        <Hints><![CDATA[<p>Be sure that the argument is an angle expressed in radians. </p>]]></Hints>
+   </Syntax>
+</Example>

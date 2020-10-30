@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example PcodeVector new 014</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>new</FunctionKeywords>
+		<TypeKeywords> PcodeVector</TypeKeywords>
+		<RelatedFunctions> setq  define </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>new pointer create initialize</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples show how to construct a typed Vector.
+
+                  A Pcode Vector is constructed using the
+
+                  <b>new</b> function.
+
+	]]></Description>
+	<Syntax>
+        <Expression><![CDATA[ <sc>(new Vector:  Pcode: 5 4)               </sc>]]></Expression>
+        <Note><![CDATA[ Returns a Pcode Vector containing all 4s.]]></Note>
+        <Returns><![CDATA[#&#60PcodeVector 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display &#60PcodeVector 123456&#62)    </sc>]]></Expression>
+        <Note><![CDATA[ Displays the contents of the Pcode Vector.]]></Note>
+        <Returns><![CDATA[#(pcd| 4 4 4 4 4 )]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

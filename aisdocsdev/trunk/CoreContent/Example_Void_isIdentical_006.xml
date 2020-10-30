@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Void isIdentical 006</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isIdentical</FunctionKeywords>
+		<TypeKeywords>Void Boolean</TypeKeywords>
+		<RelatedFunctions>compareEQ isIdentical comparison isEqual     </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords> Void Equal Analytic Object Boolean</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example  sets the value of the variables and uses the
+
+
+
+
+
+                  <b>isIdentical</b> function to compare the values of these two variables.  
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq A #void)           </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#void]]></Returns>
+        <Expression><![CDATA[ <sc>(setq B #void)              </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#void]]></Returns>
+        <Expression><![CDATA[ <sc>(isIdentical  A B)             </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[true ]]></Returns>
+        <Hints><![CDATA[ none  ]]></Hints>
+   </Syntax>
+</Example>

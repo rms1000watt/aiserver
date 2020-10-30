@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmrefpcdvector</Title>
+		<InstructionName>vmrefpcdvector </InstructionName>
+		<InstructionType>Generic</InstructionType>
+		<ArgumentTypes>  Word Integer PcodeVector</ArgumentTypes>
+		<RelatedVMInstructions> vmrefobjvector vmrefnumvector</RelatedVMInstructions>
+		<HumanKeywords>ref numvector objvector pcdvector vector</HumanKeywords>
+	</KnowledgeBase>                   
+	<Description><![CDATA[
+		<p>When evaluated, this vm instruction assigns the <b>source</b> word, 
+		indexed by the <b>index</b> word, into the <b>target</b> word. 
+		The source word must contain a  PcodeVector  object. The source, 
+		index, and target arguments are mandatory. The source argument word must 
+		contain an indexable value. The operation of this vm instruction is expressed 
+		in the following C expression:
+    	</p>      
+        <ul><li><b>  (word)target = (word:PcodeVector)source[(int)index];</b></li></ul>
+    ]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[(vmrefpcdvector  index source target)]]></Expression>
+		<Argument> 
+		  <Name>index</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>(word:PcodeVector)</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>target</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>word</AISTypes>
+		</Argument>
+	</Syntax>
+</VMInstruction>

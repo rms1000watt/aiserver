@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example CpxVector new 015</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>new</FunctionKeywords>
+		<TypeKeywords> CpxVector</TypeKeywords>
+		<RelatedFunctions> setq  define </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>new pointer create initialize</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples show how to construct a CpxVector.
+
+                  A
+Vector with #void values is also constructed using the
+
+                  <b>new</b> function.
+
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(setq X (new Vector: complex: 2 1.0))	              </sc>]]></Expression>
+        <Note><![CDATA[ Creates a new Cpx Vector containing 2 Character values.]]></Note>
+        <Returns><![CDATA[#&#60CpxVector 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display X)    </sc>]]></Expression>
+        <Note><![CDATA[ Displays the contents of the Complex Vector.]]></Note>
+        <Returns><![CDATA[#(cpx| #c1.0+0.0i #c1.0+0.0i )]]></Returns>
+        <Expression><![CDATA[ <sc>(setq X (new Vector: complex: 0 1.0 2.0))                 </sc>]]></Expression>
+        <Note><![CDATA[ Creates a new  Cpx Vector with no values.]]></Note>
+        <Returns><![CDATA[#&#60CpxVector 234567&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display X)    </sc>]]></Expression>
+        <Note><![CDATA[ Displays the contents of the  Cpx Vector.]]></Note>
+        <Returns><![CDATA[#(cpx| )]]></Returns>
+        <Expression><![CDATA[ <sc>(setq X (new Vector: complex: q . #c5.0+6.0i ))                  </sc>]]></Expression>
+        <Note><![CDATA[ Create a new Cpx Vector, with no value but with a set cdr value.]]></Note>
+        <Returns><![CDATA[#&#60CpxVector 345678&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display X)    </sc>]]></Expression>
+        <Note><![CDATA[ Displays the contents of the  CpxVector.]]></Note>
+        <Returns><![CDATA[#(cpx| . #c5.0+6.0i)]]></Returns>
+        <Hints><![CDATA[<p>If a reference to an existing object is modified to point to a new object 
+               (as shown in the above examples), the reference count on the previous object
+               on the heap will be decremented. If the count goes to zero, the object's allocated
+               memory area will automatically be reclaimed by the garbage collector. </p>
+              <p>If the returned value from new or make new is not captured, (e.g. using <b>setq</b>),
+               then the newly created heap object will not have any reference to it and, thus, 
+               will soon be swept away by the garbage collector. </p>
+              <p>The space required to hold the complex number data (not including headers, etc.)
+               is twice the size of a double. Internally, the real part of each complex number 
+               is stored as the first double and the imaginary part is stored as the 
+               second double. </p>
+         ]]></Hints>
+   </Syntax>
+</Example>

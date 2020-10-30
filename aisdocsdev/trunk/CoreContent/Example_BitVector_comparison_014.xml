@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example BitVector comparison 014</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>comparison</FunctionKeywords>
+		<TypeKeywords>BitVector Boolean</TypeKeywords>
+		<RelatedFunctions>compare compareEQ compareGT compareNE compareLT  compareLE</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare vector equal lesser </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>comparison</b> functions to do a 
+
+
+
+
+
+
+                  case-sensitive comparison of two objects of the same type.  A Boolean value is returned.
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(= #(bit| 1 1 1 1 1 ) #(bit| 0 1 1 1 1 ))    </sc>]]></Expression>
+        <Note><![CDATA[The contents of the ObjVector are not of the same.]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(&#60 #(bit| 0 0 0 1 1 1 1 1 ) #(bit| 0 1 1 1 1 ))             </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>(&#62  #(bit| 0 0 0 1 1 1 1 1 ) #(bit| 0 0 0 1 1 1 1 1 1 1 1 ))  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[
+           <p>If you prefer an integer resulting from the comparison (0 for equal, -1 for less than, 
+
+
+
+
+
+              and 1 for greater than), use the <b>compare</b> function. </p>
+        ]]></Hints>
+   </Syntax>
+</Example>

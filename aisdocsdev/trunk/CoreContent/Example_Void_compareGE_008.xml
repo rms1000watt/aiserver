@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Void compareGE 008</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compareGE</FunctionKeywords>
+		<TypeKeywords>Void Boolean</TypeKeywords>
+		<RelatedFunctions>compare compareEQ compareNE compareGT compareLT  compareLE</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare void greater than </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>compareGE</b> function to compare two objects and return
+
+
+
+
+
+
+
+
+                  the Boolean value, true or false. The  values of each object are compared
+
+
+
+
+
+                  to determine whether the first object is greater or equal in value than the second object.
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+        <Expression><![CDATA[ <sc>(compareGE x  #void )         </sc>]]></Expression>
+        <Note><![CDATA[The uninitialized value of x is equal to #void.]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>(compareGE #void "Hello World" )       </sc>]]></Expression>
+        <Note><![CDATA[ The value #void is not greater or equal than the value of the String.]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

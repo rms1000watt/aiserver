@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Boolean addMethod 011</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>addMethod</FunctionKeywords>
+		<TypeKeywords> Boolean Symbol Dictionary </TypeKeywords>
+		<RelatedFunctions>defmethod send methodsOf</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>method message messageName</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[<p> This example defines a method named <b>English</b> that is invoked when 
+
+                 the Boolean type receives an <b>toEnglish</b> message.  The <b>English</b> method
+                 converts the Boolean Value, true,  to the English word "Yes" and converts the 
+                 Boolean value, false,  to the English word  "No".
+</p>
+	]]></Description>
+	<Syntax>
+	<Expression><![CDATA[<sc>(defun English (b) (if  b then "Yes" else "No") )     </sc>]]></Expression>
+    <Note><![CDATA[ First Define the English method:
+
+]]></Note>
+    <Returns><![CDATA[ #&#60Lambda 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(addMethod  Boolean: toEnglish: English)       </sc> ]]></Expression>
+    <Note><![CDATA[Install the English method and the message named toEnglish in the Boolean Methods Dictionary.]]></Note>
+    <Returns><![CDATA[#&#60Dictionary 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(send toEnglish: true)       </sc> ]]></Expression>
+    <Note><![CDATA[To invoke the Lambda that responds to the toEnglish message, issue the following statement:]]></Note>
+    <Returns><![CDATA[Yes]]></Returns>
+    <Expression><![CDATA[<sc>(toEnglish: true)   </sc> ]]></Expression>
+    <Note><![CDATA[Alternatively, the Lambda may be invoked using the following syntax:]]></Note>
+    <Returns><![CDATA[Yes]]></Returns>
+    <Hints><![CDATA[
+        <p>To view the entry in the methods Dictionary created by the addMethod function, 
+
+
+
+
+
+
+           you can use the method name to access the directory entry by </p>
+        <p><b> #&#60Dictionary 123456&#62[methodName:] or </b></p>
+        <p> To determine the number of assigned methods:</p>
+        <p><b>(length  (methodsOf Boolean: ))</b></p>
+        <p>To access the nth method name:</p>
+        <p><b>(methodsOf Boolean: )[n  0]</b></p>
+]]></Hints>
+</Syntax>
+</Example>

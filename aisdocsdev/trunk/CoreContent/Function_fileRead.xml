@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>fileRead</Title>
+		<FunctionName>fileRead</FunctionName>
+		<FunctionType>Builtin(FileIO)</FunctionType>
+		<ArgumentTypes>ByteVector Text Integer Boolean</ArgumentTypes>
+		<DataType>ByteVector  Text</DataType>
+		<RelatedFunctions>fileClose   fileOpen fileWrite writeln display </RelatedFunctions>
+        <RelatedVMInstructions> none   </RelatedVMInstructions>
+		<HumanKeywords> file fileID ASCII open erase filename filetype database</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>fileRead </b> function reads data from a file into the specified ByteVector Object.  </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		 <p> The <b>fileRead</b> function reads data from a file <b>{fileID}</b> into the 
+         specified ByteVector Object <b>{bytevector}</b>. The ByteVector Object is always
+          returned. If no ByteVector Object is specified, one will be created to hold the 
+          data that is read from the file.</p>
+         <p>
+Data is entered into a file with the <b>fileWrite, fwriteln,</b> or <b>fdisplay</b>
+            functions, however, records are not actually committed to the file until the file 
+            is closed. Thus, attempting to read a record immediately after a <b>fileWrite</b> or 
+            <b>fdisplay</b> will result in an error. In order to verify records that have been 
+            written, it is necessary to close the file and save the file (<b>fileClose</b>
+            with an option argument equal to 1) . The file can then be re-opened and read 
+             with the <b>fileRead</b> function.
+</p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>fileRead </b> function is used to read data from an existing file
+            (One that have been previously closed and saved file. See the <b>fileClose</b>
+            function with an option argument equal to 1).</p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p><b> (fileRead fileID offset length bytevector)</b></p>
+                             <p><b> (fileRead fileID pointer length)</b></p>
+                             <p><b> (fileRead fileID length)</b></p>]]></Expression>
+		<Argument>
+		  <Name>fileID </Name>
+		  <Note><![CDATA[
+		  <p>An Integer representing the fileID of the file returned from a previous
+            fileOpen function.</p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>offset</Name>
+		  <Note><![CDATA[
+		  <p>Optional. The integer index into the specified ByteVector where the 
+           data stream is to start . If no offset is specified, the offset defaults to zero.</p>
+          ]]></Note>
+		  <AISTypes>Integer </AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>length </Name>
+		  <Note><![CDATA[
+		  <p>Optional. The integer length of data which is to be read into the specified 
+            ByteVector. If no length is specified, the length defaults to the length to the 
+            end of the file.</p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>bytevector </Name>
+		  <Note><![CDATA[
+		  <p>Optional. The ByteVector into which the data is to be placed. If no ByteVector 
+           is specified, one will be created.</p>
+          ]]></Note>
+		  <AISTypes>ByteVector</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>pointer </Name>
+		  <Note><![CDATA[
+		  <p>Optional. The pointer where the data is to be placed.</p>
+          ]]></Note>
+		  <AISTypes>ByteVector</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>The ByteVector resulting from the file read is always returned as the value of this
+           function.
+        </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

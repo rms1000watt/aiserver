@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example CpxVector binarySearch 008</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>binarySearch</FunctionKeywords>
+		<TypeKeywords>CpxVector  Integer</TypeKeywords>
+		<RelatedFunctions>insert binaryInsert uniqueInsert sort</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>binary search vector sort</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example sets a sorted CpxVector.  Then it
+                  uses the <b>binarySearch</b> function to search for a value
+                  in the CpxVector.
+	]]></Description>
+	<Syntax>
+  	   <Expression><![CDATA[ <b>(setq X #(cpx| 1.0 2.0 3.0 4.0))           </b>]]></Expression>
+        <Note><![CDATA[The binarySearch function always assumes
+              a sorted vector in ascending order. ]]></Note>
+        <Returns><![CDATA[#&#60CpxVector 199917&#62 ]]></Returns>
+        <Expression><![CDATA[ <b>(display #&#60CpxVector 199917&#62 )       </b>]]></Expression>
+        <Note><![CDATA[Displays the values of the sorted Vector]]></Note>
+        <Returns><![CDATA[#(cpx| #c1.0+2.0i #c3.0+4.0i )]]></Returns>
+        <Expression><![CDATA[ <b> (binarySearch X #c7.0+5.0i)          </b>]]></Expression>
+        <Note><![CDATA[The value is not found.]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <b> (binarySearch X #c1.0+2.0i)          </b>]]></Expression>  
+        <Note><![CDATA[Returns the index of the value in the CpxVector.]]></Note> 
+        <Returns><![CDATA[0]]></Returns>
+        <Hints><![CDATA[<p>Complex numbers are sorted using their real part first and then using the 
+           imaginary part to break ties. </p>  
+           <p>If several searches are routinely made on a large array, consider sorting 
+           the array to reduce the time of the searches. </p>
+          <p>If the array is not sorted in ascending order, the search may fail even if 
+          the vector contains a matching element. If the vector holds two or more matching 
+          elements, the index returned may be the index of any one of the matching elements. </p>
+       ]]></Hints>
+   </Syntax>
+</Example>

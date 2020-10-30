@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Integer bitwiseShiftRight 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>bitwiseShiftRight</FunctionKeywords>
+		<TypeKeywords>Number</TypeKeywords>
+		<RelatedFunctions>bitwiseShiftLeft</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>numerical shift right bitwise</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[  <p> This example shows how the <b>bitwiseShiftRight</b> function 
+         right shifts the first Integer <b>{int1}</b> by the number of bits specified in
+        the second number <b>{int2}</b> and returns the result as an Integer.  </p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+(bitwiseShiftRight 4 2)   </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[1]]></Returns>
+  	    <Expression><![CDATA[ <sc>(bitwiseShiftRight 32 1)    </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[16]]></Returns>
+        <Hints><![CDATA[none
+
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

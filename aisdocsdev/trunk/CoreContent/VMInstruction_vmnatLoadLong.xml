@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmnatLoadLong</Title>
+		<InstructionName>vmnatLoadLong</InstructionName>
+		<InstructionType>Native</InstructionType>
+		<ArgumentTypes>  Long Integer  </ArgumentTypes>
+		<RelatedVMInstructions>  vmnatLoadCharacter vmnatLoadFloat vmnatLoadNumber   
+		                        vmnatLoadInteger vmnatLoadObject </RelatedVMInstructions>
+		<HumanKeywords>  load long </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[                                                  
+		<p>When evaluated, this vm instruction loads the Long <b>source</b> 
+		value into the <b>target</b> word and sets the data type to Integer.
+		There are no conversions made between different types. This instruction may return 
+		an Error value. After the operation, the Instruction Pointer is promoted. 
+		The operation of this vm instruction is expressed in the following C expression:
+         </p>	
+        <ul><li><b> (word:int)target = (long)source;  </b></li></ul>
+    ]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[  (vmnatLoadLong source target) ]]></Expression>
+		<Argument> 
+		  <Name> source </Name>
+		  <Format>regoffset </Format>
+		  <AISTypes>Long</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>target  </Name>
+		  <Format>regoffset  </Format>
+		  <AISTypes>(word:integer) </AISTypes>
+		</Argument>
+	</Syntax>
+</VMInstruction>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Date day 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>day</FunctionKeywords>
+		<TypeKeywords>Number Integer Date </TypeKeywords>
+		<RelatedFunctions> date month year</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>convert day julian object </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples return the <b>day</b> component of the  <b>date</b> argument using
+                  the different date formats.
+
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc> 
+(day #Jan,3,1954)           </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[3]]></Returns>
+	    <Expression><![CDATA[ <sc> (day "7/4/1992")              </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[4]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

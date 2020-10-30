@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Dictionary setq 007</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>setq</FunctionKeywords>
+		<TypeKeywords>Dictionary Symbol Integer</TypeKeywords>
+		<RelatedFunctions>new   define makeDictionary </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>set setq replace global value  </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows the <b>setq</b> function changing
+
+                  the value of the <b>Age:</b> key of the Dictionary
+                  using the <b>(setq  dict key  newValue )</b> function syntax.
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(define Dict   #{dic| Name: "Bill"  SSN: "616 55 1209" Age: 45}  )           </sc>]]></Expression>
+        <Note><![CDATA[Defines the Dictionary. ]]></Note>
+        <Returns><![CDATA[ #&#60Dictionary 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq Dict Age: 46 )     </sc>]]></Expression>
+        <Note><![CDATA[Here, value of the Age: key is changed.]]></Note>
+        <Returns><![CDATA[ #&#60Dictionary 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(ref Dict Age: )       </sc>]]></Expression>  
+        <Note><![CDATA[The value of the key is checked using the ref function. ]]></Note> 
+        <Returns><![CDATA[ 46]]></Returns>
+        <Expression><![CDATA[ <sc>(display Dict)</sc>]]></Expression>
+        <Note><![CDATA[Displays the modified Dictionary. ]]></Note>
+        <Returns><![CDATA[ #{dic| Age 46 Name "Bill" SSN "616 55 1209"} ]]></Returns>
+        <Hints><![CDATA[The <b>set</b> function keyword may be used instead of <b>setq</b>.]]></Hints>
+   </Syntax>
+</Example>

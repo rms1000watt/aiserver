@@ -1,0 +1,638 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Essay SYSTEM "../DTD/Essay.dtd">
+<Essay>
+	<KnowledgeBase>
+	    <Title>Extent Manager Templates</Title>
+		<Topic>Data Management</Topic>
+		<SubTopic>Overview</SubTopic>
+		<HumanKeywords>Database Data Management Lambda Programming XML</HumanKeywords>
+	</KnowledgeBase>
+	<Section>
+	    <Heading>Template Overview</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="Template Overview">
+			<P>The browseLib supports the management of multiple file cabinet extents. 
+			   Each file cabinet is given a unique name via the <B>browseLib.addExtent</B> function.
+			   Named file cabinet extents can also be deleted via the <B>browseLib.dropExtent</B> function.
+			   The total number of Lambdas stored in all registered file cabinet extents represents
+			   the complete Lambda library available to the application at that moment in time.</P>
+			<P>When a file cabinet extent is registered to the browseLib, a copy of the Extent
+			   Manager Template Lambda is created to manage the newly added extent. This section contains
+			   documentation on the Extent Manager Template and its API.</P>
+			<P><B>Note:</B></P>
+			<P>Creating special external extent manager templates, and supplying them in the <B>addExtent</B>
+			   function allows the mangement of foreign file cabinet extents in a wide variety of modes
+			   and fashions. </P> 
+		  </div>
+	    ]]></Description>
+	</Section>         
+	<Section>
+	    <Heading>_extentManagerTemplate.abortFocus</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="_extentManagerTemplate.abortFocus">
+			 <P>The <B>abortFocus</B> function releases the focus on the file cabinet extent
+			   (see setFocus).<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib._extentManagerTemplate.abortFocus)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>true.</TD>
+			</TR>
+			</TABLE>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>_extentManagerTemplate.abortTransaction</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="_extentManagerTemplate.abortTransaction">
+			<P>The <B>abortTransaction</B> function aborts an open transaction on the file cabinet extent
+			   (see beginTransaction).<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib._extentManagerTemplate.abortTransaction)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>true.</TD>
+			</TR>
+			</TABLE> 
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>_extentManagerTemplate.beginTransaction</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="_extentManagerTemplate.beginTransaction">
+			 <P>The <B>beginTransaction</B> function opens a transaction on the file cabinet extent
+			   (see commitTransaction).<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib._extentManagerTemplate.beginTransaction)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>true.</TD>
+			</TR>
+			</TABLE>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>_extentManagerTemplate.commitTransaction</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="_extentManagerTemplate.commitTransaction">
+			  <P>The <B>beginTransaction</B> function commits an open transaction on the file cabinet extent
+			   (see beginTransaction).<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib._extentManagerTemplate.commitTransaction)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>true.</TD>
+			</TR>
+			</TABLE>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>_extentManagerTemplate.compileByIndex</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="_extentManagerTemplate.compileByIndex">
+			<P>The <B>compileByIndex</B> function compiles the specified Lambda source. If the specified
+			   Lambda has already been compiled, the Lambda will be re-compiled if and only if the
+			   <B>compileAlways</B> argument is true.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib._extentManagerTemplate.compileByIndex  index  alwaysCompile)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>index</B></TD>
+			<TD>The integer index of the Lambda in the file cabinet extent which is to be compiled.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>alwaysCompile</B></TD>
+			<TD>True iff the specified Lambda is to be re-compiled even if it has already been compiled.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>true.</TD>
+			</TR>
+			</TABLE> 
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>_extentManagerTemplate.compileByKey</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="_extentManagerTemplate.compileByKey">
+			<P>The <B>compileByKey</B> function compiles the specified Lambda source. If the specified
+			   Lambda has already been compiled, the Lambda will be re-compiled if and only if the
+			   <B>compileAlways</B> argument is true.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib._extentManagerTemplate.compileByKey  key  alwaysCompile)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>key</B></TD>
+			<TD>The symbolic name of the Lambda in the file cabinet extent which is to be compiled.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>alwaysCompile</B></TD>
+			<TD>True iff the specified Lambda is to be re-compiled even if it has already been compiled.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>true.</TD>
+			</TR>
+			</TABLE> 
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>_extentManagerTemplate.deleteLambdaByIndex</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="_extentManagerTemplate.deleteLambdaByIndex">
+			<P>The <B>deleteLambdaByIndex</B> function deletes the specified Lambda from the 
+			   file cabinet extent.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib._extentManagerTemplate.deleteLambdaByIndex  index)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>index</B></TD>
+			<TD>The integer index of the Lambda in the file cabinet extent which is to be deleted.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>true.</TD>
+			</TR>
+			</TABLE>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>_extentManagerTemplate.deleteLambdaByKey</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="_extentManagerTemplate.deleteLambdaByKey">
+			 <P>The <B>deleteLambdaByKey</B> function deletes the specified Lambda from the 
+			   file cabinet extent.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib._extentManagerTemplate.deleteLambdaByKey key)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>key</B></TD>
+			<TD>The symbolic name of the Lambda in the file cabinet extent which is to be deleted.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>true.</TD>
+			</TR>
+			</TABLE>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>_extentManagerTemplate.deleteBinaryByIndex</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="_extentManagerTemplate.deleteBinaryByIndex">
+			<P>The <B>deleteBinaryByIndex</B> function deletes the specified Lambda binary from the 
+			   file cabinet extent.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib._extentManagerTemplate.deleteBinaryByIndex  index)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>index</B></TD>
+			<TD>The integer index of the Lambda in the file cabinet extent whose binary is to be deleted.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>true.</TD>
+			</TR>
+			</TABLE> 
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>_extentManagerTemplate.deleteBinaryByKey</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="_extentManagerTemplate.deleteBinaryByKey">
+			<P>The <B>deleteBinaryByKey</B> function deletes the specified Lambda binary from the 
+			   file cabinet extent.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib._extentManagerTemplate.deleteBinaryByKey key)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>key</B></TD>
+			<TD>The symbolic name of the Lambda in the file cabinet extent whose binary is to be deleted.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>true.</TD>
+			</TR>
+			</TABLE> 
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>_extentManagerTemplate.deleteSourceByIndex</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="_extentManagerTemplate.deleteSourceByIndex">
+			<P>The <B>deleteSourceByIndex</B> function deletes the specified Lambda source from the 
+			   file cabinet extent.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib._extentManagerTemplate.deleteSourceByIndex  index)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>index</B></TD>
+			<TD>The integer index of the Lambda in the file cabinet extent whose source is to be deleted.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>true.</TD>
+			</TR>
+			</TABLE> 
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>_extentManagerTemplate.deleteSourceByKey</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="_extentManagerTemplate.deleteSourceByKey">
+			<P>The <B>deleteSourceByKey</B> function deletes the specified Lambda source from the 
+			   file cabinet extent.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib._extentManagerTemplate.deleteSourceByKey key)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>key</B></TD>
+			<TD>The symbolic name of the Lambda in the file cabinet extent whose source is to be deleted.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>true.</TD>
+			</TR>
+			</TABLE> 
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>_extentManagerTemplate.getNextLevel</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="_extentManagerTemplate.getNextLevel">
+			 <P>The <B>getNextLevel</B> function returns an XPath directory
+			   string for all hierarchical descendents of the specified key.
+			   The returned directory string will be composed of newline 
+			   delimited rows and tab delimited columns. There will be one
+			   row for each directory entry.
+			   <br><br>
+			   The first row of the directory string will always contain three columns:
+			   <br>
+			   &nbsp;&nbsp;&nbsp;<b>startingLine numLines totalLines</b>
+			   <br> 
+			   <br>
+			   Additional new type rows (see the getTypes function) will contain three columns:
+			   <br>
+			   &nbsp;&nbsp;&nbsp;<b>NewType type action</b>
+			   <br> 
+			   <br>
+			   Thereafter, each row will contain eight columns:
+			   <br>
+			   &nbsp;&nbsp;&nbsp;<b>type value size date time version symbolicKey uniqueKey</b>
+			   <br>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.getNextLevel key startLine lineCount options)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>key</B></TD>
+			<TD>The symbolic name of the Lambda in the file cabinet extent whose descendents are to be returned.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>startLine</B></TD>
+			<TD>The starting line, of the descendents list, to be returned.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>lineCount</B></TD>
+			<TD>The number of lines, of the descendents list, to be returned.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>options</B></TD>
+			<TD>(Optional) Any additional arguments required by the extent manager.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>an XPath directory
+			   string for all hierarchical descendents of the specified key.</TD>
+			</TR>
+			</TABLE>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>_extentManagerTemplate.getTypes</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="_extentManagerTemplate.getTypes">
+			<P>The <B>getTypes</B> function returns an XPath directory type list
+			   string for all possible types in a hierarchical descendents list (see the getNextLevel function).
+			   The returned directory directory type list string will be composed of newline 
+			   delimited rows and tab delimited columns. There will be one
+			   row for each type list entry.
+			   <br> 
+			   <br>
+			   Each row of the type list will contain two columns: &nbsp;<b>Type&nbsp;Features</b>
+			   <br>
+			   <br>
+			   There will be eight feature options. Features not present will have a value of off. 
+			   All features present will have a value of on. The first feature listed will be the default feature.
+			   The default type will have a name of <b>.default.</b>. The eight valid features are as follows:                   
+			   <br>
+			   &nbsp;&nbsp;&nbsp;<b>descend</b> Allow descent into node.
+			   <br>
+			   &nbsp;&nbsp;&nbsp;<b>edit</b> Allow display in edit tab.
+			   <br>
+			   &nbsp;&nbsp;&nbsp;<b>popup</b> Allow display in popup dialog.
+			   <br>
+			   &nbsp;&nbsp;&nbsp;<b>erase</b> Allow this type to be erased.
+			   <br>
+			   &nbsp;&nbsp;&nbsp;<b>export</b> Allow this type to be exported.
+			   <br>
+			   &nbsp;&nbsp;&nbsp;<b>import</b> Allow this type to be imported.
+			   <br>
+			   &nbsp;&nbsp;&nbsp;<b>compile</b> Allow this type to be compiled.
+			   <br>
+			   &nbsp;&nbsp;&nbsp;<b>checkin</b> Allow this type to be checked in.
+			   <br><br>
+			   Some examples would be:                    
+			   <br>
+			   &nbsp;&nbsp;&nbsp;<b>String "edit,popup"</b>
+			   <br>
+			   &nbsp;&nbsp;&nbsp;<b>Vector "descend"</b>
+			   <br>
+			   &nbsp;&nbsp;&nbsp;<b>Lambda "descend,edit"</b>
+			   <br>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib.getTypes)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>an XPath directory type list string.</TD>
+			</TR>
+			</TABLE> 
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>_extentManagerTemplate.memberIndex</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="_extentManagerTemplate.memberIndex">
+			<P>The <B>memberIndex</B> function returns the index of the specified Lambda name in the 
+			   file cabinet extent.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib._extentManagerTemplate.memberIndex key)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>key</B></TD>
+			<TD>The symbolic name of the Lambda to be located in the file cabinet extent.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>index of Lambda in file cabinet extent.</TD>
+			</TR>
+			</TABLE> 
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>_extentManagerTemplate.refLambdaByIndex</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="_extentManagerTemplate.refLambdaByIndex">
+			<P>The <B>refLambdaByIndex</B> function returns the specified Lambda from the 
+			   file cabinet extent.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib._extentManagerTemplate.refLambdaByIndex  index)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>index</B></TD>
+			<TD>The integer index of the Lambda  to be returned from the file cabinet.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>the Lambda.</TD>
+			</TR>
+			</TABLE> 
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>_extentManagerTemplate.refLambdaByKey</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="_extentManagerTemplate.refLambdaByKey">
+			 <P>The <B>refLambdaByKey</B> function returns the specified Lambda from the 
+			   file cabinet extent.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib._extentManagerTemplate.refLambdaByKey key)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>key</B></TD>
+			<TD>The symbolic name of the Lambda to be returned from the file cabinet.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>the Lambda.</TD>
+			</TR>
+			</TABLE>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>_extentManagerTemplate.refBinaryByIndex</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="_extentManagerTemplate.refBinaryByIndex">
+			<P>The <B>refBinaryByIndex</B> function returns the specified Lambda binary from the 
+			   file cabinet extent.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib._extentManagerTemplate.refBinaryByIndex  index)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>index</B></TD>
+			<TD>The integer index of the Lambda whose binary is to be returned from the file cabinet.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>the Lambda's binary.</TD>
+			</TR>
+			</TABLE> 
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>_extentManagerTemplate.refBinaryByKey</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="_extentManagerTemplate.refBinaryByKey">
+			 <P>The <B>refBinaryByKey</B> function returns the specified Lambda binary from the 
+			   file cabinet extent.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib._extentManagerTemplate.refBinaryByKey key)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>key</B></TD>
+			<TD>The symbolic name of the Lambda whose binary is to be returned from the file cabinet.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>the Lambda's binary</TD>
+			</TR>
+			</TABLE>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>_extentManagerTemplate.refKeyByIndex</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="_extentManagerTemplate.refKeyByIndex">
+			<P>The <B>refKeyByIndex</B> function returns the specified Lambda name from the 
+			   file cabinet extent.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib._extentManagerTemplate.refKeyByIndex  index)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>index</B></TD>
+			<TD>The integer index of the Lambda whose name is to be returned from the file cabinet.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>the Lambda's name.</TD>
+			</TR>
+			</TABLE> 
+		  </div>
+	    ]]></Description>
+	</Section>     
+	<Section>
+	    <Heading>_extentManagerTemplate.refLength</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="_extentManagerTemplate.refLength">
+			  <P>The <B>refLength</B> function returns the number of Lambdas in the 
+			   file cabinet extent.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib._extentManagerTemplate.refLength)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>the number of Lambdas.</TD>
+			</TR>
+			</TABLE>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>_extentManagerTemplate.refSourceByIndex</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="_extentManagerTemplate.refSourceByIndex">
+			<P>The <B>refSourceByIndex</B> function returns the specified Lambda source from the 
+			   file cabinet extent.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib._extentManagerTemplate.refSourceByIndex  index)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>index</B></TD>
+			<TD>The integer index of the Lambda whose source is to be returned from the file cabinet.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>the Lambda's source.</TD>
+			</TR>
+			</TABLE> 
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>_extentManagerTemplate.refSourceByKey</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="_extentManagerTemplate.refSourceByKey">
+			<P>The <B>refSourceByKey</B> function returns the specified Lambda source from the 
+			   file cabinet extent.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib._extentManagerTemplate.refSourceByKey key)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>key</B></TD>
+			<TD>The symbolic name of the Lambda whose source is to be returned from the file cabinet.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>the Lambda's source.</TD>
+			</TR>
+			</TABLE> 
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>_extentManagerTemplate.setLambdaByKey</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="_extentManagerTemplate.setLambdaByKey">
+			<P>The <B>setLambdaByKey</B> function saves the specified Lambda into the 
+			   file cabinet extent.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib._extentManagerTemplate.setLambdaByKey key newLambda)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>key</B></TD>
+			<TD>The symbolic name of the Lambda who is to be saved in the file cabinet.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>newLambda</B></TD>
+			<TD>The Lambda who is to be saved in the file cabinet.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>true.</TD>
+			</TR>
+			</TABLE> 
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>_extentManagerTemplate.setBinaryByKey</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="_extentManagerTemplate.setBinaryByKey">
+			 <P>The <B>setBinaryByKey</B> function saves the specified Lambda's binary into the 
+			   file cabinet extent.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib._extentManagerTemplate.setBinaryByKey key newBinary)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>key</B></TD>
+			<TD>The symbolic name of the Lambda whose binary is to be saved in the file cabinet.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>newBinary</B></TD>
+			<TD>The Lambda whose binary is to be saved in the file cabinet.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>true.</TD>
+			</TR>
+			</TABLE>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>_extentManagerTemplate.setSourceByKey</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="_extentManagerTemplate.setSourceByKey">
+			  <P>The <B>setSourceByKey</B> function saves the specified Lambda's source into the 
+			   file cabinet extent.<BR>
+			<BR><B>Type:</B> Function</P>
+			<TABLE  CELLSPACING=0 BORDER=0 cellpadding=2 >
+			<TR VALIGN=TOP><TD><B><U>Syntax:</B></U></TD>
+			<TD>(browseLib._extentManagerTemplate.setSourceByKey key newSource)</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>key</B></TD>
+			<TD>The symbolic name of the Lambda whose source is to be saved in the file cabinet.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>newSource</B></TD>
+			<TD>The Lambda whose source is to be saved in the file cabinet.</TD>
+			</TR>
+			<TR VALIGN=TOP><TD><B>Returns</B></TD>
+			<TD>true.</TD>
+			</TR>
+			</TABLE>
+		  </div>
+	    ]]></Description>
+	</Section>
+</Essay>

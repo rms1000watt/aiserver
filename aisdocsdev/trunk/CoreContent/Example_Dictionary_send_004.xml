@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Dictionary send 004</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>send</FunctionKeywords>
+		<TypeKeywords>Symbol Dictionary</TypeKeywords>
+		<RelatedFunctions>addMethod defMethod methodsOf</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>method message messageName</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example first defines the method <b>Increment</b>. It then invokes the
+
+
+
+                  <b>Increment</b> function to add the method in the Methods Dictionary.  
+
+
+
+                   The method <b>Increment</b> will be then  invoked by  the 
+
+
+
+                  <b>send</b> function calling the message in the <b>Dictionary</b> Methods Dictionary.
+
+
+
+   	]]></Description>
+	<Syntax>
+	<Expression><![CDATA[
+<sc> (addMethod Dictionary: Increment: (lambda (s n )  (add1 s[n])))     </sc>
+   ]]></Expression>
+   <Note><![CDATA[ none
+
+
+
+   ]]></Note>
+   <Returns><![CDATA[#&#60Dictionary 123456&#62 ]]></Returns>
+   <Expression><![CDATA[<sc>(define Score  #{dic| Sam: 1  Sue: 1 Sylvia: 5})  <sc> ]]></Expression>
+   <Note><![CDATA[ Define a Dictionary that that contains scores for a list of students.
+
+   ]]></Note>
+   <Returns><![CDATA[#&#60Dictionary 23456&#62]]></Returns>
+   <Expression><![CDATA[<sc>(send  Increment:  Score 2)       <sc> ]]></Expression>
+   <Note><![CDATA[ Invoke the method named <b>Increment</b>  .
+   ]]></Note>
+   <Returns><![CDATA[6]]></Returns>
+   <Expression><![CDATA[<sc>(Increment:  Score 2)      <sc> ]]></Expression>
+   <Note><![CDATA[ The method can be invoked simply by name:
+
+   ]]></Note>
+   <Returns><![CDATA[6]]></Returns>
+   <Hints><![CDATA[<p>Dissecting the <b>send</b> command involves understanding the methods dictionary 
+
+          of any Analytic Information Server type. In general the <b>send</b> command is translated 
+
+          as a reference into the methods dictionary:</p>
+          <p><b>((ref (methodsOf (type object)) methodName  object))</b></p>
+          <p> The statement : </p>
+          <p><b>(send  Increment:  Score 2)</b> </p>
+          <p>is translated into </p>
+          <p><b>((ref (methodsOf (type Score))  Increment: ) Score 2) </b></p>
+          <p> Each statement segment results in: </p>
+          <table>
+             <tr><td width=60%><b> (type Score)    </b></td>
+                  <td width=40%>Returns: <b>Dictionary </b></td></tr>
+             <tr><td width=60%><b>  (methodsOf (type Score))  </b></td>
+                  <td width=40%>Returns: <b> #&#60Dictionary 123456&#62  </b></td></tr>
+             <tr><td width=60%><b> (ref (methodsOf (type Score))Increment )    </b></td>
+                  <td width=40%>Returns: <b> #&#60Lambda 123456&#62  </b></td></tr>
+             <tr><td width=60%><b> ((ref (methodsOf (type Score) Increment: ) Score 2)      </b></td>
+                  <td width=40%>Returns: <b> 6  </b></td></tr>
+          </table>
+ ]]></Hints>
+   </Syntax>
+</Example>

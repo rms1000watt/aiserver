@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure addMethod 003</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>addMethod</FunctionKeywords>
+		<TypeKeywords>Structure Dictionary Symbol</TypeKeywords>
+		<RelatedFunctions>defmethod send methodsOf</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>method message messageName</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines the <b>addValues</b> method through the <b>lambda</b> function. 
+                  and adds it in the   Method Dictionary through the <b>addMethod</b> function.
+                  The <b>addValues</b> method is invoked using the <b>send</b> function or by
+                  calling the method directly with its required arguments. 
+	]]></Description>
+	<Syntax>
+	<Expression><![CDATA[<sc>(addMethod  Structure:  addValues:  (lambda  (s)  (apply +  s))) </sc>]]></Expression>
+    <Note><![CDATA[ Add a method named <b>addValues</b> which will add the values of all the fields in a structure.
+    ]]></Note>
+    <Returns><![CDATA[#&#60Dictionary 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(define monthlyBills #{CarPymt: 400 Mortgage: 2100 Utilities: 100 Visa: 600})  </sc> ]]></Expression>
+    <Note><![CDATA[Define a structure that contains the amount of checks written for the month. ]]></Note>
+    <Returns><![CDATA[#&#60Structure 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(send  addValues:  monthlyBills)    </sc> ]]></Expression>
+    <Note><![CDATA[ Invoke the method named <b>addValues</b>to compute the total amount checks written for the month.
+    ]]></Note>
+    <Returns><![CDATA[3200]]></Returns>
+    <Expression><![CDATA[<sc>(addValues:  monthlyBills)     </sc> ]]></Expression>
+    <Note><![CDATA[The method can be invoked simply by name.
+    ]]></Note>
+    <Returns><![CDATA[3200]]></Returns>
+    <Hints><![CDATA[
+none]]></Hints>
+</Syntax>
+</Example>

@@ -1,0 +1,7 @@
+<services>
+  <service name="download_url">
+    <param name="host">get.qt.nokia.com</param>
+    <param name="protocol">http</param>
+    <param name="path">/qt/source/qt-everywhere-opensource-src-4.6.3.tar.gz</param>
+  </service>
+</services>

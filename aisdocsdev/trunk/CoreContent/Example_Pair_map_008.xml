@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Pair map 008</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>map</FunctionKeywords>
+		<TypeKeywords>Pair List</TypeKeywords>
+		<RelatedFunctions> mapc makeStructure makeDictionary new</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>map mapc copy process</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples show the <b>map</b> function convert the String object member
+                  in the Pair into plural from using the defined <b>lambda</b> function.
+
+	              
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define Fruits  '("apple" "orange" ))    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60Pair 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(map (lambda  (x) (append x  "s") ) Fruits)      </sc>]]></Expression>
+        <Note><![CDATA[Convert the fruits to the plural form by defining a function in place using lambda:]]></Note>
+        <Returns><![CDATA[#&#60Pair 234567&#62]]></Returns>
+        <Expression><![CDATA[ <sc>#&#60Pair 234567&#62[0] </sc>]]></Expression>  
+        <Note><![CDATA[The contents of the Pair are:]]></Note> 
+        <Returns><![CDATA[apples]]></Returns>
+        <Expression><![CDATA[ <sc>#&#60Pair 234567&#62[1] </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[oranges]]></Returns>
+        <Hints><![CDATA[none
+
+        ]]></Hints>
+   </Syntax>
+</Example>

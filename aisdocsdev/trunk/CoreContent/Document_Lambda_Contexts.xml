@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Document SYSTEM "../DTD/Document.dtd">
+<Document>
+	<KnowledgeBase>
+	    <Title>Lambda Context Overview</Title>
+		<Topic>Lisp</Topic>
+		<SubTopic>Overview</SubTopic>
+		<HumanKeywords>Lisp Context Lambda AIS Programming</HumanKeywords>
+	</KnowledgeBase>
+	<Essay>Essay_Lambda_Context_Overview</Essay>
+    <Essay>Essay_Context_Variables</Essay>
+    <Essay>Essay_Context_Functions</Essay>
+</Document>

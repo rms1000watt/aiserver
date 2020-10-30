@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Vector refAttributes 004</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>refAttributes</FunctionKeywords>
+		<TypeKeywords>Vector  ObjVector Integer Text</TypeKeywords>
+		<RelatedFunctions>setq  ref fieldsOf setAttributes  refValues </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>ref reference set position</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ The attribute-value vector pairs are
+                  set and saved through the <b>setAttributes</b> function. 
+                  Then the <b>refAttributes</b> function is used to return the
+Vector
+
+
+
+                  attributes previously saved in an Object Vector
+
+
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(setq attb (new  Vector:  object:  3  Product:  Amount:  Date:)  )    </sc>]]></Expression>
+        <Note><![CDATA[Creates the attribute Vector. ]]></Note>
+        <Returns><![CDATA[#&#60ObjVector 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(setq X #("Camaro"  22590  #Feb,1,1996)  )             </sc>]]></Expression>
+        <Note><![CDATA[Creates the value Vector.]]></Note>
+        <Returns><![CDATA[#&#60Vector 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(setAttributes X attb)              </sc>]]></Expression>  
+        <Note><![CDATA[X now contains value Vector paired with the attribute Vector.]]></Note> 
+        <Returns><![CDATA[#&#60Vector 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(setq theAttributes (refAttributes X))               </sc>]]></Expression>  
+        <Note><![CDATA[The attributes of X are stored in another Vector]]></Note> 
+        <Returns><![CDATA[#&#60Vector 234567&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display  theAttributes[0] )  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[Product]]></Returns>
+  	    <Expression><![CDATA[ <sc>(display  theAttributes[1] )  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[Amount]]></Returns>
+         <Expression><![CDATA[ <sc>(display  theAttributes[2] )  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[Date]]></Returns>
+        <Hints><![CDATA[none
+
+
+
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

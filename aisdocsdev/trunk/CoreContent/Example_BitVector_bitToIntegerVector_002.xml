@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example IntVector bitToIntegerVector 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>bitToIntegerVector</FunctionKeywords>
+		<TypeKeywords>Vector BitVector IntVector</TypeKeywords>
+		<RelatedFunctions>bitToNumberVector</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>bitvector intvector numvector convert sign magnitude bits</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples show how the <b>bitToIntegerVector</b> function  converts a 
+
+                  Bit Vector into an Integer Vector.
+
+	]]></Description>
+	<Syntax>
+  	   <Expression><![CDATA[ <sc>(setq b (new Vector: bit: 32 1 0 0 0 0 0 0))    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60BitVector 199917&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(setq b[31] 1)      </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60BitVector 199917&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(bitToIntegerVector b )           </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60IntVector 199918&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60IntVector 199918&#62)             </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#(int| -2130574327 )]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

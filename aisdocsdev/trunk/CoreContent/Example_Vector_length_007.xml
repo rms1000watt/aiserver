@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Vector length 007</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>length</FunctionKeywords>
+		<TypeKeywords> Integer Vector</TypeKeywords>
+		<RelatedFunctions>count </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>length equal</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows the <b>length</b> function performing a 
+
+
+                  shallow count on a  <b>Vector  </b> object.
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(length  #("Mary" #Feb,2,1980) )     </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[2]]></Returns>
+        <Expression><![CDATA[ <sc>(length  #("Mary" #Feb,2,1980 #void) )  </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ 3 ]]></Returns>
+        <Expression><![CDATA[ <sc>(length  #(#{A: 1 B: 2}, #{dic| H: 3 K: 5}) )   </sc>]]></Expression>
+        <Note><![CDATA[Only 2 values are counted.  the length function does not include the embedded Dictionary.]]></Note>
+        <Returns><![CDATA[ 2 ]]></Returns>
+        <Hints><![CDATA[See the <b>count</b> function to illustrate <i>deep</i> counting of vector values.]]></Hints>
+   </Syntax>
+</Example>

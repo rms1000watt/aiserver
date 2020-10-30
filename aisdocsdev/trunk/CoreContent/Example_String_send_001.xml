@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example String send 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>send</FunctionKeywords>
+		<TypeKeywords>String Text Dictionary</TypeKeywords>
+		<RelatedFunctions>addMethod defMethod methodsOf</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>method message messageName</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example first defines the method <b>EatSpace</b>. It then invokes the
+                  <b>addMethod</b> function to add the method in the Methods Dictionary.  
+                   The method <b>EatSpace</b> is invoked by  the 
+                  <b>send</b> function calling the message in the <b>String</b> Methods Dictionary.
+   	]]></Description>
+	<Syntax>
+	<Expression><![CDATA[
+    <sc>(defun EatSpace ( S ) <br>
+    vars: (NewString, i, j, len)<br>
+    (setq NewString (new String: ""))<br>
+    (setq j 0)<br>
+    (setq len (length S))<br>
+    (loop for i from 0 until len do<br>
+         ;;Move the character to the buffer only if it isn't a space <br>
+         (if (&#60&#62 S[i] #\space)        <br>                            
+             (begin<br>
+             (setq NewString[j] S[i]) <br>
+             (setq j (add1 j ))<br>
+              )   ;; end begin <br>
+          )   ;; end if <br>
+    )   ;; end loop <br>
+   NewString)  ;; End EatSpace  <br>
+   ]]></Expression>  
+   <Note><![CDATA[ Define a method named <b>EatSpace</b> which will removes spaces from a  String. 
+   ]]></Note> 
+   <Returns><![CDATA[ modified String ]]></Returns>
+   <Expression><![CDATA[<sc>(addMethod  String: Eat: EatSpace )  </sc> ]]></Expression>
+   <Note><![CDATA[ Add the method EatSpace which responds to the message Eat:  to the String Methods 
+          Dictionary.
+   ]]></Note>
+   <Returns><![CDATA[#&#60Dictionary 12345&#62]]></Returns>
+   <Expression><![CDATA[<sc>(setq S (new String: "Hello World"  ))  </sc> ]]></Expression>
+   <Note><![CDATA[ Define a  String  that contains some spaces
+   ]]></Note>
+   <Returns><![CDATA[Hello World]]></Returns>
+   <Expression><![CDATA[<sc>(setq Y  (send  Eat:  S)) </sc> ]]></Expression>
+   <Note><![CDATA[ Invoke the method named <b>Eat</b> to remove spaces from a String
+   ]]></Note>
+   <Returns><![CDATA[HelloWorld]]></Returns>
+   <Expression><![CDATA[<sc>(setq Y (Eat:  S))   </sc> ]]></Expression>
+   <Note><![CDATA[ The method can be invoked simply by name:
+   ]]></Note>
+   <Returns><![CDATA[HelloWorld]]></Returns>
+  <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

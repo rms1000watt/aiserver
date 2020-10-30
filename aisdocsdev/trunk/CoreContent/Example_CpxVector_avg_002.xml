@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example CpxVector avg 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>avg</FunctionKeywords>
+		<TypeKeywords>CpxVector Integer</TypeKeywords>
+		<RelatedFunctions>  </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>average mean  </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[  <p> These examples show the <b>avg</b> function get the
+                   average of the following: elements of a CpxVector,
+                   a CpxVector and a Complex Number, 2 CpxVectors,
+                   a CpxVector and a Character value.</p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq X #(cpx| 1.0 2.0 3.0 4.0))
+   </sc>   ]]></Expression>
+        <Note><![CDATA[The first CpxVector is defined.]]></Note>
+        <Returns><![CDATA[#&#60CpxVector 1234356&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(avg X)   </sc>   ]]></Expression>
+        <Note><![CDATA[The average of the elements of a CpxVector is returned.]]></Note>
+        <Returns><![CDATA[#&#60Complex 2343567&#62]]></Returns>
+       <Expression><![CDATA[ <sc>(display #&#60Complex 2343567&#62)   </sc>   ]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#c2.0+3.0i]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq Y #c5.0+6.0i)   </sc>   ]]></Expression>  
+        <Note><![CDATA[A complex Number is defined.]]></Note> 
+        <Returns><![CDATA[#&#60Complex 343567&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(avg X Y)   </sc>   ]]></Expression>  
+        <Note><![CDATA[The average of a CpxVector and a Complex Number is returned.]]></Note> 
+        <Returns><![CDATA[#&#60Complex 435678&#62]]></Returns>
+       <Expression><![CDATA[ <sc>(display #&#60Complex 435678&#62)   </sc>   ]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#c3.0+4.0i]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Z #(cpx| 5.0 2.0 4.0 4.0))   </sc>   ]]></Expression>  
+        <Note><![CDATA[The second CpxVector is defined.]]></Note> 
+        <Returns><![CDATA[#&#60CpxVector 56789&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(avg X Z)   </sc>   ]]></Expression>  
+        <Note><![CDATA[The average of 2 CpxVectors is returned.]]></Note> 
+        <Returns><![CDATA[#&#60Complex 678901&#62]]></Returns>
+       <Expression><![CDATA[ <sc>(display #&#60Complex 678901&#62)   </sc>   ]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#c3.25+3.0i]]></Returns>
+      <Expression><![CDATA[ <sc>(avg X #\A)	   </sc>   ]]></Expression>  
+        <Note><![CDATA[The average of a Cpx Vector and the  ASCII value of the Character is returned.]]></Note> 
+        <Returns><![CDATA[#&#60Complex 56789&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60Complex 56789&#62)   </sc>   ]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#c23.0+2.0i]]></Returns>
+        <Hints><![CDATA[<p>Make sure that all complex vectors have at least one element.    </p>
+               <p>The imaginary part of a pure real argument is set to zero. </p>
+        ]]></Hints>
+   </Syntax>
+</Example>

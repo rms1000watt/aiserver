@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example List cdr 009</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>cdr</FunctionKeywords>
+		<TypeKeywords>Pair List</TypeKeywords>
+		<RelatedFunctions> setCar cdr setCdr</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>search associate find car cdr</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ <p>These examples show the <b>cdr</b> function return the tail of the List. 
+	              The second example also whos how the <b>cdr</b> function can be repeatedly
+	              applied to the List argument. </p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(cdr '( a  b  ( c d )  e )  )      </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[(cdr '( a  b  ( c d )  e )  )   ]]></Returns>
+        <Expression><![CDATA[ <sc>(cdr '(A  B  C  D  E  F  G)   3)        </sc>]]></Expression>  
+        <Note><![CDATA[The cdr function is applied 3 times to the List.]]></Note> 
+        <Returns><![CDATA[(cdr '(A  B  C  D  E  F  G)   3) ]]></Returns>
+        <Hints><![CDATA[none
+        ]]></Hints>
+   </Syntax>
+</Example>

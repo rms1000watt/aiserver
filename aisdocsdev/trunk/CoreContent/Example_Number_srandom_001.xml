@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number srandom 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>srandom</FunctionKeywords>
+		<TypeKeywords>  Number Integer   </TypeKeywords>
+		<RelatedFunctions>random randomize </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>random number generator range seed pseudo-random</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[   <p> This example shows how the
+                  <b>srandom</b> function returns a pseudo-random number limited
+                  by the user-specified Number argument.</p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(srandom 3)</sc>   ]]></Expression>
+        <Note><![CDATA[Returns a pseuco-random number less than 3.]]></Note>
+        <Returns><![CDATA[2.6169]]></Returns>
+ 	    <Expression><![CDATA[ <sc>(srandom 3)</sc>   ]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[2.238599999982]]></Returns>
+	    <Expression><![CDATA[ <sc>(srandom 3)</sc>   ]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[0.9360000000161]]></Returns>
+        <Hints><![CDATA[none
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>comparison</Title>
+		<FunctionName>comparison</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>String Symbol Structure Dictionary Directory Brick Vector Boolean Void NumVector
+                      FltVector IntVector ShortVector NumVector ObjVector BitVector ObjectRepository</ArgumentTypes>
+		<DataType>String Matrix NumMatrix ShortVector Function Boolean Character Symbol Structure Dictionary Directory Vector Brick Void Pair List Complex FltVector IntVector ObjVector BitVector ObjectRepository NumVector Number Date</DataType>
+		<RelatedFunctions>compare compareEQ compareNE compareLT compareGT  compareGE 
+                                 stringCiEQ stringCiNE</RelatedFunctions>
+        <RelatedVMInstructions> vmregStringCompare vmregStringiCompare  </RelatedVMInstructions>
+		<HumanKeywords>compare  equal boolean greater  </HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>comparison</b> functions compares two objects of the same Data Type.  It is equivalent
+                 to the compareEQ, compareNE, compareLT, compareGT,  compareGE and
+                 compareLE functions.  A Boolean value is returned. </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b> =, &#60&#62 ,&#60, &#60=, &#62, &#62= </b> functions are equivalent to <b>compareEQ, compareNE, 
+           compareGT, compareGE, compareLT,</b> and <b>compareLE</b> comparison functions. 
+           The resulting value is a Boolean value of true if the relational operator results in a true comparison otherwise the resulting value is false.
+        </p>
+        ]]></Overview>
+	   <Overview-ObjectRepository><![CDATA[
+		<p>The <b> =, &#60&#62 ,&#60, &#60=, &#62, &#62= </b> functions are equivalent to <b>compareEQ, compareNE, 
+           compareGT, compareGE, compareLT,</b> and <b>compareLE</b> comparison functions. 
+           The resulting value is a Boolean value of true if the relational operator results in a true comparison otherwise the resulting value is false.
+           Two Object Repositories are equal if they are the same file. 
+        </p>
+        ]]></Overview-ObjectRepository>
+        <Usage-String><![CDATA[
+        <p>Use the comparison functions when you wish to compare two objects of the same Data Type and determine if 
+           they are equal, not equal, less than, less than or equal to, greater than, greater 
+           than or equal to and you wish the result to be expressed as a Boolean value 
+           (true or false). The comparison functions are case-sensitive. For case-insensitive 
+           comparisons see the <b> StringCiEQ, StringCiNE,</b> etc. functions.
+           If you prefer an integer resulting from the comparison 
+           (0 for equal, -1 for less than, and 1 for greater than), use the <b>compare</b> function.
+        </p>
+         ]]></Usage-String>
+      <Usage-Symbol><![CDATA[
+        <p>Use the comparison functions when you wish to compare two objects of the same Data Type and determine if 
+           they are equal, not equal, less than, less than or equal to, greater than, greater 
+           than or equal to and you wish the result to be expressed as a Boolean value 
+           (true or false).  
+        </p>
+         ]]></Usage-Symbol>
+      <Usage-Pair><![CDATA[
+        <p>Use the comparison functions when you wish to compare two Pairs and determine 
+        if they are equal, not equal, less than, less than or equal to, greater than, greater than
+        or equal to and you wish the result to be expressed as a Boolean value (true or false). </p>
+      ]]></Usage-Pair>
+      <Usage-List><![CDATA[
+        <p>Use the comparison functions when you wish to compare two Lists and determine 
+        if they are equal, not equal, less than, less than or equal to, greater than, greater than
+        or equal to and you wish the result to be expressed as a Boolean value (true or false).  
+        Two Lists are considered equal, if  all the Pairs in each List are equal.  The less-than 
+        <b>(&#60)</b> condition is satisfied only if the first List is less than the second List. 
+        The greater-than <b>(&#62)</b> condition is satisfied only if the first List is 
+        greater-than the second List.
+        </p>
+      ]]></Usage-List>
+      <Usage-Structure><![CDATA[
+        <p>Use the comparison functions when you wish to compare two Structures and determine 
+          if they are equal, not equal, less than, less than or equal to, greater than, greater 
+           than or equal to and you wish the result to be expressed as a Boolean value (true or false).  
+           For  two Structures to compare equal, all symbolic keys  and all values have to be 
+           equal.  The less-than &#60 condition is satisfied only if the first Structure is less 
+           than the second Structure. The greater-than &#62 condition is satisfied only if the 
+           first Structures is greater-than the second Structure.
+        </p>
+         ]]></Usage-Structure>
+     <Usage-Dictionary><![CDATA[
+        <p>Use the comparison functions when you wish to compare two Dictionaries and determine 
+          if they are equal, not equal, less than, less than or equal to, greater than, greater 
+           than or equal to and you wish the result to be expressed as a Boolean value (true or false).  
+           For  two Dictionaries to compare equal, all symbolic keys  and all values have to be 
+           equal.  The less-than &#60 condition is satisfied only if the first Dictionary is less 
+           than the second Dictionary. The greater-than &#62 condition is satisfied only if the 
+           first Dictionary is greater-than the second Dictionary.
+        </p>
+         ]]></Usage-Dictionary>
+       <Usage-Directory><![CDATA[
+        <p>Use the comparison functions when you wish to compare two Directories and determine 
+          if they are equal, not equal, less than, less than or equal to, greater than, greater 
+           than or equal to and you wish the result to be expressed as a Boolean value (true or false).  
+           For  two Directories to compare equal, all symbolic keys  and all values have to be 
+           equal.  The less-than &#60 condition is satisfied only if the first Directory is less 
+           than the second Directory. The greater-than &#62 condition is satisfied only if the 
+           first Directory is greater-than the second Directory.
+        </p>
+         ]]></Usage-Directory>
+       <Usage><![CDATA[
+        <p>Use the comparison functions when you wish to compare two Vectors and determine 
+          if they are equal, not equal, less than, less than or equal to, greater than, greater 
+           than or equal to and you wish the result to be expressed as a Boolean value (true or false).  
+           For  two Vectors to compare equal,  all values have to be 
+           equal.  The less-than &#60 condition is satisfied only if the first Vector is less 
+           than the second Vector. The greater-than &#62 condition is satisfied only if the 
+           first Vector is greater-than the second Vector.
+        </p>
+        ]]></Usage>
+        <Usage-Brick><![CDATA[
+        <p>Use the comparison functions when you wish to compare two Bricks and determine 
+          if they are equal, not equal, less than, less than or equal to, greater than, greater 
+           than or equal to and you wish the result to be expressed as a Boolean value (true or false).  
+           For  two Bricks to compare equal, all symbolic keys  and all values have to be 
+           equal.  The less-than &#60 condition is satisfied only if the first Brick is less 
+           than the second Brick. The greater-than &#62 condition is satisfied only if the 
+           first Brick is greater-than the second Brick.
+        </p>
+        ]]></Usage-Brick>
+        <Usage-Void><![CDATA[
+        <p>Use the comparison functions when you wish to compare two objects to determine if they 
+             are equal. The #void constant will always be less than any other value.
+        </p>
+        ]]></Usage-Void>
+        <Usage-Complex><![CDATA[
+        <p>These comparison operators are employed to implement comparison tests like
+         those shown below.
+        </p>
+        ]]></Usage-Complex>
+    </Brief>
+	<Syntax-String>
+	    <Expression><![CDATA[ (=  string1  string2)]]></Expression>
+		<Argument>
+		  <Name>string1</Name>
+		  <Note><![CDATA[
+		  <p> The first String to be compared </p>
+          ]]></Note>
+		  <AISTypes>String</AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>string2</Name>
+		  <Note><![CDATA[
+		  <p>The second String to be compared</p>
+          ]]></Note>
+		  <AISTypes>String</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>Returns true if the comparison is true, false if the comparison is false.
+	    </p>
+	    ]]></Return>
+	</Syntax-String>
+	<Syntax-Symbol>
+	    <Expression><![CDATA[ (=  sym1  sym2)]]></Expression>
+		<Argument> 
+		  <Name>sym1</Name>
+		  <Note><![CDATA[
+		  <p> The first Symbol to be compared </p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>sym2</Name>
+		  <Note><![CDATA[
+		  <p>The second Symbol to be compared</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns true if the comparison is true, false if the comparison is false.
+	    </p>
+	    ]]></Return> 
+	</Syntax-Symbol>
+   <Syntax-Structure>
+	    <Expression><![CDATA[ (=  struct1  struct2)]]></Expression>
+		<Argument> 
+		  <Name>struct1</Name>
+		  <Note><![CDATA[
+		  <p> The first Structure to be compared </p>
+          ]]></Note>
+		  <AISTypes>Structure</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>struct2</Name>
+		  <Note><![CDATA[
+		  <p>The second Structure to be compared</p>
+          ]]></Note>
+		  <AISTypes>Structure</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns true if the comparison is true, false if the comparison is false.
+	    </p>
+	    ]]></Return> 
+	</Syntax-Structure>
+   <Syntax-Dictionary>
+	    <Expression><![CDATA[ (=  dict1  dict2)]]></Expression>
+		<Argument> 
+		  <Name>dict1</Name>
+		  <Note><![CDATA[
+		  <p> The first Dictionary to be compared </p>
+          ]]></Note>
+		  <AISTypes>Dictionary</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>dict2</Name>
+		  <Note><![CDATA[
+		  <p>The second Dictionary to be compared</p>
+          ]]></Note>
+		  <AISTypes>Dictionary</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns true if the comparison is true, false if the comparison is false.
+	    </p>
+	    ]]></Return> 
+	</Syntax-Dictionary>
+    <Syntax-Directory>
+	    <Expression><![CDATA[ (=  directory1  directory2)]]></Expression>
+		<Argument> 
+		  <Name>directory1</Name>
+		  <Note><![CDATA[
+		  <p> The first Directory to be compared </p>
+          ]]></Note>
+		  <AISTypes>Directory</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>directory2</Name>
+		  <Note><![CDATA[
+		  <p>The second Directory to be compared</p>
+          ]]></Note>
+		  <AISTypes>Directory</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns true if the comparison is true, false if the comparison is false.
+	    </p>
+	    ]]></Return> 
+	</Syntax-Directory>
+   <Syntax-Vector>
+	    <Expression><![CDATA[ (=  vector1  vector2)]]></Expression>
+		<Argument> 
+		  <Name>vector1</Name>
+		  <Note><![CDATA[
+		  <p> The first Vector to be compared </p>
+          ]]></Note>
+		  <AISTypes>Vector</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>vector2</Name>
+		  <Note><![CDATA[
+		  <p>The second Vector to be compared</p>
+          ]]></Note>
+		  <AISTypes>Vector</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns true if the comparison is true, false if the comparison is false.
+	    </p>
+	    ]]></Return> 
+	</Syntax-Vector>
+   <Syntax-FltVector>
+	    <Expression><![CDATA[ (=  vector1  vector2)]]></Expression>
+		<Argument> 
+		  <Name>vector1</Name>
+		  <Note><![CDATA[
+		  <p> The first Vector to be compared </p>
+          ]]></Note>
+		  <AISTypes>Vector</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>vector2</Name>
+		  <Note><![CDATA[
+		  <p>The second Vector to be compared</p>
+          ]]></Note>
+		  <AISTypes>Vector</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns true if the comparison is true, false if the comparison is false.
+	    </p>
+	    ]]></Return> 
+	</Syntax-FltVector>
+   <Syntax-IntVector>
+	    <Expression><![CDATA[ (=  vector1  vector2)]]></Expression>
+		<Argument> 
+		  <Name>vector1</Name>
+		  <Note><![CDATA[
+		  <p> The first Vector to be compared </p>
+          ]]></Note>
+		  <AISTypes>Vector</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>vector2</Name>
+		  <Note><![CDATA[
+		  <p>The second Vector to be compared</p>
+          ]]></Note>
+		  <AISTypes>Vector</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns true if the comparison is true, false if the comparison is false.
+	    </p>
+	    ]]></Return> 
+	</Syntax-IntVector>
+   <Syntax-NumVector>
+	    <Expression><![CDATA[ (=  vector1  vector2)]]></Expression>
+		<Argument> 
+		  <Name>vector1</Name>
+		  <Note><![CDATA[
+		  <p> The first Vector to be compared </p>
+          ]]></Note>
+		  <AISTypes>Vector</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>vector2</Name>
+		  <Note><![CDATA[
+		  <p>The second Vector to be compared</p>
+          ]]></Note>
+		  <AISTypes>Vector</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns true if the comparison is true, false if the comparison is false.
+	    </p>
+	    ]]></Return> 
+	</Syntax-NumVector>
+   <Syntax-ShortVector>
+	    <Expression><![CDATA[ (=  vector1  vector2)]]></Expression>
+		<Argument> 
+		  <Name>vector1</Name>
+		  <Note><![CDATA[
+		  <p> The first ShortVector to be compared </p>
+          ]]></Note>
+		  <AISTypes>ShortVector</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>vector2</Name>
+		  <Note><![CDATA[
+		  <p>The second ShortVector to be compared</p>
+          ]]></Note>
+		  <AISTypes>ShortVector</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns true if the comparison is true, false if the comparison is false.
+	    </p>
+	    ]]></Return> 
+	</Syntax-ShortVector>
+   <Syntax-ObjVector>
+	    <Expression><![CDATA[ (=  vector1  vector2)]]></Expression>
+		<Argument> 
+		  <Name>vector1</Name>
+		  <Note><![CDATA[
+		  <p> The first Vector to be compared </p>
+          ]]></Note>
+		  <AISTypes>Vector</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>vector2</Name>
+		  <Note><![CDATA[
+		  <p>The second Vector to be compared</p>
+          ]]></Note>
+		  <AISTypes>Vector</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns true if the comparison is true, false if the comparison is false.
+	    </p>
+	    ]]></Return> 
+	</Syntax-ObjVector>
+   <Syntax-BitVector>
+	    <Expression><![CDATA[ (=  vector1  vector2)]]></Expression>
+		<Argument> 
+		  <Name>vector1</Name>
+		  <Note><![CDATA[
+		  <p> The first Vector to be compared </p>
+          ]]></Note>
+		  <AISTypes>Vector</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>vector2</Name>
+		  <Note><![CDATA[
+		  <p>The second Vector to be compared</p>
+          ]]></Note>
+		  <AISTypes>Vector</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns true if the comparison is true, false if the comparison is false.
+	    </p>
+	    ]]></Return> 
+	</Syntax-BitVector>
+   <Syntax-Brick>
+	    <Expression><![CDATA[ (=  brick1  brick2)]]></Expression>
+		<Argument> 
+		  <Name>brick1</Name>
+		  <Note><![CDATA[
+		  <p> The first Brick to be compared </p>
+          ]]></Note>
+		  <AISTypes>Brick</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>brick2</Name>
+		  <Note><![CDATA[
+		  <p>The second Brick to be compared</p>
+          ]]></Note>
+		  <AISTypes>Brick</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns true if the comparison is true, false if the comparison is false.
+	    </p>
+	    ]]></Return> 
+	</Syntax-Brick>
+   <Syntax-Matrix>
+	    <Expression><![CDATA[ (=  matrix1  matrix2)]]></Expression>
+		<Argument> 
+		  <Name>matrix1</Name>
+		  <Note><![CDATA[
+		  <p> The first Matrix to be compared </p>
+          ]]></Note>
+		  <AISTypes>Matrix</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>matrix2</Name>
+		  <Note><![CDATA[
+		  <p>The second Matrix to be compared</p>
+          ]]></Note>
+		  <AISTypes>Matrix</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns true if the comparison is true, false if the comparison is false.
+	    </p>
+	    ]]></Return> 
+	</Syntax-Matrix>
+   <Syntax-NumMatrix>
+	    <Expression><![CDATA[ (=  nummatrix1  nummatrix2)]]></Expression>
+		<Argument> 
+		  <Name>nummatrix1</Name>
+		  <Note><![CDATA[
+		  <p> The first NumMatrix to be compared </p>
+          ]]></Note>
+		  <AISTypes>NumMatrix</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>nummatrix2</Name>
+		  <Note><![CDATA[
+		  <p>The second NumMatrix to be compared</p>
+          ]]></Note>
+		  <AISTypes>NumMatrix</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns true if the comparison is true, false if the comparison is false.
+	    </p>
+	    ]]></Return> 
+	</Syntax-NumMatrix>
+  <Syntax-Pair>
+	    <Expression><![CDATA[ (=  pair1  pair2)]]></Expression>
+		<Argument> 
+		  <Name>pair1</Name>
+		  <Note><![CDATA[
+		  <p> The first Pair to be compared </p>
+          ]]></Note>
+		  <AISTypes>Pair</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>pair2</Name>
+		  <Note><![CDATA[
+		  <p>The second Pair to be compared</p>
+          ]]></Note>
+		  <AISTypes>Pair</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns true if the comparison is true, false if the comparison is false.
+	    </p>
+	    ]]></Return> 
+	</Syntax-Pair>
+  <Syntax-List>
+	    <Expression><![CDATA[ (=  list1  list2)]]></Expression>
+		<Argument> 
+		  <Name>list1</Name>
+		  <Note><![CDATA[
+		  <p> The first List to be compared </p>
+          ]]></Note>
+		  <AISTypes>List</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>list2</Name>
+		  <Note><![CDATA[
+		  <p>The second List to be compared</p>
+          ]]></Note>
+		  <AISTypes>List</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns true if the comparison is true, false if the comparison is false.
+	    </p>
+	    ]]></Return> 
+	</Syntax-List>
+   <Syntax-ObjectRepository>
+	    <Expression><![CDATA[ (=  aGor1  aGor1)]]></Expression>
+		<Argument> 
+		  <Name>aGor1</Name>
+		  <Note><![CDATA[
+		  <p> The first Object Repository  to be compared </p>
+          ]]></Note>
+		  <AISTypes>ObjectRepository</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>aGor1</Name>
+		  <Note><![CDATA[
+		  <p>The second Object Repository  to be compared</p>
+          ]]></Note>
+		  <AISTypes>ObjectRepository</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns true if the comparison is true, false if the comparison is false.
+	    </p>
+	    ]]></Return> 
+	</Syntax-ObjectRepository>
+   <Syntax>
+	    <Expression><![CDATA[ (=  obj1  obj2)]]></Expression>
+		<Argument> 
+		  <Name>obj1</Name>
+		  <Note><![CDATA[
+		  <p> First object  to be compared. Must be a native data type.</p>
+          ]]></Note>
+		  <AISTypes>Void Character Date Complex</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>obj2</Name>
+		  <Note><![CDATA[
+		  <p>Second object to be compared. Must be a native data type.</p>
+          ]]></Note>
+		  <AISTypes>Void Character Date Complex</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns true if the comparison is true, false if the comparison is false.
+	    </p>
+	    ]]></Return> 
+	</Syntax>
+</Function>

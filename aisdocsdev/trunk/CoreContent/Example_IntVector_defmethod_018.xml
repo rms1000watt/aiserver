@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example IntVector defmethod 018</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>defmethod</FunctionKeywords>
+		<TypeKeywords>   IntVector Symbol Dictionary  </TypeKeywords>
+		<RelatedFunctions>addMethod send methodsOf</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>method message messageName</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example uses the added method <b>IncAll</b> to respond to the 
+
+                  message <b>IncAll</b> which will increment each value in an Integer  Vector.
+
+	]]></Description>
+	<Syntax>
+	<Expression><![CDATA[<b>(defmethod  IntVector: IncAll  (s)  (map add1  s))     </b>]]></Expression>
+    <Note><![CDATA[ Define a method Increment which  maps the function add1 to increment all values in the vector.
+
+    ]]></Note>
+    <Returns><![CDATA[ #&#60Dictionary 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(define V #(int| 11 12 ))        <sc> ]]></Expression>
+    <Note><![CDATA[Define a Vector that contains some integer values. ]]></Note>
+    <Returns><![CDATA[#&#60IntVector 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(setq Y  (send IncAll:  V))       <sc> ]]></Expression>
+    <Note><![CDATA[Send the message  IncAll  to increment all the values in the Vector by 1. ]]></Note>
+    <Returns><![CDATA[#&#60IntVector 234567&#62]]></Returns>
+    <Expression><![CDATA[<sc>(display #&#60IntVector 234567&#62)   <sc> ]]></Expression>
+    <Note><![CDATA[Displays the new Vector with the incremented values.]]></Note>
+    <Returns><![CDATA[#(int| 12 13 )]]></Returns>
+    <Expression><![CDATA[<sc>(setq Y (IncAll:  V))          <sc> ]]></Expression>
+    <Note><![CDATA[The method can be invoked simply by name:]]></Note>
+    <Returns><![CDATA[#&#60IntVector 234567&#62]]></Returns>
+   <Hints><![CDATA[
+        <p>To view the entry in the methods Dictionary created by the defmethod function, 
+
+
+           you can use the method name to access the directory entry by </p>
+        <p><b> #&#60Dictionary 123456&#62[methodName:] or </b></p>
+        <p> To determine the number of assigned methods:</p>
+        <p><b>(length  (methodsOf IntVector: ))</b></p>
+        <p>To access the nth method name:</p>
+        <p><b>(methodsOf IntVector: )[n  0]</b></p>
+]]></Hints>
+</Syntax>
+</Example>

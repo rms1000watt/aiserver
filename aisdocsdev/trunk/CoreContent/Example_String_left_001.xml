@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example String left 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>left</FunctionKeywords>
+		<TypeKeywords>String Text Integer</TypeKeywords>
+		<RelatedFunctions>right mid find substring </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>substring position left right </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples return the specified length of the given
+                  String or Text object starting from the leftmost character. 
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(left "ABCDEF"  3)</sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[ABC]]></Returns>
+        <Expression><![CDATA[ <sc>(left "ABCDEF"  4) </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ ABCD ]]></Returns>
+        <Expression><![CDATA[ <sc>(left "123456789" 8)  </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ 12345678 ]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

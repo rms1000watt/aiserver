@@ -1,0 +1,116 @@
+xmlsvr/appSvrNotes.txt
+
+										APP Server Notes
+
+This project builds the AXmlSvr class which provides a small, fast sockets layer with an ISAPI for
+use with the ABIDE application.  This API is used by the AMP Mgr (Lambda Message Protocol Manager)
+which is an interface to the Smartbase Engine.
+
+
+FILES
+Source: appsvr.cpp
+Header: appsvr.h
+
+DOCUMENTATION GUIDE
+-------------------
+*	appsvr/appSvrNotes.txt	- this project setup and configuration.
+*	include/appsvr.h		- appSvr specification. 
+*	docs/InternalDocumentation/Qt - Documents on building Qt projects.
+*	Docs/InternalDocumentation/VisualStudio - Importing Qt projects, general project settings, and
+	compiler options.
+ 
+SUMMARY
+-------
+AppSvr  - A simple sockets layer for transferring dynamic documents
+
+GENERAL NOTES
+-------------
+1.	Warning! AppSvr must run on the same thread as the event loop (i.e. the GUI).   It depends upon
+	receiving actions initiated by events.
+2.	Include files. The include file include/appsvr.h must be included in appsvr.pro.
+
+							XML SERVER
+PROJECT SETUP
+-------------
+This project was created as follows:
+1.	Compose appsvr.pro by hand.  See comments in file and Qt Qmake.doc for more details.  One can
+	also generate a .pro file using QtDesigner.
+2.	Start Visual Studio. Select "Open Qt Project" icon in Qt add-in toolbar and select appSvr.pro
+	to create appsvr.vcproj.
+3.	Select File->OpenWorkspace->FileType->*.vcproj. Select xmlsvr.vcproj to create the AppSvr
+	Project.
+4.	Modify project settings as noted below.  Build debug and release configurations.
+		  
+PROJECT NOTES
+-------------
+1.	See Docs/InternalDocumentation/Qt/Qmake.doc.  Includes composing Qt project files (*.pro) and
+	creating Visual Studio project files (*.vcproj).
+2.	See Docs/InternalDocumentation/Qt/QtProcedures.doc for a general discussion on setting up Qt
+	library projects. Includes notes on creating Qt toolbar, using Qt Designer, and Qt
+	Documentation.	
+3.	See Docs/InternalDocumentation/VisualStudio/VsProcedures.doc for a general discussion on
+	setting up Visual Studio library projects.  Includes notes on standard project settings,
+	importing Qt projects, and list of compiler options.	
+								
+PROJECT SETTINGS
+----------------
+Project->Settings
+	C/C++ tab
+		General:
+			WarningLevel: 3
+		C++ Language:
+			Enable Exception Handling
+		CodeGeneration:
+			Pentium,DebugMultithreaded DLL,cdecl,8bytes
+		PreProcessor
+			IncludeDirs: $(QTDIR)/Include, $(QTDIR)/mkspecs/win32-msvc, ../Include
+	Library tab
+		OutputFile: ../bin/debug/xmlsvr.lib
+
+Static Lib Debug Project Options:
+/nologo /G5 /MDd /W3 /GX /Gm /ZI /Od /I "$(QTDIR)/Include" /I "$(QTDIR)/mkspecs/win32-msvc"
+/I "../Include" /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /D "QT_DLL" /D "UNICODE"
+/D "QT_THREAD_SUPPORT" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c
+
+Static Lib Release Project Options:
+/nologo /G5 /MD /W3 /Gx /O1 /I "$(QTDIR)/Include" /I "$(QTDIR)/mkspecs/win32-msvc" /I "../Include"
+/D "WIN32" /D "NDEBUG" /D "_MBCS" /D "_LIB" /D "QT_DLL" /D "UNICODE" /D "QT_THREAD_SUPPORT"
+/Fo"Release/" /Fd"Release/" /FD /c
+
+BUILD
+-----
+Moc'ing ..\Include\AppSvr.h...
+Compiling...
+AppSvr.cpp
+moc_AppSvr.cpp
+Generating Code...
+Creating library...
+
+COMPILER OPTIONS
+----------------
+See Docs/InternalDocumentation/VisualStudio/VsProcedures.doc
+for list of above compiler options.
+
+FD - Generate file dependencies
+G5 - Favor Pentium processor
+Gm - Enable minimal rebuild
+GX - enable synchronous exception handling
+GZ - Catch release-build errors in debug
+MD  - Creates a multithreaded DLL, (MSVCRT.LIB)
+MDd - Creates debug multithreaded DLL   (MSVCRTD.LIB)
+ML  - Creates a single-threaded exe file, (LIBC.LIB)
+MLd - Creates debug single-threaded exe, (LIBCD.LIB)
+MT  - Creates a multithreaded executable file,(LIBCMT.LIB) 
+MTd - Creates a debug multithreaded exe file, (LIBCMTD.LIB)
+O1  - Create smallest code
+O2  - Create fast code
+Od  - Disable optimizations
+ZI  - Generate debug information for Edit&Continue
+Zi  - Generate debugging information
+MBCS - Include multibyte character set mappings
+UNICODE - Include unicode character set mappings
+
+
+
+
+

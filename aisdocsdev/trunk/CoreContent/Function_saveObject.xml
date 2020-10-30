@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>saveObject</Title>
+		<FunctionName>saveObject</FunctionName>
+		<FunctionType>Builtin(FileIO)</FunctionType>
+        <ArgumentTypes> Character String Symbol Vector BitVector ByteVector IntVector Void
+                       FltVector ObjVector Structure Dictionary Directory Brick Pair List
+                       Matrix NumMatrix Integer Float Number Complex Boolean Date Function</ArgumentTypes>
+        <DataType>ByteVector Integer</DataType>
+	    <RelatedFunctions>loadObject fileRead fileSeek fileRead sizeof</RelatedFunctions>
+        <RelatedVMInstructions> none  </RelatedVMInstructions>
+		<HumanKeywords>serialization object-oriented object closure record save file system</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+       <p>The <b>saveObject</b> function is used to generate a serialization of an immediate or 
+       object type along with a record header to create a Object Closure Record. These records
+       can be returned as a bytevector, saved to an open file or written into a external buffer.
+       Use the saveObject function with the loadObject function to save and load any type of 
+       data in the AIS system.</p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+	   <p>Use the <b>saveObject</b> function to serialize objects or immediate data types for 
+	   storage into a bytevector, external buffer or file. Also use the function to return just the
+	   size of the serialized data. The serialized data consists of a record header followed
+	   by the uncompressed serialzed representation an object and all of the objects it depends
+	   on. This object serialization is called an Object Closure and together with the record
+	   header is the Object Closure Record. Immediate data types can also be serialized, along
+	   with the obligatory record header. Immediate data serialized in this way is also called
+	   an Object Closure Record.
+	   </p>
+	   <p>Use the <b>loadObject</b> function to instantiate the contents of an Object Closure 
+	   into memory.</p>
+	   
+	   <p>The <b>saveObject</b> takes a variety of argument signatures. Use caution when 
+	   constructing an expression involving saveObject to ensure you get the behavior you
+	   desire. This function has the following forms:</p>
+	   <p>(saveObject fileID target true) and (saveObject fileId target)- Use these form to save 
+	   the target, as an object closure record inot the open binary file specified by fileID. The object
+	   closure record will be written at the current position in the specified file.</p>
+	   <p>(saveObject #void target false) - Use this form to get the size of an object closure record
+	   size. The "target" argument can be of immediate or object type.</p>
+	   <p>(saveObject target) - Use this form to return a bytevector containing the object
+	   closure record. The "target" argument can be of immemdiate or object type.</p>
+	   <p>(saveObject target buflen bufptr) - Use this form to write an object closure record into
+	    a buffer. The buflen argument is the length of the target buffer an should be the exact result of a 
+	    (sizeof target) call. The bufptr argument should of type POINTER and should point to 
+	    the beginning of the buffer. Use this form of the saveObject function to pass 
+	    object closure records to external applications or internal C/C++ code.</p>
+   
+
+      ]]></Overview>
+       <Usage><![CDATA[
+       <p>The <b>saveObject</b> function is used to generate a serialization of an immediate or 
+       object type along with a record header to create a Object Closure Record. These records
+       can be returned as a bytevector, saved to an open file or written into a external buffer.
+       Use the saveObject function with the loadObject function to save and load any type of 
+       data in the AIS system.</p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[
+                   <p><b>     (saveObject fileID target saveFlag )</b></p>
+                   <p><b>     (saveObject fileID target)</b></p>
+                   <p><b>     (saveObject target)</b></p>
+                   <p><b>     (saveObject target bufferLen bufferPtr)</b></p>
+                   
+]]></Expression>
+		<Argument>
+		  <Name>target</Name>
+		  <Note><![CDATA[
+		  <p> Any value of immediate or object type.</p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector ByteVector IntVector Void
+                       FltVector ObjVector Structure Dictionary Directory Brick Pair List
+                       Matrix NumMatrix Integer Float Number Complex Boolean Date Function</AISTypes>
+		</Argument> 
+		<Argument> 
+		  <Name>fileID</Name>
+		  <Note><![CDATA[
+		  <p> Optional argument. If present, must be an Integer representing the 
+             fileID of the file previously opened by fileOpen. The file must be a binary file.</p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>   
+		<Argument> 
+		  <Name>saveFlag</Name>
+		  <Note><![CDATA[
+		  <p>Optional argument. If present, and if equal to false, the saveObject will compute 
+		  and return only the size of the Object Closure Record.</p>
+          ]]></Note>
+		  <AISTypes>Boolean</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>(saveObject fileId target false) -- returns sizeof object closure record. This is the 
+	    same as the result returned from a (sizeof target) call.</p>
+	    <p>(saveObject fileId target) or (saveObject fileId true) -- returns size of object
+	    closure record written to file.</p>
+	    <p>(saveObject target) -- returns a bytevector containing object closure record.</p>
+	    <p>(saveObject target bufferLen bufferPtr) -- returns size of object closure record
+		written into specified buffer.</p>
+	    ]]></Return>
+	</Syntax>
+</Function>

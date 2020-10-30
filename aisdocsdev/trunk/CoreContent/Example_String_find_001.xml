@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>  
+		<Title>Example String find 001</Title>  
+		<Template>Example</Template> 
+		<FunctionKeywords>find</FunctionKeywords>
+		<TypeKeywords>String Vector Integer</TypeKeywords>	
+		<RelatedFunctions>member substring mid</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>find string member</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[
+	<p>  This example shows the <b>find</b> function operating on two sets of string or text.  
+         The <b>find</b> function compares the first string argument with the second string argument. 
+         If the <b>first string argument</b> matches the <b>second string argument</b>, then the <b>position</b> of 
+         the first argument string in the second string argument  is returned.  The user may 
+         also specify the position in the second string argument where the search 
+         will begin using an optional integer argument.  If there is no match found,
+         then the Boolean value false is returned by the function.  </p>
+	]]></Description>
+	<Syntax> 
+	   <Expression><![CDATA[<sc>(find "She" "Sheldon sells sea shells")</sc> ]]></Expression>  
+	   <Note><![CDATA[ In this example, the find function starts searching at the beginning of the
+              second string argument by default since no starting position is specified. ]]></Note> 
+	   <Returns><![CDATA[0]]></Returns>
+	   <Expression><![CDATA[<sc>(find "She" "Sheldon sells sea shells" 5)</sc> ]]></Expression> 
+	   <Note><![CDATA[ In these last two examples, the starting position is specified by the integer argument 5. <br> 
+              Also, these examples show that the comparison between the first string argument and the second string 
+              argument is case-sensitive.]]></Note> 
+	   <Returns><![CDATA[false]]></Returns>
+	   <Expression><![CDATA[<sc>(find "she" "Sheldon sells sea shells" 5)</sc> ]]></Expression>
+	   <Note><![CDATA[ none ]]></Note> 
+	   <Returns><![CDATA[18]]></Returns> 
+       <Hints><![CDATA[none]]></Hints> 
+	</Syntax>
+</Example>

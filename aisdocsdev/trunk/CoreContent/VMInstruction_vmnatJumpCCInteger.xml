@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+ <VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmnatJumpCCInteger</Title>
+		<InstructionName>vmnatJumpCCImmediate</InstructionName>                                      
+		<InstructionType>Native</InstructionType>
+		<ArgumentTypes> Integer </ArgumentTypes>
+		<RelatedVMInstructions>vmnatJumpCCNumber vmregJumpCCImmediate vmregJumpCCInteger vmregJumpCCNumber</RelatedVMInstructions>
+		<HumanKeywords> cc jump jumpcc comparitor label </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[                                                  
+		<p>When evaluated, this vm instruction compares the <b>source</b> value 
+		with the <b>comparitor</b> value. If the comparison is true, the instruction 
+		pointer is set equal to the <b>label</b> argument; otherwise, the instruction 
+		pointer is promoted as usual. Both arguments are assumed to be Integer types 
+		(the types are not checked). There is no conversion of the <b>source</b> or 
+		<b>comparitor</b> types. This instruction will never return an Error value.
+       </p>
+		<p>The condition code for this instruction cc may compare for less than, 
+		less than or equal, equal, not equal, greater than, greater than or equal, 
+		all depending upon the value of cc. The condition code ccis an extension to 
+		the instruction name so that there are really six JMPcc instructions. 
+		<b>vmnatJumpLTInteger</b>, <b>vmnatJumpLEInteger</b>, <b>vmnatJumpEQInteger</b>, 
+		<b>vmnatJumpNEInteger</b>, <b>vmnatJumpGEInteger</b>, and <b>vmnatJumpGTInteger</b>.
+	    </p>
+		<p>The operation of this vm instruction is expressed in the following 
+		C expression:
+		</p>
+        <ul><li><b>if ((int)source &#060  (int)comparitor) Ip = label; </b></li></ul>
+		<ul><li><b>if ((int)source &#8804  (int)comparitor) Ip = label; </b></li></ul>   
+		<ul><li><b>if ((int)source &#061&#061 (int)comparitor) Ip = label; </b></li></ul> 
+		<ul><li><b>if ((int)source &#8800 (int)comparitor) Ip = label; </b></li></ul> 
+		<ul><li><b>if ((int)source &#8805 (int)comparitor) Ip = label; </b></li></ul> 		   
+		<ul><li><b>if ((int)source &#062  (int)comparitor) Ip = label; </b></li></ul>
+    ]]></Description>
+	<Syntax>
+	  <Expression><![CDATA[  (vmnatJumpLTInteger source comparitor label) ]]></Expression>	 
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>comparitor</Name>
+		  <Format>regoffset </Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name> label </Name>
+		  <Format>immediate</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+	 <Expression><![CDATA[  (vmnatJumpLEInteger source comparitor label)]]></Expression>		 
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>comparitor</Name>
+		  <Format>regoffset </Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name> label </Name>
+		  <Format>immediate</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+	 <Expression><![CDATA[  (vmnatJumpEQInteger source comparitor label)]]></Expression> 
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>comparitor</Name>
+		  <Format>regoffset </Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name> label </Name>
+		  <Format>immediate</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+	  <Expression><![CDATA[  (vmnatJumpNEInteger source comparitor label)]]></Expression>		 
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>comparitor</Name>
+		  <Format>regoffset </Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name> label </Name>
+		  <Format>immediate</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+       	 <Expression><![CDATA[  (vmnatJumpGEInteger source comparitor label)]]></Expression>		 
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>comparitor</Name>
+		  <Format>regoffset </Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name> label </Name>
+		  <Format>immediate</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+         <Expression><![CDATA[  (vmnatJumpGTInteger source comparitor label)]]></Expression>
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>comparitor</Name>
+		  <Format>regoffset </Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name> label </Name>
+		  <Format>immediate</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+	</Syntax>
+</VMInstruction>

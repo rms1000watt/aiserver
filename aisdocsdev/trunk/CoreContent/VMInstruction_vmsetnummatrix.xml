@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmsetnummatrix </Title>
+		<InstructionName>vmsetnummatrix </InstructionName>
+		<InstructionType>Generic</InstructionType>
+		<ArgumentTypes> Word Integer NumMatrix</ArgumentTypes>
+		<RelatedVMInstructions>  vmset vmsetmatrix   </RelatedVMInstructions>
+		<HumanKeywords>   set ref matrix nummatrix</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[                                                  
+		<p>When evaluated, this vm instruction assigns the <b>source</b> 
+		word into the <b>target</b> word. The target word must contain a 
+		NumMatrix Object. The source, index, and target arguments are 
+		mandatory. The source argument word must contain an indexable value. 
+		After the operation, both the Stack Pointer and the Instruction 
+		Pointer are promoted. The operation of this vm instruction is 
+		expressed in the following C expression:
+        </p>	
+        <ul><li><b>  (word:NumMatrix)target[(int)index] = (word)source;</b></li></ul>
+    ]]></Description>
+    <Example>
+        <![CDATA[  <sc><pre>
+			(defun vmsetnummatrix_test( v )
+    			(vmsetnummatrix 2 22.0 v)
+			)
+			(setq v (new Matrix: number: 1 5 1 2 3 4 5))
+			(writeln (vmsetnummatrix_test v))
+        </pre>  </sc>
+        ]]>
+    </Example>
+	<Syntax>
+	    <Expression><![CDATA[  (vmsetNumMatrix index source target) ]]></Expression>
+		<Argument> 
+		  <Name>index</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>   
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>word</AISTypes>
+		</Argument>     
+		<Argument> 
+		  <Name>target</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>(word:NumMatrix)</AISTypes>
+		</Argument>
+	</Syntax>
+</VMInstruction>

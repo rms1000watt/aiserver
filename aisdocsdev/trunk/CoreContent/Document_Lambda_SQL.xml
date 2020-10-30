@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Document SYSTEM "../DTD/Document.dtd">
+<Document>
+	<KnowledgeBase>
+	    <Title>Lambda SQL</Title>
+		<Topic>Lisp</Topic>
+		<SubTopic>Overview</SubTopic>
+		<HumanKeywords>Lisp Database SQL Object Lambda AIS Programming</HumanKeywords>
+	</KnowledgeBase>
+	<Essay>Essay_SQL_Overview_Tutorial</Essay>
+	<Essay>Essay_SQL_Language_Structure</Essay>
+    <Essay>Essay_SQL_Data_Types</Essay>
+    <Essay>Essay_SQL_Statement_Syntax</Essay>
+    <Essay>Essay_SQL_Functions</Essay>
+    <Essay>Essay_SQL_Programs</Essay>
+    <Essay>Essay_SQL_Optimization</Essay>
+    <Essay>Essay_SQL_Schema</Essay>
+</Document>

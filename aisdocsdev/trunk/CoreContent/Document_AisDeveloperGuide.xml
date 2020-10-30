@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Document SYSTEM "../DTD/Document.dtd">
+<Document>
+	<KnowledgeBase>
+	    <Title>AIS Developer's Guide</Title>
+		<Topic>Topic - AIS Developer's Guide</Topic>
+		<SubTopic>SubTopic - AIS Developer's Guide</SubTopic>
+		<HumanKeywords>Development AIS Message Protocol API</HumanKeywords>
+	</KnowledgeBase>
+	<Essay>Essay_AisDev_Amp</Essay>
+    <Essay>Essay_AisDev_Submit</Essay>
+ </Document>

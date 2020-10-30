@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example FltVector binaryInsert 004</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>binaryInsert</FunctionKeywords>
+		<TypeKeywords>Vector  Integer</TypeKeywords>
+		<RelatedFunctions>insert binarySearch uniqueInsert sort</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>binary insert vector sort</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example sets a sorted Vector. Then it
+
+
+                  uses the <b>binaryInsert</b> function to add a new value
+
+                  while maintaining the ascending sort order
+
+
+                  of values in the Vector.
+
+
+	]]></Description>
+	<Syntax>
+  	   <Expression><![CDATA[ <sc> (setq SortedVector (sort #(float| 5.43 4.33 3.667 7.875) &#60))           </sc>]]></Expression>
+        <Note><![CDATA[The predicate &#60 is used since the binaryInsert function always assumes
+              a sorted vector in ascending order. ]]></Note>
+        <Returns><![CDATA[#&#60FltVector 199917&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60FltVector 199917&#62 )       </sc>]]></Expression>
+        <Note><![CDATA[Displays the values of the sorted Vector]]></Note>
+        <Returns><![CDATA[#(float| 3.667000055313 4.329999923706 5.429999828339 7.875 )]]></Returns>
+        <Expression><![CDATA[ <sc> (binaryInsert SortedVector 2.68 )          </sc>]]></Expression>
+        <Note><![CDATA[Returns the index where the value 2 will be inserted]]></Note>
+        <Returns><![CDATA[0 ]]></Returns>
+        <Expression><![CDATA[ <sc> (display #&#60Vector 199917&#62 )       </sc>]]></Expression>
+        <Note><![CDATA[Displays the contents of the Vector with the added value.]]></Note>
+        <Returns><![CDATA[#(float| 2.680000066757 3.667000055313 4.329999923706 5.429999828339 7.875 )]]></Returns>
+        <Hints><![CDATA[The <b>binaryInsert</b> function preserves sort order.  
+
+
+               Normally a vector does not maintain sort order by default but can 
+
+
+               be explicitly sorted by the <b>sort</b> function.  ]]></Hints>
+   </Syntax>
+</Example>

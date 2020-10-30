@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>readHtmlPage</Title>
+		<FunctionName>readHtmlPage</FunctionName>
+		<FunctionType>Builtin(FileIO)</FunctionType>
+		<ArgumentTypes>Integer String Text </ArgumentTypes>
+		<DataType>  Text String</DataType>
+		<RelatedFunctions>requestHttp getHttp postHttp</RelatedFunctions>
+        <RelatedVMInstructions> none   </RelatedVMInstructions>
+		<HumanKeywords> html webpage url http browser request post</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>readHtmlPage</b> function uses the host i/o environment to navigate the Internet 
+             World Wide Web and return the contents of the specified HTML page. </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		  <p> The <b>readHtmlPage</b> function uses the host i/o environment to navigate the 
+          Internet World Wide Web and return the contents of the specified HTML page. The following 
+          types of URL's are recognized:</p>
+         <ul>
+         <li>http://www.anywhere.com </li>
+         <li>file://C:\WebPages\myhomepage.html </li>
+         <li>http://www.anywhere.com/index.html</li>
+         </ul>
+        <p>The entire contents of the HTML document are returned in a ByteVector. All of the
+       HTML tags are included; however, documents referenced within the HTML tags, such as 
+       jpeg or gif files, are not included.</p>
+        <p><b>Note:</b> The Internet dial up connection must already be established. The 
+          <b>readHtmlPage</b> will not initiate an Internet connection if one is not already 
+          established.</p>
+       ]]></Overview>
+        <Usage><![CDATA[
+            <p>Use the <b>readHtmlPage</b> function when an Lambda needs to obtain information
+            from the Internet World Wide Web.</p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p><b>  (readHtmlPage urlName waitCount)</b></p>
+]]></Expression>
+		<Argument>
+		  <Name>urlName </Name>
+		  <Note><![CDATA[
+		  <p>Any properly constructed URL of an HTML page.</p>
+          ]]></Note>
+		  <AISTypes>String</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>waitCount</Name>
+		  <Note><![CDATA[
+		  <p>(Optional) The length of time to wait for the URL request to be answered.</p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>Returns the entire contents of the specified HTML page including all tags.
+         </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

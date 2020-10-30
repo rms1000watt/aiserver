@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Symbol compare 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compare</FunctionKeywords>
+		<TypeKeywords>Symbol Integer</TypeKeywords>
+		<RelatedFunctions>compareEQ compareNE compareGT compareGE compareLT  compareLE</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare symbol </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>compare</b> function to compare two Symbols and returns
+
+                  the result in numeric value.  In these examples, lowercase characters
+in the Symbol
+                  are compared as against uppercase characters.  In the ASCII table, uppercase characters are represented
+
+                  by 65 to 90 while lowercase characters are repsented by 97 to 122.  Using this table,
+
+                  lowercase characters have greater value than uppercase characters.
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(compare Snoopy: Snoopy:)   </sc>]]></Expression>
+        <Note><![CDATA[Both strings are equal. ]]></Note>
+        <Returns><![CDATA[0 ]]></Returns>
+        <Expression><![CDATA[ <sc>(compare Sandy: Sandie: )  </sc>]]></Expression>
+        <Note><![CDATA[In this example,  "y" in the first string has a higher value in the ASCII
+
+               table than  "i", therefore the first symbol is greater than the second symbol. ]]></Note>
+        <Returns><![CDATA[1]]></Returns>
+        <Expression><![CDATA[ <sc>(compare Goodbye: Hello: )   </sc>]]></Expression>
+        <Note><![CDATA[In this example, "G" in the first symbol has a lesser value in the ASCII
+
+               table than uppercase "H", therefore the first symbol is lesser than the second symbol. ]]></Note>
+        <Returns><![CDATA[-1]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

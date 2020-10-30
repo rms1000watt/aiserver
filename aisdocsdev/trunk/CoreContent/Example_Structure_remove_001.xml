@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure remove 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>remove</FunctionKeywords>
+		<TypeKeywords>Structure Symbol</TypeKeywords>
+		<RelatedFunctions>delete insert</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>delete remove key binding </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines a Structure and uses the <b>remove</b> function to 
+
+                  non-destructively delete a key-value binding by specified the Structure key.
+                  If the key does not exist in the Structure then the same Structure is returned unchanged.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq Z   #{A: "Now" B: "is" C: "the" D: "Time"} )</sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60Structure 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq A (remove  D: Z))   </sc>]]></Expression>
+        <Note><![CDATA[Removes the key-value binding with key D: and copies the result
+              to a new Structure.]]></Note>
+        <Returns><![CDATA[#&#60Structure 234567&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc> (display A)     </sc>]]></Expression>
+        <Note><![CDATA[Displays the modified Structure]]></Note>
+        <Returns><![CDATA[#{A: "Now" B: "is" C: "the" } ]]></Returns>
+      <Expression><![CDATA[ <sc> (display Z)     </sc>]]></Expression>  
+        <Note><![CDATA[The original Structure still remains unchanged.]]></Note> 
+        <Returns><![CDATA[#{A: "Now" B: "is" C: "the" D: "Time"}  ]]></Returns>
+        <Expression><![CDATA[ <sc> (setq A (remove  F: Z))      </sc>]]></Expression>  
+        <Note><![CDATA[The key F: is not found in Stucture Z.]]></Note> 
+        <Returns><![CDATA[#&#60Structure 345678&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc> (display Z)     </sc>]]></Expression>  
+        <Note><![CDATA[If the key is no found, he original Structure remains unchanged.]]></Note> 
+        <Returns><![CDATA[#{A: "Now" B: "is" C: "the" D: "Time"}  ]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML><HEAD></HEAD><BODY>
+<OBJECT type="text/site properties">
+<param name="FrameName" value="right">
+</OBJECT>
+<UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_a_g.html#w6"><param name="Name" value="AErr"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_a_g.html"><param name="Name" value="AG"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_a_g.html#w6"><param name="Name" value="AErr"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_a_g.html#a0"><param name="Name" value="AG"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_a_g.html#w6w2"><param name="Name" value="meFileOpen"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_a_g.html#w6w3"><param name="Name" value="meFileRead"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_a_g.html#w6w4"><param name="Name" value="meFileWrite"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_a_g.html#w6w1"><param name="Name" value="meGeneric"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_a_g.html#w6w0"><param name="Name" value="meNone"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_a_g.html#w6w5"><param name="Name" value="meSize"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_a_g.html#o0"><param name="Name" value="mMsg"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_a_g.html#o1"><param name="Name" value="mMsgs"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_a_g.html#o2"><param name="Name" value="mpErr"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_a_g.html#o3"><param name="Name" value="mpOrganization"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_a_g.html#o4"><param name="Name" value="mpVersion"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_a_g.html#a1"><param name="Name" value="~AG"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="aglobal_8h.html#a1"><param name="Name" value="AG_ORGANIZATION"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="aglobal_8h.html#a0"><param name="Name" value="AG_VERSION"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="aglobal_8h.html"><param name="Name" value="aglobal.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="aglobal_8h.html#a1"><param name="Name" value="AG_ORGANIZATION"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="aglobal_8h.html#a0"><param name="Name" value="AG_VERSION"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="aglobal_8h.html#a2"><param name="Name" value="gGbl"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="agsr_8h.html"><param name="Name" value="agsr.h"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="agsr_8h.html#a0"><param name="Name" value="AGSR_BROWSER"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="agsr_8h.html#a1"><param name="Name" value="AGSR_HELPPATH"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_a_gsr.html"><param name="Name" value="AGsr"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_a_gsr.html#a0"><param name="Name" value="AGsr"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_a_gsr.html#a1"><param name="Name" value="~AGsr"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="agsr_8h.html#a0"><param name="Name" value="AGSR_BROWSER"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="agsr_8h.html#a1"><param name="Name" value="AGSR_HELPPATH"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="asr_8h.html"><param name="Name" value="asr.h"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_a_sr.html"><param name="Name" value="ASr"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_a_sr.html#a0"><param name="Name" value="ASr"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_a_sr.html#a2"><param name="Name" value="replace"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_a_sr.html#a1"><param name="Name" value="~ASr"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="defines_8h.html#a0"><param name="Name" value="CORE_EXPORT"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="defines_8h.html"><param name="Name" value="defines.h"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="aglobal_8h.html#a2"><param name="Name" value="gGbl"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="aglobal_8h.html#a2"><param name="Name" value="aglobal.h"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="gsr_2main_8cpp.html#a0"><param name="Name" value="gsr/main.cpp"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="sr_2main_8cpp.html#a0"><param name="Name" value="sr/main.cpp"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="gsr_2main_8cpp.html"><param name="Name" value="gsr/main.cpp"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="gsr_2main_8cpp.html#a0"><param name="Name" value="gGbl"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="gsr_2main_8cpp.html#a1"><param name="Name" value="main"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="sr_2main_8cpp.html#a1"><param name="Name" value="gStdout"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="gsr_2main_8cpp.html#a1"><param name="Name" value="main"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="gsr_2main_8cpp.html#a1"><param name="Name" value="gsr/main.cpp"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="sr_2main_8cpp.html#a2"><param name="Name" value="sr/main.cpp"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_a_g.html#w6w2"><param name="Name" value="meFileOpen"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_a_g.html#w6w3"><param name="Name" value="meFileRead"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_a_g.html#w6w4"><param name="Name" value="meFileWrite"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_a_g.html#w6w1"><param name="Name" value="meGeneric"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_a_g.html#w6w0"><param name="Name" value="meNone"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_a_g.html#w6w5"><param name="Name" value="meSize"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_a_g.html#o0"><param name="Name" value="mMsg"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_a_g.html#o1"><param name="Name" value="mMsgs"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_a_g.html#o2"><param name="Name" value="mpErr"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_a_g.html#o3"><param name="Name" value="mpOrganization"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_a_g.html#o4"><param name="Name" value="mpVersion"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_a_sr.html#a2"><param name="Name" value="replace"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="sr_2main_8cpp.html"><param name="Name" value="sr/main.cpp"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="sr_2main_8cpp.html#a0"><param name="Name" value="gGbl"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="sr_2main_8cpp.html#a1"><param name="Name" value="gStdout"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="sr_2main_8cpp.html#a2"><param name="Name" value="main"></OBJECT>
+  </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="asr_8h.html#a0"><param name="Name" value="SR_MAXLEN"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_a_g.html#a1"><param name="Name" value="~AG"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_a_gsr.html#a1"><param name="Name" value="~AGsr"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_a_sr.html#a1"><param name="Name" value="~ASr"></OBJECT>
+</UL>

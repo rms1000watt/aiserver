@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example BitVector inside 007</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>inside</FunctionKeywords>
+		<TypeKeywords>NumVector Boolean Integer</TypeKeywords>
+		<RelatedFunctions>member isMember member isInside isIdentical</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>inside key value index</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples searches the Vector for the specified value.               
+
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define X  #(bit| 1 1 1 1 1 ))    </sc>]]></Expression>
+        <Note><![CDATA[A Vector is defined. ]]></Note>
+        <Returns><![CDATA[#&#60BitVector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc> (inside 0 X)       </sc>]]></Expression>
+        <Note><![CDATA[0 is not inside the Vector. ]]></Note>
+        <Returns><![CDATA[false  ]]></Returns>
+        <Expression><![CDATA[ <sc> (inside  1 X)       </sc>]]></Expression>
+        <Note><![CDATA[The index of of the first value found in the Vector is returned.]]></Note>
+        <Returns><![CDATA[0]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

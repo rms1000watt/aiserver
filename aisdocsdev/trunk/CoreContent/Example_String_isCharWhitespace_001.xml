@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example String isCharWhitespace  001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isCharWhitespace  </FunctionKeywords>
+		<TypeKeywords>Character String Symbol Vector BitVector ByteVector IntVector
+
+                       FltVector ObjVector Structure Dictionary Directory
+
+                       Matrix NumMatrix Integer Float Number Complex</TypeKeywords>
+		<RelatedFunctions>isType isChar isCharAlphabetic isCharAlphanumeric
+
+                          isCharName isCharNumeric isCharLowercase isCharUppercase
+
+                          isString isText </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>Character Alphabetic Object Uppercase Lowercase Name
+                       Underscore Numeric Alphanumeric Name Whitespace</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples check if the   object is is made up of whitespace
+                  characters. If it is,  the function returns true, otherwise, it returns false.
+ 
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(isCharWhitespace  #\tab)  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>(isCharWhitespace  "ABC") </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ false ]]></Returns>
+        <Expression><![CDATA[ <sc>(isCharWhitespace #\return) </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ true ]]></Returns>
+        <Expression><![CDATA[ <sc>(isCharWhitespace "   ")</sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ true ]]></Returns>
+        <Expression><![CDATA[ <sc>(isCharWhitespace  #&#60Dictionary 47917&#62) </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ false ]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

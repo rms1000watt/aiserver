@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Symbol downcase 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>downcase</FunctionKeywords>
+		<TypeKeywords>Symbol Character</TypeKeywords>
+		<RelatedFunctions>upcase</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>upcase downcase character</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples converts all uppercase characters into
+
+                  lowercase characters.  
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(downcase  A:) </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[a:]]></Returns>
+        <Expression><![CDATA[ <sc>(downcase  'Hello)  </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ 'hello ]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

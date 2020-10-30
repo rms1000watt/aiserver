@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example String substringCiEQ 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>substringCiEQ</FunctionKeywords>
+		<TypeKeywords>String Integer</TypeKeywords>
+		<RelatedFunctions>substringCiNE substringCiGT substringCiLT substringCiGE substringCiLE</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare string equal boolean case-insensitive substring</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>substringCiEQ</b> function to compare two substrings and return
+
+                  the Boolean value, true or false. In these examples, a case-insensitive comparison
+                  is done with the substrings.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc> (define X "Central Park")  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[Central Park ]]></Returns>
+        <Expression><![CDATA[ <sc> (define Y "Jurassic Park")  </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[Jurassic Park ]]></Returns>
+        <Expression><![CDATA[ <sc>(substringCiEQ  X 8 11 Y 9 12 )   </sc>]]></Expression>
+        <Note><![CDATA[Compares "Park" in X and "Park" in Y. ]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

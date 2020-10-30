@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Context globalBinding 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>globalBinding</FunctionKeywords>
+		<TypeKeywords>Lambda  ObjVector Integer Symbol</TypeKeywords>
+		<RelatedFunctions> getSymbolTable getGlobalValue </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>global symbol value binding</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ <p>The <b>globalBinding</b> function returns the Symbol name for the corresponding value. </p>
+     ]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[<sc>(define foo 22)    </sc>]]></Expression>
+        <Note><![CDATA[The integer, "22", is assigned to the Symbol, "foo".]]></Note>
+        <Returns><![CDATA[22]]></Returns>
+  	    <Expression><![CDATA[<sc> 
+(globalBinding 22)   </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[foo]]></Returns>
+  	    <Expression><![CDATA[<sc>(define apple "granny smith")    </sc>]]></Expression>
+        <Note><![CDATA[The string, "granny smith", is assigned to the Symbol, "apple".]]></Note>
+        <Returns><![CDATA[granny smith]]></Returns>
+  	    <Expression><![CDATA[<sc> (globalBinding "granny smith")   </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[apple]]></Returns>
+        <Hints><![CDATA[<p>  Because global values are not unique it is possible to have more than one 
+          symbol in the symbol table that has the same global value.  The <b>globalBinding</b>
+          function returns the first match in the symbol table.</p>
+         <p><b> (define mackintosh "apple")          </b></p>
+         <p><b> (define gala "apple")               </b></p>
+          <p><b> (globalBinding "apple") <blockquote><b>Returns:</b> gala</blockquote>               </b></p>
+]]></Hints>
+   </Syntax>
+</Example>

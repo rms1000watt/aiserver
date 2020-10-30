@@ -1,0 +1,30 @@
+ais/docs/ConfigurationNotes.txt
+
+CHANGE HISTORY
+Version	Date	 Who	Change
+1.0052	12/20/04 tlw	Add initialization steps.
+
+Initialization Steps
+--------------------
+ 1.	Add the following path to your Path environment variable: C:\ais\bin.  Modify this path
+	if your ais folder is in a different location. 
+ 2.	In the beginning, the global configuration parameters are set to their default values.
+	The initialization files aisinstall.ini and ais.ini appear in install folder (the folder
+	containing the AIS executable).  The application-specific initialization file, context.ini,
+	appears in the application's working directory.  This working directory is the folder
+	holding the startup file (usually astartup.sl).
+ 3.	The aisinstall.ini file is called to set the global configuration parameters as well as
+	selected the server-wide context-specific parameters.  This file holds the parameter
+	settings when the AIS system was installed.  Do not modify this file.
+ 4.  The ais.ini file is then read to override selected parameters set in the aisinstall.ini
+	file.  This file contains the configuration settings tailored to this server.  Put
+	modifications to the standard global settings here.  It is OK to modify the values, but
+	the configuration names may not be modified.
+ 5.	Application specific parameters are set in the context.ini file found in the application's
+	working directory (the directory holding the astartup.sl file for this context).
+ 6.  The startup file is scanned for entries of the form ;#parameter=value.  These entries
+	override the settings established in the context.ini file. 
+
+
+Consult the documentation in the .ini files for more information.
+

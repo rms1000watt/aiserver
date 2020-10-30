@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Document SYSTEM "../DTD/Document.dtd">
+<Document>
+	<KnowledgeBase>
+	    <Title>AIS RefGuide Reference Guide</Title>
+		<Topic>AIS RefGuide</Topic>
+		<SubTopic>Reference Guide</SubTopic>
+		<HumanKeywords>Reference Guide aisRefGuide Documentation</HumanKeywords>
+	</KnowledgeBase>
+	<Essay>Essay_RefGuide_Introduction</Essay>
+	<Essay>Essay_RefGuide_Users_Guide</Essay>
+    <Essay>Essay_RefGuide_Ontology_Examples</Essay>
+</Document>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Function defmethod 016</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>defmethod</FunctionKeywords>
+		<TypeKeywords>   Symbol Dictionary </TypeKeywords>
+		<RelatedFunctions>addMethod send methodsOf</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>method message messageName</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[<p> This example defines a method named <b>evalFun</b> that is invoked when the Function  
+                 type receives a <b>eval</b>   message.  The <b>evalFun</b> method takes function with a single parameter, 
+                 coerces the parameter to an integer and returns the result after evaluating the function.  </p>
+	]]></Description>
+	<Syntax>
+	<Expression><![CDATA[<sc>(defmethod  Function:  eval (fname arg)  (fname (integer arg) ) )   </sc>]]></Expression>  
+    <Note><![CDATA[ First Define the evalFun  method:]]></Note> 
+    <Returns><![CDATA[ #&#60Lambda 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(send eval:  add1 96.1 )              <sc> ]]></Expression>
+    <Note><![CDATA[If the Function type is sent the eval message, the Lambda created by the defmethod macro is invoked 
+          to return evaluate the function after it converts the argument to an Integer. To 
+         invoke the Lambda that responds to the eval message, issue the following statement:]]></Note>
+    <Returns><![CDATA[97]]></Returns>
+    <Expression><![CDATA[<sc>(eval: add1 96.1 )                   <sc> ]]></Expression>
+    <Note><![CDATA[Alternatively, the Lambda may be invoked using the following syntax:]]></Note>
+    <Returns><![CDATA[97]]></Returns>
+   <Hints><![CDATA[ 
+        <p>To view the entry in the methods Dictionary created by the defmethod function, 
+           you can use the method name to access the directory entry by </p>
+        <p><b> #&#60Dictionary 123456&#62[methodName:] or </b></p>
+        <p> To determine the number of assigned methods:</p>
+        <p><b>(length  (methodsOf Function: ))</b></p>        
+        <p>To access the nth method name:</p>
+        <p><b>(methodsOf Function: )[n  0]</b></p>
+]]></Hints>
+</Syntax>
+</Example>

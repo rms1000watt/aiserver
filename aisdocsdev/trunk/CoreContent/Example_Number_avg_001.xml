@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number avg 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>avg</FunctionKeywords>
+		<TypeKeywords>Number Integer</TypeKeywords>
+		<RelatedFunctions>  </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>average mean  </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[  <p> The <b>avg</b> function returns the average of all the numbers in the argument list. </p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+(avg #(1.5 2 3.25 4))   </sc>   ]]></Expression>
+        <Note><![CDATA[The average of the Integer arguments is returned.]]></Note>
+        <Returns><![CDATA[2.6875]]></Returns>
+        <Expression><![CDATA[ <sc>(avg #(1.5 2 3.25 4) .5987 )   </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[2.26974]]></Returns>
+        <Hints><![CDATA[none
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

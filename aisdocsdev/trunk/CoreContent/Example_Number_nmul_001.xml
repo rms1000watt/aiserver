@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number nmul 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>nmul</FunctionKeywords>
+		<TypeKeywords>Integer Boolean Number</TypeKeywords>
+		<RelatedFunctions>nadd nsub ndiv nmod</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>number arithmetic multiplication   operators</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>nmul</b> function to multiply two Number objects and return
+
+
+
+
+
+
+
+
+                 the resulting number value.
+Money values are also considered Number objects.
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+(nmul  2.1  -4.1)                 </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[-8.61]]></Returns>
+ 	    <Expression><![CDATA[ <sc>
+(nmul  $2.1  $-4.1)    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[-8.61]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

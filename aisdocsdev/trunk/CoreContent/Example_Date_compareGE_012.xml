@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Date compareGE 012</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compareGE</FunctionKeywords>
+		<TypeKeywords> Date</TypeKeywords>
+		<RelatedFunctions>compare compareEQ compareNE compareGT compareLT  compareLE</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare date greater equal</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>compareGE</b> function to compare two objects and return
+
+
+
+
+
+
+
+
+
+
+
+
+                  the Boolean value true if the first argument is greater than or equal to the
+                  second argument or false, if otherwise.  
+	]]></Description>
+	<Syntax>
+         <Expression><![CDATA[ <sc>(compareGE #Jan,1,1992 #Jan,1,1993 )                      </sc>]]></Expression>  
+        <Note><![CDATA[ none]]></Note> 
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(compareGE #Jan,2,1993 #Jan,1,1993 )                      </sc>]]></Expression>  
+        <Note><![CDATA[ none]]></Note> 
+        <Returns><![CDATA[true]]></Returns>
+         <Expression><![CDATA[ <sc>(compareGE #Jan,2,1993 #Jan,2,1993 )                          </sc>]]></Expression>  
+        <Note><![CDATA[ none]]></Note> 
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

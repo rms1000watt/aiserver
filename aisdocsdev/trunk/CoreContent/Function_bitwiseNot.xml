@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>bitwiseNot</Title>
+		<FunctionName>bitwiseNot</FunctionName>
+		<FunctionType>Macro</FunctionType>
+		<ArgumentTypes>Integer Character Boolean ByteVector</ArgumentTypes>
+		<DataType>Integer </DataType>
+		<RelatedFunctions>binaryNot binaryNand</RelatedFunctions>
+        <RelatedVMInstructions> none   </RelatedVMInstructions>
+		<HumanKeywords>numerical not bitwise macro</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>bitwiseNot</b> Macro performs a numeric bitwise not of the argument 
+            expression, returning the value of the result as a binary Integer.</p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+	       <p> The <b>bitwiseNot</b> Macro performs a numeric bitwise not of the argument 
+            expression, returning the value of the result as a binary Integer.</p>
+           <p>This function also operates on the individual bits in a ByteVector or BitVector, 
+            returning the altered Vector. The first argument must be either a ByteVector or a 
+            BitVector. Any other Vector arguments must be of the same type. All scalar arguments 
+            must be either 0 or 1. </p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>bitwiseNot</b> macro results in the following substitution. Use whenever a 
+          bitwise complement is required.</p>
+        <p><b>(bitwiseNand exp exp)</b></p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p>(bitwiseNot exp ...)</p>]]></Expression>
+		<Argument>
+		  <Name>exp ...</Name>
+		  <Note><![CDATA[
+		  <p>Any expression.</p>
+          ]]></Note>
+		  <AISTypes>Integer Character Boolean </AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>Returns the result of the bitwise not operation.
+        </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

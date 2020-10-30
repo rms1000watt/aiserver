@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example NumVector objectToNumVector 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>objectToNumVector</FunctionKeywords>
+		<TypeKeywords>Vector NumVector FloatVector Integer</TypeKeywords>
+		<RelatedFunctions>new objectToVector</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>convert numvector vector elements dimensional planes</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples show how different AIS Objects are converted into
+
+                  Number Vectors. The return values after each function shows the contents
+
+                  of the Vectors in each function after using the <b>display</b> command.
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq X (new Vector: number: 1 3.0))        </sc>]]></Expression>
+        <Note><![CDATA[Converts a NumVector into another NumVector]]></Note>
+        <Returns><![CDATA[ #(num| 3.0)]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Y (objectToNumVector X))            </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[ #(num| 3.0)]]></Returns>
+        <Expression><![CDATA[ <sc>(setq X (new Vector: 1 3.0))        </sc>]]></Expression>
+        <Note><![CDATA[Converts a Vector into a NumVector]]></Note>
+        <Returns><![CDATA[ #(3.0)]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Y (objectToNumVector X))            </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[ #(num| 3.0)]]></Returns>
+        <Expression><![CDATA[ <sc>(setq X (new Matrix: 2 1 2 3.0 #("ABC" "DEF")))           </sc>]]></Expression>
+        <Note><![CDATA[Converts a Matrix to NumVector]]></Note>
+        <Returns><![CDATA[#(mat[1 2]| 3.0 #("ABC" "DEF" ) )]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Y (objectToNumVector X))            </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[  #(num| 3.0 0.0) ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq X (new Matrix: number: 2 2 3 1.0 2.0 3.0 4.0 5.0 6.0))</sc>]]></Expression>
+        <Note><![CDATA[Converts a NumMatrix to NumVector]]></Note>
+        <Returns><![CDATA[#(nummat[2 3]| 1.0 2.0 3.0 4.0 5.0 6.0 )]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Y (objectToNumVector X))            </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[  #(num| 1.0 2.0 3.0 4.0 5.0 6.0)]]></Returns>
+        <Expression><![CDATA[ <sc>(setq X (new Vector: bit: 12 1 0 1 1 0 1 0 0 1 1 0 1))            </sc>]]></Expression>
+        <Note><![CDATA[Converts a Bit Vector to NumVector]]></Note>
+        <Returns><![CDATA[#(bit| 1 0 1 1 0 1 0 0 1 1 0 1 )]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Y (objectToNumVector X))            </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[  #(num| 1 0 1 1 0 1 0 0 1 1 0 1 ) ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq X (new Vector: byte: 5 255 32 16 8 4))                </sc>]]></Expression>
+        <Note><![CDATA[Converts a Byte Vector to NumVector]]></Note>
+        <Returns><![CDATA[  ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Y (objectToNumVector X))            </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[ #(num| 255.0 32.0 16.0 8.0 4.0 )]]></Returns>
+        <Expression><![CDATA[ <sc>(setq X (new Vector: integer: 5 255 32 16 8 4))</sc>]]></Expression>
+        <Note><![CDATA[Converts an Integer Vector to NumVector]]></Note>
+        <Returns><![CDATA[  #(int| 255 32 16 8 4)]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Y (objectToNumVector X))            </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#(num| 255 32 16 8 4)]]></Returns>
+        <Expression><![CDATA[ <sc>(setq X (new Vector: float: 5 -255.0 32.5 16.0 8.0 4.0))                  </sc>]]></Expression>
+        <Note><![CDATA[Converts a Float Vector to NumVector]]></Note>
+        <Returns><![CDATA[ #(float| -255.0 32.5 16.0 8.0 4.0 )]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Y (objectToNumVector X))            </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#(num| -255.0 32.5 16.0 8.0 4.0 )]]></Returns>
+        <Expression><![CDATA[ <sc>(setq X (new Vector: object: 3 4.0 #{A: 1 B: 2} #(1 2)))                   </sc>]]></Expression>
+        <Note><![CDATA[Converts an Object Vector to NumVector]]></Note>
+        <Returns><![CDATA[#(obj| #void #{A: 1 B: 2} #(1 2 ) )]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Y (objectToNumVector X))            </sc>]]></Expression>
+        <Note><![CDATA[Elements must be an object, not an immediate type.]]></Note>
+        <Returns><![CDATA[#(num| 0.0 0.0 0.0 )]]></Returns>
+        <Expression><![CDATA[ <sc>(setq X '(#(1 2 3) #(4 5) #(6 7 8)))                  </sc>]]></Expression>
+        <Note><![CDATA[Converts a Pair  to NumVector]]></Note>
+        <Returns><![CDATA[ (#(1 2 3 ) #(4 5 ) #(6 7 8 ))]]></Returns>
+        <Expression><![CDATA[ <sc> (setq Y (objectToNumVector X))    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#(num| 0.0 0.0 0.0 )]]></Returns>
+        <Expression><![CDATA[ <sc>(setq X (new Structure: A: 22 B: 34 . 3))               </sc>]]></Expression>
+        <Note><![CDATA[Converts a Structure  to NumVector]]></Note>
+        <Returns><![CDATA[ #{A: 22 B: 34 . 3}]]></Returns>
+        <Expression><![CDATA[ <sc> (setq Y (objectToNumVector X))    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#(num| 22.0 34.0 )]]></Returns>
+        <Expression><![CDATA[ <sc>(setq X (new Dictionary: A:  22  B:  34)) </sc>]]></Expression>
+        <Note><![CDATA[Converts a Dictionary  to NumVector]]></Note>
+        <Returns><![CDATA[ #{dic|| A 22 B 34}]]></Returns>
+        <Expression><![CDATA[ <sc> (setq Y (objectToNumVector X))    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#(num| 22.0 34.0 )]]></Returns>
+        <Expression><![CDATA[ <sc>(setq X (new Directory: #Jan,1,1996  2  #Feb,14,1996  3))</sc>]]></Expression>
+        <Note><![CDATA[Converts a Directory  to NumVector]]></Note>
+        <Returns><![CDATA[#{dir|| #Jan,1,1996 2 #Feb,14,1996 3}]]></Returns>
+        <Expression><![CDATA[ <sc> (setq Y (objectToNumVector X))    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#(num| 2.0 3.0 )]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Brick compare 019</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compare</FunctionKeywords>
+		<TypeKeywords>Brick</TypeKeywords>
+		<RelatedFunctions>  compareEQ compareNE compareGT compareGE compareLT  compareLE </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>compare</b> functions to do a 
+                  case-sensitive comparison of two objects of the same type.  An Integer value is returned.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define nameList  (new Brick: 2 Name:Object:3))</sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60Brick 123456&#62  ]]></Returns>
+        <Expression><![CDATA[ <sc>(define customerList  (new Brick: 2 Name:Object:1))      </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60Brick 234567&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(compare nameList customerList)   </sc>]]></Expression>  
+        <Note><![CDATA[The first Brick has greater value than the second Brick.]]></Note> 
+        <Returns><![CDATA[1]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

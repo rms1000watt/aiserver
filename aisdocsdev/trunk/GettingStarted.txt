@@ -1,0 +1,151 @@
+RefGuide/GettingStarted.txt
+
+								RefGuide Getting Started
+A brief guide to setting up RefGuide after checking out this project.
+
+History
+Ver		Date		Who		Description
+1.0060	5/1/2005	tlw		First Cut
+							-----------------------------------
+
+Notes:
+ 1. This note may be replaced by a RefGuide document on RefGuide at some point in the future.
+
+---------------------------------------------------------------------------------------------
+
+Installation:
+ 1. Check out the entire _RefGuide project from StarTeam into a folder named refguide.
+
+ 2. If not already constructed, add the following subdirectories to refguide:
+		Bin		- Holds the AisRefGuide.db repository
+		wwwroot	- Holds the generated html documentation pages
+
+ 3. Rename CoreContent folder to CoreContentAll.  Add a new subdirectory named CoreContent.
+
+ 4. Copy the following files from CoreContentAll into CoreContent:
+		AStartup.sl
+		Page_Help_Menu.html
+		Template_Document.html
+		Template_Essay.html
+
+ 5. Copy the document file and the files that it depends upon from CoreContentAll to
+    CoreContent.  For example, if modifying Document_Agent_Message_Protocol.html, copy this
+    document and the following files that it depends upon from CoreContentAll into
+    CoreContent:
+		Document_Agent_Message_Protocol.html
+		Essay_AMP_Messages.html
+		Essay_Submitting_AMP_Messages.html
+
+ 6. Click on Astartup.sl in the refguide directory to start up AIS.
+	Initialize RefGuide as follows:
+		Open the Cabinets Tab in the session form.
+		Right-click on the RefGuide cabinet. Select Import. Import Source/RefGuide.sl
+
+7. Click on the CoreContent cabinet in the cabinets tab.  The contents of this cabinet will
+	appear in the right hand text pane. Double-click on the document to be edited. Edit the
+	document as needed.
+
+ 8. Return to the console tab and run RefGuide by entering "(aisRefGuide)" in the Console
+    command text area.  This command will generate a set of HTML document files in wwwroot.
+    Inspect to make sure that the HTML documents are generated properly.  You do not need to
+    run "(aisRefGuide.exportEmbeddedOntology ...)" because you are not extracting any
+    embedded documentation from a source file.  The process of extracting reference
+    documentation from other files is not described here.
+
+ 9. Repeat steps 7 and 8 as needed.  Close up AIS.
+
+10. Rename CoreContent to MyCoreContent and rename CoreContentAll to CoreContent.  Copy the
+	modified files from MyCoreContent to CoreContent. Restart AIS and run (aisRefGuide)
+    again. This will take a while.  Fix any errors.
+
+11. Copy the files from wwwroot into your ais/docs/onlinedocs directory.  Your online
+    documents are now updated!
+
+---------------------------------------------------------------------------------------------
+
+Converting HTML into Document and Essay Objects:
+
+1. Find the  HTML Document to be converted. 
+The list of AIS Documents are found in the Slider of the AIS Home Page in the old OnlineDocs
+folder.  Their corresponding HTML Document is found in the ais Folder under the OnlineDocs
+(old) subfolder.  Usually, the HTML Document Title is in the format  Title_src.htm.
+
+2. Convert the HTML Document into a Document as shown in step 3 and Essay Ontology Object as
+shown in step 5.
+
+3. To make a Document Ontology Object, go to the root of the _refGuide folder. Open the file
+DocOntology_Template.html. This is the template for your Document Ontology Object.
+
+The Document  Ontology Template is divided into KnowledgeBase and the list of Essays.  The
+KnowledgeBase division is composed of the Document Title, Topic, Subtopic and a list of
+Keywords.  These keywords (termed as HumanKeywords) are used for searching purposes. The list
+of Essays is composed of topical subdivisions of  the document.
+
+4.  Fill in the Document Ontology Template with its corresponding values from the HTML
+Document.
+a. Fill in the KnoweldgeBase tags.
+The Title in the Slider is the Document Title.  The Titles in the Sliders are  grouped under
+different headings.  These Headings are the DocumentTopic.   Just fill in the appropriate
+SubTopic and  HumanKeywords tags. 
+
+b. Fill in the Essay List
+In the HTML Document under each <div> tags  are <h1> headers tags.  The <h1> Headersin the
+HTML Document will serve as the Essay Titles for the Essay tags.
+
+<html><head></head><body>
+<?xml version="1.0" encoding="UTF-8"?>
+<Document>
+	<KnowledgeBase>
+	         <Title>Document Title</Title>
+                     <Topic>Document Topic</Topic>
+	        <SubTopic>Document Subtopic</SubTopic>
+	        <HumanKeywords>searchword1 searchword2 ...  </HumanKeywords>
+	</KnowledgeBase>
+	<Essay>Essay1</Essay>
+             <Essay>Essay2</Essay>
+             <Essay>Essay3</Essay>
+</Document>
+</body></html>
+
+c.  Save the Document Ontology Object as Document_DocumentTitle.html.
+
+5.  To make the Essay Ontology Objects found in the Essay List in the Document Ontology
+Object, go to the root of the _refGuide folder. Open the file EssayOntology_Template.html.
+This is thetemplate for your Essay Ontology Object.
+
+The Essay Ontology is divided into KnowledgeBase and Sections.  The KnowledgeBase division is
+composed of the Essay Title, Topic, Subtopic and a list of Kyeowrds.  These kewords (termed
+as HumanKeywords) are used to searching purposes. The Sections are further divided into the
+Section Heading and Descripsion.
+
+6.  Fill in the Essay Ontology Template with its corresponding values from the HTML Document.
+
+a.  a. Fill in the KnoweldgeBase tags
+The Title is the Essay Title in the Essay List in the Document Ontology.  The Topic is the
+same as the Document Topic also in the Document Ontology.  Just fill in the appropriate
+SubTopic and HumanKeywords tags. 
+
+b.  Fill in the Sections
+Under the <div> and <h1> tags are the <h2> tags.  The Section Title is the Text between the
+<h2> tag. The contents under this tag form the Section Description.
+
+<html><head></head><body>
+<?xml version="1.0" encoding="UTF-8"?>
+<Essay>
+<KnowledgeBase>
+    <Title>Essay Title</Title>
+    <Topic>Document Topic   </Topic>
+    <SubTopic> Essay SubTopic   </SubTopic>
+    <HumanKeywords> keyword1 keyword2 keyword3 ....   </HumanKeywords>
+</KnowledgeBase>
+<Section>
+    <Heading> Section Title </Heading>
+    <Description>  
+         <div class="h2section" id="Section Title">
+         Section Contents
+         </div>
+     </Description>
+<Section>
+</Essay>
+
+c. Save the Document Ontology Object as Essay_EssayTitle.html.

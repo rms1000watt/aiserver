@@ -1,0 +1,7 @@
+"Parameter"	"Value"
+"Generations"	5
+"MaxTime"	0.5
+"ModelName"	"regressMVLALPS"
+"HaltingScore"	0
+"SVMKernelID"	"composite"
+"NumChampions"	25

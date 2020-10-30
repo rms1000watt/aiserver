@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example BitVector member 008</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>member</FunctionKeywords>
+		<TypeKeywords>   BitVector Boolean Integer
+
+
+</TypeKeywords>
+		<RelatedFunctions> inside isInside isMember</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>Vector Equal Analytic Object </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples check if the  object is a member of the BitVector using the
+
+
+
+
+
+
+
+                  <b>member</b> function.
+If the object is a member of the BitVector, its
+
+
+
+
+                  index value will be returned, if not the Boolean, false will be returned.
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define X #(bit| 1 1 1 1 1 ) )     </sc>]]></Expression>
+        <Note><![CDATA[A BitVector is defined. ]]></Note>
+        <Returns><![CDATA[#&#60BitVector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(member 0 X)              </sc>]]></Expression>
+        <Note><![CDATA[The bit, 0, is a not a member contained in the Vector. ]]></Note>
+        <Returns><![CDATA[false ]]></Returns>
+        <Expression><![CDATA[ <sc>(member 1 X)                  </sc>]]></Expression>
+        <Note><![CDATA[The bit, 1, is a member contained in the Vector. Its index is returned. ]]></Note>
+        <Returns><![CDATA[1]]></Returns>
+        <Hints><![CDATA[none  ]]></Hints>
+   </Syntax>
+</Example>

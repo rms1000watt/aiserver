@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example BitVector cdr 010</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>cdr</FunctionKeywords>
+		<TypeKeywords>BitVector Structure</TypeKeywords>
+		<RelatedFunctions>ref refValues refAttributes setCdr setLastCdr</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>tail ref index</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows how the the <b>cdr</b>
+                  function accesses the tail value of a Vector.
+
+
+
+
+                 
+
+
+
+	]]></Description>
+	<Syntax>
+  	  <Expression><![CDATA[ <sc>(define BitSet #(bit| 1 1 1 1 1  . #{A: 1 B: 0}))</sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60BitVector 188141&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq X (cdr BitSet)) </sc>]]></Expression>
+        <Note><![CDATA[The cdr value is assigned to the variable TeacherRec.]]></Note>
+        <Returns><![CDATA[#&#60Structure 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc> (display BitSet)    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[ #{A: 1 B: 0} ]]></Returns>
+        <Expression><![CDATA[ <sc>BitSet[0]</sc>]]></Expression>
+        <Note><![CDATA[Displays the value of the Vector with index 0.]]></Note>
+        <Returns><![CDATA[1]]></Returns>
+        <Expression><![CDATA[ <sc>BitSet[1]</sc>]]></Expression>
+        <Note><![CDATA[Displays the value of the Vector with index 1.]]></Note> 
+        <Returns><![CDATA[0]]></Returns>
+        <Hints><![CDATA[The cdr is not reachable by the [] operator. ]]></Hints>
+   	</Syntax>
+</Example>

@@ -1,0 +1,7 @@
+<services>
+  <service name="download_url">
+    <param name="host">dev.mysql.com</param>
+    <param name="protocol">http</param>
+    <param name="path">/get/Downloads/MySQL-5.1/mysql-5.1.50.tar.gz/from/http://gd.tuwien.ac.at/db/mysql/</param>
+  </service>
+</services>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example ObjectRepository ref 034</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>ref</FunctionKeywords>
+		<TypeKeywords>ObjectRepository</TypeKeywords>
+		<RelatedFunctions> setq   </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>ref reference set position</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows the <b>ref</b> function do a
+                  <b>DIRECT FRAME RETRIEVAL.</b>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq gor (new ObjectRepository: "mice.db"))      </sc>]]></Expression>
+        <Note><![CDATA[Create a new ObjectRepository.]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 197815&#62 ]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq frame1 (setq gor frame: #void "Hello world"))       </sc>]]></Expression>  
+        <Note><![CDATA[Save a value in the next available frame. (see the Direct Frame Storage feature of the setq function).]]></Note> 
+        <Returns><![CDATA[ 20000001.0 ]]></Returns>
+ 	    <Expression><![CDATA[ <sc>(setq frame2 (setq gor frame: #void "Goodbye world"))      </sc>]]></Expression>  
+        <Note><![CDATA[Save a value in the next available frame. (see the Direct Frame Storage feature of the setq function). ]]></Note> 
+        <Returns><![CDATA[10000001.0]]></Returns>
+ 	    <Expression><![CDATA[ <sc>(ref gor frame: frame1)      </sc>]]></Expression>  
+        <Note><![CDATA[Retrieves the value of the frame.]]></Note> 
+        <Returns><![CDATA[Hello world]]></Returns>
+ 	    <Expression><![CDATA[ <sc>(ref gor frame: frame2)      </sc>]]></Expression>  
+        <Note><![CDATA[Retrives the value of the frame.]]></Note> 
+        <Returns><![CDATA[Goodbye world]]></Returns>
+ 	    <Expression><![CDATA[ <sc>(setq gor[2] "Hey")      </sc>]]></Expression>  
+        <Note><![CDATA[Save a value ("Hey") using key:2.(This is a high level use of the setq operation). ]]></Note> 
+        <Returns><![CDATA[#&#60ObjectRepository 197815&#62]]></Returns>
+	    <Expression><![CDATA[ <sc>(ref gor 2)      </sc>]]></Expression>  
+        <Note><![CDATA[Returns "Hey" ; Referenced the value using key. This is a high level use of the ref operation)]]></Note> 
+        <Returns><![CDATA[Hey]]></Returns>
+	    <Expression><![CDATA[ <sc>(setq frame3 (inspect gor frame: 2))      </sc>]]></Expression>  
+        <Note><![CDATA[Query the Object Repository for the frameid (using inspect command) associated with key 2. ]]></Note> 
+        <Returns><![CDATA[#&#60ObjectRepository 197815&#62]]></Returns>
+	    <Expression><![CDATA[ <sc>(ref gor frame: frame3)      </sc>]]></Expression>  
+        <Note><![CDATA[Returns the newly set value located in frame3.]]></Note> 
+        <Returns><![CDATA[Hello world]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

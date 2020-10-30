@@ -1,0 +1,5 @@
+/etc/passwd
+/etc/shadow   
+/etc/fstab
+/etc/sudoers
+/etc/mysql/my.cnf

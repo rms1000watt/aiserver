@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Matrix mapc 005</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>mapc</FunctionKeywords>
+		<TypeKeywords>Matrix</TypeKeywords>
+		<RelatedFunctions>map </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>map mapc copy process</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ The following example will define a user function, <b>makePlural</b>, 
+
+
+
+
+                  that will take an argument (which is a Matrix value).
+
+                  The <b>mapc</b> function then applies each Matrix value
+
+
+
+                  as argument to the function <b>makePlural</b>.            
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define Fruits #(mat| "apple" "orange" "lemon")    )</sc>]]></Expression>
+        <Note><![CDATA[Define a Matrix containing various fruit names:]]></Note>
+        <Returns><![CDATA[#&#60Matrix 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(defun makePlural (V) (append V "s"))  </sc>]]></Expression>
+        <Note><![CDATA[Define a function that takes a single Matrix argument and converts each Matrix member to plural.]]></Note>
+        <Returns><![CDATA[#&#60Lambda 123456&#62]]></Returns>
+  <Expression><![CDATA[ <sc>(setq many (mapc makePlural Fruits) )    </sc>]]></Expression>
+        <Note><![CDATA[Convert each of the fruits to the plural form:]]></Note>
+        <Returns><![CDATA[lemons]]></Returns>
+        <Hints><![CDATA[
+               <p>The <b>mapc</b> function does not produce a duplicate Matrix as in 
+
+               the <b>map</b> function.</p>
+      ]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number random 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>random</FunctionKeywords>
+		<TypeKeywords>  Number Integer   </TypeKeywords>
+		<RelatedFunctions>randomize srandom</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>random number generator range </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ <p> This example shows how the <b>random</b> function generates a 
+                 random number whose value is limited by the user-specified range.</p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(random 3) </sc>   ]]></Expression>
+        <Note><![CDATA[Returns a random number less than 3.]]></Note>
+        <Returns><![CDATA[0.07139999999708 ]]></Returns>
+	    <Expression><![CDATA[ <sc>(random 3) </sc>   ]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[0.6384000000035]]></Returns>
+	    <Expression><![CDATA[ <sc>(random 3) </sc>   ]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[2.299199999979 ]]></Returns>
+        <Hints><![CDATA[none
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

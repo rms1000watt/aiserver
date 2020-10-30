@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Dictionary isInside 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isInside</FunctionKeywords>
+		<TypeKeywords>    Dictionary Boolean
+
+
+</TypeKeywords>
+		<RelatedFunctions>compareEQ comparison isEqual isIdentical member isMember inside </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>Dictionary Equal Analytic Object </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples check if the key is a member of the Dictionaries using the
+
+
+                  <b>isInside</b> function.
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(isInside  Address:  #{dic| Name: "John Doe"  SSN: 556-12-5151})                 </sc>]]></Expression>
+        <Note><![CDATA[Address: is not a key contained the Dictionary.]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(isInside  Name:  #{dic| Name: "John Doe"  SSN: 556-12-5151})         </sc>]]></Expression>
+        <Note><![CDATA[Name: is a key contained in the Dictionary. ]]></Note>
+        <Returns><![CDATA[true ]]></Returns>
+        <Hints><![CDATA[none  ]]></Hints>
+   </Syntax>
+</Example>

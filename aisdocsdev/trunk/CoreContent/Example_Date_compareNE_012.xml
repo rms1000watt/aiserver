@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Date compareNE 012</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compareNE</FunctionKeywords>
+		<TypeKeywords> Date</TypeKeywords>
+		<RelatedFunctions>compare compareEQ compareGT compareGE compareLT  compareLE</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare date equal </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>compareNE</b> function to compare two objects and return
+
+
+
+
+
+
+
+
+
+
+
+
+                  the Boolean value, true or false. The  values of each objects are compared
+
+
+
+
+
+
+
+
+
+                  to determine whether the objects are equal or not.
+ 
+	]]></Description>
+	<Syntax>
+         <Expression><![CDATA[ <sc>(compareNE #Jan,1,1992 #Jan,1,1993 )                      </sc>]]></Expression>  
+        <Note><![CDATA[ none]]></Note> 
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>(compareNE #Jan,2,1993 #Jan,1,1993 )                      </sc>]]></Expression>  
+        <Note><![CDATA[ none]]></Note> 
+        <Returns><![CDATA[true]]></Returns>
+         <Expression><![CDATA[ <sc>(compareNE #Jan,2,1993 #Jan,2,1993 )                          </sc>]]></Expression>  
+        <Note><![CDATA[ none]]></Note> 
+        <Returns><![CDATA[false]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

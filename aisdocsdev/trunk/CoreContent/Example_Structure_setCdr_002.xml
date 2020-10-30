@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure setCdr 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>setCdr</FunctionKeywords>
+		<TypeKeywords>Structure</TypeKeywords>
+		<RelatedFunctions>ref refValues refAttributes cdr</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>tail ref index cdr setCdr</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples sets the tail key-binding value
+
+
+
+                  of the defined Structure using the <b>setCdr</b> function.  The <b>cdr</b>
+                  expression is an Integer.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setCdr  #{A:  2 B: "hello"}  (*  3  4)) </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60Structure 188141&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc> (display #&#60Structure 188141&#62)    </sc>]]></Expression>
+        <Note><![CDATA[Displays the contents of the modified structure.]]></Note>
+        <Returns><![CDATA[#{A: 2 B: "hello" . 12} ]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

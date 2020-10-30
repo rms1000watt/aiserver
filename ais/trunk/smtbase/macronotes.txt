@@ -1,0 +1,111 @@
+
+Signatures:
+args: fileID, target, spaceUsageSwitch
+args: fileID, target
+If the spaceUsage switch is true the record is saved to the specified file.
+If the spaceUsage switch if false then the record is not saved and only the
+size of the record that would have been written is returned. 
+If the spaceUsageSwitch is not supplied then it defaults to true.
+This form of the function returns the filespace required to save the object closure.
+
+args: target
+If a argument is passed then the saveObject function will return a Byte Vector 
+containing the record in the same form it would have been written to disk.
+
+args: target, bufferLength, bufferPtr
+This form of the function saves the record into a specified buffer. Normally, this buffer
+is a section of memory not managed by smtbase.
+This form of the function returns the length of the record written into the buffer.
+
+
+
+
+
+
+typedef struct mh
+    {
+        POINTER         fwd;            /*  Pointer to next free handle (free), to data (busy)	*/
+#if MEMTEST
+		unsigned	marker;				/* Marker used in test for overwrite */
+		unsigned		marker2;			/*  Second marker used in test for overwrite */
+#endif
+        struct mh*      back;           /*  Pointer to previous free frame handle (free)		*/
+        struct mh*      next;           /*  Pointer to next allocated block						*/
+        struct mh*      prev;           /*  Pointer to previously allocated block				*/
+        LONG            userSize;       /*  Buffer size as last requested by user (<= true size)*/
+        SHORT	        Frame;          /*  Frame Index For Handle								*/
+        BOLE            Free;           /*  Free Switch (true iff block is free)				*/
+        BOLE            Fixed;          /*  Fixed frame Switch (true iff block is fixed)		*/
+        LONG            data[1];        /*  Data Block											*/
+     }   MHANDLEINFO, *LpMHANDLEINFO;
+
+typedef struct TByteVector
+	{
+	NUM						itsObjectIndex;			/* Index of the object header in the object header array. */
+	TYPE					itsObjectType;			/* Type code of this object header. */
+	SHORT					itsObjectFlag;			/* Type code of this object header. */
+	NUM                     itsMaxItemIndex;        /* Maximum index of items in the array */
+	HMChar                  itsByteArray;           /* HMemory to variable length byte array */
+	TVAL                    itsCdr;                 /* The Lisp tail(cdr) for the Array */
+	NUM                     itsMemoLength;			/* Memoized size of the text (used by appendWriteln function) */
+	LpCHAR					itsImmediatePtr;        /* Pointer to immediate data (if available) */
+	CHAR					itsImmediateSpace[sizeof(NUM)];	/*  Immediate data space used to fill out to _FSmartbase_ObjectHeaderMaxSize. */
+	}TByteVector;
+typedef struct  {
+	CHAR        Char[1];
+	} FMChar, **HMChar;
+	
+#define atHMChar(h,n)       ((*(HMChar)(h))->Char[(n)])
+
+#define ByteArray(tval)     ((LpCHAR)*((TByteVector*)((tval).u.Object))->itsByteArray)
+
+#define ByteVector(tval)    ((TByteVector*)((tval).u.Object))
+	
+#define _HMemoryPtr(h)      (*(char **)(h))
+
+typedef struct  {
+	CHAR        Char[1];
+    } FMemory, **HMemory;
+
+typedef struct  {
+                CHAR        Char[1];
+                } FMChar, **HMChar;
+#define atHMChar(h,n)       ((*(HMChar)(h))->Char[(n)])
+
+#define _HMemoryPtr(h)      (*(char **)(h))
+#define atHMemory(h,n)      ((*(HMemory)(h))->Char[(n)])
+#define TObjectOnDiskPtr(h,n)   ((TObjectOnDisk*)(_HMemoryPtr(h)+n))
+        TobjectOndiskPtr(n,n)   ((TObjectOnDisk*)((*(char **)(h))+n))
+
+#define SIZEOF_TObjectOnDisk    ((NUM)&((TObjectOnDisk*)0)->itsObjectData)
+#define TObjectOnDiskPtr(h,n)   ((TObjectOnDisk*)(_HMemoryPtr(h)+n))
+
+// Reference structure in buffer.
+TObjectOnDiskPtr(anHMemory,usedSize)->ItsVariableLength = ...
+((TObjectOnDisk*)((*(char **)anHMemory)+usedSize))->ItsVariableLength = ...
+
+
+// Pointer to beginning of data in structure
+#define ByteArray(tval)     ((LpCHAR)*((TByteVector*)((tval).u.Object))->itsByteArray)
+pRecordHeader = (OBRECORDHEADER*)ByteArray(Stack(vec)); 
+	      = (OBRECORDHEADER*)((LpCHAR)*((TByteVector*)(Stack(vec).u.Object))->itsByteArray)
+	      = (OBRECORDHEADER*)((LpCHAR)*((TByteVector*)gTP->TvalStack[vec].u.Object))->itsByteArray)
+
+// Pointer to beginning of data in structure
+pRecordHeader = (OBRECORDHEADER*)&ByteArray(Stack(vec))[0];
+              = (OBRECORDHEADER*)&((LpCHAR)*((TByteVector*)(gTP->TvalStack[vec].u.Object))->itsByteArray)[0]
+
+// Pointer to beginning of structure
+#define ByteVector(tval)    ((TByteVector*)((tval).u.Object))
+anHMemory = (HMemory)ByteVector(Stack(vec))->itsByteArray; 
+		  = (HMemory)(TByteVector*)Stack(vec).u.Object->itsByteArray
+	      = (MHemory)(TByteVector*)gTP->TvalStack[vec].u.Object->itsByteArray
+
+// Pointer to data
+aMHandle.fwd = (char*)&atHMemory(anHMemory,usedSize);
+			 = (char*)&atHMemory(anHMemory,usedSize)
+			 = (char*)&((*(HMemory)anHMemory)->Char[usedSize])
+
+FObject_Save(gCP, gTP, saveObject, (HMemory)&aMHandle);
+
+

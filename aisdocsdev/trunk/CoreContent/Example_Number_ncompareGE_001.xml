@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number ncompareGE 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>ncompareGE</FunctionKeywords>
+		<TypeKeywords>Integer Boolean Number</TypeKeywords>
+		<RelatedFunctions> ncompareNE ncompareEQ ncompareGT ncompareLT  ncompareLE</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare  greater  equal number</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>ncompareGE</b> function to compare two Number objects and return
+
+
+
+
+
+
+
+
+                  the Boolean value, true or false.  
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+(ncompareGE 2.1 2.2)          </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+ 	    <Expression><![CDATA[ <sc>
+(ncompareGE -1.5 3.4)</sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(ncompareGE 11 10)           </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

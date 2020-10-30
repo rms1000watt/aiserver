@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>apply</Title>
+		<FunctionName>apply</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+        <ArgumentTypes>Structure Vector Matrix Symbol Pair List FltVector IntVector ShortVector NumVector CpxVector  BitVector </ArgumentTypes>
+        <DataType> Structure Vector Matrix Pair FltVector IntVector NumVector ShortVector BitVector CpxVector NumMatrix </DataType>
+	    <RelatedFunctions>makeStructure defstruct defmethod addMethod</RelatedFunctions>
+        <RelatedVMInstructions> vmvecSetPointers vmsetobjvector  </RelatedVMInstructions>
+		<HumanKeywords>apply functions method</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>apply</b> function invokes a Function using the 
+                 structure, vector, matrix or pair values as arguments. </p>
+          ]]></Description>
+	<Brief>
+	   <Overview-Structure><![CDATA[
+		<p>The <b>apply</b> Function invokes a Function using the structure values as arguments.  
+           The function is invoked and resulting value is returned. This is the same as 
+           (function ...arglist...).</p>
+        ]]></Overview-Structure>
+        <Overview><![CDATA[
+		<p>The <b>apply</b> Function invokes a Function using the Vector values as arguments.  
+           The function is invoked and resulting value is returned. This is the same as 
+           (function ...arglist...).</p>
+        ]]></Overview>
+       <Overview-Matrix><![CDATA[
+		<p>The <b>apply</b> Function invokes a Function using the Matrix values as arguments.  
+         The function is invoked and resulting value is returned. This is the same as 
+         (function Matrix [0] Matrix [2], etc).</p>
+        ]]></Overview-Matrix>
+       <Overview-NumMatrix><![CDATA[
+		<p>The <b>apply</b> Function invokes a Function using the NumMatrix values as arguments.  
+         The function is invoked and resulting value is returned. This is the same as 
+         (function NumMatrix [0] NumMatrix [2], etc).</p>
+        ]]></Overview-NumMatrix>
+       <Overview-Pair><![CDATA[
+		<p>The <b>apply</b> Function invokes a Function using the Pair values as arguments .  
+        The function is invoked and resulting value is returned. </p>
+        ]]></Overview-Pair>
+        <Usage-Structure><![CDATA[
+        <p>The <b>apply</b> function is useful when the arguments to a function are stored 
+           in a structure .  It shortens the amount of code to use because the <b>apply</b> 
+           function eliminates the need to reference each structure element from the structure 
+           to pass as an argument to the function. 
+		</p>
+        ]]></Usage-Structure>
+        <Usage><![CDATA[
+        <p>The <b>apply</b> function is useful when the arguments to a function are stored 
+           in a Vector.  It shortens the amount of code to use because the <b>apply</b> 
+           function eliminates the need to reference each Vector element from the Vector 
+           to pass as an argument to the function. 
+		</p>
+        ]]></Usage>
+        <Usage-Matrix><![CDATA[
+        <p>The <b>apply</b> function is useful when the arguments to a function are stored in a 
+         Matrix.  It reduces the amount of code to use because the <b>apply</b> function 
+          eliminates the need to reference each Matrix element from the Matrix to pass as an 
+           argument to the function. 
+		</p>
+        ]]></Usage-Matrix>
+        <Usage-NumMatrix><![CDATA[
+        <p>The <b>apply</b> function is useful when the arguments to a function are stored in a 
+        NumMatrix.  It reduces the amount of code to use because the <b>apply</b> function 
+          eliminates the need to reference each NumMatrix element from the NumMatrix to pass as an 
+           argument to the function. 
+		</p>
+        ]]></Usage-NumMatrix>
+        <Usage-Pair><![CDATA[
+        <p>The <b>apply</b> function is typically used for Pairs represented in a List.   
+           The <b>apply</b> function accesses each member of a List using integer indices 0 to 
+           n-1 when n is the number of elements in the List. The <b>apply</b> function with a 
+           List argument is equivalent to:</p>
+           <p><b><blockquote>(setq A '( 1 4 5 6 7 3 ) ) </blockquote></b></p>
+           <p><b><blockquote>(apply + A)  </blockquote></b></p>
+           <p><blockquote>or </blockquote></p>
+           <p><b><blockquote>( + (+ ( + ( + (+ A[0] A[1] ) A[2]  ) A[3] ) A[4] ) A[5] ) </blockquote></b></p>
+           <p><blockquote>or </blockquote></p>
+           <p><b><blockquote>(+ A[0] A[1] A [2] A[3] A[4] A[5] ) </blockquote></b></p>
+        <p>As you can see, the <b>apply</b> function is a much simpler form. Note that the <b>apply</b> 
+           function will not access the cdr  (tail) of a List:</p>
+           <p><b><blockquote>(setq A '( 1 4 5 6 7 3  . 100 ) )</blockquote></b></p>
+           <p><b><blockquote>(apply + A)</blockquote></b>
+                 <blockquote>Returns: <b>26</b> </blockquote></p>           
+        ]]></Usage-Pair>
+    </Brief>
+	<Syntax-Structure>
+	    <Expression><![CDATA[<p> (apply function struct)</p>]]></Expression>
+		<Argument>
+		  <Name>function</Name>
+		  <Note><![CDATA[
+		  <p> any valid function name </p>
+          ]]></Note>
+		  <AISTypes>none </AISTypes>
+		</Argument>
+     	<Argument> 
+		  <Name>struct</Name>
+		  <Note><![CDATA[
+		  <p> A Structure containing values and are valid arguments to the named function.</p>
+          ]]></Note>
+		  <AISTypes>Structure </AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>The resulting value after the function is evaluated.
+        </p>
+	    ]]></Return>
+	</Syntax-Structure>
+	<Syntax>
+	    <Expression><![CDATA[<p> (apply function vector)</p>]]></Expression>
+		<Argument> 
+		  <Name>function</Name>
+		  <Note><![CDATA[
+		  <p> any valid function name </p>
+          ]]></Note>
+		  <AISTypes>none </AISTypes>
+		</Argument>
+     	<Argument> 
+		  <Name>vector</Name>
+		  <Note><![CDATA[
+		  <p> A Vector containing values and are valid arguments to the named function.</p>
+          ]]></Note>
+		  <AISTypes>Vector FltVector IntVector NumVector BitVector ShortVector </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The resulting value after the function is evaluated.
+        </p>
+	    ]]></Return>   
+	</Syntax>
+	<Syntax-Matrix>
+	    <Expression><![CDATA[<p> (apply function matrix)</p>]]></Expression>
+		<Argument> 
+		  <Name>function</Name>
+		  <Note><![CDATA[
+		  <p> any valid function name </p>
+          ]]></Note>
+		  <AISTypes>none </AISTypes>
+		</Argument>
+     	<Argument> 
+		  <Name>matrix</Name>
+		  <Note><![CDATA[
+		  <p> A Matrix containing values and are valid arguments to the named function.</p>
+          ]]></Note>
+		  <AISTypes>Matrix </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The resulting value after the function is evaluated.
+        </p>
+	    ]]></Return>   
+	</Syntax-Matrix>
+	<Syntax-NumMatrix>
+	    <Expression><![CDATA[<p> (apply function nummatrix)</p>]]></Expression>
+		<Argument> 
+		  <Name>function</Name>
+		  <Note><![CDATA[
+		  <p> any valid function name </p>
+          ]]></Note>
+		  <AISTypes>none </AISTypes>
+		</Argument>
+     	<Argument> 
+		  <Name>nummatrix</Name>
+		  <Note><![CDATA[
+		  <p> A NumMatrix containing values and are valid arguments to the named function.</p>
+          ]]></Note>
+		  <AISTypes>NumMatrix</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The resulting value after the function is evaluated.
+        </p>
+	    ]]></Return>   
+	</Syntax-NumMatrix>
+	<Syntax-Pair>
+	    <Expression><![CDATA[<p> (apply function pair)</p>]]></Expression>
+		<Argument> 
+		  <Name>function</Name>
+		  <Note><![CDATA[
+		  <p> any valid function name </p>
+          ]]></Note>
+		  <AISTypes>none </AISTypes>
+		</Argument>
+     	<Argument> 
+		  <Name>Pair</Name>
+		  <Note><![CDATA[
+		  <p> A Pair containing values and are valid arguments to the named function.</p>
+          ]]></Note>
+		  <AISTypes>Pair </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The resulting value after the function is evaluated.
+        </p>
+	    ]]></Return>   
+	</Syntax-Pair>
+</Function>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example NumMatrix compareNE 023</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compareNE</FunctionKeywords>
+		<TypeKeywords>NumMatrix Boolean</TypeKeywords>
+		<RelatedFunctions>compare compareEQ compareLE compareGE compareLT  compareGT </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare symbol equal lesser </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>compareNE</b> function to compare two NumMatrices and return
+
+
+
+
+
+
+
+
+
+
+                  the Boolean value, true or false.  The corresponding keys and values of each NumMatrix are compared
+
+
+
+
+
+
+
+                  to determine whether one NumMatrix is  equal to the other.
+
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+   	    <Expression><![CDATA[ <sc>(compareNE #(nummat| 12.32 42.01) #(nummat| 12.32 42.01 ))     </sc>]]></Expression>  
+        <Note><![CDATA[Both NumMatrices are equal.]]></Note> 
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(compareNE #(nummat| 12.32 42.01) #(nummat| -12.32 42.01 ))     </sc>]]></Expression>  
+        <Note><![CDATA[ The value of the first NumMatrix is greater than the value
+               of the second NumMatrix.]]></Note> 
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>(compareNE #(nummat| 12.32 5.34) #(nummat| 12.32 42.01 ))    </sc>]]></Expression>  
+        <Note><![CDATA[The value of the first Matrix is lesser than the value
+               of the second Matrix.]]></Note> 
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

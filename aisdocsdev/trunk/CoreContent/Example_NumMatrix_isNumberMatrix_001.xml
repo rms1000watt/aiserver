@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example NumMatrix isNumberMatrix  001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isNumberMatrix</FunctionKeywords>
+		<TypeKeywords>Matrix NumMatrix Integer</TypeKeywords>
+		<RelatedFunctions>isType isMatrix </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords> matrix  nummatrix Boolean</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example checks if the Matrix  evaluated is a Number Matrix .
+
+
+                  If it is, the function returns true, otherwise, it returns false.
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq X (new Matrix:  number: 2  11.433 1))        </sc>]]></Expression>
+        <Note><![CDATA[A NumMatrix  with 2 values is defined.]]></Note>
+        <Returns><![CDATA[#&#60NumMatrix  199917&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display X)        </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#(nummat| 11.433 1)]]></Returns>
+        <Expression><![CDATA[ <sc>(isNumberMatrix X)      </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

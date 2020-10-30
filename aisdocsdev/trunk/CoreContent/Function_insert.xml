@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>insert</Title>
+		<FunctionName>insert</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+        <ArgumentTypes>Structure Dictionary Directory Vector Matrix FltVector ShortVector IntVector NumVector ObjVector 
+                       Integer String Text Symbol NumMatrix</ArgumentTypes>
+        <DataType> Structure Dictionary Directory Vector Matrix FltVector ShortVector NumMatrix IntVector NumVector ObjVector NumMatrix</DataType>
+	    <RelatedFunctions>uniqueInsert binaryInsert</RelatedFunctions>
+        <RelatedVMInstructions> vmregObjPointer </RelatedVMInstructions>
+		<HumanKeywords>insert key value index</HumanKeywords>
+	</KnowledgeBase>
+    <Description><![CDATA[ 
+     
+             <p> The <b>insert</b> function destructively inserts the 
+                 specified key into the Structure at the specified index location.  </p>
+
+             <p> The <b>insert</b> function destructively inserts the 
+                 specified key into the Dictionary at the specified index location.  </p>
+       
+             <p> The <b>insert</b> function destructively inserts the 
+                 specified key into the Directory at the specified index location.  </p>
+             <p> The <b>insert</b> function destructively inserts the specified object into 
+                 the Vector at the specified index location.  </p>
+
+             <p> The <b>insert</b> function destructively inserts the specified object into 
+                 the Matrix at the specified index location.  </p>
+
+             <p> The <b>insert</b> function destructively inserts the specified object into 
+                 the NumMatrix at the specified index location.  </p>
+          ]]></Description>
+	<Brief>
+	   <Overview-Structure><![CDATA[
+		<p>The <b>insert</b> function destructively inserts the specified key into 
+           the Structure at the specified index location.  The Structure is increased 
+           in size to accommodate the new value. </p>
+        ]]></Overview-Structure>
+	   <Overview-Dictionary><![CDATA[
+		<p>The <b>insert</b> function destructively inserts the specified key into 
+           the Dictionary at the specified index location.  The  
+           Dictionary is increased 
+           in size to accommodate the new value. </p>
+        ]]></Overview-Dictionary>
+	   <Overview-Directory><![CDATA[
+		<p>The <b>insert</b> function destructively inserts the specified key into 
+           the Directory at the specified index location.  The   Directory is increased 
+           in size to accommodate the new value. </p>
+        ]]></Overview-Directory>
+	   <Overview><![CDATA[
+		<p>The <b>insert</b> function destructively inserts the specified object into the Vector 
+           or any Vector subtypes
+           at the specified index location.   </p>
+        ]]></Overview>
+         <Overview-Matrix><![CDATA[ 
+             <p> The <b>insert</b> function destructively inserts the specified object into 
+                 the Matrix at the specified index location.  </p>
+          ]]></Overview-Matrix>
+         <Overview-NumMatrix><![CDATA[ 
+             <p> The <b>insert</b> function destructively inserts the specified object into 
+                 the NumMatrix at the specified index location.  </p>
+          ]]></Overview-NumMatrix>
+        <Usage-Structure><![CDATA[
+        <p>The <b>insert</b> function should be used when you want to insert a new Structure  binding 
+(key and value)  into an existing Object in a specific location.
+           The <b>insert</b> function will always insert, even though the key already exists, 
+           whereas the <b>uniqueInsert</b> function will not insert if the key already exists. 
+           The <b>insert</b> function is similar to the <b>uniqueInsert</b> function but it has 
+           the additional feature of assigning a value to the key (instead of #void) and the 
+           additional feature of being able to specify a location (instead of the end of the 
+           Structure).
+		</p>
+        ]]></Usage-Structure>
+        <Usage-Dictionary><![CDATA[
+        <p>The <b>insert</b> function should be used when you want to insert a new Dictionary
+            binding (key and value)  into an existing Object in a specific location.
+           The <b>insert</b> function will always insert, even though the key already exists, 
+           whereas the <b>uniqueInsert</b> function will not insert if the key already exists. 
+           The <b>insert</b> function is similar to the <b>uniqueInsert</b> function but it has 
+           the additional feature of assigning a value to the key (instead of #void) and the 
+           additional feature of being able to specify a location (instead of the end of the 
+           Dictionary).
+		</p>
+        ]]></Usage-Dictionary>
+        <Usage-Directory><![CDATA[
+        <p>The <b>insert</b> function should be used when you want to insert a new Directory binding (key and value)  into an existing Object in a specific location.
+           The <b>insert</b> function will always insert, even though the key already exists, 
+           whereas the <b>uniqueInsert</b> function will not insert if the key already exists. 
+           The <b>insert</b> function is similar to the <b>uniqueInsert</b> function but it has 
+           the additional feature of assigning a value to the key (instead of #void) and the 
+           additional feature of being able to specify a location (instead of the end of the 
+           Directory).
+		</p>
+        ]]></Usage-Directory>
+        <Usage><![CDATA[
+        <p>The <b>insert</b> function should be used when you want to insert a new object into 
+           an existing Vector in a specific location in the Vector.  The <b>insert</b> function 
+           will always insert, even though the object already exists, whereas the <b>uniqueInsert</b>
+           function will not insert if the object already exists. If the specified index is 
+           already occupied, then that object and all remaining objects to the right will be 
+           shifted to the right to make room for the new object.  	</p>
+        ]]></Usage>
+       <Usage-Matrix><![CDATA[
+        <p><FONT COLOR="#0000ff"> Note: </FONT> <b>Returns an error message if the Matrix is not of rank one. </b></p>
+        <p>The <b>insert</b> function should be used when you want to insert a new object into 
+           an existing Matrix in a specific location in the Matrix.  The <b>insert</b> function 
+           will always insert, even though the object already exists, whereas the <b>uniqueInsert</b>
+           function will not insert if the object already exists. If the specified index is 
+           already occupied, then that object and all remaining objects to the right will be 
+           shifted to the right to make room for the new object.  	</p>
+        ]]></Usage-Matrix>
+       <Usage-NumMatrix><![CDATA[
+        <p><FONT COLOR="#0000ff"> Note: </FONT> <b>Returns an error message if the NumMatrix is not of rank one. </b></p>
+        <p>The <b>insert</b> function should be used when you want to insert a new object into 
+           an existing NumMatrix in a specific location in the NumMatrix.  The <b>insert</b> function 
+           will always insert, even though the object already exists, whereas the <b>uniqueInsert</b>
+           function will not insert if the object already exists. If the specified index is 
+           already occupied, then that object and all remaining objects to the right will be 
+           shifted to the right to make room for the new object.  	</p>
+        ]]></Usage-NumMatrix>
+    </Brief>
+	<Syntax-Structure>
+	    <Expression><![CDATA[<p> (insert struct index newKey newValue)</p>]]></Expression>
+		<Argument>
+		  <Name>struct</Name>
+		  <Note><![CDATA[
+		  <p> The Structure to be modified. </p>
+          ]]></Note>
+		  <AISTypes>Structure </AISTypes>
+		</Argument>
+	    <Argument> 
+		  <Name>index</Name>
+		  <Note><![CDATA[
+		  <p> The position in the structure to put the new binding </p>
+          ]]></Note>
+		  <AISTypes>Integer </AISTypes>
+		</Argument>
+        <Argument> 
+		  <Name>newKey</Name>
+		  <Note><![CDATA[
+		  <p>The new Key to insert.</p>
+          ]]></Note>
+		  <AISTypes> Symbol </AISTypes>
+		</Argument>
+        <Argument> 
+		  <Name>newValue</Name>
+		  <Note><![CDATA[
+		  <p>The new value to insert.</p>
+          ]]></Note>
+		  <AISTypes> Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory
+                       Matrix NumMatrix Integer Float Number Complex</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>The modified structure.
+        </p>
+	    ]]></Return>
+	</Syntax-Structure>
+	<Syntax-Dictionary>
+	    <Expression><![CDATA[<p> (insert dictionary index newKey newValue)</p>]]></Expression>
+		<Argument> 
+		  <Name>dictionary</Name>
+		  <Note><![CDATA[
+		  <p> The Dictionary to be modified. </p>
+          ]]></Note>
+		  <AISTypes>Dictionary </AISTypes>
+		</Argument>
+	    <Argument> 
+		  <Name>index</Name>
+		  <Note><![CDATA[
+		  <p> The position in the structure to put the new binding </p>
+          ]]></Note>
+		  <AISTypes>Integer </AISTypes>
+		</Argument>
+        <Argument> 
+		  <Name>newKey</Name>
+		  <Note><![CDATA[
+		  <p>The new Key to insert.</p>
+          ]]></Note>
+		  <AISTypes> Symbol </AISTypes>
+		</Argument>
+        <Argument> 
+		  <Name>newValue</Name>
+		  <Note><![CDATA[
+		  <p>The new value to insert.</p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory
+                       Matrix NumMatrix Integer Float Number Complex</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The modified dictionary.
+        </p>
+	    ]]></Return>   
+	</Syntax-Dictionary>
+	<Syntax-Directory>
+	    <Expression><![CDATA[<p> (insert directory index newKey newValue)</p>]]></Expression>
+		<Argument> 
+		  <Name>directory</Name>
+		  <Note><![CDATA[
+		  <p> The Directory to be modified. </p>
+          ]]></Note>
+		  <AISTypes>Directory </AISTypes>
+		</Argument>
+	    <Argument> 
+		  <Name>index</Name>
+		  <Note><![CDATA[
+		  <p> The position in the directory to put the new binding </p>
+          ]]></Note>
+		  <AISTypes>Integer </AISTypes>
+		</Argument>
+        <Argument> 
+		  <Name>newKey</Name>
+		  <Note><![CDATA[
+		  <p>The new Key to insert.</p>
+          ]]></Note>
+		  <AISTypes> Symbol </AISTypes>
+		</Argument>
+        <Argument> 
+		  <Name>newValue</Name>
+		  <Note><![CDATA[
+		  <p>The new value to insert.</p>
+          ]]></Note>
+		  <AISTypes> Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory
+                       Matrix NumMatrix Integer Float Number Complex</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The modified Directory.
+        </p>
+	    ]]></Return>   
+	</Syntax-Directory>
+	<Syntax>
+	    <Expression><![CDATA[<p>  (insert vector index obj)</p>]]></Expression>
+		<Argument> 
+		  <Name>vector</Name>
+		  <Note><![CDATA[
+		  <p> The Vector to be modified. </p>
+          ]]></Note>
+		  <AISTypes>Vector FltVector ShortVector IntVector NumVector ObjVector</AISTypes>
+		</Argument>
+	    <Argument> 
+		  <Name>index</Name>
+		  <Note><![CDATA[
+		  <p>The location in the vector to install the new value. </p>
+          ]]></Note>
+		  <AISTypes>Integer </AISTypes>
+		</Argument>
+        <Argument> 
+		  <Name>obj</Name>
+		  <Note><![CDATA[
+		  <p>The new object  to insert.</p>
+          ]]></Note>
+		  <AISTypes> Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory
+                       Matrix NumMatrix Integer Float Number Complex</AISTypes>
+		</Argument>      
+		<Return><![CDATA[ 
+	    <p>The modified Vector.
+        </p>
+	    ]]></Return>   
+	</Syntax>
+	<Syntax-Matrix>
+	    <Expression><![CDATA[<p>  (insert matrix index obj)</p>]]></Expression>
+		<Argument> 
+		  <Name>matrix</Name>
+		  <Note><![CDATA[
+		  <p> The Matrix to be modified. </p>
+          ]]></Note>
+		  <AISTypes>Matrix </AISTypes>
+		</Argument>
+	    <Argument> 
+		  <Name>index</Name>
+		  <Note><![CDATA[
+		  <p>The location in the Matrix to install the new value. </p>
+          ]]></Note>
+		  <AISTypes>Integer </AISTypes>
+		</Argument>
+        <Argument> 
+		  <Name>obj</Name>
+		  <Note><![CDATA[
+		  <p>The new object  to insert.</p>
+          ]]></Note>
+		  <AISTypes> Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory
+                       Matrix NumMatrix Integer Float Number Complex</AISTypes>
+		</Argument>      
+		<Return><![CDATA[ 
+	    <p>The modified Matrix.
+        </p>
+	    ]]></Return>   
+	</Syntax-Matrix>
+	<Syntax-NumMatrix>
+	    <Expression><![CDATA[<p>  (insert nummatrix index obj)</p>]]></Expression>
+		<Argument> 
+		  <Name>nummatrix</Name>
+		  <Note><![CDATA[
+		  <p> The NumMatrix to be modified. </p>
+          ]]></Note>
+		  <AISTypes>NumMatrix </AISTypes>
+		</Argument>
+	    <Argument> 
+		  <Name>index</Name>
+		  <Note><![CDATA[
+		  <p>The location in the NumMatrix to install the new value. </p>
+          ]]></Note>
+		  <AISTypes>Integer </AISTypes>
+		</Argument>
+        <Argument> 
+		  <Name>obj</Name>
+		  <Note><![CDATA[
+		  <p>The new object  to insert.</p>
+          ]]></Note>
+		  <AISTypes> Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory
+                       Matrix NumMatrix Integer Float Number Complex</AISTypes>
+		</Argument>      
+		<Return><![CDATA[ 
+	    <p>The modified NumMatrix.
+        </p>
+	    ]]></Return>   
+	</Syntax-NumMatrix>
+</Function>

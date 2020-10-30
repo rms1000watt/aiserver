@@ -1,0 +1,1936 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Essay SYSTEM "../DTD/Essay.dtd">
+<Essay>
+	<KnowledgeBase>
+	    <Title>browseLib.fileInfo Lambda</Title>
+		<Topic>Data Management</Topic>
+		<SubTopic>Overview</SubTopic>
+		<HumanKeywords>Database Data Management Lambda Programming  </HumanKeywords>
+	</KnowledgeBase>
+	<Section>
+	    <Heading>fileInfo Overview</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="fileInfo Overview">
+			<p>The fileInfo Lambda provides system-independent file information. 
+			A fileInfo Lambda provides information about a file's name and position (path) 
+			in the file system, its access rights and whether it is a directory or symbolic 
+			link, etc. The file's size and last modified/read times are also available. 
+			A fileInfo can point to a file with either a relative or an absolute file path. 
+			Absolute file paths begin with the directory separator "/" (or with a drive 
+			specification on Windows). Relative file names begin with a directory name or 
+			a file name and specify a path relative to the current working directory. An 
+			example of an absolute path is the string "/tmp/quartz". A relative path might 
+			look like "src/fatlib". You can use fileInfo.isRelative to check whether 
+			a fileInfo is using a relative or an absolute file path. Use fileInfo.convertToAbs 
+			to convert a relative fileInfo's path to an absolute path. 
+			The file that the fileInfo works on is set in the constructor or later with 
+			fileInfo.setFile. Use fileInfo.exists to see if the file exists and 
+			fileInfo.size to get its size. 
+			</p>
+			<p>To speed up performance, fileInfo caches information about the file. Because 
+			files can be changed by other users or programs, or even by other parts of the
+			same program, use fileInfo.refresh to refresh file information. 
+			If you want to switch off a fileInfo's caching and force it to access the file 
+			system every time you request information from it call (fileInfo.setCaching false). 
+			The file's type is obtained with fileInfo.isFile, isDir and isSymLink. The 
+			fileInfo.readLink function provides the name of the file the symlink points to. 
+			Elements of the file's name can be extracted with fileInfo.dirPath and 
+			fileInfo.fileName. The fileName's parts can be extracted with fileInfo.baseName 
+			and fileInfo.extension. The file's dates are returned by fileInfo.created, 
+			fileInfo.lastModified and fileInfo.lastRead. 
+			Information about the file's access permissions is obtained with fileInfo.isReadable, 
+			fileInfo.isWritable and fileInfo.isExecutable. The file's ownership is available 
+			from fileInfo.owner, fileInfo.ownerId, fileInfo.group and fileInfo.groupId. You 
+			can examine a file's permissions and ownership in a single statement using 
+			fileInfo.permission. </p>
+			<p>If you need to read and traverse directories, see the browseLib.dir Lambda. 
+			</p>
+			 <h3>Notes</h3>
+			 <p>This Lambda surfaces the full functionality of the QFileInfo object. Most
+			 of the functionality of this Lambda resides in the AIS glueLayer and is
+			 accessed by calls to the _AISQFileInfo function. When you create a new 
+			 fileInfo instance, a corrosponding QFileInfo C++ object is created. Calls
+			 to child Lambdas of the fileInfo Lambda result in corrosponding calls to the
+			 member functions of the C++ QFileInfo object. All of these calls are
+			 made through the _AISQFileInfo function.</p>
+			 <p>A child Lambda called "free" is provided to force the early destruction
+			 of the underlying C++ QDir object prior to garbage collection of a
+			 dir Lambda. The C++ object will always be destroyed when the Lambda that 
+			 created it is garbage collected.</p>
+			<p>Extensions to underlying QDir object (features not in the underlying QDir object):<br>
+			 See getFileInfoStructure - this child Lambda returns a file information structure.</p>
+			</p>    	 
+		  </div>
+	    ]]></Description>
+	</Section>   
+	<Section>
+	    <Heading>fileInfo.absFilePath</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="fileInfo.absFilePath">
+		    <p class=overview>Overview</p>
+			<p>Returns the absolute path including the file name. 
+		The absolute path name consists of the full path and the file name. 
+		On Unix this will always begin with the root, '/', directory. On 
+		Windows this will always begin 'D:/' where D is a drive letter, except 
+		for network shares that are not mapped to a drive letter, in which case 
+		the path will begin '//sharename/'. <br>
+		This Lambda returns the same as fileInfo.filePath, unless fileInfo.isRelative
+		is TRUE. If the fileInfo is empty it returns dir.currentDirPath. 
+		 This function can be time consuming under Unix (in the order of milliseconds). <br>
+		See also fileInfo.isRelative and fileInfo.filePath. </p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(fileInfoInstance.absFilePath)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>Returns</th>
+			    <td>String</td>
+			    <td>Absolute path including file name.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a dir Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>   
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_fileInfo_absFilePath_1">
+		;;***********************************
+		;; Find the absolute path of a file
+		;;***********************************
+		(defun Ex_browseLib_fileInfo_absFilePath_1()
+			vars:(d f)
+			(setq d (new browseLib.dir _ais.installPath)); get install directory
+			(setq f (new browseLib.fileInfo d "astartup.sl"))
+			(writeln (f.absFilePath)) ;;-> C:/Ais/astarutp.sl
+			true)
+		;Execute in the console:
+		;(Ex_browseLib_fileInfo_absFilePath_1)
+			</pre>
+		     </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>	 
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>fileInfo.baseName</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="fileInfo.baseName">
+		    <p class=overview>Overview</p>
+			<p>Returns the base name of the file. <br>
+		See also fileInfo.fileName and fileInfo.extension. 
+		</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(fileInfoInstance.baseName)
+			(fileInfoInstance.baseName true) ; Recommended usage
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>complete</th>
+			    <td>Boolean - optional default=false</td>
+			    <td>If complete is False (the default) the base name consists of all 
+		characters in the file name up to (but not including) the first '.' character. 
+		If complete is TRUE the base name consists of all characters in the file name 
+		up to (but not including) the last '.' character. 
+		The path is not included in either case. </td>
+			  </tr>
+			  <tr>
+			    <th>Returns</th>
+			    <td>String</td>
+			    <td>The base name of the file.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a fileInfo Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>     
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_fileInfo_baseName1">
+		;;****************************
+		;; Get the base name of a file
+		;;****************************
+		(defun Ex_browseLib_fileInfo_baseName_1()
+			vars:(f)
+			(setq f (new browseLib.fileInfo "some.really.long.filename.sl"))
+			(writeln (f.baseName)) ;;-> some
+			(writeln (f.baseName true)) ;;-> some.really.long.filename
+			true)
+		;Execute in the console:
+		;(Ex_browseLib_fileInfo_baseName_1)
+			</pre>
+		   </blockquote>  
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>Be very careful to provide the complete argument in most cases. The default
+			complete value of false is counter intuitive for most applciations. </P>	 
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>fileInfo.caching</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="fileInfo.caching">
+		   <p class=overview>Overview</p>
+			<p>Returns true if caching is enabled otherwise returns false.<br>
+		See also fileInfo.setCaching and fileInfo.refresh.
+		</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(fileInfoInstance.caching )
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Boolean</td>
+			    <td>Returns true if caching is enabled otherwise returns false.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a fileInfo Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>     
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_fileInfo_caching_1">
+		;;*****************************************
+		;; Get the caching state of the file object
+		;;*****************************************
+		(defun Ex_browseLib_fileInfo_caching_1()
+			vars:(d f)
+			(setq d (new browseLib.dir _ais.installPath)); get install directory
+			(setq f (new browseLib.fileInfo d "astartup.sl"))
+			(writeln (f.caching)) ;;-> true
+			(f.setCaching false)
+			(writeln (f.caching)) ;;-> false
+			true)
+		;Execute in the console:
+		;(Ex_browseLib_fileInfo_caching_1)
+			</pre>
+		    </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>	 
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>fileInfo.convertToAbs</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="fileInfo.convertToAbs">
+		    <p class=overview>Overview</p>
+			<p>Returns true. This Lambda converts the file's path to an absolute path.
+		If it is already absolute, nothing is done.<br>
+		See also fileInfo.filePath and fileInfo.isRelative.
+		</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(fileInfoInstance.convertToAbs)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Boolean</td>
+			    <td>True</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a fileInfo Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>     
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_fileInfo_convertToAbs_1">
+		;;*****************************************
+		;; Convert a files path to an absolute path
+		;;*****************************************
+		(defun Ex_browseLib_fileInfo_convertToAbs_1()
+			vars:(d f)
+			(setq d (new browseLib.dir)); get current directory
+			(setq f (new browseLib.fileInfo d "astartup.sl"))
+			(writeln (f.filePath)) ;--> ./astartup.sl
+			(f.convertToAbs)
+			(writeln (f.filePath)) ;--> C:/Ais/astartup.sl
+			true)
+		;Execute in the console:
+		;(Ex_browseLib_fileInfo_convertToAbs_1)
+			</pre>
+		    </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>fileInfo.created</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="fileInfo.created">
+		    <p class=overview>Overview</p>
+			<p>Returns the date and time when the file was created.
+		On platforms where this information is not avaialble, returns the same
+		as fileInfo.lastModified.<br>
+		See also fileInfo.lastModified and fileInfo.lastRead.
+		</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(fileInfoInstance.created)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Date</td>
+			    <td>Returns a date time.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a fileInfo Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>    
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_fileInfo_created_1">
+		;;**********************************
+		;; Get the date a file was created
+		;;**********************************
+		(defun Ex_browseLib_fileInfo_created_1()
+			vars:(d f)
+			(setq d (new browseLib.dir _ais.installPath)); get install directory
+			(setq f (new browseLib.fileInfo d "astartup.sl"))
+			(writeln (f.created)) ;--> #Mar,23,2004:11:24:49
+			true)
+		;Execute in the console:
+		;(Ex_browseLib_fileInfo_created_1)
+			</pre>
+		     </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>	 
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>fileInfo.dir</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="fileInfo.dir">
+		    <p class=overview>Overview</p>
+			<p>dir
+		Arguments
+			absPath		- optional boolean (default false)
+		Returns a dir Lambda instance for the file's path.
+		If the fileInfo Lambda is relative and the absPath is false, the dir will be
+		relative otherwise it will be absolute.
+		See also fileInfo.dirPath, fileInfo.fileName and fileInfo.isRelative.
+		</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(fileInfoInstance.dir)
+			(fileInfoInstance.dir true)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>absPath</th>
+			    <td>Boolean - optional default=false</td>
+			    <td>If the fileInfo Lambda is relative and the absPath is false, the dir will be
+		relative otherwise it will be absolute.</td>
+			  </tr>
+			  <tr>
+			    <th>Returns</th>
+			    <td>dir Object</td>
+			    <td>Returns a dir Lambda instance for the file's path.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a fileInfo Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>     
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_fileInfo_dir_1">
+		;;*********************************
+		;; Get the files current directory
+		;;*********************************
+		(defun Ex_browseLib_fileInfo_dir_1()
+			vars:(d d2 f)
+			(setq d (new browseLib.dir _ais.nstallPath)); get install directory
+			(setq f (new browseLib.fileInfo d "astartup.sl"))
+			(setq d2 (f.dir true))
+			(writeln "d.absPath =" (d.absPath)) ;;-> C:/Ais
+			(writeln "d2.absPath=" (d2.absPath));;-> C:/Ais
+			true)
+		;Execute in the console:
+		;(Ex_browseLib_fileInfo_dir_1)
+			</pre>
+		    </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>fileInfo.dirPath</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="fileInfo.dirPath">
+			  <p class=overview>Overview</p>
+			<p>	Returns file's path.<br>
+		See also fileInfo.dir, fileInfo.filePath, fileInfo.fileName and fileInfo.isRelative.
+		</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(fileInfoInstance.dirPath)
+			(fileInfoInstance.dirPath true)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>absPath</th>
+			    <td>Boolean - optional default=false</td>
+			    <td>If the absPath is true an absolute path is returned.</td>
+			  </tr>
+			  <tr>
+			    <th>Returns</th>
+			    <td>String</td>
+			    <td>File's path.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a fileInfo Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>   
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_fileInfo_dirPath_1">
+		;;**********************
+		;; Return file's path
+		;;**********************
+		(defun Ex_browseLib_fileInfo_dirPath_1()
+			vars:(d f)
+			(setq d (new browseLib.dir _ais.installPath)); get install directory
+			(setq f (new browseLib.fileInfo d "astartup.sl"))
+			(writeln (f.dirPath true)) ;;-> C:/Ais
+			true)
+		;Execute in the console:
+		;(Ex_browseLib_fileInfo_dirPath_1)
+			</pre>
+		    </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P> 
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>fileInfo.exists</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="fileInfo.exists">
+		    <p class=overview>Overview</p>
+			<p>Returns true if the file exists otherwise returns false.
+			</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(fileInfoInstance.exists)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Boolean</td>
+			    <td>True if file exists otherwise false.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a fileInfo Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>  
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_fileInfo_exists_1">
+		;;************************
+		;; Check if a file exists
+		;;************************
+		(defun Ex_browseLib_fileInfo_exists_1()
+			vars:(d f)
+			(setq d (new browseLib.dir _ais._installPath)); get install directory
+			(setq f (new browseLib.fileInfo d "astartup.sl"))
+			(writeln (f.exists)) ;;-> true
+			true)
+		;Execute in the console:
+		;(Ex_browseLib_fileInfo_exists_1)
+			</pre>
+		    </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>	 
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>fileInfo.extension</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="fileInfo.extension">
+		    <p class=overview>Overview</p>
+			<p>Returns the file's extension.<br>
+			See also fileInfo.fileName and fileInfo.baseName.
+			</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(fileInfoInstance.extension)
+			(fileInfoInstance.extension true)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>complete</th>
+			    <td>Boolean</td>
+			    <td>If complete is true (the default), extension returns the string of all
+		characters in the file name after (but not including) the first '.' character.
+		If complete is false, extension returns the string of all characters in the 
+		file name after (but not including) the last '.' character.</td>
+			  </tr>
+			  <tr>
+			    <th>Returns</th>
+			    <td>String</td>
+			    <td>Returns the files extension.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a fileInfo Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>   
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_fileInfo_extension_1">
+		;;**********************
+		;; Get file's extension
+		;;**********************
+		(defun Ex_browseLib_fileInfo_extension_1()
+			vars:(f)
+			(setq f (new browseLib.fileInfo "some.really.long.file.name.sl"))
+			(writeln (f.extension false))      ;;-> sl
+			(writeln (f.extension)) ;;-> really.long.file.name.sl
+			true)
+		;Execute in the console:
+		;(Ex_browseLib_fileInfo_extension_1)
+			</pre>
+		    </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>	 
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>fileInfo.fileName</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="fileInfo.fileName">
+		    <p class=overview>Overview</p>
+			<p>Returns the name of the file, excluding the path.<br>
+		See also fileInfo.isRelative, fileInfo.filePath, fileInfo.basename and fileInfo.extension.
+		</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(fileInfoInstance.fileName)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>Returns</th>
+			    <td>String</td>
+			    <td>Name of file excluding the path.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a fileInfo Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>   
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_fileInfo_fileName_1">
+		;;**********************
+		;; Get file's name
+		;;**********************
+		(defun Ex_browseLib_fileInfo_fileName_1()
+			vars:(f)
+			(setq f (new browseLib.fileInfo "astartup.sl"))
+			(writeln (f.fileName)) ;;-> astartup.sl
+			true)
+		;Execute in the console:
+		;(Ex_browseLib_fileInfo_fileName_1)
+			</pre>
+		    </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>	 
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>fileInfo.filePath</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="fileInfo.filePath">
+		    <p class=overview>Overview</p>
+			<p>Returns the file anme, including the path (which may be absolute or relative).<br>
+			See also fileInfo.isRelative and fileInfo.absFilePath.
+			</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(fileInfoInstance.filePath)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>Returns</th>
+			    <td>String</td>
+			    <td>File's path.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a fileInfo Lambda.</P>
+		    <p>No special circumstances.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>     
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_fileInfo_filePath_1">
+		;;**********************
+		;; Get file's path
+		;;**********************
+		(defun Ex_browseLib_fileInfo_filePath_1()
+			vars:(d f)
+			(setq d (new browseLib.dir _ais.installPath)); get install directory
+			(setq f (new browseLib.fileInfo d "astartup.sl"))
+			(writeln (f.filePath)) ;;-> C:/Ais/astartup.sl
+			true)
+		;Execute in the console:
+		;(Ex_browseLib_fileInfo_filePath_1)
+			</pre>
+		     </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>fileInfo.getFileInfoStructure</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="fileInfo.getFileInfoStructure">
+		    <p class=overview>Overview</p>
+			<p>Returns a structure containing information on the fileInfo object.
+			NOTE: This function has no counterpart in the underlying QFileInfo object.
+		</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(fileInfoInstance.getFileInfoStructure)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Structure</td>
+			    <td>Returns a structure containing some of the available file attributes. See notes below.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a fileInfo Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>     
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_fileInfo_getFileInfoStructure_1">
+		;;************************************
+		;; Get file information as a structure
+		;;************************************
+		(defun Ex_browseLib_fileInfo_getFileInfoStructure_1()
+			vars:(d f s n N)
+			(setq d (new browseLib.dir _ais.installPath)); get install directory
+			(setq f (new browseLib.fileInfo d "astartup.sl"))
+			(setq s (f.getFileInfoStructure))
+			(loop for n from 0 until (length s) do (writeln s[n 0] "=" s[n 1]))
+			;;-> Type=File
+			;;-> FileName=astartup.sl
+			;;-> Size=1838
+			;;-> Extension=sl
+			;;-> FilePath=C:/AisDev/astartup.sl
+			;;-> Created=#Jul,4,2003:14:36:38
+			;;-> Exists=true
+			;;-> Group=None
+			;;-> GroupId=-2
+			;;-> Executable=true
+			;;-> Hidden=false
+			;;-> Readable=true
+			;;-> Relative=false
+			;;-> SymLink=false
+			;;-> Writable=true
+			;;-> Modified=#Jul,29,2003:08:21:38
+			;;-> Read=#Mar,31,2004:20:38:20
+			;;-> Owner=Administrators
+			;;-> OwnerId=-2
+			;;-> Link=
+			true)
+		;Execute in the console:
+		;(Ex_browseLib_fileInfo_getFileInfoStructure_1)
+			</pre>
+		     </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>fileInfo.group</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="fileInfo.group">
+    <p class=overview>Overview</p>
+			<p>Returns the group of the file. On Windows, on systems where files do not have
+		groups, or if an error occurs, None is returned. This Function can be time consuming 
+		under Unix (in the order of milliseconds).<br>
+		See also fileInfo.groupId, fileInfo.owner and fileInfo.ownerId.
+		</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(fileInfoInstance.group)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Integer or #void</td>
+			    <td>File's group.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a fileInfo Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p> 
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_fileInfo_group_1">
+		;;**********************
+		;; Get file's group.
+		;;**********************
+		(defun Ex_browseLib_fileInfo_group_1()
+			vars:(d f)
+			(setq d (new browseLib.dir _ais.installPath)); get install directory
+			(setq f (new browseLib.fileInfo d "astartup.sl"))
+			(writeln (f.group)) ;;-> None - Windows OS does not support groups
+			true)
+		;Execute in the console:
+		;(Ex_browseLib_fileInfo_group_1)
+			</pre>
+		    </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>fileInfo.groupId</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="fileInfo.groupId">
+	    <p class=overview>Overview</p>
+			<p>Returns the id of the group the file belongs to. On Windows and on systems
+		where files do not have groups this function always returns -2.<br>
+		See also fileInfo.group, fileInfo.owner and fileInfo.ownerId.
+		</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(fileInfoInstance.groupId)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Integer</td>
+			    <td>Group Id or -2 on Windows.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a fileInfo Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>   
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_fileInfo_groupId_1">
+		;;**********************
+		;; Get file's group id
+		;;**********************
+		(defun Ex_browseLib_fileInfo_groupId_1()
+			vars:(d f)
+			(setq d (new browseLib.dir _ais.installPath)); get install directory
+			(setq f (new browseLib.fileInfo d "astartup.sl"))
+			(writeln (f.groupId)) ;;-> -2 
+			true)
+		;Execute in the console:
+		;(Ex_browseLib_fileInfo_groupId_1)
+			</pre>
+		    </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P> 
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>fileInfo.isDir</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="fileInfo.isDir">
+		    <p class=overview>Overview</p>
+			<p>Returns true if this object points to a directory or to a symbolic link
+		to a directory otherwise returns false.
+			</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(fileInfoInstance.isDir)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Boolean</td>
+			    <td>True if object points to a directory - otherwise false.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a fileInfo Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>    
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_fileInfo_isDir_1">
+		;;*****************************************
+		;; Check if fileInfo object is a directory
+		;;*****************************************
+		(defun Ex_browseLib_fileInfo_isDir_1()
+			vars:(d f)
+			(setq d (new browseLib.dir _ais.installPath)); get install directory
+			(setq f (new browseLib.fileInfo d "astartup.sl"))
+			(writeln (f.isDir)) ;;-> false
+			true)
+		;Execute in the console:
+		;(Ex_browseLib_fileInfo_isDir_1)
+			</pre>
+		     </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>fileInfo.isExecutable</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="fileInfo.isExecutable">
+		    <p class=overview>Overview</p>
+			<p>Returns true if this file is executable otherwise false.
+			</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(fileInfoInstance.isExecutable)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Boolean</td>
+			    <td>True if file is executable.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a fileInfo Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p> 
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_fileInfo_isExecutable_1">
+		;;**********************
+		;; Check if a file is executable
+		;;**********************
+		(defun Ex_browseLib_fileInfo_isExecutable_1()
+			vars:(d f)
+			(setq d (new browseLib.dir _ais.installPath)); get install directory
+			(setq f (new browseLib.fileInfo d "astartup.sl"))
+			(writeln (f.isExecutable)) ;;-> true
+			true)
+		;Execute in the console:
+		;(Ex_browseLib_fileInfo_isExecutable_1)
+			</pre>
+		     </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>fileInfo.isFile</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="fileInfo.isFile">
+			    <p class=overview>Overview</p>
+			<p>Returns true if this object points to a file otherwise false.
+			</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(fileInfoInstance.isFile)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Boolean</td>
+			    <td>True if fileInfo object is a file.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a fileInfo Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>   
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_fileInfo_isFile_1">
+		;;**********************
+		;; Check if a fileInfo object is a file
+		;;**********************
+		(defun Ex_browseLib_fileInfo_isFile_1()
+			vars:(d f)
+			(setq d (new browseLib.dir _ais.installPath)); get install directory
+			(setq f (new browseLib.fileInfo d "astartup.sl"))
+			(writeln (f.isFile)) ;;-> true
+			true)
+		;Execute in the console:
+		;(Ex_browseLib_fileInfo_isFile_1)
+			</pre>
+		    </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>fileInfo.isHidden</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="fileInfo.isHidden">
+		   <p class=overview>Overview</p>
+			<p>Returns true if this file is hidden otherwise false.
+			</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(fileInfoInstance.isHidden)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Boolean</td>
+			    <td>True if the file is hidden.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a fileInfo Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>     
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_fileInfo_isHidden_1">
+		;;*************************************
+		;; Check if a fileInfo object is hidden
+		;;*************************************
+		(defun Ex_browseLib_fileInfo_isHidden_1()
+			vars:(d f)
+			(setq d (new browseLib.dir _ais.installPath)); get install directory
+			(setq f (new browseLib.fileInfo d "astartup.sl"))
+			(writeln (f.isHidden)) ;;-> false
+			true)
+		;Execute in the console:
+		;(Ex_browseLib_fileInfo_isHidden_1)
+			</pre>
+		    </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>	 
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>fileInfo.isReadable</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="fileInfo.isReadable">
+		   <p class=overview>Overview</p>
+			<p>Returns true if the user can read the file otherwise false.
+			</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(fileInfoInstance.isReadable)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Boolean</td>
+			    <td>True if file is readable.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a fileInfo Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>    
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_fileInfo_isReadable_1">
+		;;***************************************
+		;; Check if a fileInfo object is readable
+		;;***************************************
+		(defun Ex_browseLib_fileInfo_1()
+			vars:(d f)
+			(setq d (new browseLib.dir _ais.installPath)); get install directory
+			(setq f (new browseLib.fileInfo d "astartup.sl"))
+			(writeln (f.isReadable)) ;;-> true
+			true)
+		;Execute in the console:
+		;(Ex_browseLib_fileInfo_1)
+			</pre>
+		    </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>	 
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>fileInfo.isRelative</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="fileInfo.isRelative">
+		  <p class=overview>Overview</p>
+			<p>Returns true if the path name is relative otherwise false.
+			</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(fileInfoInstance.isRelative)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Boolean</td>
+			    <td>True if the path name is relative.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a fileInfo Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>    
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_fileInfo_isRelative_1">
+		;;***********************************************
+		;; Check if a fileInfo object's path is relative
+		;;***********************************************
+		(defun Ex_browseLib_fileInfo_isRelative_1()
+			vars:(d f)
+			(setq d (new browseLib.dir _ais.installPath)); get install directory
+			(setq f (new browseLib.fileInfo d "astartup.sl"))
+			(writeln (f.isRelative)) ;;-> false
+			true)
+		;Execute in the console:
+		;(Ex_browseLib_fileInfo_isRelative_1)
+			</pre>
+		    </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>	 
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>fileInfo.isSymLink</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="fileInfo.isSymLink">
+		   <p class=overview>Overview</p>
+			<p>Returns true if t his object points to a symbolic link (or to a shortcut
+		on Windows) otherwise false.
+			</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(fileInfoInstance.isSymLink)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Boolean</td>
+			    <td>True</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a fileInfo Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>  
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_fileInfo_isSymLink_1">
+		;;***********************************************
+		;; Check if a fileInfo object is a Smybolic link
+		;;***********************************************
+		(defun Ex_browseLib_fileInfo_isSymLink_1()
+			vars:(d f)
+			(setq d (new browseLib.dir _ais.installPath)); get install directory
+			(setq f (new browseLib.fileInfo d "astartup.sl"))
+			(writeln (f.isSymLink)) ;;-> false
+			true)
+		;Execute in the console:
+		;(Ex_browseLib_fileInfo_isSymLink_1)
+			</pre>
+		     </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>	 
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>fileInfo.isWriteable</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="fileInfo.isWriteable">
+		   <p class=overview>Overview</p>
+			<p>Returns true if the user can write to the file otherwise false.
+			</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(fileInfoInstance.isWriteable)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Boolean</td>
+			    <td>True if file is writeable.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a fileInfo Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>    
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_fileInfo_isWriteable_1">
+		;;****************************
+		;; Check if file is writeable
+		;;****************************
+		(defun Ex_browseLib_fileInfo_isWriteable_1()
+			vars:(d f)
+			(setq d (new browseLib.dir _ais.installPath)); get install directory
+			(setq f (new browseLib.fileInfo d "astartup.sl"))
+			(writeln (f.isWriteable)) ;;-> true
+			true)
+		;Execute in the console:
+		;(Ex_browseLib_fileInfo_isWriteable_1)
+			</pre>
+		    </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>	 
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>fileInfo.lastModified</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="fileInfo.lastModified">
+		   <p class=overview>Overview</p>
+			<p>Returns the date and time the file was last modified.
+		</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(fileInfoInstance.lastModified)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			    <th>Returns</th>
+			    <td>Date</td>
+			    <td>Date and time of last modification.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a fileInfo Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p> 
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_fileInfo_lastModified_1">
+		;;***************************************************
+		;; Get the date and time of last modification to file
+		;;***************************************************
+		(defun Ex_browseLib_fileInfo_lastModified_1()
+			vars:(d f)
+			(setq d (new browseLib.dir _ais.installPath)); get install directory
+			(setq f (new browseLib.fileInfo d "astartup.sl"))
+			(writeln (f.lastModified)) ;;-> #Jul,29,2003:08:21:38
+			true)
+		;Execute in the console:
+		;(Ex_browseLib_fileInfo_lastModified_1)
+			</pre>
+		    </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>fileInfo.lastRead</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="fileInfo.lastRead">
+	    <p class=overview>Overview</p>
+			<p>Returns the data and time when the file was last read(accessed). On
+		platforms where this information is not available, returns the same
+		as lastModified.
+		</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(fileInfoInstance.lastRead)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Date</td>
+			    <td>Returns the date and time the file was last read.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a fileInfo Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>   
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_fileInfo_lastRead_1">
+		;;*****************************************
+		;; Get the date and time of last file read.
+		;;*****************************************
+		(defun Ex_browseLib_fileInfo_lastRead_1()
+			vars:(d f)
+			(setq d (new browseLib.dir _ais.installPath)); get install directory
+			(setq f (new browseLib.fileInfo d "astartup.sl"))
+			(writeln (f.lastRead)) ;;-> #Jul,29,2003:08:21:38
+			true)
+		;Execute in the console:
+		;(Ex_browseLib_fileInfo_lastRead_1)
+			</pre>
+		    </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>fileInfo.new</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="fileInfo.new">
+		   <p class=overview>Overview</p>
+			<p>Create a new fileInfo Lambda instance.
+			</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Function</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(new browseLib.fileInfo)
+			(new browseLib.fileInfo dirInstance fileName)
+			(new browseLib.fileInfo fileInfoInstance)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>fileName</th>
+			    <td>String - optional</td>
+			    <td>File name.</td>
+			  </tr>
+			  <tr>
+			    <th>dirInstance</th>
+			    <td>dir Object - optional</td>
+			    <td>A dir Lambda instance previously created.</td>
+			  </tr>
+			  <tr>
+			    <th>fileInfoInstance</th>
+			    <td>fileInfo Object - optional</td>
+			    <td>A fileInfo Lambda instance previously created.</td>
+			  </tr>
+			  <tr>
+			    <th>Returns</th>
+			    <td>fileInfo Object</td>
+			    <td>A new fileInfo Lambda instance.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a fileInfo Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p> 
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_fileInfo_new_1">
+		;;*****************************
+		;; Creating fileInfo instances
+		;;*****************************
+		(defun Ex_browseLib_fileInfo_new_1()
+			vars:(d f f2)
+			
+			;; Create a fileInfo instance not yet associated with a file
+			(setq f (new browseLib.fileInfo))
+			
+			;; Create a fileInfo instance for a file in the current directory
+			(setq f (new browseLib.fileInfo "astartup.sl"))
+			
+			;; Create a fileInfo instance from an exsiting fileInfo instance
+			(setq f2 (new browseLib.fileInfo f))
+			
+			;; Create a fileInfo instance referencing a file in the instal directory
+			(setq d (new browseLib.dir _ais.installPath)); get install directory
+			(setq f (new browseLib.fileInfo d "astartup.sl"))
+			
+			true)
+		;Execute in the console:
+		;(Ex_browseLib_fileInfo_new_1)
+			</pre>
+		     </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>fileInfo.owner</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="fileInfo.owner">
+		    <p class=overview>Overview</p>
+			<p>Returns the owner of the file. On systems where files do not have owners, or
+			if an error occurs, #void is returned.
+			</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(fileInfoInstance.owner)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>Returns</th>
+			    <td>String or #void</td>
+			    <td>Owner of file or #void if an error occured.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a fileInfo Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>     
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_fileInfo_owner_1">
+		;;**********************
+		;; Get owner of file
+		;;**********************
+		(defun Ex_browseLib_fileInfo_owner_1()
+			vars:(d f)
+			(setq d (new browseLib.dir _ais.installPath)); get install directory
+			(setq f (new browseLib.fileInfo d "astartup.sl"))
+			(writeln (f.owner)) ;;-> Adminstrators
+			true)
+		;Execute in the console:
+		;(Ex_browseLib_fileInfo_owner_1)
+			</pre>
+		    </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>
+		  </div>
+	    ]]></Description>
+	</Section>           
+	<Section>
+	    <Heading>fileInfo.ownerId</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="fileInfo.ownerId">
+		    <p class=overview>Overview</p>
+			<p>Returns the id of the owner of the file. On windows and on systems where files
+		do not have owners this function returns -2.<br>
+		See also fileInfo.owner, fileInfo.group and fileInfo.groupId.
+		</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(fileInfoInstance.ownerId)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Integer</td>
+			    <td>Returns the id of the owner of the file. On windows -2 is returned.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a fileInfo Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>   
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_fileInfo_ownerId_1">
+		;;*******************************
+		;; Get the id of the file's owner
+		;;*******************************
+		(defun Ex_browseLib_fileInfo_ownerId_1()
+			vars:(d f)
+			(setq d (new browseLib.dir _ais.installPath)); get install directory
+			(setq f (new browseLib.fileInfo d "astartup.sl"))
+			(writeln (f.ownerId)) ;;-> -2
+			true)
+		;Execute in the console:
+		;(Ex_browseLib_fileInfo_ownerId_1)
+			</pre>
+		    </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>fileInfo.permission</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="fileInfo.permission">
+			   <p class=overview>Overview</p>
+			<p>permissionSpec	- permission spec symbol or vector of permission spec symbols. <br>
+		Returns true if user has specified permissions on file.
+		</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(fileInfoInstance.permission permissionSpec)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>permissionSpec</th>
+			    <td>Vector or Symbol</td>
+			    <td>A permissionSpec symbol or vector of permissionSpec symbols. Permission Specifications include: 
+		ReadOwner, WriteOwner, ExeOwner, ReadUser, WriteUser, ExeUser, ReadGroup, WriteGroup, ExeGroup, ReadOther, 
+		WriteOther, ExeOther
+				</td>
+			  </tr>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Boolean</td>
+			    <td>True if user has specified permissions on file.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a fileInfo Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>   
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_fileInfo_permission_1">
+		;;***************************************************
+		;; Check if user has specified permissions on a file
+		;;***************************************************
+		(defun Ex_browseLib_fileInfo_permission_1()
+			vars:(d f)
+			(setq d (new browseLib.dir _ais.installPath)); get install directory
+			(setq f (new browseLib.fileInfo d "astartup.sl"))
+			(writeln (f.permission WriteOwner:)) ;;-> true
+			true)
+		;Execute in the console:
+		;(Ex_browseLib_fileInfo_permission_1)
+			</pre>
+		    </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>fileInfo.readLink</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="fileInfo.readLink">
+		    <p class=overview>Overview</p>
+			<p>Returns the name a symlink (or shortcut on Windows) points to, or #void if the
+		object is a symbolic link. The name may not represent an existing file it is
+		only a string. fileInfo.exists returns true if the symlink points to
+		an existing file.<br>
+		See also fileInfo.exists, fileInfo.isSymLink, fileInfo.isDir and fileInfo.isFile.
+		</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(fileInfoInstance.readLink)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>Returns</th>
+			    <td>String or #void</td>
+			    <td>Returns the name a symlink points to.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a fileInfo Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>     
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_fileInfo_readLink_1">
+		;;****************************************
+		;; Get the name a symbolic link points to
+		;;****************************************
+		(defun Ex_browseLib_fileInfo_readLink_1()
+			;; Example not available at this time
+			true)
+		;Execute in the console:
+		;(Ex_browseLib_fileInfo_readLink_1)
+			</pre>
+		    </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>fileInfo.refresh</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="fileInfo.refresh">
+			    <p class=overview>Overview</p>
+			<p>Refreshes the information about the file. i.e. reads in information from the file
+		system the next time a cached property is fetched.<br>
+		See also fileInfo.setCaching.
+		</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(fileInfoInstance.refresh)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Boolean</td>
+			    <td>True</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a fileInfo Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>      
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_fileInfo_refresh_1">
+		;;***************************************
+		;; Refresh the state of a fileInfoOBject
+		;;***************************************
+		(defun Ex_browseLib_fileInfo_refresh_1()
+			vars:(d f)
+			(setq d (new browseLib.dir _ais.installPath)); get install directory
+			(setq f (new browseLib.fileInfo d "astartup.sl"))
+			(f.refresh)
+			true)
+		;Execute in the console:
+		;(Ex_browseLib_fileInfo_refresh_1)
+			</pre>
+		    </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>fileInfo.setCaching</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="fileInfo.setCaching">
+			<p>If enable is true, enables caching of file information. If enable is false
+		caching is disabled.
+		When caching is enabled, fileInfo reads the file information from the file
+		system the first time it's needed, but generally not later. Caching is
+		enabled by default.<br>
+		See also fileInfo.refresh and fileInfo.caching.
+		</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(fileInfoInstance.setCaching enable)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>enable</th>
+			    <td>Boolean</td>
+			    <td>Pass true to enable caching, false to disable caching.</td>
+			  </tr>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Boolean</td>
+			    <td>True</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a fileInfo Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>   
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_fileInfo_setCaching_1">
+		;;**********************
+		;; Disable caching
+		;;**********************
+		(defun Ex_browseLib_fileInfo_setCaching_1()
+			vars:(d f)
+			(setq d (new browseLib.dir _ais.installPath)); get install directory
+			(setq f (new browseLib.fileInfo d "astartup.sl"))
+			(f.setCaching false) ;; disable caching
+			true)
+		;Execute in the console:
+		;(Ex_browseLib_fileInfo_setCaching_1)
+			</pre>
+		    </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>fileInfo.setFile</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="fileInfo.setFile">
+		   <p class=overview>Overview</p>
+			<p>Sets the file that the fileInfo provides information about to fileName.
+			The fileName can be an absolute or relative path.
+			</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(fileInfoInstance. )
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>fileName</th>
+			    <td>String</td>
+			    <td>File path.</td>
+			  </tr>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Boolean</td>
+			    <td>True</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a fileInfo Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>    
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_fileInfo_setFile_1">
+		;;********************************************
+		;; Create a fileInfo instance using full path
+		;;********************************************
+		(defun Ex_browseLib_fileInfo_setFile_1()
+			vars:(d f fileName)
+			(setq d (new browseLib.dir _ais.installPath)); get install directory
+			(setq fileName (d.absFilePath "astartup.sl"))
+			(setq f (new browseLib.fileInfo fileName))
+			(writeln (f.exists)) ;;-> true
+			true)
+		;Execute in the console:
+		;(Ex_browseLib_fileInfo_setFile_1)
+			</pre>
+		    </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P>
+		  </div>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>fileInfo.size</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="fileInfo.size">
+			    <p class=overview>Overview</p>
+			<p>Returns the file size in bytes, or 0 if the file does not exist or the
+		size is 0 or if the size cannot be fetched.
+		</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type>Type:
+		    <font color='black'>Instance Child Lambda</font></p>
+		    <p class=syntax>Syntax examples</p>
+		    <pre class=code>
+			(fileInfoInstance.size)
+			</pre>
+		    <!-- Arguments Table Template -->
+		    <p class=arguments>Arguments</p>
+		    <hr>
+			<table class=members_table>
+			  <colgroup><col><col style="font-style:italic"><col></colgroup>
+			  <tr>
+			    <th>Returns</th>
+			    <td>Integer</td>
+			    <td>Size of file in bytes or 0 if the file does not exist.</td>
+			  </tr>
+			</table>
+		    <hr>
+		    <!-- When To Use Template -->
+		    <p class=whentouse>When To Use</p>
+		    <p>Use this child Lambda only on an instance of a fileInfo Lambda.</P>
+		    <!-- Code Eaxmples Template -->
+		    <p class=example>Examples</p>      
+		    <blockquote> 
+		    <pre class=code id="Ex_browseLib_fileInfo_size_1">
+		;;************************
+		;; Get the size of a file
+		;;************************
+		(defun Ex_browseLib_fileInfo_size_1()
+			vars:(d f)
+			(setq d (new browseLib.dir _ais.installPath)); get install directory
+			(setq f (new browseLib.fileInfo d "astartup.sl"))
+			(writeln (f.size)) ;-> 1034
+			true)
+		;Execute in the console:
+		;(Ex_browseLib_fileInfo_size_1)
+			</pre>
+		    </blockquote> 
+		    <!-- Notes & Hints Template -->
+		    <p class=notes>Notes &amp; Hints</p>
+		    <p>No special notes.</P> 
+		  </div>
+	    ]]></Description>
+	</Section>
+</Essay>

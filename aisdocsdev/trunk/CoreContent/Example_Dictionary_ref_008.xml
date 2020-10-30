@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Dictionary ref 008</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>ref</FunctionKeywords>
+		<TypeKeywords> Dictionary Symbol Integer Text</TypeKeywords>
+		<RelatedFunctions>setq  ref fieldsOf   refValues  </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>ref reference set position</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows the <b>ref</b> function returns the
+
+
+                  value of the Dictionary through the <b>index</b> reference.
+
+                  This example uses the <b> (ref aDictionary index1)</b> function syntax.
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(define aDictionary   #{dic| Name: "Bill"  SSN: "616 55 1209" Age: 45}  ) </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60Dictionary 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(ref  Employee 0)  </sc>]]></Expression>
+        <Note><![CDATA[The ref function returns the value with the index 0 in the Dictionary. ]]></Note>
+        <Returns><![CDATA[45]]></Returns>
+  	    <Expression><![CDATA[ <sc>(ref aDictionary 1)          </sc>]]></Expression>
+        <Note><![CDATA[The ref function returns the value with the index 1 in the Dictionary.]]></Note>
+        <Returns><![CDATA[Bill]]></Returns>
+        <Expression><![CDATA[ <sc>(ref aDictionary 2)          </sc>]]></Expression>  
+        <Note><![CDATA[The ref function returns the value with the index 2 in the Dictionary.]]></Note> 
+        <Returns><![CDATA[616 55 1209]]></Returns>
+        <Hints><![CDATA[Since Dictionary keys are maintained by sort ascending order, the internal 
+               representation does not always match the order in which the keys are installed.   
+               When a reference by index, the value or key that is returned will reflect the 
+               internal ordering of the Dictionary or Directory:
+
+        ]]></Hints>
+   </Syntax>
+</Example>

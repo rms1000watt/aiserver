@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>string</Title>
+		<FunctionName>string</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>Error Void Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory Pair
+                       Matrix NumMatrix Integer Float Number Complex</ArgumentTypes> 
+        <DataType>String Complex </DataType>
+		<RelatedFunctions>parse complex append</RelatedFunctions>
+        <RelatedVMInstructions> none</RelatedVMInstructions>
+		<HumanKeywords>converts parse value coerce complex</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[ 
+             <p> The <b>string</b> function converts an argument into a String object.
+                 The conversion would depend on the data type of the object to be
+                 converted. The resulting converted value may be a String or an object's 
+                 external ID. </p>
+             <p> The <b>string</b> function converts a complex number into to a string. </p>
+          ]]></Description>
+	<Brief>                
+	   <Overview><![CDATA[
+		<p>The <b>string</b> function converts an argument <b>{obj}</b> into a String object.  
+           If the argument is a native data type such as: #void, Error, Boolean, Character, 
+           Integer, Number, Integer, Money, Percent, Text, or Character, the <b>string</b> 
+           function converts the native data type into a String.  Complex and String data types
+           are also converted into a String.  If the argument is any other heap object such as 
+           Symbol, Pair, Vector, Structure, or Dictionary, the <b>string</b> function returns 
+           the object's external object id, i.e. #<Vector 1234>.  
+           If the optional <b>{true}</b> argument is specified, the <b>string</b> function will 
+           attempt to convert the object into the same external display string as the 
+           <b>writeln</b> function.
+        </p>
+        ]]></Overview>
+	   <Overview-Complex><![CDATA[
+		<p>The <b>string</b> function converts a complex number into to a string.
+        </p>
+        ]]></Overview-Complex>
+        <Usage><![CDATA[
+        <p>The <b>string</b> function is used to coerce an object into a  String or Text.  
+           Any character string that is 15 characters is assigned to a <b>Text</b> data type. 
+           If a character string containing more than 15 characters  is assigned to a 
+           <b>String</b> object.
+        </p>
+        ]]></Usage>
+        <Usage-Complex><![CDATA[
+        <p>The <b>string</b> function is used for displaying complex numbers.
+        </p>
+        ]]></Usage-Complex>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p><b>(string  obj)</b></p>
+                    <p><b>(string  obj  true)</b></p>
+        ]]></Expression>
+		<Argument> 
+		  <Name>obj</Name>
+		  <Note><![CDATA[
+		  <p> The object to be coerced</p>
+          ]]></Note>
+		  <AISTypes>Error Void Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary DirectoryPair
+                       Matrix NumMatrix Integer Float Number Complex</AISTypes>
+		</Argument>  
+       	<Argument> 
+		  <Name>true</Name>
+		  <Note><![CDATA[
+		  <p>Optional argument. If present and the obj argument is a heap object, string function 
+             will return the object value instead of the object's external id  which is converted 
+             to a string.</p>
+          ]]></Note>
+		  <AISTypes>Boolean</AISTypes>
+		</Argument>  
+		<Return><![CDATA[ 
+	    <p>The result string </p>
+	    ]]></Return>    
+	</Syntax>
+	<Syntax-Complex>
+	    <Expression><![CDATA[<p><b>(string X)</b></p>]]></Expression>
+		<Argument> 
+		  <Name>X</Name>
+		  <Note><![CDATA[
+		  <p> A complex number.</p>
+          ]]></Note>
+		  <AISTypes>Complex</AISTypes>
+		</Argument>  
+		<Return><![CDATA[ 
+	    <p>A string in the standard literal format representing the value of the complex argument.</p>
+	    ]]></Return>    
+	</Syntax-Complex>
+</Function>

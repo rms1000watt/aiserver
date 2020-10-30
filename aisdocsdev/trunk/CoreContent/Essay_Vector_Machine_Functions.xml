@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Essay SYSTEM "../DTD/Essay.dtd">
+<Essay>
+	<KnowledgeBase>
+	    <Title>Vector Machine Functions</Title>
+		<Topic>Lisp</Topic>
+		<SubTopic>Machine Learning</SubTopic>
+		<HumanKeywords>Vector Machine Learning Programming</HumanKeywords>
+	</KnowledgeBase>
+	<Section>
+	    <Heading>Introduction</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="Introduction">
+		    <p>The numerous modern vector machine learning algorithms and techniques require a number of 
+		     low level C Functions for speed. The next section provides a reference to the existing
+		     Analytic Information Server built-in C functions which support various vector machine 
+		     learning algorithms.</p>  
+		  </div>
+	    ]]></Description>
+	</Section>
+    <Section>
+	    <Heading>Vector Machine Learning Functions</Heading>
+		<Description><![CDATA[		
+		    <div class="h2section" id="Vector Machine Learning Functions">
+		    <p>Here are the links to the AIS Vector Functions using the Vector Machine
+		       Learning Algorithm.</p>    
+		    <P>
+			<!--docscript>(aisRefGuide.vmachineLearningLinkTable)</docscript-->
+			</P>
+		  </div>
+	    ]]></Description>
+	</Section>
+</Essay>

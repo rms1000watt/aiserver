@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ADataPageClass</class>
+ <widget class="QWidget" name="ADataPageClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>594</width>
+    <height>322</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="font">
+        <font>
+         <family>Times New Roman</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <italic>true</italic>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>y =</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="upFunctionComboBox">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="editable">
+        <bool>true</bool>
+       </property>
+       <property name="insertPolicy">
+        <enum>QComboBox::InsertAtTop</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="upOptionsPushButton">
+       <property name="text">
+        <string>&amp;Options</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="upGeneratePushButton">
+       <property name="text">
+        <string>&amp;Generate</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="upClearPushButton">
+       <property name="text">
+        <string>&amp;Clear</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QTabWidget" name="upDataTabWidget">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="upTrainingTab">
+      <attribute name="title">
+       <string>Training</string>
+      </attribute>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QTableView" name="upTrainingTableView"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="upTestingTab">
+      <attribute name="title">
+       <string>Testing</string>
+      </attribute>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QTableView" name="upTestingTableView"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="upEstimatesTab">
+      <attribute name="title">
+       <string>Estimates</string>
+      </attribute>
+      <layout class="QHBoxLayout" name="horizontalLayout_4">
+       <item>
+        <widget class="QTableView" name="upEstimatesTableView"/>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>upFunctionComboBox</tabstop>
+  <tabstop>upOptionsPushButton</tabstop>
+  <tabstop>upGeneratePushButton</tabstop>
+  <tabstop>upClearPushButton</tabstop>
+  <tabstop>upDataTabWidget</tabstop>
+  <tabstop>upTrainingTableView</tabstop>
+  <tabstop>upTestingTableView</tabstop>
+  <tabstop>upEstimatesTableView</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

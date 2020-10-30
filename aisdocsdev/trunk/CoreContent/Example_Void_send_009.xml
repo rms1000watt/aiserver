@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Void send 009</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>send</FunctionKeywords>
+		<TypeKeywords> Void Dictionary</TypeKeywords>
+		<RelatedFunctions>addMethod defMethod methodsOf</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>method message messageName</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[<p> This example defines a method named <b>AddError</b> that is invoked when 
+                 the Void type receives an <b>Add</b> message.  The <b>send</b> function is used to
+                 send the message <b>Add</b> to the Void type.</p>
+	]]></Description>
+   <Syntax>
+	<Expression><![CDATA[<sc>(defmethod  Void: Add(a b) ( writeln "Cannot Add to value:" a))       </sc>]]></Expression>  
+    <Note><![CDATA[ Define the Add method:]]></Note> 
+    <Returns><![CDATA[ #&#60Dictionary 123456&#62]]></Returns>    
+    <Expression><![CDATA[<sc>(send Add: #void 1)       </sc> ]]></Expression>
+    <Note><![CDATA[If the Void type is sent an Add message, an Lambda is invoked to output an error message.  The reason is that the 
+       Void type, or #void constant cannot be used as an operand of a binary add. To invoke the Lambda that responds to the 
+        Add message, issue the following statement:]]></Note>
+    <Returns><![CDATA[Cannot Add to value:#void]]></Returns>
+    <Expression><![CDATA[<sc>(Add: #void 1)   </sc> ]]></Expression>
+    <Note><![CDATA[Alternatively, the Lambda may be invoked using the following syntax:]]></Note>
+    <Returns><![CDATA[Cannot Add to value:#void]]></Returns>
+ <Hints><![CDATA[<p>Dissecting the <b>send</b> command involves understanding the methods dictionary 
+          of any Analytic Information Server type. In general the <b>send</b> command is translated 
+          as a reference into the methods dictionary:</p>
+          <p><b>((ref (methodsOf (type object)) methodName  object))</b></p>
+          <p> The statement : </p>
+          <p><b>(send Add: #void 1) </b> </p>
+          <p>is translated into </p>
+          <p><b>((ref (methodsOf (type #void)) Add: ) #void 1) </b></p>
+          <p> Each statement segment results in: </p>
+          <table>
+             <tr><td width=60%><b> (type #void)        </b></td>
+                  <td width=40%>Returns: <b> Void  </b></td></tr>
+             <tr><td width=60%><b>  (methodsOf (Void:))    </b></td>
+                  <td width=40%>Returns: <b> #&#60Dictionary 123456&#62  </b></td></tr>
+             <tr><td width=60%><b> (ref (#&#60Dictionary 123456&#62) Add: )    </b></td>
+                  <td width=40%>Returns: <b> #&#60Lambda 123456&#62  </b></td></tr>
+             <tr><td width=60%><b> ( #&#60Lambda 123456&#62  #void 1)       </b></td>
+                  <td width=40%>Returns: <b> Cannot Add to value: #void </b></td></tr>
+          </table>
+ ]]></Hints>
+   </Syntax>
+</Example>

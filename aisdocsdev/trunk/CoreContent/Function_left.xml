@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>left</Title>
+		<FunctionName>left</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>String Text Integer</ArgumentTypes>  
+		<DataType>String  </DataType>
+        <RelatedFunctions>right mid find substring </RelatedFunctions>
+        <RelatedVMInstructions>vmregObjLength vmregStringCompare vmregStringiCompare  </RelatedVMInstructions>
+		<HumanKeywords>substring position left right  </HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>left</b> function returns
+                 a specied number of characters from a Text or String argument starting from
+                 the leftmost character.  </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>left</b> function returns a specified number of characters from a Text or String
+             argument, beginning at the leftmost character.
+        </p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>left</b>  function is used to create a substring of a specified length 
+           starting from the leftmost character in a String or Text.</p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p>    (left  text length) </p>]]></Expression>
+		<Argument>
+		  <Name>text</Name>
+		  <Note><![CDATA[
+		  <p> A String object or Text </p>
+          ]]></Note>
+		 <AISTypes> String or Text</AISTypes>
+		</Argument>
+        <Argument> 
+		  <Name>length</Name>
+		  <Note><![CDATA[
+		  <p>A positive integer representing the number of characters to return.</p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>The substring of length <b>{length}</b> starting from the leftmost character 
+        </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

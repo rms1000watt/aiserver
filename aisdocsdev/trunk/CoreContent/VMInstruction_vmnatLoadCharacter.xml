@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmnatLoadCharacter</Title>
+		<InstructionName>vmnatLoadCharacter</InstructionName>
+		<InstructionType>Native</InstructionType>
+		<ArgumentTypes>  Character  </ArgumentTypes>
+		<RelatedVMInstructions>  vmnatLoadFloat vmnatLoadInteger vmnatLoadNumber   
+		                        vmnatLoadObject vmnatLoadShort </RelatedVMInstructions>
+		<HumanKeywords>  load character</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[                                                  
+		<p>When evaluated, this vm instruction loads the Character <b>source</b> 
+		value into the <b>target</b> word and sets the data type to Character. There 
+		are no conversions made between different types. This instruction may return 
+		an Error value. After the operation, the Instruction Pointer is promoted. 
+		The operation of this vm instruction is expressed in the following C expression:
+         </p>	
+        <ul><li><b> (word:char)target = (char)source;  </b></li></ul>
+    ]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[  (vmnatLoadCharacter source target) ]]></Expression>
+		<Argument> 
+		  <Name> source </Name>
+		  <Format>regoffset </Format>
+		  <AISTypes> character </AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>target  </Name>
+		  <Format>regoffset  </Format>
+		  <AISTypes>(word:character) </AISTypes>
+		</Argument>
+	</Syntax>
+</VMInstruction>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example ObjectRepository clear 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>clear</FunctionKeywords>
+		<TypeKeywords>ObjectRepository Boolean</TypeKeywords>
+		<RelatedFunctions>  </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>repository workspace RAM lock</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[  <p> The <b>clear</b> function erases all the objects in the Object Repository.</p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+(setq gor (new ObjectRepository: "myarchive.odb"))     </sc>   ]]></Expression>
+        <Note><![CDATA[Specify name of ObjectRepository ]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq gor["one"] "Hello world")     </sc>   ]]></Expression>  
+        <Note><![CDATA[A value is set in the Object Repository. ]]></Note> 
+        <Returns><![CDATA[#&#60ObjectRepository 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc>gor["one"]     </sc>   ]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[Hello World]]></Returns>
+  	    <Expression><![CDATA[ <sc>(clear gor)   </sc>   ]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[#&#60ObjectRepository 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc>gor["one"]   </sc>   ]]></Expression>  
+        <Note><![CDATA[The Repository is cleared of all values. ]]></Note> 
+        <Returns><![CDATA[#void]]></Returns>
+        <Hints><![CDATA[none
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

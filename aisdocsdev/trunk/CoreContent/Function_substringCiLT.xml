@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>substringCiLT</Title>
+		<FunctionName>substringCiLT</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>String Boolean</ArgumentTypes>
+		<DataType>String  </DataType>
+		<RelatedFunctions>substringCiEQ substringCiNE substringCiGT substringCiGE substringCiLE</RelatedFunctions>
+        <RelatedVMInstructions> vmregStringCompare vmregStringiCompare </RelatedVMInstructions>
+		<HumanKeywords>compare string equal boolean case-insensitive substring lesser</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>substringCiLT</b> function performs a case-insensitive comparison 
+                between two substrings and determines
+if the first substring is lesser than the
+                second substring.  A Boolean value is returned. </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>substringCiLT</b> function performs a case-insensitive comparison between the 
+           two substrings <b>{string1 start1 end1}</b> and <b>{string2 start2 end2}</b>.  If the first substring
+          is lesser than the second substring
+           <b>true</b> is returned; otherwise, <b>false</b> is returned.
+        </p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>Use the <b>substringCiLT</b> function to compare if the first substring is lesser than
+           the second substring
+           without considering the case the of the Strings (case-insensitive).  
+           Therefore the Strings "Hello" and "HELLO" would compare equal.
+        </p>
+         ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p><b>(substringCiLT string1 start1 end1 string2 start2 end2)</b></p>
+                    <p><b>(substringCiLT text1 start1 end1 text2 start2 end2)</b></p>]]></Expression>
+		<Argument>
+		  <Name>string1</Name>
+		  <Note><![CDATA[
+		  <p> The first String or Text to be compared </p>
+          ]]></Note>
+		  <AISTypes>String or Text</AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>start1</Name>
+		  <Note><![CDATA[
+		  <p>The beginning position of the first String or Text to be compared</p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>end1</Name>
+		  <Note><![CDATA[
+		  <p>The ending position of the first String or Text to be compared</p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>
+         <Argument>
+		  <Name>string2</Name>
+		  <Note><![CDATA[
+		  <p> The second String or Text to be compared </p>
+          ]]></Note>
+		  <AISTypes>String or Text</AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>start2</Name>
+		  <Note><![CDATA[
+		  <p>The beginning position of the second String or Text to be compared</p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>end2</Name>
+		  <Note><![CDATA[
+		  <p>The ending position of the second String or Text to be compared</p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>Returns true if the first substring is lesser than the second substring, and false if 
+           second substring is equal or greater than the first substring. 
+	    </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

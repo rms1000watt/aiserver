@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>objectToNumVector</Title>
+		<FunctionName>objectToNumVector</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+        <ArgumentTypes> Vector NumVector List Matrix Structure 
+                        Dictionary Directory Integer Real Number Complex </ArgumentTypes>
+        <DataType>   NumVector </DataType>
+	    <RelatedFunctions>new objectToVector </RelatedFunctions>
+        <RelatedVMInstructions> vmregObjPointer </RelatedVMInstructions>
+		<HumanKeywords>convert numvector vector elements dimensional planes</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>objectToNumVector</b> function converts the object 
+                 into a NumVector returning the new Vector.   </p>
+          ]]></Description>
+	<Brief>
+       <Overview><![CDATA[
+       	<p>The <b>objectToNumVector</b> function converts the object <b>{object}</b> into a 
+            NumVector returning the new Vector.  The <b>{object}</b> may be a List, Vector, 
+            Matrix, Structure, Dictionary, or a Directory.  If the object is already a 
+            NumVector, it is returned unchanged.  If it is any other type of Vector 
+            (e.g., Vector), it is converted into a number vector.   Elements that cannot be 
+            converted to a number (a real) are converted to zero.  One-dimensional matrices 
+            are converted into a number vector.  Two-dimensional matrices are converted into 
+            an object vector whose elements are number vectors.  Each of these vectors contains 
+            one row of the matrix.  Three-dimensional matrices are converted into an object 
+            vector that contains a set of object vectors.  There are as many of these object 
+            vectors as the planes in the matrix (first dimension).  Each of these object vectors 
+            contains the same elements as described above for two-dimensional matrices.  
+            The keys of structures, dictionaries, and directories are not converted.  </p>
+        ]]></Overview>
+	   <Usage><![CDATA[
+		<p>The <b>objectToNumVector</b> function is used to convert a Vector, List, Matrix, 
+           Structure, or Dictionary object to a NumVector object. </p>
+        ]]></Usage>
+    </Brief>
+  <Syntax>
+	    <Expression><![CDATA[<p><b> (objectToNumVector obj) </b></p> ]]></Expression>
+    	<Argument>
+		  <Name>obj</Name>
+		  <Note><![CDATA[
+		  <p>A Vector, List, Matrix, Structure, Dictionary or Directory Object</p>
+          ]]></Note>
+		  <AISTypes>Vector List Matrix Structure 
+                     Dictionary Directory  </AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>A NumVector object</p>
+	    ]]></Return>
+	</Syntax>
+</Function>

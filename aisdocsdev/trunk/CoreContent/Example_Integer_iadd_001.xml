@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Integer iadd 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>iadd</FunctionKeywords>
+		<TypeKeywords>Integer   </TypeKeywords>
+		<RelatedFunctions>idiv isub imul imod</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>integer addition subtraction division multiplication</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ <p>These examples show the <b>iadd</b> function perform addition on the Integer arguments.
+                  The function does not operate on non-Integer arguments.</p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+ (iadd 3 4)           </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[7]]></Returns>
+ 	    <Expression><![CDATA[ <sc>
+(iadd -4 7)    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[3]]></Returns>
+        <Expression><![CDATA[ <sc>(iadd 3.5 6.5)  </sc>]]></Expression>
+        <Note><![CDATA[The function returns a random number if the arguments are not Integers..]]></Note>
+        <Returns><![CDATA[-1717986918]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

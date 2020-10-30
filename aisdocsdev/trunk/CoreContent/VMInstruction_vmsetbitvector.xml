@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmsetbitvector</Title>
+		<InstructionName>vmsetbitvector</InstructionName>
+		<InstructionType>Generic</InstructionType>
+		<ArgumentTypes> Word Integer BitVector</ArgumentTypes>
+		<RelatedVMInstructions>  vmset   vmsetbytevector </RelatedVMInstructions>
+		<HumanKeywords>   set ref BitVector</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[                                                  
+		<p>When evaluated, this vm instruction assigns the <b>source</b> 
+		word into the <b>target</b> word. The target word must contain a 
+		BitVector Object. The source, index, and target arguments are 
+		mandatory. The source argument word must contain an indexable value. 
+		After the operation, both the Stack Pointer and the Instruction 
+		Pointer are promoted. The operation of this vm instruction is 
+		expressed in the following C expression:
+        </p>	
+        <ul><li><b>  (word:BitVector)target[(int)index] = (word)source;</b></li></ul>
+    ]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[  (vmsetbitvector index source target) ]]></Expression>
+		<Argument> 
+		  <Name>index</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>   
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>word</AISTypes>
+		</Argument>     
+		<Argument> 
+		  <Name>target</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>(word:BitVector)</AISTypes>
+		</Argument>
+	</Syntax>
+</VMInstruction>

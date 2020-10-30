@@ -1,0 +1,23 @@
+/* XPM */
+static char *home[]={
+"16 16 4 1",
+". c None",
+"# c #000000",
+"b c #c0c0c0",
+"a c #ffffff",
+"...........#....",
+"###....##.......",
+"..#...####......",
+"..#..#aabb#.....",
+"..#.#aaaabb#....",
+"..##aaaaaabb#...",
+"..#aaaaaaaabb#..",
+".#aaaaaaaaabbb#.",
+"###aaaaaaaabb###",
+"..#aaaaaaaabb#..",
+"..#aaa###aabb#..",
+"..#aaa#.#aabb#..",
+"..#aaa#.#aabb#..",
+"..#aaa#.#aabb#..",
+"..#aaa#.#aabb#..",
+"..#####.######.."};

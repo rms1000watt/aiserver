@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>saveRepository </Title>
+		<FunctionName>saveRepository </FunctionName>
+		<FunctionType>Builtin</FunctionType>
+        <ArgumentTypes>ObjectRepository Directory Symbol Number Text</ArgumentTypes>        
+        <DataType> ObjectRepository</DataType>
+	    <RelatedFunctions>loadRepository</RelatedFunctions>
+        <RelatedVMInstructions> none </RelatedVMInstructions>
+		<HumanKeywords>load retrieve key block read RAM</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[ 
+             <p> The <b>saveRepository </b> function loads every object in the specified ObjectRepository. </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>saveRepository  </b> function saves a block of records into the specified ObjectRepository. The 
+		ObjectRepository is cleared before the block is written. The <b>saveRepository</b> function, in connection with 
+		<b>loadRepository</b>, allows repositories to be read or written as blocks of records. </p>     
+		<p>In addition, the <b>saveRepository</b> function may save a new child repository into the specified parent 
+		ObjectRepository and associate the child repository with the specified retrieval key. This allows repositories 
+		to contain independently accessible, nested, blocks of records </p>   
+	    <p>The <b>saveRepository</b> function allows multiple levels of nested repositories within a parent 
+	    ObjectRepository. Child repositories may contain further nested child repositories to any level of nesting. 
+	    Furthermore, each nested child repository may be accessed independent of either the parent repository or any 
+	    of the other child repositories. </p>   
+	    <p><b>Note:</b> saveRepository can only be used if the repository was created with compression. 
+	     (See the new function and the key: true argument combination).  </p> 
+       ]]></Overview>
+        <Usage><![CDATA[
+        <p>Use the <b>saveRepository</b> function to save records into an Object Repository.
+		</p>
+        ]]></Usage>
+    </Brief>
+    <Syntax>
+	    <Expression><![CDATA[<p>(saveRepository aGor aDirectory) </p>]]></Expression>
+		<Argument> 
+		  <Name>aGor</Name>
+		  <Note><![CDATA[
+		  <p>The target ObjectRepository for the blocks to be saved</p>
+          ]]></Note>
+		  <AISTypes>ObjectRepository</AISTypes>
+		</Argument>     
+		<Argument> 
+		  <Name>aDirectory</Name>
+		  <Note><![CDATA[
+		  <p>A block, of objects, which is to be saved in the specified repository.</p>
+          ]]></Note>
+		  <AISTypes>Directory</AISTypes>
+		</Argument>    
+		<Return><![CDATA[ 
+	    <p>Returns the Object Id of the ObjectRepository where the blocks were saved.
+        </p>
+	    ]]></Return>  
+    </Syntax>
+    <Syntax>
+	   <Expression><![CDATA[<p>(saveRepository aGor key size)  </p>]]></Expression>
+		<Argument> 
+		  <Name>aGor</Name>
+		  <Note><![CDATA[
+		  <p>The Parent ObjectRepository into which a new child ObjectRepository is to be saved.</p>
+          ]]></Note>
+		  <AISTypes>ObjectRepository</AISTypes>
+		</Argument>     
+		<Argument> 
+		  <Name>key</Name>
+		  <Note><![CDATA[
+		  <p>The key of the new child ObjectRepository.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>        
+		<Argument> 
+		  <Name>size</Name>
+		  <Note><![CDATA[
+		  <p>The number of bytes reserved for the new child ObjectRepository.</p>
+          ]]></Note>
+		  <AISTypes>Number</AISTypes>
+		</Argument>    
+		<Return><![CDATA[ 
+	    <p>Returns the Object Id of parent ObjectRepository.
+        </p>
+	    ]]></Return>               
+    </Syntax>
+    <Syntax>
+	   <Expression><![CDATA[<p>(saveRepository aGor key aDirectory) </p>]]></Expression>
+		<Argument> 
+		  <Name>aGor</Name>
+		  <Note><![CDATA[
+		  <p>The Parent ObjectRepository into which a new child ObjectRepository is to be saved.</p>
+          ]]></Note>
+		  <AISTypes>ObjectRepository</AISTypes>
+		</Argument>     
+		<Argument> 
+		  <Name>key</Name>
+		  <Note><![CDATA[
+		  <p>The key of the new child ObjectRepository.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>        
+		<Argument> 
+		  <Name>aDirectory</Name>
+		  <Note><![CDATA[
+		  <p>A Directory, of objects, which is to be saved in the new child repository.</p>
+          ]]></Note>
+		  <AISTypes>Directory</AISTypes>
+		</Argument>    
+		<Return><![CDATA[ 
+	    <p>Returns Object Id of the child's ObjectRepository.
+        </p>
+	    ]]></Return>             
+    </Syntax>
+    <Syntax>
+	 	<Expression><![CDATA[<p>(saveRepository aGor key aDirectory overflow) </p>]]></Expression>
+		<Argument> 
+		  <Name>aGor</Name>
+		  <Note><![CDATA[
+		  <p>The Parent ObjectRepository into which a new child ObjectRepository is to be saved.</p>
+          ]]></Note>
+		  <AISTypes>ObjectRepository</AISTypes>
+		</Argument>     
+		<Argument> 
+		  <Name>key</Name>
+		  <Note><![CDATA[
+		  <p>The key of the new child ObjectRepository.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>        
+		<Argument> 
+		  <Name>aDirectory</Name>
+		  <Note><![CDATA[
+		  <p>A Directory, of objects, which is to be saved in the new child repository.</p>
+          ]]></Note>
+		  <AISTypes>Directory</AISTypes>
+		</Argument>   
+		<Argument> 
+		  <Name>overflow</Name>
+		  <Note><![CDATA[
+		  <p>The additional percentage to be reserved for overflow in the new child ObjectRepository.</p>
+          ]]></Note>
+		  <AISTypes>Number</AISTypes>
+		</Argument>     
+		<Return><![CDATA[ 
+	    <p>Returns Object Id of the child's ObjectRepository.
+        </p>
+	    ]]></Return>    
+	</Syntax>
+</Function>

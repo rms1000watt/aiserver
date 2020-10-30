@@ -1,0 +1,57 @@
+# aised/test/testappend.txt
+
+#							AISED - TEST APPEND
+# Test append operations.  
+
+# CHANGE HISTORY
+# Version	Date		Who		Change
+# 1.0108	10/1/2006	tlw		Reduce display width to 20.
+# 1.0039	4/20/2004	tlw		Original
+
+# SYNTAX
+# APPEND - append("Text", Forward)
+# APPEND FILE - appendfile(FileSpec)
+# INSERT - insert("Text", Forward)
+
+# NOTES
+#	 1. When making changes to this file, be sure to note them in the change history above.
+#		Put the latest entry at the top of the history.
+#	 2. See testsuite.txt for lots of details.
+#	 3.	Command format: append("text", Forward)
+#	 4.	Forward defaults to true
+#	*************************************************************************************************
+# APPEND
+clear
+setParameter(WordWrap, false)
+setParameter(MaximumRowWidth, 20)
+append("\n", true)
+delete(prevchar)
+append("123456789 1234567890")
+append("\n")
+delete(prevchar)
+append("A", Backward)
+append("\n")
+append("123456789 12345678901\nB\n")
+append("123456789 12345678\t")
+delete(prevchar)
+append("\tC\n")
+setParameter(MaximumRowWidth, 1024)
+append("D")
+# Word wrap requires some debugging. Inserting into front of wrapped line does not wrap at a word and does not display correctly and crashes!
+#setParameter(WordWrap, true)
+# Set viewport width to 20 chars
+# append("123456789 1234567890")
+# append("\n")
+# delete(prevchar)
+# append("A")
+# append("\n")
+# append("123456789 12345678901\nB\n")
+# append("123456789 12345678\t")
+# delete(prevchar)
+# append("\tC\n")
+
+# APPEND FILE - appendfile(FileSpec)
+appendFile(testsuite.txt)
+
+# INSERT - insert("Text", Forward)
+# PENDING 

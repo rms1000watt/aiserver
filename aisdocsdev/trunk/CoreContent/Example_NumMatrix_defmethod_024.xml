@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example NumMatrix defmethod 024</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>addMethod</FunctionKeywords>
+		<TypeKeywords> NumMatrix Symbol Dictionary </TypeKeywords>
+		<RelatedFunctions>addMethod send methodsOf</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>method message messageName</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example uses the added method <b>IncAll</b> to respond to the 
+
+                  message <b>IncAll</b> which will increment each value in a Matrix.
+
+	]]></Description>
+	<Syntax>
+	<Expression><![CDATA[<sc> (defmethod NumMatrix: IncAll (s) (map add1 s))     </sc>]]></Expression>
+    <Note><![CDATA[ Define a method Increment which  maps the function add1 to increment all values in the Matrix.
+
+
+
+    ]]></Note>
+    <Returns><![CDATA[ #&#60Dictionary 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(define M #(nummat| 100 200 250 150 ))    </sc> ]]></Expression>
+    <Note><![CDATA[Define a Number Matrix that contains some numbers. ]]></Note>
+    <Returns><![CDATA[#&#60NumMatrix 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(setq Y  (send IncAll:  V))       </sc> ]]></Expression>
+    <Note><![CDATA[Send the message  IncAll  to increment all the values in the Matrix by 1. ]]></Note>
+    <Returns><![CDATA[#&#60NumMatrix 234567&#62]]></Returns>
+    <Expression><![CDATA[<sc>(display #&#60NumMatrix 234567&#62)   </sc> ]]></Expression>
+    <Note><![CDATA[Displays the new Number Matrix with the incremented values.]]></Note>
+    <Returns><![CDATA[#(nummat| 101 201 251 151 )]]></Returns>
+    <Expression><![CDATA[<sc>(setq Y (IncAll:  M))          </sc> ]]></Expression>
+    <Note><![CDATA[The method can be invoked simply by name:]]></Note>
+    <Returns><![CDATA[#&#60NumMatrix 234567&#62]]></Returns>
+    <Expression><![CDATA[<sc>Y[0]          </sc> ]]></Expression>
+    <Note><![CDATA[Each of the value of the modified NumMatrix can be accessed by specifying its index.]]></Note>
+    <Returns><![CDATA[101]]></Returns>
+    <Expression><![CDATA[<sc>Y[1]</sc> ]]></Expression>
+    <Note><![CDATA[none]]></Note>
+    <Returns><![CDATA[201]]></Returns>
+    <Expression><![CDATA[<sc>Y[2]</sc> ]]></Expression>
+    <Note><![CDATA[none]]></Note>
+    <Returns><![CDATA[251]]></Returns>
+    <Expression><![CDATA[<sc>Y[3]</sc> ]]></Expression>
+    <Note><![CDATA[none]]></Note>
+    <Returns><![CDATA[151]]></Returns>
+    <Hints><![CDATA[
+        <p>To view the entry in the methods Dictionary created by the addMethod function, 
+
+
+
+
+           you can use the method name to access the directory entry by </p>
+        <p><b> #&#60Dictionary 123456&#62[methodName:] or </b></p>
+        <p> To determine the number of assigned methods:</p>
+        <p><b>(length  (methodsOf NumMatrix: ))</b></p>
+        <p>To access the nth method name:</p>
+        <p><b>(methodsOf NumMatrix: )[n  0]</b></p>
+]]></Hints>
+</Syntax>
+</Example>

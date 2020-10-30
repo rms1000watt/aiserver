@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>  
+		<Title>Example String char 001</Title>  
+		<Template>Example</Template> 
+		<FunctionKeywords>char</FunctionKeywords>
+		<TypeKeywords>text integer</TypeKeywords>	
+		<RelatedFunctions> code isText</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>convert text ASCII</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>char</b> function to convert the ASCII numerical
+                  representation to its corresponding text character in the ASCII table.
+	]]></Description>
+	<Syntax> 
+  	    <Expression><![CDATA[ <sc>(setq X (char 65))</sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[A ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Y (char 13))</sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[#\return]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

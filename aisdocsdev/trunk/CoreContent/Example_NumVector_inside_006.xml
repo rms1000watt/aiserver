@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example NumVector inside 006</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>inside</FunctionKeywords>
+		<TypeKeywords>NumVector Boolean Integer</TypeKeywords>
+		<RelatedFunctions>member isMember member isInside isIdentical</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>inside key value index</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples searches the Vector for the specified value.               
+
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define X  #(num| 11.433 -2.6 ))    </sc>]]></Expression>
+        <Note><![CDATA[A Vector is defined. ]]></Note>
+        <Returns><![CDATA[#&#60NumVector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc> (inside  13 X)       </sc>]]></Expression>
+        <Note><![CDATA[13 is not inside the Vector. ]]></Note>
+        <Returns><![CDATA[false  ]]></Returns>
+        <Expression><![CDATA[ <sc> (inside  -2.6 X)       </sc>]]></Expression>
+        <Note><![CDATA[The index of of the value is returned.]]></Note>
+        <Returns><![CDATA[1]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

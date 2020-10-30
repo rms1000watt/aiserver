@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Vector inside 004</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>inside</FunctionKeywords>
+		<TypeKeywords>Vector Boolean Integer</TypeKeywords>
+		<RelatedFunctions>member isMember member isInside isIdentical</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>inside key value index</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples searches the Vector for the specified String value.               
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define Fruits  #("apple" "orange" "lemon")   )    </sc>]]></Expression>
+        <Note><![CDATA[A Vector is defined. ]]></Note>
+        <Returns><![CDATA[#&#60Vector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc> (inside  "peach" Fruits)       </sc>]]></Expression>
+        <Note><![CDATA["peach" is not inside the Vector. ]]></Note>
+        <Returns><![CDATA[false  ]]></Returns>
+        <Expression><![CDATA[ <sc> (inside  "orange" Fruits)       </sc>]]></Expression>  
+        <Note><![CDATA[The index of of the value is returned.]]></Note> 
+        <Returns><![CDATA[1]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

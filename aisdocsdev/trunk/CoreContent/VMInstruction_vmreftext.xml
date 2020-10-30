@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmreftext</Title> 
+		<InstructionName>vmreftext </InstructionName>
+		<InstructionType>Generic</InstructionType>
+		<ArgumentTypes>  Word Text Integer</ArgumentTypes>
+		<RelatedVMInstructions>  vmrefsymbol vmrefvector</RelatedVMInstructions>
+		<HumanKeywords>ref text</HumanKeywords>
+	</KnowledgeBase>                   
+	<Description><![CDATA[
+		<p>When evaluated, this vm instruction assigns the <b>source</b> word, 
+		indexed by the <b>index</b> word, into the <b>target</b> word. 
+		The source word must contain a  Text data type. The source, 
+		index, and target arguments are mandatory. The source argument word must 
+		contain an indexable value. The operation of this vm instruction is expressed 
+		in the following C expression:
+    	</p>      
+        <ul><li><b>  (word)target = (word:Text)source[(int)index];</b></li></ul>
+    ]]></Description>
+    <Example>
+        <![CDATA[ <sc> <pre>
+			(defun vmreftext_test()
+    			vars: ( z )
+    			(vmreftext 2 "Hello" z)
+    			(vmreturn z)
+			)
+			(writeln (vmreftext_test))
+        </pre>   </sc>
+        ]]>
+    </Example>
+	<Syntax>
+	    <Expression><![CDATA[(vmreftext index source target)]]></Expression>
+		<Argument> 
+		  <Name>index</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>(word:Text)</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>target</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>word</AISTypes>
+		</Argument>
+	</Syntax>
+</VMInstruction>

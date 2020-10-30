@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmonerror </Title>
+		<InstructionName>vmonerror </InstructionName>
+		<InstructionType>Generic</InstructionType>
+		<ArgumentTypes> Word </ArgumentTypes>
+		<RelatedVMInstructions>  vmdebugger   </RelatedVMInstructions>
+		<HumanKeywords>  Error Handling Debugger </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[                                                  
+		<p>When evaluated, this vm instruction assigns the  argument (<b>source</b>) 
+		as the special error event handler for the currently executing Lambda. 
+		The scope of the <b>vmonerror</b> instruction is the scope of the currently 
+		executing Lambda. After the assignment, any error event, occurring during the 
+		scope of the currently executing Lambda, will cause the assigned error event 
+		handler to be invoked.
+        </p>	
+        <ul><li><b>(word)target = (word)source;   </b></li></ul>
+    ]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[  (vmonerror   source target) ]]></Expression>
+		<Argument> 
+		  <Name> source </Name>
+		  <Format>regoffset </Format>
+		  <AISTypes>word</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>target  </Name>
+		  <Format>regoffset  </Format>
+		  <AISTypes>word</AISTypes>
+		</Argument>
+	</Syntax>
+</VMInstruction>

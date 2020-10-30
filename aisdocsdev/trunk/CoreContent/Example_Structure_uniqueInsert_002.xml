@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure uniqueInsert 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>uniqueInsert</FunctionKeywords>
+		<TypeKeywords>Structure Symbol Integer</TypeKeywords>
+		<RelatedFunctions>insert binarySearch binaryInsert sort</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>binary insert structure sort</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example initializes a Structure. Then it
+
+                  uses the <b>uniqueInsert</b> function to add a new key.
+                  
+	]]></Description>
+	<Syntax>
+  	   <Expression><![CDATA[ <sc>(define aStruct #{A: 1  C: 3  D:5})     </sc>]]></Expression>
+        <Note><![CDATA[Defines aStruct. ]]></Note>
+        <Returns><![CDATA[#&#60Structure 199917&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(uniqueInsert aStruct B' )       </sc>]]></Expression>
+        <Note><![CDATA[Inserts the key B' at the end of the Structure]]></Note>
+        <Returns><![CDATA[3]]></Returns>
+        <Expression><![CDATA[ <sc>(display aStruct )       </sc>]]></Expression>  
+        <Note><![CDATA[Displays the modified Structure. Note that the new key 'B, is inserted at the end, 
+              and has no assigned value.]]></Note> 
+        <Returns><![CDATA[#{A: 1 C: 3  D: 5 B: #void)]]></Returns>
+        <Hints><![CDATA[The <b>uniqueInsert</b> function always inserts a new key at the end, since a 
+                Structure is by default not sorted. The value assigned to the new key is #void.
+                This is to be differentiated with the <b>binaryInsert</b> function 
+                which preserves sort order of the Structure keys.   
+        ]]></Hints>
+   </Syntax>
+</Example>

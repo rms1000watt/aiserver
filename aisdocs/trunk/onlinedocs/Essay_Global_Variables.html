@@ -1,0 +1,232 @@
+
+<HTML>
+<HEAD>
+<link rel="stylesheet" type="text/css" href="../CoreContent/help.css">
+<TITLE>AIS Essay Template</TITLE></HEAD>
+<!--Page Parameters -->
+<BODY BGCOLOR="#FFFFF0" TEXT="#000000" LINK="#0000ff">
+
+<A NAME="topage"></A>
+<A HREF="TOP"></A>
+
+
+
+<P>&nbsp;</P>
+
+<FONT COLOR="#000080"><H1>Global Variables</H1></FONT>
+<P>&nbsp;</P>
+
+<UL>
+<li><a href="#S_path"><FONT SIZE=2>_path</font></a></li><li><a href="#S_saveTypes"><FONT SIZE=2>_saveTypes</font></a></li>
+</UL>
+
+<P><H2><A NAME="S_path"></A>_path</H2></P>		
+		    <div class="h2section" id="_path">
+			   <p class=overview>Overview</p>
+			<p>The  global variable, <b>_path</b>,  is reserved by the system to hold the directory and  path name
+			 of the current working directory. The <b>_path</b> variable is set  to the  empty string "" at 
+			 system startup.  It is the programmer??s responsibility to initialize the <b>_path</b> variable. 
+			 When the <b>_path</b> variable is referenced, the text contents of the <b>_path</b> variable are automatically 
+			 attached to the beginning of  database archive file named in the new function.
+		
+			</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type><u><b>Type:</u></b></p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    <font color='black'>Global Variable</font></p>
+		    <p></p>
+		    <!-- When To Use Template -->
+		    <p></p>
+		    <p class=whentouse><u><b>When To Use</u></b></p>
+		    <p> 
+		    The <b>_path</b> is a global variable use to hold a path name string assigned by the programmer.   
+		    If the <b>_path</b> variable is something other than a null string, the <b>_path</b> variable string will be 
+		    prepended to the filename specified in the new function
+		    </P>
+			 <!-- Code Eaxmples Template -->
+		    <p></p>
+		    <p class=example><u><b>Example 1</u></b></p>
+		    <p></p>
+		    <p class=code>     
+		  	<table>	
+		  	<tr>    
+			  <th align=left width=300>(setq _path  "")</th>
+			  <td>;;Reset the _path variable
+			</tr>
+			<tr>    
+				<th align=left>(setq arcFile (new ObjectRepository: "myarchive.odb"))</th>
+				<td>;; Set database archive file to "myarchive.odb"</td>
+			</tr>    
+		   </table>
+		   </p>
+		    <p></p>
+		    <p class=example><u><b>Example 2</u></b></p>
+		    <p></p>
+		    <p class=code>&nbsp;&nbsp;&nbsp;
+		  	<table>
+		  	<tr>	
+				<th align=left width=300>(setq _path  "d:\\test\\")</th>
+				<td>;; Set the _path variable to "d:\test"</td>
+			</tr>   
+		  	<tr>	
+				<th align=left>(setq arcFile (new ObjectRepository: "myarchive.odb"))</th>
+				<td>;; Set database archive file to "d:\test\myarchive.odb"</td>
+			</tr>   
+		  	</table>
+		  	</p>
+		    <!-- Notes & Hints Template -->
+		    <p class=notes><u><b>Notes &amp; Hints</u></b></p>
+		    <p>[...under construction...]</P>	 
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="S_saveTypes"></A>_saveTypes</H2></P>		
+		    <div class="h2section" id="_saveTypes">
+			    <p class=overview>Overview</p>
+			<p>
+			The <b>_saveTypes</b> is a global variable that contains a Boolean value.  The contents of the <b>_saveTypes</b> 
+			 variable determines the calculation of the object closure when objects are saved to an Object Repository. 
+			 At system startup, the <b>_saveTypes</b>  variable is initialized to <b>False</b>.  If the <b>_saveTypes</b> variable is 
+			 later set to <b>True</b>, global value and type information are to be saved along with symbol objects.
+		
+			</p>
+		    <!-- Type and Syntax Template -->
+		    <p class=type><u><b>Type:</u></b></p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    <font color='black'>Global Variable</font></p>
+		    <p></p>
+		    <!-- When To Use Template -->
+		    <p></p>
+		    <p class=whentouse><u><b>When To Use</u></b></p>
+		    <p> 
+			Analytic Information Server Symbols have the two properties associated with them: type property and 
+			global value property.     Typically, the preservation of type and global value information is 
+			needed when a Symbol is being used as a container.  However, Symbols, are themselves data and 
+			may not be associated with a type or value.  In the latter case, the type and global value properties 
+			are not important.  The <b>_saveTypes</b>  variable allows the programmer to control whether type and global 
+			information should be saved along with a Symbol object when the object is saved in an Object Repository.  
+		
+		    </P>
+		    <!-- Code Eaxmples Template -->
+		    <p></p>
+		    <p class=example><u><b>Example 1</u></b></p>
+		    <p></p>
+		    <p class=code>
+		    <table >
+			  <tr>
+			    <th align=left width=300>(defineStructure x:  Old1:)</th>
+			    <td >;; Global type info linked to x</td>
+			  </tr>
+			  <tr>
+			    <th align=left>(setq x #(1 2 3))</th>
+			    <td>;; Global value  stored in x</td>
+			  </tr>
+			  <tr>
+			    <th align=left>(setq y x:)  </th>
+			    <td>;; y contains the Symbol x:</td>
+			  </tr>
+			  <tr>
+			    <th align=left>(setq db (new ObjectRepository: "test.db"))</th>
+			  </tr>
+			  <tr>
+			    <th align=left>(setq _saveTypes  false)</th>
+			    <td>;; Do NOT save Symbol global and type info</td>
+			  </tr>
+			  <tr>
+			    <th align=left>(setq db[0] y)</th>
+			    <td>;; Save record data only</td>
+			  </tr>
+			  <tr>
+			    <th align=left>(setq x #void)</th>
+			    <td>;; Destroy global value in x</td>
+			  </tr>
+			  <tr>
+			    <th align=left>(defineStructure x: New1: ) </th>
+			    <td>;; Destroy global type info in x /td>
+			  </tr>
+			  <tr>
+			    <th align=left>(setq y db[0])</th>
+			    <td>;; Read previously saved record into y</td>
+			  </tr>
+			  <tr>
+			    <th align=left>((writeln ??y = ?? y  ??,  x = ?? x  ??, fieldsof (x) = ?? (fieldsOf x: ) )</th>
+			  </tr>
+			</table>
+			</p>
+		    <p></p>
+		    <p>
+		    The result output from the writeln statement is: <b>y = x,  x = #void,  fieldsof (x) = #{New1: #void}</b>
+		    </p>
+		    <p></p>
+		   <p>
+		   	Note that the contents of the Symbol <b>x:</b> is <b>#void</b>.     
+		   </p>
+		   <p></p>
+		   <p>    
+		    Note that the type information of the Symbol <b>x:</b> is different from the original <b>defineStructure,</b> statement.
+		    </p>
+		    <p></p>
+		    <!-- Code Eaxmples Template -->
+		    <p></p>
+		    <p class=example><u><b>Example 2</u></b></p>
+		    <p></p>
+		    <p class=code>     
+		  	<table>	
+		  	<tr>    
+			  <th align=left width=300>(defineStructure x:  Old1:)</th>
+			  <td>;; Global type info linked to x
+			</tr>
+			<tr>    
+				<th align=left>(setq x #(1 2 3))</th>
+				<td>;; Global value  stored in x</td>
+			</tr>    
+			<tr>    
+				<th align=left>(setq y x:)</th>
+				<td>;; y contains the Symbol x:</td>
+			</tr>
+			<tr>    
+				<th align=left>(setq db (new ObjectRepository: "test.db"))</th>               
+			</tr>
+			<tr>    
+				<th align=left>(setq _saveTypes  true)</th>                       
+				<td>;; DO  save Symbol global and type info</td>
+			</tr>
+			<tr>    
+				<th align=left>(setq db[0] y</th>)                                       
+				<td>;; Save Symbol global and type info</td>
+			</tr>
+			<tr>    
+				<th align=left>(setq x #void)</th>
+				<td>;; Destroy global value in x</td>
+			</tr>
+			<tr>    
+				<th align=left>(defineStructure x: New1: )</th>
+				<td>;; Destroy global type info in x</td> 
+			</tr>
+			<tr>    
+				<th align=left>(setq y db[0])
+				<td>;; Read previously saved record into y</td>
+			</tr>
+			<tr>    
+			<th align=left>(writeln ??y = ?? y  ??,  x = ?? x  ??, fieldsOf (x) = ?? (fieldsOf x: ) )
+			</tr>
+		    </table> 
+		    </p>
+		    <p>
+		    The database archive file name is now <b>y = x,  x = #void,  fieldsof (x) = #{New1: #void}</b>
+		    </p>
+		    <p></p>
+		   <p>
+		   	Note that the contents of the Symbol <b>x:</b> is the <b>Vector #(1 2 3)</b>.     
+		   </p>
+		   <p></p>
+		   <p>    
+		    Note that the type information of the Symbol <b>x:</b> is the same as the original <b>defineStructure</b> statement.
+		   </p>
+		   <p></p>
+		    <!-- Notes & Hints Template -->
+		    <p class=notes><u><b>Notes &amp; Hints</u></b></p>
+		    <p>[...under construction...]</P>
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P>
+
+ 
+
+</BODY>
+</HTML>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Directory setCdr 003</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>setCdr</FunctionKeywords>
+		<TypeKeywords>Directory</TypeKeywords>
+		<RelatedFunctions>ref refValues refAttributes cdr</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>tail ref index cdr setCdr</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines a Directory and sets the tail key-binding value
+
+
+
+
+
+                  of the defined Directory using the <b>setCdr</b> function.  The <b>cdr</b>
+                  expression is a Directory.
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setCdr  #{dir| A:  2 B: "hello"}  (*  3  4))   </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60Directory 188141&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc> (display #&#60Directory 188141&#62 )    </sc>]]></Expression>
+        <Note><![CDATA[Displays the contents of the Directory.]]></Note>
+        <Returns><![CDATA[#{dir| A: 2 B: "hello" . 12} ]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Vector binarySearch 004</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>binarySearch</FunctionKeywords>
+		<TypeKeywords>Vector Boolean</TypeKeywords>
+		<RelatedFunctions>insert binaryInsert sort uniqueInsert</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>binary insert search vector sort</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples show that the <b>binarySearch</b> function  does
+                  not work with Vectors not sorted in ascending order.
+	]]></Description>
+	<Syntax>
+  	   <Expression><![CDATA[ <sc>(setq UnsortedVector #( 5 4 3 7))    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60Vector 199917&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(binarySearch UnsortedVector 5)         </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Descending (sort #( 5 4 3 7) &#62))         </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#&#60Vector 199918&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(binarySearch Descending 3 )             </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[false]]></Returns>        
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

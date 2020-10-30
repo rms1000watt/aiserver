@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example ByteVector isByteVector 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isByteVector</FunctionKeywords>
+		<TypeKeywords> ByteVector Integer</TypeKeywords>
+		<RelatedFunctions>isType isIntegerVector isFloatVector 
+
+                          isNumberVector isBitVector isIdentical
+
+                           isObjectVector isPcodeVector isVector</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords> Vector bit byte bytevector Boolean</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example check if the Vector evaluated is a ByteVector.
+
+                  If it is, the function returns true, otherwise, it returns false.
+
+	]]></Description>
+	<Syntax>
+  	   <Expression><![CDATA[ <sc>(setq X (new Vector:  byte: 5  1))      </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[Returns a byte vector of all 1's]]></Returns>
+        <Expression><![CDATA[ <sc>(isByteVector X)      </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Matrix compareGT 007</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compareGT</FunctionKeywords>
+		<TypeKeywords>Vector Boolean</TypeKeywords>
+		<RelatedFunctions>compare compareEQ compareNE compareGE compareLT  compareLE </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare symbol equal greater </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>compareGT</b> function to compare two Matrices and return
+
+
+
+
+
+
+
+                  the Boolean value, true or false.  The corresponding  values of each Matrix are compared
+
+
+
+
+                  to determine whether one Matrix is greater than the other.
+
+
+
+
+	]]></Description>
+	<Syntax>
+        <Expression><![CDATA[ <sc>(compareGT #(mat| "Hello" "World" ) #(mat| "Hello" "World" ))     </sc>]]></Expression>
+        <Note><![CDATA[Both Matrices are equal.]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(compareGT #(mat| "Hello" "Worlds" ) #(mat| "Hello" "World" ))     </sc>]]></Expression>
+        <Note><![CDATA[ The value of the first Matrix is greater than the value
+
+               of the second Matrix.]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>(compareGT #(mat| "Hello" "Earth" ) #(mat| "Hello" "World" ))    </sc>]]></Expression>
+        <Note><![CDATA[The value of the first Matrix is lesser than the value
+
+               of the second Matrix.]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

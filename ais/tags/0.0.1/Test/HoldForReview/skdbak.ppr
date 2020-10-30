@@ -1,0 +1,665 @@
+/* skdbak.p    backlog shuffle program
+ * 1989 by John Green
+ * Called directly from the menu.
+ */
+/* ps_sys.h  --  Header file for programs in the Plant Services system
+ * 1989 by John Green
+    /* This is an embedded comment. */
+ *
+ * {1} = "NEW GLOBAL" or ""
+ */
+
+
+/* Gpost-date is a date sometimes used when posting transactions that
+ * may have been posted at some date other than today.  I use a global
+ * shared variable here, in case they are entering a whole bunch of 
+ * transactions to one date - this saves some keystrokes.
+ */
+DEFINE  SHARED VARIABLE Gpost-date AS DATE LABEL "Post To" NO-UNDO.
+
+
+/* VARIABLE USED AS A RETURN VALUE FROM
+(DIS_SIZE.I)   */
+DEFINE VARIABLE Vdis-size AS CHARACTER FORMAT
+  "x(28)" LABEL "SIZE" COLUMN-LABEL "PRODUCT!SIZE".
+
+/* VARIABLE VALUE OF "ADD/EDIT"
+(QADD.I)     */
+DEFINE VARIABLE Vqadd AS LOGICAL FORMAT "add/edit".
+DEFINE VARIABLE qadd-menu AS CHARACTER EXTENT 2 FORMAT "x(4)"
+  INITIAL [ "Add" , "Edit" ].
+
+/* PRINTER QUERY INCLUDE FILE VARIABLES
+(QPRINTER.I)  */
+DEFINE VARIABLE qprn-menu AS CHARACTER EXTENT 3 FORMAT "x(7)"
+  INITIAL [ "Screen" , "Printer" , "File" ].
+DEFINE VARIABLE Vqprinter AS CHARACTER.
+
+/* SCRLCODE INCLUDE VARIABLES
+NOTE THAT THIS SCRLCODE IS A PROGRESS LIBRARY FUNCTION.
+SEE PROGRESS DOCUMENTATION.
+(SCRLCODE.I)  */
+DEFINE VARIABLE scr_i     AS INTEGER   NO-UNDO.
+DEFINE VARIABLE scr_j     AS INTEGER   NO-UNDO.
+DEFINE VARIABLE scr_recno AS CHARACTER NO-UNDO.
+DEFINE VARIABLE scr_draw  AS LOGICAL   NO-UNDO.
+DEFINE VARIABLE scr_recid AS RECID.
+/* scrl_id1.i */
+DEFINE VARIABLE Mscr-i             AS INTEGER   NO-UNDO.
+DEFINE VARIABLE Mscr-j             AS INTEGER   NO-UNDO.
+DEFINE VARIABLE Mscr-recno         AS CHARACTER NO-UNDO.
+DEFINE VARIABLE Mscr-draw          AS LOGICAL   NO-UNDO.
+DEFINE VARIABLE Mscr-recid         AS RECID     NO-UNDO.
+DEFINE VARIABLE Mscr-key           AS INTEGER   NO-UNDO.
+DEFINE VARIABLE Mscr-next          AS INTEGER   NO-UNDO.
+
+
+/* LAYFLAT.I  */
+DEFINE VARIABLE Vlayflat AS DECIMAL FORMAT ">>9.9<<" LABEL "LAYFLAT"
+  COLUMN-LABEL "LAYFLAT".
+DEFINE VARIABLE Vlay-count AS INTEGER.
+
+/* RATE.I     */
+DEFINE VARIABLE Vrate AS DECIMAL FORMAT ">>9.9" LABEL "RATE"
+  COLUMN-LABEL "RATE".
+
+/* FORM TO BLANK THE SCREEN WITHOUT LOSING DATA ALREADY ON IT */
+DEFINE VARIABLE Vblanket AS CHARACTER EXTENT 22 FORMAT "x(80)".
+FORMAT Vblanket
+  WITH NO-LABELS NO-BOX ROW 1 WIDTH 80 OVERLAY 1 COLUMNS FRAME Fblanket.
+
+/* COUNTER FOR RENUMBERING ROUTINE, RENUM.I */
+DEFINE VARIABLE Vrenum AS INTEGER.
+
+
+/* END */
+ 
+
+
+/* --- Define shared --- */
+DEFINE SHARED VARIABLE Vhelpfile AS CHARACTER.
+
+/* --- Define locals --- */
+   /* --- Define constants --- */
+DEFINE VARIABLE Cblank AS CHARACTER                                    NO-UNDO.
+
+DEFINE VARIABLE Vmach-code LIKE backlog.mach-code.
+
+/* ARRAY OF ORDER-LINES FOR ONE MACHINE                              */
+DEFINE VARIABLE Vlog-list      AS CHARACTER FORMAT "x(75)" EXTENT 500.
+/* ARRAY OF RECORD IDs                                               */
+DEFINE VARIABLE Vid-list       AS RECID EXTENT 500.
+/* ONE ORDER LINE - TEMPORARY STORAGE                                */
+DEFINE VARIABLE Vlog-store     AS CHARACTER FORMAT "x(75)".
+/* ONE RECORD ID - TEMPORARY STORAGE                                 */
+DEFINE VARIABLE Vid-store    AS RECID.
+/* HOLDS WHETHER THE FRAME HAS TO BE REDRAWN OR NOT                  */
+DEFINE VARIABLE Vredraw        AS LOGICAL.
+/* FRAME ROW - USED BY THE REDRAW ROUTINE                            */
+DEFINE VARIABLE Vrow           AS INTEGER.
+/* LIKE A FILE POINTER - HOLDS THE ARRAY NUMBER THE CURSOR IS AT     */
+DEFINE VARIABLE Vpointer       AS INTEGER.
+/* TEMPORARY POINTER                                                 */
+DEFINE VARIABLE Vtemp-pointer  AS INTEGER.
+/* TEMPORARY POINTER - USED IN SHUFFLING                             */
+DEFINE VARIABLE Vholder        AS INTEGER.
+/* JUST TO HOLD ITERATIONS OF A LOOP                                 */
+DEFINE VARIABLE Vcount         AS INTEGER.
+/* HOLDS WHETHER AN ORDER-LINE HAS BEEN SELECTED FOR SHUFFLING OR NOT*/
+DEFINE VARIABLE Vselected      AS LOGICAL.
+/* WHICH WAY TO SHUFFLE: UP OR DOWN?                                 */
+DEFINE VARIABLE Vskip          AS INTEGER.
+/* HOLDS WHETHER THE ARRAY HAS BEEN SHUFFLED OR NOT                  */
+DEFINE VARIABLE Vshuffled      AS LOGICAL.
+/* CONFIRM MOVE HIGHLIGHTED JOB TO ANOTHER MACHINE.                  */
+DEFINE VARIABLE Vconfirm-move  AS LOGICAL
+  LABEL "Move highlighted job to another machine?".
+/* NEW MACHINE FOR JOB (FOR MOVE)                                    */
+DEFINE VARIABLE Vnew-mach      LIKE backlog.mach-code
+  LABEL "Enter new machine for this job".
+/* HOLDS TYPE OF CURRENT MACHINE.                                    */
+DEFINE VARIABLE Vmach-type    LIKE machine.mach-type.
+/* HOLD THE NEW BACKLOG LINE # FOR A MOVE                            */
+DEFINE VARIABLE Vnew-line     LIKE backlog.log-line.
+/* VARIABLES USED IN MOVING JOB TO ANOTHER MACHINE */
+DEFINE VARIABLE Vrenum-list AS RECID EXTENT 500.
+DEFINE VARIABLE Vtransfer AS LOGICAL FORMAT "move/copy".
+DEFINE VARIABLE Vnew-type AS CHARACTER.
+
+DEFINE VARIABLE Mrestricted-orders   AS CHARACTER                       NO-UNDO.
+DEFINE VARIABLE Merror               AS CHARACTER                       NO-UNDO.
+
+DEFINE BUFFER Bbacklog FOR backlog.
+
+
+/* --- Frame formats --- */
+FORMAT WITH FRAME Flog 15 DOWN NO-LABELS.
+FORMAT Vconfirm-move
+  Vnew-mach
+  WITH SIDE-LABELS CENTERED ROW 5 OVERLAY FRAME Fmove.
+FORMAT "Move job to that machine, or copy job to that machine? "
+  Vtransfer
+  WITH ROW 13 CENTERED OVERLAY FRAME Ftransfer NO-LABELS.
+FORMAT "New machine backlog position: "   Vnew-line    SKIP
+  WITH COLOR messages NO-LABELS ROW 9 OVERLAY CENTERED FRAME Fpositions.
+FORMAT "A backlog already exists for a machine of that type." SKIP
+  "Cannot copy or move job to that machine."
+  WITH COLOR messages ROW 17 CENTERED OVERLAY FRAME Fno-move.
+FORMAT "Updating backlog:" SKIP
+  "please wait"
+  WITH COLOR INPUT OVERLAY ROW 5 FRAME Fwait2.
+
+/*............................ END SETUP ............................*/
+
+DO:
+  DO:
+
+
+    ASSIGN
+     Cblank             = ""
+
+     Vhelpfile          = "sched\skdbak.txt"
+     Vlog-list          = Cblank
+     Vid-list           = ?
+     Vlog-store         = Cblank
+     Vid-store          = ?
+     Vredraw            = TRUE
+     Vrow               = ?
+     Vpointer           = 1
+     Vtemp-pointer      = ?
+     Vholder            = ?
+     Vcount             = 1
+     Vselected          = FALSE
+     Vskip              = ?
+     Vshuffled          = FALSE
+     Vconfirm-move      = FALSE
+     Mrestricted-orders = "AL*,SK*".
+
+    HIDE FRAME Fmove.
+    HIDE FRAME Flog.
+    DISPLAY "Shuffle machine" WITH FRAME Fmach-code NO-HIDE.
+    PROMPT-FOR backlog.mach-code WITH NO-LABELS FRAME Fmach-code.
+    Vmach-code = INPUT backlog.mach-code.
+    FIND machine WHERE machine.mach-code = Vmach-code.
+
+    DISPLAY "READING BACKLOG FILE" WITH COLOR INPUT FRAME Fwait1.
+    Vcount = 1.
+    FOR EACH backlog USING INPUT backlog.mach-code:
+      IF   NOT CAN-DO( Mrestricted-orders , backlog.order-code )
+      THEN RUN sched\skd0004.p
+            ( INPUT  RECID( backlog ) ,
+              OUTPUT Vlog-list[Vcount] ).
+      ELSE IF backlog.order-code BEGINS "SK"
+      THEN ASSIGN Vlog-list[Vcount]
+            = "        --------------- Print schedule to here ---------------".
+      ELSE
+      DO:
+        FIND allocation OF backlog.
+        Vlog-list[Vcount] = /* FILE: CONPUSH.I
+CONVERTS ANYTHING TO CHARACTER STRING OF GIVEN LENGTH.
+{1} = FIELD, STRING, VARIABLE
+{2} = LENGTH.
+*/
+
+SUBSTRING(STRING(backlog.hrs-req),1,5) + FILL(" ",5 - LENGTH(STRING(backlog.hrs-req)))
+  + allocation.allocation.
+      END.
+      Vid-list[Vcount] = RECID(backlog).
+      Vcount = Vcount + 1.
+    END.
+
+    Vcount = 0.
+    HIDE FRAME Fwait1 NO-PAUSE.
+
+    DISPLAY "F2 for help"
+      WITH NO-BOX ROW 1 COLUMN 25 COLOR messages.
+
+
+    /*......................... MAIN SHUFFLING ROUTINE ..................*/
+    MAIN-ROUTINE:
+    DO WHILE TRUE WITH FRAME Flog:
+      HIDE FRAME Fquant-due.
+
+      IF Vredraw THEN
+      DO:
+        Vrow = (IF FRAME-LINE = 0 THEN
+        1 ELSE
+        FRAME-LINE).
+        Vtemp-pointer = Vpointer.
+        UP Vrow - 1.
+        IF Vrow > 1 THEN
+        DO Vcount = 2 TO Vrow:
+          IF Vpointer > 1 THEN
+          Vpointer = Vpointer - 1.
+          ELSE
+          DO:
+            Vrow = 1.
+            Vtemp-pointer = 1.
+          END.
+        END.
+        DO Vcount = 1 TO 15:
+          IF Vlog-list[Vpointer] > Cblank THEN
+          DISPLAY Vlog-list[Vpointer].
+          ELSE
+          CLEAR NO-PAUSE.
+          IF Vpointer < 500 THEN
+          Vpointer = Vpointer + 1.
+          DOWN.
+        END.
+        Vpointer = Vtemp-pointer.
+        UP 15 - Vrow + 1.
+        Vredraw = FALSE.
+      END.
+
+      COLOR DISPLAY MESSAGE Vlog-list[Vpointer].
+      READKEY.
+      COLOR DISPLAY normal Vlog-list[Vpointer].
+      PAUSE 0.
+
+      IF KEYFUNCTION(LASTKEY) = "END-ERROR" THEN
+      DO:
+        HIDE NO-PAUSE.
+        LEAVE.
+      END.
+
+      ELSE
+      IF KEYLABEL(LASTKEY) = "F2" THEN
+      APPLY LASTKEY.
+
+      ELSE
+      IF KEYFUNCTION(LASTKEY) = "CURSOR-UP" THEN
+      DO:
+        IF Vpointer > 1 THEN
+        DO:
+          Vpointer = Vpointer - 1.
+          IF FRAME-LINE = 1 THEN
+          SCROLL DOWN.
+          ELSE
+          UP.
+          DISPLAY Vlog-list[Vpointer].
+        END.
+      END.
+
+      ELSE
+      IF KEYFUNCTION(LASTKEY) = "CURSOR-DOWN" THEN
+      DO:
+        IF Vlog-list[Vpointer + 1] > Cblank THEN
+        DO:
+          Vpointer = Vpointer + 1.
+          IF FRAME-LINE = 15 THEN
+          SCROLL UP.
+          ELSE
+          DOWN.
+          DISPLAY Vlog-list[Vpointer].
+        END.
+      END.
+
+      ELSE
+      IF KEYFUNCTION(LASTKEY) = "PAGE-UP" THEN
+      DO:
+        DO Vcount = 1 TO 15:
+          IF Vpointer > 1 THEN
+          Vpointer = Vpointer - 1.
+        END.
+        Vredraw = TRUE.
+      END.
+
+      ELSE
+      IF KEYFUNCTION(LASTKEY) = "PAGE-DOWN" THEN
+      DO:
+        DO Vcount = 0 TO 15:
+          IF Vlog-list[Vpointer + 1] > Cblank THEN
+          Vpointer = Vpointer + 1.
+        END.
+        Vredraw = TRUE.
+      END.
+
+      /*....................... DEALING WITH "RETURN" .....................*/
+      ELSE
+      IF KEYFUNCTION(LASTKEY) = "RETURN" AND NOT Vselected THEN
+      DO:
+        Vlog-store  = Vlog-list[Vpointer].
+        Vid-store = Vid-list[Vpointer].
+        Vlog-list[Vpointer] = "*" + Vlog-list[Vpointer].
+        Vholder = Vpointer.
+        Vselected = TRUE.
+        DISPLAY Vlog-list[Vpointer].
+        NEXT.
+      END.
+
+      ELSE
+      IF KEYFUNCTION(LASTKEY) = "RETURN" AND Vselected THEN
+      DO:
+
+        IF Vpointer = Vholder THEN
+        DO:
+          Vlog-list[Vpointer] = Vlog-store.
+          DISPLAY Vlog-list[Vpointer].
+        END.
+
+        ELSE
+        DO:
+          IF Vpointer > Vholder THEN
+          DO:
+            DO Vcount = Vholder TO (Vpointer - 2) BY 1:
+              Vlog-list[Vcount]  = Vlog-list[Vcount + 1].
+              Vid-list[Vcount] = Vid-list[Vcount + 1].
+            END.
+            Vlog-list[Vpointer - 1]  = Vlog-store.
+            Vid-list[Vpointer - 1] = Vid-store.
+          END.
+
+          IF Vpointer < Vholder THEN
+          DO:
+            DO Vcount = Vholder TO (Vpointer + 1) BY -1:
+              Vlog-list[Vcount]  = Vlog-list[Vcount - 1].
+              Vid-list[Vcount] = Vid-list[Vcount - 1].
+            END.
+            Vlog-list[Vpointer]  = Vlog-store.
+            Vid-list[Vpointer] = Vid-store.
+          END.
+
+          Vredraw = TRUE.
+          Vshuffled = TRUE.
+          FIND backlog WHERE RECID(backlog) = Vid-list[Vpointer].
+          backlog.hard-line = YES.
+
+        END.   /* OF ELSE...               */
+
+        Vselected = FALSE.
+
+      END.    /* OF SECOND RETURN ROUTINE  */
+
+      /*................END OF DEALING WITH "RETURN".......................*/
+
+
+
+
+
+
+
+
+      /*................DEALING WITH "MOVE JOB TO ANOTHER MACHINE".........*/
+
+      /* THIS IS SET UP SO THAT TRANSFERS WITHIN SIMILAR MACHINE TYPES MOVE THE
+      * JOB, BUT WHEN TRANSFERING FROM ONE MACHINE TYPE TO ANOTHER, THE USER HAS
+      * THE OPTION OF COPYING OR MOVING THE JOB TO THE OTHER MACHINE.
+      */
+
+      ELSE
+      IF KEYLABEL(LASTKEY) = "F10" THEN
+      DO:
+        FIND backlog WHERE RECID(backlog) = Vid-list[Vpointer].
+        IF   CAN-DO( Mrestricted-orders , backlog.order-code )
+        THEN NEXT MAIN-ROUTINE.
+
+        /* SCREEN DISPLAYS, GET NEW MACHINE FOR JOB */
+        COLOR DISPLAY MESSAGE Vlog-list[Vpointer].
+        PAUSE 0.
+        VIEW FRAME Fmove.
+        PAUSE BEFORE-HIDE.
+        UPDATE Vconfirm-move WITH FRAME Fmove.
+        IF Vconfirm-move THEN
+        Bjob-mover:
+        DO ON ERROR UNDO, LEAVE:
+          UPDATE Vnew-mach WITH FRAME Fmove.
+          IF Vnew-mach = Vmach-code THEN
+          DO:
+            DISPLAY "Cannot move job to that machine."
+              WITH CENTERED OVERLAY FRAME Fbad-mach.
+            HIDE FRAME Fbad-mach.
+            LEAVE.
+          END.
+          FIND machine WHERE machine.mach-code = Vmach-code.
+          Vmach-type = machine.mach-type.
+          FIND machine WHERE machine.mach-code = Vnew-mach.
+          Vnew-type = machine.mach-type.
+
+          /* GET LINE FOR POSITION OF JOB IN BACKLOG */
+          Vnew-line = ?.
+          UPDATE Vnew-line WITH FRAME Fpositions.
+          IF Vnew-line = ? THEN
+          DO:
+            FIND LAST Bbacklog WHERE Bbacklog.mach-code = Vnew-mach NO-ERROR.
+            IF AVAILABLE Bbacklog THEN
+            Vnew-line = Bbacklog.log-line + 1.
+            ELSE
+            Vnew-line  = 1.
+          END.
+          FIND LAST Bbacklog OF machine NO-ERROR.
+          IF AVAILABLE Bbacklog THEN
+          DO:
+            IF Vnew-line > Bbacklog.log-line + 1 THEN
+            Vnew-line = Bbacklog.log-line + 1.
+          END.
+          ELSE
+          Vnew-line = 1.
+
+          /* GET WHETHER TO MOVE OR COPY JOB
+          * AFTER CHECKING THAT THERE IS NOT ALREADY A BACKLOG IN EXISTANCE
+          * FOR THAT MACHINE TYPE, THAT ORDER-LINE.
+          */
+          Vtransfer = YES.
+          IF machine.mach-type <> Vmach-type THEN
+          DO:
+            DISPLAY "CHECKING"
+              WITH COLOR messages OVERLAY ROW 14 CENTERED FRAME Fchecking.
+            FIND Bbacklog WHERE RECID(Bbacklog) = Vid-list[Vpointer].
+            FOR EACH machine WHERE machine.mach-type = Vnew-type:
+              FIND FIRST backlog WHERE backlog.mach-code  = machine.mach-code  AND
+                backlog.order-code = Bbacklog.order-code AND
+                backlog.order-line = Bbacklog.order-line
+                NO-ERROR.
+              IF AVAILABLE backlog THEN
+              DO:
+                HIDE FRAME Fchecking.
+                VIEW FRAME Fno-move.
+                LEAVE Bjob-mover.
+              END.
+            END.
+            PAUSE 0.
+            HIDE FRAME Fchecking.
+            UPDATE Vtransfer WITH FRAME Ftransfer.
+          END.
+
+
+          VIEW FRAME Fwait2.
+          /* RENUMBERING ROUTINE FOR DISPLACED BACKLOG LINES */
+          Vrenum-list = ?.
+          Vcount = 0.
+          FOR EACH Bbacklog WHERE Bbacklog.mach-code = Vnew-mach AND
+              Bbacklog.log-line >= Vnew-line AND
+              Bbacklog.log-line <> ?:
+            Vcount = Vcount + 1.
+            Vrenum-list[Vcount] = RECID(Bbacklog).
+            Bbacklog.log-line = ?.
+          END.
+          Vcount = 1.
+          FIND Bbacklog WHERE RECID(Bbacklog) = Vrenum-list[Vcount] NO-ERROR.
+          REPEAT WHILE AVAILABLE Bbacklog:
+            Bbacklog.log-line = Vnew-line + Vcount.
+            Vcount = Vcount + 1.
+            FIND Bbacklog WHERE RECID(Bbacklog) = Vrenum-list[Vcount] NO-ERROR.
+          END.
+
+          /* CREATE NEW BACKLOG */
+          FIND Bbacklog WHERE RECID(Bbacklog) = Vid-list[Vpointer].
+          CREATE backlog.
+          ASSIGN
+           backlog.mach-code   = Vnew-mach
+           backlog.log-line    = Vnew-line
+           backlog.order-code  = Bbacklog.order-code
+           backlog.order-line  = Bbacklog.order-line
+           backlog.printed     = Bbacklog.printed
+           backlog.hold-cr     = Bbacklog.hold-cr
+           backlog.hold-plates = Bbacklog.hold-plates
+           backlog.layflat     = Bbacklog.layflat
+           backlog.hard-line   = Bbacklog.hard-line
+           backlog.job-code    = Bbacklog.job-code
+           backlog.quantity    = Bbacklog.quantity
+           backlog.quant-compl = Bbacklog.quant-compl.
+          RUN bklg_hrs.p ( INPUT RECID( backlog ) ).
+
+          /* IF MOVED (NOT COPIED) THEN: */
+          IF Vtransfer THEN
+          DO:
+            FIND backlog WHERE RECID(backlog) = Vid-list[Vpointer].
+            DELETE backlog.
+            Vcount = Vpointer.
+            DO WHILE Vlog-list[Vcount] > Cblank:
+              Vlog-list[Vcount] = Vlog-list[Vcount + 1].
+              Vid-list[Vcount]  = Vid-list[Vcount + 1].
+              Vcount = Vcount + 1.
+            END.
+          END.
+
+          PAUSE 0.
+          HIDE FRAME Fwait2.
+        END.   /* OF IF CONFIRMED     */
+        Vredraw = TRUE.
+      END.
+
+      /*.............END OF JOB MOVER.........*/
+
+
+
+
+      ELSE
+      IF KEYLABEL(LASTKEY) = "F9" THEN
+      DO ON ENDKEY UNDO, LEAVE:
+        FIND backlog WHERE RECID(backlog) = Vid-list[Vpointer].
+        IF CAN-DO( Mrestricted-orders , backlog.order-code )
+        THEN NEXT MAIN-ROUTINE.
+        Vredraw = TRUE.
+        FIND backlog WHERE RECID(backlog) = Vid-list[Vpointer].
+        FIND order-line OF backlog.
+        UPDATE
+         order-line.quantity LABEL "Quantity for the order"    SKIP
+         backlog.quantity    LABEL "Quantity for this machine"
+            HELP "This is in POUNDS for EXTRUSION or PRESS"
+         backlog.quant-compl LABEL "Quantity completed, this machine"
+            HELP "This is in POUNDS for EXTRUSION or PRESS"
+        WITH FRAME Fquant-due
+             ROW 10 CENTERED SIDE-LABELS COLOR MESSAGES OVERLAY.
+        HIDE FRAME Fquant-due.
+        /* --- Set hours left on backlog --- */
+        RUN bklg_hrs.p ( INPUT RECID( backlog ) ).
+        /* --- Set the display string --- */
+        RUN sched\skd0004.p
+            ( INPUT  RECID( backlog ) ,
+              OUTPUT Vlog-list[Vpointer] ).
+      END.  /* END UPDATE ORDER QUANTITY. */
+
+
+
+
+
+      /* --- Update hold status on an order --- */
+      ELSE
+      IF KEYLABEL(LASTKEY) = "F8" THEN DO:
+        FIND backlog WHERE RECID(backlog) = Vid-list[Vpointer].
+        IF CAN-DO( Mrestricted-orders , backlog.order-code )
+        THEN NEXT MAIN-ROUTINE.
+        ASSIGN Vredraw = TRUE.
+        RUN sched\skd0003.p ( INPUT RECID( backlog ) ).
+        RUN sched\skd0004.p
+            ( INPUT  RECID( backlog ) ,
+              OUTPUT Vlog-list[Vpointer] ).
+      END.
+
+
+
+
+
+      /* --- Update print repeat size ---
+       * Returns without update if not a printed job.  We can ignore Merror.
+       * -------------------------------- */
+      ELSE
+      IF   KEYLABEL(LASTKEY) = "F5"
+      THEN DO:
+        FIND backlog WHERE RECID( backlog ) = Vid-list[Vpointer]
+                       NO-LOCK NO-ERROR.
+        IF   CAN-DO( Mrestricted-orders , backlog.order-code )
+        THEN NEXT MAIN-ROUTINE.
+        FIND order-line OF backlog NO-LOCK.
+        RUN sched\cyl0003.p
+            ( INPUT  RECID( order-line ) ,
+              INPUT  "" ,   /* Don't pass default machine code */
+              OUTPUT Merror ).
+      END.
+
+
+
+
+      /* --- Change the paper code used for a scheduled item ---
+       * skd0001 brings up a pop-up overlay frame which allows the user
+       * to select (with lookup) a different paper code than normal for
+       * the backlog record.
+       * ------------------------------------------------------- */
+      ELSE
+      IF   KEYLABEL(LASTKEY) = "F6"
+      AND  CAN-DO("1*,2*",Vmach-code)
+      THEN RUN sched\skd0001.p ( INPUT Vid-list[Vpointer] ).
+
+
+
+
+
+      /* --- Split the job to another production machine --- */
+      ELSE
+      IF   KEYLABEL(LASTKEY) = "F7"
+      THEN DO:
+        FIND backlog WHERE RECID( backlog ) = Vid-list[Vpointer]
+                       NO-LOCK NO-ERROR.
+        IF CAN-DO( Mrestricted-orders , backlog.order-code )
+        THEN NEXT MAIN-ROUTINE.
+        /* --- Split the backlog record --- */
+        RUN sched\skd0005.p ( INPUT  RECID( backlog ) ).
+        /* --- Re-calc hours --- */
+        RUN bklg_hrs.p ( INPUT RECID( backlog ) ).
+        /* --- re-display this backlog record --- */
+        RUN sched\skd0004.p
+            ( INPUT  RECID( backlog ) ,
+              OUTPUT Vlog-list[Vpointer] ).
+        ASSIGN Vredraw = TRUE.
+      END.
+
+
+
+
+
+      /*................... END MAIN SHUFFLING ROUTINE ....................*/
+    END.
+
+
+
+    Vcount = 1.
+    /*.................... IF SHUFFLED: .................................*/
+    IF Vshuffled THEN
+    shuffle-block:
+    DO ON ERROR UNDO, LEAVE:
+
+      /* BECAUSE THE INDEX ON MACHINE CODE + BACKLOG LINE NUMBER IS UNIQUE,
+      THE CURRENT VALUES FOR THE LINES FOR THIS MACHINE MUST BE TOASTED.
+      */
+      FOR EACH backlog WHERE backlog.mach-code = Vmach-code:
+        backlog.log-line = ?.
+      END.
+
+      VIEW FRAME Fwait2.
+
+      REPEAT WHILE Vlog-list[Vcount] > Cblank:
+        FIND backlog WHERE RECID(backlog) = Vid-list[Vcount] NO-ERROR.
+        backlog.log-line = Vcount.
+        Vcount = Vcount + 1.
+      END.
+    END.
+    /*....................... END IF SHUFFLED ...........................*/
+
+  END.      /* OF PROCEDURE REPEAT BLOCK   */
+  PAUSE 0.
+  HIDE ALL.
+  RETURN.
+END.      /* OF PROCEDURE DO BLOCK       */
+
+/*  END  */

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>nadd</Title>
+		<FunctionName>nadd</FunctionName>
+		<FunctionType>Builtin(Math)</FunctionType>
+		<ArgumentTypes>Number Void </ArgumentTypes>
+		<DataType>Number</DataType>
+		<RelatedFunctions>  nsub nmul ndiv nmod</RelatedFunctions>
+        <RelatedVMInstructions> vmnadd vmndiv vmndivr vmnmul   </RelatedVMInstructions>
+		<HumanKeywords> number arithmetic addition   operators </HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>nadd</b> function is a built-in function that adds 
+              numeric operands and returns a numeric value.   </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>nadd</b> function is a built-in function that adds numeric operands and 
+          returns a numeric value.  The operands are not checked and are not coerced.  
+          An argument of type Void is treated as a Number.  
+        </p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>nadd </b> built-in function is a simple, but very fast numeric addition 
+           function that assumes all of its arguments are type Number.  Use the <b>nadd</b> 
+           function for highly optimized numeric addition. For a slower, but more general 
+           addition that performs type conversion, use the addition operator, +, (plus sign).
+        </p>
+         ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p><b>  (nadd  num1 num2, ... ) </b></p>
+]]></Expression>
+		<Argument>
+		  <Name>num1</Name>
+		  <Note><![CDATA[
+		  <p>The first number to be added.</p>
+          ]]></Note>
+		  <AISTypes>Number</AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>num2</Name>
+		  <Note><![CDATA[
+		  <p>An arbitrary number of Number operands</p>
+          ]]></Note>
+		  <AISTypes>Number</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>Returns the sum of all of the operands expressed as a Number.
+	    </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

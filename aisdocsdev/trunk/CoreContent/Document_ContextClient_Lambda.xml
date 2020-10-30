@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Document SYSTEM "../DTD/Document.dtd">
+<Document>
+	<KnowledgeBase>
+	    <Title>ContextClient Lambda</Title>
+		<Topic>Lisp</Topic>
+		<SubTopic>Overview</SubTopic>
+		<HumanKeywords>Lisp Context Client Lambda AIS Programming</HumanKeywords>
+	</KnowledgeBase>
+	<Essay>Essay_ContextClient_Lambda_Overview</Essay>
+    <Essay>Essay_ContextClient_Lambda_Functions</Essay>
+</Document>

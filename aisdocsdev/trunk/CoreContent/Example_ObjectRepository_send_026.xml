@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example ObjectRepository send 026</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>addMethod</FunctionKeywords>
+		<TypeKeywords> ObjectRepository Symbol Dictionary </TypeKeywords>
+		<RelatedFunctions>defmethod addMethod methodsOf</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>method message messageName</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[<p> This example adds the methods <b>read</b> and <b>write</b> that is invoked
+
+                  by the ObjectRepository data type using the <b>send</b> function. </p>
+	]]></Description>
+	<Syntax>
+	<Expression><![CDATA[<sc>
+(addMethod ObjectRepository: read: (lambda (gor key) (ref gor key))) </sc>]]></Expression>
+    <Note><![CDATA[ Add the read method, which will get a value using a key .
+
+]]></Note>
+    <Returns><![CDATA[ #&#60Dictionary 123456&#62]]></Returns>
+	<Expression><![CDATA[<sc>(addMethod ObjectRepository: write: (lambda (gor key value) (setq gor key value)))  </sc>]]></Expression>
+    <Note><![CDATA[ Add the write method, which will set a value for a given key.]]></Note>
+    <Returns><![CDATA[ #&#60Dictionary 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(setq gor (new ObjectRepository: "mice.db"))               </sc> ]]></Expression>
+    <Note><![CDATA[Create a repository.]]></Note>
+    <Returns><![CDATA[#&#60ObjectRepository 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(setq gor 1 "mickey")         </sc> ]]></Expression>
+    <Note><![CDATA[Install a key and value.]]></Note>
+    <Returns><![CDATA[#&#60ObjectRepository 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(setq gor "one" "minnie")         </sc> ]]></Expression>
+    <Note><![CDATA[Install a key and value.]]></Note>
+    <Returns><![CDATA[#&#60ObjectRepository 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(setq gor "two" "mighty")         </sc> ]]></Expression>
+    <Note><![CDATA[Install a key and value.]]></Note>
+    <Returns><![CDATA[#&#60ObjectRepository 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(send read: gor "one")          </sc> ]]></Expression>
+    <Note><![CDATA[Retrieves the value of the key "one".]]></Note>
+    <Returns><![CDATA[minnie]]></Returns>
+    <Expression><![CDATA[<sc>(send write: gor "three" "Speedy Gonzales")           </sc> ]]></Expression>
+    <Note><![CDATA[Invoke the method write to add a value using the specified key.]]></Note>
+    <Returns><![CDATA[#&#60ObjectRepository 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(send read: gor "three")           </sc> ]]></Expression>
+    <Note><![CDATA[Retrieves the newly written value of the key "three".]]></Note>
+    <Returns><![CDATA[Speedy Gonzales]]></Returns>
+    <Hints><![CDATA[<p> The Method Dictionary Bindings: </p>
+           <table>
+           <tr><td>MsgName1</td><td>LambdaName1</td></tr>
+           <tr><td>MsgName2</td><td>LambdaName2</td></tr>
+           <tr><td>MsgName3</td><td>LambdaName3</td></tr>
+          </table>
+     <p>To view the entry in the methods Dictionary created by the <b>addMethod</b> function,
+
+        you can use the method name to access the methods dictionary entry by key: </p>
+     <p><b>#<Dictionary 5678>[msgName:] </b></p>
+     <p>To determine the number of assigned methods:  </p>
+     <p><b>(length (methodsOf ObjectRepository: )) </b></p>
+     <p>To access the nth method name: </p>
+     <p><b>(methodsOf ObjectRepository: )[n 0] </b></p>
+     <p>To determine if a message is in the methods dictionary:</p>
+     <p><b>(isMember msgName (methodsOf ObjectRepository: ))[n 0]</b></p>
+    ]]></Hints>
+</Syntax>
+</Example>

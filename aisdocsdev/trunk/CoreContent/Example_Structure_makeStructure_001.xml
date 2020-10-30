@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure makeStructure 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>makeStructure</FunctionKeywords>
+		<TypeKeywords>Structure</TypeKeywords>
+		<RelatedFunctions>defstruct defineStructure fieldsOf defclass objectToStructure</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>define set make object structure inherit 
+
+
+                       parent object-oriented classes</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example coerces a symbol-value pair into a key-value binding
+                   of a Structure.
+
+     
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq S (makeStructure Age: 36 Name: "Amy "))   </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60Structure 123456&#62 ]]></Returns>
+ <Expression><![CDATA[ <sc>(display S)    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#{Age: 36 Name: "Amy "}true ]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

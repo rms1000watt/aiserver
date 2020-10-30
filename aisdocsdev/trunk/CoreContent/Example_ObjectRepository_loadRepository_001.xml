@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example ObjectRepository loadRepository 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>loadRepository</FunctionKeywords>
+		<TypeKeywords>ObjectRepository Directory</TypeKeywords>
+		<RelatedFunctions>  saveRepository  </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>load retrieve key block read RAM</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows the <b>loadRepository</b> function load the defined
+                  Object Repository into RAM memory.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq gor (new ObjectRepository: "myarchive.odb"))      </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 197815&#62 ]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq gor["one"] "Hello World")      </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#&#60ObjectRepository 197815&#62 ]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq gor["two"] "Goodbye World")      </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#&#60ObjectRepository 197815&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>gor["one"]  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[Hello World]]></Returns>
+        <Expression><![CDATA[ <sc>gor["two"]  </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[Goodbye World]]></Returns>
+        <Expression><![CDATA[ <sc>(setq memGor (loadRepository gor))  </sc>]]></Expression>  
+        <Note><![CDATA[The contents of the Object Repository are cleared.]]></Note> 
+        <Returns><![CDATA[#&#60Directory 123456&#62]]></Returns>
+         <Expression><![CDATA[ <sc>memGor["one"]  </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[Hello World]]></Returns>
+        <Expression><![CDATA[ <sc>memGor["two"]  </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[Goodbye World]]></Returns>
+        <Hints><![CDATA[<p>After the <b>loadRepository</b> is executed, the entire contents of the 
+          repository have been loaded off the disk and stored in memory. The Directory in memGor
+            contains each retrieval key and its associated loaded object. </p>
+        ]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Datatype SYSTEM "../DTD/Datatype.dtd">
+<Datatype>
+	<KnowledgeBase>
+        <Title>Complex</Title>
+		<Type>Object</Type>
+		<RelatedTypes>Void Error Character Integer Number Money Percent String 
+		             Text Character</RelatedTypes>
+		<HumanKeywords>Heap Complex Real Imaginary </HumanKeywords>
+	</KnowledgeBase>
+	<Section>                
+	    <Heading>Complex Overview</Heading>
+		<Description><![CDATA[
+		<p class=MsoBodyText>The Analytic Information Server engine supports complex numbers as a pair of real 
+		values representing the real and imaginary parts of the complex number, respectively.  A complex number 
+		is not a native type.  Rather, it is a heap object since two real numbers is too large to fit into the 
+		space allotted to native types.  All of the standard operations on complex numbers 
+		(add, subtract, multiply, divide, mod, sin, cos, tan, etc.) are supported.  In addition, several 
+		built-in functions that are specific to complex numbers (real, imaginary, complex, conjugate, argument, modulus) 
+		are also provided.</p>  
+        ]]></Description>
+    </Section>
+	<Section>                
+	    <Heading>When to Use</Heading>
+		<Description><![CDATA[
+          <p class=MsoBodyText>Use complex numbers for those functions that require complex number support.</p>         
+        ]]></Description>
+    </Section>
+    <Section>                
+	    <Heading>Constant Form</Heading>
+		<Description><![CDATA[
+			  <p class=MsoBodyText>Complex numbers are represented by a pair of floating-point numbers, representing the 
+			  real and imaginary parts of the complex value.  For example:</p> 
+			  <p><b> #C(3.14 2.718)</b></p>
+			  <p>  If the second element is omitted, the imaginary value is set to <b>0.0</b>.</p>
+        ]]></Description>
+    </Section>
+ 	<Section>                
+	    <Heading>Object Data Types</Heading>
+		<Description><![CDATA[
+          <p>The <b>Complex</b> is a Heap Object or an Object Data Type. The Analytic Information Server Object Types 
+            are stored in the Heap and are managed by the Heap manager.  The Analytic Information 
+            Server Heap manager supports object resizing, garbage collection, and anti-fragmentation algorithms 
+            so that the user may concentrate on the analysis and modeling of data rather than on
+            memory management. Without exception, all of the Object types are identified by an 
+            object id.  The object id identifies a block of memory, managed by the Lambda 
+             Information Server memory manager, in which the Object's data is stored.</p>
+         <p>The Analytic Information Server Heap Object and Native Data types can be saved and loaded to and from persistent
+            (disk file) storage at any time. Containers with immediate data are saved on disk 
+            in fixed length records equal to the size of the container. Containers with Heap 
+            object references are saved in fixed length records, which are automatically expanded 
+            to include the contents of the Heap object, and any objects referenced by the Heap 
+            object, etc. This feature is called Object Closure Management and is automatic with 
+            every Analytic Information Server container database save.</p>
+         <p>Analytic Information Server containers may be loaded from any database repository record 
+            at any time. If the data in the record is immediate, the database load fills the 
+            container with the immediate data. If the data in the record is an object closure, 
+            the database load fills the container with a Heap object reference, and all of the 
+            objects in the record are loaded back into the Heap with the same referential 
+            relationships they had when they were saved in the repository.</p>    
+        ]]></Description>
+    </Section>
+</Datatype>

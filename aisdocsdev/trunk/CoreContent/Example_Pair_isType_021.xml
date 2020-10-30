@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Pair isType 021</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isType</FunctionKeywords>
+		<TypeKeywords>Pair</TypeKeywords>
+		<RelatedFunctions>  isPair isAtom</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>Type Analytic Object </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows that the AIS only has <b>Pair</b> and NOT <b>List</b> as the 
+                  symbolic name for the Pair Data Type.  However, Lists are considered
+                  also as Pairs because a List is really a collection of pairs chained together.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq X '(employee name  job  salary ) )        </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60Pair 197815&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(isType  Pair:  X)  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+  	    <Expression><![CDATA[ <sc>(isType  List:    X)           </sc>]]></Expression>
+        <Note><![CDATA[The container X contains a Pair because a List is really a collection of pairs chained together. ]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Hints><![CDATA[none
+
+        ]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example CpxVector compareNE 020</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compareNE</FunctionKeywords>
+		<TypeKeywords>CpxVector Integer</TypeKeywords>
+		<RelatedFunctions>compare  compareEQ compareGT compareGE compareNE compareLT  compareLE</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare  not equal  </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>compareNE</b> functions to compare
+
+                a Complex Vector with a Complex Number and another Complex Vector. A Boolean value is returned.
+
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq X #c1.0+2.0i)     </sc>]]></Expression>
+        <Note><![CDATA[A Complex Number is defined.]]></Note>
+        <Returns><![CDATA[#&#60Complex 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Y #(cpx| 1.0 2.0))     </sc>]]></Expression>
+        <Note><![CDATA[ The Complex Number is compared with a Complex Vector containing the 
+
+           same value as the complex number.]]></Note>
+        <Returns><![CDATA[#&#60CpxVector 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(compareNE X Y)    </sc>]]></Expression>
+        <Note><![CDATA[The Complex Number has lesser value than the Complex Vector.]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+ 	    <Expression><![CDATA[ <sc>(setq A #(cpx| 1.0 4.0 1.0 -2.0))     </sc>]]></Expression>
+        <Note><![CDATA[The first complex vector is defined.]]></Note>
+        <Returns><![CDATA[#&#60Complex 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(setq B #(cpx| 1.0 2.0 1.0 -2.0))     </sc>]]></Expression>
+        <Note><![CDATA[ The second complex vector is defined.]]></Note>
+        <Returns><![CDATA[#&#60CpxVector 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(compareNE A B)    </sc>]]></Expression>
+        <Note><![CDATA[The imaginary part of the first Complex Number is greater than that of the second
+
+               complex Number.]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[
+           <p>If you prefer an Integer  resulting from the comparison , use the compare function.</p>
+        ]]></Hints>
+   </Syntax>
+</Example>

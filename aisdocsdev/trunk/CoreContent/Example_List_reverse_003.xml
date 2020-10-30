@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example List reverse 003</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>reverse</FunctionKeywords>
+		<TypeKeywords>Pair List</TypeKeywords>
+		<RelatedFunctions>delete insert remove</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>delete remove key binding </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows the elemets of the List in reverse order.
+	]]></Description>
+	<Syntax>
+      <Expression><![CDATA[ <sc> (reverse '(1   12  56 45) )     </sc>]]></Expression>
+        <Note><![CDATA[ none]]></Note>
+        <Returns><![CDATA[#&#60Pair 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc> (display #&#60Pair 123456&#62 )     </sc>]]></Expression>
+        <Note><![CDATA[ none]]></Note>
+        <Returns><![CDATA[(45 56 12 1)]]></Returns>
+        <Expression><![CDATA[ <sc> (reverse '((1  2)  3  4))       </sc>]]></Expression>  
+        <Note><![CDATA[ none]]></Note> 
+        <Returns><![CDATA[#&#60Pair 234567&#62]]></Returns>
+        <Expression><![CDATA[ <sc> (display #&#60Pair 234567&#62 )     </sc>]]></Expression>  
+        <Note><![CDATA[ none]]></Note> 
+        <Returns><![CDATA[(4  3  (1  2))]]></Returns>
+        <Expression><![CDATA[ <sc> (reverse '(1)  )     </sc>]]></Expression>  
+        <Note><![CDATA[ none]]></Note> 
+        <Returns><![CDATA[#&#60Pair 345678&#62]]></Returns>
+        <Expression><![CDATA[ <sc> (display #&#60Pair 345678&#62 )     </sc>]]></Expression>  
+        <Note><![CDATA[ none]]></Note> 
+        <Returns><![CDATA[(1)]]></Returns>
+        <Hints><![CDATA[
+none ]]></Hints>
+   </Syntax>
+</Example>

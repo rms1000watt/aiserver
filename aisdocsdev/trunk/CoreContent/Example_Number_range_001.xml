@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number range 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>range</FunctionKeywords>
+		<TypeKeywords>  Number Integer   </TypeKeywords>
+		<RelatedFunctions>max median min</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>range min max difference cells</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ <p> This example shows how the <b>range</b> function returns the 
+       difference between the smallest and largest elements found in the argument list.</p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(range 1 2 3 4 5) </sc>   ]]></Expression>
+        <Note><![CDATA[The difference of 5 and 1 is returned.]]></Note>
+        <Returns><![CDATA[4.0 ]]></Returns>
+  	    <Expression><![CDATA[ <sc>(range -5 -2 0 1 5)  </sc>   ]]></Expression>  
+        <Note><![CDATA[The difference of 5 and -5 is returned.]]></Note> 
+        <Returns><![CDATA[10.0 ]]></Returns>
+        <Hints><![CDATA[none
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

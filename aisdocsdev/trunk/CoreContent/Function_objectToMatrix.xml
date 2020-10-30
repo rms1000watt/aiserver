@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>objectToMatrix</Title>
+		<FunctionName>objectToMatrix</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+        <ArgumentTypes> Vector NumVector List Matrix Structure 
+                        Dictionary Directory Integer Real Number Complex </ArgumentTypes>
+        <DataType>   Matrix </DataType>
+	    <RelatedFunctions>new  objectToNumMatrix </RelatedFunctions>
+        <RelatedVMInstructions> vmregObjPointer </RelatedVMInstructions>
+		<HumanKeywords>convert numvector vector elements dimensional planes</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>objectToMatrix</b> function converts the object 
+
+                 into a Matrix returning the new Matrix.   </p>
+          ]]></Description>
+	<Brief>
+       <Overview><![CDATA[
+       	<p>The <b>objectToMatrix</b> function converts the object <b>{object}</b> into a 
+
+            Matrix returning the new Matrix.  The <b>{object}</b> may be a List, Vector, 
+
+            Matrix, Structure, Dictionary, or a Directory.  If the object is already a 
+
+            Matrix, it is returned unchanged.  If it is any other type of Matrix 
+
+            (e.g., NumMatrix), it is converted into a regular matrix.  A Vector is converted into 
+            a Matrix.  An object vector containing vectors is converted into a two-dimensional 
+            matrix.  Each of these vectors is converted to one row of the matrix.  An object 
+            vector containing object vectors that each contain a vector is converted into a 
+            three-dimensional matrix.  Each of these object vectors contains one plane of the 
+           matrix (first dimension).  Each plane is converted into rows as described above for 
+          two-dimensional matrices.  Several examples are shown below.</p>
+        <p>If a vector is being converted, an optional rank and the dimensions of the resulting 
+           matrix may be specified.  If no rank is provided, the vector is converted to a 
+            one-dimensional matrix.</p>
+        ]]></Overview>
+	   <Usage><![CDATA[
+		<p>The <b>objectToMatrix</b> function is used to convert a Vector, List, Matrix, 
+
+           Structure, Directory or Dictionary object to a Matrix object. </p>
+        ]]></Usage>
+    </Brief>
+  <Syntax>
+	    <Expression><![CDATA[<p><b>  (objectToMatrix   object rank dim1 dim2 dim3) </b></p> ]]></Expression>
+    	<Argument>
+		  <Name>obj</Name>
+		  <Note><![CDATA[
+		  <p>A Vector, List, Matrix, Structure, Dictionary or Directory Object</p>
+          ]]></Note>
+		  <AISTypes>Vector List Matrix Structure 
+                     Dictionary Directory  </AISTypes>
+		</Argument>
+   	    <Argument> 
+		  <Name>rank</Name>
+		  <Note><![CDATA[
+		  <p>Optional.  Rank of the resulting matrix (1, 2, 3)</p>
+          ]]></Note>
+		  <AISTypes>Integer </AISTypes>
+		</Argument>
+  	    <Argument> 
+		  <Name>dim1</Name>
+		  <Note><![CDATA[
+		  <p>Optional.  Size of the first dimension of the resulting matrix</p>
+          ]]></Note>
+		  <AISTypes>Integer </AISTypes>
+		</Argument>
+  	    <Argument> 
+		  <Name>dim2</Name>
+		  <Note><![CDATA[
+		  <p>Optional.  Size of the second dimension of the resulting matrix</p>
+          ]]></Note>
+		  <AISTypes>Integer </AISTypes>
+		</Argument>
+  	    <Argument> 
+		  <Name>dim3</Name>
+		  <Note><![CDATA[
+		  <p>Optional.  Size of the third dimension of the resulting matrix</p>
+          ]]></Note>
+		  <AISTypes>Integer </AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>A Matrix object</p>
+	    ]]></Return>
+	</Syntax>
+</Function>

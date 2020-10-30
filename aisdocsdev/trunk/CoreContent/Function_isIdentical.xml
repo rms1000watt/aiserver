@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>isIdentical</Title>
+		<FunctionName>isIdentical</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+    	<ArgumentTypes>Character String Symbol Vector BitVector ByteVector ShortVector IntVector Function
+                       FltVector ObjVector Structure Dictionary Directory Brick Pair List
+                       Matrix NumMatrix Integer Float Number Complex Void Error Boolean Date ObjectRepository
+                       FltVector IntVector NumVector ObjVector  BitVector PcodeVector </ArgumentTypes>
+        <DataType> Matrix Structure Dictionary Directory Vector Brick Pair Function ShortVector NumMatrix Character List Void Error Boolean Number Date Complex ObjectRepository FltVector IntVector NumVector ObjVector  BitVector PcodeVector</DataType>
+		<RelatedFunctions>compareEQ comparison isEqual</RelatedFunctions>
+        <RelatedVMInstructions>vmregObjPointer  </RelatedVMInstructions>
+		<HumanKeywords>  Equal Analytic Object Identical</HumanKeywords>
+	</KnowledgeBase>
+          <Description><![CDATA[ 
+             <p> The <b>isIdentical</b> function compares the two arguments to see if they identical. </p>
+          ]]></Description>
+	<Brief>
+       <Overview><![CDATA[
+		<p>The <b>isIdentical</b> function compares the two arguments to see if they identical. 
+        If the arguments are both native data objects, the immediate values are compared to see 
+        if they are equal, in which case, the <b>isIdentical</b> function returns a Boolean value 
+        of <b>true</b> otherwise it returns <b>false</b>.  If the arguments are both heap data 
+        objects, the object Ids are compared to see if they are equal, in which case, the 
+        <b>isIdentical</b> function returns a Boolean value of <b>true</b> otherwise it returns <b>false</b>. 
+        </p>
+		<p>The <b>==</b> relational operator calls the <b>isIdentical</b> function to perform its comparison. 
+        </p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>Use the <b>isIdentical</b> function when you wish to compare two Objects to 
+          determine if they are identical (they are one and the same).
+        </p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p>    (isIdentical obj1  obj2 )</p>]]></Expression>
+		<Argument>
+		  <Name>obj1</Name>
+		  <Note><![CDATA[
+		  <p>First object to be compared.</p>
+          ]]></Note>
+		  <AISTypes>Structure Dictionary Directory Vector Character Function NumMatrix ShortVector
+                 Boolean Brick Matrix Pair List Void Error Number Date Complex</AISTypes>
+		</Argument>
+    	<Argument>
+		  <Name>obj2</Name>
+		  <Note><![CDATA[
+		  <p> Second object to be compared.</p>
+          ]]></Note>
+		  <AISTypes>Structure Dictionary Directory Vector Brick Function NumMatrix ShortVector
+                  Boolean Matrix Pair List Void Error Character Number Date Complex</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>For Native Data Types, returns true if the immediate values are identical and returns false if otherwise.
+           For
+Heap Data Objects, returns true of the Object Ids are identical and returns false if otherwise.
+        </p>
+	    ]]></Return>
+	</Syntax>
+	<Syntax-ObjectRepository>
+	    <Expression><![CDATA[<p>    (isIdentical arg1 arg2 )</p>]]></Expression>
+		<Argument> 
+		  <Name>arg1</Name>
+		  <Note><![CDATA[
+		  <p>First Repository  to be compared.</p>
+          ]]></Note>
+		  <AISTypes>ObjectRepository</AISTypes>
+		</Argument>
+    	<Argument> 
+		  <Name>arg2</Name>
+		  <Note><![CDATA[
+		  <p> Second Repository to be compared.</p>
+          ]]></Note>
+		  <AISTypes>ObjectRepository</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>This function returns the Boolean value true if the Repository Ids are equal; Returns
+             false if the Repository Ids are not equal.
+        </p>
+	    ]]></Return>   
+	</Syntax-ObjectRepository>
+</Function>

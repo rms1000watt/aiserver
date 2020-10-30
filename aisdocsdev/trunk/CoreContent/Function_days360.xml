@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>days360</Title>
+		<FunctionName>days360</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>Date String Text Number Integer</ArgumentTypes>
+		<DataType>Date</DataType>
+		<RelatedFunctions> day today year month</RelatedFunctions>
+        <RelatedVMInstructions>    </RelatedVMInstructions>
+		<HumanKeywords>year period calendar day  object </HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>days360</b> function returns the number of days between two given dates based on a 360-day year.   </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+	   <p> The <b>days360</b> function returns the number of days between 
+         two given dates based on a 360-day year. For example, between February 15 and March 15, 
+         <b>days360</b> returns 30 days, even though the number of days between these dates is 
+         actually 28 or 29.
+        </p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>day360</b> function is useful for computing payments in accounting systems 
+          that simplify the calendar year into twelve equal 30-day months. 
+        </p>
+         ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p><b> (days360 start-Date end-Date )</b></p>]]></Expression>
+		<Argument>
+		  <Name>start-date</Name>
+		  <Note><![CDATA[
+		  <p>The beginning date of the time period for which you want to compute the 
+             number of days.</p>
+          ]]></Note>
+		  <AISTypes>Date Text String</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>end-date</Name>
+		  <Note><![CDATA[
+		  <p>The ending date of the time period for which you want to compute the 
+             number of days.</p>
+          ]]></Note>
+		  <AISTypes>Date Text String</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>Returns the number of days between start-date and end-date  If the end-date 
+           is earlier than the start-date,   the return value is a negative value.
+	    </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

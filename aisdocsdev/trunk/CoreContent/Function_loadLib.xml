@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>loadLib </Title>
+		<FunctionName>loadLib </FunctionName>
+		<FunctionType>Builtin(FileIO)</FunctionType>
+        <ArgumentTypes> String</ArgumentTypes>
+        <DataType> String</DataType>
+	    <RelatedFunctions>reloadLib </RelatedFunctions>
+        <RelatedVMInstructions> none  </RelatedVMInstructions>
+		<HumanKeywords>shared libraries dll dynamic libraries </HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p>The <b>loadLib</b>  function dynamically loads a shared library at runtime
+            on any platform supported by Qt.</p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+	    <p><b>loadLib</b> dynamically loads a shared library on any supported platform.  The shared library must export two functions, __getLibName
+		and __registerLibFunctions.  See the xml C++ project for an example of a shared library meeting these requirements.  To test a DLL (on a Windows platform)
+		 to make sure that it meets this requirement, use the command:<br />
+		 dumpbin /EXPORTS myLib.dll<br />
+		 For example, if "xml" is substituted for myLib, the dumpbin command yields:
+		 <pre>
+		C:/ais>dumpbin /EXPORTS xml.dll
+		Microsoft (R) COFF/PE Dumper Version 7.10.3077
+		Copyright (C) Microsoft Corporation.  All rights reserved.
+		Dump of file xml.dll
+		File Type: DLL
+		  Section contains the following exports for xml.dll
+			00000000 characteristics
+			4559CD35 time date stamp Tue Nov 14 06:05:41 2006
+				0.00 version
+				   1 ordinal base
+				   2 number of functions
+				   2 number of names
+			ordinal hint RVA      name
+				  1    0 0000101E __getLibName
+				  2    1 00001023 __registerLibFunctions
+ </pre>
+ <p> <b>DLL Location </b>
+ On a Windows platform, ALIBS begins its search for a DLL in the current directory and then searches the directories specified
+ in the PATH environment variable for the DLL.  See the MSDN discussion "DLL Hell" for more details on the selection of a DLL.
+One good place to put DLLs is in C:/ais/bin which is normally included in the PATH.</p>
+<p><b> DLL Naming</b>
+Only the base name of the shared library is required.  The appropriate extension (.dll, .so, etc.) are automatically added to
+the name based upon the current platform.</p>
+<p><b>getLibName </b>
+loadLib depends upon its ability to extract and access the __getLibName function from the shared library.  __getLibName is used to retrieve
+ the name and version number of the shared library.  This name and version is used as a key into a map holding all of the shared libraries
+ in use.  The value associated with each key is a pointer to the QLibrary class that provides a multi-platform method of loading shared
+ libraries.  See the Qt documentation for more details.
+<p><b>registerLibFunctions</b>
+The shared library must also export a function named __registerLibFunctions that returns a pointer to a function that accepts
+four arguments.  This function is called by loadLib to register one or more functions with the SmartBase engine.  See
+the C++ xml project for an example.</p>
+      ]]></Overview>
+       <Usage><![CDATA[
+       <p>Use the <b>loadLib </b> function to dynamically load a shared library to add new built-in Lambdas to AIS.</p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p><b>(loadLib fileName)</b></p>
+]]></Expression>
+		<Argument>
+		  <Name>fileName</Name>
+		  <Note><![CDATA[
+		  <p> The path and base name of the shared library.  The platform-dependent extension is added automatically.  If no path is provided, the current directory
+		   and then the directories specified by the path environment variable are searched.  The first match is used. The ais/bin directory is a good place to put
+		   shared libraries since it is normally included in the path environment variable's list of directories.</p>
+          ]]></Note>
+		  <AISTypes>String</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>The loadObject function returns true iff loadLib is able to resolve getLibName, call it to extract the shared library name and version, extract the
+	    registerLibFunctions, fetch the pointer to the registration function and then successfully register the Lambdas in the shared library with the smartbase engine.</p>
+	    ]]></Return>
+	</Syntax>
+</Function>

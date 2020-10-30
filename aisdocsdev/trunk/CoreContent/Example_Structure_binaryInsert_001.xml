@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure binaryInsert 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>binaryInsert</FunctionKeywords>
+		<TypeKeywords>Structure Symbol Integer</TypeKeywords>
+		<RelatedFunctions>insert binarySearch uniqueInsert sort</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>binary insert structure sort</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example initializes a Structure. Then it
+                  uses the <b>binaryInsert</b> function to add a new key
+                  while maintaining the ascending sort order
+                  of keys in the Structure.
+	]]></Description>
+	<Syntax>
+  	   <Expression><![CDATA[ <sc>(setq aStruct  #{A: 1 F: 2})     </sc>]]></Expression>  
+        <Note><![CDATA[Initialize aStruct. ]]></Note> 
+        <Returns><![CDATA[#&#60Structure 199917&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(binaryInsert aStruct B: )       </sc>]]></Expression>  
+        <Note><![CDATA[Inserts the key B: in aStruct. The location of the inserted key in
+              the Structure is returned.]]></Note> 
+        <Returns><![CDATA[1]]></Returns>
+        <Expression><![CDATA[ <sc> (length aStruct)       </sc>]]></Expression>  
+        <Note><![CDATA[Returns the length of aStruct with the added key(B:).]]></Note> 
+        <Returns><![CDATA[3 ]]></Returns>
+        <Expression><![CDATA[ <sc> (display #&#60Structure 199917&#62 )       </sc>]]></Expression>  
+        <Note><![CDATA[Displays the contents of aStruct.]]></Note> 
+        <Returns><![CDATA[#{A: 1 B: #void F: 2}true ]]></Returns>
+        <Hints><![CDATA[The <b>binaryInsert</b> function preserves sort order.  
+               Normally a structure does not maintain sort order by default but can 
+               be explicitly sorted by the <b>sort</b> function.  ]]></Hints>
+   </Syntax>
+</Example>

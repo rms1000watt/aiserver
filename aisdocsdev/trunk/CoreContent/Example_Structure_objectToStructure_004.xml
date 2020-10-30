@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure objectToStructure 004</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>objectToStructure  </FunctionKeywords>
+		<TypeKeywords>Structure Vector Object ObjVector</TypeKeywords>
+		<RelatedFunctions>new copy </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>vector separates token key substrings</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows how the <b>objectToStructure</b> integrates
+                  all the key-value bindings of the   <b>source</b>
+                  Dictionary objects.
+                 
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq a (new Dictionary: A: 4 B: 6))        </sc>]]></Expression>
+        <Note><![CDATA[Defines the first Dictionary. ]]></Note>
+        <Returns><![CDATA[#&#60Dictionary 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(setq b (new Dictionary: B: 7 C: 8))          </sc>]]></Expression>
+        <Note><![CDATA[Defines the second Dictionary. ]]></Note>
+        <Returns><![CDATA[#&#60Dictionary 234567&#62]]></Returns>
+        <Expression><![CDATA[ <sc> (objectToStructure a b)      </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[ #&#60Structure 123456&#62 ]]></Returns>
+       <Expression><![CDATA[ <sc>(display   #&#60Structure 123456&#62  )     </sc>]]></Expression>
+        <Note><![CDATA[The values of A: B: and C: are copied in to the target Structure with the
+              value of B: updated with the value of the second Dictionary argument.]]></Note>
+        <Returns><![CDATA[#{A: 1 B: 7}true]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

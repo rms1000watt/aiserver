@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Dictionary objectToDictionary 003</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>objectToDictionary  </FunctionKeywords>
+		<TypeKeywords>Dictionary Vector Object ObjVector</TypeKeywords>
+		<RelatedFunctions>new copy </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>vector separates token key substrings</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows how the <b>objectToDictionary</b> transforms the  
+
+                  <b>{source}</b>   Structure objects  into
+
+                  a Dictionary object by mapping the items from the first structure object
+                  to the second structure if the key matches.
+                 
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq a #{A: 1 B: 2}) </sc>]]></Expression>
+        <Note><![CDATA[Defines a Structure.]]></Note>
+        <Returns><![CDATA[#&#60Structure 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(setq b #{B: 7 C: 8))      </sc>]]></Expression>  
+        <Note><![CDATA[Defines another Structure.]]></Note> 
+        <Returns><![CDATA[#&#60Structure 234567&#62]]></Returns>
+        <Expression><![CDATA[ <sc> (objectToDictionary a b)    </sc>]]></Expression>
+        <Note><![CDATA[Transforms the source Structure  arguments into a single Dictionary. ]]></Note>
+        <Returns><![CDATA[#&#60Dictionary 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60Dictionary 123456&#62)         </sc>]]></Expression>
+        <Note><![CDATA[Display the contents of the Dictionary object.]]></Note>
+        <Returns><![CDATA[ #{ dic| A: 1 B: 7}       ]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

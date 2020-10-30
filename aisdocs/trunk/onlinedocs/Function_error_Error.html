@@ -1,0 +1,200 @@
+
+<HTML>
+<HEAD><TITLE>AIS Function Template</TITLE></HEAD>
+<!--Page Parameters -->
+<BODY BGCOLOR="#FFFFF0" TEXT="#000000" LINK="#0000ff">
+
+<A NAME="topage"></A>
+<TABLE CELLSPACING=0 CELLPADDING=6 BORDER=0 WIDTH=600>
+<TR>
+<TD  BGCOLOR="#406000" WIDTH="22%" VALIGN="TOP">
+<IMG SRC="Image_Math002.gif" WIDTH=128 HEIGHT=203>
+<!--- Button which links to Home page --->
+<P ALIGN="CENTER">
+<INPUT TYPE='button' VALUE='Home' onClick='location = "Page_Help_Home.html"'>
+</P>
+
+<TD WIDTH="78%" VALIGN="TOP">
+<P>&nbsp;</P>
+
+<FONT COLOR="#000080"><H1>error</H1></FONT>
+<P>&nbsp;</P>
+
+<UL>
+<LI><A HREF="#INTRO"><FONT SIZE=2>Description</FONT></A></LI>
+<LI><A HREF="#SYNTAX"><FONT SIZE=2>Syntax</FONT></A></LI>
+<LI><A HREF="#EXAMPLES"><FONT SIZE=2>Examples</FONT></A></LI>
+<LI><A HREF="#ARGTYPE"><FONT SIZE=2>Argument Types</FONT></A></LI>
+<LI><A HREF="#CKA"><FONT SIZE=2>How do I contact the AIS team?</FONT></A></LI>
+</UL>
+</TD>
+</TR>
+</TABLE> 
+
+<P>&nbsp;</P>
+<FONT COLOR="#0000ff"><H4><A NAME="INTRO"></A>Description</H4></FONT>
+<P>
+<font color=black>
+<Overview>
+		<p>The <b>error</b> function writes the value of the expressions <b>{exp}</b> to the 
+           Analytic Information Server Console Window, and returns to the top level Analytic Information 
+           Server event loop with the specified error string <b>{errorStr}</b>.  If no Console 
+           Window is open, Lisp will open a Console Window.  In Lisp, the <b>error</b> function 
+           always terminates the current process, unless enclosed inside an <b>errorTrap</b> 
+           function call (see errorTrap). Furthermore, the error string <b>{errorStr}</b> 
+           argument will always be truncated to 12 characters and will be displayed as an 
+           error constant which is the error text preceded by an exclamation <b>(!)</b> and 
+           terminating with an exclamation <b>(!)</b>.
+        </p>
+        </Overview>
+<p><FONT COLOR="#0000ff"><u><b> When to use </b></u></FONT></p><Usage>
+        <p>The <b>error</b> function is used to exit out of a function to the top level  
+           (usually to the console) and display an error message. 
+        </p>
+        </Usage>
+
+</font>
+ 
+</P>
+ 
+<!--- Button which links to top of page --->
+<P ALIGN="CENTER">
+<INPUT TYPE='button' VALUE='Top of Page' onClick='scroll(0,0)'>
+</P>
+
+<P>&nbsp;</P>
+<FONT COLOR="#0000ff"><H4><A NAME="SYNTAX"></A>Syntax</H4></FONT>
+<P>
+<font color=black><table border=0 cellspacing=5 cellpadding=5>
+<tr><td><b><Expression><p><b> (error  errorStr exp ...)</b></p>
+        </Expression>
+</b></td></tr>
+</table><br><hr align=left color="#000000" width=80% size="1">
+<tr><td align=center><table border=0 cellspacing=5 cellpadding=5>
+<tr><td width=20%><FONT COLOR="#0000FF"><b>Name</b></FONT></td>
+                                           <td width=40%><FONT COLOR="#0000FF"><b>Description</b></FONT></td>
+                                           <td><FONT COLOR="#0000FF"><b>AIS Types</b></FONT></td></tr> 
+<tr><td align=top ><b>errorStr</b></td><td> The Error value !errorStr!</td><td>String</td></tr>
+<tr><td align=top ><b>exp</b></td><td> An expression, which will be evaluated, and the result displayed on the console.</td><td>---</td></tr>
+</td></tr></table><br> 
+<hr align=left color="#000000" width=80% size="1">
+<FONT COLOR="#0000ff"><u><b>Returns:</b></u></FONT>
+<FONT COLOR=black><Return>
+	    <p>Return value is the !errorStr! constructed as an Analytic Information Server Error value. 
+           The error function also evaluates exp and displays the result on the console.</p>
+	    </Return></FONT></font>
+</P>
+ 
+<!--- Button which links to top of page --->
+<P ALIGN="CENTER">
+<INPUT TYPE='button' VALUE='Top of Page' onClick='scroll(0,0)'>
+</P>
+
+
+<P>&nbsp;</P>
+<FONT COLOR="#0000ff"><H4><A NAME="EXAMPLES"></A>Examples</H4></FONT>
+<P>
+Here are a number of links to Lambda coding examples which contain this instruction in various use cases.
+</P>
+<P>
+<A HREF="Example_Error_error_001.html">Example_Error_error_001</A>
+<p><Description> The <b>error</b> function assigns an error string to the error type.
+
+
+
+
+	</Description>
+ </p>
+ 
+</P>
+ 
+<!--- Button which links to top of page --->
+<P ALIGN="CENTER">
+<INPUT TYPE='button' VALUE='Top of Page' onClick='scroll(0,0)'>
+</P>
+
+ 
+<P>&nbsp;</P>
+<FONT COLOR="#0000ff"><H4><A NAME="ARGTYPE"></A>Argument Types</H4></FONT>
+ 
+<P>
+<p>Here are the links to the data types of the function arguments.  </p>
+<table width="100%"><tr>
+<td><A HREF="Datatype_Error.html">Error</A></td>
+</tr>
+</table>
+<p>Here are also a number of links to functions having arguments with any of these data types. 
+             </p>
+<table width="100%"><tr>
+<td><A HREF="Function_errorTrap_Error.html">errorTrap(Error)</A></td>
+<td><A HREF="Function_error_Error.html">error(Error)</A></td>
+<td><A HREF="Function_isIdentical_BitVector.html">isIdentical(BitVector)</A></td>
+<td><A HREF="Function_isIdentical_Boolean.html">isIdentical(Boolean)</A></td>
+</tr><tr>
+<td><A HREF="Function_isIdentical_Brick.html">isIdentical(Brick)</A></td>
+<td><A HREF="Function_isIdentical_Character.html">isIdentical(Character)</A></td>
+<td><A HREF="Function_isIdentical_Complex.html">isIdentical(Complex)</A></td>
+<td><A HREF="Function_isIdentical_Date.html">isIdentical(Date)</A></td>
+</tr><tr>
+<td><A HREF="Function_isIdentical_Dictionary.html">isIdentical(Dictionary)</A></td>
+<td><A HREF="Function_isIdentical_Directory.html">isIdentical(Directory)</A></td>
+<td><A HREF="Function_isIdentical_Error.html">isIdentical(Error)</A></td>
+<td><A HREF="Function_isIdentical_FltVector.html">isIdentical(FltVector)</A></td>
+</tr><tr>
+<td><A HREF="Function_isIdentical_Function.html">isIdentical(Function)</A></td>
+<td><A HREF="Function_isIdentical_IntVector.html">isIdentical(IntVector)</A></td>
+<td><A HREF="Function_isIdentical_List.html">isIdentical(List)</A></td>
+<td><A HREF="Function_isIdentical_Matrix.html">isIdentical(Matrix)</A></td>
+</tr><tr>
+<td><A HREF="Function_isIdentical_NumMatrix.html">isIdentical(NumMatrix)</A></td>
+<td><A HREF="Function_isIdentical_NumVector.html">isIdentical(NumVector)</A></td>
+<td><A HREF="Function_isIdentical_Number.html">isIdentical(Number)</A></td>
+<td><A HREF="Function_isIdentical_ObjVector.html">isIdentical(ObjVector)</A></td>
+</tr><tr>
+<td><A HREF="Function_isIdentical_ObjectRepository.html">isIdentical(ObjectRepository)</A></td>
+<td><A HREF="Function_isIdentical_Pair.html">isIdentical(Pair)</A></td>
+<td><A HREF="Function_isIdentical_PcodeVector.html">isIdentical(PcodeVector)</A></td>
+<td><A HREF="Function_isIdentical_ShortVector.html">isIdentical(ShortVector)</A></td>
+</tr><tr>
+<td><A HREF="Function_isIdentical_Structure.html">isIdentical(Structure)</A></td>
+<td><A HREF="Function_isIdentical_Vector.html">isIdentical(Vector)</A></td>
+<td><A HREF="Function_isIdentical_Void.html">isIdentical(Void)</A></td>
+<td><A HREF="Function_string_Complex.html">string(Complex)</A></td>
+</tr><tr>
+<td><A HREF="Function_string_String.html">string(String)</A></td>
+</tr>
+</table>
+
+</P> 
+
+ 
+<!--- Button which links to top of page --->
+<P ALIGN="CENTER">
+<INPUT TYPE='button' VALUE='Top of Page' onClick='scroll(0,0)'>
+</P>
+
+
+ 
+
+<TABLE CELLSPACING=0 CELLPADDING=6 BORDER=0 WIDTH=600>
+<TR>
+<TD BGCOLOR="#406000" WIDTH="22%" VALIGN="TOP">
+<IMG SRC="Image_Math002.gif" WIDTH=128 HEIGHT=203>
+<!--- Button which links to Home page --->
+<P ALIGN="CENTER">
+<INPUT TYPE='button' VALUE='Home' onClick='location = "NewHelpHome.html"'>
+</P>
+
+<TD WIDTH="78%" VALIGN="TOP">
+<FONT COLOR="#0000ff"><H4><A NAME="CKA"></A>How do I contact the AIS team?</H4></FONT>
+<P>
+You can always talk with the AIS at <A HREF="http:://aiserver.sourceforge.net">aiserver.sourceforge.net</A>.
+</P>
+
+</TD>
+</TR>
+</TABLE>
+
+
+</BODY>
+</HTML>

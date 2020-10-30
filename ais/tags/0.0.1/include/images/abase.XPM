@@ -1,0 +1,23 @@
+/* XPM */
+static char *abase[]={
+"16 16 4 1",
+". c #000000",
+"a c #00c0c0",
+"b c #404040",
+"# c #ff0000",
+"................",
+".####.aaaab##.a.",
+".####..aab##.aa.",
+".#####.aab#.aaa.",
+".#####.aab.aaaa.",
+".#####.aa.aaaaa.",
+".#####.a.aaa.aa.",
+".#####..aaa.#aa.",
+".#####.aaa.##aa.",
+".####.aaaa.##aa.",
+".###.aaaaaa.#aa.",
+".##.aaa..aaa.aa.",
+".#.aaa.aa.aaaaa.",
+"..aaa..aab.aaaa.",
+".aaa..aaaab.aaa.",
+"................"};

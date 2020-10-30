@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Document SYSTEM "../DTD/Document.dtd">
+<Document>
+	<KnowledgeBase>
+	    <Title>XML Language Guide</Title>
+		<Topic>XML</Topic>
+		<SubTopic>Language Guide</SubTopic>
+		<HumanKeywords>XML Compiler Document Tree Web Programming </HumanKeywords>
+	</KnowledgeBase>
+	<Essay>Essay_XML_Compiler</Essay>
+	<Essay>Essay_Document_Tree_Model</Essay>
+	<Essay>Essay_Document_Event_Handlers</Essay>
+</Document>

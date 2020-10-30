@@ -1,0 +1,52 @@
+# aised/test/testtext.txt
+
+#							AISED - TEST TEXT
+
+# CHANGE HISTORY
+# Version	Date		Who		Change
+# 1.0109	10/7/2006	tlw		Original
+
+# SYNTAX
+# FUNCTIONLIST - FunctionList()
+# ISSELECTED - isSelected()
+# PRINT - print()
+# READ - read(FileName)
+# SELECTEDTEXT - selectedText()
+# SELECTMATCHEDTEXT - selectMatchedText()
+# TEXT - text()
+# TEXTLENGTH - textLength()
+# TEXTROWS - textRows()
+
+#	*************************************************************************************************
+# READ - read(FileName)
+read(example.sl)
+
+# FUNCTIONLIST - FunctionList()
+functionList
+
+# ISSELECTED - isSelected()
+isSelected
+move(nextbow, Select)
+isSelected
+
+# PRINT - print()
+# PENDING
+
+# SELECTEDTEXT - selectedText()
+selectedText
+clear
+
+# SELECTMATCHEDTEXT - selectMatchedText()
+clear
+insert("(bcd)\ndef", Backward)
+selectMatchedText
+
+# TEXT - text()
+text
+# TEXTLENGTH - textLength()
+textLength
+# TEXTROWS - textRows()
+textrows
+
+#end
+

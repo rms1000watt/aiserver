@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Essay SYSTEM "../DTD/Essay.dtd">
+<Essay>
+	<KnowledgeBase>
+	<Title>Editor API</Title>
+		<Topic>Analytic Information Server</Topic>
+		<SubTopic>User's Guide</SubTopic>
+		<HumanKeywords>Development AIS Guide</HumanKeywords>
+	</KnowledgeBase>
+	<Section>
+	<Heading>8.1 Edit Options</Heading>
+		<Description><![CDATA[
+			<p>
+			<b>Overview.</b> The editor's application programming interface (API) allows programmatic access to the edit operations that
+			are normally invoked by key presses and mouse events.  The editor uses the same functions as exposed here to
+			carry out all of the interainternallyated edit operations.  In fact, a study of this API reveals the inner
+			operations of the editor.  The dozens of edit operations all end up calling these twenty plus functions described
+			here.</p>
+			<p>
+			<b>Arguments.</b>  The function arguments fall into just four data types:</p>
+			<ul>
+				<li>String.  A string containing file names, configurable parameters, search patterns, text.</li>
+				<li>MoveTo.  A set of move operations such as nextchar, prevline, etc. MoveTo is an enum that represents
+				an integer value where each integer is assigned a name such as nextchar as enumerated below.</li>
+				<li>Integers. Numerical values such as tabwidths, string lengths, etc.</li>
+				<li>Booleans. Flags that turn on or off options such as matching words, display results, etc.</li>
+			</ul>
+			<p>
+			<b>Argument Prefix.</b> The formal parameter name, representing an argument is prefixed by one or more lower case
+			letterlettersly, i, o, and r.  The prefix is used to indicate the following:</p>
+			<ul>
+				<li>References are prefixed by an r.  A reference is associated with a variable in the calling function.
+				Modifying a reference modifies the variable that it references.</li>
+				<li>Input arguments are prefixed by an i.  The argument value is not changed by the function.</li>
+				<li>Output arguments are prefixed by an o.  The initial value of the variable is ignored but it may be
+				modified by the called function.  Only references can return values.</li>
+				</ul>
+			<p>
+			<b>Returned Values.</b>  The API functions either return nothing or a boolean value that is true if, and only if,
+			the operation succeeds.</p>
+	]]></Description>
+	</Section>            
+	<Section>
+	<Heading>8.2 MoveTo Values</Heading>
+		<Description><![CDATA[
+			<p>Moves are always relative to the current blinking cursor position. All the supported moves are represented by the
+			following MoveTo values:</p>
+			<ol>
+				<li>eBol. Move to beginning of the line</li>
+				<li>eBot. Move to beginning of the text</li>
+				<li>eEol. Move to end of the line</li>
+				<li>eEot. Move to end of the text</li>
+				<li>eNextBow. Move to the beginning of the next word</li>
+				<li>eNextChar. Move to the next character in the text</li>
+				<li>eNextCur. Move to the next saved cursor</li>
+				<li>eNextEow. Move to the end of the next word</li>
+				<li>eNextHalf. Move down in the text one-half of a page</li>
+				<li>eNextLine. Move down one line</li>
+				<li>eNextPage. Move down one page</li>
+				<li>ePrevBow. Move to the beginning of previous word</li>
+				<li>ePrevChar. Move back to the previous character in the text</li>
+				<li>ePrevCur. Move to the previously saved cursor position</li>
+				<li>ePrevHalf. Move up in the text one-half of a page</li>
+				<li>ePrevLine. Move up to the previous line</li>
+				<li>ePrevPage. Move up in the text one page</li>
+				<li>ePrevTab. Move back to the previous tab stop</li>
+				<li>eSame. Don't move</li>
+				<li>eWord. Select a nearby word</li>
+			</ol>
+	]]></Description>
+	</Section>             
+	<Section>
+	<Heading>8.3 Functions</Heading>
+		<Description><![CDATA[
+			<h3>editAppend</h3>
+			<p class="syntax">
+			Syntax</p><p>bool editAppend(const QString&amp; irText)</p>
+			<p class="description">Description:</p>
+			<p>Append irText to the end of the current text</p>
+			<p class="arguments">Arguments</p>
+			<p>irText - Input, reference, string(). References the text to be appended.<br>
+			SideEffects:<br>
+			Undo, no selected text, paren matching.</p>
+			<p class="example">Example</p>
+			<p class="code">editAppend(&quot;Add this line to the end of the file\n&quot;);</p>
+			<h3>editAppendFile</h3>
+			<p class="syntax">
+			Syntax</p><p>bool editAppendFile(const QString&amp; irFileName)</p>
+			<p class="description">Description</p>
+			<p>Appends the contents of the named file to the end of the current text.  The file name
+			may contain a relative path (relative to the directory of the file being edited).</p>
+			<p class="arguments">Arguments</p>
+			<p>  irFileName - Input, reference, string(). References the name of the file.<br> 
+			SideEffects:<br>
+			  Undo, selected text, paren matching.</p>
+			<p class="example">Example</p>
+			<p class="code">  editAppendFile(&quot;TestSuite1.log&quot;);
+			</p>
+			<h3>editClear</h3>
+			<p class="syntax">
+			Syntax</p><p>void editClear()</p>
+			<p class="description">Description</p>
+			<p>Clears the text.  The text buffer is reduced to one row containing a single null
+			character.<br>
+			SideEffects:<br>
+			  No undo, no selected text, no paren matching.</p>
+			<p class="example">Example</p>
+			<p class="code">   editClear();</p>
+			<h3>editComment</h3>
+			<p class="syntax">
+			Syntax</p><p>bool editComment(bool iInsert)</p>
+			<p class="description">Description</p>
+			<p>Indents or unindents the currently selected rows by one tab.  If unindenting, a
+			selected row with no leading tab is not modified. Selected text remains selected.</p>
+			<p class="arguments">Arguments</p>
+			<p>  iInsert - Input, boolean(true). Insert leading tab if true, remove leading tab if false.<br>
+			SideEffects:<br>
+			  No undo, selected text, no paren matching.<br></p>
+			<p class="example">Example</p>
+			<p class="code">   editComment(false);</p>
+			<h3>editCopy</h3>
+			<p class="syntax">
+			Syntax</p><p> void editCopy(bool iAppend)</p>
+			<p class="description">Description</p>
+			<p>The currently selected text is copied to the clipboard.  If iAppend is true, the
+			selected text is appended to the clipboard, else, the contents of the clipboard is
+			overwritten.  The selected text remains selected.</p>
+			<p class="arguments">Arguments</p>
+			<p> iAppend - Input boolean(false). Append text if, and only if, iAppend is true.<br> 
+			SideEffects:<br>
+			  Undo, selected text, no paren matching.</p>
+			<p class="example">Example</p>
+			<p class="code">editCopy();</p>
+			<h3>editCut</h3>
+			<p class="syntax">Syntax</p>
+			<p>void editCut(bool iAppend)</p>
+			<p class="description">Description</p>
+			<p>Remove the currently selected text from the edit text.  If iAppend is true,
+			append the text to the contents of the clipboard, else, overwrite the contents
+			of the clipboard.</p>
+			<p class="arguments">Arguments</p>
+			<p> iAppend - Input boolean(false). Append text if, and only if, iAppend is true.<br>  
+			SideEffects:<br> 
+			  Undo, no selected text, no paren matching.</p>
+			<p class="example">Example</p>
+			<p class="code">  editCut(true);</p>
+			<h3>editDelete</h3>
+			<p class="syntax">Syntax</p>
+			<p> bool editDelete(AMoveTo iMove)</p>
+			<p class="description">Description</p>
+			<p>Delete the character in the edit text between the current cursor position and
+			the cursor position specified by iMove. Also remove currently selected text,
+			if any.</p>
+			<p class="arguments">Arguments</p>
+			<p> iMove - Input enum(0). Specifies the amount to move relative to the current    
+			  cursor.<br> 
+			SideEffects:<br> 
+			  Undo, no selected text, paren matching.</p>
+			<p class="example">Example</p>
+			<p class="code">  editDelete(eEol);</p>
+			<h3>editFind</h3>
+			<p class="syntax">Syntax</p>
+			<p> bool editFind(QString&amp; irFind, bool iDown, bool iMatchCase, bool iMatchWord,
+				bool iRegExp, bool iSel, bool iWrap)</p>
+			<p class="description">Description</p>
+			<p>Find the next match to irFind in the text starting from the current cursor position.
+			See section 3.1 on the Find Dialog for more details.</p>
+			<p class="arguments">Arguments</p>
+			<p> irFind - Input, reference, string(). The pattern to be matched.<br>  
+			  iDown - Input, boolean(). If true, search downward cursor, else search upward.<br>  
+			  iMatchCase - Input, boolean(). If true, the search is case sensitive.<br>  
+			  iMachWord - Input, boolean(). If true, matched text starts and ends on a word boundary.<br>  
+			  iRegExp - Input, boolean(). If true, irFind represents a regular expression.<br>  
+			  iSel - Input, boolean(). If true, the search region is the selected text.<br>  
+			  iWrap - Input, boolean(). If true, search continues from end of text up to the cursor.<br>  
+			SideEffects:<br>  
+			  No undo, selected text, no paren matching.</p>
+			<p class="example">Example</p>
+			<p class="code">  editFind(&quot;\tindented&quot;, true, true, false, false, false, true);</p>
+			<h3>editIndent</h3>
+			<p class="syntax">Syntax</p>
+			<p>bool editIndent(bool iInsert = true)</p>
+			<p class="description">Description</p>
+			<p>If iInsert is true, insert a leading tab in front of every selected row.  If iInsert
+			is false, delete the leading tab, if any, from every selected row.</p>
+			<p class="arguments">Arguments</p>
+			<p> iInsert - Input, boolean(). If true, indent, else, unindent.<br>
+			SideEffects:<br>
+			  No undo, selected text, no paren matching.</p>
+			<p class="example">Example</p>
+			<p class="code">    editIndent(true);</p>
+			<h3>editInsert</h3>
+			<p class="syntax">Syntax</p>
+			<p> void editInsert(const QString&amp; irText, bool iForward)</p>
+			<p class="description">Description</p>
+			<p>
+			Insert the text referenced by irText into the edit text beginning at the current
+			cursor position.  If any text is currently selected, it is deleted.</p>
+			<p class="arguments">Arguments</p>
+			<p>  irText - Input reference(). Contains text to be inserted.<br>
+			  iForward - Input, boolean(). If true, move the cursor to the end of the inserted      
+			  text.<br>
+			SideEffects:<br>
+			  Undo, no selected text, paren matching.</p>
+			<p class="example">Example</p>
+			<p class="code">  editInsert(&quot;Insert a new line\n&quot;, false);</p>
+			<h3>editMove</h3>
+			<p class="syntax">Syntax</p>
+			<p> bool editMove(ATextEdit::AMoveTo iMove, bool iSelect)</p>
+			<p class="description">Description</p>
+			<p>Move the cursor to a position relative to the current cursor specified by iMove.
+			If iSelect is false, the currently selected text is deselected, else the region
+			of selected text is extended from the current anchor to the new cursor position.
+			If iSelect is true and if no text is currently selected, the text between the
+			current cursor position and the new cursor position is selected.</p>
+			<p class="arguments">Arguments</p>
+			<p>  iMove - Input enum(0). Specifies the amount to move.<br>
+			  iSelect - Input, boolean(). If true, select text, else deselect text.<br>
+			SideEffects:<br>
+			  Undo, selected text, paren matching.</p>
+			<p class="example">Example</p>
+			<p class="code">  editMove(eNextChar, true);</p>
+			<h3>editNew</h3>
+			<p class="syntax">Syntax</p>
+			<p> bool editNew(const QString&amp; irFileName, const QString&amp; irText);</p>
+			<p class="description">Description</p>
+			<p>Remove the existing text from the text buffer.  Set the language specified by the extension
+			on the file name referenced by irFileName.  Append the text referenced by irText to the
+			edit buffer.</p>
+			<p class="arguments">Arguments</p>
+			<p> irFileName - Input, reference, string(). References the file extension to set language.<br>
+			  irText - Input, reference, string(). References the initial text.<br>
+			SideEffects:<br>
+			  No undo, no selected text, paren matching.</p>
+			<p class="example">Example</p>
+			<p class="code"> editNew(&quot;.sl&quot;, &quot;Initial text&quot;);</p>
+			<h3>editPaste</h3>
+			<p class="syntax">Syntax</p>
+			<p>void editPaste()</p>
+			<p class="description">Description</p>
+			<p>Insert the the text in the clipboard into the edit text starting at the current cursor
+			position.<br>
+			SideEffects:<br>
+			  Undo, no selected text, paren matching.</p>
+			<p class="example">Example</p>
+			<p class="code"> editPaste()</p>
+			<h3>editPrint</h3>
+			<p class="syntax">Syntax</p>
+			<p>void editPrint()</p>
+			<p class="description">Description</p>
+			<p>Print the current edit text on the default printer, if one is available.  Add page numbers
+			to the bottom of each page.<br>  
+			SideEffects:<br>
+			  No undo, no selected text, no paren matching.</p>
+			<p class="example">Example</p>
+			<p class="code"> editPrint();</p>
+			<h3>editRead</h3>
+			<p class="syntax">Syntax</p>
+			<p> bool editRead(const QString&amp; irFileName)</p>
+			<p class="description">Description</p>
+			<p>Clear the current contents of the edit text. Initialize the edit text with the
+			file referenced by irFileName.</p>
+			<p class="arguments">Arguments</p>
+			<p> irFileName - Input, reference, string(). Name of the file to be read.<br>
+			SideEffects:<br>
+			  No undo, no selected text, paren matching.</p>
+			<p class="example">Example</p>
+			<p class="code"> editRead(&quot;startup.sl&quot;);</p>
+			<h3>editReplace</h3>
+			<p class="syntax">Syntax</p>
+			<p>bool editReplace(QString&amp; irFind,const QString&amp; irReplace, bool
+			  iAll,  bool iMatchCase, bool iMatchWord, bool iRegExp, bool iSel, bool iWrap)</p>
+			<p class="description">Description</p>
+			<p>Replace the previous match with the text referenced by irReplace.  Find the next
+			match to irFind in the edit text starting from the current cursor position.  See
+			section 3.4 on the Replace Dialog for more details.  If iAll is true, the
+			currently selected text remains selected.  Else, the last replace or match is
+			selected.</p>
+			<p class="arguments">Arguments</p>
+			<p>  irFind - Input, reference, string(). The pattern to be matched.<br>
+			    irFind - Input, reference, string(). The text to replace the matched string.<br>
+			  iAll - Input, boolean(). If true, replace all matches in the search region.<br>
+			  iMatchCase - Input, boolean(). If true, the search is case sensitive.<br>
+			  iMachWord - Input, boolean(). If true, matched text starts and ends on a word boundary.<br>
+			  iRegExp - Input, boolean(). If true, irFind represents a regular expression.<br>
+			  iSel - Input, boolean(). If true, the search region is the selected text.<br>
+			  iWrap - Input, boolean(). If true, search continues from end of text up to the cursor.<br>
+			SideEffects:<br>
+			  Undo, selected text, no paren matching.</p>
+			<p class="example">Example</p>
+			<p class="code"> editReplace(&quot;\tbegblock&quot;, &quot;begblock&quot; true, true, false, false, false, true);</p>
+			<h3>editRedo</h3>
+			<p class="syntax">Syntax</p>
+			<p> void editRedo()</p>
+			<p class="description">Description</p>
+			<p>Reverse the last undo operation by re-doing the initial insert or delete.<br>
+			SideEffects:<br>
+			  Undo, no selected text, paren matching.</p>
+			<p class="example">Example</p>
+			<p class="code">  editRedo();</p>
+			<h3>editSetParameter</h3>
+			<p class="syntax">Syntax</p>
+			<p> bool editSetParameter(const QString&amp; irParam, int iValue)</p>
+			<p class="description">Description</p>
+			<p>Modify the value of the configurable parameter named by irParam.  Set the the new
+			value to iValue.</p>
+			<p class="arguments">Arguments</p>
+			<p> irParam - Input, reference, string(). References the name of the parameter.<br>
+			SideEffects:<br>
+			  No undo, no selected text, paren matching.</p>
+			<p class="example">Example</p>
+			<p class="code">   editSetParameter(&quot;MaxUndoDepth&quot;, 16);</p>
+			<h3>editSwitch</h3>
+			<p class="syntax">Syntax</p>
+			<p> bool editSwitch()</p>
+			<p class="description">Description</p>
+			<p>Interchange the current anchor and cursor.  If a pair of brackets are
+			currently matched, the cursor moves to the other end of the matched
+			region.  If text is selected, the cursor moves to the other end of the
+			selected text.  If a hunk of text has been inserted, the cursor is moved to
+			the other end of the inserted text.  No change if cursor and anchor are the
+			same.<br>     
+			SideEffects:<br>
+			  No change to current settings.</p>
+			<p class="example">Example</p>
+			<p class="code">   editSwitch();</p>
+			<h3>editTabify</h3>
+			<p class="syntax">Syntax</p>
+			<p> bool editTabify(int iExtraSpaces, int iTabWidth, bool iToTabs)</p>
+			<p class="description">Description</p>
+			<p>Convert leading spaces in the currently selected text to tabs or vice versa.
+			The currently selected text remains selected.</p>
+			<p class="arguments">Arguments</p>
+			<p> iExtraSpaces - Input, integer(). If less than zero, delete extra spaces.<br>
+			  	If positive, replace extra spaces with a tab, else keep spaces.<br>
+			SideEffects:<br>
+			  No undo, selected text, no paren matching.</p>
+			<p class="example">Example</p>
+			<p class="code"> editTabify(-1, 3, true);</p>
+			<h3>editText</h3>
+			<p class="syntax">Syntax</p>
+			<p> bool editText(QCString&amp; orText, int iLength, bool iSave)</p>
+			<p class="description">Description</p>
+			<p>Copy the edit text to orText up to iLength characters. If iSave is true, mark the
+			edit text as not modified.</p>
+			<p class="arguments">Arguments</p>
+			<p>  orText - Output, reference, string(). References the string buffer to hold text.<br>
+			  iLength - Input, integer(). Length of the buffer referenced by orText.<br>
+			  iSave - Input, boolean(true). If true, the edit text is marked as not modified.<br>
+			SideEffects:<br>
+			  Undo, selected text, paren matching.</p>
+			<p class="example">Example</p>
+			<p class="code">  QCString aText(2048);<br>
+			  editText(aText, 2048, true);</p>
+			<h3>editUndo</h3>
+			<p class="syntax">Syntax</p>
+			<p>void editUndo()</p>
+			<p class="description">Description</p>
+			<p>Undo the last insert or delete operation.<br>
+			SideEffects:<br>
+			  Redo, no selected text, paren matching.</p>
+			<p class="example">Example</p>
+			<p class="code">  editUndo();</p>
+			<h3>editWrite</h3>
+			<p class="syntax">Syntax</p>
+			<p>bool editWrite(const QString&amp; irFileName)</p>
+			<p class="description">Description</p>
+			<p>Overwrite the contents of the file referenced by irFileName with the contents
+			of the edit text.</p>
+			<p class="arguments">Arguments</p>
+			<p>  irFilename - Input, reference, string(). References the file to be modified.<br>
+			SideEffects:<br>
+			  No changes.</p>
+			<p class="example">Example</p>
+			<p class="code">  editWrite(&quot;Results.txt&quot;);</p>
+	]]></Description>
+	</Section>
+</Essay>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Symbol isCharUppercase 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isCharUppercase </FunctionKeywords>
+		<TypeKeywords>Text Character String Symbol ByteVector</TypeKeywords>
+		<RelatedFunctions>isType isChar isCharAlphabetic isCharAlphanumeric
+
+
+                          isCharName isCharNumeric isCharLowercase isCharWhitespace
+
+
+                          isString isText </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>Character Alphabetic Object Uppercase Lowercase Name
+
+                       Underscore Numeric Alphanumeric Name Whitespace</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples check if the   object is is made up of uppercase
+
+                  characters. If it is,  the function returns true, otherwise, it returns false.
+
+ 
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(isCharUppercase  #\A)  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>(isCharUppercase STOP:) </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ true ]]></Returns>
+        <Expression><![CDATA[ <sc>(isCharUppercase  #\3) </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ false ]]></Returns>
+        <Expression><![CDATA[ <sc>(isCharUppercase abc:)</sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ false ]]></Returns>
+        <Expression><![CDATA[ <sc>(isCharUppercase  #&#60Dictionary 47917&#62) </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ false ]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

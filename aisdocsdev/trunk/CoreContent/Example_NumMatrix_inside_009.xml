@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example NumMatrix inside 009</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>inside</FunctionKeywords>
+		<TypeKeywords>NumMatrix Boolean Integer</TypeKeywords>
+		<RelatedFunctions>member isMember member isInside isIdentical</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>inside key value index</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples searches the NumMatrix for the specified Number value.               
+
+
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define X  #(nummat| 3.43 -3.43 )   )    </sc>]]></Expression>
+        <Note><![CDATA[A NumMatrix is defined. ]]></Note>
+        <Returns><![CDATA[#&#60NumMatrix 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc> (inside  5 X)       </sc>]]></Expression>
+        <Note><![CDATA[5 is not inside the Matrix. ]]></Note>
+        <Returns><![CDATA[false  ]]></Returns>
+        <Expression><![CDATA[ <sc> (inside  3.43 X)       </sc>]]></Expression>
+        <Note><![CDATA[The index of of the value is returned.]]></Note>
+        <Returns><![CDATA[0]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

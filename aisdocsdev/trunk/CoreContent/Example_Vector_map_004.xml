@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Vector map 004</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>map</FunctionKeywords>
+		<TypeKeywords>Vector  </TypeKeywords>
+		<RelatedFunctions>mapc new</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>map mapc copy process</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines a Vector and applies the <b>append</b>
+                 function to each element of the Vector using the  <b>map</b> function.   
+
+
+
+                
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define Fruits  #("apple" "orange" "lemon")) </sc>]]></Expression>
+        <Note><![CDATA[Define a Vector containing various fruit names: ]]></Note>
+        <Returns><![CDATA[#&#60Vector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq A (map (lambda  (x) (append x  "s") ) Fruits ))   </sc>]]></Expression>
+        <Note><![CDATA[Convert the fruits to the plural form:]]></Note>
+        <Returns><![CDATA[#&#60Vector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>  A[0]  </sc>]]></Expression>
+        <Note><![CDATA[Displays the modified values of the Vector.]]></Note>
+        <Returns><![CDATA[apples]]></Returns>
+        <Expression><![CDATA[ <sc>  A[1]  </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[oranges]]></Returns>
+        <Expression><![CDATA[ <sc>  A[2]  </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[lemons]]></Returns>
+        <Hints><![CDATA[<p>The <b>apply</b> function is ideal for situations that require updating the 
+
+                values in the entire Vector.  </p>
+ ]]></Hints>
+   </Syntax>
+</Example>

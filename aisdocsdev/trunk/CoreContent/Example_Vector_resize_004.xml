@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Vector resize 004</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>resize</FunctionKeywords>
+		<TypeKeywords>Vector Integer</TypeKeywords>
+		<RelatedFunctions>sizeof remove insert delete</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>sizeof size   length   memory</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples modify the Vector according to the
+
+
+
+                  user-specified number of values using the <b>resize</b>
+                  function.
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define Scores  #(5 8 4 9 ) )   </sc>]]></Expression>
+        <Note><![CDATA[A Vector of 4 elements is defined. ]]></Note>
+        <Returns><![CDATA[#&#60Vector 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(resize Scores 7)    </sc>]]></Expression>
+        <Note><![CDATA[A number larger than the number of existing values is specified.]]></Note>
+        <Returns><![CDATA[#&#60Vector 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display Scores)    </sc>]]></Expression>  
+        <Note><![CDATA[For the numbers exceeding the number of existing values, the value #void is assigned. ]]></Note> 
+        <Returns><![CDATA[#(5 8 4 9 #void #void #void )]]></Returns>
+        <Expression><![CDATA[ <sc>(resize Scores 3)      </sc>]]></Expression>
+        <Note><![CDATA[The specified size is lesser than the Vector size. ]]></Note>
+        <Returns><![CDATA[#&#60Vector 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display  Scores)   </sc>]]></Expression>
+        <Note><![CDATA[Displays the resized Vector. ]]></Note>
+        <Returns><![CDATA[#( 5 8 4 )]]></Returns>
+        <Hints><![CDATA[The <b>resize</b> function is destructive: it updates the specified Vector 
+
+
+
+               argument in place.
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

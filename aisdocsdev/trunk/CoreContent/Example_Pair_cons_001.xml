@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Pair cons 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>cons</FunctionKeywords>
+		<TypeKeywords>Pair</TypeKeywords>
+		<RelatedFunctions>  objectToList setCar setCdr</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>cons set car cdr construct</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples construct new Pairs from existing Symbol and Text objects.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(cons  'A  'B)    </sc>]]></Expression>
+        <Note><![CDATA[Two Symbols are defined. ]]></Note>
+        <Returns><![CDATA[#&#60Pair 197815&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60Pair 197815&#62)</sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[(A . B)]]></Returns>
+  	    <Expression><![CDATA[ <sc>(cons  'A  '())   </sc>]]></Expression>  
+        <Note><![CDATA[A symbol and an empty list are defined. ]]></Note> 
+        <Returns><![CDATA[#&#60Pair 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60Pair 123456&#62)</sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[(A)]]></Returns>
+        <Expression><![CDATA[ <sc>(cons  "A"  '('B  'C))      </sc>]]></Expression>  
+        <Note><![CDATA[A Text and a list are defined. ]]></Note> 
+        <Returns><![CDATA[#&#60Pair 234567&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60Pair 234567&#62)</sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[("A" B: C:)]]></Returns>
+        <Expression><![CDATA[ <sc>(cons  '('A  'B)  'C)      </sc>]]></Expression>  
+        <Note><![CDATA[A List and a Symbol are defined. ]]></Note> 
+        <Returns><![CDATA[#&#60Pair 345678&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60Pair 345678&#62)</sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[((A: B:) . C)]]></Returns>
+        <Hints><![CDATA[none
+        ]]></Hints>
+   </Syntax>
+</Example>

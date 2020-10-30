@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example NumMatrix mapc 009</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>mapc</FunctionKeywords>
+		<TypeKeywords>NumMatrix</TypeKeywords>
+		<RelatedFunctions>map </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>map mapc copy process</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ The following example will define a user function, <b>makePlural</b>, 
+
+
+
+
+
+                  that will take an argument (which is a Matrix value).
+
+
+                  The <b>mapc</b> function then applies each Matrix value
+
+
+
+
+                  as argument to the function <b>makePlural</b>.            
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define Scores  #(nummat| 5 8 4 9 ) ) </sc>]]></Expression>  
+        <Note><![CDATA[A  NumMatrix is defined. ]]></Note> 
+        <Returns><![CDATA[#&#60NumMatrix 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq  NewScores  (mapc  add1  Scores))      </sc>]]></Expression>  
+        <Note><![CDATA[The result of the add1 operation of the last value is shown.]]></Note> 
+        <Returns><![CDATA[10 ]]></Returns>
+        <Hints><![CDATA[
+               <p>The <b>mapc</b> function does not produce a duplicate Matrix as in 
+
+
+               the <b>map</b> function.</p>
+      ]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>  
+		<Title>Example String code 001</Title>  
+		<Template>Example</Template> 
+		<FunctionKeywords>code</FunctionKeywords>
+		<TypeKeywords>Text String Integer</TypeKeywords>	
+		<RelatedFunctions> code isText</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>convert text ASCII</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>code</b> function to convert the first character
+                 of the text into its ASCII numerical
+representation.
+	]]></Description>
+	<Syntax> 
+  	    <Expression><![CDATA[ <sc>(code "BETA" )</sc>]]></Expression>  
+        <Note><![CDATA[It converts the first character "B" into its ASCII numeric equivalent. ]]></Note> 
+        <Returns><![CDATA[ 66 ]]></Returns>
+        <Expression><![CDATA[ <sc>(code "&" )</sc>]]></Expression>  
+        <Note><![CDATA[It converts "&" into its ASCII numeric code. ]]></Note> 
+        <Returns><![CDATA[38]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

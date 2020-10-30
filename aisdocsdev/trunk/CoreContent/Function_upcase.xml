@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>upcase</Title>
+		<FunctionName>upcase</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>String Text Character
+       String Text Character</ArgumentTypes>   
+		<DataType>String Symbol  </DataType>
+		<RelatedFunctions>downcase</RelatedFunctions>
+        <RelatedVMInstructions> vmsetstring vmrefstring</RelatedVMInstructions>
+		<HumanKeywords>upcase downcase character</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>upcase</b> function converts lowercase characters to uppercase characters. </p>
+          ]]></Description>
+	<Brief>
+	    <Overview-String><![CDATA[
+		<p>The <b> upcase </b> function converts lowercase Character or String into 
+           uppercase Characters or String.</p>
+        ]]></Overview-String>
+        <Overview-Symbol><![CDATA[
+		<p>The <b> upcase </b> function converts converts all lowercase characters in the 
+           input Symbol into uppercase characters.</p>
+        ]]></Overview-Symbol>
+        <Usage><![CDATA[
+        <p>Use the <b>upcase</b> function  to convert lowercase characters to uppercase 
+           characters.</p>
+        ]]></Usage>
+    </Brief>
+	<Syntax-String>
+	    <Expression><![CDATA[<p>(upcase  character)</p>
+                    <p>(upcase  text)</p>
+                    <p>(upcase string) </p>]]></Expression>
+		<Argument>
+		  <Name>string</Name>
+		  <Note><![CDATA[
+		  <p> Any String or Text or Character to be converted to uppercase.</p>
+          ]]></Note>
+		  <AISTypes>String, Text or Character</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>A new Character, Text or String with all the lowercase characters in the original 
+           argument converted to uppercase.
+        </p>
+	    ]]></Return>
+	</Syntax-String>
+    <Syntax-Symbol>
+	    <Expression><![CDATA[<p>(upcase  symbol)</p>]]></Expression>
+		<Argument> 
+		  <Name>symbol</Name>
+		  <Note><![CDATA[
+		  <p> A Symbol.</p>
+          ]]></Note>
+		  <AISTypes>symbol</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>A new Symbol with all lowercase characters in the original symbol 
+           converted to uppercase.
+        </p>
+	    ]]></Return>   
+	</Syntax-Symbol>
+</Function>

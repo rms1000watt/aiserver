@@ -1,0 +1,347 @@
+
+<HTML>
+<HEAD><TITLE>AIS New Help Home</TITLE></HEAD>
+<!--Page Parameters -->
+<BODY BGCOLOR="#FFFFF0" TEXT="#000000" LINK="#0000ff">
+
+<A NAME="topage"></A>
+<TABLE CELLSPACING=0 CELLPADDING=6 BORDER=0 WIDTH=600>
+<TR>
+<TD  BGCOLOR="#406000" WIDTH="22%" VALIGN="TOP">
+<IMG SRC="Image_AILogo.gif" WIDTH=128 HEIGHT=203>
+<!--- Button which links to Home page --->
+<P ALIGN="CENTER">
+<INPUT TYPE='button' VALUE='Home' onClick='location = "Page_Help_Home.html"'>
+</P>
+
+<TD WIDTH="78%" VALIGN="TOP">
+<P>&nbsp;</P>
+
+<FONT COLOR="#000080"><H1>Analytic Information Server</H1></FONT>
+<P>&nbsp;</P>
+
+<UL>
+<LI><A HREF="#Q1"><FONT SIZE=2>Introducing: Analytic Information Server&trade</FONT></A></LI>
+<LI><A HREF="#Q2"><FONT SIZE=2>Internet Services</FONT></A></LI>
+<LI><A HREF="#Q3"><FONT SIZE=2>Fast Virtual Machine</FONT></A></LI>
+<LI><A HREF="#Q4"><FONT SIZE=2>How does Analytic Information Server&trade work?</FONT></A></LI>
+<LI><A HREF="#Q5"><FONT SIZE=2>Analytic Information Server&trade Uses Blended Algorithms</FONT></A></LI>
+<LI><A HREF="#Q6"><FONT SIZE=2>Analytic Information Server&trade Engine Architecture</FONT></A></LI>
+<LI><A HREF="#Q7"><FONT SIZE=2>Adaptive Intelligence: Why You Need It</FONT></A></LI>
+<LI><A HREF="#DOC"><FONT SIZE=2>Reference Documents</FONT></A></LI>
+<LI><A HREF="#FUN"><FONT SIZE=2>Built-in Functions</FONT></A></LI>
+<LI><A HREF="#OBJ"><FONT SIZE=2>AIS Data Types</FONT></A></LI>
+<LI><A HREF="#VMI"><FONT SIZE=2>Virtual Machine Instructions</FONT></A></LI>
+<LI><A HREF="#EXP"><FONT SIZE=2>Example Home Pages</FONT></A></LI>
+<LI><A HREF="#CKA"><FONT SIZE=2>How do I contact the AIS team?</FONT></A></LI>
+</UL>
+</TD>
+</TR>
+</TABLE>
+
+<P>&nbsp;</P>
+<FONT COLOR="#0000ff"><H4><A NAME="Q1"></A>Introducing: Analytic Information Server&trade;</H4></FONT>
+<P>
+Analytic Information Server&trade;(AIS) is an analytic database designed to store massive amounts of heterogeneous data, 
+upon which complex computer science algorithms are to be employed.  
+The goal is to convert data, whose information content is a mystery, into data whose information content is understood.
+</P>
+<P>
+The principle component of data analysis is the "Lambda". 
+AIS Lambdas are executable objects which can operate alone or in larger communities of Lamba objects.
+A single Lambda object is like a simple function (albeit with possible persistent memory).
+A community of Lambda objects is more like a function or class library complete with persistent memory and even rudamentary intelligence (see Alice).
+Throughtout this documentation, the term Lambda will be used to include a single executable object as well a lerger community of executable objects. 
+Upon execution, within an instance of the AIS engine, 
+Lambdas execute at near native machine register speeds - equivalent and often exceeding the execution speeds of C programs.
+AIS is a database designed specifically for the easy storing and retrieval of Lambdas as well as more tranditional data. 
+</P>
+ 
+<!--- Button which links to top of page --->
+<P ALIGN="CENTER">
+<INPUT TYPE='button' VALUE='Top of Page' onClick='scroll(0,0)'><!--- Button which links to Home page --->
+</P>
+
+<P>&nbsp;</P>
+<FONT COLOR="#0000ff"><H4><A NAME="Q2"></A>Internet Services</H4></FONT>
+<P>
+Each instance of the AIS engine attaches to a user defined TCP/IP port, making each instance of the AIS engine a web analytic server. 
+AIS Lambdas can serve their analytic reports directly to a web browser or to any other program, 
+which can open a TCP/IP connection. Pure HTML, XML, or a proprietary binary protocol is supported; 
+and, each of these protocols can be used to invoke individual Lambdas residing on available AIS engines. 
+Furthermore, Lambdas in one instance of the AIS engine can invoke Lambdas in any other available AIS engine connected by TCP/IP. 
+Each instance of the AIS engine can support multiple Lambda contexts, each running on its own machine thread.
+</P>
+ 
+<!--- Button which links to top of page --->
+<P ALIGN="CENTER">
+<INPUT TYPE='button' VALUE='Top of Page' onClick='scroll(0,0)'><!--- Button which links to Home page --->
+</P>
+
+<P>&nbsp;</P>
+<FONT COLOR="#0000ff"><H4><A NAME="Q3"></A>Fast Virtual Machine</H4></FONT>
+<P>
+AIS supports an ultra-fast register virtual machine with a proprietary Just-In-Time compiler (JIT). 
+The AIS virtual machine is designed to support fast algorithm development as well as ultra-fast algorithm execution. 
+The VM accommodates these two design goals by supporting four well-defined instruction sets.
+</P>
+
+<ul>
+	<li>1.&nbsp;&nbsp;&nbsp;Generic Instructions for rapid algorithm development (which execute at 1/3rd the speed of C).</li>
+	<li>2.&nbsp;&nbsp;&nbsp;Native Instructions (which execute at near the speed of C).</li>
+	<li>3.&nbsp;&nbsp;&nbsp;Register Instructions (which execute at 3 to ten times the speed of C). </li>
+	<li>4.&nbsp;&nbsp;&nbsp;Vector Processor Instructions (which execute at 7 to fifteen times the speed of C).</li>
+</ul>
+ 
+<P>
+AIS Lambda development begins with the generic instructions until the algorithm "proof of concept" is attained 
+followed by conversion of the bottleneck routines into native, register, or vector instructions for ultra-fast algorithm execution.
+The AIS JIT's drawback is Lambda bloat. 
+A great deal more information is saved about each Lambda than in a standard C binary program executable. 
+This is not a terrible problem, since AIS is a high volume database, the data size dwarfs any possible code bloat. 
+Another drawback is that Lambda invocation runs at approximately 50% of the speed of C function invocation 
+- more information means there is a longer set up time to invoke an Lambda than a C binary function. 
+This is not a terrible problem, since most ultra-fast algorithms must be code generated in linear layout, 
+without too many embedded function calls, to avoid cache hits. For extremely fast algorithm execution, 
+algorithms should fill up registers, L1, L2, and L3 cache with as few interruptions as possible.
+</P>
+
+<!--- Button which links to top of page --->
+<P ALIGN="CENTER">
+<INPUT TYPE='button' VALUE='Top of Page' onClick='scroll(0,0)'><!--- Button which links to Home page --->
+</P>
+
+<FONT COLOR="#0000ff"><H4><A NAME="Q4"></A>How does Analytic Information Server&trade; work?</H4></FONT>
+<P>
+Analytic Information Server&trade; is the industry's first mobile, distributed, Lambda oriented repository.  
+AIS supports fast object repositories for storing of Lambda and/or object closures on disk. 
+AIS object repositories support a basic associative memory access paradigm across multiple extents. 
+In addition, all of the native file structures of the host OS are available to AIS Lambdas in a host independent paradigm. 
+AIS Lambda can have very fast access to the host file system while being cocooned in their own OS independent environment.
+</p>
+
+<p>
+Analytic Information Server&trade; provides a mobile runtime environment and a mobile persistent database. &quot;Intelligent 
+Lambdas&quot; infiltrate each location of a distributed application, personalizing and adapting 
+the application to each user's needs.  It is no longer necessary to send user data from the 
+client interface back to the server for lengthy processing. Users interact with distributed 
+"info-nimble" application interfaces which perform in-depth analysis of the user's needs 
+on-site, at the client. With its open and modular architecture, Analytic Information Server&trade; allows 
+intelligent Lambdas to be easily integrated with Excel, Oracle, Java, as well as with existing 
+in-house applications such as customer service, data warehousing,  decision support, sales 
+automation, and help desk.
+</P>
+
+<P>
+Analytic Information Server&trade; supports a library of  &quot;intelligent Lambdas&quot; which grow opinions 
+and predict user needs by asking questions about the user's objectives that would never be 
+thought of at the time the application was written. Each intelligent Lambda is a mobile 
+software program that automatically performs a specific task, responds in a timely fashion 
+to user feedback, and has the ability to learn. The ability of these Lambdas to modify 
+themselves as they learn delivers unprecedented results to users in personalizing their 
+application experience.
+</P>
+<P>
+Analytic Information Server&trade; already boasts a number of powerful Lambda tools and more are being added
+every quarter. Mobile Lambdas can be written using the built-in Lisp and/or JavaScript compilers.
+Currently Lambdas exist which support: rule based semantic analysis, natural language parsing
+and analysis, datamining, relational datawarehousing for up to 500 gigabytes, rule based compiler construction, 
+rule based decision support, multivariate regression, neural networks, case based reasoning, 
+fuzzy logic, and genetic programming.
+</P>
+
+<!--- Button which links to top of page --->
+<P ALIGN="CENTER">
+<INPUT TYPE='button' VALUE='Top of Page' onClick='scroll(0,0)'>
+</P>
+
+<FONT COLOR="#0000ff"><H4><A NAME="Q5"></A>Analytic Information Server&trade; Uses Blended Algorithms.</H4></FONT>
+<P>
+Inspired by the book, "Society Of Mind", Analytic Information Server&trade; supports a variety of statistical 
+and machine learning algorithms, not just a single approach.  The power behind LambdaServer&trade; 
+is its unique capability to combine or blend opinions from all of the Lambdas and distributed 
+copies of the repository into a single enhanced application experience.  
+Using Genetic Programming, Lambdas actually compete with each other as they try to satisfy user requests. 
+The Lambdas, with the best user feedback, play an ever increasing role in the user's experience.
+</P>
+
+<P>
+AIS provides a number of built-in support services and advanced analytic algorithms 
+such that any data analysis project has a considerable head start. 
+These support services and algorithms, including both built-in functions and Lambdas, cover at least the following features:
+</P>
+
+<UL> 
+<LI>Basic statistical and trigonometric functions including complex numbers</LI>
+<LI>Basic ultra-fast matrix and vector algebra</LI>
+<LI>Multiple and multivariate linear regression</LI>
+<LI>Symbolic mathematical evolutionary regression</LI>
+<LI>Hecht Nielson neural nets</LI>
+<LI>Basic Genetic programming functions</LI>
+<LI>Ultra-fast support vector machine non-linear regression</LI>
+<LI>Rule-based expert system Lambdas for small problems</LI>
+<LI>Rule-based, natural language speaking, Lambdas for very large problems</LI>
+<LI>Data mining storage and retrieval services for large data mine problems</LI>
+<LI>Feature based compiler-compiler services for problem language generation</LI>
+</UL>
+
+<!--- Button which links to top of page --->
+<P ALIGN="CENTER">
+<INPUT TYPE='button' VALUE='Top of Page' onClick='scroll(0,0)'>
+</P>
+
+<FONT COLOR="#0000ff"><H4><A NAME="Q6"></A>Analytic Information Server&trade; Engine Architecture</H4></FONT>
+<P>
+Analytic Information Server&trade; supports multiple concurrent users, transaction rollback with no arbitrary 
+limitation on the size of a transaction, password protected data security with automatic record 
+compression and encryption, data recovery, and a runtime dynamic database schema at each location.
+</P>
+
+<P>
+AIS is agnostic concerning programming paradigms, virtual machines, and programming languages. 
+AIS provides a built-in AIS Lisp compiler. Multiple virtual machines are supported, 
+in fact a parent Lambda can run on one virtual machine while its child Lambda can run on another. 
+Also, an Lambda can serve as a virtual machine for any other Lambda. 
+There is built-in support for functional programming, object oriented programming, rule based programming, and Lambda oriented programming. 
+Also supplied is an AIS JavaScript compiler, and an AIS HTML/XML compiler.
+</P>
+
+<P>&nbsp;</P>
+<P ALIGN="center"><IMG SRC="Image_AIS_Architecture.gif" WIDTH=666 HEIGHT=726></P>
+<P>&nbsp;</P>
+
+<!--- Button which links to top of page --->
+<P ALIGN="CENTER">
+<INPUT TYPE='button' VALUE='Top of Page' onClick='scroll(0,0)'>
+</P>
+
+<FONT COLOR="#0000ff"><H4><A NAME="Q7"></A>What Is Adaptive Intelligence: Why You Need It</H4></FONT>
+<P>
+AIS technology represents a significant step forward in the use of  "Intelligent Lambdas" 
+in integrating both existing and new distributed applications with "Adaptive Intelligence".
+Adaptive Intelligence allows applications to identify previous patterns and relationships 
+in a user's interaction history and then use this new information to alter the application's 
+responses for a more effective, personal user experience. It's the key to retaining customers 
+and ensuring a greater share of their business over time by developing personalized relationships.  
+Increased knowledge about users quickly translates to better customer service, more opportunities 
+to cross sell services and products, and ultimately improved results.
+</P>
+
+<P>
+An application with a personalized, responsive interface is compelling. People will 
+return to a Web site which is different with each visit. Static web pages bore people. 
+Students proceed at a faster rate when the application reconfigures as the person learns. 
+Data mining is more accurate when the mining application adapts to feedback results. 
+Kids retain interest in games which constantly reconfigure to match the player's skill 
+level and past game experiences.
+</P>
+
+<!--- Button which links to top of page --->
+<P ALIGN="CENTER">
+<INPUT TYPE='button' VALUE='Top of Page' onClick='scroll(0,0)'>
+</P>
+
+<FONT COLOR="#0000ff"><H4><A NAME="DOC"></A>Reference Documents</H4></FONT>
+<P>
+Here are links to all available AIS reference documents.
+</P>
+<P>
+<!--docscript>(aisRefGuide.documentLinkTable)</docscript-->
+</P>
+ 
+<!--- Button which links to top of page --->
+<P ALIGN="CENTER">
+<INPUT TYPE='button' VALUE='Top of Page' onClick='scroll(0,0)'>
+</P>
+
+<FONT COLOR="#0000ff"><H4><A NAME="FUN"></A>Built-in Functions</H4></FONT>
+<P>
+Here are links to AIS Built-in Functions grouped according to Data Type.
+</P>
+<P>
+<!--docscript>(aisRefGuide.functionLinkTable)</docscript-->
+</P>
+<!--- Button which links to top of page --->
+<P ALIGN="CENTER">
+<INPUT TYPE='button' VALUE='Top of Page' onClick='scroll(0,0)'><!--- Button which links to Home page --->
+</P>
+ 
+<FONT COLOR="#0000ff"><H4><A NAME="OBJ"></A>AIS Data Types</H4></FONT>
+<P>
+Here are links to the functions of the AIS Built-in Data Types.
+</P>
+<P>
+<!--docscript>(aisRefGuide.dataTypeLinkTable)</docscript-->
+</P>
+ 
+
+<!--- Button which links to top of page --->
+<P ALIGN="CENTER">
+<INPUT TYPE='button' VALUE='Top of Page' onClick='scroll(0,0)'>
+</P>
+
+
+<FONT COLOR="#0000ff"><H4><A NAME="VMI"></A>Virtual Machine Instructions</H4></FONT>
+<P>
+AIS Lambdas are designed to be write-once-run-anywhere executable objects. 
+This is accomplished via the virtual machine concept of software Lambda execution. 
+Lambda virtual machines are designed to be mapped onto the actual host microchip at the server location, 
+providing faithful Lambda execution wherever the Lambda may travel on the Internet. 
+There are currently several virtual machines operating within Analytic Information Server. 
+The DRM virtual machine uses a Dynamically typed Register Machine model to provide portable Lambda execution 
+from high level dynamically typed instructions all the way to super fast microchip-level register execution. 
+The DRM virtual machine runs in emulation mode during the testing and debug phases of Lambda development, 
+and there is an AIS Lambda debugger available for Lambdas running on this virtual machine. 
+During the final release phases of Lambda development, DRM virtual machine Lambdas are automatically converted 
+to the NATIVE virtual machine on the host computer, using the just-in-time compiler. 
+The NATIVE virtual machine is a faithful machine language translation of the execution rules in the DRM virtual machine 
+onto the actual host microchip at the server location. 
+NATIVE virtual machine execution runs at microchip-level execution speeds.
+</P>
+
+<P>
+<!--docscript>(aisRefGuide.vmLinkTable)</docscript-->
+</P>
+
+<!--- Button which links to top of page --->
+<P ALIGN="CENTER">
+<INPUT TYPE='button' VALUE='Top of Page' onClick='scroll(0,0)'>
+</P>
+
+<FONT COLOR="#0000ff"><H4><A NAME="EXP"></A>Example Home Pages</H4></FONT>
+<P>
+Here are links to examples using the AIS Built-in Functions. 
+These examples illustrate how the AIS Functions operate on the different AIS Objects
+and in what context these functions may be used.
+These examples are grouped according to the different Data Types.
+</P>
+<P>
+<!--docscript>(aisRefGuide.exampleLinkTable)</docscript-->
+</P>
+ 
+
+<TABLE CELLSPACING=0 CELLPADDING=6 BORDER=0 WIDTH=600>
+<TR>
+<TD BGCOLOR="#406000" WIDTH="22%" VALIGN="TOP">
+<IMG SRC="Image_AILogo.gif" WIDTH=128 HEIGHT=203>
+<!--- Button which links to Home page --->
+<P ALIGN="CENTER">
+<INPUT TYPE='button' VALUE='Home' onClick='location = "NewHelpHome.html"'>
+</P>
+
+<TD WIDTH="78%" VALIGN="TOP">
+<FONT COLOR="#0000ff"><H4><A NAME="CKA"></A>How do I contact the AIS team?</H4></FONT>
+<P>
+You can always talk with the AIS team at <A HREF="http://aiserver.sourceforge.net">aiserver.sourceforg.net.<A>
+</P>
+<P>
+The technical team is always ready to help.
+</P>
+
+</TD>
+</TR>
+</TABLE>
+
+
+</BODY>
+</HTML>

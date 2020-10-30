@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Date days360 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>days360</FunctionKeywords>
+		<TypeKeywords>Number Integer Date </TypeKeywords>
+		<RelatedFunctions>day today year month</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>year period calendar day  object </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples return the number of days between two  <b>date</b> arguments. using
+                  the different date formats.
+
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc> 
+(days360  "1/1/1992"  "1/1/1993")            </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[360]]></Returns>
+	    <Expression><![CDATA[ <sc> (days360  #Feb,15,1992  #Mar,15,1992)              </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[30]]></Returns>
+	    <Expression><![CDATA[ <sc> (days360  "2/29/1992"  "2/1/1992")                  </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[-28]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

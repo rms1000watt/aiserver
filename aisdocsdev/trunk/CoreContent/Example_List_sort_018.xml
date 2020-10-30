@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example List sort 018</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>sort</FunctionKeywords>
+		<TypeKeywords> List</TypeKeywords>
+		<RelatedFunctions>binarySearch ref setq binaryInsert </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>sort arrange</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples sort the Lists in ascending and descending order.
+	]]></Description>
+	<Syntax>
+	<Expression><![CDATA[<sc>(define Fruits  '("peach" "apple" "orange" "mango" ) )      </sc>]]></Expression>
+    <Note><![CDATA[ The first Pair is defined.
+
+
+    ]]></Note>
+    <Returns><![CDATA[ #&#60Pair 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(sort Fruits &#60)         </sc> ]]></Expression>
+    <Note><![CDATA[Sorts the List in ascending order.]]></Note>
+    <Returns><![CDATA[ #&#60Pair 234567&#62]]></Returns>
+    <Expression><![CDATA[<sc>(display  #&#60Pair 234567&#62)       </sc> ]]></Expression>
+    <Note><![CDATA[The List in ascending order.]]></Note>
+    <Returns><![CDATA[("apple" "mango" "orange" "peach")]]></Returns>
+    <Expression><![CDATA[<sc>(sort Fruits &#62)         </sc> ]]></Expression>
+    <Note><![CDATA[Sorts the List in descending order.]]></Note>
+    <Returns><![CDATA[ #&#60Pair 345678&#62]]></Returns>   
+    <Expression><![CDATA[<sc>(display  #&#60Pair 345678&#62)       </sc> ]]></Expression>
+    <Note><![CDATA[The List in descending order.]]></Note>
+    <Returns><![CDATA[("peach" "orange" "mango" "apple")]]></Returns>
+   <Hints><![CDATA[none]]></Hints>
+</Syntax>
+</Example>

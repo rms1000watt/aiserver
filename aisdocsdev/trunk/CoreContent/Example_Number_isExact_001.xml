@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number isExact 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isExact</FunctionKeywords>
+		<TypeKeywords>  Number</TypeKeywords>
+		<RelatedFunctions>isInteger isZero integer isNull isInexact isNegative isPositive isOdd isEven   </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>  fraction integer exact  </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples first check if the arguments can be evaluated as an Integer.
+                  Then the <b>isExact</b> function returns true if the argument has no
+                  decimal or fractional part.
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(isExact  1)            </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>(isExact  1.0)                 </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[ true ]]></Returns>
+        <Expression><![CDATA[ <sc>(isExact  -4)                 </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ true ]]></Returns>
+        <Expression><![CDATA[ <sc>(isExact  -4.1)                </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[ false ]]></Returns>
+        <Expression><![CDATA[ <sc>(isExact  $4.00)                  </sc>]]></Expression>  
+        <Note><![CDATA[Money data type is not evaluated as an Integer]]></Note> 
+        <Returns><![CDATA[ false ]]></Returns>
+        <Expression><![CDATA[ <sc>(isExact 4.00)                  </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[ true ]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

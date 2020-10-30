@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure map 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>map</FunctionKeywords>
+		<TypeKeywords>Structure</TypeKeywords>
+		<RelatedFunctions>mapc makeStructure</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>map mapc copy process</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines a Structure and applies the <b>add1</b>
+                 function to each element of the Structure using the  <b>map</b> function.   
+                
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define Student  #{Amy: 5  Tom: 6  Mary: 5 John: 6})</sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60Structure 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq  Graduated  (map  add1  Student))  </sc>]]></Expression>
+        <Note><![CDATA[Sets the resulting values of the Structure "Student" to the new Structure "Graduated".]]></Note>
+        <Returns><![CDATA[#&#60Structure 23456&#62]]></Returns>
+        <Expression><![CDATA[ <sc> (define Student  #{Amy: 5  Tom: 6  Mary: 5 John: 6})    </sc>]]></Expression>
+        <Note><![CDATA[Alternatively, the loop special form could have been used but would not be as 
+              terse or as fast.]]></Note>
+        <Returns><![CDATA[#&#60Structure 34567&#62]]></Returns>
+        <Expression><![CDATA[ <sc> (setq Graduated (copy Student ))    </sc>]]></Expression>
+        <Note><![CDATA[Copies the original Structure in to a new one.]]></Note>
+        <Returns><![CDATA[#&#60Structure 45678&#62]]></Returns>
+        <Expression><![CDATA[ <sc> (loop for  n  from 0  until (length Graduated)  by 1  do <br>
+                           (setq Graduated[n] (add1 Graduated[n]) ) )   </sc>]]></Expression>  
+        <Note><![CDATA[Changes the 4 values of the Structures through the add1 method. ]]></Note> 
+        <Returns><![CDATA[4]]></Returns>
+        <Expression><![CDATA[ <sc>  (display Graduated)  </sc>]]></Expression>  
+        <Note><![CDATA[Displays the new values of the "Graduated" Structure.]]></Note> 
+        <Returns><![CDATA[#{Amy: 6 Tom: 7 Mary: 6 John: 7}true]]></Returns>
+        <Hints><![CDATA[<p>Note, that a copy was made, and the argument  <b>{proc}</b> , <b>add1</b>, 
+               was applied to each member in the  copy of the Structure. The Student Structure
+               is left untouched, because the map function is non-destructive. </p>
+               <p>Also note, the return value from the loop is the number of iterations 
+                  performed.  In this case, it is the number 4. </p>
+ ]]></Hints>
+   </Syntax>
+</Example>

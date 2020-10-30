@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>setCdr</Title>
+		<FunctionName>setCdr</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+        <ArgumentTypes>Character String Symbol Brick Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory
+  List ShortVector
+                       Matrix NumMatrix Integer Float Number Complex </ArgumentTypes>
+        <DataType>Structure Dictionary Directory Vector Brick Matrix Pair List FltVector  ShortVector IntVector NumVector ObjVector  BitVector NumMatrix</DataType>            
+	    <RelatedFunctions>ref refValues refAttributes cdr</RelatedFunctions>
+        <RelatedVMInstructions> vmregObjPointer </RelatedVMInstructions>
+		<HumanKeywords>tail ref index cdr setCdr</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>setCdr</b> function sets the tail of the specified Object Type.</p>
+             <p> The <b>setCdr</b> function sets the cdr component of the argument List 
+              to the value of the expression, and returns the List . </p>
+          ]]></Description>
+	<Brief>
+	   <Overview-Structure><![CDATA[
+		<p>The <b>setCdr</b> function sets the <b>cdr</b> component of the Structure argument 
+           <b>{struct}</b> to the value of the expression <b>{expr}</b>, and returns the updated 
+           structure. </p>
+        ]]></Overview-Structure>
+       <Overview-Dictionary><![CDATA[
+		<p>The <b>setCdr</b> function sets the <b>cdr</b> component of the Dictionary argument 
+           <b>{dict}</b> to the value of the expression <b>{expr}</b>, and returns the updated 
+           dictionary. </p>
+        ]]></Overview-Dictionary>
+        <Overview-Directory><![CDATA[
+		<p>The <b>setCdr</b> function sets the <b>cdr</b> component of the Directory argument 
+           <b>{dir}</b> to the value of the expression <b>{expr}</b>, and returns the updated 
+           directory. </p>
+        ]]></Overview-Directory>
+        <Overview><![CDATA[
+		<p>The <b>setCdr</b> function sets the <b>cdr</b> component of the Vector argument 
+           <b>{vector}</b> to the value of the expression <b>{expr}</b>, and returns the updated 
+           vector. </p>
+        ]]></Overview>   
+         <Overview-Brick><![CDATA[
+		<p>The <b>setCdr</b> function sets the <b>cdr</b> component of the Brick argument 
+           <b>{brick}</b> to the value of the expression <b>{expr}</b>, and returns the updated 
+           brick. </p>
+        ]]></Overview-Brick>
+         <Overview-Matrix><![CDATA[
+		<p>The <b>setCdr</b> function sets the <b>cdr</b> component of the Matrix argument 
+           <b>{matrix}</b> to the value of the expression <b>{expr}</b>, and returns the updated 
+           matrix. </p>
+        ]]></Overview-Matrix>
+       <Overview-NumMatrix><![CDATA[
+		<p>The <b>setCdr</b> function sets the <b>cdr</b> component of the NumMatrix argument 
+           <b>{nummatrix}</b> to the value of the expression <b>{expr}</b>, and returns the updated 
+           nummatrix. </p>
+        ]]></Overview-NumMatrix>
+         <Overview-List><![CDATA[
+		 <p> The <b>setCdr</b> function sets the cdr component of the argument <b>{list}</b> 
+              to the value of the expression <b>{exp}</b>, and returns the <b>{list}</b> . </p>
+        ]]></Overview-List>
+        <Usage><![CDATA[
+        <p>The <b>setCdr</b> function is used to set a <b>cdr</b> (tail) of a Structure, Dictionary,
+           Directory, Brick, Vector, Matrix, Pair or List.  
+		</p>
+        ]]></Usage>
+    </Brief>
+	<Syntax-Structure>
+	    <Expression><![CDATA[<p>  (setCdr  struct  expr)</p>]]></Expression>
+		<Argument>
+		  <Name>struct</Name>
+		  <Note><![CDATA[
+		  <p> The Structure argument. </p>
+          ]]></Note>
+		  <AISTypes>Structure </AISTypes>
+		</Argument>
+    	<Argument> 
+		  <Name>expr</Name>
+		  <Note><![CDATA[
+		  <p> A cdr expression </p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory
+                       Matrix NumMatrix Integer Float Number Complex </AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>The modified Structure.
+        </p>
+	    ]]></Return>
+	</Syntax-Structure>
+	<Syntax-Dictionary>
+	    <Expression><![CDATA[<p>  (setCdr  dict  expr)</p>]]></Expression>
+		<Argument> 
+		  <Name>dict</Name>
+		  <Note><![CDATA[
+		  <p> The Dictionary argument. </p>
+          ]]></Note>
+		  <AISTypes>Dictionary </AISTypes>
+		</Argument>
+    	<Argument> 
+		  <Name>expr</Name>
+		  <Note><![CDATA[
+		  <p> A cdr expression </p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory
+                       Matrix NumMatrix Integer Float Number Complex  </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The modified Dictionary.
+        </p>
+	    ]]></Return>   
+	</Syntax-Dictionary>
+	<Syntax-Directory>
+	    <Expression><![CDATA[<p>  (setCdr  dir  expr)</p>]]></Expression>
+		<Argument> 
+		  <Name>dir</Name>
+		  <Note><![CDATA[
+		  <p> The Directory argument. </p>
+          ]]></Note>
+		  <AISTypes>Directory </AISTypes>
+		</Argument>
+    	<Argument> 
+		  <Name>expr</Name>
+		  <Note><![CDATA[
+		  <p> A cdr expression </p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory
+                       Matrix NumMatrix Integer Float Number Complex </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The modified Directory.
+        </p>
+	    ]]></Return>   
+	</Syntax-Directory>
+	<Syntax>
+	    <Expression><![CDATA[<p>  (setCdr  vector  expr)</p>]]></Expression>
+		<Argument> 
+		  <Name>vector</Name>
+		  <Note><![CDATA[
+		  <p> The Vector argument. </p>
+          ]]></Note>
+		  <AISTypes>Vector FltVector  ShortVector IntVector NumVector ObjVector  BitVector</AISTypes>
+		</Argument>
+    	<Argument> 
+		  <Name>expr</Name>
+		  <Note><![CDATA[
+		  <p> A cdr expression </p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory
+                       Matrix NumMatrix Integer Float Number Complex </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The modified Vector.
+        </p>
+	    ]]></Return>   
+	</Syntax>
+	<Syntax-Brick>
+	    <Expression><![CDATA[<p>  (setCdr  brick  expr)</p>]]></Expression>
+		<Argument> 
+		  <Name>brick</Name>
+		  <Note><![CDATA[
+		  <p> The Brick argument. </p>
+          ]]></Note>
+		  <AISTypes>Brick </AISTypes>
+		</Argument>
+    	<Argument> 
+		  <Name>expr</Name>
+		  <Note><![CDATA[
+		  <p> A cdr expression </p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector Brick BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory
+                       Matrix NumMatrix Integer Float Number Complex </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The modified Brick.
+        </p>
+	    ]]></Return>   
+	</Syntax-Brick>
+	<Syntax-Matrix>
+	    <Expression><![CDATA[<p>  (setCdr  matrix  expr)</p>]]></Expression>
+		<Argument> 
+		  <Name>matrix</Name>
+		  <Note><![CDATA[
+		  <p> The Matrix argument. </p>
+          ]]></Note>
+		  <AISTypes>Matrix </AISTypes>
+		</Argument>
+    	<Argument> 
+		  <Name>expr</Name>
+		  <Note><![CDATA[
+		  <p> A cdr expression </p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector Brick BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory
+                       Matrix NumMatrix Integer Float Number Complex </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The modified Brick.
+        </p>
+	    ]]></Return>   
+	</Syntax-Matrix>
+	<Syntax-NumMatrix>
+	    <Expression><![CDATA[<p>  (setCdr  nummatrix  expr)</p>]]></Expression>
+		<Argument> 
+		  <Name>nummatrix</Name>
+		  <Note><![CDATA[
+		  <p> The NumMatrix argument. </p>
+          ]]></Note>
+		  <AISTypes>NumMatrix </AISTypes>
+		</Argument>
+    	<Argument> 
+		  <Name>expr</Name>
+		  <Note><![CDATA[
+		  <p> A cdr expression </p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector Brick BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory
+                       Matrix NumMatrix Integer Float Number Complex </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The modified brick.
+        </p>
+	    ]]></Return>   
+	</Syntax-NumMatrix>
+	<Syntax-List>
+	    <Expression><![CDATA[<p>  (setCdr  list  exp )</p>
+                    <p>  (setCdr  pair  exp )</p>]]></Expression>
+		<Argument> 
+		  <Name>list or pair</Name>
+		  <Note><![CDATA[
+		  <p> The Pair or List to be modified </p>
+          ]]></Note>
+		  <AISTypes>Pair List </AISTypes>
+		</Argument>
+    	<Argument> 
+		  <Name>exp</Name>
+		  <Note><![CDATA[
+		  <p> A cdr expression </p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector Brick BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory
+                       Matrix NumMatrix Integer Float Number Complex </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The updated Pair or List.
+        </p>
+	    ]]></Return>   
+	</Syntax-List>
+</Function>

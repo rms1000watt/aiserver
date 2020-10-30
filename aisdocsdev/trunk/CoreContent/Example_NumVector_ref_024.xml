@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example NumVector ref 024</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>ref</FunctionKeywords>
+		<TypeKeywords> NumVector Text String Integer</TypeKeywords>
+		<RelatedFunctions>setq  ref fieldsOf   refValues  </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>ref reference set position</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples show how the Vector values can be accessed using either the <b>ref</b>
+                  function or the  shorthand form of Vector reference through
+
+                  the bracket [] operators.  
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc> (define X  #(num| 11.433 -2.6 ) )          </sc>]]></Expression>
+        <Note><![CDATA[Define a Number Vector. ]]></Note>
+        <Returns><![CDATA[#&#60NumVector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(ref X 0)</sc>]]></Expression>  
+        <Note><![CDATA[Accesses the Vector values through the ref function.]]></Note> 
+        <Returns><![CDATA[11.433]]></Returns>
+        <Expression><![CDATA[ <sc>(ref X 1)</sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[-2.6]]></Returns>
+        <Expression><![CDATA[ <sc>X [0] </sc>]]></Expression>
+        <Note><![CDATA[Accesses the Vector values through the bracket operators.]]></Note>
+        <Returns><![CDATA[11.433]]></Returns>
+       <Expression><![CDATA[ <sc>X [1] </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[-2.6]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example NumMatrix new 015</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>new</FunctionKeywords>
+		<TypeKeywords> NumMatrix</TypeKeywords>
+		<RelatedFunctions> setq  define </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>new pointer create initialize</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ The following examples show how to construct a Number Matrix.
+
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(new Matrix:  number:  5)                </sc>]]></Expression>
+        <Note><![CDATA[ Returns a number Matrix of rank one with five elements.]]></Note>
+        <Returns><![CDATA[#&#60NumMatrix 123456&#62]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>uncompress</Title>
+		<FunctionName>uncompress</FunctionName>
+		<FunctionType>Builtin(FileIO)</FunctionType>
+		<ArgumentTypes>ByteVector </ArgumentTypes>
+		<DataType>ByteVector  </DataType>
+		<RelatedFunctions>compress</RelatedFunctions>
+        <RelatedVMInstructions> none   </RelatedVMInstructions>
+		<HumanKeywords> LZRW1 decompression uncompress</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>uncompress</b> function converts a previously compressed ByteVector 
+                   into the original much larger ByteVector.</p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>uncompress</b> function uses the extremely fast LZRW1 decompression 
+          algorithm, by Ross Williams, to convert previously compressed ByteVector into the 
+          original much larger ByteVector.</p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>Use the <b>uncompress</b> function to revert to the size of the original
+               input Byte Vector, String or Symbol argument before the its compression. </p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p>(decompress input)</p>]]></Expression>
+		<Argument>
+		  <Name>input</Name>
+		  <Note><![CDATA[
+		  <p>The much smaller Byte Vector after compression.</p>
+          ]]></Note>
+		  <AISTypes>ByteVector  </AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>A ByteVector with the original contents before compression.
+        </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

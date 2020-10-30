@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure isType 005</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isType</FunctionKeywords>
+		<TypeKeywords>Structure Boolean</TypeKeywords>
+		<RelatedFunctions>isString isObject isText isSymbol isStructure</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>Type Analytic Object</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples check if the argument object is
+
+
+
+
+                  of the type Structure.
+
+
+                  If it is,  the function returns true, otherwise, it returns false.
+
+
+ 
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(defineStructure  employee: name:  job:  salary:)    </sc>]]></Expression>
+        <Note><![CDATA[The Structure employee is defined.]]></Note>
+        <Returns><![CDATA[employee]]></Returns>
+        <Expression><![CDATA[ <sc>(define  Bob   (new  employee:  name: "Bob Smith" 
+                    job: "Manager" salary:  2201.34))     </sc>]]></Expression>
+        <Note><![CDATA["Bob", an instance of "employee" is defined.]]></Note>
+        <Returns><![CDATA[ employee ]]></Returns>
+        <Expression><![CDATA[ <sc>(defineStructure  manager:  include:  'employee  'perks)    </sc>]]></Expression>  
+        <Note><![CDATA[The Structure "manager", which inherits from "employee" is defined.]]></Note> 
+        <Returns><![CDATA[manager]]></Returns>
+        <Expression><![CDATA[ <sc>(define  Manager  (new  manager:  perks:  "parking")) </sc>]]></Expression>  
+        <Note><![CDATA["Manager", an instance of "manager" Structure is defined.]]></Note> 
+        <Returns><![CDATA[ manager ]]></Returns>
+        <Expression><![CDATA[ <sc>(isType employee:Bob) </sc>]]></Expression>
+        <Note><![CDATA[Check whether "Bob" is of type "employee".  ]]></Note>
+        <Returns><![CDATA[ true ]]></Returns>
+        <Expression><![CDATA[ <sc>(isType manager:Manager) </sc>]]></Expression>  
+        <Note><![CDATA[Check whether "Manager" is of type "manager".  ]]></Note> 
+        <Returns><![CDATA[ true ]]></Returns>
+        <Expression><![CDATA[ <sc>(isType  employee: Manager)  </sc>]]></Expression>  
+        <Note><![CDATA["Manager" is of type "manager".  The type "manager" inherits from type "employee".
+              By inheritance, the object "Manager" is of type "employee"  ]]></Note> 
+        <Returns><![CDATA[ true ]]></Returns>
+        <Expression><![CDATA[ <sc>(isType  manager: Bob)  </sc>]]></Expression>  
+        <Note><![CDATA["Bob" is of type "employee".  The type "employee" does not inherit from type "manager".
+              Therefore, "Bob" is an "employee" but not a "manager". ]]></Note> 
+        <Returns><![CDATA[ false ]]></Returns>
+        <Hints><![CDATA[<p> The syntax: <b> (isType Structure: obj)</b>  <br>
+            is also equivalent to: <b>(isStructure obj)</b> </p>]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Character compare 010</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compare</FunctionKeywords>
+		<TypeKeywords>Boolean Integer Character</TypeKeywords>
+		<RelatedFunctions>comparison compareEQ compareGT compareNE compareLT  compareLE</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare symbol equal lesser </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>compare</b> functions to do a 
+
+
+
+
+
+
+
+
+
+                  case-sensitive comparison of two objects of the same type.  A Boolean value is returned.
+
+
+
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+        <Expression><![CDATA[ <sc>(compare #\c #\z)           </sc>]]></Expression>
+        <Note><![CDATA[ The value of the first object is lesser than the value
+
+
+               of the second object.]]></Note>
+        <Returns><![CDATA[-1]]></Returns>
+        <Expression><![CDATA[ <sc>(compare #\newline #\c)        </sc>]]></Expression>
+        <Note><![CDATA[ none]]></Note>
+        <Returns><![CDATA[-1]]></Returns>
+        <Expression><![CDATA[ <sc>(compare #\return #\newline)          </sc>]]></Expression>
+        <Note><![CDATA[ The value of the first object is greater than the value
+
+               of the second object.]]></Note>
+        <Returns><![CDATA[1]]></Returns>
+        <Expression><![CDATA[ <sc>(compare #\return #\return)            </sc>]]></Expression>
+        <Note><![CDATA[The arguments are identical. ]]></Note>
+        <Returns><![CDATA[0]]></Returns>
+        <Hints><![CDATA[
+           <p>If you prefer a Boolean  resulting from the comparison , use the compareEQ, compareNE, compareGT, compareLT functions.</p>
+        ]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,13 @@
+Source: ais-qt
+Section: misc
+Priority: optional
+Maintainer: Franklin Chua <franklin.chua@gmail.com> 
+Standards-Version: 3.8.0
+Build-Depends: debhelper, libaudio-dev, libdbus-1-dev, libfreetype6-dev, libgl1-mesa-dev, libglib2.0-dev, libglu1-mesa-dev, libgtk2.0-dev, libice-dev, libmng-dev, libreadline5-dev, libsm-dev, libx11-dev, libxcursor-dev, libxext-dev, libxft-dev, libxi-dev, libxinerama-dev, libxmu-dev, libxrandr-dev, libxrender-dev, libxslt1-dev, libxt-dev, x11proto-core-dev
+
+Package: ais-qt-dev
+Architecture: any
+Pre-Depends: debconf
+Depends: libglib2.0-dev, libxext-dev, libssl-dev, libx11-dev, libice-dev, libsm-dev, libxi-dev, libxrender-dev, libxrandr-dev, libxcursor-dev, libfreetype6-dev, libxft-dev, libxinerama-dev, ${shlibs:Depends}
+Description: AIS Qt Development Files (Dynamic)
+ A minimum set of Qt Development files, designed for building AIS.

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT VMInstruction (KnowledgeBase, Description, Syntax)>
+<!ELEMENT KnowledgeBase (Title, InstructionName, InstructionType, ArgumentTypes, RelatedVMInstructions, HumanKeywords)>
+<!ELEMENT Title (#PCDATA)>
+<!ELEMENT InstructionName (#PCDATA)>
+<!ELEMENT InstructionType (#PCDATA)>
+<!ELEMENT ArgumentTypes (#PCDATA)>
+<!ELEMENT RelatedVMInstructions (#PCDATA)>
+<!ELEMENT HumanKeywords (#PCDATA)>
+<!ELEMENT Description ANY>
+<!ELEMENT Syntax (Expression, Argument+)+>
+	<!ELEMENT Expression ANY>
+	<!ELEMENT Argument (Name, Format, AISTypes)>
+		<!ELEMENT Name (#PCDATA)>
+		<!ELEMENT Format (#PCDATA)>
+		<!ELEMENT AISTypes (#PCDATA)>
+<!-- end -->

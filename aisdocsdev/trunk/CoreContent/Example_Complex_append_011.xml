@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Complex append 011</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>abs</FunctionKeywords>
+		<TypeKeywords>Complex</TypeKeywords>
+		<RelatedFunctions>string  </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>append concatenate string complex </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[  <p> The <b>append</b> function at work on of a complex number is shown below. 
+               The result is a string in the standard literal format.</p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+(setq X #c1.0+2.0i)   </sc>   ]]></Expression>
+        <Note><![CDATA[The Complex Number is defined.]]></Note>
+        <Returns><![CDATA[#&#60Complex 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(setq S "X=")   </sc>   ]]></Expression>
+        <Note><![CDATA[The string literal is defined]]></Note>
+        <Returns><![CDATA[X=]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq Y (append S X))   </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[X=#c1.0+2.0i]]></Returns>
+        <Hints><![CDATA[none
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

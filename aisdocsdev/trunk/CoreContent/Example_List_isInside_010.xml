@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example List isInside 010</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isInside</FunctionKeywords>
+		<TypeKeywords> Pair List</TypeKeywords>
+		<RelatedFunctions>member isMember member inside isIdentical </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>inside key value index boolean</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example uses the <b>isInside</b> function to search for a String Object in the List.
+
+
+	]]></Description>
+	<Syntax>
+	<Expression><![CDATA[<sc>(define Fruits  '("peach" "apple" "orange" "mango" ) )      </sc>]]></Expression>  
+    <Note><![CDATA[ The first Pair is defined.
+    ]]></Note> 
+    <Returns><![CDATA[ #&#60Pair 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(isInside "mango" Fruits)         <sc> ]]></Expression>
+    <Note><![CDATA[none]]></Note>
+    <Returns><![CDATA[true]]></Returns>   
+    <Expression><![CDATA[<sc>(isInside "banana" Fruits)       <sc> ]]></Expression>
+    <Note><![CDATA[none]]></Note>
+    <Returns><![CDATA[false]]></Returns>
+   <Hints><![CDATA[none]]></Hints>
+</Syntax>
+</Example>

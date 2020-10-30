@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Void compareEQ 008</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compareEQ</FunctionKeywords>
+		<TypeKeywords>Matrix Boolean</TypeKeywords>
+		<RelatedFunctions>compare compareNE compareGT compareGE compareLT  compareLE</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare void equal </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>compareEQ</b> function to compare two objects and return
+
+
+
+
+
+
+
+
+                  the Boolean value, true or false. The  values of each objects are compared
+
+
+
+
+
+                  to determine whether the objects are equal or not.
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+        <Expression><![CDATA[ <sc>(compareEQ x  #void )         </sc>]]></Expression>
+        <Note><![CDATA[The uninitialized value of x is equal to #void.]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>(compareEQ #void "Hello World" )       </sc>]]></Expression>
+        <Note><![CDATA[ The value #void is not equal to the String.]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

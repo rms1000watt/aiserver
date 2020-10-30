@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>round</Title>
+		<FunctionName>round</FunctionName>
+		<FunctionType>Builtin(Math)</FunctionType>
+		<ArgumentTypes> Number Integer</ArgumentTypes>
+		<DataType>Number  </DataType>
+		<RelatedFunctions> floor ceiling </RelatedFunctions>
+        <RelatedVMInstructions>none</RelatedVMInstructions>
+		<HumanKeywords>floor estimate round</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>round</b> function rounds the number to the closest integer.</p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+	     <p> The <b>round</b> function rounds the number to the closest integer.</p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>round</b> function is used to compute the nearest Integer to the specified 
+         Number. </p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p><b> (round num)</b></p>]]></Expression>
+		<Argument>
+		  <Name>num</Name>
+		  <Note><![CDATA[
+		  <p>The Number to be rounded.</p>
+          ]]></Note>
+		  <AISTypes>Number</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>The Integer closest to the Number</p>
+	    ]]></Return>
+	</Syntax>
+</Function>

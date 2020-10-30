@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Context reset 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>reset  </FunctionKeywords>
+		<TypeKeywords>Context</TypeKeywords>
+		<RelatedFunctions> clear </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>reset top level function terminate</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[  <p> This example uses the <b>reset</b> function to terminate the current
+                    function and return to the system top level.</p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+          (define  (quit)
+          (if  (are_we_done)  (reset))) </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[&#60Lambda 123456&#62 ]]></Returns>
+        <Hints><![CDATA[none
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

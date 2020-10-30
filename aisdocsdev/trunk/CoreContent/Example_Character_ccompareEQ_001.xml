@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Character ccompareEQ 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>ccompareEQ</FunctionKeywords>
+		<TypeKeywords>Integer Boolean Character</TypeKeywords>
+		<RelatedFunctions> ccompareNE ccompareGT ccompareGE ccompareLT  ccompareLE</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare Lambda equal character</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>ccompareEQ</b> function to compare two objects and return
+
+
+
+
+
+
+
+                  the Boolean value, true or false.  
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+(ccompareEQ #\c #\d)         </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+ 	    <Expression><![CDATA[ <sc>
+(ccompareEQ #\d #\f)</sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(ccompareEQ #\c #\c)  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

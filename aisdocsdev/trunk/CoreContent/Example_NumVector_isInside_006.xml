@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example NumVector isInside 006</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isInside</FunctionKeywords>
+		<TypeKeywords>   NumVector
+Integer
+Boolean  
+</TypeKeywords>
+		<RelatedFunctions>compareEQ comparison isEqual isIdentical member isMember inside </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>Vector Equal Analytic Object </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples check if the value is a member of the Vectors using the
+
+
+
+
+
+                  <b>isInside</b> function.
+
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(isInside  5  #(num| 11.433 -2.6 ))                    </sc>]]></Expression>
+        <Note><![CDATA[5 is not contained the Vector.]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(isInside  -2.6  #(num| 11.433 -2.6 ))          </sc>]]></Expression>
+        <Note><![CDATA[ -2.6 is contained in the Vector. ]]></Note>
+        <Returns><![CDATA[true ]]></Returns>
+        <Hints><![CDATA[none  ]]></Hints>
+   </Syntax>
+</Example>

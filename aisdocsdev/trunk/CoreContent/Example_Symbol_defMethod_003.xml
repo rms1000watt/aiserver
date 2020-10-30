@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Symbol defMethod 003</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>defMethod</FunctionKeywords>
+		<TypeKeywords>Symbol Text Dictionary</TypeKeywords>
+		<RelatedFunctions>addMethod send methodsOf</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>method message messageName</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example calls the <b>defMethod</b> function where the method <b>insertThe</b>
+                  is implemented for the datatype <b>Symbol</b>.  The method <b>insertThe</b> is invoked by  the 
+
+                  <b>send</b> function calling the message in the <b>Symbol</b> Methods Dictionary.
+
+   	]]></Description>
+	<Syntax>
+	<Expression><![CDATA[
+    <b> (defmethod Symbol: insertThe(s)  (append The: s))) </b>
+    ]]></Expression>
+   <Note><![CDATA[ Add a method named <b>addThe</b> which will inserts "The" in front of the Symbol.
+   ]]></Note>
+   <Returns><![CDATA[#&#60Dictionary 12345&#62]]></Returns>
+   <Expression><![CDATA[<sc>(define S House: )  </sc> 
+]]></Expression>
+   <Note><![CDATA[ Define a  Symbol:   ]]></Note>
+   <Returns><![CDATA[House]]></Returns>
+   <Expression><![CDATA[<sc>(send insertThe: S)  </sc> ]]></Expression>
+   <Note><![CDATA[Invoke the method named <b>insertThe</b> to add the article "The" to a Symbol
+   ]]></Note>
+   <Returns><![CDATA[TheHouse]]></Returns>
+   <Expression><![CDATA[<sc>(insertThe: S)  </sc> ]]></Expression>
+   <Note><![CDATA[The method can be invoked simply by name.
+   ]]></Note>
+   <Returns><![CDATA[TheHouse]]></Returns>
+  <Hints><![CDATA[none
+   ]]></Hints>
+   </Syntax>
+</Example>

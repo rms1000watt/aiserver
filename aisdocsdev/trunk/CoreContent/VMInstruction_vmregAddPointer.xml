@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<!-- saved from url=(0022)http://internet.e-mail -->
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmregAddPointer </Title> 
+		<InstructionName>vmregAddPointer </InstructionName>
+		<InstructionType>Register</InstructionType>                                   
+		<ArgumentTypes>  Integer CharPointer FloatPointer 
+		                JumpPointer NumPointer ObjPointer
+		                IntPointer LongPointer ShortPointer WordPointer</ArgumentTypes>
+		<RelatedVMInstructions>vmregSubPointer vmregIncPointer</RelatedVMInstructions>
+		<HumanKeywords>addition subtraction register pointer</HumanKeywords>
+	</KnowledgeBase>                   
+	<Description><![CDATA[
+		<p>When evaluated, this vm instruction adds the register <b>source</b> integer 
+		value (left shifted by the number of bits in the specified <b>datatype</b> immediate 
+		value) to the register <b>target</b> pointer value and places the resulting 
+		pointer in the <b>target</b> register. The result will be returned as a type pointer. 
+		This instruction may return an Error value. After the operation, the Instruction 
+		Pointer is promoted. The operation of this vm instruction is expressed in the 
+		following C expression:
+    	</p>      
+        <ul><li><b>     (void*)target = (void*)target + 
+                     (int)(source &lt;&lt; datatype); </b></li></ul>	
+        <p>The valid datatype arguments are <u>any immediate integer value</u>, 
+        indicating the number of bits to left shift, or any one of the following 
+        symbolic shift sizes:   
+        </p>    
+        <ul><li>  CharPointer: <i>(Pointer to an array of character data bytes in 
+                                     context memory)</i>  </li>    
+         <li>  FloatPointer:<i>(Pointer to an array of 32 bit IEEE floating 
+                             point data values in context memory) </i>  </li>   
+         <li>  IntPointer: <i> (Pointer to an array of integer data values 
+                                  in context memory) </i>  </li>      
+         <li>  LongPointer: <i>(Pointer to an array of long integer 
+                      data values in context memory) </i>  </li>  
+         <li>  JumpPointer:<i> (Pointer to a virtual machine instruction in the 
+                        current Lambda's pcode vector) </i>  </li>   
+         <li>  NumPointer: <i>(Pointer to an array of 64 bit IEEE floating 
+                        point data values in context memory) </i>  </li>  
+         <li>  ObjPointer: <i>(Pointer to an array of 64 bit object pointer 
+                       data values in context memory) </i>  </li>  
+         <li>  ShortPointer: <i>(Pointer to an array of short integer 
+                      data values in context memory) </i>  </li>  
+         <li>  WordPointer: <i> (Pointer to an array of 128 bit word 
+                     data values in context memory) </i> </ul></li>
+    ]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[(vmregAddPointer datatype source target)]]></Expression>
+		<Argument> 
+		  <Name>datatype</Name>
+		  <Format>immediate</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>register</Format>
+		  <AISTypes>integer</AISTypes>
+    	</Argument>   
+    	<Argument> 
+		  <Name>target</Name>
+		  <Format>register</Format>
+		  <AISTypes>integer</AISTypes>
+    	</Argument>
+	</Syntax>
+</VMInstruction>

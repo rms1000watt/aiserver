@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Matrix objectToMatrix 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>objectToMatrix</FunctionKeywords>
+		<TypeKeywords>Matrix NumMatrix</TypeKeywords>
+		<RelatedFunctions>new objectToNumMatrix</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>convert nummatrix Matrix elements dimensional rank</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples show how different AIS Objects are converted into
+
+                    Matrices. The return values after each function shows the contents
+
+                  of the Matrices in each function after using the <b>display</b> command.
+
+	]]></Description>
+	<Syntax>
+        <Expression><![CDATA[ <sc>(setq X (new Matrix: 1 2 3.0 #("ABC" "DEF")))           </sc>]]></Expression>  
+        <Note><![CDATA[Converts a one-dimensional Matrix(just returns the same matrix).]]></Note> 
+        <Returns><![CDATA[#(mat| 3.0 #("ABC" "DEF"))]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Y (objectToMatrix X))            </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[   #(mat| 3.0 #("ABC" "DEF")) ]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq X (new Vector: 3 1.0 #("2") #("3" "4"))) </sc>]]></Expression>
+        <Note><![CDATA[Converts a Vector to a one-dimensional matrix.]]></Note>
+        <Returns><![CDATA[ #(1.0 #("2" ) #("3" "4" ) )]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Y (objectToMatrix X 1 3))            </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[ #(mat| 1.0 #("2" ) #("3" "4" ) )]]></Returns>
+        <Expression><![CDATA[ <sc>(setq X (new Vector: 6 1.0 #("2") #("3") #("4" "A") 5.0 6.0)) </sc>]]></Expression>  
+        <Note><![CDATA[Converts a Vector to a two-dimensional matrix.]]></Note> 
+        <Returns><![CDATA[#(1.0 #("2" ) #("3" ) #("4" "A" ) 5.0 6.0 )]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Y (objectToMatrix X 2 2 3))            </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[ #(mat[2 3]| 1.0 #("2" ) #("3" ) #("4" "A" ) 5.0 6.0 )]]></Returns>
+        <Expression><![CDATA[ <sc>(setq X (new Vector: 12 1.0 #("2") #("3") #("4" "A") 5.0 6.0 7 8 9 "10" "11" "12")) </sc>]]></Expression>  
+        <Note><![CDATA[Convert a Vector to a three-dimensional matrix.]]></Note> 
+        <Returns><![CDATA[#(1.0 #("2" ) #("3" ) #("4" "A" ) 5.0 6.0 7 8 9 "10" "11" "12" )]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Y (objectToMatrix X 3 2 2 3))            </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#(mat[2 2 3]| 1.0 #("2" ) #("3" ) #("4" "A" ) 5.0 6.0 7 8 9 "10" "11" "12" )]]></Returns>
+        <Expression><![CDATA[ <sc>(setq X (new Vector: bit: 12 1 0 1 1 0 1 0 0 1 1 0 1))</sc>]]></Expression>  
+        <Note><![CDATA[Converts a Bit Vector to a one-dimensional matrix.]]></Note> 
+        <Returns><![CDATA[#(bit| 1 0 1 1 0 1 0 0 1 1 0 1 ))]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Y (objectToMatrix X ))            </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#(mat|  1 0 1 1 0 1 0 0 1 1 0 1)]]></Returns>
+        <Expression><![CDATA[ <sc>(setq X (new Vector: bit: 12 1 0 1 1 0 1 0 0 1 1 0 1)) </sc>]]></Expression>  
+        <Note><![CDATA[Converts a Bit Vector to a two-dimensional matrix.]]></Note> 
+        <Returns><![CDATA[#(bit| 1 0 1 1 0 1 0 0 1 1 0 1 )]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Y (objectToMatrix X 2 4 3))            </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#(mat[4 3]| 1 0 1 1 0 1 0 0 1 1 0 1 )]]></Returns>
+         <Expression><![CDATA[ <sc>(setq X (new Vector: bit: 12 1 0 1 1 0 1 0 0 1 1 0 1)) </sc>]]></Expression>  
+        <Note><![CDATA[Convert a Bit Vector to a three-dimensional matrix.]]></Note> 
+        <Returns><![CDATA[#(bit| 1 0 1 1 0 1 0 0 1 1 0 1 )]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Y (objectToMatrix X 3 2 2 3))            </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#(mat[2 2 3]| 1 0 1 1 0 1 0 0 1 1 0 1 )]]></Returns>
+        <Expression><![CDATA[ <sc>(setq X (new Vector: integer: 5 255 32 16 8 4))           </sc>]]></Expression>  
+        <Note><![CDATA[Converts an Integer Vector to a one-dimensional matrix.]]></Note> 
+        <Returns><![CDATA[#(int| 255 32 16 8 4 ) ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Y (objectToMatrix X ))            </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#(mat| 255 32 16 8 4 )]]></Returns>
+        <Expression><![CDATA[ <sc>(setq X (new Vector: integer: 12 -1 2 -128 4 127 5 -254 7 8 9 10 11 12)) </sc>]]></Expression>  
+        <Note><![CDATA[Converts an Integer Vector to a two-dimensional matrix.]]></Note> 
+        <Returns><![CDATA[#(int| -1 2 -128 4 127 5 -254 7 8 9 10 11 )]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Y (objectToMatrix X 2 4 3))            </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#(mat[4 3]| -1 2 -128 4 127 5 -254 7 8 9 10 11 )]]></Returns>
+         <Expression><![CDATA[ <sc>(setq X (new Vector: integer: 12 -1 2 128 4 127 5 254 7 8 9 10 11 12)) </sc>]]></Expression>  
+        <Note><![CDATA[Convert an Integer Vector to a three-dimensional matrix.]]></Note> 
+        <Returns><![CDATA[#(int| -1 2 128 4 127 5 254 7 8 9 10 11 )]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Y (objectToMatrix X 3 2 2 3))            </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#(mat[2 2 3]| -1 2 128 4 127 5 254 7 8 9 10 11 )]]></Returns>
+        <Expression><![CDATA[ <sc>(setq X (new Vector: number: 5 -255.0 32.1 16.0 8.0 4.0))</sc>]]></Expression>  
+        <Note><![CDATA[Converts a Number Vector to a one-dimensional matrix.]]></Note> 
+        <Returns><![CDATA[#(num| -255.0 32.1 16.0 8.0 4.0 ) ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Y (objectToMatrix X ))            </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#(mat| -255.0 32.1 16.0 8.0 4.0 )]]></Returns>
+        <Expression><![CDATA[ <sc>(setq X (new Vector: number: 12 -1 2 -128 4 127 5 -254 7 8 9 10 11 12)) </sc>]]></Expression>  
+        <Note><![CDATA[Converts a Number Vector to a two-dimensional matrix.]]></Note> 
+        <Returns><![CDATA[#(num| -1.0 2.0 -128.0 4.0 127.0 5.0 -254.0 7.0 8.0 9.0 10.0 11.0 )]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Y (objectToMatrix X 2 4 3))            </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#(mat[4 3]| -1.0 2.0 -128.0 4.0 127.0 5.0 -254.0 7.0 8.0 9.0 10.0 11.0 )]]></Returns>
+         <Expression><![CDATA[ <sc>(setq X (new Vector: number: 12 -1 2 128 4 127 5 254 7 8 9 10 11 12)) </sc>]]></Expression>  
+        <Note><![CDATA[Convert a Number Vector to a three-dimensional matrix.]]></Note> 
+        <Returns><![CDATA[#(num| -1.0 2.0 128.0 4.0 127.0 5.0 254.0 7.0 8.0 9.0 10.0 11.0 )]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Y (objectToMatrix X 3 2 2 3))            </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#(mat[2 2 3]| -1.0 2.0 128.0 4.0 127.0 5.0 254.0 7.0 8.0 9.0 10.0 11.0 )]]></Returns>
+        <Expression><![CDATA[ <sc>(setq X (new Vector: float: 5 -255.0 32.5 16.0 8.0 4.0))</sc>]]></Expression>  
+        <Note><![CDATA[Converts a Float Vector to a one-dimensional matrix.]]></Note> 
+        <Returns><![CDATA[#(float| -255.0 32.5 16.0 8.0 4.0 ) ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Y (objectToMatrix X ))            </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#(mat| -255.0 32.5 16.0 8.0 4.0 )]]></Returns>
+   <Expression><![CDATA[ <sc>(setq X (new Vector: object: 3 4.0 #{A: 1 B: 2} #(1 2)))</sc>]]></Expression>  
+        <Note><![CDATA[Converts an Object Vector to a one-dimensional matrix.]]></Note> 
+        <Returns><![CDATA[#(obj| #void #{A: 1 B: 2} #(1 2 ) )]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Y (objectToMatrix X ))            </sc>]]></Expression>  
+        <Note><![CDATA[4.0 is not an Object.]]></Note> 
+        <Returns><![CDATA[#(mat| #void #{A: 1 B: 2} #(1 2 ) )]]></Returns>
+        <Expression><![CDATA[ <sc>(setq X (new Vector: object: 6 '(1.0) '(2.0) '(3.0) '(4.0) '(5.0) '(6.0))) </sc>]]></Expression>  
+        <Note><![CDATA[Convert an Object Vector to a two-dimensional matrix.]]></Note> 
+        <Returns><![CDATA[#(obj| (1.0) (2.0) (3.0) (4.0) (5.0) (6.0) )]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Y (objectToMatrix X 2 2 3 ))            </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#(mat[2 3]| (1.0) (2.0) (3.0) (4.0) (5.0) (6.0) )]]></Returns>
+        <Expression><![CDATA[ <sc>(setq X (new Vector: object: 2 #(1.0 2.0 3.0) #(4.0 5.0 6.0))) </sc>]]></Expression>  
+        <Note><![CDATA[Convert Object Vector of vectors to a two-dimensional matrix.]]></Note> 
+        <Returns><![CDATA[#(obj| #(1.0 2.0 3.0 ) #(4.0 5.0 6.0 ) )]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Y (objectToMatrix X ))            </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#(mat[2 3]| 1.0 2.0 3.0 4.0 5.0 6.0 )]]></Returns>
+        <Expression><![CDATA[ <sc>(setq X (new Vector: object: 12 '(A) '(B) '(C) '(D) '(E) '(F) '(G) '(H) '(I) '(J) '(K) '(L))) </sc>]]></Expression>  
+        <Note><![CDATA[Convert an Object Vector   to a three-dimensional matrix.]]></Note> 
+        <Returns><![CDATA[#(obj| (A) (B) (C) (D) (E) (F) (G) (H) (I) (J) (K) (L) )]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Y (objectToMatrix X 3 2 2 3 ))            </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#(mat[2 2 3]| (A) (B) (C) (D) (E) (F) (G) (H) (I) (J) (K) (L) )]]></Returns>
+        <Expression><![CDATA[ <sc>(setq V1 (new Vector: object: 2 #(1.0 2.0 3.0) #(4.0 5.0 6.0))) </sc>]]></Expression>  
+        <Note><![CDATA[Convert an Object Vector to a three-dimensional matrix.]]></Note> 
+        <Returns><![CDATA[#(obj| #(1.0 2.0 3.0 ) #(4.0 5.0 6.0 ) )]]></Returns>
+        <Expression><![CDATA[ <sc>(setq V2 (new Vector: object: 2 #(7.0 8.0 9.0) #(10.0 11.0 12.0)))          </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#(obj| #(7.0 8.0 9.0 ) #(10.0 11.0 12.0 ) )]]></Returns>
+        <Expression><![CDATA[ <sc>(setq X (new Vector: object: 2 V1 V2))      </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#(obj| #(obj| #(1.0 2.0 3.0 ) #(4.0 5.0 6.0 ) ) #(obj| #(7.0 8.0 9.0 ) #(10.0 11.0 12.0 ) ) )]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Y (objectToMatrix X))            </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#(mat[2 2 3]| 1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0 )]]></Returns>
+        <Expression><![CDATA[ <sc>(setq X '(#(1 2 3) '(4 5) #(6 7 8))) </sc>]]></Expression>  
+        <Note><![CDATA[Convert a Pair to a one-dimensional matrix]]></Note> 
+        <Returns><![CDATA[(#(1 2 3 ) '(4 5) #(6 7 8 ))]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Y (objectToMatrix X)) </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#(mat| #(1 2 3 ) '(4 5) #(6 7 8 ) )]]></Returns>
+        <Expression><![CDATA[ <sc>(setq X (new Structure: A:  22  B:  34  .  3)) </sc>]]></Expression>  
+        <Note><![CDATA[Convert a Structure to a one-dimensional matrix]]></Note> 
+        <Returns><![CDATA[#{A: 22 B: 34 . 3}]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Y (objectToMatrix X)) </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#(mat| A 22 B 34 )]]></Returns>
+        <Expression><![CDATA[ <sc>(setq X (new Dictionary: A:  22  B:  34)) </sc>]]></Expression>  
+        <Note><![CDATA[Convert a Dictionary to a one-dimensional matrix]]></Note> 
+        <Returns><![CDATA[#{dic|| A 22 B 34}]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Y (objectToMatrix X)) </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#(mat| A 22 B 34 )]]></Returns>
+         <Expression><![CDATA[ <sc>(setq X (new Directory: #Jan,1,1996  "New Year's Day"  #Feb,14,1996  "Valentine's Day")) </sc>]]></Expression>  
+        <Note><![CDATA[Convert a Directory to a one-dimensional matrix]]></Note> 
+        <Returns><![CDATA[#{dir|| #Jan,1,1996 "New Year's Day" #Feb,14,1996 "Valentine's Day"}]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Y (objectToMatrix X)) </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#(mat| #Jan,1,1996 "New Year's Day" #Feb,14,1996 "Valentine's Day" )]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

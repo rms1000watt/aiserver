@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Date minute 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>minute</FunctionKeywords>
+		<TypeKeywords>Number Date String Text Integer</TypeKeywords>
+		<RelatedFunctions> second hour time</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>24-hour hour clock minute</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples return the <b>minute</b> component of the  <b>date</b> argument using
+
+                  the different date formats.
+
+
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc> 
+(minute #Aug,1,1996:12:25)            </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[25]]></Returns>
+	    <Expression><![CDATA[ <sc> (minute "1:30:00 PM")                </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[30]]></Returns>
+	    <Expression><![CDATA[ <sc> (minute "23:30")                   </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[30]]></Returns>
+	    <Expression><![CDATA[ <sc> (minute  (julian #Aug,1,1996:12:25) )                      </sc>]]></Expression>  
+        <Note><![CDATA[These examples use the Julian date format.]]></Note> 
+        <Returns><![CDATA[25]]></Returns>
+	    <Expression><![CDATA[ <sc> (minute  729236.5173611 )                      </sc>]]></Expression>  
+        <Note><![CDATA[Or, getting the julian value of #Aug,1,1996:12:25: ]]></Note> 
+        <Returns><![CDATA[24]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

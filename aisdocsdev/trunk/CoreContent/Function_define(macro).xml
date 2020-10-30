@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>define(macro)</Title>
+		<FunctionName>define(macro)</FunctionName>
+		<FunctionType>Macro</FunctionType>
+        <ArgumentTypes> Lambda  Symbol</ArgumentTypes>
+        <DataType> Lambda</DataType>
+	    <RelatedFunctions>setq set lambda defmacro defun defriend defchild deforphan defmethod</RelatedFunctions>
+        <RelatedVMInstructions>   </RelatedVMInstructions>
+		<HumanKeywords>declaration initialization variables macro</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p>The <b>define macro:</b> special form allows the user to declare a new variable and initialize it to a macro.  </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+	    <p> The <b>define macro:</b> special form allows the user to declare a new variable and 
+         initialize it to a macro. The macro must receive zero or more arguments, and its body 
+         may have zero or more expressions. In this form, <b>define</b> always returns the value 
+          to which name is initialized (Note: this value will always be a macro object).  </p>
+        <p>A Lisp macro is an Lambda object which is used exclusively by the compiler in the 
+          macro substitution phase (see the <b>morph</b> Function). A macro Lambda is normally 
+         unavailable outside of the compilation process. During the compiler's substitution phase, 
+         each macro is invoked with its unevaluated arguments. The value returned by the Macro 
+         is substituted for the original macro reference in the source.</p>
+        ]]></Overview>
+       <Usage><![CDATA[
+        <p>Use the <b>define macro:</b> function when you wish to create an in-line macro, which 
+           expands its arguments, rather than invoking a function call.</p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p><b>   (define macro:(name  arg...)  faces:(var...) vars:(var...)  pvars:(var...)  
+              cvars:(var...)  regs:(var...)  exp...)</b></p>
+        ]]></Expression>  
+		<Argument> 
+		  <Name>name</Name>
+		  <Note><![CDATA[
+		  <p> The name that the Lambda will be associated with. </p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>(arg...)</Name>
+		  <Note><![CDATA[
+		  <p> Optional Argument. Argument list for the Lambda. </p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>faces:(var...)</Name>
+		  <Note><![CDATA[
+		  <p> Optional Argument. If present, must be followed by a interfaces feature list. </p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>vars:(var...)</Name>
+		  <Note><![CDATA[
+		  <p> Optional Argument. If present, must be followed by a local variable list.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>pvars:(var...)</Name>
+		  <Note><![CDATA[
+		  <p> Optional Argument. If present, must be followed by a persistent variable list.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>cvars:(var...)</Name>
+		  <Note><![CDATA[
+		  <p> Optional Argument. If present, must be followed by a persistent class variable list.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>regs:(var...)</Name>
+		  <Note><![CDATA[
+		  <p> Optional Argument. If present, must be followed by a register variable list 
+
+              (up to fifty register variables are allowed).</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>exp...</Name>
+		  <Note><![CDATA[
+		  <p> The Lisp statements that forms the Lambdas</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>An Lambda that will be assigned the name {name}.</p>
+	    ]]></Return>
+	</Syntax>
+</Function>

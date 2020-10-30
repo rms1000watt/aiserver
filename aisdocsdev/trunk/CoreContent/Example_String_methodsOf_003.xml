@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>  
+		<Title>Example String methodsOf 003</Title>  
+		<Template>Example</Template> 
+		<FunctionKeywords>methodsOf</FunctionKeywords>
+		<TypeKeywords>String Text Dictionary</TypeKeywords>	
+		<RelatedFunctions>defmethod send addMethod</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>method message messageName</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example displays the Lambdas for each method  in
+	              the String Method Dictionary.  This already includes
+	              the previously defined <b>EatSpace</b> method with
+	              the message name <b>Eat</b> in Example_methodsOf_001.
+	]]></Description>
+	<Syntax> 
+	<Expression><![CDATA[ <sc> (setq numLambda (length (methodsOf String: ))) </sc> 
+   ]]></Expression>  
+   <Note><![CDATA[ <p>A Dictionary object type is made up of bindings (key, value) 
+          similar to structures.  If a dictionary is accessed by 2 
+          index references, the first index retrieves the I-th binding.  
+          The second index (=0) will retrieve the binding's name and the 
+          index (=1) will retrieve the binding's value. </p>
+          <p> In this example, the binding's value, which is the Lambda
+              associated with the method is retrieved. </p>
+          <p> This line of code gets the number of methods defined in the 
+              String Methods Dictionary. </p> 
+   ]]></Note> 
+   <Returns><![CDATA[ 8 ]]></Returns>
+   <Expression><![CDATA[<sc>(loop for  n  from 0  until numLambda by 1  do 
+             <blockquote>  (writeln "Lambda #" n " is "  (ref  (methodsOf String:) n 1))) </blockquote></sc> 
+   ]]></Expression>
+   <Note><![CDATA[ Print out the Lambdas for the String type:
+   ]]></Note>
+   <Returns><![CDATA[<br>Lambda #1 is #&#60Lambda 47715&#62 <br>
+            Lambda #2 is #&#60Lambda 47721&#62 <br>
+            Lambda #3 is #&#60Lambda 47726&#62 <br>
+            Lambda #4 is #&#60Lambda 47731&#62 <br>
+            Lambda #5 is #&#60Lambda 47735&#62 <br>
+            Lambda #6 is #&#60Lambda 47740&#62 <br>
+            Lambda #7 is #&#60Lambda 47744&#62 <br>
+            Lambda #8 is #&#60Lambda 47749&#62]]></Returns>
+   <Hints><![CDATA[none]]></Hints>
+</Syntax>
+</Example>

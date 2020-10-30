@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure makeStructure 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>makeStructure</FunctionKeywords>
+		<TypeKeywords>Structure</TypeKeywords>
+		<RelatedFunctions>defstruct defineStructure fieldsOf defclass objectToStructure</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>define set make object structure inherit 
+
+
+                       parent object-oriented classes</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ The following code sample shows how to use <b>makeStructure</b> function 
+                  to construct a structure from Vector data.
+
+     
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define SecondQtrSales  #("Apr" 3500 "May" 3800 "Jun" 4400))    </sc>]]></Expression>
+        <Note><![CDATA[A Vector is defined. ]]></Note>
+        <Returns><![CDATA[#&#60Vector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Sales (new Structure:))    </sc>]]></Expression>  
+        <Note><![CDATA[A Structure is defined. ]]></Note> 
+        <Returns><![CDATA[#&#60Structure 123456&#62 ]]></Returns>
+ 		<Expression><![CDATA[
+    <sc>(loop for  i  from 0  until (length SecondQtrSales) by 2  do <br>
+                  (setq j (add1 i)) <br>
+                  (setq Sales (append Sales  (makeStructure SecondQtrSales[i] SecondQtrSales[j]))))  </sc> ]]></Expression>  
+        <Note><![CDATA[The code loops on the Vector values and sets them into key-value pairs using the
+              makeStructure function.  The code returns the number of values inside the Vector processed.]]></Note>
+        <Returns><![CDATA[6 ]]></Returns>
+        <Expression><![CDATA[ <sc>(display Sales)    </sc>]]></Expression>  
+        <Note><![CDATA[The Structure Sales now contains the contents of the Vector SecondQtrSales. ]]></Note> 
+        <Returns><![CDATA[#{Apr: 3500 May: 3800 Jun: 4400}true]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

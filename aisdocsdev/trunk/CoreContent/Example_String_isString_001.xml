@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example String isString 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isString</FunctionKeywords>
+		<TypeKeywords>Character String Symbol Vector BitVector ByteVector IntVector
+
+
+                       FltVector ObjVector Structure Dictionary Directory
+
+
+                       Matrix NumMatrix Integer Float Number Complex</TypeKeywords>
+		<RelatedFunctions>isType isObject isText </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>Type Analytic Object</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples check if the argument object is
+                  of type String or Text.
+                  If it is,  the function returns true, otherwise, it returns false.
+ 
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(isString  "Michael M. Mouse")  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>(isString  "Mickey Mouse")    </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ true ]]></Returns>
+        <Expression><![CDATA[ <sc>(isString "Mickey")  </sc>]]></Expression>
+        <Note><![CDATA[Text also qualifies. ]]></Note>
+        <Returns><![CDATA[ true ]]></Returns>
+        <Expression><![CDATA[ <sc>(isString #\a)   </sc>]]></Expression>  
+        <Note><![CDATA[Character type does not qualify. ]]></Note> 
+        <Returns><![CDATA[ false ]]></Returns>           
+        <Hints><![CDATA[It is important to remember that String constants that are 7 characters or 
+                less are by default assigned a type of Text unless explicitly assigned to a 
+                String Symbol variable. ]]></Hints>
+   </Syntax>
+</Example>

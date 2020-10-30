@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example ObjectRepository methodsOf 023</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>methodsOf</FunctionKeywords>
+		<TypeKeywords> ObjectRepository Symbol Dictionary </TypeKeywords>
+		<RelatedFunctions>addMethod send defmethod</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>method message type methodName define</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[<p> This example defines and retrieves the methods <b>read</b> and <b>write</b> that is invoked
+
+
+                  by the ObjectRepository data type. </p>
+	]]></Description>
+	<Syntax>
+	<Expression><![CDATA[<sc>
+(defmethod ObjectRepository: read(gor key) (ref gor key)) </sc>]]></Expression>
+    <Note><![CDATA[ Add the read method, which will get a value using a key .
+
+]]></Note>
+    <Returns><![CDATA[ #&#60Dictionary 123456&#62]]></Returns>
+	<Expression><![CDATA[<sc>(defmethod ObjectRepository: write(gor key value) (setq gor key value))  </sc>]]></Expression>
+    <Note><![CDATA[ Add the write method, which will set a value for a given key.]]></Note>
+    <Returns><![CDATA[ #&#60Dictionary 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(length (methodsOf ObjectRepository: ))               </sc> ]]></Expression>
+    <Note><![CDATA[none]]></Note>
+    <Returns><![CDATA[2]]></Returns>
+    
+    <Expression><![CDATA[<sc>(ref (methodsOf ObjectRepository:)[0 0])         </sc> ]]></Expression>
+    <Note><![CDATA[none]]></Note>
+    <Returns><![CDATA[read]]></Returns>
+    <Expression><![CDATA[<sc>(ref (methodsOf ObjectRepository:)[1 0])         </sc> ]]></Expression>
+    <Note><![CDATA[none]]></Note>
+    <Returns><![CDATA[write]]></Returns>
+    <Expression><![CDATA[<sc>(display (methodsOf ObjectRepository:))         </sc> ]]></Expression>
+    <Note><![CDATA[The contents of the Object Repository Methods Dictionary.]]></Note>
+    <Returns><![CDATA[#{dic| read #&#60Lambda 123456&#62 write #&#60Lambda 234567&#62}]]></Returns>
+    <Hints><![CDATA[none
+    ]]></Hints>
+</Syntax>
+</Example>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number &#42; 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>&#42;</FunctionKeywords>
+		<TypeKeywords>Number</TypeKeywords>
+		<RelatedFunctions> + - &#47; </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>multiplication addition subtraction division</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[  <p> The <b>&#42;</b> function returns the products of all the numbers in the argument list. </p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+(&#42 2 3 4)   </sc>   ]]></Expression>
+        <Note><![CDATA[The 3 numbers are multiplied.]]></Note>
+        <Returns><![CDATA[24]]></Returns>
+        <Expression><![CDATA[ <sc>(&#42 2 -4.1)   </sc>   ]]></Expression>  
+        <Note><![CDATA[The 2 numbers are multiplied.]]></Note> 
+        <Returns><![CDATA[-8.2]]></Returns>
+        <Expression><![CDATA[ <sc>(&#42 )   </sc>   ]]></Expression>  
+        <Note><![CDATA[The argument list is empty, so 1 is returned.]]></Note> 
+        <Returns><![CDATA[1]]></Returns>
+        <Hints><![CDATA[none
+        ]]></Hints>
+   </Syntax>
+</Example>

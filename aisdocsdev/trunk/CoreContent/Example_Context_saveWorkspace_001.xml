@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Context saveWorkspace 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>saveWorkspace  </FunctionKeywords>
+		<TypeKeywords>Context</TypeKeywords>
+		<RelatedFunctions> loadWorkspace </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>context workspace pointer</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[  <p> This example saves, loads and displays the workspace using the <b>saveWorkspace</b>
+                   and <b>loadWorkspace</b> functions.  These functions recreate
+                   the conditions in the current Workspace as they were when "myworkspace"
+                   was saved. </p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+ (setq x 22)       </sc>   ]]></Expression>
+        <Note><![CDATA[The original value of x is saved.]]></Note>
+        <Returns><![CDATA[22 ]]></Returns>
+  	    <Expression><![CDATA[ <sc> x         </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[22 ]]></Returns>
+  	    <Expression><![CDATA[ <sc> (saveWorkspace "workspace.db")            </sc>   ]]></Expression>
+        <Note><![CDATA[The original value of x is saved in the current workspace.]]></Note>
+        <Returns><![CDATA[true ]]></Returns>
+  	    <Expression><![CDATA[ <sc> (setq x 33)              </sc>   ]]></Expression>
+        <Note><![CDATA[A new value of x is set.]]></Note>
+        <Returns><![CDATA[33 ]]></Returns>
+  	    <Expression><![CDATA[ <sc> x             </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[x]]></Returns>
+  	    <Expression><![CDATA[ <sc> (loadWorkspace "workspace.db" )             </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+  	    <Expression><![CDATA[ <sc> x                  </sc>   ]]></Expression>
+        <Note><![CDATA[The saved value of x the currently loaded workspace is displayed.]]></Note>
+        <Returns><![CDATA[22]]></Returns>
+        <Hints><![CDATA[none
+
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

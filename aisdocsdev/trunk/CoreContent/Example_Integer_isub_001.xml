@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Integer isub 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isub</FunctionKeywords>
+		<TypeKeywords>Integer   </TypeKeywords>
+		<RelatedFunctions>iadd imul imod idiv</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>integer addition subtraction division multiplication</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ <p>These examples show the <b>isub</b> function perform subtraction on the Integer arguments
+                  The function does not operate on non-Integer arguments.</p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+ (isub 12 4)           </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[8]]></Returns>
+ 	    <Expression><![CDATA[ <sc>
+(isub 20 -3)    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[23]]></Returns>
+ 	    <Expression><![CDATA[ <sc>(isub 2.4 5.3)    </sc>]]></Expression>  
+        <Note><![CDATA[The function returns 0 if the arguments are not Integers.]]></Note> 
+        <Returns><![CDATA[0]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

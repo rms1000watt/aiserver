@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Error errorTrap 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>errorTrap</FunctionKeywords>
+		<TypeKeywords>Error String </TypeKeywords>
+		<RelatedFunctions>errorTrap isError isIdentical onError  </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>error isError isIdentical onError</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ The <b>errorTrap</b> function exits the current function and  prints
+                  the output, 3, once the error is trapped.
+
+
+
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc> (errorTrap  '(error  "bug")  '(+ 1 2))             </sc>]]></Expression>
+        <Note><![CDATA[The previous statement will trap the error defined in the first argument and performs the
+             action defined by the second argument.]]></Note>
+        <Returns><![CDATA[3]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

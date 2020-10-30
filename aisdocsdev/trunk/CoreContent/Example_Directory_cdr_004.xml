@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Directory cdr 004</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>cdr</FunctionKeywords>
+		<TypeKeywords>Directory</TypeKeywords>
+		<RelatedFunctions>ref refValues refAttributes setCdr</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>tail ref index</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows that the tail key-binding value of a Directory
+
+
+                  must first be defined before it can be accessed by the <b>cdr</b>
+                  function.  If no tail value is defined, then the <b>cdr</b> function
+
+
+                  returns #void.
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define ClassRec  #{dir|Bldg: 200 Room: 34 Period: 1 } )</sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60Directory 188141&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(setCdr ClassRec #{dic| Teacher: "Smith"  Subject: "Math" }) </sc>]]></Expression>
+        <Note><![CDATA[The tail value of the ClassRec Directory is defined.]]></Note>
+        <Returns><![CDATA[none]]></Returns>
+        <Expression><![CDATA[ <sc> (display ClassRec)    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[(#{dir| Bldg: 200 Room: 34 Period: 1 }  . #{dir| Teacher: "Smith"  Subject: "Math" }) ]]></Returns>
+        <Expression><![CDATA[ <sc>(display (cdr ClassRec))</sc>]]></Expression>
+        <Note><![CDATA[Displays only the tail value of the ClassRec Directory. ]]></Note>
+        <Returns><![CDATA[#{dir| Teacher: "Smith"  Subject: "Math" }]]></Returns>
+        <Expression><![CDATA[ <sc>(length ClassRec)</sc>]]></Expression>  
+        <Note><![CDATA[Displays only the length ClassRec Directory. The cdr value is not included. ]]></Note> 
+        <Returns><![CDATA[3]]></Returns>
+        <Hints><![CDATA[The cdr is not reachable by the [] operator. ]]></Hints>
+   </Syntax>
+</Example>

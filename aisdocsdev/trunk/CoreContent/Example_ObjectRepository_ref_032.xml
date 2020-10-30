@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example ObjectRepository ref 032</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>ref</FunctionKeywords>
+		<TypeKeywords>ObjectRepository</TypeKeywords>
+		<RelatedFunctions> setq   </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>ref reference set position</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows the <b>ref</b> function retrieve
+                the <b>Object Repository's odbid. </b>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq gor (new ObjectRepository: "mice.db"))      </sc>]]></Expression>
+        <Note><![CDATA[Create a new ObjectRepository.]]></Note>
+        <Returns><![CDATA[#&#60ObjectRepository 197815&#62 ]]></Returns>
+  	    <Expression><![CDATA[ <sc>(ref gor member: odbid:)     </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#void]]></Returns>
+ 	    <Expression><![CDATA[ <sc>(beginTransaction gor)   </sc>]]></Expression>  
+        <Note><![CDATA[Activate the Object Repository.]]></Note> 
+        <Returns><![CDATA[true]]></Returns>
+ 	    <Expression><![CDATA[ <sc>(type (ref gor member: odbid:))     </sc>]]></Expression>  
+        <Note><![CDATA[Returns a ByteVector.]]></Note> 
+        <Returns><![CDATA[ByteVector]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

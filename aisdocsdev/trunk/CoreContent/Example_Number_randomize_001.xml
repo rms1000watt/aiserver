@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number randomize  001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>randomize</FunctionKeywords>
+		<TypeKeywords>  Number Integer   </TypeKeywords>
+		<RelatedFunctions>random srandom</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>random number generator range seed</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ <p> This example shows how the <b>randomize</b> function changes the seed for the random number generator. </p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(randomize 345643) </sc>   ]]></Expression>
+        <Note><![CDATA[The new seed is always returned.]]></Note>
+        <Returns><![CDATA[345643 ]]></Returns>
+        <Hints><![CDATA[none
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

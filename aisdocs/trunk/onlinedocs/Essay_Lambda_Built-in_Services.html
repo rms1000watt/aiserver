@@ -1,0 +1,601 @@
+
+<HTML>
+<HEAD>
+<link rel="stylesheet" type="text/css" href="../CoreContent/help.css">
+<TITLE>AIS Essay Template</TITLE></HEAD>
+<!--Page Parameters -->
+<BODY BGCOLOR="#FFFFF0" TEXT="#000000" LINK="#0000ff">
+
+<A NAME="topage"></A>
+<A HREF="TOP"></A>
+
+
+
+<P>&nbsp;</P>
+
+<FONT COLOR="#000080"><H1>Lambda Built-in Services</H1></FONT>
+<P>&nbsp;</P>
+
+<UL>
+<li><a href="#SBuilt-in AIS Data Types"><FONT SIZE=2>Built-in AIS Data Types</font></a></li><li><a href="#SBuilt-in Lambda Functions"><FONT SIZE=2>Built-in Lambda Functions</font></a></li>
+</UL>
+
+<P><H2><A NAME="SBuilt-in AIS Data Types"></A>Built-in AIS Data Types</H2></P>		
+		 <div class="h2section" id="Built-in AIS Data Types">
+	     <p class="MsoBodyText">Analytic Information Server data types are divided
+	      into three categories: Native Data Types (also known as Immediate types),
+	      Objects<span style="mso-spacerun: yes">&nbsp; </span>(heap objects) and
+	      Repositories. The Native (immediate) types can be entirely contained
+	      within the immediate data of a single Virtual Machine Container. The
+	      Objects (heap objects) types are too large to be contained within a single
+	      Virtual Machine Container and require extra memory must be managed by the
+	      heap manager. Without exception, all of the Object types are identified by
+	      an object id.<span style="mso-spacerun: yes">&nbsp; </span>The object id
+	      identifies a block of memory, managed by the Analytic Information Server
+	      memory manager, in which the Object's data is stored.</p>
+	      <p class="MsoBodyText"><![if !supportEmptyParas]>Virtual Machine
+	      Containers are of fixed length and come in different sizes. Containers
+	      store data immediately and, when data becomes too large to store
+	      immediately, it is stored in the Heap and is referenced by the container.</p>
+	      <p class="MsoBodyText"><![if !supportEmptyParas]>The Heap contains memory
+	      resident data, which is of variable length or is too large to fit in small
+	      fixed containers. The Analytic Information Server object Heap manager
+	      supports automated object resizing, garbage collection, and
+	      anti-fragmentation algorithms so that the user may concentrate on the
+	      analysis and modeling of data rather than on memory management.</p>
+	      <p class="MsoBodyText"><![if !supportEmptyParas]>Repositories (databases)
+	      contain persistent data of all sorts. Analytic Information Server supports
+	      repositories with multiple database volumes and multiple database schema's
+	      including General Object Repositories, Text Repositories, and Spreadsheet
+	      Repositories.</p>
+	      <p><font color="navy" size="4">Native Data Types</font></p>
+	      <p class="MsoBodyText">Analytic Information Server stores all of its Native
+	      Data Types in Virtual Machine Containers.<span style="mso-spacerun: yes">&nbsp;
+	      </span>All containers are stored in memory. Containers provide the basic
+	      storage mechanism for modeling data of all types. Containers provide these
+	      fundamental characteristics:</p>
+	      <p class="MsoBodyText"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	      </span>Ability to hold any type of data (including code) at any time.</p>
+	      <p class="MsoBodyText"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	      </span>Ability to know what type of data is contained.</p>
+	      <p class="MsoBodyText"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	      </span>Ability to be stored, retrieved and evaluated by the system.</p>
+	      <p class="MsoBodyText"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	      </span>Ability to handle type conversion, and memory management
+	      automatically.&nbsp;<![endif]><o:p></o:p></p>
+	      <p class="MsoBodyText">Containers come in two sizes, Large and Small.
+	      Small containers are six bytes in length, and large containers are ten
+	      bytes in length. Large containers can store larger amounts of data
+	      immediately and place less of a burden on the Heap manager. Small
+	      containers require less immediate space, but place more of a burden on the
+	      Heap manager.</p>
+	      <p class="MsoBodyText">Large containers can store the following data types
+	      immediately and does not require the services of the Heap manager:</p>
+	      <p class="MsoBodyText"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	      </span>#void</p>
+	      <p class="MsoBodyText"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	      </span>error</p>
+	      <p class="MsoBodyText"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	      </span>Boolean</p>
+	      <p class="MsoBodyText" style="text-indent:.5in">Character</p>
+	      <p class="MsoBodyText"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	      </span>Integer</p>
+	      <p class="MsoBodyText" style="margin-left:.5in;mso-list:skip">Number</p>
+	      <p class="MsoBodyText" style="margin-left:.5in;mso-list:skip">Integer</p>
+	      <p class="MsoBodyText" style="margin-left:.5in;mso-list:skip">Money</p>
+	      <p class="MsoBodyText" style="margin-left:.5in;mso-list:skip">Percent</p>
+	      <p class="MsoBodyText" style="text-indent:.5in">String</p>
+	      <p class="MsoBodyText" style="text-indent:.5in">Text</p>
+	      <p class="MsoBodyText" style="text-indent:.5in">Character</p>
+	      <p class="MsoBodyText"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	      </span>Spair</p>
+	      <p class="MsoBodyText"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	      </span>...heap object references...</p>
+	      <p class="MsoBodyText">Small containers can store the following data types
+	      immediately without placing additional burden on the Heap manager:</p>
+	      <p class="MsoBodyText"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	      </span>#void</p>
+	      <p class="MsoBodyText"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	      </span>Boolean</p>
+	      <p class="MsoBodyText"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	      </span>Character</p>
+	      <p class="MsoBodyText"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	      </span>Number</p>
+	      <p class="MsoBodyText"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	      </span>Integer</p>
+	      <p class="MsoBodyText"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	      </span>...heap object reference...&nbsp;<![endif]><o:p></o:p></p>
+	      <p class="MsoBodyText">Analytic Information Server containers can be saved
+	      and loaded to and from persistent (database) storage at any time.
+	      Containers with immediate data are saved on disk in fixed length records
+	      equal to the size of the container. Containers with Heap object references
+	      are saved in fixed length records, which are automatically expanded to
+	      include the contents of the Heap object, and any objects referenced by the
+	      Heap object, etc. This feature is called Object Closure Management and is
+	      automatic with every Analytic Information Server container database save.
+	      Analytic Information Server containers may be loaded from any database
+	      repository record at any time. If the data in the record is immediate, the
+	      database load fills the container with the immediate data. If the data in
+	      the record is an object closure, the database load fills the container
+	      with a Heap object reference, and all of the objects in the record are
+	      loaded back into the Heap with the same referential relationships they had
+	      when they were saved.</p>
+	      <p><font color="navy" size="4">Object Data Types</font></p>
+	      <p class="MsoBodyText">The Analytic Information Server Object Types are
+	      stored in the Heap and are managed by the Heap manager.<span style="mso-spacerun: yes">&nbsp;
+	      </span>The Analytic Information Server Heap manager supports object resizing,
+	      garbage collection, and anti-fragmentation algorithms so that the user may
+	      concentrate on the analysis and modeling of data rather than on memory
+	      management. Without exception, all of the Object types are identified by
+	      an object id.<span style="mso-spacerun: yes">&nbsp; </span>The object id
+	      identifies a block of memory, managed by the Analytic Information Server
+	      memory manager, in which the Object's data is stored.</p>
+	      <p class="MsoBodyText">The Analytic Information Server Heap Object and Native
+	      Data types can be saved and loaded to and from persistent (disk file)
+	      storage at any time. Containers with immediate data are saved on disk in
+	      fixed length records equal to the size of the container. Containers with
+	      Heap object references are saved in fixed length records, which are
+	      automatically expanded to include the contents of the Heap object, and any
+	      objects referenced by the Heap object, etc. This feature is called Object
+	      Closure Management and is automatic with every Analytic Information Server
+	      container database save.</p>
+	      <p class="MsoBodyText">Analytic Information Server containers may be loaded
+	      from any database repository record at any time. If the data in the record
+	      is immediate, the database load fills the container with the immediate
+	      data. If the data in the record is an object closure, the database load
+	      fills the container with a Heap object reference, and all of the objects
+	      in the record are loaded back into the Heap with the same referential
+	      relationships they had when they were saved in the repository.<![endif]><o:p></o:p></p>
+	      <p class="MsoBodyText">Analytic Information Server supports global variables
+	      which are valid during the whole life of the current workspace.<span style="mso-spacerun: yes">&nbsp;
+	      </span>Global variables are not lost when the current Lambda invocation
+	      returns control.<span style="mso-spacerun: yes">&nbsp; </span>Lambda
+	      Information Server global variables are referenced by specifying the
+	      symbol.<span style="mso-spacerun: yes">&nbsp; </span>In addition to user
+	      defined globals, Analytic Information Server global variables include all of
+	      the built-in functions.</p>     
+	      <table width="100%"><tr>
+<td><A HREF="Datatype_BitVector.html">BitVector</A></td><td><A HREF="Datatype_Boolean.html">Boolean</A></td><td><A HREF="Datatype_ByteVector.html">ByteVector</A></td><td><A HREF="Datatype_Character.html">Character</A></td><td><A HREF="Datatype_Complex.html">Complex</A></td></tr><tr>
+<td><A HREF="Datatype_CpxVector.html">CpxVector</A></td><td><A HREF="Datatype_Date.html">Date</A></td><td><A HREF="Datatype_Dictionary.html">Dictionary</A></td><td><A HREF="Datatype_Directory.html">Directory</A></td><td><A HREF="Datatype_Error.html">Error</A></td></tr><tr>
+<td><A HREF="Datatype_FltVector.html">FltVector</A></td><td><A HREF="Datatype_Function.html">Function</A></td><td><A HREF="Datatype_Integer.html">Integer</A></td><td><A HREF="Datatype_IntVector.html">IntVector</A></td><td><A HREF="Datatype_Lambda.html">Lambda</A></td></tr><tr>
+<td><A HREF="Datatype_List.html">List</A></td><td><A HREF="Datatype_LongVector.html">LongVector</A></td><td><A HREF="Datatype_Matrix.html">Matrix</A></td><td><A HREF="Datatype_Number.html">Number</A></td><td><A HREF="Datatype_NumMatrix.html">NumMatrix</A></td></tr><tr>
+<td><A HREF="Datatype_NumVector.html">NumVector</A></td><td><A HREF="Datatype_ObjectRepository.html">ObjectRepository</A></td><td><A HREF="Datatype_ObjVector.html">ObjVector</A></td><td><A HREF="Datatype_Pair.html">Pair</A></td><td><A HREF="Datatype_ShortVector.html">ShortVector</A></td></tr><tr>
+<td><A HREF="Datatype_String.html">String</A></td><td><A HREF="Datatype_Structure.html">Structure</A></td><td><A HREF="Datatype_Symbol.html">Symbol</A></td><td><A HREF="Datatype_Text.html">Text</A></td><td><A HREF="Datatype_Vector.html">Vector</A></td></tr><tr>
+<td><A HREF="Datatype_Void.html">Void</A></td></table></tr>
+
+	    </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="SBuilt-in Lambda Functions"></A>Built-in Lambda Functions</H2></P>
+		    <div class="h2section" id="Built-in Lambda Functions">
+		      <p>The sections, which follow, describe all of the AIS built-in global
+		      functions, methods, macros, and global variables, which operate upon or
+		      are specifically related to the Lambda executable object type. Each
+		      function, method, and global variable has its own section. The sections
+		      are listed in alphabetic order. In the next sections, we have also included several Lisp special
+		      forms which illustrate general features and properties of Lambda objects.</p> 
+		      <table width="100%" ><tr><td><b><font color=blue>&#43 : </b></font>(<A HREF="Function_(sym)add_Complex.html">Complex</A> <A HREF="Function_(sym)add_Number.html">Number)</A></td> </tr>
+<tr><td><A HREF="Function_(sym)add1_Symbol.html">&#43&#43</A></td></tr>
+<tr><td><A HREF="Function_(sym)addValue_Symbol.html">&#43&#61</A></td></tr>
+<tr><td><b><font color=blue>&#47 : </b></font>(<A HREF="Function_(sym)div_Complex.html">Complex</A> <A HREF="Function_(sym)div_Number.html">Number)</A></td> </tr>
+<tr><td><A HREF="Function_(sym)divValue_Symbol.html">&#47&#61</A></td></tr>
+<tr><td><b><font color=blue>&#42 : </b></font>(<A HREF="Function_(sym)mul_Complex.html">Complex</A> <A HREF="Function_(sym)mul_Number.html">Number)</A></td> </tr>
+<tr><td><A HREF="Function_(sym)mulValue_Symbol.html">&#42&#61</A></td></tr>
+<tr><td><b><font color=blue>&#45 : </b></font>(<A HREF="Function_(sym)sub_Complex.html">Complex</A> <A HREF="Function_(sym)sub_Number.html">Number)</A></td> </tr>
+<tr><td><A HREF="Function_(sym)sub1_Symbol.html">&#45&#45</A></td></tr>
+<tr><td><A HREF="Function_(sym)subValue_Symbol.html">&#45&#61</A></td></tr>
+<tr><td><A HREF="Function_abortTransaction_ObjectRepository.html">abortTransaction</A></td></tr>
+<tr><td><b><font color=blue>abs : </b></font>(<A HREF="Function_abs_Complex.html">Complex</A> <A HREF="Function_abs_Number.html">Number)</A></td> </tr>
+<tr><td><A HREF="Function_acos_Number.html">acos</A></td></tr>
+<tr><td><A HREF="Function_add1_Number.html">add1</A></td></tr>
+<tr><td><b><font color=blue>addMethod : </b></font>(<A HREF="Function_addMethod_BitVector.html">BitVector</A> <A HREF="Function_addMethod_Boolean.html">Boolean</A>  <A HREF="Function_addMethod_Brick.html">Brick</A>  <A HREF="Function_addMethod_Character.html">Character</A>  <A HREF="Function_addMethod_CpxVector.html">CpxVector</A>  <A HREF="Function_addMethod_Date.html">Date</A>  <A HREF="Function_addMethod_Dictionary.html">Dictionary</A>  <A HREF="Function_addMethod_Directory.html">Directory</A>  <A HREF="Function_addMethod_FltVector.html">FltVector</A>  <A HREF="Function_addMethod_Function.html">Function</A>  <A HREF="Function_addMethod_IntVector.html">IntVector</A>  <A HREF="Function_addMethod_List.html">List</A>  <A HREF="Function_addMethod_Matrix.html">Matrix</A>  <A HREF="Function_addMethod_NumMatrix.html">NumMatrix</A>  <A HREF="Function_addMethod_NumVector.html">NumVector</A>  <A HREF="Function_addMethod_Number.html">Number</A>  <A HREF="Function_addMethod_ObjVector.html">ObjVector</A>  <A HREF="Function_addMethod_ObjectRepository.html">ObjectRepository</A>  <A HREF="Function_addMethod_Pair.html">Pair</A>  <A HREF="Function_addMethod_PcodeVector.html">PcodeVector</A>  <A HREF="Function_addMethod_ShortVector.html">ShortVector</A>  <A HREF="Function_addMethod_String.html">String</A>  <A HREF="Function_addMethod_Structure.html">Structure</A>  <A HREF="Function_addMethod_Symbol.html">Symbol</A>  <A HREF="Function_addMethod_Vector.html">Vector</A>  <A HREF="Function_addMethod_Void.html">Void)</A></td> </tr>
+<tr><td><A HREF="Function_addi_Number.html">addi</A></td></tr>
+<tr><td><b><font color=blue>append : </b></font>(<A HREF="Function_append_BitVector.html">BitVector</A> <A HREF="Function_append_Complex.html">Complex</A>  <A HREF="Function_append_CpxVector.html">CpxVector</A>  <A HREF="Function_append_FltVector.html">FltVector</A>  <A HREF="Function_append_IntVector.html">IntVector</A>  <A HREF="Function_append_Matrix.html">Matrix</A>  <A HREF="Function_append_NumMatrix.html">NumMatrix</A>  <A HREF="Function_append_NumVector.html">NumVector</A>  <A HREF="Function_append_ObjVector.html">ObjVector</A>  <A HREF="Function_append_Pair.html">Pair</A>  <A HREF="Function_append_ShortVector.html">ShortVector</A>  <A HREF="Function_append_String.html">String</A>  <A HREF="Function_append_Structure.html">Structure</A>  <A HREF="Function_append_Symbol.html">Symbol</A>  <A HREF="Function_append_Vector.html">Vector)</A></td> </tr>
+<tr><td><A HREF="Function_appendWriteln_ByteVector.html">appendWriteln</A></td></tr>
+<tr><td><b><font color=blue>apply : </b></font>(<A HREF="Function_apply_BitVector.html">BitVector</A> <A HREF="Function_apply_CpxVector.html">CpxVector</A>  <A HREF="Function_apply_FltVector.html">FltVector</A>  <A HREF="Function_apply_IntVector.html">IntVector</A>  <A HREF="Function_apply_Matrix.html">Matrix</A>  <A HREF="Function_apply_NumMatrix.html">NumMatrix</A>  <A HREF="Function_apply_NumVector.html">NumVector</A>  <A HREF="Function_apply_Pair.html">Pair</A>  <A HREF="Function_apply_ShortVector.html">ShortVector</A>  <A HREF="Function_apply_Structure.html">Structure</A>  <A HREF="Function_apply_Vector.html">Vector)</A></td> </tr>
+<tr><td><A HREF="Function_argCount_Lambda.html">argCount</A></td></tr>
+<tr><td><A HREF="Function_argFetch_Lambda.html">argFetch</A></td></tr>
+<tr><td><A HREF="Function_argument_Complex.html">argument</A></td></tr>
+<tr><td><A HREF="Function_arithmetic_Number.html">arithmetic</A></td></tr>
+<tr><td><A HREF="Function_asin_Number.html">asin</A></td></tr>
+<tr><td><A HREF="Function_associate_Pair.html">associate</A></td></tr>
+<tr><td><A HREF="Function_atan_Number.html">atan</A></td></tr>
+<tr><td><A HREF="Function_attachLibrarian_ObjectRepository.html">attachLibrarian</A></td></tr>
+<tr><td><b><font color=blue>avg : </b></font>(<A HREF="Function_avg_CpxVector.html">CpxVector</A> <A HREF="Function_avg_Number.html">Number)</A></td> </tr>
+<tr><td><A HREF="Function_badd_Boolean.html">badd</A></td></tr>
+<tr><td><A HREF="Function_balance_Lambda.html">balance</A></td></tr>
+<tr><td><A HREF="Function_bcompareEQ_Boolean.html">bcompareEQ</A></td></tr>
+<tr><td><A HREF="Function_bcompareGE_Boolean.html">bcompareGE</A></td></tr>
+<tr><td><A HREF="Function_bcompareGT_Boolean.html">bcompareGT</A></td></tr>
+<tr><td><A HREF="Function_bcompareLE_Boolean.html">bcompareLE</A></td></tr>
+<tr><td><A HREF="Function_bcompareLT_Boolean.html">bcompareLT</A></td></tr>
+<tr><td><A HREF="Function_bcompareNE_Boolean.html">bcompareNE</A></td></tr>
+<tr><td><A HREF="Function_bdiv_Boolean.html">bdiv</A></td></tr>
+<tr><td><A HREF="Function_beginTransaction_ObjectRepository.html">beginTransaction</A></td></tr>
+<tr><td><b><font color=blue>binaryInsert : </b></font>(<A HREF="Function_binaryInsert_CpxVector.html">CpxVector</A> <A HREF="Function_binaryInsert_FltVector.html">FltVector</A>  <A HREF="Function_binaryInsert_IntVector.html">IntVector</A>  <A HREF="Function_binaryInsert_Matrix.html">Matrix</A>  <A HREF="Function_binaryInsert_NumMatrix.html">NumMatrix</A>  <A HREF="Function_binaryInsert_NumVector.html">NumVector</A>  <A HREF="Function_binaryInsert_ShortVector.html">ShortVector</A>  <A HREF="Function_binaryInsert_Structure.html">Structure</A>  <A HREF="Function_binaryInsert_Vector.html">Vector)</A></td> </tr>
+<tr><td><A HREF="Function_binaryNand_Integer.html">binaryNand</A></td></tr>
+<tr><td><A HREF="Function_binaryNor_Integer.html">binaryNor</A></td></tr>
+<tr><td><A HREF="Function_binaryNot_Integer.html">binaryNot</A></td></tr>
+<tr><td><A HREF="Function_binaryNxor_Integer.html">binaryNxor</A></td></tr>
+<tr><td><b><font color=blue>binarySearch : </b></font>(<A HREF="Function_binarySearch_CpxVector.html">CpxVector</A> <A HREF="Function_binarySearch_Dictionary.html">Dictionary</A>  <A HREF="Function_binarySearch_FltVector.html">FltVector</A>  <A HREF="Function_binarySearch_IntVector.html">IntVector</A>  <A HREF="Function_binarySearch_Matrix.html">Matrix</A>  <A HREF="Function_binarySearch_NumMatrix.html">NumMatrix</A>  <A HREF="Function_binarySearch_NumVector.html">NumVector</A>  <A HREF="Function_binarySearch_ObjVector.html">ObjVector</A>  <A HREF="Function_binarySearch_ShortVector.html">ShortVector</A>  <A HREF="Function_binarySearch_Structure.html">Structure</A>  <A HREF="Function_binarySearch_Vector.html">Vector)</A></td> </tr>
+<tr><td><b><font color=blue>bitToIntegerVector : </b></font>(<A HREF="Function_bitToIntegerVector_BitVector.html">BitVector</A> <A HREF="Function_bitToIntegerVector_IntVector.html">IntVector)</A></td> </tr>
+<tr><td><b><font color=blue>bitToNumberVector : </b></font>(<A HREF="Function_bitToNumberVector_BitVector.html">BitVector</A> <A HREF="Function_bitToNumberVector_NumVector.html">NumVector)</A></td> </tr>
+<tr><td><A HREF="Function_bitwiseAnd_Integer.html">bitwiseAnd</A></td></tr>
+<tr><td><A HREF="Function_bitwiseNand_Integer.html">bitwiseNand</A></td></tr>
+<tr><td><A HREF="Function_bitwiseNor_Integer.html">bitwiseNor</A></td></tr>
+<tr><td><A HREF="Function_bitwiseNot_Integer.html">bitwiseNot</A></td></tr>
+<tr><td><A HREF="Function_bitwiseNxor_Integer.html">bitwiseNxor</A></td></tr>
+<tr><td><A HREF="Function_bitwiseOr_Integer.html">bitwiseOr</A></td></tr>
+<tr><td><A HREF="Function_bitwiseShiftLeft_Integer.html">bitwiseShiftLeft</A></td></tr>
+<tr><td><A HREF="Function_bitwiseShiftRight_Integer.html">bitwiseShiftRight</A></td></tr>
+<tr><td><A HREF="Function_bitwiseXor_Integer.html">bitwiseXor</A></td></tr>
+<tr><td><A HREF="Function_bmod_Boolean.html">bmod</A></td></tr>
+<tr><td><A HREF="Function_bmul_Boolean.html">bmul</A></td></tr>
+<tr><td><A HREF="Function_boolean_Boolean.html">boolean</A></td></tr>
+<tr><td><A HREF="Function_c..r_List.html">c..r</A></td></tr>
+<tr><td><A HREF="Function_cadd_Character.html">cadd</A></td></tr>
+<tr><td><A HREF="Function_callcc_Lambda.html">callcc</A></td></tr>
+<tr><td><b><font color=blue>car : </b></font>(<A HREF="Function_car_List.html">List</A> <A HREF="Function_car_Pair.html">Pair)</A></td> </tr>
+<tr><td><A HREF="Function_ccompareEQ_Character.html">ccompareEQ</A></td></tr>
+<tr><td><A HREF="Function_ccompareGE_Character.html">ccompareGE</A></td></tr>
+<tr><td><A HREF="Function_ccompareGT_Character.html">ccompareGT</A></td></tr>
+<tr><td><A HREF="Function_ccompareLE_Character.html">ccompareLE</A></td></tr>
+<tr><td><A HREF="Function_ccompareLT_Character.html">ccompareLT</A></td></tr>
+<tr><td><A HREF="Function_ccompareNE_Character.html">ccompareNE</A></td></tr>
+<tr><td><A HREF="Function_cdiv_Character.html">cdiv</A></td></tr>
+<tr><td><b><font color=blue>cdr : </b></font>(<A HREF="Function_cdr_BitVector.html">BitVector</A> <A HREF="Function_cdr_Brick.html">Brick</A>  <A HREF="Function_cdr_CpxVector.html">CpxVector</A>  <A HREF="Function_cdr_Dictionary.html">Dictionary</A>  <A HREF="Function_cdr_Directory.html">Directory</A>  <A HREF="Function_cdr_FltVector.html">FltVector</A>  <A HREF="Function_cdr_IntVector.html">IntVector</A>  <A HREF="Function_cdr_List.html">List</A>  <A HREF="Function_cdr_Matrix.html">Matrix</A>  <A HREF="Function_cdr_NumMatrix.html">NumMatrix</A>  <A HREF="Function_cdr_NumVector.html">NumVector</A>  <A HREF="Function_cdr_ObjVector.html">ObjVector</A>  <A HREF="Function_cdr_ShortVector.html">ShortVector</A>  <A HREF="Function_cdr_Structure.html">Structure</A>  <A HREF="Function_cdr_Vector.html">Vector)</A></td> </tr>
+<tr><td><A HREF="Function_char_String.html">char</A></td></tr>
+<tr><td><A HREF="Function_character_Character.html">character</A></td></tr>
+<tr><td><A HREF="Function_checkPointTransaction_ObjectRepository.html">checkPointTransaction</A></td></tr>
+<tr><td><A HREF="Function_clean_String.html">clean</A></td></tr>
+<tr><td><b><font color=blue>clear : </b></font>(<A HREF="Function_clear_Context.html">Context</A> <A HREF="Function_clear_ObjectRepository.html">ObjectRepository)</A></td> </tr>
+<tr><td><A HREF="Function_closeLog_FileIO.html">closeLog</A></td></tr>
+<tr><td><A HREF="Function_cmod_Character.html">cmod</A></td></tr>
+<tr><td><A HREF="Function_cmul_Character.html">cmul</A></td></tr>
+<tr><td><A HREF="Function_code_String.html">code</A></td></tr>
+<tr><td><A HREF="Function_commitTransaction_ObjectRepository.html">commitTransaction</A></td></tr>
+<tr><td><b><font color=blue>compare : </b></font>(<A HREF="Function_compare_BitVector.html">BitVector</A> <A HREF="Function_compare_Boolean.html">Boolean</A>  <A HREF="Function_compare_Brick.html">Brick</A>  <A HREF="Function_compare_Character.html">Character</A>  <A HREF="Function_compare_Complex.html">Complex</A>  <A HREF="Function_compare_CpxVector.html">CpxVector</A>  <A HREF="Function_compare_Date.html">Date</A>  <A HREF="Function_compare_Dictionary.html">Dictionary</A>  <A HREF="Function_compare_Directory.html">Directory</A>  <A HREF="Function_compare_FltVector.html">FltVector</A>  <A HREF="Function_compare_Function.html">Function</A>  <A HREF="Function_compare_IntVector.html">IntVector</A>  <A HREF="Function_compare_Lambda.html">Lambda</A>  <A HREF="Function_compare_List.html">List</A>  <A HREF="Function_compare_Matrix.html">Matrix</A>  <A HREF="Function_compare_NumMatrix.html">NumMatrix</A>  <A HREF="Function_compare_NumVector.html">NumVector</A>  <A HREF="Function_compare_Number.html">Number</A>  <A HREF="Function_compare_ObjVector.html">ObjVector</A>  <A HREF="Function_compare_ObjectRepository.html">ObjectRepository</A>  <A HREF="Function_compare_Pair.html">Pair</A>  <A HREF="Function_compare_ShortVector.html">ShortVector</A>  <A HREF="Function_compare_String.html">String</A>  <A HREF="Function_compare_Structure.html">Structure</A>  <A HREF="Function_compare_Symbol.html">Symbol</A>  <A HREF="Function_compare_Vector.html">Vector</A>  <A HREF="Function_compare_Void.html">Void)</A></td> </tr>
+<tr><td><b><font color=blue>compareEQ : </b></font>(<A HREF="Function_compareEQ_BitVector.html">BitVector</A> <A HREF="Function_compareEQ_Boolean.html">Boolean</A>  <A HREF="Function_compareEQ_Brick.html">Brick</A>  <A HREF="Function_compareEQ_Character.html">Character</A>  <A HREF="Function_compareEQ_Complex.html">Complex</A>  <A HREF="Function_compareEQ_CpxVector.html">CpxVector</A>  <A HREF="Function_compareEQ_Date.html">Date</A>  <A HREF="Function_compareEQ_Dictionary.html">Dictionary</A>  <A HREF="Function_compareEQ_Directory.html">Directory</A>  <A HREF="Function_compareEQ_FltVector.html">FltVector</A>  <A HREF="Function_compareEQ_Function.html">Function</A>  <A HREF="Function_compareEQ_IntVector.html">IntVector</A>  <A HREF="Function_compareEQ_Lambda.html">Lambda</A>  <A HREF="Function_compareEQ_List.html">List</A>  <A HREF="Function_compareEQ_Matrix.html">Matrix</A>  <A HREF="Function_compareEQ_NumMatrix.html">NumMatrix</A>  <A HREF="Function_compareEQ_NumVector.html">NumVector</A>  <A HREF="Function_compareEQ_Number.html">Number</A>  <A HREF="Function_compareEQ_ObjVector.html">ObjVector</A>  <A HREF="Function_compareEQ_ObjectRepository.html">ObjectRepository</A>  <A HREF="Function_compareEQ_Pair.html">Pair</A>  <A HREF="Function_compareEQ_ShortVector.html">ShortVector</A>  <A HREF="Function_compareEQ_String.html">String</A>  <A HREF="Function_compareEQ_Structure.html">Structure</A>  <A HREF="Function_compareEQ_Symbol.html">Symbol</A>  <A HREF="Function_compareEQ_Vector.html">Vector</A>  <A HREF="Function_compareEQ_Void.html">Void)</A></td> </tr>
+<tr><td><b><font color=blue>compareGE : </b></font>(<A HREF="Function_compareGE_BitVector.html">BitVector</A> <A HREF="Function_compareGE_Boolean.html">Boolean</A>  <A HREF="Function_compareGE_Brick.html">Brick</A>  <A HREF="Function_compareGE_Character.html">Character</A>  <A HREF="Function_compareGE_Complex.html">Complex</A>  <A HREF="Function_compareGE_CpxVector.html">CpxVector</A>  <A HREF="Function_compareGE_Date.html">Date</A>  <A HREF="Function_compareGE_Dictionary.html">Dictionary</A>  <A HREF="Function_compareGE_Directory.html">Directory</A>  <A HREF="Function_compareGE_Function.html">Function</A>  <A HREF="Function_compareGE_IntVector.html">IntVector</A>  <A HREF="Function_compareGE_Lambda.html">Lambda</A>  <A HREF="Function_compareGE_List.html">List</A>  <A HREF="Function_compareGE_Matrix.html">Matrix</A>  <A HREF="Function_compareGE_NumMatrix.html">NumMatrix</A>  <A HREF="Function_compareGE_Number.html">Number</A>  <A HREF="Function_compareGE_ObjVector.html">ObjVector</A>  <A HREF="Function_compareGE_ObjectRepository.html">ObjectRepository</A>  <A HREF="Function_compareGE_Pair.html">Pair</A>  <A HREF="Function_compareGE_ShortVector.html">ShortVector</A>  <A HREF="Function_compareGE_String.html">String</A>  <A HREF="Function_compareGE_Structure.html">Structure</A>  <A HREF="Function_compareGE_Symbol.html">Symbol</A>  <A HREF="Function_compareGE_Vector.html">Vector</A>  <A HREF="Function_compareGE_Void.html">Void)</A></td> </tr>
+<tr><td><b><font color=blue>compareGT : </b></font>(<A HREF="Function_compareGT_BitVector.html">BitVector</A> <A HREF="Function_compareGT_Boolean.html">Boolean</A>  <A HREF="Function_compareGT_Brick.html">Brick</A>  <A HREF="Function_compareGT_Character.html">Character</A>  <A HREF="Function_compareGT_Complex.html">Complex</A>  <A HREF="Function_compareGT_CpxVector.html">CpxVector</A>  <A HREF="Function_compareGT_Date.html">Date</A>  <A HREF="Function_compareGT_Dictionary.html">Dictionary</A>  <A HREF="Function_compareGT_Directory.html">Directory</A>  <A HREF="Function_compareGT_Function.html">Function</A>  <A HREF="Function_compareGT_IntVector.html">IntVector</A>  <A HREF="Function_compareGT_Lambda.html">Lambda</A>  <A HREF="Function_compareGT_List.html">List</A>  <A HREF="Function_compareGT_Matrix.html">Matrix</A>  <A HREF="Function_compareGT_NumMatrix.html">NumMatrix</A>  <A HREF="Function_compareGT_NumVector.html">NumVector</A>  <A HREF="Function_compareGT_Number.html">Number</A>  <A HREF="Function_compareGT_ObjVector.html">ObjVector</A>  <A HREF="Function_compareGT_ObjectRepository.html">ObjectRepository</A>  <A HREF="Function_compareGT_Pair.html">Pair</A>  <A HREF="Function_compareGT_ShortVector.html">ShortVector</A>  <A HREF="Function_compareGT_String.html">String</A>  <A HREF="Function_compareGT_Structure.html">Structure</A>  <A HREF="Function_compareGT_Symbol.html">Symbol</A>  <A HREF="Function_compareGT_Vector.html">Vector</A>  <A HREF="Function_compareGT_Void.html">Void)</A></td> </tr>
+<tr><td><b><font color=blue>compareLE : </b></font>(<A HREF="Function_compareLE_BitVector.html">BitVector</A> <A HREF="Function_compareLE_Boolean.html">Boolean</A>  <A HREF="Function_compareLE_Brick.html">Brick</A>  <A HREF="Function_compareLE_Character.html">Character</A>  <A HREF="Function_compareLE_Complex.html">Complex</A>  <A HREF="Function_compareLE_CpxVector.html">CpxVector</A>  <A HREF="Function_compareLE_Date.html">Date</A>  <A HREF="Function_compareLE_Dictionary.html">Dictionary</A>  <A HREF="Function_compareLE_Directory.html">Directory</A>  <A HREF="Function_compareLE_FltVector.html">FltVector</A>  <A HREF="Function_compareLE_Function.html">Function</A>  <A HREF="Function_compareLE_IntVector.html">IntVector</A>  <A HREF="Function_compareLE_Lambda.html">Lambda</A>  <A HREF="Function_compareLE_List.html">List</A>  <A HREF="Function_compareLE_Matrix.html">Matrix</A>  <A HREF="Function_compareLE_NumMatrix.html">NumMatrix</A>  <A HREF="Function_compareLE_NumVector.html">NumVector</A>  <A HREF="Function_compareLE_Number.html">Number</A>  <A HREF="Function_compareLE_ObjVector.html">ObjVector</A>  <A HREF="Function_compareLE_ObjectRepository.html">ObjectRepository</A>  <A HREF="Function_compareLE_Pair.html">Pair</A>  <A HREF="Function_compareLE_ShortVector.html">ShortVector</A>  <A HREF="Function_compareLE_String.html">String</A>  <A HREF="Function_compareLE_Structure.html">Structure</A>  <A HREF="Function_compareLE_Symbol.html">Symbol</A>  <A HREF="Function_compareLE_Vector.html">Vector</A>  <A HREF="Function_compareLE_Void.html">Void)</A></td> </tr>
+<tr><td><b><font color=blue>compareLT : </b></font>(<A HREF="Function_compareLT_BitVector.html">BitVector</A> <A HREF="Function_compareLT_Boolean.html">Boolean</A>  <A HREF="Function_compareLT_Brick.html">Brick</A>  <A HREF="Function_compareLT_Character.html">Character</A>  <A HREF="Function_compareLT_Complex.html">Complex</A>  <A HREF="Function_compareLT_CpxVector.html">CpxVector</A>  <A HREF="Function_compareLT_Date.html">Date</A>  <A HREF="Function_compareLT_Dictionary.html">Dictionary</A>  <A HREF="Function_compareLT_Directory.html">Directory</A>  <A HREF="Function_compareLT_FltVector.html">FltVector</A>  <A HREF="Function_compareLT_Function.html">Function</A>  <A HREF="Function_compareLT_IntVector.html">IntVector</A>  <A HREF="Function_compareLT_Lambda.html">Lambda</A>  <A HREF="Function_compareLT_List.html">List</A>  <A HREF="Function_compareLT_Matrix.html">Matrix</A>  <A HREF="Function_compareLT_NumMatrix.html">NumMatrix</A>  <A HREF="Function_compareLT_NumVector.html">NumVector</A>  <A HREF="Function_compareLT_Number.html">Number</A>  <A HREF="Function_compareLT_ObjVector.html">ObjVector</A>  <A HREF="Function_compareLT_ObjectRepository.html">ObjectRepository</A>  <A HREF="Function_compareLT_Pair.html">Pair</A>  <A HREF="Function_compareLT_ShortVector.html">ShortVector</A>  <A HREF="Function_compareLT_String.html">String</A>  <A HREF="Function_compareLT_Structure.html">Structure</A>  <A HREF="Function_compareLT_Symbol.html">Symbol</A>  <A HREF="Function_compareLT_Vector.html">Vector</A>  <A HREF="Function_compareLT_Void.html">Void)</A></td> </tr>
+<tr><td><b><font color=blue>compareNE : </b></font>(<A HREF="Function_compareNE_BitVector.html">BitVector</A> <A HREF="Function_compareNE_Boolean.html">Boolean</A>  <A HREF="Function_compareNE_Brick.html">Brick</A>  <A HREF="Function_compareNE_Character.html">Character</A>  <A HREF="Function_compareNE_Complex.html">Complex</A>  <A HREF="Function_compareNE_CpxVector.html">CpxVector</A>  <A HREF="Function_compareNE_Date.html">Date</A>  <A HREF="Function_compareNE_Dictionary.html">Dictionary</A>  <A HREF="Function_compareNE_Directory.html">Directory</A>  <A HREF="Function_compareNE_FltVector.html">FltVector</A>  <A HREF="Function_compareNE_Function.html">Function</A>  <A HREF="Function_compareNE_IntVector.html">IntVector</A>  <A HREF="Function_compareNE_Lambda.html">Lambda</A>  <A HREF="Function_compareNE_List.html">List</A>  <A HREF="Function_compareNE_Matrix.html">Matrix</A>  <A HREF="Function_compareNE_NumMatrix.html">NumMatrix</A>  <A HREF="Function_compareNE_NumVector.html">NumVector</A>  <A HREF="Function_compareNE_Number.html">Number</A>  <A HREF="Function_compareNE_ObjVector.html">ObjVector</A>  <A HREF="Function_compareNE_ObjectRepository.html">ObjectRepository</A>  <A HREF="Function_compareNE_Pair.html">Pair</A>  <A HREF="Function_compareNE_ShortVector.html">ShortVector</A>  <A HREF="Function_compareNE_String.html">String</A>  <A HREF="Function_compareNE_Structure.html">Structure</A>  <A HREF="Function_compareNE_Symbol.html">Symbol</A>  <A HREF="Function_compareNE_Vector.html">Vector</A>  <A HREF="Function_compareNE_Void.html">Void)</A></td> </tr>
+<tr><td><b><font color=blue>comparison : </b></font>(<A HREF="Function_comparison_BitVector.html">BitVector</A> <A HREF="Function_comparison_Boolean.html">Boolean</A>  <A HREF="Function_comparison_Brick.html">Brick</A>  <A HREF="Function_comparison_Character.html">Character</A>  <A HREF="Function_comparison_Complex.html">Complex</A>  <A HREF="Function_comparison_Date.html">Date</A>  <A HREF="Function_comparison_Dictionary.html">Dictionary</A>  <A HREF="Function_comparison_Directory.html">Directory</A>  <A HREF="Function_comparison_FltVector.html">FltVector</A>  <A HREF="Function_comparison_Function.html">Function</A>  <A HREF="Function_comparison_IntVector.html">IntVector</A>  <A HREF="Function_comparison_List.html">List</A>  <A HREF="Function_comparison_Matrix.html">Matrix</A>  <A HREF="Function_comparison_NumMatrix.html">NumMatrix</A>  <A HREF="Function_comparison_NumVector.html">NumVector</A>  <A HREF="Function_comparison_Number.html">Number</A>  <A HREF="Function_comparison_ObjVector.html">ObjVector</A>  <A HREF="Function_comparison_ObjectRepository.html">ObjectRepository</A>  <A HREF="Function_comparison_Pair.html">Pair</A>  <A HREF="Function_comparison_ShortVector.html">ShortVector</A>  <A HREF="Function_comparison_String.html">String</A>  <A HREF="Function_comparison_Structure.html">Structure</A>  <A HREF="Function_comparison_Symbol.html">Symbol</A>  <A HREF="Function_comparison_Vector.html">Vector</A>  <A HREF="Function_comparison_Void.html">Void)</A></td> </tr>
+<tr><td><b><font color=blue>compile : </b></font>(<A HREF="Function_compile_Lambda.html">Lambda</A> <A HREF="Function_compile_List.html">List)</A></td> </tr>
+<tr><td><A HREF="Function_complex_Complex.html">complex</A></td></tr>
+<tr><td><A HREF="Function_compress_ByteVector.html">compress</A></td></tr>
+<tr><td><A HREF="Function_conjugate_Complex.html">conjugate</A></td></tr>
+<tr><td><A HREF="Function_cons_Pair.html">cons</A></td></tr>
+<tr><td><b><font color=blue>copy : </b></font>(<A HREF="Function_copy_BitVector.html">BitVector</A> <A HREF="Function_copy_Brick.html">Brick</A>  <A HREF="Function_copy_CpxVector.html">CpxVector</A>  <A HREF="Function_copy_Dictionary.html">Dictionary</A>  <A HREF="Function_copy_Directory.html">Directory</A>  <A HREF="Function_copy_FltVector.html">FltVector</A>  <A HREF="Function_copy_IntVector.html">IntVector</A>  <A HREF="Function_copy_Lambda.html">Lambda</A>  <A HREF="Function_copy_List.html">List</A>  <A HREF="Function_copy_Matrix.html">Matrix</A>  <A HREF="Function_copy_NumMatrix.html">NumMatrix</A>  <A HREF="Function_copy_NumVector.html">NumVector</A>  <A HREF="Function_copy_ObjVector.html">ObjVector</A>  <A HREF="Function_copy_Pair.html">Pair</A>  <A HREF="Function_copy_PcodeVector.html">PcodeVector</A>  <A HREF="Function_copy_ShortVector.html">ShortVector</A>  <A HREF="Function_copy_Structure.html">Structure</A>  <A HREF="Function_copy_Vector.html">Vector)</A></td> </tr>
+<tr><td><b><font color=blue>cos : </b></font>(<A HREF="Function_cos_Complex.html">Complex</A> <A HREF="Function_cos_Number.html">Number)</A></td> </tr>
+<tr><td><A HREF="Function_cosh_Number.html">cosh</A></td></tr>
+<tr><td><b><font color=blue>count : </b></font>(<A HREF="Function_count_Dictionary.html">Dictionary</A> <A HREF="Function_count_Directory.html">Directory</A>  <A HREF="Function_count_List.html">List</A>  <A HREF="Function_count_Matrix.html">Matrix</A>  <A HREF="Function_count_NumMatrix.html">NumMatrix</A>  <A HREF="Function_count_Pair.html">Pair</A>  <A HREF="Function_count_Structure.html">Structure</A>  <A HREF="Function_count_Vector.html">Vector)</A></td> </tr>
+<tr><td><A HREF="Function_csub_Character.html">csub</A></td></tr>
+<tr><td><A HREF="Function_date_Date.html">date</A></td></tr>
+<tr><td><A HREF="Function_day_Date.html">day</A></td></tr>
+<tr><td><A HREF="Function_days360_Date.html">days360</A></td></tr>
+<tr><td><b><font color=blue>debug : </b></font>(<A HREF="Function_debug_Context.html">Context</A> <A HREF="Function_debug_Lambda.html">Lambda)</A></td> </tr>
+<tr><td><b><font color=blue>debugBrowsableProcs : </b></font>(<A HREF="Function_debugBrowsableProcs_Context.html">Context</A> <A HREF="Function_debugBrowsableProcs_Lambda.html">Lambda)</A></td> </tr>
+<tr><td><A HREF="Function_debugDialog_String.html">debugDialog</A></td></tr>
+<tr><td><A HREF="Function_decode_ByteVector.html">decode</A></td></tr>
+<tr><td><A HREF="Function_defchild_Lambda.html">defchild</A></td></tr>
+<tr><td><A HREF="Function_define_Lambda.html">define</A></td></tr>
+<tr><td><A HREF="Function_define(macro)_Lambda.html">define(macro)</A></td></tr>
+<tr><td><A HREF="Function_defineStructure_Structure.html">defineStructure</A></td></tr>
+<tr><td><A HREF="Function_defmacro_Lambda.html">defmacro</A></td></tr>
+<tr><td><b><font color=blue>defmethod : </b></font>(<A HREF="Function_defmethod_BitVector.html">BitVector</A> <A HREF="Function_defmethod_Boolean.html">Boolean</A>  <A HREF="Function_defmethod_Brick.html">Brick</A>  <A HREF="Function_defmethod_Character.html">Character</A>  <A HREF="Function_defmethod_Date.html">Date</A>  <A HREF="Function_defmethod_Dictionary.html">Dictionary</A>  <A HREF="Function_defmethod_Directory.html">Directory</A>  <A HREF="Function_defmethod_FltVector.html">FltVector</A>  <A HREF="Function_defmethod_Function.html">Function</A>  <A HREF="Function_defmethod_IntVector.html">IntVector</A>  <A HREF="Function_defmethod_List.html">List</A>  <A HREF="Function_defmethod_Matrix.html">Matrix</A>  <A HREF="Function_defmethod_NumMatrix.html">NumMatrix</A>  <A HREF="Function_defmethod_NumVector.html">NumVector</A>  <A HREF="Function_defmethod_Number.html">Number</A>  <A HREF="Function_defmethod_ObjectRepository.html">ObjectRepository</A>  <A HREF="Function_defmethod_Pair.html">Pair</A>  <A HREF="Function_defmethod_ShortVector.html">ShortVector</A>  <A HREF="Function_defmethod_String.html">String</A>  <A HREF="Function_defmethod_Structure.html">Structure</A>  <A HREF="Function_defmethod_Symbol.html">Symbol</A>  <A HREF="Function_defmethod_Vector.html">Vector</A>  <A HREF="Function_defmethod_Void.html">Void)</A></td> </tr>
+<tr><td><A HREF="Function_deforphan_Lambda.html">deforphan</A></td></tr>
+<tr><td><A HREF="Function_defriend_Lambda.html">defriend</A></td></tr>
+<tr><td><A HREF="Function_defstruct_Structure.html">defstruct</A></td></tr>
+<tr><td><A HREF="Function_defun_Lambda.html">defun</A></td></tr>
+<tr><td><A HREF="Function_deg_Number.html">deg</A></td></tr>
+<tr><td><b><font color=blue>delete : </b></font>(<A HREF="Function_delete_Dictionary.html">Dictionary</A> <A HREF="Function_delete_Directory.html">Directory</A>  <A HREF="Function_delete_FltVector.html">FltVector</A>  <A HREF="Function_delete_IntVector.html">IntVector</A>  <A HREF="Function_delete_List.html">List</A>  <A HREF="Function_delete_Matrix.html">Matrix</A>  <A HREF="Function_delete_NumMatrix.html">NumMatrix</A>  <A HREF="Function_delete_NumVector.html">NumVector</A>  <A HREF="Function_delete_ObjVector.html">ObjVector</A>  <A HREF="Function_delete_ObjectRepository.html">ObjectRepository</A>  <A HREF="Function_delete_Pair.html">Pair</A>  <A HREF="Function_delete_ShortVector.html">ShortVector</A>  <A HREF="Function_delete_Structure.html">Structure</A>  <A HREF="Function_delete_Vector.html">Vector)</A></td> </tr>
+<tr><td><A HREF="Function_deleteRows_Brick.html">deleteRows</A></td></tr>
+<tr><td><A HREF="Function_detachLibrarian_ObjectRepository.html">detachLibrarian</A></td></tr>
+<tr><td><b><font color=blue>disassemble : </b></font>(<A HREF="Function_disassemble_Context.html">Context</A> <A HREF="Function_disassemble_Lambda.html">Lambda)</A></td> </tr>
+<tr><td><b><font color=blue>display : </b></font>(<A HREF="Function_display_ByteVector.html">ByteVector</A> <A HREF="Function_display_FileIO.html">FileIO)</A></td> </tr>
+<tr><td><A HREF="Function_divi_Number.html">divi</A></td></tr>
+<tr><td><b><font color=blue>downcase : </b></font>(<A HREF="Function_downcase_String.html">String</A> <A HREF="Function_downcase_Symbol.html">Symbol)</A></td> </tr>
+<tr><td><A HREF="Function_encode_ByteVector.html">encode</A></td></tr>
+<tr><td><A HREF="Function_error_Error.html">error</A></td></tr>
+<tr><td><A HREF="Function_errorTrap_Error.html">errorTrap</A></td></tr>
+<tr><td><b><font color=blue>eval : </b></font>(<A HREF="Function_eval_Lambda.html">Lambda</A> <A HREF="Function_eval_List.html">List)</A></td> </tr>
+<tr><td><A HREF="Function_evalInSyncLocalContext_Context.html">evalInSyncLocalContext</A></td></tr>
+<tr><td><b><font color=blue>exp : </b></font>(<A HREF="Function_exp_Complex.html">Complex</A> <A HREF="Function_exp_Number.html">Number)</A></td> </tr>
+<tr><td><b><font color=blue>exportTab : </b></font>(<A HREF="Function_exportTab_Lambda.html">Lambda</A> <A HREF="Function_exportTab_ObjectRepository.html">ObjectRepository)</A></td> </tr>
+<tr><td><b><font color=blue>expt : </b></font>(<A HREF="Function_expt_Complex.html">Complex</A> <A HREF="Function_expt_Number.html">Number)</A></td> </tr>
+<tr><td><b><font color=blue>fact : </b></font>(<A HREF="Function_fact_Integer.html">Integer</A> <A HREF="Function_fact_Number.html">Number)</A></td> </tr>
+<tr><td><b><font color=blue>fdisplay : </b></font>(<A HREF="Function_fdisplay_ByteVector.html">ByteVector</A> <A HREF="Function_fdisplay_Text.html">Text)</A></td> </tr>
+<tr><td><A HREF="Function_fieldsOf_Structure.html">fieldsOf</A></td></tr>
+<tr><td><b><font color=blue>fileClose : </b></font>(<A HREF="Function_fileClose_ByteVector.html">ByteVector</A> <A HREF="Function_fileClose_Text.html">Text)</A></td> </tr>
+<tr><td><b><font color=blue>fileDisplay : </b></font>(<A HREF="Function_fileDisplay_ByteVector.html">ByteVector</A> <A HREF="Function_fileDisplay_Text.html">Text)</A></td> </tr>
+<tr><td><b><font color=blue>fileErase : </b></font>(<A HREF="Function_fileErase_ByteVector.html">ByteVector</A> <A HREF="Function_fileErase_Text.html">Text)</A></td> </tr>
+<tr><td><b><font color=blue>fileOpen : </b></font>(<A HREF="Function_fileOpen_ByteVector.html">ByteVector</A> <A HREF="Function_fileOpen_Text.html">Text)</A></td> </tr>
+<tr><td><b><font color=blue>fileRead : </b></font>(<A HREF="Function_fileRead_ByteVector.html">ByteVector</A> <A HREF="Function_fileRead_Text.html">Text)</A></td> </tr>
+<tr><td><b><font color=blue>fileReadRecord : </b></font>(<A HREF="Function_fileReadRecord_ByteVector.html">ByteVector</A> <A HREF="Function_fileReadRecord_String.html">String</A>  <A HREF="Function_fileReadRecord_Text.html">Text)</A></td> </tr>
+<tr><td><b><font color=blue>fileResize : </b></font>(<A HREF="Function_fileResize_ByteVector.html">ByteVector</A> <A HREF="Function_fileResize_String.html">String</A>  <A HREF="Function_fileResize_Text.html">Text)</A></td> </tr>
+<tr><td><b><font color=blue>fileSeek : </b></font>(<A HREF="Function_fileSeek_ByteVector.html">ByteVector</A> <A HREF="Function_fileSeek_String.html">String</A>  <A HREF="Function_fileSeek_Text.html">Text)</A></td> </tr>
+<tr><td><b><font color=blue>fileWrite : </b></font>(<A HREF="Function_fileWrite_ByteVector.html">ByteVector</A> <A HREF="Function_fileWrite_String.html">String</A>  <A HREF="Function_fileWrite_Text.html">Text)</A></td> </tr>
+<tr><td><b><font color=blue>filewriteln : </b></font>(<A HREF="Function_filewriteln_ByteVector.html">ByteVector</A> <A HREF="Function_filewriteln_String.html">String</A>  <A HREF="Function_filewriteln_Text.html">Text)</A></td> </tr>
+<tr><td><A HREF="Function_find_String.html">find</A></td></tr>
+<tr><td><A HREF="Function_findBlock_BitVector.html">findBlock</A></td></tr>
+<tr><td><A HREF="Function_floor_Number.html">floor</A></td></tr>
+<tr><td><A HREF="Function_fraction_Number.html">fraction</A></td></tr>
+<tr><td><A HREF="Function_freeBlock_BitVector.html">freeBlock</A></td></tr>
+<tr><td><A HREF="Function_gc_Context.html">gc</A></td></tr>
+<tr><td><b><font color=blue>gcd : </b></font>(<A HREF="Function_gcd_Integer.html">Integer</A> <A HREF="Function_gcd_Number.html">Number)</A></td> </tr>
+<tr><td><A HREF="Function_getContextPtr_Context.html">getContextPtr</A></td></tr>
+<tr><td><b><font color=blue>getGlobalValue : </b></font>(<A HREF="Function_getGlobalValue_Context.html">Context</A> <A HREF="Function_getGlobalValue_Symbol.html">Symbol)</A></td> </tr>
+<tr><td><b><font color=blue>getHttp : </b></font>(<A HREF="Function_getHttp_String.html">String</A> <A HREF="Function_getHttp_Text.html">Text)</A></td> </tr>
+<tr><td><b><font color=blue>getSymbolTable : </b></font>(<A HREF="Function_getSymbolTable_Context.html">Context</A> <A HREF="Function_getSymbolTable_Symbol.html">Symbol)</A></td> </tr>
+<tr><td><A HREF="Function_getTickCount_Date.html">getTickCount</A></td></tr>
+<tr><td><b><font color=blue>globalBinding : </b></font>(<A HREF="Function_globalBinding_Context.html">Context</A> <A HREF="Function_globalBinding_Lambda.html">Lambda)</A></td> </tr>
+<tr><td><b><font color=blue>hashString : </b></font>(<A HREF="Function_hashString_String.html">String</A> <A HREF="Function_hashString_Symbol.html">Symbol)</A></td> </tr>
+<tr><td><A HREF="Function_hour_Date.html">hour</A></td></tr>
+<tr><td><A HREF="Function_iadd_Integer.html">iadd</A></td></tr>
+<tr><td><A HREF="Function_icompareEQ_Integer.html">icompareEQ</A></td></tr>
+<tr><td><A HREF="Function_icompareGE_Integer.html">icompareGE</A></td></tr>
+<tr><td><A HREF="Function_icompareGT_Integer.html">icompareGT</A></td></tr>
+<tr><td><A HREF="Function_icompareLE_Integer.html">icompareLE</A></td></tr>
+<tr><td><A HREF="Function_icompareLT_Integer.html">icompareLT</A></td></tr>
+<tr><td><A HREF="Function_icompareNE_Integer.html">icompareNE</A></td></tr>
+<tr><td><A HREF="Function_idiv_Integer.html">idiv</A></td></tr>
+<tr><td><A HREF="Function_imaginary_Complex.html">imaginary</A></td></tr>
+<tr><td><A HREF="Function_imod_Integer.html">imod</A></td></tr>
+<tr><td><b><font color=blue>importTab : </b></font>(<A HREF="Function_importTab_Lambda.html">Lambda</A> <A HREF="Function_importTab_ObjectRepository.html">ObjectRepository)</A></td> </tr>
+<tr><td><A HREF="Function_imul_Number.html">imul</A></td></tr>
+<tr><td><b><font color=blue>insert : </b></font>(<A HREF="Function_insert_Dictionary.html">Dictionary</A> <A HREF="Function_insert_Directory.html">Directory</A>  <A HREF="Function_insert_FltVector.html">FltVector</A>  <A HREF="Function_insert_IntVector.html">IntVector</A>  <A HREF="Function_insert_Matrix.html">Matrix</A>  <A HREF="Function_insert_NumMatrix.html">NumMatrix</A>  <A HREF="Function_insert_NumVector.html">NumVector</A>  <A HREF="Function_insert_ObjVector.html">ObjVector</A>  <A HREF="Function_insert_ShortVector.html">ShortVector</A>  <A HREF="Function_insert_Structure.html">Structure</A>  <A HREF="Function_insert_Vector.html">Vector)</A></td> </tr>
+<tr><td><A HREF="Function_insertRows_Brick.html">insertRows</A></td></tr>
+<tr><td><b><font color=blue>inside : </b></font>(<A HREF="Function_inside_BitVector.html">BitVector</A> <A HREF="Function_inside_Dictionary.html">Dictionary</A>  <A HREF="Function_inside_Directory.html">Directory</A>  <A HREF="Function_inside_IntVector.html">IntVector</A>  <A HREF="Function_inside_List.html">List</A>  <A HREF="Function_inside_Matrix.html">Matrix</A>  <A HREF="Function_inside_NumMatrix.html">NumMatrix</A>  <A HREF="Function_inside_NumVector.html">NumVector</A>  <A HREF="Function_inside_ShortVector.html">ShortVector</A>  <A HREF="Function_inside_Structure.html">Structure</A>  <A HREF="Function_inside_Vector.html">Vector)</A></td> </tr>
+<tr><td><b><font color=blue>inspect : </b></font>(<A HREF="Function_inspect_Context.html">Context</A> <A HREF="Function_inspect_Lambda.html">Lambda</A>  <A HREF="Function_inspect_ObjectRepository.html">ObjectRepository)</A></td> </tr>
+<tr><td><A HREF="Function_integer_Integer.html">integer</A></td></tr>
+<tr><td><b><font color=blue>isAtom : </b></font>(<A HREF="Function_isAtom_BitVector.html">BitVector</A> <A HREF="Function_isAtom_Brick.html">Brick</A>  <A HREF="Function_isAtom_Dictionary.html">Dictionary</A>  <A HREF="Function_isAtom_Directory.html">Directory</A>  <A HREF="Function_isAtom_FltVector.html">FltVector</A>  <A HREF="Function_isAtom_IntVector.html">IntVector</A>  <A HREF="Function_isAtom_List.html">List</A>  <A HREF="Function_isAtom_Matrix.html">Matrix</A>  <A HREF="Function_isAtom_NumMatrix.html">NumMatrix</A>  <A HREF="Function_isAtom_NumVector.html">NumVector</A>  <A HREF="Function_isAtom_ObjVector.html">ObjVector</A>  <A HREF="Function_isAtom_Pair.html">Pair</A>  <A HREF="Function_isAtom_PcodeVector.html">PcodeVector</A>  <A HREF="Function_isAtom_ShortVector.html">ShortVector</A>  <A HREF="Function_isAtom_Structure.html">Structure</A>  <A HREF="Function_isAtom_Vector.html">Vector)</A></td> </tr>
+<tr><td><A HREF="Function_isBitVector_BitVector.html">isBitVector</A></td></tr>
+<tr><td><A HREF="Function_isBoolean_Boolean.html">isBoolean</A></td></tr>
+<tr><td><b><font color=blue>isBound : </b></font>(<A HREF="Function_isBound_Dictionary.html">Dictionary</A> <A HREF="Function_isBound_Directory.html">Directory</A>  <A HREF="Function_isBound_Structure.html">Structure)</A></td> </tr>
+<tr><td><A HREF="Function_isByteVector_ByteVector.html">isByteVector</A></td></tr>
+<tr><td><A HREF="Function_isChar_String.html">isChar</A></td></tr>
+<tr><td><b><font color=blue>isCharAlphabetic : </b></font>(<A HREF="Function_isCharAlphabetic_ByteVector.html">ByteVector</A> <A HREF="Function_isCharAlphabetic_String.html">String</A>  <A HREF="Function_isCharAlphabetic_Symbol.html">Symbol)</A></td> </tr>
+<tr><td><b><font color=blue>isCharAlphanumeric : </b></font>(<A HREF="Function_isCharAlphanumeric_ByteVector.html">ByteVector</A> <A HREF="Function_isCharAlphanumeric_String.html">String</A>  <A HREF="Function_isCharAlphanumeric_Symbol.html">Symbol)</A></td> </tr>
+<tr><td><b><font color=blue>isCharLowercase : </b></font>(<A HREF="Function_isCharLowercase_ByteVector.html">ByteVector</A> <A HREF="Function_isCharLowercase_String.html">String</A>  <A HREF="Function_isCharLowercase_Symbol.html">Symbol)</A></td> </tr>
+<tr><td><b><font color=blue>isCharName : </b></font>(<A HREF="Function_isCharName_ByteVector.html">ByteVector</A> <A HREF="Function_isCharName_String.html">String</A>  <A HREF="Function_isCharName_Symbol.html">Symbol)</A></td> </tr>
+<tr><td><b><font color=blue>isCharNumeric : </b></font>(<A HREF="Function_isCharNumeric_ByteVector.html">ByteVector</A> <A HREF="Function_isCharNumeric_String.html">String</A>  <A HREF="Function_isCharNumeric_Symbol.html">Symbol)</A></td> </tr>
+<tr><td><b><font color=blue>isCharUppercase : </b></font>(<A HREF="Function_isCharUppercase_ByteVector.html">ByteVector</A> <A HREF="Function_isCharUppercase_String.html">String</A>  <A HREF="Function_isCharUppercase_Symbol.html">Symbol)</A></td> </tr>
+<tr><td><b><font color=blue>isCharWhitespace : </b></font>(<A HREF="Function_isCharWhitespace_ByteVector.html">ByteVector</A> <A HREF="Function_isCharWhitespace_String.html">String</A>  <A HREF="Function_isCharWhitespace_Symbol.html">Symbol)</A></td> </tr>
+<tr><td><A HREF="Function_isCharacter_Character.html">isCharacter</A></td></tr>
+<tr><td><A HREF="Function_isComplex_Complex.html">isComplex</A></td></tr>
+<tr><td><A HREF="Function_isDate_Date.html">isDate</A></td></tr>
+<tr><td><A HREF="Function_isDictionary_Dictionary.html">isDictionary</A></td></tr>
+<tr><td><A HREF="Function_isDirectory_Directory.html">isDirectory</A></td></tr>
+<tr><td><b><font color=blue>isEqual : </b></font>(<A HREF="Function_isEqual_BitVector.html">BitVector</A> <A HREF="Function_isEqual_Boolean.html">Boolean</A>  <A HREF="Function_isEqual_Brick.html">Brick</A>  <A HREF="Function_isEqual_Character.html">Character</A>  <A HREF="Function_isEqual_Complex.html">Complex</A>  <A HREF="Function_isEqual_Date.html">Date</A>  <A HREF="Function_isEqual_Dictionary.html">Dictionary</A>  <A HREF="Function_isEqual_Directory.html">Directory</A>  <A HREF="Function_isEqual_FltVector.html">FltVector</A>  <A HREF="Function_isEqual_Function.html">Function</A>  <A HREF="Function_isEqual_IntVector.html">IntVector</A>  <A HREF="Function_isEqual_List.html">List</A>  <A HREF="Function_isEqual_Matrix.html">Matrix</A>  <A HREF="Function_isEqual_NumMatrix.html">NumMatrix</A>  <A HREF="Function_isEqual_NumVector.html">NumVector</A>  <A HREF="Function_isEqual_Number.html">Number</A>  <A HREF="Function_isEqual_ObjVector.html">ObjVector</A>  <A HREF="Function_isEqual_Pair.html">Pair</A>  <A HREF="Function_isEqual_ShortVector.html">ShortVector</A>  <A HREF="Function_isEqual_String.html">String</A>  <A HREF="Function_isEqual_Structure.html">Structure</A>  <A HREF="Function_isEqual_Vector.html">Vector</A>  <A HREF="Function_isEqual_Void.html">Void)</A></td> </tr>
+<tr><td><A HREF="Function_isError_Error.html">isError</A></td></tr>
+<tr><td><A HREF="Function_isEven_Number.html">isEven</A></td></tr>
+<tr><td><A HREF="Function_isExact_Number.html">isExact</A></td></tr>
+<tr><td><A HREF="Function_isFloatVector_FltVector.html">isFloatVector</A></td></tr>
+<tr><td><b><font color=blue>isIdentical : </b></font>(<A HREF="Function_isIdentical_BitVector.html">BitVector</A> <A HREF="Function_isIdentical_Boolean.html">Boolean</A>  <A HREF="Function_isIdentical_Brick.html">Brick</A>  <A HREF="Function_isIdentical_Character.html">Character</A>  <A HREF="Function_isIdentical_Complex.html">Complex</A>  <A HREF="Function_isIdentical_Date.html">Date</A>  <A HREF="Function_isIdentical_Dictionary.html">Dictionary</A>  <A HREF="Function_isIdentical_Directory.html">Directory</A>  <A HREF="Function_isIdentical_Error.html">Error</A>  <A HREF="Function_isIdentical_FltVector.html">FltVector</A>  <A HREF="Function_isIdentical_Function.html">Function</A>  <A HREF="Function_isIdentical_IntVector.html">IntVector</A>  <A HREF="Function_isIdentical_List.html">List</A>  <A HREF="Function_isIdentical_Matrix.html">Matrix</A>  <A HREF="Function_isIdentical_NumMatrix.html">NumMatrix</A>  <A HREF="Function_isIdentical_NumVector.html">NumVector</A>  <A HREF="Function_isIdentical_Number.html">Number</A>  <A HREF="Function_isIdentical_ObjVector.html">ObjVector</A>  <A HREF="Function_isIdentical_ObjectRepository.html">ObjectRepository</A>  <A HREF="Function_isIdentical_Pair.html">Pair</A>  <A HREF="Function_isIdentical_PcodeVector.html">PcodeVector</A>  <A HREF="Function_isIdentical_ShortVector.html">ShortVector</A>  <A HREF="Function_isIdentical_Structure.html">Structure</A>  <A HREF="Function_isIdentical_Vector.html">Vector</A>  <A HREF="Function_isIdentical_Void.html">Void)</A></td> </tr>
+<tr><td><A HREF="Function_isImmediate_ObjectRepository.html">isImmediate</A></td></tr>
+<tr><td><A HREF="Function_isInexact_Number.html">isInexact</A></td></tr>
+<tr><td><b><font color=blue>isInside : </b></font>(<A HREF="Function_isInside_BitVector.html">BitVector</A> <A HREF="Function_isInside_Dictionary.html">Dictionary</A>  <A HREF="Function_isInside_Directory.html">Directory</A>  <A HREF="Function_isInside_IntVector.html">IntVector</A>  <A HREF="Function_isInside_List.html">List</A>  <A HREF="Function_isInside_Matrix.html">Matrix</A>  <A HREF="Function_isInside_NumMatrix.html">NumMatrix</A>  <A HREF="Function_isInside_NumVector.html">NumVector</A>  <A HREF="Function_isInside_ObjVector.html">ObjVector</A>  <A HREF="Function_isInside_Pair.html">Pair</A>  <A HREF="Function_isInside_ShortVector.html">ShortVector</A>  <A HREF="Function_isInside_Structure.html">Structure</A>  <A HREF="Function_isInside_Vector.html">Vector)</A></td> </tr>
+<tr><td><A HREF="Function_isInteger_Integer.html">isInteger</A></td></tr>
+<tr><td><A HREF="Function_isIntegerVector_IntVector.html">isIntegerVector</A></td></tr>
+<tr><td><A HREF="Function_isMatrix_Matrix.html">isMatrix</A></td></tr>
+<tr><td><b><font color=blue>isMember : </b></font>(<A HREF="Function_isMember_BitVector.html">BitVector</A> <A HREF="Function_isMember_Dictionary.html">Dictionary</A>  <A HREF="Function_isMember_Directory.html">Directory</A>  <A HREF="Function_isMember_IntVector.html">IntVector</A>  <A HREF="Function_isMember_List.html">List</A>  <A HREF="Function_isMember_Matrix.html">Matrix</A>  <A HREF="Function_isMember_NumMatrix.html">NumMatrix</A>  <A HREF="Function_isMember_NumVector.html">NumVector</A>  <A HREF="Function_isMember_ObjVector.html">ObjVector</A>  <A HREF="Function_isMember_Pair.html">Pair</A>  <A HREF="Function_isMember_ShortVector.html">ShortVector</A>  <A HREF="Function_isMember_Structure.html">Structure</A>  <A HREF="Function_isMember_Vector.html">Vector)</A></td> </tr>
+<tr><td><A HREF="Function_isMoney_Number.html">isMoney</A></td></tr>
+<tr><td><A HREF="Function_isNegative_Number.html">isNegative</A></td></tr>
+<tr><td><b><font color=blue>isNull : </b></font>(<A HREF="Function_isNull_Number.html">Number</A> <A HREF="Function_isNull_Void.html">Void)</A></td> </tr>
+<tr><td><A HREF="Function_isNumber_Number.html">isNumber</A></td></tr>
+<tr><td><A HREF="Function_isNumberMatrix_NumMatrix.html">isNumberMatrix</A></td></tr>
+<tr><td><A HREF="Function_isNumberVector_NumVector.html">isNumberVector</A></td></tr>
+<tr><td><b><font color=blue>isObject : </b></font>(<A HREF="Function_isObject_BitVector.html">BitVector</A> <A HREF="Function_isObject_Brick.html">Brick</A>  <A HREF="Function_isObject_ByteVector.html">ByteVector</A>  <A HREF="Function_isObject_Dictionary.html">Dictionary</A>  <A HREF="Function_isObject_Directory.html">Directory</A>  <A HREF="Function_isObject_FltVector.html">FltVector</A>  <A HREF="Function_isObject_IntVector.html">IntVector</A>  <A HREF="Function_isObject_List.html">List</A>  <A HREF="Function_isObject_Matrix.html">Matrix</A>  <A HREF="Function_isObject_NumMatrix.html">NumMatrix</A>  <A HREF="Function_isObject_NumVector.html">NumVector</A>  <A HREF="Function_isObject_ObjVector.html">ObjVector</A>  <A HREF="Function_isObject_Pair.html">Pair</A>  <A HREF="Function_isObject_PcodeVector.html">PcodeVector</A>  <A HREF="Function_isObject_ShortVector.html">ShortVector</A>  <A HREF="Function_isObject_String.html">String</A>  <A HREF="Function_isObject_Structure.html">Structure</A>  <A HREF="Function_isObject_Symbol.html">Symbol</A>  <A HREF="Function_isObject_Vector.html">Vector)</A></td> </tr>
+<tr><td><A HREF="Function_isObjectVector_ObjVector.html">isObjectVector</A></td></tr>
+<tr><td><A HREF="Function_isOdd_Number.html">isOdd</A></td></tr>
+<tr><td><b><font color=blue>isPair : </b></font>(<A HREF="Function_isPair_List.html">List</A> <A HREF="Function_isPair_Pair.html">Pair)</A></td> </tr>
+<tr><td><A HREF="Function_isPcodeVector_PcodeVector.html">isPcodeVector</A></td></tr>
+<tr><td><A HREF="Function_isPositive_Number.html">isPositive</A></td></tr>
+<tr><td><A HREF="Function_isString_String.html">isString</A></td></tr>
+<tr><td><A HREF="Function_isStructure_Structure.html">isStructure</A></td></tr>
+<tr><td><A HREF="Function_isSymbol_Symbol.html">isSymbol</A></td></tr>
+<tr><td><A HREF="Function_isText_String.html">isText</A></td></tr>
+<tr><td><A HREF="Function_isTransaction_ObjectRepository.html">isTransaction</A></td></tr>
+<tr><td><b><font color=blue>isType : </b></font>(<A HREF="Function_isType_BitVector.html">BitVector</A> <A HREF="Function_isType_Boolean.html">Boolean</A>  <A HREF="Function_isType_Brick.html">Brick</A>  <A HREF="Function_isType_Character.html">Character</A>  <A HREF="Function_isType_Complex.html">Complex</A>  <A HREF="Function_isType_Date.html">Date</A>  <A HREF="Function_isType_Dictionary.html">Dictionary</A>  <A HREF="Function_isType_Directory.html">Directory</A>  <A HREF="Function_isType_FltVector.html">FltVector</A>  <A HREF="Function_isType_Function.html">Function</A>  <A HREF="Function_isType_IntVector.html">IntVector</A>  <A HREF="Function_isType_Matrix.html">Matrix</A>  <A HREF="Function_isType_NumMatrix.html">NumMatrix</A>  <A HREF="Function_isType_NumVector.html">NumVector</A>  <A HREF="Function_isType_Number.html">Number</A>  <A HREF="Function_isType_ObjVector.html">ObjVector</A>  <A HREF="Function_isType_ObjectRepository.html">ObjectRepository</A>  <A HREF="Function_isType_Pair.html">Pair</A>  <A HREF="Function_isType_ShortVector.html">ShortVector</A>  <A HREF="Function_isType_String.html">String</A>  <A HREF="Function_isType_Structure.html">Structure</A>  <A HREF="Function_isType_Symbol.html">Symbol</A>  <A HREF="Function_isType_Vector.html">Vector</A>  <A HREF="Function_isType_Void.html">Void)</A></td> </tr>
+<tr><td><A HREF="Function_isVector_Vector.html">isVector</A></td></tr>
+<tr><td><A HREF="Function_isZero_Number.html">isZero</A></td></tr>
+<tr><td><A HREF="Function_isub_Integer.html">isub</A></td></tr>
+<tr><td><A HREF="Function_julian_Date.html">julian</A></td></tr>
+<tr><td><A HREF="Function_kurtosis_Number.html">kurtosis</A></td></tr>
+<tr><td><A HREF="Function_lambda_Lambda.html">lambda</A></td></tr>
+<tr><td><A HREF="Function_last_List.html">last</A></td></tr>
+<tr><td><A HREF="Function_lcm_Integer.html">lcm</A></td></tr>
+<tr><td><A HREF="Function_left_String.html">left</A></td></tr>
+<tr><td><b><font color=blue>length : </b></font>(<A HREF="Function_length_BitVector.html">BitVector</A> <A HREF="Function_length_Brick.html">Brick</A>  <A HREF="Function_length_Dictionary.html">Dictionary</A>  <A HREF="Function_length_Directory.html">Directory</A>  <A HREF="Function_length_FltVector.html">FltVector</A>  <A HREF="Function_length_IntVector.html">IntVector</A>  <A HREF="Function_length_List.html">List</A>  <A HREF="Function_length_Matrix.html">Matrix</A>  <A HREF="Function_length_NumMatrix.html">NumMatrix</A>  <A HREF="Function_length_NumVector.html">NumVector</A>  <A HREF="Function_length_ObjVector.html">ObjVector</A>  <A HREF="Function_length_ObjectRepository.html">ObjectRepository</A>  <A HREF="Function_length_Pair.html">Pair</A>  <A HREF="Function_length_PcodeVector.html">PcodeVector</A>  <A HREF="Function_length_ShortVector.html">ShortVector</A>  <A HREF="Function_length_String.html">String</A>  <A HREF="Function_length_Structure.html">Structure</A>  <A HREF="Function_length_Symbol.html">Symbol</A>  <A HREF="Function_length_Vector.html">Vector)</A></td> </tr>
+<tr><td><b><font color=blue>lisp : </b></font>(<A HREF="Function_lisp_Lambda.html">Lambda</A> <A HREF="Function_lisp_List.html">List)</A></td> </tr>
+<tr><td><A HREF="Function_list_List.html">list</A></td></tr>
+<tr><td><A HREF="Function_loadLib_String.html">loadLib</A></td></tr>
+<tr><td><A HREF="Function_loadObject_ByteVector.html">loadObject</A></td></tr>
+<tr><td><A HREF="Function_loadRepository_ObjectRepository.html">loadRepository</A></td></tr>
+<tr><td><A HREF="Function_loadWorkspace_Context.html">loadWorkspace</A></td></tr>
+<tr><td><b><font color=blue>log : </b></font>(<A HREF="Function_log_Complex.html">Complex</A> <A HREF="Function_log_Number.html">Number)</A></td> </tr>
+<tr><td><b><font color=blue>log10 : </b></font>(<A HREF="Function_log10_Complex.html">Complex</A> <A HREF="Function_log10_Number.html">Number)</A></td> </tr>
+<tr><td><b><font color=blue>log2 : </b></font>(<A HREF="Function_log2_Complex.html">Complex</A> <A HREF="Function_log2_Number.html">Number)</A></td> </tr>
+<tr><td><b><font color=blue>logbase : </b></font>(<A HREF="Function_logbase_Complex.html">Complex</A> <A HREF="Function_logbase_Number.html">Number)</A></td> </tr>
+<tr><td><A HREF="Function_macroReplace_String.html">macroReplace</A></td></tr>
+<tr><td><A HREF="Function_makeDictionary_Dictionary.html">makeDictionary</A></td></tr>
+<tr><td><A HREF="Function_makeGaussianMatrix_NumMatrix.html">makeGaussianMatrix</A></td></tr>
+<tr><td><A HREF="Function_makeGramMatrix_NumMatrix.html">makeGramMatrix</A></td></tr>
+<tr><td><A HREF="Function_makeLambda_Lambda.html">makeLambda</A></td></tr>
+<tr><td><A HREF="Function_makeQuotedList_List.html">makeQuotedList</A></td></tr>
+<tr><td><A HREF="Function_makeQuotedSymbol_Symbol.html">makeQuotedSymbol</A></td></tr>
+<tr><td><A HREF="Function_makeStructure_Structure.html">makeStructure</A></td></tr>
+<tr><td><b><font color=blue>map : </b></font>(<A HREF="Function_map_Dictionary.html">Dictionary</A> <A HREF="Function_map_Directory.html">Directory</A>  <A HREF="Function_map_FltVector.html">FltVector</A>  <A HREF="Function_map_IntVector.html">IntVector</A>  <A HREF="Function_map_List.html">List</A>  <A HREF="Function_map_Matrix.html">Matrix</A>  <A HREF="Function_map_NumMatrix.html">NumMatrix</A>  <A HREF="Function_map_NumVector.html">NumVector</A>  <A HREF="Function_map_Pair.html">Pair</A>  <A HREF="Function_map_ShortVector.html">ShortVector</A>  <A HREF="Function_map_Structure.html">Structure</A>  <A HREF="Function_map_Vector.html">Vector)</A></td> </tr>
+<tr><td><b><font color=blue>mapc : </b></font>(<A HREF="Function_mapc_Dictionary.html">Dictionary</A> <A HREF="Function_mapc_Directory.html">Directory</A>  <A HREF="Function_mapc_FltVector.html">FltVector</A>  <A HREF="Function_mapc_IntVector.html">IntVector</A>  <A HREF="Function_mapc_List.html">List</A>  <A HREF="Function_mapc_Matrix.html">Matrix</A>  <A HREF="Function_mapc_NumMatrix.html">NumMatrix</A>  <A HREF="Function_mapc_NumVector.html">NumVector</A>  <A HREF="Function_mapc_Pair.html">Pair</A>  <A HREF="Function_mapc_ShortVector.html">ShortVector</A>  <A HREF="Function_mapc_Structure.html">Structure</A>  <A HREF="Function_mapc_Vector.html">Vector)</A></td> </tr>
+<tr><td><A HREF="Function_matrixGaussianEliminate_NumMatrix.html">matrixGaussianEliminate</A></td></tr>
+<tr><td><A HREF="Function_matrixGaussianSubstitute_NumMatrix.html">matrixGaussianSubstitute</A></td></tr>
+<tr><td><A HREF="Function_max_Number.html">max</A></td></tr>
+<tr><td><A HREF="Function_median_Number.html">median</A></td></tr>
+<tr><td><b><font color=blue>member : </b></font>(<A HREF="Function_member_BitVector.html">BitVector</A> <A HREF="Function_member_Dictionary.html">Dictionary</A>  <A HREF="Function_member_Directory.html">Directory</A>  <A HREF="Function_member_IntVector.html">IntVector</A>  <A HREF="Function_member_List.html">List</A>  <A HREF="Function_member_Matrix.html">Matrix</A>  <A HREF="Function_member_NumMatrix.html">NumMatrix</A>  <A HREF="Function_member_NumVector.html">NumVector</A>  <A HREF="Function_member_ObjVector.html">ObjVector</A>  <A HREF="Function_member_ShortVector.html">ShortVector</A>  <A HREF="Function_member_Structure.html">Structure</A>  <A HREF="Function_member_Vector.html">Vector)</A></td> </tr>
+<tr><td><b><font color=blue>methodsOf : </b></font>(<A HREF="Function_methodsOf_BitVector.html">BitVector</A> <A HREF="Function_methodsOf_Boolean.html">Boolean</A>  <A HREF="Function_methodsOf_Brick.html">Brick</A>  <A HREF="Function_methodsOf_Character.html">Character</A>  <A HREF="Function_methodsOf_Complex.html">Complex</A>  <A HREF="Function_methodsOf_Date.html">Date</A>  <A HREF="Function_methodsOf_Dictionary.html">Dictionary</A>  <A HREF="Function_methodsOf_Directory.html">Directory</A>  <A HREF="Function_methodsOf_FltVector.html">FltVector</A>  <A HREF="Function_methodsOf_Function.html">Function</A>  <A HREF="Function_methodsOf_IntVector.html">IntVector</A>  <A HREF="Function_methodsOf_List.html">List</A>  <A HREF="Function_methodsOf_Matrix.html">Matrix</A>  <A HREF="Function_methodsOf_NumMatrix.html">NumMatrix</A>  <A HREF="Function_methodsOf_NumVector.html">NumVector</A>  <A HREF="Function_methodsOf_Number.html">Number</A>  <A HREF="Function_methodsOf_ObjVector.html">ObjVector</A>  <A HREF="Function_methodsOf_ObjectRepository.html">ObjectRepository</A>  <A HREF="Function_methodsOf_Pair.html">Pair</A>  <A HREF="Function_methodsOf_PcodeVector.html">PcodeVector</A>  <A HREF="Function_methodsOf_ShortVector.html">ShortVector</A>  <A HREF="Function_methodsOf_String.html">String</A>  <A HREF="Function_methodsOf_Structure.html">Structure</A>  <A HREF="Function_methodsOf_Symbol.html">Symbol</A>  <A HREF="Function_methodsOf_Vector.html">Vector</A>  <A HREF="Function_methodsOf_Void.html">Void)</A></td> </tr>
+<tr><td><A HREF="Function_mid_String.html">mid</A></td></tr>
+<tr><td><A HREF="Function_min_Number.html">min</A></td></tr>
+<tr><td><A HREF="Function_minute_Date.html">minute</A></td></tr>
+<tr><td><b><font color=blue>mod : </b></font>(<A HREF="Function_mod_Complex.html">Complex</A> <A HREF="Function_mod_Number.html">Number)</A></td> </tr>
+<tr><td><A HREF="Function_modi_Number.html">modi</A></td></tr>
+<tr><td><A HREF="Function_money_Number.html">money</A></td></tr>
+<tr><td><A HREF="Function_month_Date.html">month</A></td></tr>
+<tr><td><A HREF="Function_morph_List.html">morph</A></td></tr>
+<tr><td><A HREF="Function_muli_Number.html">muli</A></td></tr>
+<tr><td><A HREF="Function_myself_Lambda.html">myself</A></td></tr>
+<tr><td><A HREF="Function_nadd_Number.html">nadd</A></td></tr>
+<tr><td><A HREF="Function_ncompareEQ_Number.html">ncompareEQ</A></td></tr>
+<tr><td><A HREF="Function_ncompareGE_Number.html">ncompareGE</A></td></tr>
+<tr><td><A HREF="Function_ncompareGT_Number.html">ncompareGT</A></td></tr>
+<tr><td><A HREF="Function_ncompareLE_Number.html">ncompareLE</A></td></tr>
+<tr><td><A HREF="Function_ncompareLT_Number.html">ncompareLT</A></td></tr>
+<tr><td><A HREF="Function_ncompareNE_Number.html">ncompareNE</A></td></tr>
+<tr><td><A HREF="Function_ndiv_Number.html">ndiv</A></td></tr>
+<tr><td><b><font color=blue>new : </b></font>(<A HREF="Function_new_BitVector.html">BitVector</A> <A HREF="Function_new_Brick.html">Brick</A>  <A HREF="Function_new_ByteVector.html">ByteVector</A>  <A HREF="Function_new_CpxVector.html">CpxVector</A>  <A HREF="Function_new_Dictionary.html">Dictionary</A>  <A HREF="Function_new_Directory.html">Directory</A>  <A HREF="Function_new_FltVector.html">FltVector</A>  <A HREF="Function_new_IntVector.html">IntVector</A>  <A HREF="Function_new_Lambda.html">Lambda</A>  <A HREF="Function_new_Matrix.html">Matrix</A>  <A HREF="Function_new_NumMatrix.html">NumMatrix</A>  <A HREF="Function_new_NumVector.html">NumVector</A>  <A HREF="Function_new_ObjVector.html">ObjVector</A>  <A HREF="Function_new_ObjectRepository.html">ObjectRepository</A>  <A HREF="Function_new_PcodeVector.html">PcodeVector</A>  <A HREF="Function_new_ShortVector.html">ShortVector</A>  <A HREF="Function_new_String.html">String</A>  <A HREF="Function_new_Structure.html">Structure</A>  <A HREF="Function_new_Symbol.html">Symbol</A>  <A HREF="Function_new_Vector.html">Vector)</A></td> </tr>
+<tr><td><A HREF="Function_nmod_Number.html">nmod</A></td></tr>
+<tr><td><A HREF="Function_nmul_Number.html">nmul</A></td></tr>
+<tr><td><A HREF="Function_now_Date.html">now</A></td></tr>
+<tr><td><A HREF="Function_nsub_Number.html">nsub</A></td></tr>
+<tr><td><A HREF="Function_number_Number.html">number</A></td></tr>
+<tr><td><A HREF="Function_objectToDictionary_Dictionary.html">objectToDictionary</A></td></tr>
+<tr><td><A HREF="Function_objectToDirectory_Directory.html">objectToDirectory</A></td></tr>
+<tr><td><A HREF="Function_objectToList_List.html">objectToList</A></td></tr>
+<tr><td><A HREF="Function_objectToMatrix_Matrix.html">objectToMatrix</A></td></tr>
+<tr><td><A HREF="Function_objectToNumMatrix_NumMatrix.html">objectToNumMatrix</A></td></tr>
+<tr><td><A HREF="Function_objectToNumVector_NumVector.html">objectToNumVector</A></td></tr>
+<tr><td><A HREF="Function_objectToStructure_Structure.html">objectToStructure</A></td></tr>
+<tr><td><A HREF="Function_objectToVector_Vector.html">objectToVector</A></td></tr>
+<tr><td><b><font color=blue>onError : </b></font>(<A HREF="Function_onError_Error.html">Error</A> <A HREF="Function_onError_Lambda.html">Lambda)</A></td> </tr>
+<tr><td><b><font color=blue>openLog : </b></font>(<A HREF="Function_openLog_FileIO.html">FileIO</A> <A HREF="Function_openLog_String.html">String)</A></td> </tr>
+<tr><td><A HREF="Function_pair_Pair.html">pair</A></td></tr>
+<tr><td><A HREF="Function_parse_String.html">parse</A></td></tr>
+<tr><td><A HREF="Function_pi_Number.html">pi</A></td></tr>
+<tr><td><b><font color=blue>postHttp : </b></font>(<A HREF="Function_postHttp_String.html">String</A> <A HREF="Function_postHttp_Text.html">Text)</A></td> </tr>
+<tr><td><A HREF="Function_preAllocateFixedMemoryBlocks_Context.html">preAllocateFixedMemoryBlocks</A></td></tr>
+<tr><td><A HREF="Function_product_Number.html">product</A></td></tr>
+<tr><td><A HREF="Function_proplist_Symbol.html">proplist</A></td></tr>
+<tr><td><A HREF="Function_proprecord_Symbol.html">proprecord</A></td></tr>
+<tr><td><A HREF="Function_putprop_Symbol.html">putprop</A></td></tr>
+<tr><td><A HREF="Function_quote_List.html">quote</A></td></tr>
+<tr><td><A HREF="Function_rad_Number.html">rad</A></td></tr>
+<tr><td><A HREF="Function_random_Number.html">random</A></td></tr>
+<tr><td><A HREF="Function_randomize_Number.html">randomize</A></td></tr>
+<tr><td><A HREF="Function_range_Number.html">range</A></td></tr>
+<tr><td><b><font color=blue>rank : </b></font>(<A HREF="Function_rank_Matrix.html">Matrix</A> <A HREF="Function_rank_NumMatrix.html">NumMatrix)</A></td> </tr>
+<tr><td><b><font color=blue>readHtmlPage : </b></font>(<A HREF="Function_readHtmlPage_String.html">String</A> <A HREF="Function_readHtmlPage_Text.html">Text)</A></td> </tr>
+<tr><td><A HREF="Function_real_Complex.html">real</A></td></tr>
+<tr><td><b><font color=blue>ref : </b></font>(<A HREF="Function_ref_BitVector.html">BitVector</A> <A HREF="Function_ref_Boolean.html">Boolean</A>  <A HREF="Function_ref_Brick.html">Brick</A>  <A HREF="Function_ref_Character.html">Character</A>  <A HREF="Function_ref_Complex.html">Complex</A>  <A HREF="Function_ref_Date.html">Date</A>  <A HREF="Function_ref_Dictionary.html">Dictionary</A>  <A HREF="Function_ref_Directory.html">Directory</A>  <A HREF="Function_ref_FltVector.html">FltVector</A>  <A HREF="Function_ref_Function.html">Function</A>  <A HREF="Function_ref_IntVector.html">IntVector</A>  <A HREF="Function_ref_Lambda.html">Lambda</A>  <A HREF="Function_ref_List.html">List</A>  <A HREF="Function_ref_Matrix.html">Matrix</A>  <A HREF="Function_ref_NumMatrix.html">NumMatrix</A>  <A HREF="Function_ref_NumVector.html">NumVector</A>  <A HREF="Function_ref_Number.html">Number</A>  <A HREF="Function_ref_ObjVector.html">ObjVector</A>  <A HREF="Function_ref_ObjectRepository.html">ObjectRepository</A>  <A HREF="Function_ref_PcodeVector.html">PcodeVector</A>  <A HREF="Function_ref_ShortVector.html">ShortVector</A>  <A HREF="Function_ref_String.html">String</A>  <A HREF="Function_ref_Structure.html">Structure</A>  <A HREF="Function_ref_Symbol.html">Symbol</A>  <A HREF="Function_ref_Vector.html">Vector</A>  <A HREF="Function_ref_Void.html">Void)</A></td> </tr>
+<tr><td><b><font color=blue>refAttributes : </b></font>(<A HREF="Function_refAttributes_Dictionary.html">Dictionary</A> <A HREF="Function_refAttributes_Directory.html">Directory</A>  <A HREF="Function_refAttributes_Structure.html">Structure</A>  <A HREF="Function_refAttributes_Vector.html">Vector)</A></td> </tr>
+<tr><td><A HREF="Function_refLibrarian_ObjectRepository.html">refLibrarian</A></td></tr>
+<tr><td><b><font color=blue>refValues : </b></font>(<A HREF="Function_refValues_Dictionary.html">Dictionary</A> <A HREF="Function_refValues_Directory.html">Directory</A>  <A HREF="Function_refValues_Structure.html">Structure</A>  <A HREF="Function_refValues_Vector.html">Vector)</A></td> </tr>
+<tr><td><A HREF="Function_remProp_Symbol.html">remProp</A></td></tr>
+<tr><td><b><font color=blue>remove : </b></font>(<A HREF="Function_remove_BitVector.html">BitVector</A> <A HREF="Function_remove_Dictionary.html">Dictionary</A>  <A HREF="Function_remove_Directory.html">Directory</A>  <A HREF="Function_remove_IntVector.html">IntVector</A>  <A HREF="Function_remove_Matrix.html">Matrix</A>  <A HREF="Function_remove_NumMatrix.html">NumMatrix</A>  <A HREF="Function_remove_NumVector.html">NumVector</A>  <A HREF="Function_remove_ObjVector.html">ObjVector</A>  <A HREF="Function_remove_ShortVector.html">ShortVector</A>  <A HREF="Function_remove_Structure.html">Structure</A>  <A HREF="Function_remove_Vector.html">Vector)</A></td> </tr>
+<tr><td><A HREF="Function_rename_ObjectRepository.html">rename</A></td></tr>
+<tr><td><A HREF="Function_replace_String.html">replace</A></td></tr>
+<tr><td><A HREF="Function_rept_String.html">rept</A></td></tr>
+<tr><td><b><font color=blue>requestHttp : </b></font>(<A HREF="Function_requestHttp_String.html">String</A> <A HREF="Function_requestHttp_Text.html">Text)</A></td> </tr>
+<tr><td><A HREF="Function_reset_Context.html">reset</A></td></tr>
+<tr><td><b><font color=blue>resize : </b></font>(<A HREF="Function_resize_BitVector.html">BitVector</A> <A HREF="Function_resize_Dictionary.html">Dictionary</A>  <A HREF="Function_resize_Directory.html">Directory</A>  <A HREF="Function_resize_FltVector.html">FltVector</A>  <A HREF="Function_resize_IntVector.html">IntVector</A>  <A HREF="Function_resize_Matrix.html">Matrix</A>  <A HREF="Function_resize_NumMatrix.html">NumMatrix</A>  <A HREF="Function_resize_NumVector.html">NumVector</A>  <A HREF="Function_resize_ObjVector.html">ObjVector</A>  <A HREF="Function_resize_ShortVector.html">ShortVector</A>  <A HREF="Function_resize_Structure.html">Structure</A>  <A HREF="Function_resize_Vector.html">Vector)</A></td> </tr>
+<tr><td><b><font color=blue>reverse : </b></font>(<A HREF="Function_reverse_BitVector.html">BitVector</A> <A HREF="Function_reverse_FltVector.html">FltVector</A>  <A HREF="Function_reverse_IntVector.html">IntVector</A>  <A HREF="Function_reverse_List.html">List</A>  <A HREF="Function_reverse_Matrix.html">Matrix</A>  <A HREF="Function_reverse_NumMatrix.html">NumMatrix</A>  <A HREF="Function_reverse_NumVector.html">NumVector</A>  <A HREF="Function_reverse_ObjVector.html">ObjVector</A>  <A HREF="Function_reverse_ShortVector.html">ShortVector</A>  <A HREF="Function_reverse_Vector.html">Vector)</A></td> </tr>
+<tr><td><A HREF="Function_right_String.html">right</A></td></tr>
+<tr><td><A HREF="Function_round_Number.html">round</A></td></tr>
+<tr><td><b><font color=blue>run : </b></font>(<A HREF="Function_run_ByteVector.html">ByteVector</A> <A HREF="Function_run_Text.html">Text)</A></td> </tr>
+<tr><td><A HREF="Function_saveImmediate_ObjectRepository.html">saveImmediate</A></td></tr>
+<tr><td><b><font color=blue>saveObject : </b></font>(<A HREF="Function_saveObject_ByteVector.html">ByteVector</A> <A HREF="Function_saveObject_Integer.html">Integer)</A></td> </tr>
+<tr><td><A HREF="Function_saveRepository_ObjectRepository.html">saveRepository</A></td></tr>
+<tr><td><A HREF="Function_saveWorkspace_Context.html">saveWorkspace</A></td></tr>
+<tr><td><A HREF="Function_second_Date.html">second</A></td></tr>
+<tr><td><b><font color=blue>send : </b></font>(<A HREF="Function_send_BitVector.html">BitVector</A> <A HREF="Function_send_Boolean.html">Boolean</A>  <A HREF="Function_send_Brick.html">Brick</A>  <A HREF="Function_send_Character.html">Character</A>  <A HREF="Function_send_CpxVector.html">CpxVector</A>  <A HREF="Function_send_Date.html">Date</A>  <A HREF="Function_send_Dictionary.html">Dictionary</A>  <A HREF="Function_send_Directory.html">Directory</A>  <A HREF="Function_send_FltVector.html">FltVector</A>  <A HREF="Function_send_Function.html">Function</A>  <A HREF="Function_send_IntVector.html">IntVector</A>  <A HREF="Function_send_Lambda.html">Lambda</A>  <A HREF="Function_send_List.html">List</A>  <A HREF="Function_send_Matrix.html">Matrix</A>  <A HREF="Function_send_NumMatrix.html">NumMatrix</A>  <A HREF="Function_send_NumVector.html">NumVector</A>  <A HREF="Function_send_Number.html">Number</A>  <A HREF="Function_send_ObjectRepository.html">ObjectRepository</A>  <A HREF="Function_send_Pair.html">Pair</A>  <A HREF="Function_send_ShortVector.html">ShortVector</A>  <A HREF="Function_send_String.html">String</A>  <A HREF="Function_send_Structure.html">Structure</A>  <A HREF="Function_send_Symbol.html">Symbol</A>  <A HREF="Function_send_Vector.html">Vector</A>  <A HREF="Function_send_Void.html">Void)</A></td> </tr>
+<tr><td><A HREF="Function_set_ObjectRepository.html">set</A></td></tr>
+<tr><td><b><font color=blue>setAttributes : </b></font>(<A HREF="Function_setAttributes_Dictionary.html">Dictionary</A> <A HREF="Function_setAttributes_Directory.html">Directory</A>  <A HREF="Function_setAttributes_Structure.html">Structure</A>  <A HREF="Function_setAttributes_Vector.html">Vector)</A></td> </tr>
+<tr><td><A HREF="Function_setBlock_BitVector.html">setBlock</A></td></tr>
+<tr><td><b><font color=blue>setCar : </b></font>(<A HREF="Function_setCar_List.html">List</A> <A HREF="Function_setCar_Pair.html">Pair)</A></td> </tr>
+<tr><td><b><font color=blue>setCdr : </b></font>(<A HREF="Function_setCdr_BitVector.html">BitVector</A> <A HREF="Function_setCdr_Brick.html">Brick</A>  <A HREF="Function_setCdr_Dictionary.html">Dictionary</A>  <A HREF="Function_setCdr_Directory.html">Directory</A>  <A HREF="Function_setCdr_FltVector.html">FltVector</A>  <A HREF="Function_setCdr_IntVector.html">IntVector</A>  <A HREF="Function_setCdr_List.html">List</A>  <A HREF="Function_setCdr_Matrix.html">Matrix</A>  <A HREF="Function_setCdr_NumMatrix.html">NumMatrix</A>  <A HREF="Function_setCdr_NumVector.html">NumVector</A>  <A HREF="Function_setCdr_ObjVector.html">ObjVector</A>  <A HREF="Function_setCdr_Pair.html">Pair</A>  <A HREF="Function_setCdr_ShortVector.html">ShortVector</A>  <A HREF="Function_setCdr_Structure.html">Structure</A>  <A HREF="Function_setCdr_Vector.html">Vector)</A></td> </tr>
+<tr><td><b><font color=blue>setLastCdr : </b></font>(<A HREF="Function_setLastCdr_BitVector.html">BitVector</A> <A HREF="Function_setLastCdr_FltVector.html">FltVector</A>  <A HREF="Function_setLastCdr_IntVector.html">IntVector</A>  <A HREF="Function_setLastCdr_List.html">List</A>  <A HREF="Function_setLastCdr_Matrix.html">Matrix</A>  <A HREF="Function_setLastCdr_NumMatrix.html">NumMatrix</A>  <A HREF="Function_setLastCdr_NumVector.html">NumVector</A>  <A HREF="Function_setLastCdr_ObjVector.html">ObjVector</A>  <A HREF="Function_setLastCdr_Structure.html">Structure</A>  <A HREF="Function_setLastCdr_Vector.html">Vector)</A></td> </tr>
+<tr><td><A HREF="Function_setf_ObjectRepository.html">setf</A></td></tr>
+<tr><td><b><font color=blue>setq : </b></font>(<A HREF="Function_setq_BitVector.html">BitVector</A> <A HREF="Function_setq_Boolean.html">Boolean</A>  <A HREF="Function_setq_Brick.html">Brick</A>  <A HREF="Function_setq_Character.html">Character</A>  <A HREF="Function_setq_Date.html">Date</A>  <A HREF="Function_setq_Dictionary.html">Dictionary</A>  <A HREF="Function_setq_Directory.html">Directory</A>  <A HREF="Function_setq_FltVector.html">FltVector</A>  <A HREF="Function_setq_IntVector.html">IntVector</A>  <A HREF="Function_setq_Lambda.html">Lambda</A>  <A HREF="Function_setq_List.html">List</A>  <A HREF="Function_setq_Matrix.html">Matrix</A>  <A HREF="Function_setq_NumVector.html">NumVector</A>  <A HREF="Function_setq_Number.html">Number</A>  <A HREF="Function_setq_ObjVector.html">ObjVector</A>  <A HREF="Function_setq_ObjectRepository.html">ObjectRepository</A>  <A HREF="Function_setq_PcodeVector.html">PcodeVector</A>  <A HREF="Function_setq_ShortVector.html">ShortVector</A>  <A HREF="Function_setq_String.html">String</A>  <A HREF="Function_setq_Structure.html">Structure</A>  <A HREF="Function_setq_Symbol.html">Symbol</A>  <A HREF="Function_setq_Vector.html">Vector</A>  <A HREF="Function_setq_Void.html">Void)</A></td> </tr>
+<tr><td><A HREF="Function_sign_Number.html">sign</A></td></tr>
+<tr><td><b><font color=blue>sin : </b></font>(<A HREF="Function_sin_Complex.html">Complex</A> <A HREF="Function_sin_Number.html">Number)</A></td> </tr>
+<tr><td><A HREF="Function_sinh_Number.html">sinh</A></td></tr>
+<tr><td><b><font color=blue>sizeof : </b></font>(<A HREF="Function_sizeof_BitVector.html">BitVector</A> <A HREF="Function_sizeof_Boolean.html">Boolean</A>  <A HREF="Function_sizeof_Brick.html">Brick</A>  <A HREF="Function_sizeof_ByteVector.html">ByteVector</A>  <A HREF="Function_sizeof_Character.html">Character</A>  <A HREF="Function_sizeof_Complex.html">Complex</A>  <A HREF="Function_sizeof_Date.html">Date</A>  <A HREF="Function_sizeof_Dictionary.html">Dictionary</A>  <A HREF="Function_sizeof_Directory.html">Directory</A>  <A HREF="Function_sizeof_FltVector.html">FltVector</A>  <A HREF="Function_sizeof_Function.html">Function</A>  <A HREF="Function_sizeof_IntVector.html">IntVector</A>  <A HREF="Function_sizeof_List.html">List</A>  <A HREF="Function_sizeof_Matrix.html">Matrix</A>  <A HREF="Function_sizeof_NumMatrix.html">NumMatrix</A>  <A HREF="Function_sizeof_NumVector.html">NumVector</A>  <A HREF="Function_sizeof_Number.html">Number</A>  <A HREF="Function_sizeof_ObjVector.html">ObjVector</A>  <A HREF="Function_sizeof_ObjectRepository.html">ObjectRepository</A>  <A HREF="Function_sizeof_Pair.html">Pair</A>  <A HREF="Function_sizeof_PcodeVector.html">PcodeVector</A>  <A HREF="Function_sizeof_ShortVector.html">ShortVector</A>  <A HREF="Function_sizeof_String.html">String</A>  <A HREF="Function_sizeof_Structure.html">Structure</A>  <A HREF="Function_sizeof_Symbol.html">Symbol</A>  <A HREF="Function_sizeof_Vector.html">Vector</A>  <A HREF="Function_sizeof_Void.html">Void)</A></td> </tr>
+<tr><td><A HREF="Function_skew_Number.html">skew</A></td></tr>
+<tr><td><b><font color=blue>sort : </b></font>(<A HREF="Function_sort_BitVector.html">BitVector</A> <A HREF="Function_sort_Dictionary.html">Dictionary</A>  <A HREF="Function_sort_Directory.html">Directory</A>  <A HREF="Function_sort_FltVector.html">FltVector</A>  <A HREF="Function_sort_IntVector.html">IntVector</A>  <A HREF="Function_sort_List.html">List</A>  <A HREF="Function_sort_Matrix.html">Matrix</A>  <A HREF="Function_sort_NumMatrix.html">NumMatrix</A>  <A HREF="Function_sort_NumVector.html">NumVector</A>  <A HREF="Function_sort_ObjVector.html">ObjVector</A>  <A HREF="Function_sort_ShortVector.html">ShortVector</A>  <A HREF="Function_sort_Structure.html">Structure</A>  <A HREF="Function_sort_Vector.html">Vector)</A></td> </tr>
+<tr><td><b><font color=blue>sqrt : </b></font>(<A HREF="Function_sqrt_Complex.html">Complex</A> <A HREF="Function_sqrt_Number.html">Number)</A></td> </tr>
+<tr><td><A HREF="Function_srandom_Number.html">srandom</A></td></tr>
+<tr><td><A HREF="Function_stdev_Number.html">stdev</A></td></tr>
+<tr><td><A HREF="Function_stdevp_Number.html">stdevp</A></td></tr>
+<tr><td><b><font color=blue>string : </b></font>(<A HREF="Function_string_Complex.html">Complex</A> <A HREF="Function_string_String.html">String)</A></td> </tr>
+<tr><td><A HREF="Function_stringCiEQ_String.html">stringCiEQ</A></td></tr>
+<tr><td><A HREF="Function_stringCiGE_String.html">stringCiGE</A></td></tr>
+<tr><td><A HREF="Function_stringCiGT_String.html">stringCiGT</A></td></tr>
+<tr><td><A HREF="Function_stringCiLE_String.html">stringCiLE</A></td></tr>
+<tr><td><A HREF="Function_stringCiLT_String.html">stringCiLT</A></td></tr>
+<tr><td><A HREF="Function_stringCiNE_String.html">stringCiNE</A></td></tr>
+<tr><td><A HREF="Function_stringFill_String.html">stringFill</A></td></tr>
+<tr><td><A HREF="Function_stringToBVector_String.html">stringToBVector</A></td></tr>
+<tr><td><A HREF="Function_stringToVector_String.html">stringToVector</A></td></tr>
+<tr><td><A HREF="Function_sub1_Number.html">sub1</A></td></tr>
+<tr><td><A HREF="Function_subi_Number.html">subi</A></td></tr>
+<tr><td><A HREF="Function_submit_Context.html">submit</A></td></tr>
+<tr><td><A HREF="Function_subscribe_Context.html">subscribe</A></td></tr>
+<tr><td><A HREF="Function_substitute_String.html">substitute</A></td></tr>
+<tr><td><A HREF="Function_substring_String.html">substring</A></td></tr>
+<tr><td><A HREF="Function_substringCiEQ_String.html">substringCiEQ</A></td></tr>
+<tr><td><A HREF="Function_substringCiGE_String.html">substringCiGE</A></td></tr>
+<tr><td><A HREF="Function_substringCiGT_String.html">substringCiGT</A></td></tr>
+<tr><td><A HREF="Function_substringCiLE_String.html">substringCiLE</A></td></tr>
+<tr><td><A HREF="Function_substringCiLT_String.html">substringCiLT</A></td></tr>
+<tr><td><A HREF="Function_substringCiNE_String.html">substringCiNE</A></td></tr>
+<tr><td><A HREF="Function_substringEQ_String.html">substringEQ</A></td></tr>
+<tr><td><A HREF="Function_substringFill_String.html">substringFill</A></td></tr>
+<tr><td><A HREF="Function_substringGE_String.html">substringGE</A></td></tr>
+<tr><td><A HREF="Function_substringGT_String.html">substringGT</A></td></tr>
+<tr><td><A HREF="Function_substringLE_String.html">substringLE</A></td></tr>
+<tr><td><A HREF="Function_substringLT_String.html">substringLT</A></td></tr>
+<tr><td><A HREF="Function_substringNE_String.html">substringNE</A></td></tr>
+<tr><td><b><font color=blue>sum : </b></font>(<A HREF="Function_sum_Complex.html">Complex</A> <A HREF="Function_sum_Number.html">Number)</A></td> </tr>
+<tr><td><b><font color=blue>sumsqr : </b></font>(<A HREF="Function_sumsqr_Complex.html">Complex</A> <A HREF="Function_sumsqr_Number.html">Number)</A></td> </tr>
+<tr><td><A HREF="Function_svmRegression_Vector.html">svmRegression</A></td></tr>
+<tr><td><A HREF="Function_symbol_Symbol.html">symbol</A></td></tr>
+<tr><td><b><font color=blue>system : </b></font>(<A HREF="Function_system_ByteVector.html">ByteVector</A> <A HREF="Function_system_Text.html">Text)</A></td> </tr>
+<tr><td><A HREF="Function_systemCheck_Context.html">systemCheck</A></td></tr>
+<tr><td><b><font color=blue>tan : </b></font>(<A HREF="Function_tan_Complex.html">Complex</A> <A HREF="Function_tan_Number.html">Number)</A></td> </tr>
+<tr><td><A HREF="Function_tanh_Number.html">tanh</A></td></tr>
+<tr><td><A HREF="Function_testFunction_Structure.html">testFunction</A></td></tr>
+<tr><td><A HREF="Function_text_String.html">text</A></td></tr>
+<tr><td><A HREF="Function_time_Date.html">time</A></td></tr>
+<tr><td><A HREF="Function_today_Date.html">today</A></td></tr>
+<tr><td><A HREF="Function_trim_String.html">trim</A></td></tr>
+<tr><td><b><font color=blue>type : </b></font>(<A HREF="Function_type_BitVector.html">BitVector</A> <A HREF="Function_type_Boolean.html">Boolean</A>  <A HREF="Function_type_Brick.html">Brick</A>  <A HREF="Function_type_ByteVector.html">ByteVector</A>  <A HREF="Function_type_Character.html">Character</A>  <A HREF="Function_type_Complex.html">Complex</A>  <A HREF="Function_type_Date.html">Date</A>  <A HREF="Function_type_Dictionary.html">Dictionary</A>  <A HREF="Function_type_Directory.html">Directory</A>  <A HREF="Function_type_FltVector.html">FltVector</A>  <A HREF="Function_type_Function.html">Function</A>  <A HREF="Function_type_IntVector.html">IntVector</A>  <A HREF="Function_type_Lambda.html">Lambda</A>  <A HREF="Function_type_Matrix.html">Matrix</A>  <A HREF="Function_type_NumMatrix.html">NumMatrix</A>  <A HREF="Function_type_NumVector.html">NumVector</A>  <A HREF="Function_type_Number.html">Number</A>  <A HREF="Function_type_ObjVector.html">ObjVector</A>  <A HREF="Function_type_ObjectRepository.html">ObjectRepository</A>  <A HREF="Function_type_Pair.html">Pair</A>  <A HREF="Function_type_PcodeVector.html">PcodeVector</A>  <A HREF="Function_type_ShortVector.html">ShortVector</A>  <A HREF="Function_type_String.html">String</A>  <A HREF="Function_type_Structure.html">Structure</A>  <A HREF="Function_type_Symbol.html">Symbol</A>  <A HREF="Function_type_Vector.html">Vector</A>  <A HREF="Function_type_Void.html">Void)</A></td> </tr>
+<tr><td><A HREF="Function_uncompress_ByteVector.html">uncompress</A></td></tr>
+<tr><td><b><font color=blue>uniqueInsert : </b></font>(<A HREF="Function_uniqueInsert_FltVector.html">FltVector</A> <A HREF="Function_uniqueInsert_IntVector.html">IntVector</A>  <A HREF="Function_uniqueInsert_Matrix.html">Matrix</A>  <A HREF="Function_uniqueInsert_NumMatrix.html">NumMatrix</A>  <A HREF="Function_uniqueInsert_NumVector.html">NumVector</A>  <A HREF="Function_uniqueInsert_ObjVector.html">ObjVector</A>  <A HREF="Function_uniqueInsert_ShortVector.html">ShortVector</A>  <A HREF="Function_uniqueInsert_Structure.html">Structure</A>  <A HREF="Function_uniqueInsert_Vector.html">Vector)</A></td> </tr>
+<tr><td><b><font color=blue>upcase : </b></font>(<A HREF="Function_upcase_String.html">String</A> <A HREF="Function_upcase_Symbol.html">Symbol)</A></td> </tr>
+<tr><td><A HREF="Function_var_Number.html">var</A></td></tr>
+<tr><td><A HREF="Function_varp_Number.html">varp</A></td></tr>
+<tr><td><A HREF="Function_vectorBinaryInnerProduct_NumVector.html">vectorBinaryInnerProduct</A></td></tr>
+<tr><td><A HREF="Function_vectorBipolarInnerProduct_NumVector.html">vectorBipolarInnerProduct</A></td></tr>
+<tr><td><A HREF="Function_vectorCosineInnerProduct_NumVector.html">vectorCosineInnerProduct</A></td></tr>
+<tr><td><A HREF="Function_vectorCubeInnerProduct_NumVector.html">vectorCubeInnerProduct</A></td></tr>
+<tr><td><A HREF="Function_vectorDelete_Directory.html">vectorDelete</A></td></tr>
+<tr><td><A HREF="Function_vectorExpInnerProduct_NumVector.html">vectorExpInnerProduct</A></td></tr>
+<tr><td><b><font color=blue>vectorFill : </b></font>(<A HREF="Function_vectorFill_BitVector.html">BitVector</A> <A HREF="Function_vectorFill_FltVector.html">FltVector</A>  <A HREF="Function_vectorFill_IntVector.html">IntVector</A>  <A HREF="Function_vectorFill_Matrix.html">Matrix</A>  <A HREF="Function_vectorFill_NumMatrix.html">NumMatrix</A>  <A HREF="Function_vectorFill_NumVector.html">NumVector</A>  <A HREF="Function_vectorFill_ObjVector.html">ObjVector</A>  <A HREF="Function_vectorFill_ShortVector.html">ShortVector</A>  <A HREF="Function_vectorFill_Vector.html">Vector)</A></td> </tr>
+<tr><td><A HREF="Function_vectorInnerProduct_NumVector.html">vectorInnerProduct</A></td></tr>
+<tr><td><A HREF="Function_vectorLogInnerProduct_NumVector.html">vectorLogInnerProduct</A></td></tr>
+<tr><td><A HREF="Function_vectorQuartInnerProduct_NumVector.html">vectorQuartInnerProduct</A></td></tr>
+<tr><td><A HREF="Function_vectorQuintInnerProduct_NumVector.html">vectorQuintInnerProduct</A></td></tr>
+<tr><td><A HREF="Function_vectorSigmoidInnerProduct_NumVector.html">vectorSigmoidInnerProduct</A></td></tr>
+<tr><td><A HREF="Function_vectorSineInnerProduct_NumVector.html">vectorSineInnerProduct</A></td></tr>
+<tr><td><A HREF="Function_vectorSquareInnerProduct_NumVector.html">vectorSquareInnerProduct</A></td></tr>
+<tr><td><A HREF="Function_vectorTanInnerProduct_NumVector.html">vectorTanInnerProduct</A></td></tr>
+<tr><td><A HREF="Function_vectorTanhInnerProduct_NumVector.html">vectorTanhInnerProduct</A></td></tr>
+<tr><td><A HREF="Function_version_Context.html">version</A></td></tr>
+<tr><td><b><font color=blue>writeln : </b></font>(<A HREF="Function_writeln_ByteVector.html">ByteVector</A> <A HREF="Function_writeln_String.html">String</A>  <A HREF="Function_writeln_Text.html">Text)</A></td> </tr>
+<tr><td><A HREF="Function_year_Date.html">year</A></td></tr>
+</table>
+		    </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P>
+
+ 
+
+</BODY>
+</HTML>

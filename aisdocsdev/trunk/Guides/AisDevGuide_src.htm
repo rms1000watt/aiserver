@@ -1,0 +1,466 @@
+<html>
+<head>
+<title>Analytic Information Server Developers' Guide</title>
+</head>
+<body>
+
+<h1>1 Analytic Information Server Developers' Guide</h1>
+<h3>Overview</h3>
+The Analytic Information Server (AIS) provides access to the Analytic Information Server engine.  Besides executing
+and storing Smart Lisp Lambdas and their data, the AIS includes a Development Environment that
+allows users to compose, debug, save and restore Smart Lisp Lambdas. This AIS Developers' Guide describes the
+facilities available to the SmartLisp programmer.  After a preliminary discusssion of several important concepts
+in this section, an introduction to application development process follows (see Section 2 Getting Started).
+Section 2 is followed by a description of the built-in SmartLisp functions available to the developer (see
+Section 3 Built-in Functions).
+<p>
+<b>Lambda Message Protocol</b>
+The Lambda Message Protocol is found in a separate document named Lambda Message Protocol (AMP).  AMP is an API
+(Applications Programming Interface) that local or remote TCP/IP client applications can use to execute
+Lambdas in AIS (Analytic Information Server). Refer to this document for more information on built-in
+messages (commands) available to AIS client applications.</p>
+<p>
+<b>AIS Users' Guide</b>
+A description of the user development environment is found in yet another document named AIS Users' Guide.
+The AIS Users' Guide describes the AIS User Interface, including an Integrated Development Environment (IDE)
+and a system management module for monitoring and configuring AIS.  Please refer to this document for information
+on making your way around in the development environment.  It also includes a description of several key
+concepts including context, session, and user.</p>
+<p>
+Several concepts are essential to developing applications using AIS.  They are (pending...)</p>
+<h4>Concept1</h4>
+
+ <!-- h1 section 1 AIS Developers' Guide -->
+
+<h1>2 Getting Started</h1>
+<h3>Overview</h3>
+Here is how to build a SL application (pending...)
+<h2>2.0 Application Layout</h2>
+	
+		<h3>2.0.0 Layout Overview</h3>
+		(pending...)
+		
+<h2>2.1 Using Cabinets</h2>
+		<h3>2.1.0 Building a New Cabinet</h3>
+		(and so on...)
+
+ <!-- h1 section 2 Getting Started -->
+
+<h1>3 Built-in Functions</h1>		
+<h3>Overview</h3>
+The built-in functions provide access to the OS, ...
+
+A built-in function is invoked like any SmartLisp Lambda.  They are referred to as functions here to distinguish them
+from the Lambdas provided by the application code....
+
+<h2>3.1 AMP Related Functions</h2>
+<h3>3.1.1 buildLambdaMessage</h3>
+The <b>buildLambdaMessage</b> function (pending...) 
+(table and example...)
+
+
+<h3>3.1.2 evalAMP</h3>
+The <b>evalAMP</b> function (pending...) 
+(table and example...)
+
+
+<h3>3.1.3 getConsoleOutput</h3>
+The <b>getConsoleOutput</b> function fetches the console output that has been sent to a context.  A context
+is an instance of an application being executed.  Every context is identified by a name. For more on contexts,
+see Section 1 of the AIS User's Guide.
+This AisLisp function accepts zero, one, or two arguments as noted below.   Be warned that a very large amount
+of text may be returned.
+<br><b>Type:</b> Function
+<table  cellspacing=0 border=0 cellpadding=2 >
+<tr valign=top><td><b><em>Syntax:</em></b></td>
+<td>(getConsoleOutput  contextName  last)</td>
+</tr>
+<tr valign=top><td><b>context</b></td>
+<td>The name of the context providing the console output.  If omitted, the current context
+is selected.</td>
+</tr>
+<tr valign=top><td><b>last</b></td>
+<td>Last may be a number or a string.  If omitted, the entries since the last request are returned.
+Its values are:<br>
+&quot;all&quot; or zero: Fetch entire log.<br>
+&quot;last&quot; or -1: Fetch all entries since last request.<br>
+&quot;clear&quot; or -2: Clear the log.<br>
+N&gt;0: Last N entries to the console.
+</td>
+</tr>
+<tr valign=top><td><b>Returns</b></td>
+<td>Entries sent to console log.  Each entry is prepended with the timestamp, context name, sessionId.</td>
+</tr>
+</table>
+<p>
+<b>Note.</b> This same function may be accessed by sending an AMP message from any client.  The form of
+the call is:<br>
+_ais|getconsoleoutput|context|%s|last|%d<br>
+The field %s stands for the context name (if omitted,  the current context is selected). The field %d stands
+for a number between -2 and N as noted in the description for last above.</p>
+<p>
+<b>Examples.</b></p>
+<ul>
+	<li>(getConsoleOutput)  - Gets all entries since the last request from the currently selected context.</li>
+	<li>(getConsoleOutput #void &quot;last&quot;)	- Same as above (the hard way)</li>
+	<li>(getConsoleOutput &quot;mainContext&quot; 0) - Fetch entire console log for mainContext.</li>
+</ul>
+
+
+<h3>3.1.4 getMachineName</h3>
+The <b>getMachineName</b> function (pending...) 
+(table and example...)
+
+ <!-- h2 AMP Related -->
+
+<h2>3.2 Host Functions</h2>
+<h3>3.2.1 browse</h3>
+The <b>browse</b> function (pending...) 
+(table and example...)
+
+
+<h3>3.2.2 hostCreate</h3>
+The <b>hostCreate</b> function (pending...) 
+(table and example...)
+
+
+<h3>3.2.3 hostDestroy</h3>
+The <b>hostDestroy</b> function (pending...) 
+(table and example...)
+
+
+<h3>3.2.4 hostGetProperty</h3>
+The <b>hostGetProperty</b> function (pending...) 
+(table and example...)
+
+
+<h3>3.2.5 hostPutProperty</h3>
+The <b>hostPutProperty</b> function (pending...) 
+(table and example...)
+
+
+<h3>3.2.6 hostInvoke</h3>
+The <b>hostInvoke</b> function (pending...) 
+(table and example...)
+
+
+<h3>3.2.7 hostSend</h3>
+The <b>hostSend</b> function (pending...) 
+(table and example...)
+
+ <!-- h2 Host -->
+
+<h2>3.3 Operating System</h2>
+<h3>3.3.1 cpOSFile</h3>
+The <b>cpOSFile</b> function (pending...) 
+(table and example...)
+
+
+<h3>3.3.2 displayWorkbenchWindow</h3>
+The <b>displayWorkbenchWindow</b> function (pending...) 
+(table and example...)
+
+
+<h3>3.3.3 fileGetStatus</h3>
+The <b>fileGetStatus</b> function (pending...) 
+(table and example...)
+
+
+<h3>3.3.4 getOSDir</h3>
+The <b>getOSDir</b> function (pending...) 
+(table and example...)
+
+
+<h3>3.3.5 getTickCount</h3>
+The <b>getTickCount</b> function (pending...) 
+(table and example...)
+
+
+<h3>3.3.6 hostPutProperty</h3>
+The <b>hostPutProperty</b> function (pending...) 
+(table and example...)
+
+
+<h3>3.3.7 input</h3>
+The <b>input</b> function (pending...) 
+(table and example...)
+
+
+<h3>3.3.8 loadLib</h3>
+The <b>loadLib</b> function (pending...) 
+(table and example...)
+
+
+<h3>3.3.9 loadUtilityLambdas</h3>
+The <b>displayWorkbenchWindow</b> function (pending...) 
+(table and example...)
+
+
+<h3>3.3.10 mkOSDir</h3>
+The <b>mkOSDir</b> function (pending...) 
+(table and example...)
+
+
+<h3>3.3.11 msgbox</h3>
+The <b>msgbox</b> function (pending...) 
+(table and example...)
+
+
+<h3>3.3.12 notify</h3>
+The <b>notify</b> function (pending...) 
+(table and example...)
+
+
+<h3>3.3.13 ringBell</h3>
+The <b>ringBell</b> function (pending...) 
+(table and example...)
+
+
+<h3>3.3.14 serverDoomed</h3>
+The <b>serverDoomed</b> function (pending...) 
+(table and example...)
+
+
+<h3>3.3.15 sleep</h3>
+The <b>sleep</b> function (pending...) 
+(table and example...)
+
+
+<h3>3.3.16 system</h3>
+The <b>system</b> function (pending...) 
+(table and example...)
+
+
+<h3>3.3.17 throw</h3>
+The <b>throw</b> function (pending...) 
+(table and example...)
+
+ <!-- h2 Operating System -->
+
+<h2>3.4 Remote</h2>
+<h3>3.4.1 getHttp</h3>
+The <b>getHttp</b> function (pending...) 
+(table and example...)
+
+
+<h3>3.4.2 openContext</h3>
+The <b>openContext</b> function (pending...) 
+(table and example...)
+
+
+<h3>3.4.3 postHttp</h3>
+The <b>postHttp</b> function (pending...) 
+(table and example...)
+
+
+<h3>3.4.4 readHtmlPage</h3>
+The <b>readHtmlPage</b> function (pending...) 
+(table and example...)
+
+
+<h3>3.4.5 sendToClient</h3>
+The <b>sendToClient</b> function (pending...) 
+(table and example...)
+
+ <!-- h2 Remote -->
+
+<h2>3.5 Special-Purpose</h2>
+<h3>3.5.1 calcCumReturns</h3>
+The <b>calcCumReturns</b> function (pending...) 
+(table and example...)
+
+
+<h3>3.5.2 debugDialog</h3>
+The <b>debugDialog</b> function (pending...) 
+(table and example...)
+
+
+<h3>3.5.3 evalsInSyncLocalContext</h3>
+The <b>evalsInSyncLocalContext</b> function (pending...) 
+(table and example...)
+
+
+<h3>3.5.4 getMonthlyCumValues</h3>
+The <b>getMonthlyCumValues</b> function (pending...) 
+(table and example...)
+
+
+<h3>3.5.5 loadBrowseLambda</h3>
+The <b>loadBrowseLambda</b> function (pending...) 
+(table and example...)
+
+
+<h3>3.5.6 nextUserId</h3>
+The <b>nextUserId</b> function (pending...) 
+(table and example...)
+
+
+<h3>3.5.7 quickCalcCumReturns</h3>
+The <b>quickCalcCumReturns</b> function (pending...) 
+(table and example...)
+
+
+<h3>3.5.8 reloadLib</h3>
+The <b>reloadLib</b> function (pending...) 
+(table and example...)
+
+
+<h3>3.5.9 select</h3>
+The <b>select</b> function (pending...) 
+(table and example...)
+
+ <!-- h2 Special-Purpose -->
+
+<h2>3.6 Utilities</h2>
+<h3>3.6.1 decodeURL</h3>
+The <b>decodeURL</b> function (pending...) 
+(table and example...)
+
+
+<h3>3.6.2 encodeURL</h3>
+The <b>encodeURL</b> function (pending...) 
+(table and example...)
+
+
+ <!-- h2 Utilities -->
+ <!-- h1 3. Built-in Functions -->	
+
+<!--			
+<h3>1.2.39 logon</h3>
+<p>
+The <b>logon</b> speechAct allows a user to logon to AIS.  This logon may, or may not, be
+required by an application.  Also, an application can maintain its own authentication facility.
+Note that this is one of the few built-in commands that does not require user authentication.
+<br>
+<br><b>Type:</b> Speech Act</p>
+<table  cellspacing=0 border=0 cellpadding=2>
+	<tr valign=top><td><b><em>Syntax:</em></b></td>
+		<td>_ais<b>[]</b>logon<b>[]</b>user<b>[]</b>%s
+		<b>[]</b>passwd<b>[]</b>%s</td>
+	</tr>
+	<tr valign=top><td><b>user</b></td>
+		<td>The logon name of the user (e.g. jsmith).</td>
+	</tr>
+	<tr valign=top><td><b>passwd</b></td>
+		<td>The user's password.</td>
+	</tr>	<tr valign=top><td><b>Returns:</b></td>
+		<td>usrid<b>[]</b>%d<b>[]</b>level<b>[]</b>%d<b>[]</b>days<b>[]</b>%d<b>[]</b>
+			comment<b>[]</b>%s</td>
+	</tr>
+	<tr valign=top><td><b>usrid</b></td>
+		<td>A unique number for each authenticated user.  Note that a user (such as guest)
+			may be logged on more than once.</td>
+	</tr>
+	<tr valign=top><td><b>level</b></td>
+		<td>A number from 0-7.  Zero for no access, seven for superuser access.</td>
+	</tr>
+	<tr valign=top><td><b>days</b></td>
+		<td>Number of days until the account expires.</td>
+	</tr>
+	<tr valign=top><td><b>comment</b></td>
+		<td>A comment about this user that is inserted by the system admin when the account
+			is created.</td>
+	</tr>
+</table> -->
+	
+			
+			
+			
+			
+			
+
+<pre>
+3.1 AMP Related
+	buildLambdaMessage
+	evalAMP
+	getConsoleOutput
+	getMachineName
+3.2 Host
+	browse
+	hostCreate
+	hostDestroy
+	hostGetProperty
+	hostPutProperty
+	hostInvoke
+	hostSend
+3. Operating System
+	cpOSFile
+	displayWorkbenchWindow
+	fileGetStatus
+	getOSDir
+	getTickCount
+	input
+	loadLib
+	loadUtilityLambdas
+	mkOSDir
+	msgbox
+	notify
+	ringBell
+	serverDoomed
+	sleep
+	system
+	throw
+3.4 Remote
+	getHttp 
+	openContext
+	postHttp
+	readHtmlPage
+	sendToClient	
+3.5 Special-Purpose
+	calcCumReturns
+	debugDialog
+	evalsInSyncLocalContext
+	getMonthlyCumValues
+	loadBrowseLambda
+	nextUserId
+	quickCalcCumReturns
+	reloadLib
+	select
+3.6 Utilities
+	decodeURL
+	encodeURL
+	</pre>
+
+
+
+<!-- Sample Lambda template ... -->
+<h2>someLambda</h2>
+<p>
+The <b>someLambda</b> function ... <br>
+<br><b>Type:</b> Function</p>
+<table  cellspacing=0 border=0 cellpadding=2 >
+<tr valign=top><td><b><em>Syntax:</em></b></td>
+<td>(someLambda  extentName  extentFileName)</td>
+</tr>
+<tr valign=top><td><b>extentName</b></td>
+<td>The name of the file cabinet extent.</td>
+</tr>
+<tr valign=top><td><b>extentFileName</b></td>
+<td>The path and file name of the file cabinet extent.</td>
+</tr>
+<tr valign=top><td><b>Returns</b></td>
+<td>true</td>
+</tr>
+</table>
+<br>
+<table  cellspacing=0 border=0 cellpadding=2 >
+<tr valign=top><td><b><em>Syntax:</em></b></td>
+<td>(someLambda  extentName  extentMgrLambda)</td>
+</tr>
+<tr valign=top><td><b>extentName</b></td>
+<td>The name of the file cabinet extent.</td>
+</tr>
+<tr valign=top><td><b>extentMgrLambda</b></td>
+<td>The Lambda which will manage the file cabinet extent. 
+    It must support the API documented in Extent Manager Templates.</td>
+</tr>
+<tr valign=top><td><b>Returns</b></td>
+<td>true</td>
+</tr>
+</table>
+
+
+
+ <!-- printview -->	
+</body>
+</html>

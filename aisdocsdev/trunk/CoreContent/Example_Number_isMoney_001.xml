@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number isMoney 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isMoney</FunctionKeywords>
+		<TypeKeywords>  Number</TypeKeywords>
+		<RelatedFunctions> integer isType isObject isNumber  </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>boolean number money object    </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples determine if the arguments(i.e. Number, Integer)
+
+                    can be evaluated as a Money Data Type.
+
+
+
+
+
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(isMoney  1.23 )                </sc>]]></Expression>
+        <Note><![CDATA[A Number is not evaluated as a Money Data Type.]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(isMoney 8.00)                 </sc>]]></Expression>
+        <Note><![CDATA[An Integer is not evaluated as a Money Data Type. ]]></Note>
+        <Returns><![CDATA[ false ]]></Returns>
+        <Expression><![CDATA[ <sc>(isMoney  $1.45)                        </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[ false ]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

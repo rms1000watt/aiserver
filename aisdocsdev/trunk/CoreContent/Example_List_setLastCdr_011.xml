@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example List setLastCdr 011</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>setLastCdr</FunctionKeywords>
+		<TypeKeywords>Pair List</TypeKeywords>
+		<RelatedFunctions> setCar setCdr cdr car</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>tail ref index cdr setCdr</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ <p>The first example shows the <b>setLastCdr</b> function set the tail of a List
+                     that previously has no <b>cdr</b> value. The second example show the <b>setLastCdr</b> 
+                     function add another <b>cdr</b> value to the List. </p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define Y '( 3 4 ) )        </sc>]]></Expression>
+        <Note><![CDATA[The List has no cdr value.]]></Note>
+        <Returns><![CDATA[#&#60Pair 123456&#62  ]]></Returns>
+        <Expression><![CDATA[ <sc>(setLastCdr  Y  8)             </sc>]]></Expression>
+        <Note><![CDATA[A new cdr value is added]]></Note>
+        <Returns><![CDATA[#&#60Pair 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(cdr Y)        </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[8]]></Returns>
+        <Expression><![CDATA[ <sc>(setLastCdr  '(1  2  .  3)  22)       </sc>]]></Expression>  
+        <Note><![CDATA[The List has an existing cdr value.]]></Note> 
+        <Returns><![CDATA[#&#60Pair 234567&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60Pair 234567&#62)       </sc>]]></Expression>  
+        <Note><![CDATA[22 now becomes the last cdr of the List.]]></Note> 
+        <Returns><![CDATA[#(1  2  .  22)]]></Returns>
+        <Hints><![CDATA[none
+
+        ]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,801 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>new</Title>
+		<FunctionName>new</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>Character String Symbol Vector BitVector ByteVector IntVector ShortVector
+                       FltVector ObjVector Structure Dictionary Directory Brick ObjectRepository
+                       Matrix NumMatrix Integer Float Number Complex Boolean Lambda CpxVector</ArgumentTypes>         
+		<DataType>String Symbol Structure Dictionary Directory Vector Brick ShortVector ObjectRepository FltVector IntVector NumVector ObjVector  BitVector PcodeVector  ByteVector Matrix Lambda NumMatrix CpxVector</DataType>
+		<RelatedFunctions>string makeStructure defMethod defineStructure define makeDictionary makeLambda</RelatedFunctions>
+        <RelatedVMInstructions> vmregObjPointer </RelatedVMInstructions>
+		<HumanKeywords>new pointer create initialize</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[ 
+             <p> The <b>new</b> function creates a new instance of a specified Object Type with
+                 an initialized value </p>
+          ]]></Description>
+	<Brief>                
+	   <Overview><![CDATA[
+		<p>The <b>new</b> function creates an instance of a specified Data Type and 
+		   initializes the Object of the specified Data Type with a value. 
+        </p>
+        ]]></Overview>
+       <Overview-Structure><![CDATA[
+		<p>The <b>new</b> function creates an instance of a Structure. The new function 
+           returns a new Structure object which is formed with the specified bindings 
+           (key: value) and with the optional cdr value. Each binding {key: value} is a quoted 
+           symbol followed by a value. There may be zero or more bindings specified. The 
+           optional cdr value is preceded by the period special character 
+         </p>
+        ]]></Overview-Structure>
+        <Overview-Dictionary><![CDATA[
+		<p>The <b>new</b> function creates an instance of a Dictionary object and optionally 
+           allows you to specify initial Dictionary Bindings. The bindings (key/value) 
+           must be specified as pairs.
+         </p>
+        ]]></Overview-Dictionary>
+        <Overview-Directory><![CDATA[
+		<p>The <b>new</b> function creates an instance of a Directory object and optionally 
+           allows you to specify bindings (key: value).  A Directory key and a Directory value 
+           may be <b>any</b> Native or Object Data Type.
+         </p>
+        ]]></Overview-Directory>
+        <Overview><![CDATA[
+		<p>The <b>new</b> function returns an instance of a Vector object of the specified 
+           size and optionally initializes the Vector.
+         </p>
+        ]]></Overview>
+        <Overview-Brick><![CDATA[
+		<p>The <b>new</b> function creates an instance of a Brick. The <b>new</b> function 
+          returns a new Brick object which is formed with the specified field declarations 
+         (Name: Type: Repeats). Each field declaration (Name: Type: Repeats) is two quoted 
+          symbols followed by an integer value. There may be one or more field declarations 
+          specified.</p>
+        <p>The valid Brick field type names are as follows:</p>
+         <ul><li><b>  Boolean</b></li></ul>
+         <ul><li><b>  Character</b></li></ul>
+         <ul><li><b>  CharPointer</b></li></ul>
+         <ul><li><b>  Float</b></li></ul>
+         <ul><li><b>  FloatPointer</b></li></ul>
+         <ul><li><b>  Integer</b></li></ul>
+         <ul><li><b>  IntPointer</b></li></ul>
+         <ul><li><b>  JumpPointer</b></li></ul>
+         <ul><li><b>  Number </b></li></ul>
+         <ul><li><b>  NumPointer</b></li></ul>
+         <ul><li><b>  Object</b></li></ul>
+         <ul><li><b>  Short</b></li></ul>
+         <ul><li><b>  ShortPointer</b></li></ul>
+         <ul><li><b>  Word</b></li></ul>
+         <ul><li><b>  WordPointer </b></li></ul>
+        ]]></Overview-Brick>
+        <Overview-Matrix><![CDATA[
+		<p>The <b>new</b> function returns an instance of a Matrix object of the specified 
+           size and optionally initializes the Matrix.
+         </p>
+        ]]></Overview-Matrix>
+        <Overview-NumMatrix><![CDATA[
+		<p>The <b>new</b> function returns an instance of a NumMatrix object of the specified 
+           size and optionally initializes the NumMatrix.
+         </p>
+        ]]></Overview-NumMatrix>
+       <Overview-Lambda><![CDATA[
+		<p>The <b>new</b> function creates a new Lambda object, either an exact copy of the specified Lambda object, or a new 
+          Lambda from the specified components. The newly cloned Lambda has the same behavior and structure as the original Lambda 
+          with the exception that the cloned Lambda has a similar but distinct Pv structure. This allows cloning of Lambda objects, 
+          which have the same behavior but may have different values in their persistent variables.</p>
+		<p>Alternatively, the <b>new</b> function may create a new Lambda object from the specified components specified in the 
+          following optional arguments:  <b>{Av:}, {Tv:}, {Pv:}, {Cv:}, {Pc:}, {In:},</b> and <b>{Sc:} </b> to allow Lambda 
+          properties to  be supplied by the programmer.</p>
+        ]]></Overview-Lambda>
+       <Overview-ObjectRepository><![CDATA[
+		<p>The <b>new</b> function creates a new Object Repository, associates the Object Repository
+        with a database archive file, and allows for Brick encryption and other options. The styles of Object Repository creation 
+        are dependent upon the number and types of the arguments passed to the <b>new</b> function. </p>
+        ]]></Overview-ObjectRepository>
+      <Overview-CpxVector><![CDATA[
+		<p>The <b>new</b> function creates a new instance of a complex vector with optional 
+         initialization of the elements of the new vector. Like a pair, a list, or other vectors, 
+         a complex vector can have a tail. The tail can be of any type, but it is most often used 
+         to store a complex number. The number of complex numbers that can be stored in the 
+         vector is specified by a length. A single tilde (~) can be substituted for the length. 
+         In this case, the number of elements is determined by the number of initial values 
+         provided following the tilde. </p>
+        <p>The first two initial values specify the real part and the imaginary part of the first
+        complex number, respectively. If only one value is specified, the imaginary part is taken
+        to be zero. If no initial values are provided, the initial value of the elements in the
+        array are all zero. If fewer than len pairs of values are provided, then the initial 
+        values are repeated until all of the elements are initialized. If more than len pairs 
+        are provided, the extra values are ignored.</p>
+        ]]></Overview-CpxVector>
+       <Usage-String><![CDATA[
+       <p>The new function is used whenever you wish to create 
+           a new instance of a String. A String initializer 
+	   argument  to the <b>new</b> function forces a constant that is 9
+	   characters or less to be typed as a String as opposed to the 
+	   default type of Text.  </p>
+       ]]></Usage-String>
+      <Usage-Symbol><![CDATA[
+        <p>Use the <b>new</b> function to create a new Symbol object and assign a name to 
+           the Symbol. </p>
+        ]]></Usage-Symbol>
+     <Usage-Structure><![CDATA[
+        <p>Use the <b>new</b> function whenever you wish to create a new instance of a structure.  </p>
+     ]]></Usage-Structure>
+    <Usage-Dictionary><![CDATA[
+        <p>Use the <b>new</b> function whenever you wish to create a new instance of a dictionary. 
+          An arbitrary number of key-value constant pairs can be specified by the <b>new</b> function.</p>
+     ]]></Usage-Dictionary>
+    <Usage-Directory><![CDATA[
+        <p>Use the <b>new</b> function whenever you wish to create a new instance of a dictionary. 
+          An arbitrary number of key-value constant pairs can be specified by the <b>new</b> function.</p>
+     ]]></Usage-Directory>
+     <Usage><![CDATA[
+        <p>Use the <b>new</b> function to create a new vector object and initialize it 
+           with some values.  </p>
+     ]]></Usage>
+     <Usage-Brick><![CDATA[
+        <p>The <b>new</b> function is used whenever you wish to create a new instance of 
+           a Brick. </p>
+     ]]></Usage-Brick>
+   <Usage-Matrix><![CDATA[
+        <p>Use the <b>new</b> function to create a new Matrix object and initialize it with some values.   </p>
+     ]]></Usage-Matrix>
+   <Usage-NumMatrix><![CDATA[
+        <p>Use the <b>new</b> function to create a new NumMatrix object and initialize it with some values.   </p>
+     ]]></Usage-NumMatrix>
+     <Usage-Lambda><![CDATA[
+        <p>Use this function when a multiple copies of the Lambda are required. For instance, if one has a blank expert Lambda, 
+        and one needs expert help on two separate subjects. Make two copies of the blank expert Lambda. Teach the first expert 
+        Lambda about subject one, and teach the second expert Lambda about subject two. </p>
+     ]]></Usage-Lambda>
+     <Usage-ObjectRepository><![CDATA[
+        <p>The <b>new</b> function is used to create an Object Repository and allows the user to 
+        specify creation options. </p>
+     ]]></Usage-ObjectRepository>
+    </Brief>
+	<Syntax-String>
+	    <Expression><![CDATA[<p><b>(new String: value)</b></p>]]></Expression>
+		<Argument> 
+		  <Name>String:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory keyword</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>  
+		<Argument> 
+		  <Name>value</Name>
+		  <Note><![CDATA[
+		  <p> Any valid String, Symbol, or Text constant</p>
+          ]]></Note>
+		  <AISTypes>String, Symbol or Text</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>A String </p>
+	    ]]></Return>
+	</Syntax-String>
+   <Syntax-Symbol>
+	    <Expression><![CDATA[<p><b> (new Symbol: value)</b></p>]]></Expression>
+		<Argument> 
+		  <Name>Symbol:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory keyword</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>  
+		<Argument> 
+		  <Name>value</Name>
+		  <Note><![CDATA[
+		  <p> Any valid String, Symbol, or Text constant</p>
+          ]]></Note>
+		  <AISTypes>String, Symbol or Text</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>A Symbol object </p>
+	    ]]></Return>    	    
+	</Syntax-Symbol>
+   <Syntax-Structure>
+	    <Expression><![CDATA[<p><b>  (new Structure:  key  value ...)</b></p>
+                    <p><b>  (new Structure:  key  value ...  .  cdrvalue)</b></p>]]></Expression>
+		<Argument> 
+		  <Name>Structure:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory keyword</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>  
+    	<Argument> 
+		  <Name>key:</Name>
+		  <Note><![CDATA[
+		  <p>(optional argument, repeating) a symbolic key (the name part, or key, 
+              of the Structure binding)</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>value</Name>
+		  <Note><![CDATA[
+		  <p> If key is present, should be a value which will be paired with the preceding 
+             symbolic key. </p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory
+                       Matrix NumMatrix Integer Float Number Complex Boolean</AISTypes>
+		</Argument>
+	    <Argument> 
+		  <Name>.</Name>
+		  <Note><![CDATA[
+		  <p> (optional) period </p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+        <Argument> 
+		  <Name>cdrvalue</Name>
+		  <Note><![CDATA[
+		  <p> cdr Value (tail) should be present if the period is present </p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>A Structure. </p>
+	    ]]></Return>    	    
+	</Syntax-Structure>
+   <Syntax-Dictionary>
+	    <Expression><![CDATA[<p><b>  (new Dictionary:  key  value ...)</b></p>
+                    <p><b>  (new Dictionary:  key  value ...  .  cdrvalue)</b></p>]]></Expression>
+		<Argument> 
+		  <Name>Dictionary:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory keyword</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>  
+    	<Argument> 
+		  <Name>key:</Name>
+		  <Note><![CDATA[
+		  <p>(optional argument, repeating) a symbolic key (the name part, or key, 
+              of the Dictionary binding)</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>value</Name>
+		  <Note><![CDATA[
+		  <p> If key is present, should be a value which will be paired with the preceding 
+             symbolic key. </p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory
+                       Matrix NumMatrix Integer Float Number Complex Boolean</AISTypes>
+		</Argument>
+	    <Argument> 
+		  <Name>.</Name>
+		  <Note><![CDATA[
+		  <p> (optional) period </p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+        <Argument> 
+		  <Name>cdrvalue</Name>
+		  <Note><![CDATA[
+		  <p> cdr Value (tail) should be present if the period is present </p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>A Dictionary. </p>
+	    ]]></Return>    	    
+	</Syntax-Dictionary>
+  <Syntax-Directory>
+	    <Expression><![CDATA[<p><b>  (new Directory:  key  value ...)</b></p>
+                    <p><b>  (new Directory:  key  value ...  .  cdrvalue)</b></p>]]></Expression>
+		<Argument> 
+		  <Name>Directory:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory keyword</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>  
+    	<Argument> 
+		  <Name>key:</Name>
+		  <Note><![CDATA[
+		  <p>(optional argument, repeating) a symbolic key (the name part, or key, 
+              of the Directory binding)</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>value</Name>
+		  <Note><![CDATA[
+		  <p> If key is present, should be a value which will be paired with the preceding 
+             symbolic key. </p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory
+                       Matrix NumMatrix Integer Float Number Complex Boolean</AISTypes>
+		</Argument>
+	    <Argument> 
+		  <Name>.</Name>
+		  <Note><![CDATA[
+		  <p> (optional) period </p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+        <Argument> 
+		  <Name>cdrvalue</Name>
+		  <Note><![CDATA[
+		  <p> cdr Value (tail) should be present if the period is present </p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>A Directory. </p>
+	    ]]></Return>    	    
+	</Syntax-Directory>
+    <Syntax>
+	    <Expression><![CDATA[<p><b>   (new Vector: size)</b></p>
+                    <p><b>   (new Vector: subtype: size )</b></p>
+                    <p><b>   (new Vector: subtype: size initialValues )</b></p>]]></Expression>
+		<Argument> 
+		  <Name>Vector:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory keyword</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>  
+    	<Argument> 
+		  <Name>subtype:</Name>
+		  <Note><![CDATA[
+		  <p>An optional argument. If present it must be one of the following types:
+             Word:  
+             Bit:  
+             Integer:  
+             Float:  
+             Number:  
+             Short:  
+             Object:  
+             Pcode: 
+             Short: 
+          If omitted, then the default will be a word vector.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>size</Name>
+		  <Note><![CDATA[
+		  <p> An integer indicating how many elements in the vector. </p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>
+	    <Argument> 
+		  <Name>initialValues </Name>
+		  <Note><![CDATA[
+		  <p> An optional argument.  If present, it must be a list of initial values, each 
+              value separated by a space. If no initial values are specified, the vector 
+               is filled with zeros.  If too few initial values are specified, the vector 
+               is filled with repeating patterns of initial values. </p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory
+                       Matrix NumMatrix Integer Float Number Complex Boolean</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>A Vector Object. </p>
+	    ]]></Return>    	    
+	</Syntax>
+    <Syntax-Brick>
+	    <Expression><![CDATA[<p><b>   (new Brick:  {rowCount}  Name:Type:Repeats ... Name:Type:Repeats)
+                    </b></p>]]></Expression>
+		<Argument> 
+		  <Name>Brick:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory keyword</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>  
+    	<Argument> 
+		  <Name>rowCount</Name>
+		  <Note><![CDATA[
+		  <p>(Optional)The number of rows in the Brick.</p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>Name</Name>
+		  <Note><![CDATA[
+		  <p> The symbolic field name.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+    	<Argument> 
+		  <Name>Type</Name>
+		  <Note><![CDATA[
+		  <p>The data type of the Brick field. </p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+	    <Argument> 
+		  <Name>Repeats</Name>
+		  <Note><![CDATA[
+		  <p>The number of times the Brick field repeats (must be one or greater)</p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>A Brick. </p>
+	    ]]></Return>
+    </Syntax-Brick>
+    <Syntax-Brick>
+       <Expression><![CDATA[<p><b>   (new Brick:  Brick)</b></p>]]></Expression>
+		<Argument> 
+		  <Name>Brick:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory keyword</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>  
+    	<Argument> 
+		  <Name>Brick</Name>
+		  <Note><![CDATA[
+		  <p>An existing Brick, which is to be copied to create the new Brick.</p>
+          ]]></Note>
+		  <AISTypes>Brick</AISTypes>
+		</Argument>  
+		<Return><![CDATA[ 
+	    <p>A Brick. </p>
+	    ]]></Return>
+	</Syntax-Brick>
+    <Syntax-Matrix>
+	    <Expression><![CDATA[<p><b>   (new Matrix: size)</b></p>
+                    <p><b>   (new Matrix: subtype: size )</b></p>]]></Expression>
+		<Argument> 
+		  <Name>Matrix:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory keyword</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>  
+    	<Argument> 
+		  <Name>subtype:</Name>
+		  <Note><![CDATA[
+		  <p>An optional argument. If present it must be one of the following types:
+             normal:  
+             number:               
+          If omitted, then the default will be a normal matrix.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>size</Name>
+		  <Note><![CDATA[
+		  <p> An integer indicating how many elements in the Matrix 
+              (the rank is assumed to be one). </p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>      
+		<Return><![CDATA[ 
+	    <p>A Matrix Object. </p>
+	    ]]></Return>
+    </Syntax-Matrix>
+    <Syntax-Matrix>
+	    <Expression><![CDATA[<p><b>   (new Matrix: rank dimensions)</b></p>
+                    <p><b>   (new Matrix: rank dimensions  initialValues)</b></p>
+                    <p><b>   (new Matrix: subtype:  rank dimensions)</b></p>
+                    <p><b>   (new Matrix: subtype:  rank dimensions  initialValues)</b></p>
+        ]]></Expression>
+		<Argument> 
+		  <Name>Matrix:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory keyword</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>  
+    	<Argument> 
+		  <Name>subtype:</Name>
+		  <Note><![CDATA[
+		  <p>An optional argument. If present it must be one of the following types:
+             normal:  
+             number:               
+          If omitted, then the default will be a normal matrix.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>  
+		<Argument> 
+		  <Name>rank</Name>
+		  <Note><![CDATA[
+		  <p>An integer indicating the rank of the Matrix (0, 1, 2, or 3) </p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument> 
+	    <Argument> 
+		  <Name>dimensions</Name>
+		  <Note><![CDATA[
+		  <p>A list of from one to three integers indicating how many elements in each 
+             dimension of the Matrix </p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>
+        <Argument> 
+		  <Name>initialValues </Name>
+		  <Note><![CDATA[
+		  <p> An optional argument.  If present, it must be a list of initial values, each 
+              value separated by a space. If no initial values are specified, the Matrix 
+               is filled with zeros.  If too few initial values are specified, the Matrix 
+               is filled with repeating patterns of initial values. </p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory
+                       Matrix NumMatrix Integer Float Number Complex Boolean</AISTypes>
+		</Argument>      
+		<Return><![CDATA[ 
+	    <p>A Matrix Object. </p>
+	    ]]></Return>       
+	</Syntax-Matrix>
+    <Syntax-NumMatrix>
+	    <Expression><![CDATA[<p><b>   (new NumMatrix: size)</b></p>
+                    <p><b>   (new NumMatrix: subtype: size )</b></p>]]></Expression>
+		<Argument> 
+		  <Name>NumMatrix:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory keyword</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>  
+    	<Argument> 
+		  <Name>subtype:</Name>
+		  <Note><![CDATA[
+		  <p>An optional argument. If present it must be one of the following types:
+             normal:  
+             number:               
+          If omitted, then the default will be a normal matrix.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>size</Name>
+		  <Note><![CDATA[
+		  <p> An integer indicating how many elements in the Matrix 
+              (the rank is assumed to be one). </p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>      
+		<Return><![CDATA[ 
+	    <p>A NumMatrix Object. </p>
+	    ]]></Return>
+    </Syntax-NumMatrix>
+    <Syntax-NumMatrix>
+	    <Expression><![CDATA[<p><b>   (new NumMatrix: rank dimensions)</b></p>
+                    <p><b>   (new NumMatrix: rank dimensions  initialValues)</b></p>
+                    <p><b>   (new NumMatrix: subtype:  rank dimensions)</b></p>
+                    <p><b>   (new NumMatrix: subtype:  rank dimensions  initialValues)</b></p>
+        ]]></Expression>
+		<Argument> 
+		  <Name>NumMatrix:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory keyword</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>  
+    	<Argument> 
+		  <Name>subtype:</Name>
+		  <Note><![CDATA[
+		  <p>An optional argument. If present it must be one of the following types:
+             normal:  
+             number:               
+          If omitted, then the default will be a normal matrix.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>  
+		<Argument> 
+		  <Name>rank</Name>
+		  <Note><![CDATA[
+		  <p>An integer indicating the rank of the Matrix (0, 1, 2, or 3) </p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument> 
+	    <Argument> 
+		  <Name>dimensions</Name>
+		  <Note><![CDATA[
+		  <p>A list of from one to three integers indicating how many elements in each 
+             dimension of the Matrix </p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>
+        <Argument> 
+		  <Name>initialValues </Name>
+		  <Note><![CDATA[
+		  <p> An optional argument.  If present, it must be a list of initial values, each 
+              value separated by a space. If no initial values are specified, the Matrix 
+               is filled with zeros.  If too few initial values are specified, the Matrix 
+               is filled with repeating patterns of initial values. </p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory
+                       Matrix NumMatrix Integer Float Number Complex Boolean</AISTypes>
+		</Argument>      
+		<Return><![CDATA[ 
+	    <p>A NumMatrix Object. </p>
+	    ]]></Return>       
+	</Syntax-NumMatrix>
+   <Syntax-Lambda>
+	    <Expression><![CDATA[<p><b>    (new  anLambda ...)</b></p>]]></Expression>
+		<Argument> 
+		  <Name>anLambda</Name>
+		  <Note><![CDATA[
+		  <p>The Lambda to be copied</p>
+          ]]></Note>
+		  <AISTypes>Lambda</AISTypes>
+		</Argument>  
+    	<Argument> 
+		  <Name>...</Name>
+		  <Note><![CDATA[
+		  <p>Optional arguments to the new child Lambda within the template Lambda</p>
+          ]]></Note>
+		  <AISTypes>---</AISTypes>
+		</Argument>  
+		<Return><![CDATA[ 
+	    <p>A new copy of the {anLambda} argument</p>
+	    ]]></Return>
+   </Syntax-Lambda>
+   <Syntax-Lambda>
+	    <Expression><![CDATA[<p><b>   (new  Lambda: Av: args  Tv: vars  Pv: pvars Cv: cvars Pc: PcodeVector  Sc: tokens)</b></p>]]></Expression>
+		<Argument> 
+		  <Name>Lambda:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory keyword</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>  
+		<Argument> 
+		  <Name>Av:</Name>
+		  <Note><![CDATA[
+		  <p> (Optional) The Arguments Structure object .</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>   
+		<Argument> 
+		  <Name>args</Name>
+		  <Note><![CDATA[
+		  <p> Must follow the Av: keyword and must be a structure containing argument name symbol and value pairs. (name: value) </p>
+          ]]></Note>
+		  <AISTypes>Structure</AISTypes>
+		</Argument>  
+		<Argument> 
+		  <Name>Tv:</Name>
+		  <Note><![CDATA[
+		  <p> (Optional).The Temporary Variable Structure object.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>  
+		<Argument> 
+		  <Name>vars </Name>
+		  <Note><![CDATA[
+		  <p> Must follow the Tv: keyword and must be a structure containing temporary variable name symbol and value pairs. (name: value)</p>
+          ]]></Note>
+		  <AISTypes>Structure</AISTypes>
+		</Argument>  
+		<Argument> 
+		  <Name>Pv:</Name>
+		  <Note><![CDATA[
+		  <p> (Optional).The Persistent Variable Structure object.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>  
+		<Argument> 
+		  <Name>pvars </Name>
+		  <Note><![CDATA[
+		  <p>Must follow the Pv: keyword and must be a structure containing persistent variable name symbol and value pairs. (name: value)</p>
+          ]]></Note>
+		  <AISTypes>Structure</AISTypes>
+		</Argument>  
+		<Argument> 
+		  <Name>Cv:</Name>
+		  <Note><![CDATA[
+		  <p> (Optional).The Persistent Class Variable Structure object.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>  
+		<Argument> 
+		  <Name>cvars </Name>
+		  <Note><![CDATA[
+		  <p>Must follow the Cv: keyword and must be a structure containing persistent class variable name symbol and value pairs. (name: value)</p>
+          ]]></Note>
+		  <AISTypes>Structure</AISTypes>
+		</Argument>  
+		<Argument> 
+		  <Name>Rv:</Name>
+		  <Note><![CDATA[
+		  <p> Optional).The Register Variable Structure object</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>  
+		<Argument> 
+		  <Name>regs </Name>
+		  <Note><![CDATA[
+		  <p>Must follow the Rv: keyword and must be a structure containing register variable name symbol and data type pairs. (name: type)</p>
+          ]]></Note>
+		  <AISTypes>Structure</AISTypes>
+		</Argument>  
+		<Argument> 
+		  <Name>Pc </Name>
+		  <Note><![CDATA[
+		  <p>(Mandatory).The Pcode Vector object.</p>
+          ]]></Note>
+		  <AISTypes>PcodeVector</AISTypes>
+		</Argument>  
+		<Argument> 
+		  <Name>Sc </Name>
+		  <Note><![CDATA[
+		  <p>(Optional) The source Token Vector for formula redisplay. If present must be a vector containing source line tokens.</p>
+          ]]></Note>
+		  <AISTypes>Vector</AISTypes>
+		</Argument>  
+		<Argument> 
+		  <Name>In </Name>
+		  <Note><![CDATA[
+		  <p>Optional).The Interfaced Structure object for the Lambda.</p>
+          ]]></Note>
+		  <AISTypes>Structure</AISTypes>
+		</Argument>  
+		<Return><![CDATA[ 
+	    <p>Returns the evaluating Lambda.</p>
+	    ]]></Return>
+	</Syntax-Lambda>
+    <Syntax-ObjectRepository>
+	    <Expression><![CDATA[<p><b> (new ObjectRepository: fileName clear: key: code buffer: count)  
+                    </b></p>]]></Expression>
+		<Argument> 
+		  <Name>ObjectRepository:</Name>
+		  <Note><![CDATA[
+		  <p> Mandatory argument specifying the type of object to create: ObjectRepository.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>  
+    	<Argument> 
+		  <Name>filename</Name>
+		  <Note><![CDATA[
+		  <p>The name of the database archive file to be associated with the ObjectRepository.
+            If no such file exists, a new database archive file will be created.</p>
+          ]]></Note>
+		  <AISTypes>Text String</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>clear:</Name>
+		  <Note><![CDATA[
+		  <p> [Optional]. If the keyword clear: is present, the database archive file will be cleared immediately 
+         before any further processing. If no such file exists, a new database archive file will 
+          be created.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+    	<Argument> 
+		  <Name>key: code</Name>
+		  <Note><![CDATA[
+		  <p>[Optional]. If the keyword key: is present and it is followed by a number, the number is treated 
+         as an encryption code to use in record encrypting the database archive file. This same encryption key code must
+         be used in all future references to the ObjectRepository. If the keyword key: is followed
+         by the Boolean value true, the database archive file will be compressed when saved. If the
+         Boolean value false is present, the archive file will not be compressed. The same compression key code must be
+         used in all future references to the ObjectRepository. WARNING: If the ObjectRepository 
+        is later opened with a different key value from was specified during file creation, as a 
+        security measure, the ObjectRepository will be made unrecoverable. </p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+	    <Argument> 
+		  <Name>buffer: count</Name>
+		  <Note><![CDATA[
+		  <p>[Optional]. If the key word buffer: is present, the numeric buffered object {count} must follow. The ObjectRepository will remember the
+           last {count} objects retrieved to minimize disk access when required. As same objects are retrieved, the buffered object is returned and 
+           no disk access takes place. When a new object is retrieved, the oldest buffered object 
+           is thrown away to make room for the newly retrieved object.</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The newly created ObjectRepository, or the librarian Lambda.</p>
+	    ]]></Return>
+	</Syntax-ObjectRepository>
+</Function>

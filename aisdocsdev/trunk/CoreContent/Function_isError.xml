@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>isError</Title>
+		<FunctionName>isError</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>Character String Symbol Vector BitVector ByteVector IntVector Void
+                       FltVector ObjVector Structure Dictionary Directory Brick Pair List
+                       Matrix NumMatrix Integer Float Number Complex Boolean </ArgumentTypes>
+        <DataType>Error  </DataType>
+		<RelatedFunctions>error errorTrap isIdentical onError</RelatedFunctions>
+        <RelatedVMInstructions> none</RelatedVMInstructions>
+		<HumanKeywords>error function errorStr expression errorTrap  </HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>isError</b> function determines if the argument is has type Error.  
+            </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>isError</b> function determines if the argument is has type Error.  The 
+           <b>isError</b> function returns a Boolean value of <b>true</b> otherwise it returns <b>false</b>. 
+        </p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>Use the <b>isError</b> function when you wish to determine if an object is of type Error.
+        </p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p><b> (isError arg )</b></p>
+        ]]></Expression>
+		<Argument>
+		  <Name>arg</Name>
+		  <Note><![CDATA[
+		  <p> An argument to be checked to see if it is an Error type.</p>
+          ]]></Note>
+		  <AISTypes>Character String Symbol Vector BitVector ByteVector IntVector Void
+                       FltVector ObjVector Structure Dictionary Directory Brick Pair List
+                       Matrix NumMatrix Integer Float Number Complex Boolean</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>Returns true if  {arg} is type Error.</p>
+	    ]]></Return>
+	</Syntax>
+</Function>

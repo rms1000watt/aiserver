@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>  
+		<Title>Example String hashString 001</Title>  
+		<Template>Example</Template> 
+		<FunctionKeywords>hashString</FunctionKeywords>
+		<TypeKeywords>String Integer</TypeKeywords>	
+		<RelatedFunctions>char code</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>hash string convert hashtable</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples convert the Strings into  non-unique integer values in a hash table.
+	]]></Description>
+	<Syntax> 
+  	    <Expression><![CDATA[ <sc>(hashString "She sells sea shells") </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[1314055440]]></Returns>
+        <Expression><![CDATA[ <sc>(hashString "She sells see shells") </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[ 2106057816 ]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

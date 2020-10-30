@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Matrix ref 016</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>ref</FunctionKeywords>
+		<TypeKeywords> Matrix Text String Integer</TypeKeywords>
+		<RelatedFunctions>setq  ref fieldsOf   refValues  </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>ref reference set position</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This examples show the shorthand form of Matrix reference through
+
+                  the bracket [] operators. In this example, the Matrix value is referenced 
+
+                  by using its index. The <b>ref</b> function is used either with the Matrix Name or the 
+
+                  Matrix' Object ID.
+  
+
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(define Fruits  #(mat| "apple" "orange" "lemon"))          </sc>]]></Expression>  
+        <Note><![CDATA[Define a Matrix containing various fruit names: ]]></Note> 
+        <Returns><![CDATA[#&#60Matrix 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Food  (new Matrix: 2 2 2 "apple" "orange" "lemon" "Pair"))  </sc>]]></Expression>  
+        <Note><![CDATA[Define another Matrix.]]></Note> 
+        <Returns><![CDATA[#&#60Matrix 234567&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>Fruits [0] </sc>]]></Expression>
+        <Note><![CDATA[Accesses the Matrix value with index 0.]]></Note>
+        <Returns><![CDATA[apple]]></Returns>
+       <Expression><![CDATA[ <sc>Food [1] </sc>]]></Expression>
+        <Note><![CDATA[Accesses the Matrix value with index 1.]]></Note>
+        <Returns><![CDATA[orange]]></Returns>
+        <Expression><![CDATA[ <sc>Food [1 0]</sc>]]></Expression>
+        <Note><![CDATA[Accesses the Matrix value with index [1 0].]]></Note>
+        <Returns><![CDATA[lemon]]></Returns>
+        <Expression><![CDATA[ <sc>#&#60Matrix 123456&#62[0]        </sc>]]></Expression>
+        <Note><![CDATA[Instead of the Matrix  name, the object ID may be used to 
+
+              access the Matrix  values]]></Note>
+        <Returns><![CDATA[apple]]></Returns>
+        <Expression><![CDATA[ <sc>#&#60Matrix  123456&#62[1]      </sc>]]></Expression>
+        <Note><![CDATA[Accesses the Matrix  value with index 1.]]></Note>
+        <Returns><![CDATA[orange]]></Returns>
+        <Expression><![CDATA[ <sc>#&#60Matrix  234567&#62[1]       </sc>]]></Expression>
+        <Note><![CDATA[Accesses the Matrix  value with index 2.]]></Note>
+        <Returns><![CDATA[orange]]></Returns>
+        <Hints><![CDATA[The ref function can be used for all of the specialized Matrix types: 
+         Number Matrices. An element in a Matrix can optionally be referenced with the []
+         operator.   The brackets must contain a valid integer index to the specified Matrix
+        element.]]></Hints>
+   </Syntax>
+</Example>

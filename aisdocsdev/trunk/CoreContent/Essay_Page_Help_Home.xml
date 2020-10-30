@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Essay SYSTEM "../DTD/Essay.dtd">
+<Essay>
+	<KnowledgeBase>
+	    <Title>AIS New Help Home</Title>
+		<Topic>AIS</Topic>
+		<SubTopic>Analytic Information Server</SubTopic>
+		<HumanKeywords>AIS Lisp Programming Artificial-Intelligence</HumanKeywords>
+	</KnowledgeBase>
+	<Section>
+	    <Heading>Introducing: Analytic Information Server&amp;trade</Heading>
+		<Description><![CDATA[
+			<P>
+			Analytic Information Server&trade;(AIS) is an analytic database designed to store massive amounts of heterogeneous data, 
+			upon which complex computer science algorithms are to be employed.  
+			The goal is to convert data, whose information content is a mystery, into data whose information content is understood.
+			</P>
+			<P>
+			The principle component of data analysis is the "Lambda". 
+			AIS is a database designed specifically for the easy storing and retrieval of Lambdas. 
+			AIS Lambdas are Internet aware programs, which are Internet mobile across copies of the AIS engine. 
+			Upon execution, within an instance of the AIS engine, 
+			Lambdas execute at near native machine register speeds - greatly exceeding the execution speeds of C programs.
+			</P>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>Internet Services</Heading>
+		<Description><![CDATA[
+			<P>
+			Each instance of the AIS engine attaches to a user defined TCP/IP port, 
+			making each instance of the AIS engine a web analytic server. 
+			AIS Lambdas can serve their analytic reports directly to a web browser or to any other program, 
+			which can open a TCP/IP connection. Pure HTML, XML, or a proprietary binary protocol is supported; 
+			and, each of these protocols can be used to invoke individual Lambdas residing on available AIS engines. 
+			Furthermore, Lambdas in one instance of the AIS engine can invoke Lambdas in any other available AIS engine connected by TCP/IP. 
+			Each instance of the AIS engine can support multiple Lambda contexts, each running on its own machine thread.
+			</P>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>Fast Virtual Machine</Heading>
+		<Description><![CDATA[
+			<P>
+			AIS supports an ultra-fast register virtual machine with a proprietary Just-In-Time compiler (JIT). 
+			The AIS virtual machine is designed to support fast algorithm development as well as ultra-fast algorithm execution. 
+			The VM accommodates these two design goals by supporting four well-defined instruction sets.
+			</P>
+			<ul>
+				<li>1.&nbsp;&nbsp;&nbsp;Generic Instructions for rapid algorithm development (which execute at 1/10th the speed of C).</li>
+				<li>2.&nbsp;&nbsp;&nbsp;Native Instructions (which execute at near the speed of C).</li>
+				<li>3.&nbsp;&nbsp;&nbsp;Register Instructions (which execute at 3 to ten times the speed of C). </li>
+				<li>4.&nbsp;&nbsp;&nbsp;Vector Processor Instructions (which execute at 7 to fifteen times the speed of C).</li>
+			</ul>
+			<P>
+			AIS Lambda development begins with the generic instructions until the algorithm "proof of concept" is attained 
+			followed by conversion of the bottleneck routines into native, register, or vector instructions for ultra-fast algorithm execution.
+			The AIS JIT's drawback is Lambda bloat. 
+			A great deal more information is saved about each Lambda than in a standard C binary program executable. 
+			This is not a terrible problem, since AIS is a high volume database, the data size dwarfs any possible code bloat. 
+			Another drawback is that Lambda invocation runs at approximately 50% of the speed of C function invocation 
+			- more information means there is a longer set up time to invoke an Lambda than a C binary function. 
+			This is not a terrible problem, since most ultra-fast algorithms must be code generated in linear layout, 
+			without too many embedded function calls, to avoid cache hits. For extremely fast algorithm execution, 
+			algorithms should fill up registers, L1, L2, and L3 cache with as few interruptions as possible.
+			</P>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>How does Analytic Information Server&amp;trade work?</Heading>
+		<Description><![CDATA[
+			<P>
+			AIS supports an ultra-fast register virtual machine with a proprietary Just-In-Time compiler (JIT). 
+			The AIS virtual machine is designed to support fast algorithm development as well as ultra-fast algorithm execution. 
+			The VM accommodates these two design goals by supporting four well-defined instruction sets.
+			</P>
+			<ul>
+				<li>1.&nbsp;&nbsp;&nbsp;Generic Instructions for rapid algorithm development (which execute at 1/10th the speed of C).</li>
+				<li>2.&nbsp;&nbsp;&nbsp;Native Instructions (which execute at near the speed of C).</li>
+				<li>3.&nbsp;&nbsp;&nbsp;Register Instructions (which execute at 3 to ten times the speed of C). </li>
+				<li>4.&nbsp;&nbsp;&nbsp;Vector Processor Instructions (which execute at 7 to fifteen times the speed of C).</li>
+			</ul>
+			<P>
+			AIS Lambda development begins with the generic instructions until the algorithm "proof of concept" is attained 
+			followed by conversion of the bottleneck routines into native, register, or vector instructions for ultra-fast algorithm execution.
+			The AIS JIT's drawback is Lambda bloat. 
+			A great deal more information is saved about each Lambda than in a standard C binary program executable. 
+			This is not a terrible problem, since AIS is a high volume database, the data size dwarfs any possible code bloat. 
+			Another drawback is that Lambda invocation runs at approximately 50% of the speed of C function invocation 
+			- more information means there is a longer set up time to invoke an Lambda than a C binary function. 
+			This is not a terrible problem, since most ultra-fast algorithms must be code generated in linear layout, 
+			without too many embedded function calls, to avoid cache hits. For extremely fast algorithm execution, 
+			algorithms should fill up registers, L1, L2, and L3 cache with as few interruptions as possible.
+			</P>
+	    ]]></Description>
+	</Section> 
+	<Section>
+	    <Heading>Analytic Information Server&amp;trade Engine Architecture</Heading>
+		<Description><![CDATA[
+			<P>
+			Analytic Information Server&trade; supports multiple concurrent users, transaction rollback with no arbitrary 
+			limitation on the size of a transaction, password protected data security with automatic record 
+			compression and encryption, data recovery, and a runtime dynamic database schema at each location.
+			</P>
+			<P>
+			AIS is agnostic concerning programming paradigms, virtual machines, and programming languages. 
+			AIS provides a built-in AIS Lisp compiler. Multiple virtual machines are supported, 
+			in fact a parent Lambda can run on one virtual machine while its child Lambda can run on another. 
+			Also, an Lambda can serve as a virtual machine for any other Lambda. 
+			There is built-in support for functional programming, object oriented programming, rule based programming, and Lambda oriented programming. 
+			Also supplied is an AIS JavaScript compiler, and an AIS HTML/XML compiler.
+			</P>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>Adaptive Intelligence: Why You Need It</Heading>
+		<Description><![CDATA[
+			<P>
+			AIS technology represents a significant step forward in the use of  "Intelligent Lambdas" 
+			in integrating both existing and new distributed applications with "Adaptive Intelligence".
+			Adaptive Intelligence allows applications to identify previous patterns and relationships 
+			in a user's interaction history and then use this new information to alter the application's 
+			responses for a more effective, personal user experience. It's the key to retaining customers 
+			and ensuring a greater share of their business over time by developing personalized relationships.  
+			Increased knowledge about users quickly translates to better customer service, more opportunities 
+			to cross sell services and products, and ultimately improved results.
+			</P>
+			<P>
+			An application with a personalized, responsive interface is compelling. People will 
+			return to a Web site which is different with each visit. Static web pages bore people. 
+			Students proceed at a faster rate when the application reconfigures as the person learns. 
+			Data mining is more accurate when the mining application adapts to feedback results. 
+			Kids retain interest in games which constantly reconfigure to match the player's skill 
+			level and past game experiences.
+			</P>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>Built-in Functions</Heading>
+		<Description><![CDATA[
+			<P>
+			Here are links to AIS Built-in Functions grouped according to Data Type.
+			</P>
+			<P>
+			<!--docscript>(aisRefGuide.functionLinkTable)</docscript-->
+			</P>
+	    ]]></Description>
+	</Section>
+	<Section>
+	    <Heading>Built-in Object</Heading>
+		<Description><![CDATA[
+			<P>
+			Here are links to the functions of the AIS Built-in Objects.
+			</P>
+			<P>
+			<!--docscript>(aisRefGuide.dataTypeLinkTable)</docscript-->
+			</P>
+	    ]]></Description>
+	</Section> 
+	<Section>
+	    <Heading>Virtual Machine Instructions</Heading>
+		<Description><![CDATA[
+			<P>
+			AIS Lambdas are designed to be write-once-run-anywhere executable objects. 
+			This is accomplished via the virtual machine concept of software Lambda execution. 
+			Lambda virtual machines are designed to be mapped onto the actual host microchip at the server location, 
+			providing faithful Lambda execution wherever the Lambda may travel on the Internet. 
+			There are currently several virtual machines operating within Analytic Information Server. 
+			The DRM virtual machine uses a Dynamically typed Register Machine model to provide portable Lambda execution 
+			from high level dynamically typed instructions all the way to super fast microchip-level register execution. 
+			The DRM virtual machine runs in emulation mode during the testing and debug phases of Lambda development, 
+			and there is an AIS Lambda debugger available for Lambdas running on this virtual machine. 
+			During the final release phases of Lambda development, DRM virtual machine Lambdas are automatically converted 
+			to the NATIVE virtual machine on the host computer, using the just-in-time compiler. 
+			The NATIVE virtual machine is a faithful machine language translation of the execution rules in the DRM virtual machine 
+			onto the actual host microchip at the server location. 
+			NATIVE virtual machine execution runs at microchip-level execution speeds.
+			</P>			
+			<P>
+			<!--docscript>(aisRefGuide.vmLinkTable)</docscript-->
+			</P>
+	    ]]></Description>
+	</Section>
+</Essay>

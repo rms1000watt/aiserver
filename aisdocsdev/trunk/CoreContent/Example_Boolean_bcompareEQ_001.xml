@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Boolean bcompareEQ 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>bcompareEQ</FunctionKeywords>
+		<TypeKeywords>Integer Boolean</TypeKeywords>
+		<RelatedFunctions>bcompare bcompareNE bcompareGT bcompareGE bcompareLT  bcompareLE</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare Lambda equal boolean</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>bcompareEQ</b> function to compare two objects and return
+
+
+
+
+
+
+                  the Boolean value, true or false.  
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+(bcompareEQ #\c #\d)         </sc>]]></Expression>
+        <Note><![CDATA[Character and Integer values are Boolean values.]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+ 	    <Expression><![CDATA[ <sc>
+(bcompareEQ 1 2)</sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(bcompareEQ true true)  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

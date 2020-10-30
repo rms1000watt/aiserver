@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Directory map 003</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>map</FunctionKeywords>
+		<TypeKeywords>Directory  </TypeKeywords>
+		<RelatedFunctions>mapc makeDirectory</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>map mapc copy process</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines a Directory and applies the <b>add1</b>
+                 function to each element of the Directory using the  <b>map</b> function.   
+
+
+                
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define Student  #{dir| Amy: 5  Tom: 6  Mary: 5 John: 6})</sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60Directory 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq  Graduated  (map  add1  Student))  </sc>]]></Expression>
+        <Note><![CDATA[Sets the resulting values of the Directory "Student" to the new Directory "Graduated".]]></Note>
+        <Returns><![CDATA[#&#60Directory 23456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>  (display Graduated)  </sc>]]></Expression>
+        <Note><![CDATA[Displays the new values of the "Graduated" Directory.]]></Note>
+        <Returns><![CDATA[#{Amy: 6 Tom: 7 Mary: 6 John: 7}true]]></Returns>
+        <Hints><![CDATA[<p>The <b>apply</b> function is ideal for situations that require updating the 
+                values in the entire Directory.  Updating Directory items is normally done by 
+                specifying the key, and cannot be indexed.  </p>
+ ]]></Hints>
+   </Syntax>
+</Example>

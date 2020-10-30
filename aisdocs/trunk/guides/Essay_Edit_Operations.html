@@ -1,0 +1,690 @@
+<html><head>
+<link rel="stylesheet" type="text/css" href="../CoreContent/help.css">
+<title>AIS Essay Template</title></head>
+<!--Page Parameters -->
+<body bgcolor="#FFFFF0" text="#000000" LINK="#0000ff">
+<a name="topage"></a>
+<a href="top"></a>
+<p>&nbsp;</p>
+<font color="#000080"><h1>Edit Operations</h1></font>
+<p>&nbsp;</p>
+<ul>
+<li><a href="#S1"><FONT SIZE=2>1.1 Concepts</font></a></li><li><a href="#S2"><FONT SIZE=2>2 Edit Operations</font></a></li><li><a href="#S3"><FONT SIZE=2>2.5 Edit Summary</font></a></li>
+</ul>
+<P><H2><A NAME="S1"></A>1.1 Concepts</H2></P>		
+		    <div class="h2section" id="1.1 Concepts">
+			<h3>Overview</h3>
+			The Agent Information Server (AIS) Editor, AisEd, is a fast, flexible screen editor with the following features:
+			<ul>
+				<li>Edits large files gracefully.</li>
+				<li>Commands to insert, move, delete, undo, redo</li>
+				<li>AisC, AisLisp, AisJavaScript syntax highlighting</li>
+				<li>Matches parens, braces, brackets</li>
+			 	<li>Supports word wrap, tabs, row attributes (e.g. line numbers)</li>
+			 	<li>Toolbars, menus, customization (tab width, font size)</li>
+			 	<li>Context menus including function/agent list by line number</li>
+			 	<li>Find/replace dialog</li>
+			 	<li>Fixed-width fonts only. No font styles within a row (bold, underline...)</li>
+				<li>Configuration file to set font size, tab width, word wrap, window position, size, line attributes(pending)</li>
+			</ul>
+			<p>
+			AisEd uses a very small character representation. Each newline terminated row is stored in a dynamic array
+			of 16-bit unsigned integers (ushort), one per character.  Each ushort holds a character
+			code + color attributes.  The array is always terminated by a newline.  In the display, a row may
+			wrap (if wrap enabled) so that it is displayed on one or more lines in the edit window.</p>
+			<p>
+			The AisEd Users Guide describes the Editor's User Interface.  After a preliminary discussion of several important
+			concepts in the next section, the third section lists the edit commands.</p>
+			
+			<h2>1.0 Screen Editor Concepts</h2>
+			Several important concepts are described here.  These concepts are used throughout the rest of the document.
+			<h3>1.0.0 Cursor</h3>
+			<p><b></b>
+			A &quot;cursor&quot; appears as a movable arrow or vertical line (an I-beam cursor) in the display window.
+			It changes from an arrow to an I-beam cursor when the cursor is in the AisEd edit window.  It may be moved
+			using a pointing device as described in the next section.</p>  
+			<p><b>Edit Cursor.</b>
+			Besides the I-beam cursor, a thicker blinking cursor may be set just in front of a character within the edit
+			window as described in the next section.  The following points regarding the &quot;edit cursor&quot; should be
+			kept in mind: </p>
+			<ul>
+				<li>The edit cursor always appears in front of a character, never at the end of a line.</li>
+				<li>When typing in characters, they are inserted just in front of the current edit cursor position and then the
+				edit cursor is moved forward to the next character.</li>
+				<li>Pressing the enter key or return key causes the edit cursor to move to the next line of text.</li>
+				<li>The edit cursor cannot be moved past the end of a line of text or past the last line of text.</li>
+			</ul>
+			<h3>1.0.1 Pointing Device</h3>
+			<p><b>Mouse</b>
+			A pointing device, such as a mouse or track-ball, is used to move the cursor around in a text document.  The following
+			documentation replaces the somewhat unwieldy term, pointing device, with the more common term, &quot;mouse&quot;. The mouse,
+			or other pointing device, allows the user to control the position of a &quot;cursor&quot; on the display.  The following
+			discussion assumes that your pointing device has at least two buttons.</p>
+			<p><b>Mouse Buttons.</b>
+			One of these buttons is referred to in the documentation below as the &quot;left&quot; button and one is referred to
+			as the &quot;right&quot; button (for left-handed users, the so-called &quot;left&quot; button might actually be on the
+			right side of the pointing device and vice versa).  Regardless of their physical position, the standard button used
+			in selecting a position in the text will be referred to as the left button and the alternate button will be referred to as
+			the right button.</p>
+			<p><b>Click.</b>
+			Click refers to positioning the I-beam cursor over a character in the text, and
+			quickly pressing and then releasing the left button without moving the cursor.  This operation repositions the
+			blinking edit cursor in front of a nearby character.
+			</p>
+			<p><b>RtClick.</b>
+			RtClick refers to performing a Click using the right or alternate button.  In the editor, a RtClick opens a
+			&quot;context menu&quot; which is a pop-up menu that is specific to the editor.</p>
+			
+			<p><b>DblClick.</b>
+			A &quot;DblClick&quot; refers to performing a standard Click two times in rapid succession without
+			moving the cursor.  In the editor, DblClick selects the current word as described below.</p>
+			
+			<p><b>Drag</b>
+			&quot;Drag&quot; refers to holding down the left (i.e., standard) button while moving the cursor to a new location
+			in the text.  In the editor, dragging the mouse selects a section of text.</p>
+			
+			<h3>1.0.2 Selected Text.</h3>
+			<p>
+			A portion of text can be selected as follows (1) click at the beginning of the text area, (2) move the I-beam cursor
+			the end of the text area, depress the shift button, and Click.  Alternatively, you may drag the cursor across the
+			area to be selected.  The cursor may be moved up or down thru the text.  Text may also be selected by depressing
+			the shift button while pressing any of the keys that move the cursor.  For example, hold down the shift key while
+			pressing the PageDown key to select the next page of text.</p>
+			<p>
+			The selected text is shown with white characters on a dark blue background.  Selected text does not
+			refer to any other type of highlighting.  Other types of highlighting, such as blocks of text between brackets,
+			are denoted by a gray background.   These other blocks of text should not be confused with selected text.</p>
+			
+			<p><b>Select.</b>
+			Sometimes the word Select is used in place of Click when referring to
+			pressing the left button.  We avoid this use of the word Select (although we may slip up at times).</p>
+			
+			<h3>1.0.3 Keyboard Focus</h3>
+			<p>
+			A &quot;desktop&quot; (i.e., a display) may contain several text windows that can process a key press. Most notably,
+			all text input windows can accept a key press. But only one of all the windows will process a given key press
+			(There are a few exceptions, but it is close enough for this discussion). The text window that has
+			&quot;keyboard focus&quot; is the one that receives the key press. Typically, a visible edit cursor (a blinking
+			vertical bar) indicates that the edit window has the keyboard focus.</p>
+			<p>
+			The keyboard focus is moved to the edit window by Clicking (see Click above) anywhere inside the text edit
+			area.</p>
+			<p>
+			<em>Some mouse operations and some keyboard presses will not work until the editor gets
+			keyboard focus.</em>  Specifically, a context menu or dialog depends upon which, if any, box has
+			focus. If a menu or dialog does not work, make sure that the text window has focus.</p>
+			
+			<h3>1.0.4 Viewports and Scrolling</h3>
+			<p><b>Viewport.</b>
+			Think of the display region as a huge rectangular canvas that stretches from the top line of text
+			(X = Y = 0) to the end of the last line of text (X = max line width, Y = last line of text).
+			For more than a small amount of text, the entire canvas cannot be viewed at once.  Rather, a small
+			window, called the viewport, can be moved around on the canvas using the scroll bars on the right
+			and on the bottom of the viewport.  The viewport can be moved over the top of the underlying
+			canvas by moving the cursor past one edge of the viewport or by using the mouse to scroll up
+			or down.  The size of the viewport can be changed by dragging one edge of the viewport to a
+			new position.</p>
+			<p>
+			<b>Scrollbars.</b>
+			If the viewport is not as tall as the underlying canvas, a scroll bar appears on the right.  The
+			viewport vertical position is noted by a dark square in the scroll bar.  If the dark square is
+			at the top of the scroll bar, the top lines of text appear in the scroll bar.  Similarly, if the
+			viewport is not as wide as the underlying canvas, a scroll bar appears at the bottom.  The viewport
+			horizontal position within the canvas is noted by a dark square in the scroll bar.
+			Scrolling can be done incrementally or by page where a page is the number of lines or characters
+			displayed in the viewport.  To move the viewport incrementally, position the arrow cursor over the
+			dark square in the scroll bar and drag the square to a new position in the scrollbar.  To move the
+			viewport by a page, click on the scroll bar on one side or the other of the dark square in the
+			scrollbar.</p>
+			
+			<h3>1.0.5 Title and StatusBar</h3>
+			<p>
+			The StatusBar at the bottom of the window displays temporary messages on the left and warning
+			messages (in red) in the middle  The current text cursor position is shown on the right.</p>
+			
+			<h3>1.0.6 Pages</h3>
+			The editor allows several documents to be edited at the same time.  Each document has a &quot;tab&quot;
+			at the top. A tabbed document is referred to as a &quot;Page&quot;.   If several documents have been opened,
+			several Pages will appear.  If no document is opened, a Page named &quot;Untitled&quot; will appear.
+			A hidden Page may be brought to the front by clicking on its tab at the top or by pressing Ctrl-Tab.
+			A Page refers to a tabbed document but page (lower-case p) refers to the number of visible lines currently
+			shown in a document as noted below.
+			
+			<h3>1.0.7 Dialogs</h3>
+			A pop-up dialog is a separate window that pops up to provide a warning or to gather information required
+			to carry out an operation.  Dialogs can be either modal or non-modal.  A modal dialog disables
+			all other windows.  The user must respond to the dialog and then close it prior to interacting
+			with any other window.  A non-modal dialog does not disable the other windows.  As an example,
+			the Replace dialog is modal.  One may find and/or replace one or more instances of a phrase in
+			a text window, but the text cannot otherwise be modified until the replace dialog is closed.
+			The editor dialogs are all modal.
+			
+			<h3>1.0.8 Context Menu</h3>
+			The text window includes a hidden menu, called a context menu, that is made visible by a RtClick anywhere
+			on a Page.  These context menus provide an alternate way to launch operations rather than using
+			just the menu or the toolbar at the top.
+			
+			<h3>1.0.9 Menus</h3>
+			The items in a menu are revealed by Clicking on the menu.  Some menu items have a small right
+			arrow on the right.  By Clicking on this arrow, yet another submenu appears.  Specific menus
+			are described in the sections below.
+			
+			<p><b>Disabled items.</b>
+			At times a menu item or a toolbar button is disabled.  When a menu item is disabled, it appears as
+			a gray version of its normal appearance.  The circumstances under which a menu item is disabled is
+			defined in the description of the menus below.</p>
+			
+			<h3>1.0.10 Toolbar</h3>
+			<p>
+			A &quot;toolbar&quot; is a set of little pictures, referred to as &quot;icons&quot; just below the menus
+			at the top of the editor window.  It is possible to position the mouse over the top of an icon and then
+			activate its corresponding edit operation it by  pressing the left mouse button.  For example, clicking on
+			the X icon closes the document in the current Page.</p>
+			
+			<h3>1.0.11 Fly-over help</h3> 
+			<p>
+			Standard icons that are familiar to most Windows users are employed whenever possible.  Nevertheless,
+			the function associated with some icons may not be obvious to the user.  If the cursor is
+			held over a toolbar button for a second or more, a short description explaining the button's function
+			appears until the cursor is moved away from the icon.  The short description also appears in the status bar
+			at the bottom of the edit window.</p>
+			
+			<h3>1.0.12 Clipboard</h3>
+			<p>
+			Most modern operating systems, including Microsoft Windows, Linux, and Unix, provide a &quot;Clipboard&quot;.
+			The clipboard may be used to save a hunk of text for later use.  By selecting text and then pressing Ctrl-C
+			(copy) or Ctrl-X (cut), the selected text is saved in the clipboard.  Any existing text in the clipboard
+			is lost. By pressing Shift-Ctrl-C (append) or Shift-Ctrl-X (move) the selected text is appended to the contents
+			of the clipboard.  By convention, lines in the clipboard are terminated by a CR-LF.</p>
+			
+			<h3>1.0.13 Formatting Characters</h3>
+			<p>
+			The editor utilizes four formatting characters, tab, carriage return, newline, null.  These characters are
+			not normally visible in the text.  They appear as one or more spaces in the display.</p>
+			<p>
+			<b>Tabs.</b> A tab character
+			can appear anywhere in a line.  It is displayed as a set of space characters that extend to the next tab stop.  For
+			example, if the tab stop width is four, a tab starting in the first, second, or third column extends to the end of the
+			fourth column.  The first tab stop is always at the first column.  The distance between tab stops is adjustable as noted
+			in the edit operation section below.</p>
+			<p>
+			<b>Newlines and Carriage Returns</b> A newline marks the end of a row.  A row can be displayed on one or more lines
+			of the display.  The last character of every row is a newline except the last row which is terminated by a null.
+			An optional Carriage Return can precede the newline, but it is neither necessary nor desirable.</p>
+			<p>
+			<b>Null Character.</b>
+			A null marks the end of the last row of text.  The last row never contains a newline and a null character cannot appear
+			in any other position in the text.  An empty document consists of a single row containing a single null character.
+			</p>
+			<h3>1.0.14 Words</h3>
+			<p>
+			A word is a sequence of one or more alphanumeric characters.  Alphanumeric characters consist of alphabetic characters
+			of either case, the digits from 0 to 9 and the underscore.  The beginning of a word is at the first character on
+			a line or the first alphanumeric character past any non-alphanumeric character.  The end of a word is the first
+			non-alphanumeric character past the end of a word.  The newline on the end of a line and the null at the end of
+			the text count as non-alphanumeric characters.</p>	 
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="S2"></A>2 Edit Operations</H2></P>		
+		    <div class="h2section" id="2 Edit Operations">
+				Edit operations are roughly divided into four categories:
+			<ul>
+				<li><b>Insert.</b> Insert operations, such as paste, indent, comment, etc. insert text into the edit buffer.
+				Insert and delete operations change the state of the editor so that some previous state may no longer be
+				valid.	Saved cursor positions and redo operations may no longer be valid after an insert or delete.
+				Insert operations, including paste, also delete any currently selected text.</li>
+				<li><b>Delete.</b> Delete operations, such as cut, unindent, Delete, BackSpace, etc. remove text from
+				the edit buffer.  Like insert, delete operations can affect the current state.  Both insert and delete
+				operations are distinguished from other operations in that they are saved on an undo stack so that they
+				may be reversed as described below.  Insert operations may include a change in the cursor position.
+				For example, the cursor is moved forward by one character when inserting a character.</li>
+				<li><b>Move.</b> Move operations move the blinking cursor to a new position in the text.  Subsequent
+				operations, such as delete, select, or insert use the current cursor position as a reference.  By
+				depressing the shift key, most move operations select text as well as move the cursor.  If the shift
+				key is not pressed, any selected text is deselected.  Move operations are distinguished in that they
+				do not modify the text so cursor move operations do not have a corresponding undo operation.  However,
+				&quot;large&quot; moves (more than a few lines) are saved in a cursor stack.  The user may move back
+				to the vicinity of the last cursor position after moving more than a few lines.  Similarly, after
+				moving to a previous position, the user may also move back to the vicinity of the original position.
+				Currently, saved positions do not take into account large deletes or inserts made in the interim.</li>
+				<li><b>Selected Text.</b> Move operations may select text as noted above.  In addition, several edit
+				operations operate on selected text, including SelectAll, Copy, Append, Paste, and Select text between
+				matching parens.</li>
+				<li><b>Dialogs</b> Several edit operations may open a dialog to allow you to enter more information.
+				Each dialog is discussed in more detail below.  Some dialogs, such as Replace Dialog, may lead to an
+				insert or delete or both.</li>
+				<li><b>Undo.</b> Undo reverses the last insert or delete operation. If the cursor has been moved since
+				the last insert or delete, the cursor is moved back to is position as of the last insert or delete.
+				After an insert operation, Undo deletes the inserted text.  After a delete operation, Undo inserts the
+				deleted text. If no intervening insert or delete operations have been performed since the last undo,
+				redo will repeat the original insert or delete operation.</li>
+				<li><b>Format and SwitchPanes</b> Several additional operations are available to format the text.
+				These include insert operations that insert text such as comment and indent, delete operations such as
+				unindent and uncomment that delete text.  It also includes operations that change the appearance of
+				the displayed text.</li>
+			</ul>
+			<p>
+			<b>Alerts.</b> If an operation cannot be performed, a warning message appears in red in the status bar at the
+			bottom of the edit window and a warning sound is generated.  For example, any attempt to move the cursor up
+			when the cursor is already at the top of the edit text will generate an alert.  Most systems allow the
+			audible alert to be turned down or turned off if you do not wish to have an audible alert.</p>
+			Most common edit operations can be initiated in several different ways:
+			<ul>
+				<li><b>Menu.</b> The &quot;file&quot; and the &quot;edit&quot; menus at the top of the edit window
+				contain edit operations.  Click on the menu and then click on an edit operation in the drop-down menu.</li>
+				<li><b>Context Menu.</b> Right-click in an edit Page to bring up the context menu.</li>
+				<li><b>Toolbar.</b> The toolbar is just below the edit menu in the edit window.  Move the mouse over
+				any toolbar icon to view its function.</li>
+				<li><b>Mouse.</b> The mouse (any pointing device) can move the cursor, scroll the viewport, select text,
+				or show the context menu.</li>
+				<li><b>Keyboard.</b> Edit operations may be initiated by pressing a cursor key, a function key, or
+				by holding down the Ctrl key while pressing down any other key.  Not all combinations of Ctrl, Shift, and
+				a key press are used.  A complete list is provided below.</li>
+			</ul>
+			
+			<h2>2.1 Menu Operations</h2>
+			Many edit operations can be performed from the menus at the top of the edit pane.  They are listed here
+			and described in more detail in the operation summary below.
+			<h3>2.1.0 File</h3>
+			The following edit operations are found in the File drop-down menu:
+			<ul>
+				<li><b>New.</b> Open a new, empty document in an new edit Page with the title &quot;Untitled&quot;.  If
+				a document named &quot;Untitled&quot; is already open, focus is moved to the Untitled Page.</li>
+				<li><b>Open.</b> A file selection dialog appears.  You may browse files stored in the file system and
+				select a file. The files may be filtered to just show text files or source-code files by selecting a
+				filter from the &quot;Files of Type:&quot; drop-down combo box at the bottom of the file selection dialog.</li>
+				<li><b>Save.</b> While editing a file, the changes are made to an image of file saved a portion of the
+				computer's memory allocated to hold this image.  All changes to this image if the program is unexpectedly halted
+				or if power to the computer is lost.  The memory image may be saved on disk by clicking on Save.  The
+				text saved in a file on the disk will persist even if the program is shut down or if power to the computer
+				is turned off. Save often!</li>
+				<li><b>SaveAs.</b> A file selection dialog appears.  You may navigate to a new directory, enter a file
+				name in the &quot;File Name&quot; text-input bar, and then select save to file on disk.</li>
+				<li><b>Print.</b> Print prints the text on a local printer if one is available.  The text is printed
+				in black on white.  The pages are numbered at the bottom.</li>
+				<li><b>Close.</b> Close removes the currently selected edit Page from the editor.  If any changes have
+				been made to the text, a dialog is shown to see if you would like to make the changes to the file on
+				disk.</li>
+				<li><b>Exit.</b>  The editor is shut down. If changes to any Page have been made since the last Save,
+				a dialog is shown for each modified edit Page to see if you would like to save the changes that have been made.</li>
+			</ul>
+			<h3>2.1.1 Edit Menu</h3>
+			The following edit operations are found in the Edit drop-down menu:
+			<ul>
+				<li><b>Undo.</b> A previous insert or delete operation can be reversed by clicking on Undo.  An set
+				of insert or delete operations are combined into a single undo operation to make it easier to quickly undo
+				a set of related operations.  The number of previous edit operations that can be undone is a configurable
+				parameter.  Note that memory is consumed by each saved operation in the undo stack, so the number of saved
+				operations in the undo stack should be limited.</li>
+				<li><b>Redo.</b> After an undo, but before any subsequent insert or delete operations, redo repeats the
+				original insert or delete.  A set of related undo operations can also be reversed by a block redo operation.</li>
+				<li><b>Copy.</b> Selected text, if any, is copied into a &quot;clipboard&quot;.  The current text in the
+				clipboard is lost.  If you wish to append text to the clipboard, use Ctrl-Shift-C.  An alert is generated if
+				no text is currently selected.</li>
+				<li><b>Cut.</b> Selected text, if any, is moved from the text buffer to the &quot;clipboard&quot;.  The current
+				text in the clipboard is lost.  If you wish to append the selected text to the contents of the clipboard, use
+				Ctrl-Shift-X.  An alert is generated if	no text is currently selected.</li>
+				<li><b>Paste.</b> Paste inserts the text saved in the clipboard into the edit text at the current cursor
+				position.  Note that carriage returns in the contents of the clipboard are stripped.</li>
+				<li><b>Indent.</b> Indent inserts a tab into the front of every selected line.  The selected text remains
+				selected by this operation. An alert is generated if no text is currently selected.</li>
+				<li><b>Unindent.</b> Unindent removes the leading tab, if any, from the front of every selected line.
+				The selected text remains selected by this operation. An alert is generated if no text is selected.</li>
+				<li><b>Comment.</b> Comment inserts a comment delimiter into the front of every selected line.  The delimiter
+				is dependent upon the language of the source code.  For example, the AISLisp comment delimiter is a
+				semicolon.  The selected text remains selected by this operation. An alert is generated if no text is currently
+				selected.</li>
+				<li><b>Uncomment.</b> Uncomment removes the leading comment delimiter, if any, from the front of every selected
+				line. The selected text remains selected by this operation. An alert is generated if no text is selected.</li>
+			</ul>
+			
+			<h2>2.2 ToolBar</h2>
+			<p>
+			The edit toolbar includes icons for the same operations as listed above for the Edit Menu.  The toolbar
+			allows the user quick access to these operations without opening a menu.  By clicking on a toolbar icon
+			the corresponding edit operation is launched.  The toolbar contains icons for the New, Open, Save, Print, Close,
+			Undo, Redo, Copy, Cut, Paste, Indent, Unindent, Comment, Uncomment operations as described above.</p>
+			
+			<h2>2.3 Mouse</h2>
+			<p>
+			Most pointing devices, such as a mouse, have a Click, Drag, Double-click, Shift-Click, and Right-Click function as described
+			in the Contents section above.  These functions may be initiated while the Ctrl key and/or the Shift key is
+			depressed. Mouse operations provide a convenient mechanism for moving the cursor, selecting text, and opening
+			the context menu.</p>
+			<ul>
+				<li><b>Click.</b> The mouse controls the position of an I-beam cursor that appears in the edit page.  By
+				moving the I-Beam cursor to a new position and then momentarily pressing the &quot;left&quot; mouse button
+				(see Mouse Concepts	above), the blinking text cursor is moved to the location of the I-beam cursor.  If vertical
+				scroll bars appear on the right, the viewport can be slowly scrolled up by moving the I-beam cursor to the top of
+				the page and vice versa.  Often it is quicker to just use the mouse to scroll the text up or down rather than holding the
+				I-beam cursor at the top or bottom of the Page.  If the click occurs past the end of a line, the cursor is
+				moved to the front of the last character on the line.  If the click occurs past the end off the text, the
+				cursor is moved just past the last character in the text.</li>
+				<li><b>Drag</b> Drag refers to holding down the &quot;left&quot; mouse button and then moving the cursor.
+				Text can be dynamically selected starting at the position where the left button was pressed and ending
+				at the point where the left button is released.  See the note on shift-click for a faster way to select
+				a large section of text.</li>
+				<li><b>Double-Click.</b> Double-Click refers to momentarily pressing the &quot;left&quot; button twice in
+				quick succession.  This operation selects a nearby word if any.  An alert occurs if no word can be located.</li>
+				<li><b>Shift-Click</b> Shift-Click refers to a Click while depressing the Shift key.  The text from the
+				current blinking cursor to the current I-Beam cursor is selected.  It is possible to scroll the text
+				up or down and the using the Shift-Click operation to select a large section of text.</li>
+				<li><b>Right-Click.</b> By momentarily pressing the &quot;right&quot; mouse button, the context menu dialog
+				appears.  Move the arrow cursor to the desired operation and the Click on the item in the menu. Ctrl-Right-Click
+				launches the Function-List Dialog described below.</li>
+			</ul>
+			
+			<h2>2.4 Keyboard Commands</h2>
+			<p>
+			The keys on the keyboard are divided into three categories, Function keys, Cursor keys, and Normal keys.  Each
+			category plays a role in edit performing edit operations as follows:</p>
+			<ul>
+				<li><b>Function Keys.</b> Only a few function keys are used.  They are F1, F3 and F5 as noted in the summary
+				in the next section.  The Ctrl Key and/or the Shift Key can be depressed while pressing an function key.  Each
+				combination may be used to initiate a distinct command.</li>
+				<li><b>Cursor Keys.</b> The cursor keys include Tab, BackSpace, Insert, Delete, Home, End, PageUp, PageDown,
+				arrow keys. Shift-Tab is referred to as a BackTab.  The Tab/BackTab key is used to indent/unindent if text is selected.
+				The Tab/BackTab is used to insert a tab or move to previous tab stop.  The Enter or Return key inserts a newline
+				into the text at the current cursor position and then moves the cursor to the beginning of the next line.  
+				BackSpace and Delete are used to delete one or more characters from the text.  The other cursor keys are used to move
+				the dark blinking cursor to a new location.  When the Shift key is depressed at the same time, the intervening
+				text is selected.</li>
+				<li><b>Normal Keys.</b> All the other keys are referred to as &quot;Normal&quot; keys.  Normal keys, when used by
+				themselves or with the Shift key depressed, insert a visible character into the text and move the cursor forward to
+				the end of the inserted character.  A variety of edit operations are initiated by pressing a Normal key with the
+				Ctrl key depressed.  For example Ctrl-A (A pressed while the Ctrl key is depressed) selects all of the current text
+				and moves the cursor to the end of the text.  All of the combinations are listed in the Summary below.</li>
+			</ul>
+			<p>
+			<b>Keyboard Philosophy.</b>  Some users are touch typists who are slowed down when they have to move either hand
+			off their &quot;home&quot; position to hunt for a cursor key.  Others prefer to use the cursor keys which are
+			easier to remember.  This editor caters to both by providing a Ctrl-Key combination for every cursor key.  Take
+			your pick.</p> 
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P><P><H2><A NAME="S3"></A>2.5 Edit Summary</H2></P>		
+		    <div class="h2section" id="2.5 Edit Summary">
+				<p>
+			The edit commands are shown by category in the following table of commands. Each entry shows the key or mouse
+			button to be pressed, the control and/or shift keys
+			to be pressed, and whether any text is currently selected (shown with dark blue background). Ctrl-A refers to
+			holding down the Ctrl key while pressing the A key.  CtrlShift-A refers to holding down both the Ctrl key and the
+			Shift key while pressing the A key.  Right, left, up, down refer to the right, left, up, down arrow keys.
+			AnyMove refers to any key that just moves the cursor.  AnyDel refers to any key that deletes text.</p>
+			<p>
+			Cursor keys refers to those keys that are not associated with a printable character.  They include BackSpace, Del,
+			Tab, Insert, Home, End, PageUp, PageDown, and the arrow keys found on most keyboards.</p>
+			<p>
+			AnyMove is a metasymbol that refers to any key or combination of keys that initiates a move operation.
+			Similarly, AnyDel refers to any key or combination of keys that initiates a delete operation and AnyIns refers
+			to any keys that initiate an insert operation.</p>
+			<p>
+			Note that the cursor is always placed just in front of a character. Newlines at the end of a row and the
+			null at the end of the text normally appear as spaces in the display.  Even though they are not visible, they count as
+			characters in the text.</p> 
+			
+			<table  cellspacing=0 border=0 cellpadding=2>
+			<tr valign=top>
+				<th>Key</th>
+				<th>Description</th>
+			</tr><tr valign=top>
+				<th></th>
+				<th><em>Move Commands</em></th>
+			</tr><tr valign=top>
+				<th>AnyMove</th>
+				<td>If the Shift Key is not pressed, the cursor is moved to new position. If text is selected, the selected text is
+				deselected.</td>
+			</tr><tr valign=top>
+				<th>Shift-AnyMove</th>
+				<td>If no text is currently selected, an anchor is set at the current cursor position and text is selected from the anchor
+				to the new cursor position. Else, the selected text is extended from the current anchor to the new cursor position.
+					In addition, Shift-Click will select text from the old cursor position to the new cursor position.</td>		
+			</tr><tr valign=top>
+				<th>Left, Ctrl-H</th>
+				<td>Move to previous char.  If the cursor is at the beginning of a line (but not the top line), the cursor is moved to
+				just in front of the last character on the previous row.</td>
+			</tr><tr valign=top>
+				<th>Right, Ctrl-L</th>
+				<td>Move to next char. If the cursor is at the last character of a row (but not the last row), the cursor is moved
+				to the beginning of the next row.</td>
+			</tr><tr valign=top>
+				<th>Ctrl-Left, Ctrl-O</th>
+				<td>Move to beginning of previous word.  A word boundary is defined in the first section on Concepts above.</td>
+			</tr><tr valign=top>
+				<th>Ctrl-Right, Ctrl-P</th>
+				<td>Move to beginning of next word.  A word boundary is defined in the first section on Concepts above.</td>
+			</tr><tr valign=top>
+				<th>Shift-Tab</th>
+				<td>Move to previous tab stop.  Tab stops are defined in the first section on Tabs above.</td>
+			</tr><tr valign=top>
+				<th>Home, Ctrl-B</th>
+				<td>Move to beginning of the line.  If the cursor is already at the bol, the cursor is not moved.</td>
+			</tr><tr valign=top>
+				<th>End, Ctrl-E</th>
+				<td>Move to end of the line. If the cursor is already at the eol, the cursor is not move.</td>
+			</tr><tr valign=top>
+				<th>Up, Ctrl-K</th>
+				<td>Move up one line.  If the cursor is past the eol of the line above, the cursor is moved to the end of the line.
+				But, on the next move up or down to a longer line, the cursor is moved back to the original column.  If moving
+				into the middle of a tab, the cursor is moved to the beginning of the tab.</td>
+			</tr><tr valign=top>
+				<th>Down, Ctrl-J</th>
+				<td>Move down one line.  The same comments about moving up also apply to moving down.</td>
+			</tr><tr valign=top>
+				<th>Ctrl-Up</th>
+				<td>Move up half-page.  A page is the number of lines in the viewport (see Concepts in section 1 above).  The
+				comments about moving up a line also apply here.</td>
+			</tr><tr valign=top>
+				<th>Ctrl-Down</th>
+				<td>Move Down half-page.  A page is the number of lines in the viewport (see Concepts in section 1 above).  The
+				comments about moving down a line also apply here.</td>
+			</tr><tr valign=top>
+				<th>PageUp, Ctrl-M</th>
+				<td>Move up one page.  The comments about moving up a half-page also apply here.</td>
+			</tr><tr valign=top>
+				<th>PageDown, Ctrl-N</th>
+				<td>Move down one page.  The comments about moving up a page also apply here.</td>
+			</tr><tr valign=top>
+				<th>Ctrl-PageUp</th>
+				<td>Move to previous cursor.  Move to the previous cursor position that is more than a few lines away.
+				Whenever a move is made that spans more than a few lines, the old position is saved.  Ctrl-PageUp moves
+				the cursor either up or down to the previously saved position.   The number of saved positions is about 16.
+				The move is not exact.  Intervening insert or delete operations may move the text underneath the saved
+				position.</td>
+			</tr><tr valign=top>
+				<th>Ctrl-PageDown</th>
+				<td>Move to next cursor.  If Ctrl-PageUp was used to move to a previous position, Ctrl-PageDown returns the
+				cursor back to the vicinity of the original cursor position.  The comments about Ctrl-PageUp also apply here.
+				</td>
+			</tr><tr valign=top>
+				<th>Ctrl-Home</th>
+				<td>Move to beginning of the text.  If the cursor is not already at bot, the cursor is moved just in front of the
+				first character in the text.</td>
+			</tr><tr valign=top>
+				<th>Ctrl-End</th>
+				<td>Move to the end of the text. If the cursor is not already at eot, the cursor is moved to just in front of the
+				null on the end of the last row of text.</td>
+			</tr><tr valign=top>
+				<th>Ctrl-^</th>
+				<td>Move the current anchor to the cursor and the cursor to the anchor. If selected text, matched parens, or if
+				text just inserted, the cursor is at one end and the anchor is at the other end.  To switch to the other end
+				of one of these sections of text, press Ctrl-Hat where Hat is just above the 6 on most keyboards.</td>
+			</tr><tr valign=top>
+				<th>Click</th>
+				<td>Move cursor to current I-beam position. See discussion in above section on Edit Cursor.</td>
+			</tr><tr valign=top>
+				<th></th>
+				<th><em>Delete Commands</em></th>
+			</tr><tr valign=top>
+				<th>AnyDelete</th>
+				<td>If text is selected, it is also deleted.</td>
+			</tr><tr valign=top>
+				<th>BackSpace</th>
+				<td>Delete previous char.  If text is currently selected, it is deleted but the previous character is not.</td>
+			</tr><tr valign=top>
+				<th>Delete, Ctrl-D</th>
+				<td>Delete next char. If text is currently selected, it is deleted but the previous character is not.</td>
+			</tr><tr valign=top>
+				<th>Ctrl-Delete</th>
+				<td>Delete to beginning of previous word.  See discussion in section 1 on Words for more detail.</td>
+			</tr><tr valign=top>
+				<th>Ctrl-BackSpace</th>
+				<td>Delete to beginning of next word. See discussion in section 1 on Words for more detail.</td>
+			</tr><tr valign=top>
+				<th>Ctrl-U</th>
+				<td>Delete to beginning of line. If the cursor is already at the bol, nothing is deleted.</td>
+			</tr><tr valign=top>
+				<th>Ctrl-.</th>
+				<td>Delete to end of line. If the cursor is already at the eol, nothing is deleted.</td>
+			</tr><tr valign=top>
+				<th>Cut, Ctrl-X</th>
+				<td>Cut selected text.  The selected text is moved from the edit text to the clipboard.  Lines are terminated by
+				a CR-LF.  See the section above on Mouse operations for more detail.</td>
+			</tr><tr valign=top>
+				<th>CtrlShift-X</th>
+				<td>Cut selected text.  The selected text is moved from the edit text and appended to the current text in the clipboard.
+				Lines are terminated by	a CR-LF.  See the section above on Mouse operations for more detail.</td>
+			</tr><tr valign=top>
+				<th></th>
+				<th><em>Insert Commands</em></th>
+			</tr><tr valign=top>
+				<th>AnyInsert</th>
+				<td>Delete selected text, if any.</td>
+			</tr><tr valign=top>
+				<th>Tab, Ctrl-I</th>
+				<td>Insert tab at cursor.  But, if text is currently selected, Tab indents.</td>		
+			</tr><tr valign=top>
+				<th>Enter, Return</th>
+				<td>Insert newline at cursor.  The current row is split at the current cursor position into two rows.</td>		
+			</tr><tr valign=top>
+				<th>Paste, Ctrl-V</th>
+				<td>Paste clipboard into text at cursor.  The text in the clipboard is inserted into the edit text at the
+				current cursor position.  CR-LFs are converted into newlines.</td>
+			</tr><tr valign=top>
+				<th></th>
+				<th><em>Select-Text Commands</em></th>
+			</tr><tr valign=top>
+				<th>AnyKey</th>
+				<td>Except for copy, indent, unindent, comment, uncomment, replace-all,  currently selected text
+				is unselected unless move with shift key pressed.</td>
+			</tr><tr valign=top>
+				<th>AnyShiftMoveKey</th>
+				<td>A move operation with the shift key pressed extends the currently selected text.</td>
+			</tr><tr valign=top>
+				<th>AnyDeleteKey</th>
+				<td>Delete operations also delete the currently selected text</td>
+			</tr><tr valign=top>
+				<th>AnyInsertKey</th>
+				<td>Insert operations replace the currently selected text with the inserted characters.</td>
+			</tr><tr valign=top>
+				<th>Ctrl-A</th>
+				<td>Select entire text.  Move cursor to end-of-text.</td>
+			</tr><tr valign=top>
+				<th>Copy, Ctrl-C</th>
+				<td>Copy selected text into clipboard. Currently selected text remains selected.</td>
+			</tr><tr valign=top>
+				<th>CtrlShift-C</th>
+				<td>Append selected text to existing clipboard text. Currently selected text remains selected.</td>
+			</tr><tr valign=top>
+				<th>Ctrl-S</th>
+				<td>Select text between matching parens.  When the cursor is setting just in front of an opening bracket
+				({[&lt; or just after a closing bracket &gt;]}) with a matching bracket at the other end, the region
+				is highlighted with a light gray background.  By pressing ctrl-S this same region is converted into selected text.
+				If no brackets are currently matched, or if paren matching is turned off, Ctrl-S generates an alert.</td>
+			</tr><tr valign=top>
+				<th>Shift-Click</th>
+				<td>If the shift key is pressed when pressing the left mouse button, the selected text is extended from the
+				current cursor position to the newly selected position. See also the discussion above on Mouse operations.</td>
+			</tr><tr valign=top>
+				<th>Drag</th>
+				<td>Move cursor and then select text while left button is pressed.  See discussion above on Mouse operations.</td>
+			</tr><tr valign=top>
+				<th>Double-Click</th>
+				<td>Select text between parens or select nearby word.  Clicking twice in quick succession in front of an opening
+				bracket or just past a closing bracket, selects the text between the matching brackets; else, selects a nearby word
+				 and moves the cursor to the end-of-word.  See discussion in section 1 on Words.</td>
+			</tr><tr valign=top>
+				<th></th>
+				<th><em>Dialog and Special Commands</em></th>
+			</tr><tr valign=top>
+				<th>Ctrl-F</th>
+				<td>Launch find dialog.  Searches a region of the edit text for a match with a pattern.  The
+				pattern may be a regular expression.  A pattern cannot match multiple rows.  The search
+				can be limited to words, case sensitive search or plain text. Searches can proceed in either direction from
+				the cursor.</td>
+			</tr><tr valign=top>
+				<th>Ctrl-G</th>
+				<td>Launch go-to-line dialog. Moves the cursor to the line specified in the dialog.</td>
+			</tr><tr valign=top>
+				<th>Ctrl-R</th>
+				<td>Launch find/replace dialog.  Allows last matched text to be replaced with the replace text.  If the replace
+				text box is empty, the matched text is deleted.  Then, a search for the next match in the search region is
+				launched.  All matches in the specified region may be replaced by clicking on Replace All.</td>
+			</tr><tr valign=top>
+				<th>Ctrl-T</th>
+				<td>Launch the set tab stop dialog. Converts leading spaces in each row of the currently selected text into
+				tabs or vice versa. Set desired SpacesPerTab value.  Set the ExtraSpaces option.  Keep keeps leftover spaces
+				after the leading spaces are converted to tabs.   The Tab option converts the leftover spaces into an additional
+				tab character.  The Delete option discards the extra spaces.  Click on Tabify to convert leading spaces to tabs.
+				Click on Detab to convert leading tabs to spaces.</td>
+			</tr><tr valign=top>
+				<th>F1</th>
+				<td>Launch help dialog.  Shows a summary of this help.</td>
+			</tr><tr valign=top>
+				<th>Ctrl-Y</th>
+				<td>Redo last set of undo operations.  Reapply the last set of undo operations.  Any other insert or delete operation
+				cancels all of the previous undo operations.</td>
+			</tr><tr valign=top>
+				<th>CtrlShift-Y</th>
+				<td>Redo last undo.  Reapply last undo operation.  Any other insert or delete operation cancels all the previous undo
+				operations.</td>
+			</tr><tr valign=top>
+				<th>Ctrl-Z</th>
+				<td>Undo last set of related commands.  Reverse the last set of related insert/delete commands.</td>
+			</tr><tr valign=top>
+				<th>CtrlShift-Z</th>
+				<td>Undo last insert or delete command.  Reverse the last edit command.</td>
+			</tr><tr valign=top>
+				<th>Ctrl-(, Ctrl-)</th>
+				<td>Toggle ParenMatching on/off.  Either Ctrl-( or Ctrl-) turn Paren Matching on if it is currently off and
+				vice versa.  Paren matching requires a scan of the text every time that the cursor is moved, so it
+				should be turned off if you are not using it.</td>
+			</tr><tr valign=top>
+				<th>Ctrl-Tab</th>
+				<td>Switch to next tabbed document if more than one document is open.</td>
+			</tr><tr valign=top>
+				<th>Ctrl-BackTab</th>
+				<td>Switch to previous tabbed document if more than one document open.</td>
+			</tr><tr valign=top>
+				<th>Ctrl-semicolon</th>
+				<td>Insert an initial comment delimiter at beginning of each selected line. Select every row of currently
+				selected text.</td>
+			</tr><tr valign=top>
+				<th>CtrlShift-semicolon</th>
+				<td>Uncomment. Delete initial comment delimiter from every selected line.</td>
+			</tr><tr valign=top>
+				<th>Tab</th>
+				<td>Indent. If text selected, indent each selected row; else, insert a tab character at the current cursor position.</td>
+			</tr><tr valign=top>
+				<th>BackTab</th>
+				<td>Unindent. If text selected, unindent each selected row; else, move back to the previous tab stop.</td>
+			</tr><tr valign=top>
+				<th>F3</th>
+				<td>Repeat last find searching forwards.  F3 searches forward in the search region starting from the last match.
+				An alert occurs if no match can be found.  F3 uses the current options and the current search region.  See the
+				discussion on Search below for more details.</td>
+			</tr><tr valign=top>
+				<th>Shift-F3</th>
+				<td>Repeat last find searching backwards. Shift-F3 searches backward from the previous match in the current search
+				region.  The comments for F3 apply here as well.</td>
+			</tr><tr valign=top>
+				<th>Ctrl-F3</th>
+				<td>Repeat last find.  Performs the same operation as F3 except that the search region is expanded to the entire
+				text. See the comments for F3.</td>
+			</tr><tr valign=top>
+				<th>Right-Click</th>
+				<td>Launch context menu.  The context menu contains many of the same edit operations as shown on the toolbar.  See
+				the comments on using the context menu above.</td>
+			</tr>
+			</table> 
+		  </div>
+	    <P ALIGN="CENTER"><INPUT TYPE='button' VALUE='Top of Page' onClick='navigate("#TOP");'></P>
+</body></html>

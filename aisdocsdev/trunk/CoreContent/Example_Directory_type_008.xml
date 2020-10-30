@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Directory type 008</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>type</FunctionKeywords>
+		<TypeKeywords>Directory</TypeKeywords>
+		<RelatedFunctions>isText isSymbol isObject isString isType isStructure</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>Type Analytic Object</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows how the <b>type</b> function return the
+
+
+
+
+                    user-defined data type  of the AIS Objects evaluated.
+
+
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc> (setq X   #{dir| Holiday1: "New Year's Day"  Holiday2:  "Memorial Day" } )              </sc>]]></Expression>
+        <Note><![CDATA[Defines a directory.]]></Note>
+        <Returns><![CDATA[#&#60Directory 123456&#62   ]]></Returns>
+        <Expression><![CDATA[ <sc>(type X)   </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ Directory ]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

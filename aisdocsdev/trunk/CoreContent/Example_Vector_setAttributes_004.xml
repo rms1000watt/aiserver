@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Vector setAttributes 004</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>setAttributes</FunctionKeywords>
+		<TypeKeywords> Symbol Vector ObjVector Structure</TypeKeywords>
+		<RelatedFunctions>setq  ref fieldsOf refAttributes  refValues </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>ref reference set position</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ The <b>setAttributes</b> function returns the
+
+
+
+
+
+
+                  keys of the Directory and saves it in an Object Vector.
+
+
+
+
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(setq attb (new  Vector:  object:  3  Product:  Amount:  Date:)  )        </sc>]]></Expression>
+        <Note><![CDATA[Create an attribute Vector.]]></Note>
+        <Returns><![CDATA[#&#60ObjVector 123456 &#62]]></Returns>
+        <Expression><![CDATA[ <sc>(setq X #("Camaro"  $22590  #Feb,1,1996)  )    </sc>]]></Expression>
+        <Note><![CDATA[Create an unattributed Vector.]]></Note>
+        <Returns><![CDATA[#&#60Vector 234567 &#62]]></Returns>
+ <Expression><![CDATA[ <sc>(setAttributes  X  attb)       </sc>]]></Expression>  
+        <Note><![CDATA[ Set the Vector with attributes.]]></Note> 
+        <Returns><![CDATA[#&#60Vector 123456 &#62]]></Returns>
+  	    <Expression><![CDATA[ <sc>X.Product   </sc>]]></Expression>
+        <Note><![CDATA[The resulting Vector can now be accessed by symbolic attribute 
+              (in addition to numeric index):]]></Note>
+        <Returns><![CDATA[Camaro]]></Returns>
+        <Expression><![CDATA[ <sc>X.Amount   </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[22590]]></Returns>
+        <Expression><![CDATA[ <sc>X.Date   </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#Feb,1,1996]]></Returns>
+        <Expression><![CDATA[ <sc>(setAttributes  X  #void)  </sc>]]></Expression>  
+        <Note><![CDATA[ If #void is set as an attribute of the Vector,
+               the resulting Vector's values can only be accessed by numeric index only ]]></Note> 
+        <Returns><![CDATA[#&#60Vector 123456 &#62]]></Returns>
+        <Expression><![CDATA[ <sc>X[0]</sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[Camaro]]></Returns>
+        <Expression><![CDATA[ <sc>X.Product</sc>]]></Expression>
+        <Note><![CDATA[There is no attribute "Product" set. ]]></Note>
+        <Returns><![CDATA[!badIndexOrKey!]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

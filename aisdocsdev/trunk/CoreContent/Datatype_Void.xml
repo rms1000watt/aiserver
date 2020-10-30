@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Datatype SYSTEM "../DTD/Datatype.dtd">
+<Datatype>
+	<KnowledgeBase>
+        <Title>Void</Title>
+		<Type>Native</Type>
+		<RelatedTypes>Error Boolean Character Integer Number Money Percent String 
+		             Text Character</RelatedTypes>
+		<HumanKeywords>Native Void </HumanKeywords>
+	</KnowledgeBase>
+	<Section>                
+	    <Heading>Void Overview</Heading>
+		<Description><![CDATA[
+		 <p class=MsoBodyText>An un-initialized container will always contain #void. The <b>void </b>
+		 data type represents an empty container. Analytic Information Server functions may return a value of  
+		 #void, and #void is used to indicate empty results across all of Analytic Information Server.</p>
+        ]]></Description>
+    </Section>
+	<Section>                
+	    <Heading>When to Use</Heading>
+		<Description><![CDATA[
+          <p>The #void data type is usually used to initialize or clear a previously assigned variable. </p>          
+        ]]></Description>
+    </Section>
+    <Section>                
+	    <Heading>Constant Form</Heading>
+		<Description><![CDATA[
+          <p>As mentioned, the  void container can only have one constant and that is #void.</p>          
+        ]]></Description>
+    </Section>
+      <Section>                
+	    <Heading>Native Data Type</Heading>
+		<Description><![CDATA[
+          <p>The <b>Void</b> Data Type is an example of an AIS Native Data Type. </p>
+          <p> Analytic Information Server stores all of its Native Data Types in Virtual Machine Containers.  
+          All containers are stored in memory. Containers provide the basic storage mechanism for modeling 
+          data of all types. Containers provide these fundamental characteristics:      </p>
+          <p>  Ability to hold any type of data (including code) at any time.</p>     
+          <p>  Ability to know what type of data is contained.</p>  
+          <p>  Ability to be stored, retrieved and evaluated by the system.</p>  
+          <p>   Ability to handle type conversion, and memory management automatically.</p>   
+          <p> Containers come in two sizes, Large and Small. Small containers are six bytes in length, 
+          and large containers are ten bytes in length. Large containers can store larger amounts of data 
+          immediately and place less of a burden on the Heap manager. Small containers require less immediate space, 
+          but place more of a burden on the Heap manager.    </p>        
+          <p>  Large containers can store the following data types immediately and does not require the services of the Heap manager:</p>  
+          <ul>
+          <li> #void</li>  
+          <li> error</li>
+          <li> Boolean</li>
+          <li> Character</li>
+          <li> Integer</li>
+          <li> Number</li>
+          <li> Money</li>
+          <li> Percent</li>
+          <li> String</li>
+          <li> Text</li>
+          <li> Character</li>
+          <li> ...heap object references...</li> 
+          </ul>                             
+          <p>  Small containers can store the following data types immediately without placing additional burden on the Heap manager:</p>  
+          <ul>
+          <li> #void</li>  
+          <li> error</li>
+          <li> Boolean</li>
+          <li> Character</li>
+          <li> Integer</li>
+          <li> Number</li>
+          <li> Money</li>
+          <li> Percent</li>
+          <li> String</li>
+          <li> Text</li>
+          <li> Character</li>
+          <li> ...heap object references...</li> 
+          </ul>           
+          <p>  Analytic Information Server containers can be saved and loaded to and from persistent (database) 
+          storage at any time. Containers with immediate data are saved on disk in fixed length records equal 
+          to the size of the container. Containers with Heap object references are saved in fixed length records, 
+          which are automatically expanded to include the contents of the Heap object, and any objects referenced 
+          by the Heap object, etc. This feature is called Object Closure Management and is automatic with every 
+          Analytic Information Server container database save. Analytic Information Server containers may be loaded 
+          from any database repository record at any time. If the data in the record is immediate, the database 
+          load fills the container with the immediate data. If the data in the record is an object closure, the 
+          database load fills the container with a Heap object reference, and all of the objects in the record 
+          are loaded back into the Heap with the same referential relationships they had when they were saved.</p>   
+        ]]></Description>
+    </Section>
+</Datatype>

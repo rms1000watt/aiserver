@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>julian</Title>
+		<FunctionName>julian</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>Date String Number</ArgumentTypes>
+		<DataType>Date</DataType>
+		<RelatedFunctions>isDate date string</RelatedFunctions>
+        <RelatedVMInstructions>  none  </RelatedVMInstructions>
+		<HumanKeywords>convert date julian object </HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>julian</b> function converts a date expressed a String constant 
+                 or a Date object into a Julian date form. </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>julian</b> function converts a date expressed a String constant or a Date 
+          object into a Julian date form. The Julian date is the number of days elapsed since 
+          the birth of Christ.
+        </p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>julian</b> function is used to convert a string constant in the form :  
+           "mm/dd/yyyy" into a Julian date which a <u>Number</u> that can be used in arithmetic 
+           computations.  It can also coerce a Date object into a Julian date.
+
+        </p>
+         ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p><b> (julian dateObj)  </b></p>
+                    <p><b> (julian dateStr ) </b></p>]]></Expression>
+		<Argument>
+		  <Name>dateObj</Name>
+		  <Note><![CDATA[
+		  <p>An Analytic Information Server Date obj.</p>
+          ]]></Note>
+		  <AISTypes>Date</AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>dateStr</Name>
+		  <Note><![CDATA[
+		  <p>A date represented as a String form "mm/dd/yyyy" where mm is the number of 
+           the month, dd is the number of the day and yyyy is the number of the year 
+          (negative if before Christ). If you omit the year from the argument, 
+           the function defaults to the current year in your system.</p>
+          ]]></Note>
+		  <AISTypes> String</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>The Julian date expressed as a Number.
+	    </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

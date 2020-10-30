@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Essay SYSTEM "../DTD/Essay.dtd">
+<Essay>
+	<KnowledgeBase>
+	    <Title>Embedded Documentation</Title>
+		<Topic>Topic - Embedded Documentation</Topic>
+		<SubTopic>SubTopic Embedded Documentation</SubTopic>
+		<HumanKeywords>Embedded Documentation</HumanKeywords>
+	</KnowledgeBase>
+	<Section>
+	    <Heading>Embedded Documentation</Heading>
+		<Description><![CDATA[
+		<p>
+			Under Construction...</p>
+	    ]]></Description>
+	</Section>
+</Essay>

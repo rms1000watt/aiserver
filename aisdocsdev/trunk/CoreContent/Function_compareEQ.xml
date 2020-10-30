@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>compareEQ</Title>
+		<FunctionName>compareEQ</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>String Symbol Structure Dictionary Matrix Boolean Number Function NumMatrix
+                       Directory Vector Brick Boolean Pair List Void Character Date Complex Lambda
+                       FltVector ShortVector IntVector NumVector ObjVector BitVector ObjectRepository</ArgumentTypes>
+		<DataType>String Symbol Structure Dictionary ShortVector Directory Vector Number Lambda NumMatrix Pair List Matrix Brick Void Boolean Character Date Function Complex CpxVector FltVector IntVector NumVector ObjVector BitVector ObjectRepository</DataType>
+		<RelatedFunctions>compare compareNE compareGT compareGE compareLT  compareLE </RelatedFunctions>
+        <RelatedVMInstructions> vmregStringCompare vmregStringiCompare  </RelatedVMInstructions>
+		<HumanKeywords>compare  equal boolean  </HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>compareEQ</b> function compares two objects of the same Data Type and determines
+               whether both objects are equal or not.  A Boolean value is returned. </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>compareEQ</b>  is the comparison function  that can be used with this Data Type. 
+           The resulting value is a Boolean value of <b>true</b> or <b>false</b>.
+        </p>
+        ]]></Overview>
+	   <Overview-ObjectRepository><![CDATA[
+		<p>The <b>compareEQ</b>  is the comparison function  that can be used with this Data Type. 
+           The resulting value is a Boolean value of <b>true</b> or <b>false</b>. Two Object Repositories
+           are equal if they are the same file. 
+        </p>
+        ]]></Overview-ObjectRepository>
+	   <Overview-Void><![CDATA[
+		<p>The <b>compareEQ</b> is the comparison functions  that can be used with native data 
+           types and Heap objects. The resulting value is a Boolean value of <b>true</b> or <b>false</b>. 
+           The #void constant will always be less than any other value.
+        </p>
+        ]]></Overview-Void>
+        <Usage><![CDATA[
+        <p>Use the <b>compareEQ</b> function when you wish to do a case-sensitive 
+           comparisons of two objects of this Data Type and
+           determine if they are <b>equal</b> and you wish the result to be expressed 
+           as a Boolean value (true or false). 
+The alternative comparison function,<b>compare</b>, 
+           only determines if two objects are equal, less than or greater than.
+        </p>
+         ]]></Usage>
+    </Brief>
+	<Syntax-String>
+	    <Expression><![CDATA[ (compareEQ string1  string2 )]]></Expression>
+		<Argument>
+		  <Name>string1</Name>
+		  <Note><![CDATA[
+		  <p> The first String or Text to be compared </p>
+          ]]></Note>
+		  <AISTypes>String</AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>string2</Name>
+		  <Note><![CDATA[
+		  <p>The second String or Text to be compared</p>
+          ]]></Note>
+		  <AISTypes>String</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>Returns true if the comparison is true, false if the comparison is false
+	    </p>
+	    ]]></Return>  
+	</Syntax-String>
+	<Syntax-Symbol>
+	    <Expression><![CDATA[ (compareEQ  sym1   sym2)]]></Expression>
+		<Argument> 
+		  <Name>sym1</Name>
+		  <Note><![CDATA[
+		  <p> The first Symbol to be compared </p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>sym2</Name>
+		  <Note><![CDATA[
+		  <p>The second Symbol to be compared</p>
+          ]]></Note>
+		  <AISTypes>Symbol</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns true if the comparison is true, false if the comparison is false
+	    </p>
+	    ]]></Return>  
+	</Syntax-Symbol>
+   <Syntax-Structure>
+	    <Expression><![CDATA[ (compareEQ  struct1   struct2)]]></Expression>
+		<Argument> 
+		  <Name>struct1</Name>
+		  <Note><![CDATA[
+		  <p> The first Structure to be compared </p>
+          ]]></Note>
+		  <AISTypes>Structure</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>struct2</Name>
+		  <Note><![CDATA[
+		  <p>The second Structure to be compared</p>
+          ]]></Note>
+		  <AISTypes>Structure</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns true if the comparison is true, false if the comparison is false
+	    </p>
+	    ]]></Return>  
+	</Syntax-Structure>
+   <Syntax-Dictionary>
+	    <Expression><![CDATA[ (compareEQ  dict1   dict2)]]></Expression>
+		<Argument> 
+		  <Name>dict1</Name>
+		  <Note><![CDATA[
+		  <p> The first Dictionary to be compared </p>
+          ]]></Note>
+		  <AISTypes>Dictionary</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>dict2</Name>
+		  <Note><![CDATA[
+		  <p>The second Dictionary to be compared</p>
+          ]]></Note>
+		  <AISTypes>Dictionary</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns true if the comparison is true, false if the comparison is false
+	    </p>
+	    ]]></Return>  
+	</Syntax-Dictionary>
+   <Syntax-Directory>
+	    <Expression><![CDATA[ (compareEQ  dir1   dir2)]]></Expression>
+		<Argument> 
+		  <Name>dir1</Name>
+		  <Note><![CDATA[
+		  <p> The first Directory to be compared </p>
+          ]]></Note>
+		  <AISTypes>Directory</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>dir2</Name>
+		  <Note><![CDATA[
+		  <p>The second Directory to be compared</p>
+          ]]></Note>
+		  <AISTypes>Directory</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns true if the comparison is true, false if the comparison is false
+	    </p>
+	    ]]></Return>  
+	</Syntax-Directory>
+   <Syntax-Vector>
+	    <Expression><![CDATA[ (compareEQ  vector1   vector2)]]></Expression>
+		<Argument> 
+		  <Name>vector1</Name>
+		  <Note><![CDATA[
+		  <p> The first Vector to be compared </p>
+          ]]></Note>
+		  <AISTypes>Vector</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>vector2</Name>
+		  <Note><![CDATA[
+		  <p>The second Vector to be compared</p>
+          ]]></Note>
+		  <AISTypes>Vector</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns true if the comparison is true, false if the comparison is false
+	    </p>
+	    ]]></Return>  
+	</Syntax-Vector>
+   <Syntax-FltVector>
+	    <Expression><![CDATA[ (compareEQ  fltvector1   fltvector2)]]></Expression>
+		<Argument> 
+		  <Name>fltvector1</Name>
+		  <Note><![CDATA[
+		  <p> The first FltVector to be compared </p>
+          ]]></Note>
+		  <AISTypes>FltVector</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>fltvector2</Name>
+		  <Note><![CDATA[
+		  <p>The second FltVector to be compared</p>
+          ]]></Note>
+		  <AISTypes>FltVector</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns true if the comparison is true, false if the comparison is false
+	    </p>
+	    ]]></Return>  
+	</Syntax-FltVector>
+   <Syntax-IntVector>
+	    <Expression><![CDATA[ (compareEQ  intvector1 intvector2)]]></Expression>
+		<Argument> 
+		  <Name>intvector1</Name>
+		  <Note><![CDATA[
+		  <p> The first IntVector to be compared </p>
+          ]]></Note>
+		  <AISTypes>IntVector</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>intvector2</Name>
+		  <Note><![CDATA[
+		  <p>The second IntVector to be compared</p>
+          ]]></Note>
+		  <AISTypes>IntVector</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns true if the comparison is true, false if the comparison is false
+	    </p>
+	    ]]></Return>  
+	</Syntax-IntVector>
+   <Syntax-NumVector>
+	    <Expression><![CDATA[ (compareEQ  numvector1 numvector2)]]></Expression>
+		<Argument> 
+		  <Name>numvector1</Name>
+		  <Note><![CDATA[
+		  <p> The first NumVector to be compared </p>
+          ]]></Note>
+		  <AISTypes>NumVector</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>numvector2</Name>
+		  <Note><![CDATA[
+		  <p>The second NumVector to be compared</p>
+          ]]></Note>
+		  <AISTypes>NumVector</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns true if the comparison is true, false if the comparison is false
+	    </p>
+	    ]]></Return>  
+	</Syntax-NumVector>
+   <Syntax-ObjVector>
+	    <Expression><![CDATA[ (compareEQ  objvector1 objvector2)]]></Expression>
+		<Argument> 
+		  <Name>objvector1</Name>
+		  <Note><![CDATA[
+		  <p> The first ObjVector to be compared </p>
+          ]]></Note>
+		  <AISTypes>ObjVector</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>objvector2</Name>
+		  <Note><![CDATA[
+		  <p>The second ObjVector to be compared</p>
+          ]]></Note>
+		  <AISTypes>ObjVector</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns true if the comparison is true, false if the comparison is false
+	    </p>
+	    ]]></Return>  
+	</Syntax-ObjVector>
+   <Syntax-BitVector>
+	    <Expression><![CDATA[ (compareEQ  bitvector1 bitvector2)]]></Expression>
+		<Argument> 
+		  <Name>bitvector1</Name>
+		  <Note><![CDATA[
+		  <p> The first BitVector to be compared </p>
+          ]]></Note>
+		  <AISTypes>BitVector</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>bitvector2</Name>
+		  <Note><![CDATA[
+		  <p>The second BitVector to be compared</p>
+          ]]></Note>
+		  <AISTypes>BitVector</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns true if the comparison is true, false if the comparison is false
+	    </p>
+	    ]]></Return>  
+	</Syntax-BitVector>
+   <Syntax-ShortVector>
+	    <Expression><![CDATA[ (compareEQ  shortvector1 shortvector2)]]></Expression>
+		<Argument> 
+		  <Name>shortvector1</Name>
+		  <Note><![CDATA[
+		  <p> The first ShortVector to be compared </p>
+          ]]></Note>
+		  <AISTypes>ShortVector</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>shortvector2</Name>
+		  <Note><![CDATA[
+		  <p>The second ShortVector to be compared</p>
+          ]]></Note>
+		  <AISTypes>ShortVector</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns true if the comparison is true, false if the comparison is false
+	    </p>
+	    ]]></Return>  
+	</Syntax-ShortVector>
+  <Syntax-Brick>
+	    <Expression><![CDATA[ (compareEQ  brick1 brick2)]]></Expression>
+		<Argument> 
+		  <Name>Brick1</Name>
+		  <Note><![CDATA[
+		  <p> The first Brick to be compared </p>
+          ]]></Note>
+		  <AISTypes>Brick</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>brick2</Name>
+		  <Note><![CDATA[
+		  <p>The second Brick to be compared</p>
+          ]]></Note>
+		  <AISTypes>Brick</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns true if the comparison is true, false if the comparison is false
+	    </p>
+	    ]]></Return>  
+	</Syntax-Brick>
+  <Syntax-Matrix>
+	    <Expression><![CDATA[ (compareEQ  matrix1 matrix2)]]></Expression>
+		<Argument> 
+		  <Name>matrix1</Name>
+		  <Note><![CDATA[
+		  <p> The first Matrix to be compared </p>
+          ]]></Note>
+		  <AISTypes>Matrix</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>matrix2</Name>
+		  <Note><![CDATA[
+		  <p>The second Matrix to be compared</p>
+          ]]></Note>
+		  <AISTypes>Matrix</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns true if the comparison is true, false if the comparison is false
+	    </p>
+	    ]]></Return>  
+	</Syntax-Matrix>
+  <Syntax-NumMatrix>
+	    <Expression><![CDATA[ (compareEQ  nummatrix1 nummatrix2)]]></Expression>
+		<Argument> 
+		  <Name>nummatrix1</Name>
+		  <Note><![CDATA[
+		  <p> The first NumMatrix to be compared </p>
+          ]]></Note>
+		  <AISTypes>NumMatrix</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>nummatrix2</Name>
+		  <Note><![CDATA[
+		  <p>The second NumMatrix to be compared</p>
+          ]]></Note>
+		  <AISTypes>NumMatrix</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns true if the comparison is true, false if the comparison is false
+	    </p>
+	    ]]></Return>  
+	</Syntax-NumMatrix>
+   <Syntax-Pair>
+	    <Expression><![CDATA[ (compareEQ  pair1 pair2)]]></Expression>
+		<Argument> 
+		  <Name>pair1</Name>
+		  <Note><![CDATA[
+		  <p> The first Pair to be compared </p>
+          ]]></Note>
+		  <AISTypes>Pair</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>pair2</Name>
+		  <Note><![CDATA[
+		  <p>The second Pair to be compared</p>
+          ]]></Note>
+		  <AISTypes>Pair</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns true if the comparison is true, false if the comparison is false
+	    </p>
+	    ]]></Return>  
+	</Syntax-Pair>
+  <Syntax-List>
+	    <Expression><![CDATA[ (compareEQ  list1 list2)]]></Expression>
+		<Argument> 
+		  <Name>list1</Name>
+		  <Note><![CDATA[
+		  <p> The first List to be compared </p>
+          ]]></Note>
+		  <AISTypes>List</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>list2</Name>
+		  <Note><![CDATA[
+		  <p>The second List to be compared</p>
+          ]]></Note>
+		  <AISTypes>List</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns true if the comparison is true, false if the comparison is false
+	    </p>
+	    ]]></Return>  
+	</Syntax-List>
+   <Syntax-Lambda>
+	    <Expression><![CDATA[ (compareEQ  Lambda1 Lambda2)]]></Expression>
+		<Argument> 
+		  <Name>Lambda1</Name>
+		  <Note><![CDATA[
+		  <p> The first Lambda to be compared </p>
+          ]]></Note>
+		  <AISTypes>Lambda</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>Lambda2</Name>
+		  <Note><![CDATA[
+		  <p>The second Lambda to be compared</p>
+          ]]></Note>
+		  <AISTypes>Lambda</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns true if the comparison is true, false if the comparison is false
+	    </p>
+	    ]]></Return>  
+	</Syntax-Lambda>
+   <Syntax-ObjectRepository>
+	    <Expression><![CDATA[ (compareEQ  gor1  gor2)]]></Expression>
+		<Argument> 
+		  <Name>gor1</Name>
+		  <Note><![CDATA[
+		  <p> The first Object Repository  to be compared </p>
+          ]]></Note>
+		  <AISTypes>ObjectRepository </AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>gor2</Name>
+		  <Note><![CDATA[
+		  <p>The second Object Repository  to be compared</p>
+          ]]></Note>
+		  <AISTypes>ObjectRepository </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns true if the comparison is true, false if the comparison is false
+	    </p>
+	    ]]></Return>  
+	</Syntax-ObjectRepository>
+   <Syntax>
+	    <Expression><![CDATA[ (compareEQ  obj1 obj2)]]></Expression>
+		<Argument> 
+		  <Name>obj1</Name>
+		  <Note><![CDATA[
+		  <p> First object to be compared. Must be a native data type.</p>
+          ]]></Note>
+		  <AISTypes>Void Boolean Character Number Date Function Complex</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>obj2</Name>
+		  <Note><![CDATA[
+		  <p>Second object to be compared. Must be a native data type.</p>
+          ]]></Note>
+		  <AISTypes>Void Boolean Character Number Date Function Complex</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns true if the comparison is true, false if the comparison is false
+	    </p>
+	    ]]></Return>  
+	</Syntax>
+</Function>

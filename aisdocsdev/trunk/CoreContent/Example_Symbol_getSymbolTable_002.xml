@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Symbol getSymbolTable 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>getSymbolTable</FunctionKeywords>
+		<TypeKeywords>Symbol</TypeKeywords>
+		<RelatedFunctions>getGlobalValue</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>symbol global symbol value table</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines two Strings and an Lambda as Symbols.  These Symbols are automatically stored in
+                  the Symbol Table.   The <b>getSymbolTable</b> with its optional
+                  arguments to show the CFunctions and locked Symbols in the Symbol Table
+                  is then invoked.        
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(clear) </sc>]]></Expression>
+        <Note><![CDATA[ Clear all Symbols ]]></Note>
+        <Returns><![CDATA[  ]]></Returns>
+        <Expression><![CDATA[ <sc>(define A  "animal") </sc>]]></Expression>
+        <Note><![CDATA[Defines Symbol A ]]></Note>
+        <Returns><![CDATA[animal ]]></Returns>
+        <Expression><![CDATA[ <sc>(define B  "beast") </sc>]]></Expression>  
+        <Note><![CDATA[Defines Symbol B ]]></Note> 
+        <Returns><![CDATA[beast ]]></Returns>
+        <Expression><![CDATA[ <sc>(define aFunc (lambda  (x) (append x "s") ) ) </sc>]]></Expression>  
+        <Note><![CDATA[Defines Symbol aFunc ]]></Note> 
+        <Returns><![CDATA[#&#60Lambda 190041&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq syms (getSymbolTable 1 1 ) )</sc>]]></Expression>  
+        <Note><![CDATA[Gets current Symbol Table including its contained CFunctions or locked Symbols]]></Note> 
+        <Returns><![CDATA[#&#60ObjVector 190451&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(loop for i from 0 until (length syms) do (writeln syms[i])) </sc>]]></Expression>  
+        <Note><![CDATA[This loop will generate the following list:]]></Note> 
+        <Returns><![CDATA[A <br>
+                 B <br>
+                 aFunc ]]></Returns>      
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

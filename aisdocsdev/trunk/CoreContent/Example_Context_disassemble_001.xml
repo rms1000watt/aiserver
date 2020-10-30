@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Context disassemble 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>disassemble</FunctionKeywords>
+		<TypeKeywords>Lambda String Context</TypeKeywords>
+		<RelatedFunctions> debug debugBrowsableProcs</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>DRM virtual machine disassemble  </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ <p>In this example, the Virtual Machine Lambda will be created using 
+
+                  the <b>makeLambda</b> function (alternatively, the <b>compile</b> function 
+
+                  could be used to generate the Virtual Machine instructions).
+</p>
+     ]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[<sc>(lambda (n) (+ n 10))</sc>]]></Expression>
+        <Note><![CDATA[This is an Lambda to execute the following Lisp script:]]></Note>
+        <Returns><![CDATA[#&#60Lambda 123456 &#62 ]]></Returns>
+  	    <Expression><![CDATA[<sc> 
+        (makeLambda     
+
+  		 Av: #{n: 0}  
+
+  		 Pv: #{__C0 10})
+         </sc>]]></Expression>
+        <Note><![CDATA[The same Lambda can be created via the following Lisp expression:]]></Note>
+        <Returns><![CDATA[#&#60Lambda 234567&#62 ]]></Returns>
+  	    <Expression><![CDATA[<sc> (compile '(lambda (n) #void))    </sc>]]></Expression>
+        <Note><![CDATA[The same result can be obtained by the following Lisp expression:]]></Note>
+        <Returns><![CDATA[#&#60Lambda 345678&#62  ]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

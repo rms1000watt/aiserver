@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmvecInitialize</Title>
+		<InstructionName>vmvecInitialize</InstructionName>
+		<InstructionType>Vector</InstructionType>
+		<ArgumentTypes>Integer</ArgumentTypes>
+		<RelatedVMInstructions>vmvecLoop </RelatedVMInstructions>
+		<HumanKeywords>vector initialize loop</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[
+		<p>When evaluated, this vm instruction re-initializes the internal 
+		Vector processing registers, specified by the immediate <b>extent</b> 
+		argument, and resets the Vector processor count from the specified 
+		<b>count</b> register. Neither the Vector Processing Integer Stack 
+		nor the Floating Point Stack are reset by this instruction. 
+		This instruction sets the Vector Processing Initialize Label to the 
+		immediately following instruction. The next issued <b>vmvecLoop</b> 
+		instruction may jump back to the next instruction following this 
+		<b>vmvecInitialize</b> instruction. There are no conversions made 
+		between different types. The initial values in the three pointer registers, 
+		the three increment registers, and the counter register are NOT 
+		altered by this instruction. This instruction may return an Error 
+		value. After the operation, the Instruction Pointer is promoted. 
+		The operation of this vm instruction is expressed in the following 
+		pseudo code:
+	    </p>
+        <li>argument: {0} <i>(Vector argument pointer/increment/count are re-initialized from the registers specified)</i></li>  
+        <li>source: {1} <i>(Vector argument & source pointer/increment/count are re-initialized from the registers specified) </i></li> 
+        <li>target: {2} <i>(Vector argument, source & target pointer/increment/count are re-initialized from the registers specified) </i></li> 
+        <p>
+        The valid <b>extents</b> arguments are <u>any immediate integer value</u>, 
+        indicating the operation to be performed, or any one of the following symbolic 
+        operators:
+        </p>  
+        <ul><li>argument: {0} <i>(Vector argument pointer/increment/count are re-initialized from the registers specified)</i></li>   
+         <li>source: {1} <i>(Vector argument & source pointer/increment/count are re-initialized from the registers specified) </i></li> 
+         <li>target: {2} <i>(Vector argument, source & target pointer/increment/count are re-initialized from the registers specified) </i></li></ul> 
+    ]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[(vmvecInitialize extent count)]]></Expression>   
+	    <Argument> 
+		  <Name>extent</Name>
+		  <Format>immediate</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument> 
+		 <Argument> 
+		  <Name>count</Name>
+		  <Format>register</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>
+	</Syntax>
+</VMInstruction>

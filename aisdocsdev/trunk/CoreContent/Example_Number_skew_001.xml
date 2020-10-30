@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number skew 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>skew</FunctionKeywords>
+		<TypeKeywords>  Number Integer   </TypeKeywords>
+		<RelatedFunctions>range kurtosis stdev stdevp var</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>skew distribution curve displacement mean</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[   <p> This example defines the data points in the argument list. The
+                  <b>skew</b> function returns the skewness  of the distribution curve 
+                  as defined by the data points.</p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(skew 10 20 40 45)</sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[-0.2287277585873 ]]></Returns>
+ 	    <Expression><![CDATA[ <sc>(skew 20 50 55 60) </sc>   ]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[-1.696386799329 ]]></Returns>
+        <Hints><![CDATA[none
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

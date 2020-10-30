@@ -1,0 +1,116 @@
+asysmgr/asysmgrnotes.txt
+							System Manager Notes
+
+This project holds common server-side classes used by the Aisdev project.
+
+NOTES
+ 1.	Globals could be removed by passing a pointer to the system log to every
+ 	class.  Then each class could use it.  Or, every class could inherit a
+ 	system class that provides messaging.
+ 2.	These routines do not depend upon slots or events.  No .pro file is
+ 	needed.  A static library is generated that may be linked with any
+ 	AIS application, such as webide, aistest, etc.
+
+
+DOCUMENTATION GUIDE
+-------------------
+ *	asysmgr/asysmgrnotes.txt - this project setup and configuration.
+ *	Docs/InternalDocumentation/Qt - Documents on building Qt
+	projects.
+ *	Docs/InternalDocumentation/VisualStudio - Importing Qt projects,
+	general project settings, and compiler options.
+ 
+
+							SYSTEM MANAGER
+PROJECT SETUP
+-------------
+This project was created as follows:
+ 1.	Start Visual Studio. Select File->New->Projects->"Win32 Static Library"
+	Set project to: aisdev/asysmgr with no options checked. VS creates a
+	asysmgr.dsp file for you.
+ 2.	Insert this project into the abasedev project. Open abasedev project.
+ 	Rt click on abasedev in explorer window and then select insert project.
+ 3.	Modify project settings as noted below.  Build debug and release configurations.
+		  
+PROJECT NOTES
+-------------
+1.	See Docs/InternalDocumentation/Qt/Qmake.doc.  Includes
+	notes on creating Visual Studio project files (*.dsp).
+2.	See Docs/InternalDocumentation/Qt/QtProcedures.doc
+	for a general discussion on setting up Qt library projects.
+	Includes notes on creating Qt toolbar, using Qt Designer,
+	and Qt Documentation.	
+3.	See Docs/InternalDocumentation/VisualStudio/VsProcedures.doc
+	for a general discussion on setting up Visual Studio library
+	projects.  Includes notes on standard project settings,
+	importing Qt projects, and list of compiler options.	
+								
+PROJECT SETTINGS
+----------------
+Project->Settings
+	General tab
+		Intermediate Files: debug
+		Output files:  ../bin/debug
+	C/C++ tab
+		General:
+			WarningLevel: 3
+		C++ Language:
+			Enable Exception Handling
+		CodeGeneration:
+			Blend,DebugMultithreadedDLL,cdecl,8 bytes
+		PreProcessor
+			IncludeDirs:
+				../include
+			Definitions:
+				WIN32,_DEBUG,_MBCS,_LIB,UNICODE,QT_DLL,QT_THREAD_SUPPORT
+	Library tab
+		OutputFile: ../bin/debug/asysmgr.lib
+
+Static Lib Debug Project Options:
+/nologo /MDd /W3 /Gm /GX /Zi /Od /I "../include" /I "$(QTDIR)/Include"
+/I "$(QTDIR)/mkspecs/win32-msvc" /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB"
+/D "UNICODE" /D "QT_DLL" /D "QT_THREAD_SUPPORT" /Fo"Debug/" /Fd"Debug/"
+/FD /GZ /c
+
+Static Lib Release Project Options:
+/nologo /G5 /MT /W3 /Gx /O1 /I "D:/Qt/Include"
+/I "D:/Qt/mkspecs/win32-msvc" /I "../Include" /D "WIN32"
+/D "NDEBUG" /D "_MBCS" /D "_LIB" /D "QT_DLL" /D "UNICODE"
+/D "QT_THREAD_SUPPORT" /Fo"Release/" /Fd"Release/" /FD /c
+
+BUILD
+-----
+Compiling...
+asysmgr.cpp
+...
+Generating Code...
+Creating library...
+
+COMPILER OPTIONS
+----------------
+See Docs/InternalDocumentation/VisualStudio/VsProcedures.doc
+for list of above compiler options.
+
+FD - Generate file dependencies
+G5 - Favor Pentium processor
+Gm - Enable minimal rebuild
+GX - enable synchronous exception handling
+GZ - Catch release-build errors in debug
+MD  - Creates a multithreaded DLL, (MSVCRT.LIB)
+MDd - Creates debug multithreaded DLL   (MSVCRTD.LIB)
+ML  - Creates a single-threaded exe file, (LIBC.LIB)
+MLd - Creates debug single-threaded exe, (LIBCD.LIB)
+MT  - Creates a multithreaded executable file,(LIBCMT.LIB) 
+MTd - Creates a debug multithreaded exe file, (LIBCMTD.LIB)
+O1  - Create smallest code
+O2  - Create fast code
+Od  - Disable optimizations
+ZI  - Generate debug information for Edit&Continue
+Zi  - Generate debugging information
+MBCS - Include multibyte character set mappings
+UNICODE - Include unicode character set mappings
+
+
+
+
+

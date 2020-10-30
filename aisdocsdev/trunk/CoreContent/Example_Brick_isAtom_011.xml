@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Brick isAtom 011</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isAtom</FunctionKeywords>
+		<TypeKeywords>Brick</TypeKeywords>
+		<RelatedFunctions> isPair </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>atom pair list non-list</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>copy</b> functions to produce
+
+                   a copy of the Brick object in a new memory location.
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define nameList  (new Brick: 2 Name:Object:3))</sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60Record 123456&#62  ]]></Returns>
+        <Expression><![CDATA[ <sc>(isAtom nameList)      </sc>]]></Expression>
+        <Note><![CDATA[A Brick is not a Pair.]]></Note>
+        <Returns><![CDATA[true ]]></Returns>
+        <Expression><![CDATA[ <sc>(isAtom '( 3 5))      </sc>]]></Expression>  
+        <Note><![CDATA[The function returns true for a Pair.]]></Note> 
+        <Returns><![CDATA[false ]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

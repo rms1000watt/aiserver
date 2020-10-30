@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number min 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>min</FunctionKeywords>
+		<TypeKeywords>  Number Integer </TypeKeywords>
+		<RelatedFunctions>   max median </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>minimum maximum median</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ <p> This example shows how the <b>min</b> function computes the minimum value 
+             from a set of Integers and Numbers.</p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(min 1 2 3 4 5 6) </sc>   ]]></Expression>
+        <Note><![CDATA[Returns the minimum value from a set of Integers]]></Note>
+        <Returns><![CDATA[1.0 ]]></Returns>
+        <Expression><![CDATA[ <sc>(min (+ 1 5) (+ 3 4)) </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[6.0]]></Returns>
+ 	    <Expression><![CDATA[ <sc>(min 1.970 .987 4.564 5.976 6.234) </sc>   ]]></Expression> 
+        <Note><![CDATA[Returns the minimum value from a set of Real Numbers]]></Note> 
+        <Returns><![CDATA[0.987]]></Returns>
+        <Hints><![CDATA[none
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

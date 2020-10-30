@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Document SYSTEM "../DTD/Document.dtd">
+<Document>
+	<KnowledgeBase>
+	    <Title>parseLib: compiler generator</Title>
+		<Topic>parseLib</Topic>
+		<SubTopic>compiler generator</SubTopic>
+		<HumanKeywords>parseLib compiler</HumanKeywords>
+	</KnowledgeBase>
+	<Essay>Essay_parseLib_Introduction</Essay>
+	<Essay>Essay_parseLib_Lexical_Rules</Essay>
+	<Essay>Essay_parseLib_Semantic_Rules</Essay> 
+	<Essay>Essay_parseLib_Syntax_Rules</Essay>
+	<Essay>Essay_parseLib_compiler</Essay>
+</Document>

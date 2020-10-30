@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number &#45; 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>&#45;</FunctionKeywords>
+		<TypeKeywords>Number</TypeKeywords>
+		<RelatedFunctions> &#42; &#43; &#47; </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>multiplication addition subtraction division</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[  <p> The <b>&#45</b> function returns the difference of all the numbers in the argument list. </p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+(&#45 12 3 4)   </sc>   ]]></Expression>
+        <Note><![CDATA[The 3 numbers are subtracted from left to right.]]></Note>
+        <Returns><![CDATA[5]]></Returns>
+        <Expression><![CDATA[ <sc>(&#45 2 -4)   </sc>   ]]></Expression>
+        <Note><![CDATA[The 2 numbers are subtracted.]]></Note>
+        <Returns><![CDATA[-6]]></Returns>
+        <Expression><![CDATA[ <sc>(&#45 42 )   </sc>   ]]></Expression>
+        <Note><![CDATA[The negative value of the single argument is returned.]]></Note>
+        <Returns><![CDATA[-42]]></Returns>
+        <Hints><![CDATA[none
+        ]]></Hints>
+   </Syntax>
+</Example>

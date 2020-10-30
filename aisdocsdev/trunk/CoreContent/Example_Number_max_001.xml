@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number max 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>max</FunctionKeywords>
+		<TypeKeywords>  Number Integer </TypeKeywords>
+		<RelatedFunctions>   median min </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>max estimate round </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ <p> This example shows how the <b>max</b> function returns the largest value 
+              from a set of Integers and Numbers.</p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(max 1 2 3 4 5 6) </sc>   ]]></Expression>
+        <Note><![CDATA[Returns the largest value from a set of Integers]]></Note>
+        <Returns><![CDATA[6 ]]></Returns>
+        <Expression><![CDATA[ <sc>(max (+ 1 5) (+ 3 4)) </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[7.0]]></Returns>
+ 	    <Expression><![CDATA[ <sc>(max 1.970 .987 4.564 5.976 6.234) </sc>   ]]></Expression>  
+        <Note><![CDATA[Returns the largest value from a set of Real Numbers]]></Note> 
+        <Returns><![CDATA[6.234 ]]></Returns>
+        <Hints><![CDATA[none
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

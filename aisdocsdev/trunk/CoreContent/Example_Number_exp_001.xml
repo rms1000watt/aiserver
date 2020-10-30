@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number exp 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>exp</FunctionKeywords>
+		<TypeKeywords>Number Integer</TypeKeywords>
+		<RelatedFunctions>expt</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>  radians angle  </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>exp</b> function to compute the natural exponential of its argument.
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(exp 1)  </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[2.718281828459]]></Returns>
+        <Expression><![CDATA[ <sc>(exp 0) </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ 1]]></Returns>
+        <Expression><![CDATA[ <sc>(exp .5)  </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[ 1.6487212707]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

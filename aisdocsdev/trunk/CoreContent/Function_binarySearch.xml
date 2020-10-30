@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>binarySearch</Title>
+		<FunctionName>binarySearch</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+        <ArgumentTypes> Vector Matrix String Text  Symbol Integer Boolean FltVector IntVector NumVector  ShortVector ObjVector </ArgumentTypes>  
+<DataType> Structure NumMatrix Dictionary Vector Matrix FltVector IntVector NumVector ShortVector ObjVector CpxVector</DataType>	    <RelatedFunctions>insert uniqueInsert binaryInsert sort</RelatedFunctions>
+        <RelatedVMInstructions> vmregRefPointer vmrefbytevector </RelatedVMInstructions>
+		<HumanKeywords>binary insert search sort find</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>binarySearch</b> performs a binary search for the specified key value in 
+                 the specified Object. If found, the index of the matching value is returned; otherwise false is returned.</p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The  <b>binarySearch</b> function performs a binary search for the  key 
+           value in the specified Object. If a matching value is found, the index 
+           of the matching value is returned; otherwise false is returned.</p>
+        ]]></Overview>
+        <Usage-Structure><![CDATA[
+        <p>When a structure has been previously sorted, the <b>binarySearch</b> function is an 
+           efficient way to determine if a specific key exists in the structure and if exists, 
+           what location in the structure it exists.
+		</p>
+        ]]></Usage-Structure>
+        <Usage-Dictionary><![CDATA[
+        <p>When a Dictionary has been previously sorted, the <b>binarySearch</b> function is an 
+           efficient way to determine if a specific key exists in the Dictionary and if exists, 
+           what location in the Dictionary it exists.
+		</p>
+        ]]></Usage-Dictionary>
+       <Usage><![CDATA[
+        <p>When a Vector has been previously sorted in <b>ascending</b> order, the <b>binarySearch</b> function is an 
+           efficient way to determine if a specific value exists in the Vector and if exists, 
+           what location in the Vector it exists.
+		</p>
+        ]]></Usage>
+      <Usage-Matrix><![CDATA[
+           <p><FONT COLOR="#0000ff"> Note: </FONT> <b>Returns an error message if the Matrix is not of rank one. </b></p>
+        <p>When a Matrix has been previously sorted in <b>ascending</b> order, the <b>binarySearch</b> function is an 
+           efficient way to determine if a specific value exists in the Matrix and if exists, 
+           what location in the Matrix it exists.
+		</p>
+        ]]></Usage-Matrix>
+      <Usage-NumMatrix><![CDATA[
+           <p><FONT COLOR="#0000ff"> Note: </FONT> <b>Returns an error message if the Matrix is not of rank one. </b></p>
+        <p>When a NumMatrix has been previously sorted in <b>ascending</b> order, the <b>binarySearch</b> function is an 
+           efficient way to determine if a specific value exists in the NumMatrix and if exists, 
+           what location in the NumMatrix it exists.
+		</p>
+        ]]></Usage-NumMatrix>
+    </Brief>
+	<Syntax-Structure>
+	    <Expression><![CDATA[<p>  (binarySearch  struct  searchkey)</p>]]></Expression>
+		<Argument>
+		  <Name>struct</Name>
+		  <Note><![CDATA[
+		  <p> A predefined Structure variable or constant. </p>
+          ]]></Note>
+		  <AISTypes>Structure </AISTypes>
+		</Argument>
+     	<Argument>
+		  <Name>searchKey</Name>
+		  <Note><![CDATA[
+		  <p>A symbolic key which you want to find in the Structure.</p>
+          ]]></Note>
+		  <AISTypes>String or Text </AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>Returns the Boolean value false if not found.  
+           Otherwise returns a integer index of the location in the 
+           structure where the key was found.
+        </p>
+	    ]]></Return>
+	    </Syntax-Structure>
+	    <Syntax-Structure>	    
+        <Expression><![CDATA[<p>  (binarySearch  struct  searchkey  idsOnly)</p>]]></Expression>
+		<Argument> 
+		  <Name>struct</Name>
+		  <Note><![CDATA[
+		  <p> A predefined Structure variable or constant. </p>
+          ]]></Note>
+		  <AISTypes>Structure </AISTypes>
+		</Argument>
+     	<Argument> 
+		  <Name>searchKey</Name>
+		  <Note><![CDATA[
+		  <p>A symbolic key which you want to find in the Structure.</p>
+          ]]></Note>
+		  <AISTypes>Symbol </AISTypes>
+		</Argument>
+        <Argument> 
+		  <Name>idsOnly</Name>
+		  <Note><![CDATA[
+		  <p>Value is set to false if  the key comparison is to be made on object ids only (faster)</p>
+          ]]></Note>
+		  <AISTypes>Boolean </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns the Boolean value false if not found.  
+           Otherwise returns a integer index of the location in the 
+           structure where the key was found.
+        </p>
+	    ]]></Return>   
+	</Syntax-Structure>
+	<Syntax-Dictionary>
+	    <Expression><![CDATA[<p>   (binarySearch  dict  searchkey) </p>]]></Expression>
+		<Argument> 
+		  <Name>dict</Name>
+		  <Note><![CDATA[
+		  <p> A predefined Dictionary variable or constant. </p>
+          ]]></Note>
+		  <AISTypes>Dictionary </AISTypes>
+		</Argument>
+     	<Argument> 
+		  <Name>searchKey</Name>
+		  <Note><![CDATA[
+		  <p>A symbolic key which you want to find in the Dictionary.</p>
+          ]]></Note>
+		  <AISTypes>Symbol </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns the Boolean value false if not found.  
+           Otherwise returns a integer index of the location in the 
+           dictionary where the key was found.
+        </p>
+	    ]]></Return> 
+	 </Syntax-Dictionary>
+	<Syntax-Dictionary>
+        <Expression><![CDATA[<p>  (binarySearch  dict  searchkey  idsOnly)</p>]]></Expression>
+		<Argument> 
+		  <Name>dict</Name>
+		  <Note><![CDATA[
+		  <p> A predefined Dictionary variable or constant. </p>
+          ]]></Note>
+		  <AISTypes>Dictionary </AISTypes>
+		</Argument>
+     	<Argument> 
+		  <Name>searchKey</Name>
+		  <Note><![CDATA[
+		  <p>A symbolic key which you want to find in the Dictionary.</p>
+          ]]></Note>
+		  <AISTypes>Symbol </AISTypes>
+		</Argument>
+        <Argument> 
+		  <Name>idsOnly</Name>
+		  <Note><![CDATA[
+		  <p>Value is set to false if  the key comparison is to be made on object ids only (faster)</p>
+          ]]></Note>
+		  <AISTypes>Boolean </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns the Boolean value false if not found.  
+           Otherwise returns a integer index of the location in the 
+           dictionary where the key was found.
+        </p>
+	    ]]></Return>   
+	</Syntax-Dictionary>
+    <Syntax>
+	    <Expression><![CDATA[<p>   (binarySearch  vector  searchValue) </p>]]></Expression>
+		<Argument> 
+		  <Name>vector</Name>
+		  <Note><![CDATA[
+		  <p> A predefined Vector variable or constant. </p>
+          ]]></Note>
+		  <AISTypes>Vector FltVector IntVector NumVector ObjVector ShortVector</AISTypes>
+		</Argument>
+     	<Argument> 
+		  <Name>searchValue</Name>
+		  <Note><![CDATA[
+		  <p>value to be searched</p>
+          ]]></Note>
+		  <AISTypes>String Text Integer </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns a Boolean value false if not found.  Otherwise returns a integer index 
+           of the location in the Vector where the value was found.
+        </p>
+	    ]]></Return>   
+	</Syntax>
+    <Syntax-Matrix>
+	    <Expression><![CDATA[<p>   (binarySearch matrix searchValue) </p>]]></Expression>
+		<Argument> 
+		  <Name>matrix</Name>
+		  <Note><![CDATA[
+		  <p> A previously sorted Matrix.</p>
+          ]]></Note>
+		  <AISTypes>Matrix </AISTypes>
+		</Argument>
+     	<Argument> 
+		  <Name>searchValue</Name>
+		  <Note><![CDATA[
+		  <p>value to be searched</p>
+          ]]></Note>
+		  <AISTypes>String Text Integer </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns a Boolean value false if not found.  Otherwise returns a integer index 
+           of the location in the Matrix where the value was found.
+        </p>
+	    ]]></Return>   
+	</Syntax-Matrix>
+    <Syntax-NumMatrix>
+	    <Expression><![CDATA[<p>   (binarySearch nummatrix searchValue) </p>]]></Expression>
+		<Argument> 
+		  <Name>nummatrix</Name>
+		  <Note><![CDATA[
+		  <p> A previously sorted NumMatrix.</p>
+          ]]></Note>
+		  <AISTypes>NumMatrix </AISTypes>
+		</Argument>
+     	<Argument> 
+		  <Name>searchValue</Name>
+		  <Note><![CDATA[
+		  <p>value to be searched</p>
+          ]]></Note>
+		  <AISTypes>String Text Integer </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns a Boolean value false if not found.  Otherwise returns a integer index 
+           of the location in the Vector where the value was found.
+        </p>
+	    ]]></Return>   
+	</Syntax-NumMatrix>
+</Function>

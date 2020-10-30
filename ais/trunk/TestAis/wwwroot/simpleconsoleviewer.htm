@@ -1,0 +1,395 @@
+<HTML>
+<HEAD>
+<title>DeepGreen Console Viewer</title>
+<bgsound SRC="Musica.wav" LOOP="1" AUTOSTART="true">
+<!--								             Console Viewer Scripts														-->
+<script language="JavaScript">
+//	PENDING
+// 1. Close out log and connection on unload.
+// 2. On submitting a runCommand, if log closed, open it. If suspended, enable it.
+
+// -------------------------------------------------------- Globals -----------------------------------------------------------
+var gLog = null;		// XmlHttpRequest Object for console log requests
+
+/*	---------------------------------------------------------------------------------------------------------------------------
+abortButtonOnClick - Abort button selected by user
+Args:		none
+Returns:	none
+Note:
+ 1.	Called by event generated when AbortButton selected
+ 2.	Submits command to suspend console log.
+	------------------------------------------------------------------------------------------------------------------------ */
+function abortButtonOnClick()
+{
+	getConsoleLog("abort", 0/*SessionId*/, null/*Wait*/);
+	return true;
+}
+
+/*	---------------------------------------------------------------------------------------------------------------------------
+clearButtonOnClick - Clear button selected by user
+Args:		none
+Returns:	none
+Note:
+ 1.	Called by event generated when ClearButton selected
+ 2.	Clear the Console Viewer
+	------------------------------------------------------------------------------------------------------------------------ */
+function clearButtonOnClick()
+{
+	var aElem = document.getElementById("ConsoleOutput");
+	aElem.value = "";
+	return true;
+}
+
+/*	---------------------------------------------------------------------------------------------------------------------------
+debug - Show debug statements in console output window
+Args:
+	iMsg	The debug message to be displayed
+Returns:
+	nothing
+	------------------------------------------------------------------------------------------------------------------------ */
+function debug(iMsg)
+{
+	var aElem = document.getElementById("ConsoleOutput");
+	aElem.value += iMsg;
+}
+
+/*	---------------------------------------------------------------------------------------------------------------------------
+decodeXml - Decode all XML special characters in the specified string.
+Args:
+	iMsg	The string whose XML special characters are to be decoded.
+Returns:
+	aRet	Input with its XML predefined entities decoded.
+	------------------------------------------------------------------------------------------------------------------------ */
+function decodeXml(iMsg)
+{
+	// Convert predefined entities, &lt;, &amp;, &gt;, &apos;, &quot;
+	var aRet = iMsg.replace(/&quot;/g, '"');
+	aRet = aRet.replace(/&lt;/g, "<");
+	aRet = aRet.replace(/&gt;/g, ">");
+	aRet = aRet.replace(/&apos;/g, "'");
+	// Do ampersand last!
+	aRet = aRet.replace(/&amp;/g, "&");
+	return aRet;
+}
+
+/*	---------------------------------------------------------------------------------------------------------------------------
+encodeXml -  Encodes the <, &, and " special XML characters in the specified string.
+Args:
+	iMsg	String containing predefined entities.
+Returns:
+   aRet		The string with its <, &, and " XML special characters decoded.
+Note:
+ 1.	Encode all strings w/ special chars before including them in an XML doc.
+	------------------------------------------------------------------------------------------------------------------------ */
+function encodeXml(iMsg)
+{
+	// Do & first!
+	var aRet = iMsg.replace(/&/g, "&amp;");
+	aRet = aRet.replace(/</g, "&lt;");
+	aRet = aRet.replace(/"/g, "&quot;");
+	return aRet;
+}
+
+
+/*	---------------------------------------------------------------------------------------------------------------------------
+getEvent - Gets the current event object in a cross platform way
+Args:
+	iId		Element ID of the element on which the event fired
+	iEvt	Event passed to the event handler for W3C browsers.
+Return:	nothing
+Notes:
+ 1.	In IE, the current event is an attribute of the window in which the event occurred. 
+ 2.	In W3C browsers, the event is passed to the event handler as an argument.
+ 3.	It is necessary to ensure that IE returns event object from the window object in which the 
+	element lives. For example, if multiple IFRAME elements are used on a page and an event fires,
+	in IE, each IFRAME has its own window object.  In order to find the element that generated the
+	event, it is necessary to find the window that it belongs to so we can get a reference to the
+	windows event object. Pretty brutal eh?
+ 4. A W3C browser is simpler. We don't have to jump through these silly hoops.
+
+Page Design Notes:
+ 1.	All UI elements on the page are given a meaningful IdName that describes the action they spawn
+ 2.	All UI events follow the convention. IdNameOn.... Example: ScoreButtonOnClick
+ 3.	Where an event spawns an async call to the server, the event is split into two parts to allow
+	the page to be updated with a status message.
+ 4.	All events are blocked when an synchronous call is in progress.
+ 5. This script is cross platform and will run on both FireFox and IE browsers
+
+Cross platform notes:
+ 1.	Elements must be resolved using getElementById. Example:
+		document.getElementById("someElement").someAttribute  -- Correct
+		someElement.someAttribute -- Only works with IE. DO NOT USE
+ 2. Use the href and hash attributes to navigate instead of using IE's Navigate method
+		window.location.href = result;
+		window.location.hash = "topage";
+	------------------------------------------------------------------------------------------------------------------------ */
+function getEvent(iId, iEvt)
+{
+	var aElem = document.getElementById(iId);
+	var aWin = (document.contentWindow == "undefined") ? aElem : aElem.contentWindow;
+	iEvt = (iEvt) ? iEvt : aWin.event;
+	return iEvt;	
+}
+
+/*	---------------------------------------------------------------------------------------------------------------------------
+consoleLogOpen -  open a console log for this session
+Args:
+	iSize		=0 for unlimited; else max buffer size [bytes] (default is 5000)
+	iSessionId	=0 for current sessionId (default); else, session ID
+Return:
+   true
+Note:
+ 1.	AMP msg: _ais|openconsolelog|redirect|%s|size|%d|sessionid|%d
+	------------------------------------------------------------------------------------------------------------------------ */
+function consoleLogOpen(iSessionId, iSize)
+{   // Note that the redirect argument to openconsolelog can be hardcoded to true in http clients
+	// because a value of false will have no effect for this client type.
+	var aXml = 'xml=<amp target="_ais" act="openconsolelog"><redirect>true</redirect>';
+	if (iSize != null)
+	{	aXml += '<size>' + iSize + '</size>';
+		if (iSessionId != null)
+			aXml += '<sessionid>' + iSessionId + '</sessionid>';
+	}
+	aXml += '</amp>';
+
+	submitSync(aXml);
+	return true;
+}
+
+/*	---------------------------------------------------------------------------------------------------------------------------
+consoleLogStart -  Start logging the console into this pages ConsoleOutput element
+Args:
+	none
+Return:
+   true
+Note:
+	------------------------------------------------------------------------------------------------------------------------ */
+function consoleLogStart(iClear, iSessionId, iWait)
+{
+	var aXml = 'xml=<amp target="_ais" act="getconsolelog"><clear>true</clear><sessionid>0</sessionid><wait>true</wait></amp>';
+	
+	// Always create a new XMLHttpRequest object. 
+	if (window.XMLHttpRequest)
+		gLog = new XMLHttpRequest();
+	else if (window.ActiveXObject)
+		gLog = new ActiveXObject("Microsoft.XMLHTTP");
+	else
+		gLog = null;
+
+	if (gLog == null)
+		alert("consoleLogStart: Unable to create new  XmlHttpRequest object");
+	else
+	{
+		gLog.onreadystatechange = consoleLogEvent;
+		gLog.open("POST", "amp.dll", true/*Async*/);
+		gLog.send(aXml);
+	}
+}
+
+/*	----------------------------------------------------------------------------------------------------------------------
+consoleLogEvent - handle incomming console log events from the gLog XmlHttpRequestObject
+------------------------------------------------------------------------------------------------------------------------ */
+function consoleLogEvent()
+{
+	var aBfr;	// Holds XML document returned from AIS
+	var aElem;	// The ConsoleOutput text area
+	var aPos;	// Index from string search
+	if (gLog.readyState == 4 ) // 4==Complete
+	{	if(gLog.status != 200) // 200== OK
+		{	alert("consoleLogEvent: consoleLogStart failed with status:" + gLog.status);
+		}
+		else  // Task. Extract the returned speech act from the root-element tag.
+		{	aElem = document.getElementById("ConsoleOutput");
+			aDom = gLog.responseXML;
+			var aNode = aDom.firstChild;
+			if (aNode != null && aNode.tagName == "amp" && aNode.getAttribute("act") == "getconsolelog" && aNode.getAttribute("xtype") == "return")
+			{ //alert("getconsolelog returns" + gLog.responseText)
+				var aChildNodes = aNode.childNodes;
+				if (aChildNodes != null) 
+				{	// alert("numNodes=" + aChildNodes.length);
+					var numNodes = aChildNodes.length;
+					for (var i=0; i < numNodes; i++)
+					{	// Look for display and result elements
+						var aChildNode = aChildNodes[i];
+						// alert(aChildNode.tagName);
+						if (aChildNode.tagName == "Display")
+							aElem.value += aChildNode.firstChild.nodeValue;	
+												
+						if (aChildNode.tagName == "Result")
+							aElem.value += aChildNode.firstChild.nodeValue + "\n";
+					}
+				}		
+			}
+		}
+		gLog = null;
+		consoleLogStart();
+	}
+}
+
+/*	---------------------------------------------------------------------------------------------------------------------------
+runButtonOnClick - Submit aisLisp expression entered in ConsoleInput area to AIS as an XML AMP message
+Args:     none
+Return:   none
+---------------------------------------------------------------------------------------------------------------------------- */
+function runButtonOnClick()
+{
+	// Format an xml amp message to execute the current console input on the server
+	// Note that we send the command to the server for execution but do not wait
+	// for the result of the execution. Instead, we just get an request XID back from the
+	// server identifying the request that has been placed on the context's queue.
+	// Output and the return result from the request will be placed into the console log. 
+	// Review the other functions in this page for getting console log to see how the return
+	// result will be returned.
+	var aCmd = document.getElementById("ConsoleInput").value;
+	var aElem = document.getElementById("ConsoleOutput").value; 
+	aElem += aCmd + "/n"; // echo command into console output log
+	// Note inclusion of .. mode="async" ... attribute in the amp tag. This means we will be 
+	// getting back an XID instead of a return result from the call on the server.
+	// TESTING SYNC... aCmd = 'xml=<amp target="_ais" act="eval"><exp>'+encodeXml(aCmd)+'</exp></amp>';
+	aCmd = 'xml=<amp target="_ais" act="eval" mode="async"><exp>'+encodeXml(aCmd)+'</exp></amp>';
+	var XID = submitSync(aCmd); // Sync on local return, Async on server
+	// Note that we are not using the XID for anything in this simple console model.
+	return true;
+}
+
+/*	---------------------------------------------------------------------------------------------------------------------------
+shutdown - Release all allocated resources
+Args:	none
+Return:	none
+Note:
+ 1.	Called when user moves off this page. Time to release captured resources.
+ 2. Close console log.
+ 3. Close the session.
+ 4.	Close all XmlHttpRequest connections.
+	------------------------------------------------------------------------------------------------------------------------ */
+function shutdown()
+ {
+ 	// PENDING...
+}
+
+/*	---------------------------------------------------------------------------------------------------------------------------
+startup - Initialize globals, connection to server and the console logging facility
+Args:	none
+Return:	none
+Note:
+ 1.	Called when page is finished loading
+	------------------------------------------------------------------------------------------------------------------------ */
+function startup()
+{
+ 	// Initialize the page for use
+	var iPassd = null;
+	var iUserName = "guest";
+	var aElem = document.getElementById("ConsoleOutput");
+	
+	var aCmd;
+	// Logon
+	aCmd = 'xml=<amp target="_ais" act="logon"><user>guest</user><passwd></passwd></amp>';
+	
+	var aResult = submitSync(aCmd);
+	// Insert error handling
+	
+	// Open session
+	aCmd = 'xml=<amp target="_ais" act="opensession"></amp>';
+
+	var aResult = submitSync(aCmd);
+	// Insert error handling
+	
+	// Open console log
+	consoleLogOpen(); // Instruct the server to start logging for this session
+	consoleLogStart(); // start console logging to ConsoleOutput element
+}
+
+/*	---------------------------------------------------------------------------------------------------------------------------
+submitSync - Submit an XML request document to AIS and wait for return response from server
+Args:
+	iCmd		XML document to be sent.
+Return:
+	XID or return result
+Note:
+ 1.	Submits request via an XmlHttpRequest Object.
+------------------------------------------------------------------------------------------------------------------------ */
+function submitSync(iCmd) 
+{
+	var aReq; 	// Local XmlHttpRequest object - destroyed on exit from function
+	var aPos;
+	var aBfr;	// Holds XML document returned from AIS
+	var aPos;	// Index from string search
+	
+	// Select native XMLHttpRequest object unless IE/Windows ActiveX
+	if (window.XMLHttpRequest)
+		aReq = new XMLHttpRequest();
+	else if (window.ActiveXObject)
+		aReq = new ActiveXObject("Microsoft.XMLHTTP");
+	else
+		aReq = null;
+
+	if (aReq == null)
+	{
+		alert("submitSync:, Unable to create new  XmlHttpRequest object");
+		return -1; // submit failed
+	}
+	else
+	{	
+		aReq.open("POST", "amp.dll", false /* Sync */);
+		aReq.send(iCmd);
+	}
+	
+	if (aReq.readyState == 4 )  // 4==Complete
+	{	aBfr = aReq.responseText;
+		if(aReq.status != 200) // 200=OK
+		{	alert("aisEvent(), Request:" + aBfr + " failed with status:" + gReq.status);
+		}
+		else  // Task. Extract the returned speech act from the root-element tag.
+		{	aPos = aBfr.indexOf('act=') + 5;
+			if (aPos > 0)
+				aTask = aBfr.slice(aPos, aBfr.indexOf('"', aPos));
+			aElem = document.getElementById("ConsoleOutput");
+//			aElem.value += aBfr + "\n";
+		}
+	}
+		
+}
+
+window.onload = startup;
+window.onunload = shutdown;
+</script>
+
+<!--													Page  Layout														-->
+</HEAD>
+<BODY LEFTMARGIN="0" TOPMARGIN="0" BACKGROUND="granite.gif" TEXT="#000000" LINK="#0000ff">
+<A NAME="topage"></A>
+
+<!--------------------------------------------------------------------------------->
+<!---                             Message Bar                                  ---->
+<!--------------------------------------------------------------------------------->
+
+<FONT COLOR="#000080"><H3 ID="MessageBar" ALIGN="center">DeepGreen Console Viewer</H3></FONT>
+
+
+<TABLE>
+	<TR>
+		<TD>
+            <INPUT ID="RunButton" TYPE="submit" VALUE="Run" ONCLICK="runButtonOnClick();">
+		</TD>
+		<TD>
+			 <INPUT ID="AbortButton" TYPE="submit" VALUE="Abort" ONCLICK="abortButtonOnClick();">
+		</TD>
+		<TD>
+			 <INPUT ID="ClearButton" TYPE="submit" VALUE="Clear" ONCLICK="clearButtonOnClick();">
+		</TD>
+	</TR>
+</TABLE>
+
+<TABLE>
+	<TR>
+		<TD>
+        	<TEXTAREA ID="ConsoleInput" ALIGN="left" ROWS="4" COLS="154"></TEXTAREA>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+	    	<TEXTAREA ID="ConsoleOutput" ROWS="40" COLS="154"></TEXTAREA>
+		</TD>
+	</TR>
+</TABLE>
+</BODY></HTML>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Boolean bcompareGE 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>bcompareGE</FunctionKeywords>
+		<TypeKeywords>Integer Boolean</TypeKeywords>
+		<RelatedFunctions>bcompare bcompareEQ bcompareNE bcompareGT bcompareLT  bcompareLE</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare Lambda greater equal boolean</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>bcompareGE</b> function to compare if
+                  the first object is greater than or equal to the second object. It returns
+
+
+
+
+
+
+                  the Boolean value, true or false.  
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+(bcompareGE #\g #\d)         </sc>]]></Expression>
+        <Note><![CDATA[Character and Integer values are Boolean values.]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+ 	    <Expression><![CDATA[ <sc>
+(bcompareGE 1 2)</sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(bcompareGE true true)  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

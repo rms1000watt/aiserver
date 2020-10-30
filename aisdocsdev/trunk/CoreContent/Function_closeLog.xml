@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>closeLog</Title>
+		<FunctionName>closeLog</FunctionName>
+		<FunctionType>Builtin(FileIO)</FunctionType>
+        <ArgumentTypes>String</ArgumentTypes>        
+        <DataType>FileIO</DataType>
+	    <RelatedFunctions>openLog</RelatedFunctions>
+        <RelatedVMInstructions>none</RelatedVMInstructions>
+		<HumanKeywords>console close log</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[ 
+             <p> The <b>closeLog</b> function closes the log file after an calling the openLog function. </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>closeLog</b> function stops writing the an open log file.  It may have a string argument as a note that will
+			be written at the end of the log file.  If there is no opened log file this function returns false.
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>Use the <b>closeLog</b> function to close the log file opened using <b>openLog</b>.
+		</p>
+        ]]></Usage>
+    </Brief>
+    <Syntax>
+	    <Expression><![CDATA[<p>(close [aNote]) </p>]]></Expression>
+		<Argument> 
+		  <Name>aNote</Name>
+		  <Note><![CDATA[
+		  <p> Optional information to be written to the log.</p>
+          ]]></Note>
+		  <AISTypes>String</AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>Returns the Boolean value true, or false if an error occurred.  This function will also return false if
+		thre is no opened log file.
+        </p>
+	    ]]></Return>   
+	</Syntax>
+</Function>

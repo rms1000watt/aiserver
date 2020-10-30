@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number methodsOf 014</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>methodsOf</FunctionKeywords>
+		<TypeKeywords>  Symbol Dictionary </TypeKeywords>
+		<RelatedFunctions>addMethod send methodsOf</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>method message messageName</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[<p> This example defines a method named <b>doubleThis </b> that is invoked when the Number  
+                 type receives an double message.  The <b>doubleThis</b> method doubles its 
+                 numeric argument. The <b>methodsOf</b> function returns the <b>doubleThis</b>
+                 method defined in the Number Methods Dictionary. </p>
+	]]></Description>
+	<Syntax>
+	<Expression><![CDATA[<sc>(defun doubleThis (b) (* b 2) )     </sc>]]></Expression>  
+    <Note><![CDATA[ First Define the doubleThis method:]]></Note> 
+    <Returns><![CDATA[ #&#60Lambda 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(addMethod  Number: double: doubleThis)               <sc> ]]></Expression>
+    <Note><![CDATA[Install the doubleThis method and the message named double in the Number Methods Dictionary.]]></Note>
+    <Returns><![CDATA[#&#60Dictionary 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(send double: 1.1)       <sc> ]]></Expression>
+    <Note><![CDATA[To invoke the Lambda that responds to the double message, issue the following statement:]]></Note>
+    <Returns><![CDATA[2.2]]></Returns>
+    <Expression><![CDATA[<sc>(double: 1.1)       <sc> ]]></Expression>
+    <Note><![CDATA[Alternatively, the Lambda may be invoked using the following syntax:]]></Note>
+    <Returns><![CDATA[2.2]]></Returns>
+   <Expression><![CDATA[ <sc> (length (methodsOf  Number: ))           </sc>
+   ]]></Expression>
+   <Note><![CDATA[ Query the methods Dictionary for the Number Data Type:]]></Note>
+   <Returns><![CDATA[ 1 ]]></Returns>
+   <Expression><![CDATA[<sc>(ref (methodsOf Number:)[0 0])   </sc>
+   ]]></Expression>
+   <Note><![CDATA[Get the names of  the methods  in the methods Dictionary for the 
+
+         Number Data Type:
+
+   ]]></Note>
+   <Returns><![CDATA[double]]></Returns>
+   <Expression><![CDATA[<sc>(ref (methodsOf Number:)[0 1])   </sc>
+   ]]></Expression>
+   <Note><![CDATA[none]]></Note>
+   <Returns><![CDATA[#&#60Lambda 123456&#62]]></Returns>
+   <Expression><![CDATA[<sc>(isMember (methodsOf  Number: ) double  )   </sc>
+   ]]></Expression>
+   <Note><![CDATA[Check if the message double is in the Methods Dictionary of the Number Native Type:]]></Note>
+   <Returns><![CDATA[true]]></Returns>
+    <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

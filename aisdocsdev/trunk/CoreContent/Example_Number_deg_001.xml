@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number deg 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>deg</FunctionKeywords>
+		<TypeKeywords>Number Integer</TypeKeywords>
+		<RelatedFunctions>rad</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>  radians angle  </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>deg</b> function to convert a value expressed in radians to degrees.
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(deg 0.785398)  </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[44.99999063802]]></Returns>
+        <Expression><![CDATA[ <sc>(deg 0.523598776) </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[ 30.00000002302]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

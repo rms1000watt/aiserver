@@ -1,0 +1,17 @@
+<customUI xmlns="http://schemas.microsoft.com/office/2006/01/customui" onLoad="OnLoad" loadImage="GetImage">
+  <ribbon>
+    <tabs>
+      <tab idMso="TabAddIns">
+        <group id="Ais"
+               label="Agent Information System">
+          <button id="ShowAisTaskPane"
+                  size="large"
+                  label="AIS"
+                  image="abase_large"
+                  screentip="Show the AIS task pane."
+                  onAction="OnShowAisTaskPane" />
+        </group>
+      </tab>
+    </tabs>
+  </ribbon>
+</customUI>

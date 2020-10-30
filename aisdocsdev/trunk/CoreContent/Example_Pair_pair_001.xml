@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Pair pair 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>pair</FunctionKeywords>
+		<TypeKeywords>Pair List</TypeKeywords>
+		<RelatedFunctions>car setCar cdr setCdr </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>construct car cdr list </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example uses the <b>pair</b> function to construct the
+                   a new pair composed of its <b>car</b> and <b>cdr</b>.
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc> (pair  'A   'B)         </sc>]]></Expression>
+        <Note><![CDATA[ none]]></Note>
+        <Returns><![CDATA[#&#60Pair 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc> (display #&#60Pair 123456&#62 )      </sc>]]></Expression>
+        <Note><![CDATA[ none]]></Note>
+        <Returns><![CDATA[(A . B)]]></Returns>
+ 	    <Expression><![CDATA[ <sc> (pair  'A  '())         </sc>]]></Expression>     
+        <Note><![CDATA[ none]]></Note> 
+        <Returns><![CDATA[#&#60Pair 234567&#62]]></Returns>        
+        <Expression><![CDATA[ <sc> (display #&#60Pair 234567&#62 )      </sc>]]></Expression>  
+        <Note><![CDATA[ An empty list has the value #void, so the pair will have not cdr part.]]></Note> 
+        <Returns><![CDATA[(A)]]></Returns>
+ 	    <Expression><![CDATA[ <sc> (pair  'A  #void)         </sc>]]></Expression>     
+        <Note><![CDATA[ none]]></Note> 
+        <Returns><![CDATA[#&#60Pair 345678&#62]]></Returns>        
+        <Expression><![CDATA[ <sc> (display #&#60Pair 345678&#62 )      </sc>]]></Expression>  
+        <Note><![CDATA[The pair will have not cdr part.]]></Note> 
+        <Returns><![CDATA[(A)]]></Returns>
+        <Hints><![CDATA[
+none
+
+]]></Hints>
+   </Syntax>
+</Example>

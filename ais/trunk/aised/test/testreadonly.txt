@@ -1,0 +1,41 @@
+# aised/test/testreadonly.txt
+
+#							AISED - TEST SET READ ONLY
+
+# CHANGE HISTORY
+# Version	Date		Who		Change
+# 1.0110	10/20/2006	tlw		Allow append and appendFile
+# 1.0109	10/5/2006	tlw		Original
+
+# SYNTAX
+# SETREADONLY - setReadOnly(Enable)
+
+#	*************************************************************************************************
+clear
+# SETREADONLY - setReadOnly(Enable)
+clear
+insert("\tabc", Forward)
+move(bol, Select)
+copy(NoAppend)
+setReadOnly(true)
+
+# Disallowed:
+clear
+comment(Insert)
+cut(false)
+delete(bol)
+indent(Insert)
+insert("def", Forward)
+paste
+redo(NotAll)
+replace("abc", "ghi", All, MatchCase, NoRegExp, NoSelect, NoMatchWord)
+replaceAll("abc", "klm", All, MatchCase, NoRegExp, NoSelect, NoMatchWord)
+tabify(0, ToSpaces)
+undo
+
+# Allowed:
+appendfile(testsuite.txt)
+append("text", Forward)
+read(testsuite.txt)
+setReadOnly(false)
+#end

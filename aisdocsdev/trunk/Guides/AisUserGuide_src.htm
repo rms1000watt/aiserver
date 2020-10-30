@@ -1,0 +1,599 @@
+<html>
+<head>
+<title>Analytic Information Server Users' Guide</title>
+</head>
+<body>
+
+<h1>1 Analytic Information Server Users' Guide</h1>
+<h3>Overview</h3>
+The Analytic Information Server (AIS) provides access to the Analytic Information Server engine.  Besides executing
+and storing Smart Lisp Lambdas and their data, the AIS includes a Development Environment that
+allows users to compose, debug, save and restore Smart Lisp Lambdas.  The AIS may reside on
+the user's machine, or on a separate machine that is located within a Local Area Network (LAN)
+or on a remote machine that is connected to the Internet.
+<p>
+The AIS Users' Guide describes the AIS User Interface.  After a preliminary discusssion of several important
+concepts in this section, the development environment portion of the interface (see Section 3 Session Form below),
+and the management module (see Section 4 Management Module below).  The Lambda Message Protocol (AMP)
+is described in a separate document named Lambda Message Protocol . AMP is an API (Applications Programming
+Interface) that TCP/IP (Transport Internet Protocol/Internet Protocol) client applications can use to execute
+Lambdas that reside in AIS.
+The document includes a description of the built-in commands available to AIS client applications.
+The built-in commands available to AIS developers is found a third document named the AIS Developers' Guide.
+This Developers' Guide describes the built-in Lambdas that may be accessed from a SmartLisp program.</p>
+<p>
+Users may access the AIS in any of several ways.  A browser can access the AIS via an HTTP
+(HyperText Transfer Protocol) connection.  A Macromedia Flash Player can access the AIS via an
+XML socket layer.  Or a remote client application, such as the Development Environment, can
+access the AIS via a bidirectional internet TCP (Transfer Control Protocol) socket connection.</p>
+<p>
+In addition to the Development Environment, an AIS Management Module is available to monitor and
+to manage the operation of one or more AISs.  The Management Module can be dynamically configured
+to allow a user to monitor a variety of AIS activities as noted below.</p>
+<p>
+Several concepts are essential to the understanding of the AIS architecture.  They are context, session,
+and user.</p>
+<h4>Context</h4>
+A &quot;Context&quot; is an instance of an application running on the AIS.  A single AIS may have
+one or more Contexts in execution at the same time.  A Context has the following properties:
+<ul type=square>
+	<li>Context Name.  Each context has a unique name.  Every AIS has a default Context that
+	is automatically selected if the a context is not specified during the initialization of
+	a new connection to an AIS.</li>
+	<li>Working Directory. A directory on the server machine is associated with an application.
+	The working directory may contain a Lisp statup file, subdirectories, log files and
+	data, such as web pages, associated with the application.</li>
+	<li>Startup File. A startup file initializes and configures the context.  Typical tasks are
+	setting the memory size, selecting an alternate working directory, loading the browsLambda, 
+	and initializing the dataMine Lambda.</li>
+	<li>Memory Space.  Each Context runs with a separate memory space.  Two contexts may run
+	the same application (or different applications) without interference.</li>
+	<li>Configuration.  Each Context may be configured differently.  A Context may have a configuration
+	file named abase.ini that contains configuration parameters and their values.</li>
+</ul>
+<h4>Session</h4>
+A &quot;Session&quot; is one connection to a Context.  Typically, a user opens a Session to
+execute in a Context that runs the application of interest.  A Context may have zero or more sessions
+attached to it at the same time. However, only one session can be executing at any one time.  This
+feature allows a programmer to write programs without concern for mutual exclusion when accessing
+shared variables in a Context.  A Session may be established over an extended period. An
+open session is not closed until the the user closes the Session, the Context is closed or until
+a timeout expires (typically five days). The user may break the connection to a server and then
+reattach to an existing session, even from a different computer.   All the concurrent Sessions in
+a Context share the same memory space. A Session has the following properties:
+<ul type=square>
+	<li>Session ID.  Every open session has a identification number between 0 and N-1 where N is the
+	number of open sessions on any Context.</li>
+	<LI
+	<li>Request Queue. Requests may arrive at the AIS over a connection to the AIS.  If the
+	request can be satisfied &quot;immediately&quot;, a value is returned to the user.  However,
+	if the request requires the engine to perform a task, a request is added to a request
+	queue for this session.  The request is removed from queue when the response is returned
+	from the engine.  Every request has a unique identification number.  The RequestID is an
+	ever increasing integer starting from 1.</li>
+	<li>User Logon ID. A user must logon (some applications may log the user on automatically)
+	before the user can establish a session.  A user logs on with a security level from 0 to seven
+	with seven being the highest level of security.  Every time a user logs on, a unique logon
+	identification number is assigned to the logon.  This logon ID is an ever increasing integer
+	for each AIS.</li>
+	
+</ul>
+<h4>User</h4>
+A permanent list of all authorized &quot;Users&quot; is maintained for all AISs.  Each entry
+in the list contains the following information:
+<ul type=square>
+	<li>User ID.  Unlike the LogonID, this value never changes.  The ID 0 is assigned to
+	the user &quot;Nobody&quot;.  Nobody has the security level of 0.  The ID 1 is assigned to
+	the user &quot;Guest&quot;.  A Guest has a security level of 1 and does not have a password.</li>
+	<li>User Name. A short user name is associated with each entry.  It is typically the first
+	initial of the user's name followed by the user's last name. all lower case.</li>
+	<li>Password.  An encrypted password is maintained for every user which is used to
+	authenticate the user during the logon process.</li>
+	<li>Security Level.  A security level is associated with each user.  This level varies from
+	zero (lowest) to seven (highest).  Each protected AIS resource has a minimum required access
+	level.  Users must have a security level at or higher than the resource's access level in order
+	to access the resource.</li>
+</ul>
+
+<h2>1.0 Navigation</h2>
+<h3>1.0.0 Mouse</h3>
+Some important terms are used throughout this document to describe common mouse operations.
+The mouse, or other pointing device, allows the user to control the position of a &quot;cursor
+&quot; on the display.  The following discussion assumes that your pointing device has at least two buttons.
+For right-handed users, the left button is referred to as the &quot;standard&quot;
+button and the right button is referred to as the &quot;alternate&quot; button and vice versa for left-handed users.
+<p><b>Click.</b>
+Click refers to positioning the cursor over a &quot;widget&quot; (see section 1.0.1 below), and
+quickly pressing and then releasing the standard button without moving the cursor.
+</p>
+<p><b>RtClick.</b>
+RtClick refers to peforming a Click using the alternate button.
+</p>
+<p><b>Double-click.</b>
+A double-click refers to performing a standard Click two times in rapid succession without
+moving the cursor.</p>
+<p><b>Select.</b>
+A portion of text can be selected by pressing the standard button and then dragging the cursor
+in any direction over the text to be selected while continuing to press the standard button.
+Typically, the selected text is shown
+in a distinctive color with a dark blue or grey background.  When using the Smart Lisp text
+editor, blocks of related text may be highlighted in a light green color.  This type of
+highlighting should not be confused
+with selected text.  Sometimes the word Select is used in place of Click when refering to
+a button.  We avoid this use of the word Select (although we may slip up sometimes).</p>
+
+<h3>1.0.1 Keyboard Focus</h3>
+Some boxes on the display can process a key press. Most notably, all boxes that allow text
+input can accept a key press. But only one of all various widgets will receive a key press.
+(This is not quite true, but it is close enough for this discussion). The box that has the
+&quot;keyboard focus&quot; is the one that receives the key press. Typically, a blinking
+vertical bar indicates that a particular box has the keyboard focus.
+<p>
+The keyboard focus is moved to a box by Clicking (see Click above) anywhere inside the box.</p>
+<p>
+<em>Some mouse operations and some keyboard presses will not work until a box gets
+keyboard focus.  Specifically, a context menu or dialog depends upon which, if any, box has
+focus. You were warned.</em></p>
+
+<h3>1.0.2 Hot Keys</h3>
+Hot keys refer to a key or a combination of keys that quickly perform common operations.
+It is very important to keep these hot keys in mind to take advantage of the features
+provided by AIS.
+Not all hot keys are enabled at all times.  The scope of the key function is noted for
+each hot key described in this document.
+A few hot keys are mentioned here.  More are described in section 2.1 below.
+<p>
+Ctrl-X refers to pressing the Ctrl key first, then pressing the X key while
+continuing to hold down the Ctrl key. The same comments apply to Alt-X and Shift-X.
+<p>
+The &quot;Return&quot; key is the large key on
+the right side of the keyboard. It is sometimes labeled Enter&lt;-- rather than Return.</p> 
+<p><b>Ctrl-Tab.</b>
+While two or more forms are maximized in the AIS window, Ctrl-Tab quickly switches from one
+form to the previously displayed form.  Use this hot key to quickly switch between forms.</p>
+
+<p><b>Ctrl-Return.</b>
+Ctrl-Return is effective when editing in either of the Console text boxes and in the Tables
+filter text edit pane.  Use this hot key to run a command rather than moving the cursor to
+the next line.</p>
+
+<p><b>Ctrl-Bar.</b>
+Ctrl-Bar is effective when editing in either of the Console text boxes.  Use this hot key
+to insert a DEL character into a command line.  The Delete key deletes the character to
+the right of the keyboard cursor.</p>
+
+<p><b>Esc.</b>
+Esc is effective when running a program.  Use this key to stop execution of a runaway program.
+</p>
+
+<h3>1.0.3 Selected text</h3>
+Text in a text edit pane can be selected as noted in 1.0.0 above.  If some text is selected
+and a normal key is pressed, the selected text is <em>replaced</em> by the key press.
+<p>Many hot keys, menu options, and toolbar buttons require text to be selected beforehand.
+Select some text before using cut, delete, find/replace, indent, and comment operations.</p>
+
+<h3>1.0.4 Fly-over help</h3>
+The little picture on toolbar buttons is referred to as an &quot;icon&quot;. 
+Standard icons that are familiar to most Windows users are employed whenever possible.  Nevertheless,
+the function associated with some icons may not be obvious to the user.  If the cursor is
+held over a toolbar button for a second or more, a short description explaining the button's function
+appears until the cursor is moved away from the icon.
+
+<h2>1.1 Widgets</h2>
+The folks at Xerox Design Center are the original developers of the modern Graphical User Interface
+(GUI).  They adopted the word &quot;widget&quot; as a generic term to refer to any of the items
+that appear in the interface.  Over the years, the definition of many of these widgets has become
+muddled.  The desecription of the most important widgets referred to in this document are defined in
+this section.
+<h3>1.1.0 Window</h3>
+A window is the outermost container widget that holds all the other widgets.  A window
+It consists of a title bar, an optional menu, an optional tool bar, and a status bar at the bottom.
+A window can be resized, maximized, moved to the task bar at the bottom of the display, or covered
+up by another menu. 
+The main AIS window consists of a title bar, a basic menu at the top, one or more forms in the center,
+and a status bar at the bottom.  Each of these widgets are described in more detail below.
+The user can grab (hold down the standard key) an edge of the window and move the cursor to
+resize the window.  The forms inside the main window can be maximized, tiled, or cascaded.
+
+<h3>1.1.1 Forms</h3>
+A form is a container widget with a menu at the top that fits inside the GUI window. When the form
+is maximized, the form menu is merged with the Window menu.  The form's title is appended to the
+window title in the title bar at the top.
+ 
+<h3>1.1.2 Tabs</h3>
+A form may contain yet another container widget called a tab.  A tab container is distinguished
+by a tab-like label at the top of the container.  As additional tab widgets are opened the
+labels are arranged across the top of the set of tabs.  A hidden tab container may be brought
+to the front by clicking on its tab label.
+
+<h3>1.1.3 Dialog</h3>
+A dialog is a separate window that pops up to provide a warning or to gather information required
+to carry out an operation.  Dialogs can be either modal or non-modal.  A modal dialog disables
+all other windows.  The user must respond to the dialog and then close it prior to interacting
+with any other window.  A non-modal dialog does not disable the other windows.  As an example,
+the Replace dialog is modal.  One may find and/or replace one or more instances of a phrase in
+a text window, but the text cannot otherwise be modified until the replace dialog is closed.
+The Find dialog is non-modal.  One can modify the text or move the cursor in an text window without
+closing the Find dialog.
+
+<h3>1.1.4 Context Menu</h3>
+Many widgets have a hidden menu, called a context menu, that is made visible by a Rt-Click on the
+widget.  These context menus provide an alternate way to launch operations rather than using
+just the menu at the top of the window.
+
+<h3>1.1.5 Menus</h3>
+The items in a menu are revealed by Clicking on the menu.  Some menu items have a small right
+arrow on the right.  By Clicking on this arrow, yet another submenu appears.  Specific menus
+are described in the sections below.
+<p><b>Disabled items.</b>
+At times a menu item or a button is disabled.  When a menu item is disabled, it appears as
+a pale grey version of its normal appearance.  For example, most menu items are disabled
+whie the engine is busy.  On the other hand, the stop menu item is only enabled while the
+engine is busy.  The circumstances under which a menu item is disabled is defined below.</p>
+
+<h3>1.1.6 EditView/ LineEdit</h3>
+An EditView widget or an LineEdit widget allows the user to enter one or more lines of text.  The
+edit view for editing Smart Lisp code includes syntax highlighting as noted below. An EditView
+widget may also be used for displaying output.  For example, the AIS Management Form uses
+an EditView to display multiple lines of text.
+
+<h3>1.1.7 ListView</h3>
+A ListView widget displays a list of items.  The list view can consist of one or more columns.
+An entry in a column may contain an icon and/or text. The column may also be organized as 
+a tree view.
+
+<h3>1.1.8 DropDownCombo</h3>
+A DropDownCombo widget combines a LineEdit with a drop-down list.  For example users may enter
+a new command or select an old command from the drop-down list.  A DropDownCombo is used
+for entering commands in the Console Tab as noted below.
+
+<h3>1.1.9 Button</h3>
+A toolbar Button widget is a button that displays an icon.  An icon allows a very compact set
+of buttons that provide quick access to commonly used menu items.  They may also provide a visible
+alternative to hot keys.  By holding the cursor over a toolbar button, a brief description of
+the icon's function appears.
+
+<h3>1.1.10 Toolbar</h3>
+A toolbar is a container widget that holds one or more toolbar buttons.  Toolbars play an
+important role in the Debugger Tab and in the Editor Tab.
+
+<h3>1.1.11 Grid</h3>
+The Tables Tab has a Grid to display the rows and columns of a table.  The current implementation
+of a Grid is implemented so that only those cells that are visible are fetched from the server.
+Large tables can be displayed quickly without waiting to retrieve the entire table.  It also
+has the side benefit of reducing the load on the AIS since only a portion of the table is fetched.
+
+<h3>1.1.12 TitleBar</h3>
+The TitleBar at the top of a window has several important functions.  Primarily it describes
+the application.  In this case, the Analytic Information Server.  Additional information about the
+currently selected form is added to the title page.  A title with a light background indicates
+that the window is not currently activated.  By clicking on the window, the title background
+turns dark, indicating that the window has gained the focus.
+
+<h3>1.1.13 StatusBar</h3>
+The StatusBar at the bottom of the window displays important messages on the left.  The
+Lisp editor shows the text cursor's position on the right. 
+<p><b>EngineBusy.</b>
+The EngineBusy icon on the right side of the status bar turns red when the engine is
+busy.  Most menu items, buttons, and hot keys are disabled while the engine is busy.</p>
+
+
+<h1>2 Main Form</h1>
+<h3>Overview</h3>
+<h2>2.0 Windows Menu</h2>
+	
+		<h3>2.0.0 Connection Dialog</h3>
+		<h3>2.0.1 Cascade</h3>
+		<h3>2.0.2 Tile</h3>
+		<h3>2.0.3 Session Forms</h3>
+		<h3>2.0.4 Server Forms</h3>
+		
+<h2>2.1 Edit Menu</h2>
+		<h3>2.1.0 Find</h3> - Ctrl-F
+		<h3>2.1.1 Replace</h3> Ctrl-R
+		<h3>2.1.2 Cut</h3> Ctrl-X
+		<h3>2.1.3 Copy</h3> Ctrl-C
+		<h3>2.1.4 Paste</h3> Ctrl-V
+		<h3>2.1.5 Undo</h3> Ctrl-Z
+		<h3>2.1.6 Redo</h3> Ctrl-Y
+		<h3>2.1.7 Print</h3> Ctrl-P
+
+<h2>2.2 Forms</h2>
+	<h3>Overview</h3>
+	<h3>2.2.0 Session Form</h3>
+	<h3>2.2.1 Sever Form</h3>
+
+<h1>3 Session Form</h1>		
+<h3>Overview</h3>
+The session form is the heart of the Smart Lisp development environment.  It has tabs for
+	
+
+<h2>3.1 Console Tab</h2>
+	
+		<h3>3.1.0 Console Menu</h3>
+			<p><b>Run Remote.</b>
+			</p>
+			<p><b>Run Local.</b>
+			</p>
+			<p><b>Run Selection.</b>
+			</p>
+			<p><b>Show Selection.</b>
+			</p>
+			<p><b>Set Prefix.</b>
+			</p>
+			<p><b>Debug Breakpoint.</b>
+			</p>
+			<p><b>Error Trace.</b>
+			</p>
+			<p><b>Instruction Trace.</b>
+			</p>
+			<p><b>Stop.</b>
+			</p>
+			<p><b>Exit.</b>
+			</p>
+		<h3>3.1.1 Console Tool Bar</h3>
+			<p><b>Help.</b>
+			</p>
+			<p><b>View.</b>
+			</p>
+			<p><b>Clear.</b>
+			</p>
+			<p><b>Max Lines.</b>
+			</p>
+		<h3>3.1.2 Console Edit Combo</h3>
+			(Context menu - just an edit menu)
+		<h3>3.1.3 Console Output Pane</h3>
+			<p><b>Context Menu.</b>
+			</p>
+
+<h2>3.2 Lambdas Tab</h2>
+
+		<h3>3.2.0 Lambdas Menu</h3>
+			<p><b>New Cabinet.</b>
+			</p>
+			<p><b>Open Cabinet.</b>
+			</p>
+			<p><b>Close Cabinet.</b>
+			</p>
+			<p><b>Compile Cabinet.</b>
+			</p>
+			<p><b>Compile All Cabinets.</b>
+			</p>
+			<p><b>Import Cabinet Content.</b>
+			</p>
+			<p><b>Export Cabinet.</b>
+			</p>
+			<p><b>Delete Lambda.</b>
+			</p>
+			<p><b>Open Lambda.</b>
+			</p>
+			<p><b>Compile Lambda.</b>
+			</p>
+			<p><b>Export Lambda.</b>
+			</p>
+		<h3>3.2.1 Extent List</h3>
+			<p><b>Double-click.</b>
+			</p>
+			<p><b>Context Menu.</b>
+			</p>
+		<h3>3.2.2 Lambda List</h3>
+
+<h2>3.3 Editor Tab</h2>
+	
+		<h3>3.3.0 Overview</h3>
+		<h3>3.3.1 Editor Menu</h3>
+			<p><b>Overview.</b>
+			</p>
+			<p><b>New.</b>
+			</p>
+			<p><b>Open Local.</b>
+			</p>
+			<p><b>Open Remote.</b>
+			</p>
+			<p><b>Save.</b>
+			</p>
+			<p><b>Save As.</b>
+			</p>
+			<ul>
+				<p><b>Local.</b>
+				</p>
+				<p><b>Remote.</b>
+				</p>
+				<p><b>Lambda</b>
+				</p>
+			</ul>
+			<p><b>Save All.</b>
+			</p>
+			<p><b>Close.</b>
+			</p>
+			<p><b>Close All.</b>
+			</p>
+			<p><b>Save And Compile.</b>
+			</p>
+			<p><b>Save And Compile All.</b>
+			</p>
+		<h3>3.3.2 Editor Tool Bar</h3>
+			<p><b>Overview.</b>
+			</p>
+			<p><b>New.</b>
+			</p>
+			<p><b>Open.</b>
+			</p>
+			<p><b>Save.</b>
+			</p>
+			<p><b>Save All.</b>
+			</p>
+			<p><b>Close.</b>
+			</p>
+			<p><b>Compile.</b>
+			</p>
+			<p><b>Lambda List.</b>
+			</p>
+			<p><b>Indent Selected.</b>
+			</p>
+			<p><b>Unindent Selected.</b>
+			</p>
+			<p><b>Comment Selected.</b>
+			</p>
+			<p><b>Uncomment Selected.</b>
+			</p>
+		<h3>3.3.3 Document Tabs</h3>
+			<p><b>Overview.</b>
+			</p>
+			<p><b>Syntax Coloring.</b>
+			</p>
+			<p><b>Context Menu.</b>
+			</p>
+
+<h2>3.4 Memory Tab</h2>
+		<h3>3.4.0 Memory Menu</h3>
+			<p><b>Display Global Variables.</b>
+			</p>
+			<p><b>Display Workspace Statistics.</b>
+			</p>
+			<p><b>Display Global Memory Usage.</b>
+			</p>
+			<p><b>Display Lambda Memory Usage.</b>
+			</p>
+			<p><b>Show Locked Variables.</b>
+			</p>
+			<p><b>Show System Variables.</b>
+			</p> 
+		<h3>3.4.1 Memory List Box</h3>
+
+<h2>3.5 Debugger Tab</h2>
+	
+		<h3>3.5.0 Debugger Toolbar</h3>
+		<h3>3.5.1 Debugger Line Edit</h3>
+		<h3>3.5.2 Debugger Status Line</h3>
+		<h3>3.5.3 Debugger Code List Box</h3>
+		<h3>3.5.4 Debugger Variable List Box</h3>
+
+<h2>3.6 Tables Tab</h2>
+		<h3>3.6.0Tables Menu</h3>
+			<p><b>Run Filter.</b>
+			</p>
+			<p><b>Restore and Run Filter.</b>
+			</p>
+			<p><b>Restore.</b>
+			</p>
+			<p><b>Run Score.</b>
+			</p>
+			<p><b>Refresh Table.</b>
+			</p>
+			<p><b>Open on Disk Static.</b>
+			</p>
+			<p><b>Open in Memory.</b>
+			</p>
+			<p><b>Open on Disk Exclusive.</b>
+			</p>
+			<p><b>Import from .xls File.</b>
+			</p>
+			<p><b>Export Table to .xls File.</b>
+			</p>
+			<p><b>Create Table.</b>
+			</p>
+			<p><b>Delete Table.</b>
+			</p>
+			<p><b>Save Table.</b>
+			</p>
+		<h3>Tables Toolbar</h3>
+		<h3>Table Grid</h3>
+
+<h1>4 Management Module</h1>
+
+	<h3>Overview</h3>
+<h2>4.0 Monitor Tab</h2>
+		<h3>Options</h3>
+			<p><b>On Checkbox.</b>
+			</p>
+			<p><b>Clear Button.</b>
+			</p>
+			<p><b>Max Lines Spinbox.</b>
+			</p>
+			<p><b>AmpLog Checkbox.</b>
+			</p>
+			<p><b>ConsoleLog Checkbox.</b>
+			</p>
+			<p><b>NCSALog Checkbox.</b>
+			</p>
+			<p><b>ReqHdrs Checkbox.</b>
+			</p>
+			<p><b>SystemMsgs Checkbox.</b>
+			</p>
+
+<h2>4.1 AmpLog Tab</h2>
+	
+		<h3>4.1.0 Options</h3>
+			<p><b>On Checkbox.</b>
+			</p>
+			<p><b>Clear Button.</b>
+			</p>
+			<p><b>MaxLines Spinbox.</b>
+			</p>
+			<p><b>MinLevel Spinbox.</b>
+			</p>
+		<h3>4.1.1 AmpLog TextEdit</h3>
+		
+<h2>4.2 ConsoleLog Tab</h2>
+		<h3>4.2.0 Options</h3>
+			<p><b>On Checkbox.</b>
+			</p>
+			<p><b>Clear Button.</b>
+			</p>
+			<p><b>MaxLines Spinbox.</b>
+			</p>
+			<p><b>MinLevel Spinbox.</b>
+			</p>
+		<h3>4.2.1 ConsoleLog TextEdit</h3>
+
+<h2>4.3 NCSALog Tab</h2>
+		<h3>4.3.0 Options</h3>
+			<p><b>On Checkbox.</b>
+			</p>
+			<p><b>Clear Button.</b>
+			</p>
+			<p><b>MaxLines Spinbox.</b>
+			</p>
+			<p><b>MinLevel Spinbox.</b>
+			</p>
+		<h3>4.3.1 NCSALog TextEdit</h3>
+
+<h2>4.4 ReqHdrs Tab</h2>
+		<h3>4.4.0 Options</h3>
+			<p><b>On Checkbox.</b>
+			</p>
+			<p><b>Clear Button.</b>
+			</p>
+			<p><b>MaxLines Spinbox.</b>
+			</p>
+			<p><b>MinLevel Spinbox.</b>
+			</p>
+		<h3>4.4.1 ReqHdrs TextEdit</h3>
+
+<h2>4.5 SystemMsgs Tab</h2>
+		<h3>4.5.0 Options</h3>
+			<p><b>On Checkbox.</b>
+			</p>
+			<p><b>Clear Button.</b>
+			</p>
+			<p><b>MaxLines Spinbox.</b>
+			</p>
+			<p><b>MinLevel Spinbox.</b>
+			</p>
+		<h3>4.5.1 SystemMsgs TextEdit</h3>
+
+<h1>5 AIS Install</h1>
+
+	<h3>Overview</h3>
+	Install directory, Application directory, 
+<h2>5.1 Configuration</h2>
+		<h3>5.2.0 Configuration Files</h3>
+		<h3>5.2.1 Configuration Steps</h3>
+
+<h2>5.2 File List</h2>
+
+
+
+</body>
+</html>

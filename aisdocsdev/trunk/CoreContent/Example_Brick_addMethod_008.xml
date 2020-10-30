@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Brick addMethod 008</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>addMethod</FunctionKeywords>
+		<TypeKeywords> Brick Symbol Dictionary </TypeKeywords>
+		<RelatedFunctions>defmethod send methodsOf</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>method message messageName</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example uses the added method <b>addUtilities</b> which will add a 
+	              new bill to the sum owed for Utilities in a Brick.
+	]]></Description>
+	<Syntax>
+	<Expression><![CDATA[<sc>(addMethod  Brick:  addUtilities:  (lambda  (r bill)  (+= r.Utilities bill)))   </sc>]]></Expression>
+    <Note><![CDATA[ Define a method addUtilities which adds the amount in the Utilities field.
+
+    ]]></Note>
+    <Returns><![CDATA[ #&#60Dictionary 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(define monthlyBills (new Brick: 20  Name:Object:1 Mortgage:Number:1 
+                       Utilities:Number:1 Visa:Number:1))  </sc> ]]></Expression>
+    <Note><![CDATA[Define a Brick that contains the amount of each bill for this month.]]></Note>
+    <Returns><![CDATA[#&#60Brick 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(setq monthlyBills.Name #("John Doe"))    </sc> ]]></Expression>
+    <Note><![CDATA[Sets the values of the Brick field.]]></Note>
+    <Returns><![CDATA[#&#60Brick 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(setq monthlyBills.Mortgage: 2100.0)  </sc> ]]></Expression>
+    <Note><![CDATA[none]]></Note>
+    <Returns><![CDATA[#&#60Brick 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(setq monthlyBills.Utilities: 100.0)   </sc> ]]></Expression>
+    <Note><![CDATA[none]]></Note>
+    <Returns><![CDATA[#&#60Brick 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(setq monthlyBills.Visa: 600.0)   </sc> ]]></Expression>
+    <Note><![CDATA[none]]></Note>
+    <Returns><![CDATA[#&#60Brick 123456&#62]]></Returns>
+    <Expression><![CDATA[<sc>(send  addUtilities:  monthlyBills  300.0)     </sc> ]]></Expression>
+    <Note><![CDATA[Invoke the method named addUtilities to compute the total amount 
+          checks for Utilities written for the month. The arguments to the
+          function are the Brick name and a Number value.]]></Note>
+    <Returns><![CDATA[#&#60Brick 123456&#62]]></Returns>  
+    <Expression><![CDATA[<sc>(addUtilities:  monthlyBills  300)             </sc> ]]></Expression>
+    <Note><![CDATA[The method can be invoked simply by name:]]></Note>
+    <Returns><![CDATA[#&#60Brick 123456&#62]]></Returns>
+    <Hints><![CDATA[
+        <p>To view the entry in the methods Dictionary created by the addMethod function, 
+
+
+           you can use the method name to access the directory entry by </p>
+        <p><b> #&#60Dictionary 123456&#62[methodName:] or </b></p>
+        <p> To determine the number of assigned methods:</p>
+        <p><b>(length  (methodsOf Brick: ))</b></p>
+        <p>To access the nth method name:</p>
+        <p><b>(methodsOf Brick: )[n  0]</b></p>
+         <p>To view the Methods Dictionary:</p>
+        <p><b>(display (methodsOf Brick: ))</b></p>
+]]></Hints>
+</Syntax>
+</Example>

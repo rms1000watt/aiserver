@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Context getGlobalValue 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>getGlobalValue</FunctionKeywords>
+		<TypeKeywords>Symbol Context</TypeKeywords>
+		<RelatedFunctions>getSymbolTable</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>symbol global</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines a Symbol with a numerical value.  Then
+
+                  retrieves the Symbol's value with the <b>getGlobalValue</b> function.
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define x 22)   </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[22 ]]></Returns>
+        <Expression><![CDATA[ <sc>(getGlobalValue x: )    </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[22 ]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,33 @@
+# aised/test/testsetparameter.txt
+
+#							AISED - TEST SET PARAMETER
+
+# CHANGE HISTORY
+# Version	Date		Who		Change
+# 1.0109	10/7/2006	tlw		Original
+
+# SYNTAX
+# SETPARAMETER - setParameter(ParamName, Value)
+
+# PARAMETER NAMES
+# Default (value is ignored, sets default values)
+# Font = [string]Courier New (FontFamilyNames)
+# FontSize = [points]10, (8-12,14,16,18,20), 72 pts/inch
+# Language = [string]Text (text,html,cpp,javascript,lisp)
+# MatchParens [#]1 (0,1)
+# MaximumRows = [#]0 (0 - 0x7fffffff), 0 for unlimited (same as 0x7fffffff)
+# MaximumRowWidth = [chars]1024, (128 - 4096)
+# MaximumUndoDepth [#]1024, (0-2048)
+# ShowWhiteSpace [#]0 (0,1)
+# TabWidth [chars]4 (1-32)
+# WordWrap [#]0 (0, 1)
+
+#	*************************************************************************************************
+# SETPARAMETER - setParameter(ParamName, Value)
+# PENDING
+clear
+append("abc A \n", Backward)
+
+#end
+
+

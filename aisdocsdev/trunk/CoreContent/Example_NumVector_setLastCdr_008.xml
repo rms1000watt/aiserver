@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example NumVector setLastCdr 008</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>setLastCdr</FunctionKeywords>
+		<TypeKeywords>NumVector</TypeKeywords>
+		<RelatedFunctions>ref refValues refAttributes cdr setCdr</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>tail ref index cdr setLastCdr</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines a Vector with already a cdr value. 
+
+
+                  The cdr value is changed using the <b>setCdr</b> function.  The <b>cdr</b>
+                  expression is a Vector.
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq V #(num| 11.433 -2.6 . 3))    </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60NumVector 188141&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc> (display V)      </sc>]]></Expression>
+        <Note><![CDATA[The Vector will contain:]]></Note>
+        <Returns><![CDATA[#(num| 11.433 -2.6  . 3)]]></Returns>
+ 		<Expression><![CDATA[ <sc>(setLastCdr  V  22)        </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60NumVector 188141&#62 ]]></Returns>
+		<Expression><![CDATA[ <sc>(display V)     </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#(num| 11.433 -2.6  . 22)]]></Returns>
+        <Expression><![CDATA[ <sc> (cdr V)    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[22]]></Returns>
+        <Hints><![CDATA[The only technique of accessing the cdr or tail of a Vector is via the 
+
+
+               <b>cdr</b> function. ]]></Hints>
+   </Syntax>
+</Example>

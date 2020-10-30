@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example String string 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>string</FunctionKeywords>
+		<TypeKeywords>Error Void Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary DirectoryPair
+                       Matrix NumMatrix Integer Float Number Complex</TypeKeywords>
+		<RelatedFunctions>parse</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>converts parse value coerce</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples show how an Integer, Character and Boolean object may be coerced
+                  into a String.  The resulting Strings are the same Integer, Character or
+                  Boolean object but already with a String data type.
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(string  97) </sc>]]></Expression>  
+        <Note><![CDATA[Coerces the Integer 97 into a Text ]]></Note> 
+        <Returns><![CDATA[97]]></Returns>
+        <Expression><![CDATA[<sc>(setq test (string 97)) <br>
+                       (type test) </sc>]]></Expression>  
+        <Note><![CDATA[The coerced Integer now becomes a Text. ]]></Note> 
+        <Returns><![CDATA[Text]]></Returns>
+  	    <Expression><![CDATA[ <sc>(string  #\a)   </sc>]]></Expression>
+        <Note><![CDATA[Coerces the Character "a" into a Text  ]]></Note>
+        <Returns><![CDATA[a]]></Returns>
+        <Expression><![CDATA[ <sc>(string  true)    </sc>]]></Expression>
+        <Note><![CDATA[Coerces the Boolean value true a into a Text  ]]></Note>
+        <Returns><![CDATA[ true ]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

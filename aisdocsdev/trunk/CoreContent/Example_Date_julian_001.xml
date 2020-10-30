@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Date julian 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>julian</FunctionKeywords>
+		<TypeKeywords>Date String Number </TypeKeywords>
+		<RelatedFunctions>  isDate date string </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>convert date julian object </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>julian</b> function to convert the
+                  Text or normal Date-formatted arguments into a numeric Julian Date format.
+
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc> 
+(julian  "7/4/1992")                </sc>]]></Expression>
+        <Note><![CDATA[Text is converted into a numeric Date format.]]></Note>
+        <Returns><![CDATA[727747.0]]></Returns>
+	    <Expression><![CDATA[ <sc> (julian  #Jul,4,1992)                   </sc>]]></Expression>
+        <Note><![CDATA[The standard Date format is converted into a numeric Data format.]]></Note>
+        <Returns><![CDATA[727747.0]]></Returns>
+	    <Expression><![CDATA[ <sc> (julian  "1/2/-1000")                     </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[ -365241.0]]></Returns>
+        <Hints><![CDATA[<p>The Julian form of a date is useful when it is necessary to perform arithmetic 
+               computations with a date.  However for human-readability, it is more convenient to
+               view a date as a string.  The Lisp <b>string</b> function is capable of converting 
+               a Date object to a String object. Since the Julian function returns a Number, it is 
+               necessary to coerce the Julian date to a Date object first, and then convert the 
+               Date object to a String object:</p>
+               <p><b>(string (date 713882.75)) </b> <blockquote>Returns: <b>#Jul,19,1954:18:00:00</b> </blockquote></p>
+               <p><b>(string (date 727763) )       </b> <blockquote>Returns: <b>#Jul,20,1992</b> </blockquote></p>
+               <p><b>(string (date -365249) )         </b> <blockquote>Returns: <b>#Dec,25,1001BC</b> </blockquote></p>
+       ]]></Hints>
+   </Syntax>
+</Example>

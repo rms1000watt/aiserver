@@ -1,0 +1,180 @@
+<ui version="4.0" >
+ <class>ALogPageClass</class>
+ <widget class="QWidget" name="ALogPageClass" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>759</width>
+    <height>498</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Log Page</string>
+  </property>
+  <layout class="QVBoxLayout" >
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <property name="leftMargin" >
+      <number>0</number>
+     </property>
+     <property name="topMargin" >
+      <number>0</number>
+     </property>
+     <property name="rightMargin" >
+      <number>0</number>
+     </property>
+     <property name="bottomMargin" >
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QCheckBox" name="upDisplayCheckBox" >
+       <property name="layoutDirection" >
+        <enum>Qt::RightToLeft</enum>
+       </property>
+       <property name="text" >
+        <string>:Display</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="upClearButton" >
+       <property name="text" >
+        <string>Clear</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="upClearAllButton" >
+       <property name="text" >
+        <string>ClearAll</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="upMaxLabel" >
+       <property name="sizePolicy" >
+        <sizepolicy vsizetype="Minimum" hsizetype="Minimum" >
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize" >
+        <size>
+         <width>50</width>
+         <height>22</height>
+        </size>
+       </property>
+       <property name="text" >
+        <string>Max Lines:</string>
+       </property>
+       <property name="buddy" >
+        <cstring>upMaxSpinBox</cstring>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="upMaxSpinBox" >
+       <property name="maximum" >
+        <number>50000</number>
+       </property>
+       <property name="value" >
+        <number>10000</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>531</width>
+         <height>23</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <item>
+      <widget class="QLabel" name="upLogLabel" >
+       <property name="text" >
+        <string>Include Logs:</string>
+       </property>
+       <property name="buddy" >
+        <cstring>upAmpCheckBox</cstring>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="upAmpCheckBox" >
+       <property name="text" >
+        <string>Amp Log</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="upConsoleCheckBox" >
+       <property name="text" >
+        <string>Console</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="upReqHdrsCheckBox" >
+       <property name="text" >
+        <string>Request Headers</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="upSysMsgsCheckBox" >
+       <property name="text" >
+        <string>System Messages</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="upUsrAccessCheckBox" >
+       <property name="text" >
+        <string>User Access</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>141</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="ATextEdit" name="upTextEdit" />
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ATextEdit</class>
+   <extends>QTextEdit</extends>
+   <header>atextedit.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

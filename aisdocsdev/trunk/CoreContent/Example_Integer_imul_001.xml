@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Integer imul 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>imul</FunctionKeywords>
+		<TypeKeywords>Integer   </TypeKeywords>
+		<RelatedFunctions>iadd isub imod idiv</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>integer addition subtraction division multiplication</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ <p>These examples show the <b>imul</b> function perform multiplication on the Integer arguments
+                  The function does not operate on non-Integer arguments.</p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+ (imul 12 4)           </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[48]]></Returns>
+ 	    <Expression><![CDATA[ <sc>
+(imul 20 -3)    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[-60]]></Returns>
+ 	    <Expression><![CDATA[ <sc>(imul 2.4 5.3)    </sc>]]></Expression>  
+        <Note><![CDATA[The function returns a random number if the arguments are not Integers.]]></Note> 
+        <Returns><![CDATA[-1030792151]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Boolean compareLT 009</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compareLT</FunctionKeywords>
+		<TypeKeywords> Boolean</TypeKeywords>
+		<RelatedFunctions>compare compareEQ compareNE compareGE compareGT  compareLE</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare void lesser </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>compareLT</b> function to determine whether 
+
+                  the first object has a lesser value than the second object. The 
+
+                  <b>compareLT</b> function returns
+the Boolean value, true or false. 
+
+	]]></Description>
+	<Syntax>
+        <Expression><![CDATA[ <sc>(compareLT false 0 )         </sc>]]></Expression>
+        <Note><![CDATA[The Boolean value false has a state value of 1.]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(compareLT false (&#62 2 3))           </sc>]]></Expression>
+        <Note><![CDATA[ The result from the &#62 operation is also the value 1.]]></Note>
+        <Returns><![CDATA[false]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

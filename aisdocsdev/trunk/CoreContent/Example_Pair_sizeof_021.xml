@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Pair sizeof 021</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>sizeof</FunctionKeywords>
+		<TypeKeywords>Pair Integer</TypeKeywords>
+		<RelatedFunctions>new length</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>sizeof closure bytes length disk memory </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>sizeof</b> function to determine the number of
+                  bytes of the disk file closure of the defined Pair objects.         
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc> (define w  '(4 . 5 ) )        </sc>]]></Expression>
+        <Note><![CDATA[ none]]></Note>
+        <Returns><![CDATA[#&#60Pair 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc> (sizeof w)      </sc>]]></Expression>
+        <Note><![CDATA[ none]]></Note>
+        <Returns><![CDATA[56]]></Returns>
+  	    <Expression><![CDATA[ <sc> (define v  '( 0 1 2 3 4 5  . 6) )         </sc>]]></Expression>
+        <Note><![CDATA[ none]]></Note>
+        <Returns><![CDATA[#&#60Pair 234567&#62]]></Returns>
+        <Expression><![CDATA[ <sc> (sizeof v)      </sc>]]></Expression>
+        <Note><![CDATA[ none]]></Note>
+        <Returns><![CDATA[256]]></Returns>
+      <Hints><![CDATA[<p>The closure size may be different values for the same object on different 
+       hardware platforms due to word alignment issues. The values returned from the <b>sizeof</b>
+       function in the examples above are the values returned on a Intel Pentium-based
+        platform. ]]></Hints>
+   </Syntax>
+</Example>

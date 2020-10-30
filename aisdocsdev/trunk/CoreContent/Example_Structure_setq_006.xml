@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure setq 006</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>setq</FunctionKeywords>
+		<TypeKeywords>Structure Symbol Integer String</TypeKeywords>
+		<RelatedFunctions>new defineStructure define makeStructure </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>set setq replace global value  </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows the <b>setq</b> function adding a new key-value binding
+                  using the <b>(setq  struct last: key newValue)</b> function syntax.                
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(setq Employee  (new Structure:  Name: "John Doe"  Title:  "Director")) </sc>]]></Expression>
+        <Note><![CDATA[Sets the key-value bindings of the Employee Structure. ]]></Note>
+        <Returns><![CDATA[ #&#60Structure 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display Employee)  </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#{Name: "John Doe" Title: "Director"}]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq  Employee [last: Salary:] $50000)    </sc>]]></Expression>
+        <Note><![CDATA[Here, the last: Symbol is paired with the new key(Salary:) to add with its corresponding value($5000).]]></Note>
+        <Returns><![CDATA[ #&#60Structure 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display Employee)</sc>]]></Expression>
+        <Note><![CDATA[Displays the modified Structure. ]]></Note>
+        <Returns><![CDATA[ #{Name: "John Doe" Title: "Director" Salary: $5000} ]]></Returns>
+        <Hints><![CDATA[The <b>set</b> function keyword may be used instead of <b>setq</b>.]]></Hints>
+   </Syntax>
+</Example>

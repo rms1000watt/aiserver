@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmregSetLongImmediate</Title> 
+		<InstructionName> vmregSetLongImmediate  </InstructionName>
+		<InstructionType>Register</InstructionType>
+		<ArgumentTypes> Integer Long  LongPointer </ArgumentTypes>
+		<RelatedVMInstructions> vmregSetCharImmediate vmregSetCharacter 
+		                        vmregSetInteger vmregSetIntImmediate vmregSetFloat
+		                        vmregSetNumber vmregSetLong</RelatedVMInstructions>
+		<HumanKeywords> Long Integer LongPointer set </HumanKeywords>
+	</KnowledgeBase>                   
+	<Description><![CDATA[
+		<p>When evaluated, this vm instruction, uses the LongPointer in the 
+		register <b>pointer</b>, to save a Long value from the immediate 
+		<b>source</b>. The result is saved into the memory location pointed 
+		to by the <b>pointer</b> register. The result will be saved as a type 
+		Long from the Integer value in the immediate<b>source</b>. 
+		This instruction may return an Error value. After the operation, the 
+		Instruction Pointer is promoted. The operation of this vm instruction 
+		is expressed in the following C expression:
+     	</p>      
+        <ul><li><b>   *((long*)pointer) = (long)((int)source);</b></li></ul>
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[(vmregSetLongImmediate source pointer)]]></Expression>
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>immediate</Format>
+		  <AISTypes>integer</AISTypes>
+		</Argument>		 
+		<Argument> 
+		  <Name>pointer</Name>
+		  <Format>register</Format>
+		  <AISTypes>LongPointer</AISTypes>			     
+		</Argument>
+	</Syntax>
+</VMInstruction>

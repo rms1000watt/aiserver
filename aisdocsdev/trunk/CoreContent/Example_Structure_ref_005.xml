@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure ref 004</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>ref</FunctionKeywords>
+		<TypeKeywords>Structure Integer Symbol</TypeKeywords>
+		<RelatedFunctions>setq  ref fieldsOf   refValues  </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>ref reference set position</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows the <b>ref</b> function returns the
+
+                  value of the Structure through the <b>index</b> reference.
+                  This example uses the <b> (ref aStruct index1)</b> function syntax.
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(setq Employee  (new Structure:  Name: "John Doe"  Title:  "Director")) </sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60Structure 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display Employee)    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#{Name: "John Doe" Title: "Director"}]]></Returns>
+        <Expression><![CDATA[ <sc>(ref  Employee 0)  </sc>]]></Expression>
+        <Note><![CDATA[The ref function returns the value with the index 0 in the Structure. ]]></Note>
+        <Returns><![CDATA[John Doe]]></Returns>
+  	    <Expression><![CDATA[ <sc>(ref  Employee 1)       </sc>]]></Expression>
+        <Note><![CDATA[The ref function returns the value with the index 1 in the Structure.]]></Note>
+        <Returns><![CDATA[Director]]></Returns>
+        <Hints><![CDATA[none
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,132 @@
+<ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>ATabWidthDialogClass</class>
+ <widget class="QDialog" name="ATabWidthDialogClass" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>250</width>
+    <height>79</height>
+   </rect>
+  </property>
+  <property name="sizePolicy" >
+   <sizepolicy>
+    <hsizetype>0</hsizetype>
+    <vsizetype>0</vsizetype>
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="maximumSize" >
+   <size>
+    <width>404</width>
+    <height>192</height>
+   </size>
+  </property>
+  <property name="windowTitle" >
+   <string>Dialog</string>
+  </property>
+  <widget class="QLabel" name="upTabWidthLabel" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>10</y>
+     <width>61</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="sizePolicy" >
+    <sizepolicy>
+     <hsizetype>0</hsizetype>
+     <vsizetype>0</vsizetype>
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="text" >
+    <string>Tab Width:</string>
+   </property>
+   <property name="alignment" >
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+   </property>
+   <property name="buddy" >
+    <cstring>upTabWidthSpinBox</cstring>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="upSetButton" >
+   <property name="geometry" >
+    <rect>
+     <x>150</x>
+     <y>10</y>
+     <width>77</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="sizePolicy" >
+    <sizepolicy>
+     <hsizetype>0</hsizetype>
+     <vsizetype>0</vsizetype>
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="text" >
+    <string>Set</string>
+   </property>
+   <property name="default" >
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="upCancelButton" >
+   <property name="geometry" >
+    <rect>
+     <x>150</x>
+     <y>40</y>
+     <width>77</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="sizePolicy" >
+    <sizepolicy>
+     <hsizetype>0</hsizetype>
+     <vsizetype>0</vsizetype>
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="text" >
+    <string>Cancel</string>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="upTabWidthSpinBox" >
+   <property name="geometry" >
+    <rect>
+     <x>70</x>
+     <y>10</y>
+     <width>71</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="maximum" >
+    <number>128</number>
+   </property>
+   <property name="minimum" >
+    <number>1</number>
+   </property>
+   <property name="value" >
+    <number>4</number>
+   </property>
+  </widget>
+ </widget>
+ <pixmapfunction></pixmapfunction>
+ <tabstops>
+  <tabstop>upTabWidthSpinBox</tabstop>
+  <tabstop>upSetButton</tabstop>
+  <tabstop>upCancelButton</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

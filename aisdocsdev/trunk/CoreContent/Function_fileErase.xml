@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>fileErase</Title>
+		<FunctionName>fileErase</FunctionName>
+		<FunctionType>Builtin(FileIO)</FunctionType>
+		<ArgumentTypes>ByteVector Text Integer Boolean</ArgumentTypes>
+		<DataType>ByteVector  Text</DataType>
+		<RelatedFunctions>fileOpen fileClose fileRead fileWrite writeln display </RelatedFunctions>
+        <RelatedVMInstructions> none   </RelatedVMInstructions>
+		<HumanKeywords> file fileID ASCII close erase</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>fileErase</b> function erases a file with the specified file and path name. </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		 <p> The <b>fileErase</b> function erases a file with the specified file and path name <b>{filePathName}</b> . </p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>fileErase</b> function is used to erase a file. 
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression>
+          <![CDATA[<p>(fileErase filePathName)</p>
+        </Expression>
+		<Argument>
+		  <Name>filePathName</Name>
+		  <Note><![CDATA[
+		  <p>The file and path name recognized by the host operating system.</p>
+          ]]></Note>
+		  <AISTypes>Word</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>If the erase is successful, the Boolean value, true is returned
+        </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

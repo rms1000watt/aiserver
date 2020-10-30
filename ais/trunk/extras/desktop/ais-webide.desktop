@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=AIS IDE
+Comment=AIS Integrated Development Environment
+Type=Application
+Exec=webidedevexe
+Icon=aiserver
+Categories=Development;IDE;Qt
+

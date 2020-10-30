@@ -1,0 +1,191 @@
+<ui version="4.0" >
+ <class>ATextEditPrefDialogClass</class>
+ <widget class="QDialog" name="ATextEditPrefDialogClass" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>338</width>
+    <height>220</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Preferences</string>
+  </property>
+  <layout class="QVBoxLayout" >
+   <item>
+    <widget class="QGroupBox" name="upEditorGroup" >
+     <property name="title" >
+      <string>Editor Settings</string>
+     </property>
+     <layout class="QVBoxLayout" >
+      <item>
+       <layout class="QHBoxLayout" >
+        <item>
+         <widget class="QLabel" name="upFontLabel" >
+          <property name="text" >
+           <string>&amp;Font:</string>
+          </property>
+          <property name="buddy" >
+           <cstring>upFontComboBox</cstring>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QFontComboBox" name="upFontComboBox" >
+          <property name="sizePolicy" >
+           <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="fontFilters" >
+           <set>QFontComboBox::MonospacedFonts</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="upSizeLabel" >
+          <property name="text" >
+           <string>Si&amp;ze:</string>
+          </property>
+          <property name="buddy" >
+           <cstring>upFontSizeSpinBox</cstring>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSpinBox" name="upFontSizeSpinBox" >
+          <property name="buttonSymbols" >
+           <enum>QAbstractSpinBox::UpDownArrows</enum>
+          </property>
+          <property name="minimum" >
+           <number>6</number>
+          </property>
+          <property name="maximum" >
+           <number>24</number>
+          </property>
+          <property name="singleStep" >
+           <number>2</number>
+          </property>
+          <property name="value" >
+           <number>12</number>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" >
+        <item>
+         <widget class="QLabel" name="upTabWidthLabel" >
+          <property name="text" >
+           <string>&amp;Tab Width:</string>
+          </property>
+          <property name="buddy" >
+           <cstring>upTabWidthSpinBox</cstring>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QSpinBox" name="upTabWidthSpinBox" >
+          <property name="minimum" >
+           <number>2</number>
+          </property>
+          <property name="maximum" >
+           <number>16</number>
+          </property>
+          <property name="singleStep" >
+           <number>2</number>
+          </property>
+          <property name="value" >
+           <number>4</number>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="upLineCheckBox" >
+        <property name="text" >
+         <string>Show Line &amp;Numbers</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="upWhiteSpaceCheckBox" >
+        <property name="text" >
+         <string>Show White &amp;Spaces</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="upWordWrapCheckBox" >
+        <property name="text" >
+         <string>Word &amp;Wrap</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="upOk" >
+       <property name="text" >
+        <string>&amp;OK</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="upCancel" >
+       <property name="text" >
+        <string>&amp;Cancel</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11" />
+ <tabstops>
+  <tabstop>upFontComboBox</tabstop>
+  <tabstop>upFontSizeSpinBox</tabstop>
+  <tabstop>upTabWidthSpinBox</tabstop>
+  <tabstop>upLineCheckBox</tabstop>
+  <tabstop>upWhiteSpaceCheckBox</tabstop>
+  <tabstop>upWordWrapCheckBox</tabstop>
+  <tabstop>upOk</tabstop>
+  <tabstop>upCancel</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

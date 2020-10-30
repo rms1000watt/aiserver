@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>fileOpen</Title>
+		<FunctionName>fileOpen</FunctionName>
+		<FunctionType>Builtin(FileIO)</FunctionType>
+		<ArgumentTypes>ByteVector Text Integer Boolean</ArgumentTypes>
+		<DataType>ByteVector  Text</DataType>
+		<RelatedFunctions>fileClose   fileRead fileWrite writeln display </RelatedFunctions>
+        <RelatedVMInstructions> none   </RelatedVMInstructions>
+		<HumanKeywords> file fileID ASCII open erase filename filetype database</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>fileOpen </b> function attempts to create or open
+             a file with the specified filename and type  indicated. </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		 <p> The <b>fileOpen</b> function attempts to create or open a file with the specified 
+          filename <b>{filename}</b> and type <b>{type}</b> indicated. If no filename is 
+         specified, the host will allow the user to select the file.</p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>fileOpen</b> function opens an existing file or creates a new file 
+        and opens it.</p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p>(fileOpen filename mode type)</p>]]></Expression>
+		<Argument>
+		  <Name>filename </Name>
+		  <Note><![CDATA[
+		  <p>Optional argument. The name of the file to be opened. This name may include a
+           full path specification. Note: On some host systems, if the file name is #void 
+           or missing, a user dialog box appears allowing the user to choose the file.</p>
+          ]]></Note>
+		  <AISTypes>Text String</AISTypes>
+		</Argument>
+		<Argument>
+		  <Name>mode</Name>
+		  <Note><![CDATA[
+		  <p>The mode switch. A value of: (0) requests that only an existing file be opened; (1) indicates that a new file will be created. 
+          If a file already exists with this name, it will be destroyed and a new virgin file will 
+          be created; (2) valid for database files only, indicates that an existing database
+           file be opened for read only transactions shared with other users.</p>
+          ]]></Note>
+		  <AISTypes>Integer </AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>type </Name>
+		  <Note><![CDATA[
+		  <p>The file type switch. (0) requests that a text file be opened; (1) requests that a 
+          Spreadsheet binary file be opened;(2) requests that a Smarttable binary file   
+          be opened; (3) requests that a Workspace binary file be opened; (4) requests that an 
+          Object binary file be opened; (5) requests that an Object Database file be opened.</p>
+          ]]></Note>
+		  <AISTypes>Integer</AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>An Integer file identifier, fileID, is returned.
+        </p>
+	    ]]></Return>
+	</Syntax>
+</Function>

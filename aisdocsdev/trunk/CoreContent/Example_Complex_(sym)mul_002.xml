@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Complex &#42; 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>&#42;</FunctionKeywords>
+		<TypeKeywords>Number</TypeKeywords>
+		<RelatedFunctions> + - &#47; </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>multiplication addition subtraction division</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[  <p> The product of a variety of data types with a complex number is shown here.
+            The result of the operation is shown in the comment. The first double shown is the
+            real part of the result. The second number shown is the imaginary part of the result. </p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq X #c1.0+2.0i)   </sc>   ]]></Expression>  
+        <Note><![CDATA[The first Complex Number is defined.]]></Note> 
+        <Returns><![CDATA[#&#60Complex 123456&#62]]></Returns>
+  	    <Expression><![CDATA[ <sc>(setq Y #c3.0+4.0i)   </sc>   ]]></Expression>  
+        <Note><![CDATA[The second Complex Number is defined.]]></Note> 
+        <Returns><![CDATA[#&#60Complex 234567&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(&#42 X Y)   </sc>   ]]></Expression>  
+        <Note><![CDATA[The result when 2 Complex Numbers are multiplied.]]></Note> 
+        <Returns><![CDATA[#c-5.0+10.0i]]></Returns>
+        <Expression><![CDATA[ <sc>(&#42 X #void )   </sc>   ]]></Expression>  
+        <Note><![CDATA[The result when a Complex Number is multiplied with a Void data type.]]></Note> 
+        <Returns><![CDATA[#c0.0]]></Returns>
+        <Expression><![CDATA[ <sc>(&#42 X 2 )   </sc>   ]]></Expression>  
+        <Note><![CDATA[The result when a Complex Number is multiplied with a Number data type.]]></Note> 
+        <Returns><![CDATA[#c2.0+4.0i]]></Returns>
+        <Expression><![CDATA[ <sc>(&#42 X 2.0 )   </sc>   ]]></Expression>  
+        <Note><![CDATA[The result when a Complex Number is multiplied with a Real Number data type.]]></Note> 
+        <Returns><![CDATA[#c2.0+4.0i]]></Returns>
+        <Expression><![CDATA[ <sc>(&#42 X #\A )   </sc>   ]]></Expression>  
+        <Note><![CDATA[The result when a Complex Number is multiplied with a Character data type.]]></Note> 
+        <Returns><![CDATA[#c65.0+130.0i]]></Returns>
+        <Expression><![CDATA[ <sc>(&#42 X true)	   </sc>   ]]></Expression>  
+        <Note><![CDATA[The result when a Complex Number is multiplied with a Boolean data type.]]></Note> 
+        <Returns><![CDATA[#c1.0+2.0i]]></Returns>
+        <Expression><![CDATA[ <sc>(&#42 X #Jan,1,2000)	   </sc>   ]]></Expression>  
+        <Note><![CDATA[The result when a Complex Number is multiplied with a Date data type. 
+             Dates are stored as the number of days lapsed since day 0.]]></Note> 
+        <Returns><![CDATA[#c730484.0+1460968.0i]]></Returns>
+        <Expression><![CDATA[ <sc>(&#42 X $-.25)	   </sc>   ]]></Expression>  
+        <Note><![CDATA[The result when a Complex Number is multiplied with a Money data type.]]></Note> 
+        <Returns><![CDATA[#c-0.25-0.5i]]></Returns>
+        <Expression><![CDATA[ <sc>(&#42 X -.25)	   </sc>   ]]></Expression>  
+        <Note><![CDATA[The result when a Complex Number is multiplied with a Fraction numeric data type.]]></Note> 
+        <Returns><![CDATA[#c-0.25-0.5i]]></Returns>
+        <Hints><![CDATA[<p>Immediate numeric types are converted to a pure real part with a zero 
+          imaginary part prior to forming the sum. </p>
+       ]]></Hints>
+   </Syntax>
+</Example>

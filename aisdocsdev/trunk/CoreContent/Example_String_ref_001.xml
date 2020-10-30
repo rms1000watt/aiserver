@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example String ref 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>ref</FunctionKeywords>
+		<TypeKeywords> String Text Integer</TypeKeywords>
+		<RelatedFunctions>setq right left mid find</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>ref reference set position</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows the <b>ref</b> function return a 
+                  a specified character in a String or Text using the 
+                  character's index value in the String or Text.
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(setq S  (new String:  "Hello") )  </sc>]]></Expression>  
+        <Note><![CDATA[none  ]]></Note> 
+        <Returns><![CDATA[Hello]]></Returns>
+        <Expression><![CDATA[ <sc>(ref S  0)  </sc>]]></Expression>  
+        <Note><![CDATA[The ref function returns the character with index value 0 in the String. ]]></Note> 
+        <Returns><![CDATA[H]]></Returns>
+  	    <Expression><![CDATA[ <sc>(ref S 4)    </sc>]]></Expression>
+        <Note><![CDATA[The ref function returns the character with index value 4 in the String. ]]></Note>
+        <Returns><![CDATA[o]]></Returns>
+        <Hints><![CDATA[none
+        ]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,50 @@
+#/**********************************************************************************
+#    Copyright (C) 2008 Investment Science Corp.
+#
+#    This program is free software: you can redistribute it and/or modify
+#
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+#***********************************************************************************/
+
+win32 {
+DEFINES += _GCC _WIN _JIT _M32
+}
+unix {
+DEFINES += _GCC _LINUX _JIT
+
+contains(QMAKE_CFLAGS,-m32): DEFINES += _M32
+else {
+     contains(QMAKE_CFLAGS,-m64): DEFINES += _M64
+     else {
+         UNAME = $$system(uname -m)
+         contains(UMAME,i386): DEFINES += _M32
+         contains(UNAME,i586): DEFINES += _M32
+         contains(UNAME,i686): DEFINES += _M32
+         contains(UNAME,x86_64): DEFINES += _M64
+     }
+}
+
+AIS_INSTALL_DIR = /usr
+
+AIS_BIN_DIR = "$$AIS_INSTALL_DIR/bin"
+AIS_CONFIG_DIR = /etc/ais
+AIS_DATA_DIR = /var/lib/ais
+AIS_DOC_DIR = /usr/share/doc/ais
+AIS_INIT_DIR = /etc/init.d
+AIS_LOG_DIR = /var/log/ais
+AIS_SHARE_DIR = /usr/share/ais
+}
+
+UI_DIR = ui
+

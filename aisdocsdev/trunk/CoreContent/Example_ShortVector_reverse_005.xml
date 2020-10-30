@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example ShortVector reverse 005</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>reverse</FunctionKeywords>
+		<TypeKeywords>ShortVector </TypeKeywords>
+		<RelatedFunctions>uniqueInsert insert </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>sizeof size reorganizes  length   memory</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>reverse</b> function to rearrange
+
+
+                  the elements of the Vector.  The Vector, with its elements in
+
+
+                  reverse order is returned.                  
+
+
+	]]></Description>
+	<Syntax>
+        <Expression><![CDATA[  (reverse #(short| 11 12 ) )    ]]></Expression>
+        <Note><![CDATA[The elements of the ShortVector will be returned in reverse order.]]></Note>
+        <Returns><![CDATA[#&#60ShortVector 123456&#62]]></Returns>
+        <Expression><![CDATA[ (display #&#60ShortVector123456&#62)    ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#(short| 12 11 ) ]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Date time 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>time</FunctionKeywords>
+		<TypeKeywords>Number Date String Text Integer</TypeKeywords>
+		<RelatedFunctions> second hour minute</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>24-hour hour clock time julian</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples return the <b>time</b> component of the  <b>date</b> argument using
+                  the different date formats.
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc> 
+(time #Aug,1,1996:12:25:05)         </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[ 0.5174189815298]]></Returns>
+	    <Expression><![CDATA[ <sc> (time #Aug,1,1996)              </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[0.0]]></Returns>
+	    <Expression><![CDATA[ <sc> (time 1 30 00 )                 </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[0.0625]]></Returns>
+	    <Expression><![CDATA[ <sc> (time #Aug,1,1996,1:30:00)                  </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[0.0625]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

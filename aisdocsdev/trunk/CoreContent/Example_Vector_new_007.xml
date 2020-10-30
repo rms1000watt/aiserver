@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Vector new 007</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>new</FunctionKeywords>
+		<TypeKeywords> Vector</TypeKeywords>
+		<RelatedFunctions> setq  define </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>new pointer create initialize</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples show how to construct a Vector.
+                  A
+Vector with #void values is also constructed using the
+                  <b>new</b> function.
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(new Vector:  5  "A")              </sc>]]></Expression>
+        <Note><![CDATA[ Creates a new Word Vector containing 5 Character values.]]></Note>
+        <Returns><![CDATA[#&#60Vector 123456&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60Vector 123456&#62)    </sc>]]></Expression>  
+        <Note><![CDATA[ Displays the contents of the Word Vector.]]></Note> 
+        <Returns><![CDATA[#("A" "A" "A" "A" "A" )]]></Returns>
+        <Expression><![CDATA[ <sc>(new Vector:  5 0 1)                 </sc>]]></Expression>  
+        <Note><![CDATA[ Creates a new  Vector with 5  values.]]></Note> 
+        <Returns><![CDATA[#&#60Vector 234567&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60Vector 234567&#62)    </sc>]]></Expression>  
+        <Note><![CDATA[ Displays the contents of the  Vector.]]></Note> 
+        <Returns><![CDATA[#(0 1 0 1 0 )]]></Returns>
+        <Expression><![CDATA[ <sc>(new Vector:  4)                 </sc>]]></Expression>  
+        <Note><![CDATA[ Create a new  Vector, for 4  values.  But these values are not defined.]]></Note> 
+        <Returns><![CDATA[#&#60Vector 345678&#62]]></Returns>
+        <Expression><![CDATA[ <sc>(display #&#60Vector 345678&#62)    </sc>]]></Expression>  
+        <Note><![CDATA[ Displays the contents of the  Vector.]]></Note> 
+        <Returns><![CDATA[#(#void #void #void #void )]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

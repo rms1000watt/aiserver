@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number modi 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>modi</FunctionKeywords>
+		<TypeKeywords>  Number Integer </TypeKeywords>
+		<RelatedFunctions> mod  imod div (sym)div</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>  number arithmetic division mod remainder integer operators  </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[  <p>This example shows how the <b>modi</b> function divides two numbers and returns the remainder
+                   as an Integer Data Type.</p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(modi 12 5.3) </sc>   ]]></Expression>
+        <Note><![CDATA[Returns the result as an Integer Data Type.]]></Note>
+        <Returns><![CDATA[2 ]]></Returns>
+        <Expression><![CDATA[ <sc>(modi 8.4 -4)  </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[0]]></Returns>
+        <Expression><![CDATA[ <sc>(modi 21 4.4)  </sc>   ]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[1]]></Returns>
+        <Hints><![CDATA[none
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

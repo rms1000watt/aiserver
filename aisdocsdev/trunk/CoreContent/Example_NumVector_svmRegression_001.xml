@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example NumVector svmRegression 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>svmRegression</FunctionKeywords>
+		<TypeKeywords>Vector Float Structure ObjVector NumVector Number</TypeKeywords>
+		<RelatedFunctions> </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>regression linear train weights</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows how the <b>svmRegression</b> function performs
+                  simple linear regression on NumVectors.
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq  X  #(obj|#(num| 2   4   5) #(num| 1   2   3) #(num| 6   7   8)))       </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60ObjVector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq Y #(num| 5  8  9))</sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#&#60NumVector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq S (svmRegression X  Y  vectorInnerProduct   0.1  0.05  4 10  false))    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60Structure 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(display S.Generations)    </sc>]]></Expression>  
+        <Note><![CDATA[Displays the resulting Structure after the Regression.]]></Note> 
+        <Returns><![CDATA[1.0]]></Returns>
+        <Expression><![CDATA[ <sc>(display S.Weights)    </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#(num| -42.79999999704 63.79999999573 4.199999999673 )]]></Returns>
+        <Expression><![CDATA[ <sc>(display S.Error)    </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[0.0]]></Returns>
+        <Expression><![CDATA[ <sc>(display S.Ey)    </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#(num| 5.000000000167 7.999999999764 8.99999999998 )]]></Returns>
+        <Expression><![CDATA[ <sc>(display S.Py)    </sc>]]></Expression>  
+        <Note><![CDATA[none]]></Note> 
+        <Returns><![CDATA[#(num| 3.343529897393E-011 2.954791966658E-011 2.248473012716E-012 )]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

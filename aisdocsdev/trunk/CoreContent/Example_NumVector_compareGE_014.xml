@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example NumVector compareGE 014</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compareGE</FunctionKeywords>
+		<TypeKeywords>NumVector Boolean</TypeKeywords>
+		<RelatedFunctions>compare compareEQ compareGT compareNE compareLT  compareLE</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare symbol equal greater </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>compareGE</b> function to compare two Vectors and return
+
+
+
+
+
+
+                  the Boolean value, true or false.  The corresponding  values of each Vector are compared.
+
+
+
+
+	]]></Description>
+	<Syntax> 
+        <Expression><![CDATA[ <sc>(compareGE #(num| 11.433 -2.6 ) #(num| 11.433 -2.600 ))     </sc>]]></Expression>  
+        <Note><![CDATA[Both Vectors are equal.]]></Note> 
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>(compareGE #(num| 11.433 -2.6 ) #(float| 11.433 -2.6 ))     </sc>]]></Expression>  
+        <Note><![CDATA[The Vectors are not of the same type but their values are the same.]]></Note> 
+        <Returns><![CDATA[false]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

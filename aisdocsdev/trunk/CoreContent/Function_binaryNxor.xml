@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>binaryNxor</Title>
+		<FunctionName>binaryNxor</FunctionName>
+		<FunctionType>Builtin(Bitwise)</FunctionType>
+		<ArgumentTypes>Integer Character Boolean</ArgumentTypes>
+		<DataType>Integer</DataType>
+		<RelatedFunctions>binaryNand binaryNor</RelatedFunctions>
+        <RelatedVMInstructions> none   </RelatedVMInstructions>
+		<HumanKeywords>numerical xor negative binary</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             <p> The <b>binaryNxor</b> function  performs a numerical bitwise xor (exclusive or) (bitwise xor the arguments 
+             and then negate them)  on each 
+            expression from left to right, returning the value of the result as a binary Integer. </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+	       <p> The <b>binaryNxor</b> function  performs a numerical bitwise <b>xor</b> (exclusive or) (bitwise xor the arguments 
+             and then negate them)  on each 
+            expression from left to right, returning the value of the result as a binary Integer. 
+           The arguments are assumed to be Integers, and are not checked for the correct type. 
+          Characters and Boolean arguments will be treated as Integers in this function.</p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>Use the <b>binaryNxor</b> function when a binary integer operation is required. </p>
+        ]]></Usage>
+    </Brief>
+	<Syntax>
+	    <Expression><![CDATA[<p>(binaryNxor exp ...)</p>]]></Expression>
+		<Argument> 
+		  <Name>exp ...</Name>
+		  <Note><![CDATA[
+		  <p>One or more Integer expressions.  A Character or Boolean expression is converted to Integer.</p>
+          ]]></Note>
+		  <AISTypes>Integer Character Boolean </AISTypes>
+		</Argument>
+		<Return><![CDATA[ 
+	    <p>The bitwise Not xor (not exclusive or) of the argument(s).
+        </p>
+	    ]]></Return>   
+	</Syntax>
+</Function>

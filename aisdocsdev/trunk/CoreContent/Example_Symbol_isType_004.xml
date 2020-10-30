@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Symbol isType 004</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>isType</FunctionKeywords>
+		<TypeKeywords>Character String Symbol Vector BitVector ByteVector IntVector
+
+
+
+
+
+                       FltVector ObjVector Structure Dictionary Directory
+
+
+
+
+
+                       Matrix NumMatrix Integer Float Number Complex</TypeKeywords>
+		<RelatedFunctions>isText isObject isString isSymbol</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>Type Analytic Object</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples check if the argument object is
+
+
+
+                  of the specified type
+
+
+
+                  If it is,  the function returns true, otherwise, it returns false.
+
+ 
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq X "Mickey" )   </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[Mickey]]></Returns>
+        <Expression><![CDATA[ <sc>(isType  Symbol:  X:)  </sc>]]></Expression>
+        <Note><![CDATA[The object X: is of type Symbol. ]]></Note>
+        <Returns><![CDATA[ true ]]></Returns>
+        <Expression><![CDATA[ <sc>(isSymbol X:) </sc>]]></Expression>
+        <Note><![CDATA[Check the type of X: using the isSymbol function ]]></Note>
+        <Returns><![CDATA[ true ]]></Returns>
+        <Hints><![CDATA[<p> The syntax: <b> (isType Symbol: obj)</b>  <br>
+            is also equivalent to: <b>(isSymbol obj)</b> </p>]]></Hints>
+   </Syntax>
+</Example>

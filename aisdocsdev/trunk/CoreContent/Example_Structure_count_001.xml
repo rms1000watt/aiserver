@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Structure count 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>count </FunctionKeywords>
+		<TypeKeywords>Structure Integer</TypeKeywords>
+		<RelatedFunctions>length</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>count length </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example defines a Structure and uses the <b>count</b> function to perform
+                  a deep count of the keys and imbedded Structures within the defined Structure.
+                  The <b>length</b> function is also included to illustrate the difference of
+                  deep versus shallow counting.    
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(define z  #{a: 1 b: 2 c: 3 d: #void})</sc>]]></Expression>
+        <Note><![CDATA[none ]]></Note>
+        <Returns><![CDATA[#&#60Structure 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(count z)     </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[4]]></Returns>
+        <Expression><![CDATA[ <sc> (define z  #{a: 1 b: 2 c: 3 d: 4 e: #{x:7 y: 8} })    </sc>]]></Expression>
+        <Note><![CDATA[The key e: contains an imbedded Structure.]]></Note>
+        <Returns><![CDATA[#&#60Structure 234567&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc> (count z) </sc>]]></Expression>
+        <Note><![CDATA[Performs a deep count.  The Structure keys and the imbedded structure are included.]]></Note>
+        <Returns><![CDATA[6]]></Returns>
+        <Expression><![CDATA[ <sc> (length z) </sc>]]></Expression>  
+        <Note><![CDATA[Performs a shallow count.  Only the Structure keys are included.]]></Note> 
+        <Returns><![CDATA[5]]></Returns>
+        <Hints><![CDATA[none ]]></Hints>
+   </Syntax>
+</Example>

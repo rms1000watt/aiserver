@@ -1,0 +1,26 @@
+// notbusy.XPM
+static const char *gpNotBusy[]={
+"25 20 6 1",
+"b c #000000",
+"# c #808080",
+"a c #c0c0c0",
+". c #00ff00",
+"d c #00ff00",
+"c c #ffffff",
+//234567890123456  
+"................",
+"...###########..",
+"..#aaaaaaaaa#bb.",
+"..#ccccccccc##b.",
+"..#aaaaaaaaa##b.",
+"..############b.",
+"..#ccccccccc##b.",
+"..#aaaadaaaa##b.",
+"..#aaadddaaa##b.",
+"..#aadddddaa##b.",
+"..#addddddda##b.",
+"..#aadddddaa#bb.",
+"..#aaadddaaa#bb.",
+"...#aaadaaa#bb..",
+"....#aaaaa#bbb..",
+"....bbbbbbbb...."};

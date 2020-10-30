@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Number subi 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>subi</FunctionKeywords>
+		<TypeKeywords>Number</TypeKeywords>
+		<RelatedFunctions> addi divi  muli subi iadd isub imul idiv </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>number arithmetic subtraction integer operators</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[  <p> The <b>subi</b> function performs addition of the argument values , which in 
+
+                    these examples are Numbers and Money values and returns the result
+
+                     as an Integer.</p>
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>
+(addi 12 3 4)        </sc>   ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[5]]></Returns>
+        <Expression><![CDATA[ <sc>(subi $4.70 3.9)    </sc>     ]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[1]]></Returns>
+        <Hints><![CDATA[none
+
+
+
+        ]]></Hints>
+   </Syntax>
+</Example>

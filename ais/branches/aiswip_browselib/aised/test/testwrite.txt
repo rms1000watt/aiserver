@@ -1,0 +1,27 @@
+# aised/test/testwrite.txt
+
+#							AISED - TEST WRITE
+
+# CHANGE HISTORY
+# Version	Date		Who		Change
+# 1.0109	10/7/2006	tlw		Original
+
+# NOTES
+# ISMODIFIED - isModified()
+# READ - read(FileName)
+# SETMODIFIED - setModified(Modified)
+# WRITE - write(fileSpec)
+
+#	*************************************************************************************************
+clear
+# ISMODIFIED - isModified()
+isModified
+# READ - read(FileName)
+read(example.sl)
+isModified
+# SETMODIFIED - setModified(Enable)
+setmodified(Enable)
+isModified
+# WRITE - write(fileSpec)
+write(foo.sl)
+#end

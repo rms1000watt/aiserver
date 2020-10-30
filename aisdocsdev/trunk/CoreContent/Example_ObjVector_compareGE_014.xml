@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example ObjVector compareGE 014</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compareGE</FunctionKeywords>
+		<TypeKeywords>ObjVector Boolean</TypeKeywords>
+		<RelatedFunctions>compare compareEQ compareGT compareNE compareLT  compareLE</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare symbol equal greater </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>compareGE</b> function to compare two Vectors and return
+
+
+
+
+
+
+                  the Boolean value, true or false.  The corresponding  values of each Vector are compared.
+
+
+
+
+	]]></Description>
+	<Syntax> 
+        <Expression><![CDATA[ <sc>(compareGE #(obj| #{A: 1 B: 2} #(int| 1 2 ) ) #(obj| #{A: 1 B: 2} #(int| 1.0 2 ) ))     </sc>]]></Expression>  
+        <Note><![CDATA[The contents of both Object Vectors are the same.]]></Note> 
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>(compareGE #(obj| #{A: 1 B: 2} #(float| 1 2 ) )#(obj| #{A: 1 B: 2} #(int| 1 2 ) )  )     </sc>]]></Expression>  
+        <Note><![CDATA[The contents of the Object Vectors are not of the same type.]]></Note> 
+        <Returns><![CDATA[false]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

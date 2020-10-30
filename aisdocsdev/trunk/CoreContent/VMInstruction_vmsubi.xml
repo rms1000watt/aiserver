@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE VMInstruction SYSTEM "../DTD/VMInstruction.dtd">
+<VMInstruction>
+	<KnowledgeBase>
+	    <Title>vmsubi</Title>
+		<InstructionName>vmsubi</InstructionName>
+		<InstructionType>Generic</InstructionType>
+		<ArgumentTypes>Complex Integer Number</ArgumentTypes>
+		<RelatedVMInstructions>vmaddi vmdivi vmmuli</RelatedVMInstructions>
+		<HumanKeywords>addition subtraction division multiplication</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[
+		<p>
+		When evaluated, this vm instruction subtracts the <b>argument</b> word numeric value to the <b>source</b> word numeric value and 
+		places the result in the <b>target</b> as an Integer data type. Both words must be of numeric types. 
+		Conversion between different numeric types is automatic. The result will be returned as an Integer data type. 
+		This instruction may return an Error value. After the operation, the Instruction Pointer is promoted. 
+		The operation of this vm instruction is expressed in the following C expression:        
+        <p>
+        <ul><li><b>(word:int)target = (word:numeric)source - (word:numeric)argument;</b></li></ul>
+    ]]></Description>
+    <Example>
+        <![CDATA[  <sc><pre>
+			(defun vmsubi_test( arg1 arg2 )
+    			vars:(c)
+    			(vmsubi arg1 arg2 c)
+    			(vmreturn c)
+			)
+			(writeln(vmsubi_test -1 -1))
+        </pre>    </sc>
+        ]]>
+    </Example>
+	<Syntax>
+	    <Expression><![CDATA[(vmsubi argument source target)]]></Expression>
+		<Argument> 
+		  <Name>argument</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>(word:numeric)</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>source</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>(word:numeric)</AISTypes>
+		</Argument>
+		<Argument> 
+		  <Name>target</Name>
+		  <Format>regoffset</Format>
+		  <AISTypes>(word:integer)</AISTypes>
+		</Argument>
+	</Syntax>
+</VMInstruction>

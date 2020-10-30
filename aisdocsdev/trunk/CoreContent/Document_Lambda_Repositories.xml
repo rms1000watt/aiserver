@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Document SYSTEM "../DTD/Document.dtd">
+<Document>
+	<KnowledgeBase>
+	    <Title>Lambda Repositories</Title>
+		<Topic>Lisp</Topic>
+		<SubTopic>Overview</SubTopic>
+		<HumanKeywords>Lisp Repository Object Lambda AIS Programming</HumanKeywords>
+	</KnowledgeBase>
+	<Essay>Essay_Lambda_Repositories</Essay>
+    <Essay>Essay_Lambda_Repository_Functions</Essay>
+</Document>

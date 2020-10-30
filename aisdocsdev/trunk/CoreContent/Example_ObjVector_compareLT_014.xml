@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example ObjVector compareLT 014</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compareLT</FunctionKeywords>
+		<TypeKeywords>ObjVector Boolean</TypeKeywords>
+		<RelatedFunctions>compare compareEQ compareNE compareGE compareGT  compareLE </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare symbol equal lesser </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>compareLT</b> function to compare two Vectors and return
+
+
+
+
+
+
+
+
+                  the Boolean value, true or false.  The corresponding values of each Vector are compared
+
+
+
+
+
+                  to determine whether one Vector is lesser than the other.
+
+
+
+
+
+	]]></Description>
+	<Syntax> 
+        <Expression><![CDATA[ <sc>(compareLT #(obj| #{A: 1 B: 2} #(int| 1 2 ) ) #(obj| #{A: 1 B: 2} #(int| 1.0 2 ) ))     </sc>]]></Expression>  
+        <Note><![CDATA[The contents of both Object Vectors are the same.]]></Note> 
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(compareLT #(obj| #{A: 1 B: 2} #(float| 1 2 ) )#(obj| #{A: 1 B: 2} #(int| 1 2 ) )  )     </sc>]]></Expression>  
+        <Note><![CDATA[The contents of the Object Vectors have the same values.]]></Note> 
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(compareLT #(obj| #{A: 1 B: 2} #(float| 1 2 ) )#(obj| #{A: 1 B: 2} #(int| 5 4 ) )  )     </sc>]]></Expression>  
+        <Note><![CDATA[The contents of the first Object Vector is less than that of the second Vector.]]></Note> 
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

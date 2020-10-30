@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Function SYSTEM "../DTD/Function.dtd">
+<Function>
+	<KnowledgeBase>
+        <Title>proplist</Title>
+		<FunctionName>proplist</FunctionName>
+		<FunctionType>Builtin</FunctionType>
+		<ArgumentTypes>Symbol Pair List</ArgumentTypes>
+		<DataType>Symbol</DataType>
+		<RelatedFunctions>proprecord putprop</RelatedFunctions>
+        <RelatedVMInstructions>  none  </RelatedVMInstructions>
+		<HumanKeywords>symbol property  bindings name descriptor attribute</HumanKeywords>
+	</KnowledgeBase>
+         <Description><![CDATA[
+             	<p>The <b>proplist</b> returns a pair that contains the property
+                 bindings of a given property name. </p>
+          ]]></Description>
+	<Brief>
+	   <Overview><![CDATA[
+		<p>The <b>proplist</b> function returns the property list associated 
+           with <b>{sym}</b>.  If the argument <b>{sym}</b>, is not associated 
+           with a property list,  #void is returned.
+        </p>
+        ]]></Overview>
+        <Usage><![CDATA[
+        <p>The <b>proplist </b> function is a function defined as part of the standard 
+            Lisp language.  There are five functions that deal with assigning, 
+            acquiring and removing a property from a property list of a symbol: 
+            <b>putProp, getProp, proplist, proprecord, and remProp</b>.  
+            The notion of a property for a symbol consists one or more property 
+            bindings:  a property-descriptor followed by a property-name.   
+            While Lisp supports the traditional Lisp functions for properties, 
+            the Structure and Dictionary objects offer a more flexible way of 
+            storing attribute bindings.</p>
+        ]]></Usage>
+    </Brief>
+	<Syntax-Symbol>
+	    <Expression><![CDATA[<p> (proplist sym)</p>]]></Expression>
+		<Argument>
+		  <Name>sym</Name>
+		  <Note><![CDATA[
+		  <p>A Symbol</p>
+          ]]></Note>
+		  <AISTypes>Symbol </AISTypes>
+		</Argument>
+		<Return><![CDATA[
+	    <p>Returns the property list as a List.  If the Symbol has no  property list, 
+           then #void is returned.</p>
+	    ]]></Return>
+	</Syntax-Symbol>
+</Function>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>  
+		<Title>Example String isChar 001</Title>  
+		<Template>Example</Template> 
+		<FunctionKeywords>isChar</FunctionKeywords>
+		<TypeKeywords>Character String Symbol Vector BitVector ByteVector IntVector
+                       FltVector ObjVector Structure Dictionary Directory
+                       Matrix NumMatrix Integer Float Number Complex</TypeKeywords>	
+		<RelatedFunctions>isType isCharAlphabetic isCharAlphanumeric isCharLowercase
+                          isCharName isCharNumeric isCharUppercase isCharWhitespace
+                          isString isText </RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>Character Alphabetic Object Uppercase Lowercase Name
+                       Underscore Numeric Alphanumeric Name Whitespace</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example checks if the datatype of the object is a Character. If it is,
+                  the function returns true, otherwise, it returns false.
+	]]></Description>
+	<Syntax> 
+  	    <Expression><![CDATA[ <sc>(setq alpha #\a) </sc>]]></Expression>  
+        <Note><![CDATA[Sets the variable alpha to letter "a". ]]></Note> 
+        <Returns><![CDATA[a]]></Returns>
+        <Expression><![CDATA[ <sc>(isChar alpha)    </sc>]]></Expression>  
+        <Note><![CDATA[none ]]></Note> 
+        <Returns><![CDATA[ true ]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Symbol compareEQ 002</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compareEQ</FunctionKeywords>
+		<TypeKeywords>Symbol Integer</TypeKeywords>
+		<RelatedFunctions>compare compareNE compareGT compareGE compareLT  compareLE</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare symbol equal </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>compareEQ</b> function to compare two Symbols and return
+
+
+                  the Boolean value, true or false. In these examples, lowercase characters
+
+
+                  are compared as against uppercase characters of the Symbols being compared. In the ASCII table, uppercase characters are represented
+
+
+                  by 65 to 90 while lowercase characters are represented by 97 to 122.  Using this table,
+
+
+                  lowercase characters have greater value than uppercase characters.
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(compareEQ GoodDay: Goodday:)    </sc>]]></Expression>
+        <Note><![CDATA[The characters of the Symbols are not equal.]]></Note>
+        <Returns><![CDATA[false ]]></Returns>
+        <Expression><![CDATA[ <sc>(compareEQ GoodDay: GoodDay: )  </sc>]]></Expression>
+        <Note><![CDATA[The Symbols are equal.]]></Note>
+        <Returns><![CDATA[true]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

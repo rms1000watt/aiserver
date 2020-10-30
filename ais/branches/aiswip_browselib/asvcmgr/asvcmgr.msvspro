@@ -1,0 +1,47 @@
+# aisdev/asvcmgr/asvcmgr-msvs.pro
+# Project file for the Service Manager project
+# See QtDocumentation->Home->qmake (in Tools section)
+# Usage:
+# Create a vcproj (or use "Open Qt Project" icon in Visual Studio)
+#	qmake -t vcapp  -o asvcmgr.vcproj asvcmgr.pro
+# Create a makefile (optional)	
+#	qmake -nodepend -spec win32-msvc -o Makefile asvcmgr.pro
+
+# Sources specifies the (.c, .cpp) source files to be built.
+SOURCES	= main.cpp qtservice.cpp qtservice_win.cpp 
+
+# Headers specify the header (.h) files, if any, to be included in the project
+# To include a header file in moc_axxx.cpp, you have to include it in axxx.h. 
+HEADERS =  qtservice.h qtservice_p.h
+
+# Add the following include path to the /I compile option
+#INCLUDEPATH	= ../include
+INCLUDEPATH	= .
+
+# Path to folder to hold moc_ files
+MOC_DIR = gen
+
+# Target specifies the output filepath.
+TARGET  = asvcmgr 
+DESTDIR	= debug
+
+# Config
+#	qt - add relevant libraries and include path for qt application
+#	thread - build multithreaded library.
+#	warn-on - display warnings
+#	release - build a release version
+#	debug - build a debug version (release or debug, not both)
+CONFIG	+= console debug warn_on qt thread
+
+# Template specifies type of thing to make.
+# vclib - constructs a library project for use by Visual Studio
+# lib - constructs a library project
+# app - constructs an application
+TEMPLATE	= app
+
+QT -= gui
+LIBS += user32.lib
+
+
+
+

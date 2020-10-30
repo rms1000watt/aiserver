@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example Symbol &#45;&#45; 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>&#45;&#45; </FunctionKeywords>
+		<TypeKeywords>Symbol </TypeKeywords>
+		<RelatedFunctions>(sym)add1</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>addition subtraction increment decrement</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ This example shows how the <b>&#45&#45</b> macro decrements and sets the value of
+                 the target object.
+	]]></Description>
+	<Syntax>
+	    <Expression><![CDATA[ <sc>(setq x 100)  </sc>]]></Expression>
+        <Note><![CDATA[Sets the value of the target argument.]]></Note>
+        <Returns><![CDATA[100]]></Returns>
+	    <Expression><![CDATA[ <sc>(-- x )  </sc>]]></Expression>  
+        <Note><![CDATA[Subtracts 1 to 100]]></Note> 
+        <Returns><![CDATA[100]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example NumVector vectorExpInnerProduct 001</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>vectorExpInnerProduct</FunctionKeywords>
+		<TypeKeywords> NumVector Number</TypeKeywords>
+		<RelatedFunctions> vectorBinaryInnerProduct vectorBipolarInnerProduct
+
+                           vectorCosineInnerProduct vectorCubeInnerProduct svmRegression
+
+                           vectorInnerProduct vectorLogInnerProduct vectorQuartInnerProduct
+
+                           vectorSigmoidInnerProduct vectorSineInnerProduct vectorQuintInnerProduct
+
+                           vectorSquareInnerProduct vectorTanInnerProduct vectorTanhInnerProduct</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>exponential product math 
+
+                       support vector functions kernel</HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ The <b>vectorExpInnerProduct</b> function returns the exponential inner product 
+
+                of the two Number Vector arguments x1 and x2. 
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(setq x1  #(num| 1 2 3))       </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60NumVector 123456&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(setq x2  #(num| 6 8 9))</sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[#&#60NumVector 234567&#62 ]]></Returns>
+        <Expression><![CDATA[ <sc>(vectorExpInnerProduct  x1 x2)    </sc>]]></Expression>
+        <Note><![CDATA[none]]></Note>
+        <Returns><![CDATA[1.0]]></Returns>
+        <Hints><![CDATA[<p>The inner or dot product of two number vectors, of length N, is defined as follows:</p>
+               <p><b>(setq innerProduct 0)</b></p>
+               <p><b>(loop for n from 0 until N do (setq innerProduct  (+ innerProduct (* x1[n] x2[n]))))</b></p>
+        ]]></Hints>
+   </Syntax>
+</Example>

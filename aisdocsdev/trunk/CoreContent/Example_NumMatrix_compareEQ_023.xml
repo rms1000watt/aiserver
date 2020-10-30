@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE Example SYSTEM "../DTD/Example.dtd">
+<Example>
+	<KnowledgeBase>
+		<Title>Example NumMatrix compareEQ 023</Title>
+		<Template>Example</Template>
+		<FunctionKeywords>compareEQ</FunctionKeywords>
+		<TypeKeywords>NumMatrix Boolean</TypeKeywords>
+		<RelatedFunctions>compare compareNE compareGT compareGE compareLT  compareLE</RelatedFunctions>
+		<Language>Lisp</Language>
+		<HumanKeywords>compare matrix equal </HumanKeywords>
+	</KnowledgeBase>
+	<Description><![CDATA[ These examples use the <b>compareEQ</b> function to compare two Matrices and return
+
+
+
+
+
+
+
+
+                  the Boolean value, true or false. The  values of each Matrix are compared
+
+
+
+
+
+                  to determine whether the Matrices are equal or not.
+
+
+
+
+
+
+	]]></Description>
+	<Syntax>
+  	    <Expression><![CDATA[ <sc>(compareEQ #(nummat| 12.32 42.01) #(nummat| 12.32 42.01 ))     </sc>]]></Expression>  
+        <Note><![CDATA[Both Matrices are equal.]]></Note> 
+        <Returns><![CDATA[true]]></Returns>
+        <Expression><![CDATA[ <sc>(compareEQ #(nummat| 12.32 42.01) #(nummat| -12.32 42.01 ))     </sc>]]></Expression>  
+        <Note><![CDATA[ The value of the first Matrix is greater than the value
+               of the second NumMatrix.]]></Note> 
+        <Returns><![CDATA[false]]></Returns>
+        <Expression><![CDATA[ <sc>(compareEQ #(nummat| 12.32 5.34) #(nummat| 12.32 42.01 ))    </sc>]]></Expression>  
+        <Note><![CDATA[The value of the first Matrix is lesser than the value
+               of the second Matrix.]]></Note> 
+        <Returns><![CDATA[false]]></Returns>
+        <Hints><![CDATA[none]]></Hints>
+   </Syntax>
+</Example>
